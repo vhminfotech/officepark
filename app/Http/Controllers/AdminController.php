@@ -29,7 +29,7 @@ class AdminController extends Controller {
     }
 
     public function getUserData() {
-
+        
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
 
