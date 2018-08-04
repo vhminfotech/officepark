@@ -15,4 +15,14 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    @if (!empty($css)) 
+    @foreach ($css as $value) 
+    <link rel="stylesheet" href="{{ asset('css/'.$value) }}">
+    @endforeach
+    @endif
+    <script>
+        var baseurl = "{{ asset('/') }}";
+    </script>
 </head>

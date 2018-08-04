@@ -31,6 +31,8 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'AdminController@dashboard']);
+    Route::match(['get', 'post'], 'user-list', ['as' => 'user-list', 'uses' => 'AdminController@getUserData']);
+    Route::match(['get', 'post'], 'add-user', ['as' => 'add-user', 'uses' => 'AdminController@addUser']);
 });
 
 
