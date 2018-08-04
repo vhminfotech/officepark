@@ -15,11 +15,9 @@
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
-                            <th class="c-table__cell c-table__cell--head">Customer number&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">First Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Last Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head ">E-mail&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Name&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Mail&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">User Type&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                         </tr>
                     </thead>
@@ -27,10 +25,8 @@
                         @for($i = 1 ;$i < 30;$i++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $i }}</td>
-                            <td class="c-table__cell">OP-023-38520</td>
-                            <td class="c-table__cell">Com{{ $i }}</td>
-                            <td class="c-table__cell">Test{{ $i }}</td>
-                            <td class="c-table__cell">xyz{{ $i }}@gmail.com</td>
+                            <td class="c-table__cell">{{ $i.'Name' }}</td>
+                            <td class="c-table__cell">{{ ($i %2 == 0 ? 'User' : 'Client') }}</td>
                             <td class="c-table__cell">abc{{ $i }}@gmail.com</td>
                             <td class="c-table__cell"><span class="c-tooltip c-tooltip--top"  aria-label="Delete"><i class="fa fa-trash-o" ></i></span></td>
                         </tr>
