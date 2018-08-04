@@ -16,18 +16,21 @@
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
                             <th class="c-table__cell c-table__cell--head">Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Mail&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Email&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">User Type&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for($i = 1 ;$i < 30;$i++)
+                        @php
+                        $count = 1;
+                        @endphp
+                        @for($i = 0 ;$i < count($arrUser);$i++,$count++)
                         <tr class="c-table__row">
-                            <td class="c-table__cell">{{ $i }}</td>
-                            <td class="c-table__cell">{{ $i.'Name' }}</td>
-                            <td class="c-table__cell">{{ ($i %2 == 0 ? 'User' : 'Client') }}</td>
-                            <td class="c-table__cell">abc{{ $i }}@gmail.com</td>
+                            <td class="c-table__cell">{{ $count }}</td>
+                            <td class="c-table__cell">{{ $arrUser[$i]->name }}</td>
+                            <td class="c-table__cell">{{ $arrUser[$i]->email }}</td>
+                            <td class="c-table__cell">{{ $arrUser[$i]->type }}</td>
                             <td class="c-table__cell"><span class="c-tooltip c-tooltip--top"  aria-label="Delete"><i class="fa fa-trash-o" ></i></span></td>
                         </tr>
                         @endfor

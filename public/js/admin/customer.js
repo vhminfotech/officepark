@@ -23,7 +23,7 @@ var Customer = function() {
             cpassword: {required: true, equalTo: "#password"}
         };
         handleFormValidate(form, rules, function(form) {
-            handleAjaxFormSubmit(form, true);
+            handleAjaxFormSubmit(form);
         });
 
     };

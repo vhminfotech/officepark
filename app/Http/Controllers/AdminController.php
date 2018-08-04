@@ -29,11 +29,11 @@ class AdminController extends Controller {
     }
 
     public function getUserData() {
-        
-        
-        $objUser = new Users(); 
-        $userList =  $objUser->gtUsrLlist();
-//        print_r($userList );exit;
+
+        $objUser = new Users();
+        $userList = $objUser->gtUsrLlist();
+
+        $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
         return view('admin.user-list', $data);
     }
@@ -41,10 +41,20 @@ class AdminController extends Controller {
     public function addUser(Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
-            print_r($request->input());exit;
-
+//            print_r($request->input());exit;
+            $objUser = new Users();
+            $userList = $objUser->saveUserInfo($request);
+            if ($userList) {
+                $return['status'] = 'success';
+                $return['message'] = 'User created successfully.';
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
         }
-        
+
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
