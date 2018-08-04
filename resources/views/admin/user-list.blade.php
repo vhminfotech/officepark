@@ -31,7 +31,14 @@
                             <td class="c-table__cell">{{ $arrUser[$i]->name }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->email }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->type }}</td>
-                            <td class="c-table__cell"><span class="c-tooltip c-tooltip--top"  aria-label="Delete"><i class="fa fa-trash-o" ></i></span></td>
+                            <td class="c-table__cell">
+                                <a href=" {{ route('edit-user',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                    <i class="fa fa-edit" ></i></span>
+                                </a>
+                                <a href="javascript:;"><span class="c-tooltip c-tooltip--top"  aria-label="Delete">
+                                    <i class="fa fa-trash-o" ></i></span>
+                                </a>
+                            </td>
                         </tr>
                         @endfor
                     </tbody>

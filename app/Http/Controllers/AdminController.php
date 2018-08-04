@@ -47,6 +47,7 @@ class AdminController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'User created successfully.';
+                $return['redirect'] =  route('user-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -62,6 +63,36 @@ class AdminController extends Controller {
 
 
         return view('admin.add-user', $data);
+    }
+    
+    public function editUser($userId , Request $request) {
+        $data['detail'] = $this->loginUser;
+        if ($request->isMethod('post')) {
+//            print_r($request->input());exit;
+            $objUser = new Users();
+            $userList = $objUser->updateUserInfo($request);
+            if ($userList) {
+                $return['status'] = 'success';
+                $return['message'] = 'User Edit successfully.';
+                $return['redirect'] =  route('user-list');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/customer.js');
+        $data['funinit'] = array('Customer.editInit()');
+        
+        $objMuck = new Users();
+        $muckDetail = $objMuck->gtUsrLlist($userId);
+        $data['userDetail'] = $muckDetail;
+        
+        return view('admin.edit-user', $data);
     }
 
 }
