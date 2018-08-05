@@ -66,7 +66,7 @@ class LoginController extends Controller {
                 'password' => 'required',
             ]);
 
-            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => '0'])) 
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'USER'])) 
             {
                 $loginData = array(
                     'name'  => Auth::guard('web')->user()->name,
@@ -78,7 +78,7 @@ class LoginController extends Controller {
                 
                 return redirect()->route('user-dashboard');
             }
-            else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => '1'])) 
+            else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) 
             {
                 $loginData = array(
                     'name'  => Auth::guard('customer')->user()->name,
@@ -90,7 +90,7 @@ class LoginController extends Controller {
                 
                 return redirect()->route('customer-dashboard');
             }
-            else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => '2'])) 
+            else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) 
             {
                 $loginData = array(
                     'name'  => Auth::guard('admin')->user()->name,

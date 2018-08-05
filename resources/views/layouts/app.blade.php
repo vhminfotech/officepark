@@ -9,11 +9,11 @@
         @include('layouts.include.breadcrumb')
         @include('layouts.include.message')
         
-        @if($session['logindata'][0]['type'] == 2)
+        @if($session['logindata'][0]['type'] == 'ADMIN')
             @include('layouts.include.leftpanel.admin-left-sidebar')
-        @elseif($session['logindata'][0]['type'] == 1)
+        @elseif($session['logindata'][0]['type'] == 'CUSTOMER')
             @include('layouts.include.leftpanel.custome-left-sidebar')
-        @elseif($session['logindata'][0]['type'] == 0)
+        @elseif($session['logindata'][0]['type'] == 'USER')
             @include('layouts.include.leftpanel.user-left-sidebar')
         @else
         
