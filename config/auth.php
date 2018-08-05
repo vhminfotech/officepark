@@ -56,6 +56,10 @@ return [
         'customer' => [
             'driver' => 'session',
             'provider' => 'customer'
+        ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agent'
         ]
     ],
 
@@ -86,6 +90,10 @@ return [
             'model' => App\User::class,
         ],
         'customer' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+        'agent' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
@@ -131,6 +139,12 @@ return [
         ],
         'customer' => [
             'provider' => 'admin',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'agent' => [
+            'provider' => 'agent',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,

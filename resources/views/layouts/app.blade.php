@@ -15,6 +15,8 @@
             @include('layouts.include.leftpanel.custome-left-sidebar')
         @elseif($session['logindata'][0]['type'] == 'USER')
             @include('layouts.include.leftpanel.user-left-sidebar')
+        @elseif($session['logindata'][0]['type'] == 'AGENT')
+            @include('layouts.include.leftpanel.agent-left-sidebar')
         @else
         
         @endif

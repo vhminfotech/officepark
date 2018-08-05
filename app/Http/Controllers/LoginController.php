@@ -26,29 +26,22 @@ class LoginController extends Controller {
     }
 
     public function checkAuth(Request $request) {
-                
-        if (auth()->guard('admin')->user()) 
-        {
+
+        if (auth()->guard('admin')->user()) {
             return redirect()->route('admin-dashboard');
-        }
-        else if (auth()->guard('customer')->user()) 
-        {
+        } else if (auth()->guard('customer')->user()) {
             return redirect()->route('customer-dashboard');
-        }
-        else if(auth()) 
-        {
+        } else if (auth()) {
             return redirect()->route('user-dashboard');
-        }
-        else
-        {
+        } else {
             return view('auth.login');
         }
     }
-    
+
     public function auth(Request $request) {
-        
+
         $this->resetGuard();
-        
+
 //        if(Auth::guard('admin')){
 //            return redirect(route('admin-dashboard'));
 //        }else if(Auth::guard('customer')){
@@ -58,71 +51,76 @@ class LoginController extends Controller {
 //        }else{
 //            return view('auth.login');
 //        }
-        
+
         if ($request->isMethod('post')) {
-            
+
             $this->validate($request, [
                 'email' => 'required|email',
                 'password' => 'required',
             ]);
 
-            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'USER'])) 
-            {
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'USER'])) {
                 $loginData = array(
-                    'name'  => Auth::guard('web')->user()->name,
+                    'name' => Auth::guard('web')->user()->name,
                     'email' => Auth::guard('web')->user()->email,
-                    'type'  => Auth::guard('web')->user()->type,
-                    'id'    => Auth::guard('web')->user()->id
+                    'type' => Auth::guard('web')->user()->type,
+                    'id' => Auth::guard('web')->user()->id
                 );
                 Session::push('logindata', $loginData);
-                
+
                 return redirect()->route('user-dashboard');
-            }
-            else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) 
-            {
+            } else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) {
                 $loginData = array(
-                    'name'  => Auth::guard('customer')->user()->name,
+                    'name' => Auth::guard('customer')->user()->name,
                     'email' => Auth::guard('customer')->user()->email,
-                    'type'  => Auth::guard('customer')->user()->type,
-                    'id'    => Auth::guard('customer')->user()->id
+                    'type' => Auth::guard('customer')->user()->type,
+                    'id' => Auth::guard('customer')->user()->id
                 );
                 Session::push('logindata', $loginData);
-                
+
                 return redirect()->route('customer-dashboard');
-            }
-            else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) 
-            {
+            } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
                 $loginData = array(
-                    'name'  => Auth::guard('admin')->user()->name,
+                    'name' => Auth::guard('admin')->user()->name,
                     'email' => Auth::guard('admin')->user()->email,
-                    'type'  => Auth::guard('admin')->user()->type,
-                    'id'    => Auth::guard('admin')->user()->id
+                    'type' => Auth::guard('admin')->user()->type,
+                    'id' => Auth::guard('admin')->user()->id
                 );
                 Session::push('logindata', $loginData);
-                
+
                 return redirect()->route('admin-dashboard');
-            } 
-            else 
-            {
+            } else if (Auth::guard('agent')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'AGENT'])) {
+                
+                $loginData = array(
+                    'name' => Auth::guard('agent')->user()->name,
+                    'email' => Auth::guard('agent')->user()->email,
+                    'type' => Auth::guard('agent')->user()->type,
+                    'id' => Auth::guard('agent')->user()->id
+                );
+                Session::push('logindata', $loginData);
+
+                return redirect()->route('agent-dashboard');
+            } else {
                 $data['error'] = 'Your username and password are wrong. Please login with correct credential...!!';
                 return view('auth.login', $data);
                 dd('your username and password are wrong.');
             }
         }
-        
+
         return view('auth.login');
     }
-    
-    public function getLogout(){
+
+    public function getLogout() {
         $this->resetGuard();
         //return Redirect::to('login'); 
         return redirect()->route('login');
     }
-    
-    public function resetGuard(){
-        Auth::logout(); 
+
+    public function resetGuard() {
+        Auth::logout();
         Auth::guard('admin')->logout();
         Auth::guard('customer')->logout();
         Session::forget('logindata');
     }
+
 }

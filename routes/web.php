@@ -27,6 +27,10 @@ $customerPrefix = "";
 Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
     Route::match(['get', 'post'], 'customer-dashboard', ['as' => 'customer-dashboard', 'uses' => 'CustomerController@dashboard']);
 });
+$ageentPrefix = "";
+Route::group(['prefix' => $ageentPrefix, 'middleware' => ['agent']], function() {
+    Route::match(['get', 'post'], 'agent-dashboard', ['as' => 'agent-dashboard', 'uses' => 'AgentController@dashboard']);
+});
 
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
