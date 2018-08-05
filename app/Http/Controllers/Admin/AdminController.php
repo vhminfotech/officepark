@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Model\Users;
@@ -35,7 +35,7 @@ class AdminController extends Controller {
 
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
-        return view('admin.user-list', $data);
+        return view('admin.user.user-list', $data);
     }
 
     public function addUser(Request $request) {
@@ -62,7 +62,7 @@ class AdminController extends Controller {
         $data['funinit'] = array('Customer.addInit()');
 
 
-        return view('admin.add-user', $data);
+        return view('admin.user.add-user', $data);
     }
     
     public function editUser($userId , Request $request) {
@@ -92,7 +92,7 @@ class AdminController extends Controller {
         $muckDetail = $objMuck->gtUsrLlist($userId);
         $data['userDetail'] = $muckDetail;
         
-        return view('admin.edit-user', $data);
+        return view('admin.user.edit-user', $data);
     }
 
 }
