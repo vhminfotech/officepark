@@ -67,8 +67,11 @@ class LoginController extends Controller {
                     'id' => Auth::guard('web')->user()->id
                 );
                 Session::push('logindata', $loginData);
-
-                return redirect()->route('user-dashboard');
+                // $return['status'] = 'success';
+                // $return['message'] = 'User Login successfully.';
+                // $return['redirect'] = route('user-dashboard');
+                // print_r($return);exit;
+               return redirect()->route('user-dashboard');
             } else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) {
                 $loginData = array(
                     'name' => Auth::guard('customer')->user()->name,
@@ -77,7 +80,9 @@ class LoginController extends Controller {
                     'id' => Auth::guard('customer')->user()->id
                 );
                 Session::push('logindata', $loginData);
-
+                // $return['status'] = 'success';
+                // $return['message'] = 'Customer Login successfully.';
+                // $return['redirect'] = route('customer-dashboard');
                 return redirect()->route('customer-dashboard');
             } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
                 $loginData = array(
@@ -87,10 +92,12 @@ class LoginController extends Controller {
                     'id' => Auth::guard('admin')->user()->id
                 );
                 Session::push('logindata', $loginData);
-
-                return redirect()->route('admin-dashboard');
+                // $return['status'] = 'success';
+                // $return['message'] = 'Admin Login successfully.';
+                // $return['redirect'] =   route('admin-dashboard');
+               return redirect()->route('admin-dashboard');
             } else if (Auth::guard('agent')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'AGENT'])) {
-                
+
                 $loginData = array(
                     'name' => Auth::guard('agent')->user()->name,
                     'email' => Auth::guard('agent')->user()->email,
@@ -98,16 +105,25 @@ class LoginController extends Controller {
                     'id' => Auth::guard('agent')->user()->id
                 );
                 Session::push('logindata', $loginData);
-
+                // $return['status'] = 'success';
+                // $return['message'] = 'Agent Login successfully.';
+                // $return['redirect'] = route('agent-dashboard');
                 return redirect()->route('agent-dashboard');
             } else {
-                $data['error'] = 'Your username and password are wrong. Please login with correct credential...!!';
-                return view('auth.login', $data);
-                dd('your username and password are wrong.');
+                // $return['status'] = 'error';
+                // $return['message'] = 'your username and password are wrong';
+               $data['error'] = 'Your username and password are wrong. Please login with correct credential...!!';
+               return view('auth.login', $data);
+               dd('your username and password are wrong.');
             }
+            // echo json_encode($return);
+            // exit;
         }
-
-        return view('auth.login');
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('login.js');
+        $data['funinit'] = array('Login.loginInit()');
+        return view('auth.login', $data);
     }
 
     public function getLogout() {

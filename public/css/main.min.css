@@ -7,3 +7,6 @@
 .help-block strong {
     color: red;
 }
+input.has-error {
+    border-color: red !important;
+}   

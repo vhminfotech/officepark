@@ -9,7 +9,7 @@
             <h1 class="u-h3 u-text-center u-mb-zero">Welcome back! Please login.</h1>
         </header>
 
-        <form class="form-horizontal c-card__body" method="POST" action="{{ route('login') }}">
+        <form class="form-horizontal c-card__body" id="login" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
             <div class="c-field u-mb-small {{ $errors->has('email') ? ' has-error' : '' }}">
                 <label class="c-field__label" for="input1">Log in with your e-mail address</label> 
