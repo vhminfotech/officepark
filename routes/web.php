@@ -25,19 +25,19 @@ Route::group(['prefix' => $userPrefix, 'middleware' => ['auth']], function() {
 
 $customerPrefix = "";
 Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
-    Route::match(['get', 'post'], 'customer-dashboard', ['as' => 'customer-dashboard', 'uses' => 'CustomerController@dashboard']);
+    Route::match(['get', 'post'], '/customer/customer-dashboard', ['as' => 'customer-dashboard', 'uses' => 'Customer\CustomerController@dashboard']);
 });
 $ageentPrefix = "";
 Route::group(['prefix' => $ageentPrefix, 'middleware' => ['agent']], function() {
-    Route::match(['get', 'post'], 'agent-dashboard', ['as' => 'agent-dashboard', 'uses' => 'AgentController@dashboard']);
+    Route::match(['get', 'post'], '/agent/agent-dashboard', ['as' => 'agent-dashboard', 'uses' => 'Agent\AgentController@dashboard']);
 });
 
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
-    Route::match(['get', 'post'], 'admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'AdminController@dashboard']);
-    Route::match(['get', 'post'], 'user-list', ['as' => 'user-list', 'uses' => 'AdminController@getUserData']);
-    Route::match(['get', 'post'], 'add-user', ['as' => 'add-user', 'uses' => 'AdminController@addUser']);
-    Route::match(['get', 'post'], 'edit-user/{id}', ['as' => 'edit-user', 'uses' => 'AdminController@editUser']);
+    Route::match(['get', 'post'], '/admin/admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'Admin\AdminController@dashboard']);
+    Route::match(['get', 'post'], '/admin/user-list', ['as' => 'user-list', 'uses' => 'Admin\AdminController@getUserData']);
+    Route::match(['get', 'post'], '/admin/add-user', ['as' => 'add-user', 'uses' => 'Admin\AdminController@addUser']);
+    Route::match(['get', 'post'], '/admin/edit-user/{id}', ['as' => 'edit-user', 'uses' => 'Admin\AdminController@editUser']);
 });
 
 
