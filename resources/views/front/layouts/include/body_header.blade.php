@@ -9,16 +9,15 @@
             <li class="c-nav__item">
                 <a class="c-nav__link" href="{{ route('home') }}">Home</a>
             </li>
-<!--            <li class="c-nav__item">
+            <li class="c-nav__item">
                 <a class="c-nav__link" href="#!">Browse</a>
             </li>
             <li class="c-nav__item">
                 <a class="c-nav__link" href="#!">Your Ticket</a>
-            </li>-->
+            </li>
         </ul>
     </nav>
     
-    <a class="c-btn c-btn--info" href="{{ route('client') }}">Create Client</a>
     
     
     <!-- // Navigation items  -->
