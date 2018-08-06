@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function() { return Redirect::to('login'); });
+Route::get('/', function() { return Redirect::to('home'); });
+//Route::get('/', function() { return Redirect::to('login'); });
+
+Route::match(['get', 'post'], 'home', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::match(['get', 'post'], 'client', ['as' => 'client', 'uses' => 'ClientController@add']);
 
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'LoginController@auth']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);
@@ -38,7 +42,12 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], '/admin/user-list', ['as' => 'user-list', 'uses' => 'Admin\AdminController@getUserData']);
     Route::match(['get', 'post'], '/admin/add-user', ['as' => 'add-user', 'uses' => 'Admin\AdminController@addUser']);
     Route::match(['get', 'post'], '/admin/edit-user/{id}', ['as' => 'edit-user', 'uses' => 'Admin\AdminController@editUser']);
+    
+    Route::match(['get', 'post'], '/admin/system-user-list', ['as' => 'system-user-list', 'uses' => 'Admin\SystemuserController@getUserData']);
+    Route::match(['get', 'post'], '/admin/system-add-user', ['as' => 'system-add-user', 'uses' => 'Admin\SystemuserController@addUser']);
+    Route::match(['get', 'post'], '/admin/system-edit-user/{id}', ['as' => 'system-edit-user', 'uses' => 'Admin\SystemuserController@editUser']);
 });
+
 
 
 /*

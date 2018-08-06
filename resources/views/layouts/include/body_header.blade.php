@@ -5,7 +5,7 @@
             <span class="c-sidebar-toggle__bar"></span>
         </button><!-- // .c-sidebar-toggle -->
 
-        <h2 class="c-navbar__title u-mr-auto">Account</h2>
+        <h2 class="c-navbar__title u-mr-auto">&nbsp;</h2>
 
         <div class="c-dropdown u-hidden-down@mobile">
             <a class="c-notification dropdown-toggle" href="#" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
