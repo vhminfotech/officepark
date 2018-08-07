@@ -28,7 +28,11 @@ class CustomerController extends Controller {
         
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
-
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/customer.js');
+        $data['funinit'] = array('Customer.listInit()');
+     
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
         return view('admin.customer.customer-list', $data);
@@ -56,8 +60,6 @@ class CustomerController extends Controller {
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.addInit()');
-
-
         return view('admin.customer.customer-add', $data);
     }
     

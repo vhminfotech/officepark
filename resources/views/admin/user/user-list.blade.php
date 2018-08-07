@@ -14,7 +14,7 @@
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Name&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Email&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">User Type&nbsp;&nbsp;</th>
@@ -35,7 +35,7 @@
                                 <a href="{{ route('edit-user',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $arrUser[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#myModal3" aria-label="Delete">
+                                <a href="javascript:;" class="delete"  data-id="{{ $arrUser[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
@@ -43,30 +43,11 @@
                         @endfor
                     </tbody>
                 </table>
-
             </div><!-- // .col-12 -->
         </div>
     </div>
 
-    <div class="c-modal modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="standard-modal" data-backdrop="static">
-        <div class="c-modal__dialog modal-dialog" role="document">
-            <div class="c-modal__content">
-                <div class="c-modal__header">
-                    <h3 class="c-modal__title">Delete Record</h3>
-                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-close"></i>
-                    </span>
-                </div>
-                <div class="c-modal__body">
-                    <p>Are you sure want to delete ?</p>
-                </div>
-                <div class="c-modal__footer">
-                    <button class="c-btn c-btn--info pull-right" data-dismiss="modal">Cancel</button>
-                    <button class="c-btn c-btn--danger yes-sure"><i class="fa fa-trash-o u-mr-xsmall "></i> Delete</button>
-                </div>
-            </div><!-- // .c-modal__content -->
-        </div><!-- // .c-modal__dialog -->
-    </div><!-- // .c-modal -->
+    
 </div>
 </div><!-- // .container -->
 <style>

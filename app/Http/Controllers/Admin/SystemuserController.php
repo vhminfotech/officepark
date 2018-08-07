@@ -22,12 +22,14 @@ class SystemuserController extends Controller {
         //$this->middleware('guest:subadmin', ['except' => ['mainDashboard', 'subDashboard']]);
     }
 
-   
-
     public function getUserData() {
-        
+
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/customer.js');
+        $data['funinit'] = array('Customer.listInit()');
 
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
@@ -43,7 +45,7 @@ class SystemuserController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'User created successfully.';
-                $return['redirect'] =  route('user-list');
+                $return['redirect'] = route('user-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -60,8 +62,8 @@ class SystemuserController extends Controller {
 
         return view('admin.systemuser.system-add-user', $data);
     }
-    
-    public function editUser($userId , Request $request) {
+
+    public function editUser($userId, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
@@ -70,7 +72,7 @@ class SystemuserController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'User Edit successfully.';
-                $return['redirect'] =  route('user-list');
+                $return['redirect'] = route('user-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -83,11 +85,11 @@ class SystemuserController extends Controller {
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.editInit()');
-        
+
         $objMuck = new Users();
         $muckDetail = $objMuck->gtUsrLlist($userId);
         $data['userDetail'] = $muckDetail;
-        
+
         return view('admin.systemuser.system-edit-user', $data);
     }
 

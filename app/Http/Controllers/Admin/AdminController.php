@@ -50,7 +50,7 @@ class AdminController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'User created successfully.';
-                $return['redirect'] = route('user-list');
+                $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
