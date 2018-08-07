@@ -7,7 +7,7 @@
 
         <h2 class="c-navbar__title u-mr-auto">&nbsp;</h2>
 
-        <div class="c-dropdown u-hidden-down@mobile">
+<!--        <div class="c-dropdown u-hidden-down@mobile">
             <a class="c-notification dropdown-toggle" href="#" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="c-notification__icon">
                     <i class="fa fa-user-o"></i>
@@ -50,9 +50,9 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div>-->
 
-        <div class="c-dropdown dropdown u-mr-medium u-ml-small u-hidden-down@mobile">
+<!--        <div class="c-dropdown dropdown u-mr-medium u-ml-small u-hidden-down@mobile">
             <a class="c-notification dropdown-toggle" href="#" id="dropdownMenuAlerts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="c-notification__icon">
                     <i class="fa fa-bell-o"></i>
@@ -105,7 +105,7 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div>-->
 
         <div class="c-dropdown dropdown">
             <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
