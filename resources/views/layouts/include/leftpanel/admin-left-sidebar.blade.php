@@ -20,6 +20,11 @@
                     <i class="fa fa-user-o u-mr-xsmall"></i>System users
                 </a>
             </li>
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link" href="{{ route('customer-list') }}">
+                    <i class="fa fa-user-o u-mr-xsmall"></i>Customer
+                </a>
+            </li>
         </ul>
     </div>
 </div>
