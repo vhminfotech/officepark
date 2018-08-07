@@ -14,13 +14,13 @@
                                     <!--<p class="u-text-xsmall u-text-mute">Started 3 days ago  |  Expected time: 14 days</p>-->
                                 </div>
                             </div>
-
+                            <form name="add-user" id="addUser" action="{{ route('add-user') }}" method="post">
                             <div class="c-stage__panel u-p-medium">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="c-field u-mb-small">
                                             <label class="c-field__label" for="firstName">First Name</label> 
-                                            <input class="c-input" id="firstName" placeholder="Jason" type="text"> 
+                                            <input class="c-input" name="first_name" id="firstName" placeholder="Jason" type="text"> 
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -144,7 +144,7 @@
                                     
                                 </div>
                             </div><!-- // .c-stage__panel -->
-
+                            </form>
                            
                         </article>
         </div><!-- // .col-12 -->
