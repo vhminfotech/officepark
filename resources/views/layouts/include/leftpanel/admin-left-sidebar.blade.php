@@ -1,17 +1,20 @@
+@php
+$currentRoute = Route::current()->getName();
+@endphp
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
             <img class="c-sidebar__brand-img" src="img/logo.png" alt="Logo"> Dashboard
         </a>
-        <h4 class="c-sidebar__title">Dashboards</h4>
+        <h4 class="c-sidebar__title">Dashboard</h4>
         <ul class="c-sidebar__list">
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link is-active" href="{{ route('admin-dashboard') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'admin-dashboard' ? 'is-active' : '') }}" href="{{ route('admin-dashboard') }}">
                     <i class="fa fa-home u-mr-xsmall"></i>Overview
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="{{ route('user-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'user-list' || $currentRoute == 'add-user' || $currentRoute == 'edit-user' ? 'is-active' : '') }}" href="{{ route('user-list') }}">
                     <i class="fa fa-user-o u-mr-xsmall"></i>Manage user
                 </a>
             </li>
