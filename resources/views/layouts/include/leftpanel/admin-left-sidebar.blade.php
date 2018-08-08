@@ -4,7 +4,7 @@ $currentRoute = Route::current()->getName();
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
-            <img class="c-sidebar__brand-img" src="img/logo.png" alt="Logo"> Dashboard
+            <img class="c-sidebar__brand-img" src="{{ asset('img/logo.png') }}" alt="Logo"> Dashboard
         </a>
         <h4 class="c-sidebar__title">Dashboard</h4>
         <ul class="c-sidebar__list">
