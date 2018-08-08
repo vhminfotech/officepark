@@ -27,7 +27,6 @@ var Customer = function() {
 
     };
 
-
     return{
         listInit: function() {
             list();
