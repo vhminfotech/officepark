@@ -23,6 +23,9 @@ class Controller extends BaseController
             if (!empty(Auth()->guard('customer')->user())) {
                 $this->loginUser = Auth()->guard('customer')->user();
             }
+            if (!empty(Auth()->guard('agent')->user())) {
+                $this->loginUser = Auth()->guard('agent')->user();
+            }
             if (!empty(Auth::user())) {
                 $this->loginUser = Auth::user();
             }

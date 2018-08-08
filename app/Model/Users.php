@@ -18,14 +18,12 @@ class Users extends Model {
     }
 
     public function gtUsrLlist($id = NULL) {
-        if ($id) {
-            $result = Users::select('users.*')
-                    ->where('users.id', '=', $id)
-                    ->get();
-        } else {
+
+        if($id){
+            $result = Users::select('users.*')->where('users.id', '=', $id)->get();
+        }else{
             $result = Users::get();
         }
-
         return $result;
     }
 
@@ -36,7 +34,7 @@ class Users extends Model {
         $objUser = new Users();
         $objUser->name = $request->input('first_name');
         $objUser->email = $request->input('email');
-        $objUser->type = '0';
+        $objUser->type = 'USER';
 //        $objUser->role_type = $request->input('role_type');
         $objUser->password = $newpass;
         $objUser->created_at = date('Y-m-d H:i:s');
@@ -50,7 +48,7 @@ class Users extends Model {
         $userId = $request->input('user_id');
         $objUser = Users::find($userId);
         $objUser->name = $request->input('first_name');
-        $objUser->type = '0';
+//        $objUser->type = '0';
         $objUser->updated_at = date('Y-m-d H:i:s');
         $objUser->save();
         return TRUE;

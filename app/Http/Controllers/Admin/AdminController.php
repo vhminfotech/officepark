@@ -29,10 +29,13 @@ class AdminController extends Controller {
     }
 
     public function getUserData() {
-        
+
         $objUser = new Users();
         $userList = $objUser->gtUsrLlist();
-
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/customer.js');
+        $data['funinit'] = array('Customer.listInit()');
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
         return view('admin.user.user-list', $data);
@@ -47,7 +50,7 @@ class AdminController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'User created successfully.';
-                $return['redirect'] =  route('user-list');
+                $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -64,8 +67,8 @@ class AdminController extends Controller {
 
         return view('admin.user.add-user', $data);
     }
-    
-    public function editUser($userId , Request $request) {
+
+    public function editUser($userId, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
@@ -74,7 +77,7 @@ class AdminController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'User Edit successfully.';
-                $return['redirect'] =  route('user-list');
+                $return['redirect'] = route('user-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -87,12 +90,35 @@ class AdminController extends Controller {
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.editInit()');
-        
+
         $objMuck = new Users();
         $muckDetail = $objMuck->gtUsrLlist($userId);
         $data['userDetail'] = $muckDetail;
-        
+
         return view('admin.user.edit-user', $data);
+    }
+
+    public function deleteUser($postData) {
+        $result = Users::find($postData['id'])->delete();
+        if ($result) {
+            $return['status'] = 'success';
+            $return['message'] = 'User Delete successfully.';
+            $return['redirect'] = route('user-list');
+        } else {
+            $return['status'] = 'error';
+            $return['message'] = 'something will be wrong.';
+        }
+        echo json_encode($return);
+        exit;
+    }
+
+    public function ajaxAction(Request $request) {
+        $action = $request->input('action');
+        switch ($action) {
+            case 'deleteUser':
+                $result = $this->deleteUser($request->input('data'));
+                break;
+        }
     }
 
 }

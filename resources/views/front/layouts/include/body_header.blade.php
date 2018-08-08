@@ -1,6 +1,6 @@
 <header class="c-navbar">
     <a class="c-navbar__brand" href="javascript:;">
-        <img src="img/logo.png" alt="Dashboard's Logo">
+        <img src="{{ asset('img/logo.png') }}" alt="Dashboard's Logo">
     </a>
 
     <!-- Navigation items that will be collapes and toggle in small viewports -->

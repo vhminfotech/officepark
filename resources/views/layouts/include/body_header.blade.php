@@ -109,7 +109,7 @@
 
         <div class="c-dropdown dropdown">
             <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="c-avatar__img" src="img/avatar-72.jpg" alt="User's Profile Picture">
+                <img class="c-avatar__img" src="{{ asset('img/avatar-72.jpg') }}" alt="User's Profile Picture">
             </a>
 
             <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
