@@ -8,8 +8,7 @@
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                       System User List  
-
+                       System User List
                         <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('system-add-user') }}" aria-label="Add User">
                             <i class="fa fa-plus"></i>
                         </a>
@@ -47,21 +46,13 @@
                         @endfor
                     </tbody>
                 </table>
-
-            </div><!-- // .col-12 -->
+            </div>
         </div>
     </div>
-
-</div><!-- // .container -->
+</div>
 <style>
-/*    a.c-board__btn.c-tooltip.c-tooltip--top {
-        position: absolute;
-        margin-left: 743px;
-        margin-bottom: 41px;
-    }*/
 .c-table__title .c-tooltip{
     position: absolute;
 }
 </style>
-
 @endsection
