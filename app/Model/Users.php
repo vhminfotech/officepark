@@ -26,6 +26,11 @@ class Users extends Model {
         }
         return $result;
     }
+    
+    public function gtPermission($userId){
+        $result = UserHasPermission::select('user_has_permission.*')->where('user_has_permission.user_id', '=', $userId)->get();
+        return $result;
+    }
 
     public function saveUserInfo($request) {
 
@@ -56,7 +61,6 @@ class Users extends Model {
     
     public function addUserInfo($request){
         
-        
         $newpassword = ($request->input('password') != '') ? $request->input('password') : null;
         $newpass = Hash::make($newpassword);
         $objUser = new Users();
@@ -72,16 +76,14 @@ class Users extends Model {
         
         if($objUser->save()){
             $lastId = $objUser->id;
-            $systemUser = new UserHasPermission();
-            if(!empty($request->input('checkboxes'))){
+            if (!empty($request->input('checkboxes'))) {
                 $permisson = $request->input('checkboxes');
-                for($i=0; $i<count($permisson); $i++){
-                    
+                for ($i = 0; $i < count($permisson); $i++) {
+                    $systemUser = new UserHasPermission();
                     $systemUser->permission_id = $permisson[$i];
                     $systemUser->user_id = $lastId;
                     $systemUser->updated_at = date('Y-m-d H:i:s');
                     $systemUser->created_at = date('Y-m-d H:i:s');
-                    
                     $result = $systemUser->save();
                 }
             }
@@ -91,6 +93,40 @@ class Users extends Model {
                 return FALSE;
             }
         }
+    }
+    
+    function editUserInfo($request){
+        $userId = $request->input('user_id');
+        $objUser = Users::find($userId);
+        $objUser->name = $request->input('firstName').' '.$request->input('lastName');
+        $objUser->inopla_username = $request->input('inoplaName');
+        $objUser->extension_number = $request->input('exNumber');
+        $objUser->var_language = $request->input('langauge');
+        $objUser->updated_at = date('Y-m-d H:i:s');
+        
+        if ($objUser->save()) {
+            if (!empty($request->input('checkboxes'))) {
+                $delete = UserHasPermission::where('user_id', $userId)->delete();
+
+                if ($delete) {
+                    $permisson = $request->input('checkboxes');
+                    for ($i = 0; $i < count($permisson); $i++) {
+                        $systemUser = new UserHasPermission();
+                        $systemUser->permission_id = $permisson[$i];
+                        $systemUser->user_id = $userId;
+                        $systemUser->updated_at = date('Y-m-d H:i:s');
+                        $systemUser->created_at = date('Y-m-d H:i:s');
+                        $result = $systemUser->save();
+                    }
+                }
+            }
+            if($result){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }
+        
     }
 
 }
