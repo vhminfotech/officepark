@@ -19,8 +19,6 @@ class CustomerController extends Controller {
         $this->middleware('admin');
     }
 
-   
-
     public function getCustomerData() {
         $objCustomer = new Customer();
         $customerList = $objCustomer->getCustomerList();
@@ -28,7 +26,7 @@ class CustomerController extends Controller {
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.listInit()');
-     
+
         $data['arrCustomer'] = $customerList;
         $data['detail'] = $this->loginUser;
         return view('admin.customer.customer-list', $data);
@@ -39,14 +37,16 @@ class CustomerController extends Controller {
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
             $objCustomer = new Customer();
-            $customerList = $objCustomer->saveCustomerInfo($request);
-            if ($customerList) {
+            $customerResult = $objCustomer->saveCustomerInfo($request);
+            if ($customerResult == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Customer created successfully.';
-                $return['redirect'] =  route('customer-list');
+                $return['redirect'] = route('customer-list');
             } else {
+//                $return['status'] = 'error';
+//                $return['message'] = 'something will be wrong.';
                 $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
+                $return['message'] = 'Email already exists.';
             }
             echo json_encode($return);
             exit;
@@ -58,26 +58,28 @@ class CustomerController extends Controller {
         $data['funinit'] = array('Customer.addInit()');
         return view('admin.customer.customer-add', $data);
     }
-    
-    public function editCustomer($customerId , Request $request) {
+
+    public function editCustomer($customerId, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
             $objCustomer = new Customer();
-            $result = $objCustomer->updateCustomerInfo($request);
-            if ($result) {
+            $customerResult = $objCustomer->updateCustomerInfo($request);
+            if ($customerResult == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Customer Edit successfully.';
-                $return['redirect'] =  route('customer-list');
+                $return['redirect'] = route('customer-list');
             } else {
+//                $return['status'] = 'error';
+//                $return['message'] = 'something will be wrong.';
                 $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
+                $return['message'] = 'Email already exists.';
             }
             echo json_encode($return);
             exit;
         }
         $data['arrCustomer'] = Customer::find($customerId);
-        
+
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
@@ -85,8 +87,9 @@ class CustomerController extends Controller {
         return view('admin.customer.customer-edit', $data);
     }
 
-     public function customerDelete(Request $request) {
-         echo 'dfsfds';exit;
+    public function customerDelete(Request $request) {
+        echo 'dfsfds';
+        exit;
         $result = Customer::find($postData['id'])->delete();
         if ($result) {
             $return['status'] = 'success';
@@ -102,13 +105,15 @@ class CustomerController extends Controller {
 
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
-        echo $action;exit; 
+        echo $action;
+        exit;
         switch ($action) {
             case 'deleteCustomer':
-                echo 'fsd';exit;
+                echo 'fsd';
+                exit;
                 $result = $this->customerDelete($request->input('data'));
                 break;
         }
     }
-    
+
 }
