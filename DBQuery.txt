@@ -4,3 +4,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'user', 'user@user.com', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', 'USER', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', '2018-08-05 00:00:00', '2018-08-05 00:00:00');
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'customer', 'customer@customer.com', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', 'CUSTOMER', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', '2018-08-05 00:00:00', '2018-08-05 00:00:00');
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'agent', 'agent@agent.com', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', 'AGENT', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', '2018-08-05 00:00:00', '2018-08-05 00:00:00');
+
+**************** 08-09-2018 **********************
+CREATE TABLE `officepark`.`op_customers` ( `id` INT NOT NULL AUTO_INCREMENT , `first_name` VARCHAR(255) NOT NULL , `last_name` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `company_name` VARCHAR(255) NOT NULL , `customer_number` INT NOT NULL , `telephone` INT NOT NULL , `packet` TINYINT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+// ALTER TABLE `op_customers` CHANGE `packket` `packet` TINYINT(4) NOT NULL;
+
+ALTER TABLE `op_customers` CHANGE `customer_number` `customer_number` VARCHAR(128) NOT NULL;

@@ -74,7 +74,7 @@
                                         <label class="c-field__label col-lg-offset-4" for=""></label>
                                         <div class="col-lg-2 ">
                                             <div class="col u-mb-medium">
-                                                <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Add">
+                                                <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Edit">
                                             </div>
                                         </div>
                                     </div>  
