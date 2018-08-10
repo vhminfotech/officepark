@@ -10,7 +10,7 @@
                 <a class="c-nav__link" href="{{ route('home') }}">Home</a>
             </li>
             <li class="c-nav__item">
-                <a class="c-nav__link" href="#!">Browse</a>
+                <a class="c-nav__link" href="{{ route('order') }}">Order</a>
             </li>
             <li class="c-nav__item">
                 <a class="c-nav__link" href="#!">Your Ticket</a>
