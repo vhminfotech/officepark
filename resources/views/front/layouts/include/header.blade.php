@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="https://my2.uzaktansekreter.de/css/c7c15ca.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
