@@ -23,26 +23,27 @@
                             <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                         </tr>
                     </thead>
-                    <tbody>                    
+                    <tbody>    
+                        @php
+                        $count = 1;
+                        @endphp
+                        @for($i = 0 ;$i < count($arrAddbook);$i++,$count++)                
                         <tr class="c-table__row">
-                            <td class="c-table__cell">1</td>
-                            <td class="c-table__cell">First name</td>
-                            <td class="c-table__cell">Surname</td>
-                            <td class="c-table__cell">Company</td>
-                            <td class="c-table__cell">Position</td>
+                            <td class="c-table__cell">{{ $count }}</td>
+                            <td class="c-table__cell">{{ $arrAddbook[$i]->firstname }}</td>
+                            <td class="c-table__cell">{{ $arrAddbook[$i]->surname }}</td>
+                            <td class="c-table__cell">{{ $arrAddbook[$i]->company }}</td>
+                            <td class="c-table__cell">{{ $arrAddbook[$i]->position }}</td>
                             <td class="c-table__cell">
-                                <a href="javascript:;">
-                                    <span class="c-tooltip c-tooltip--top"  aria-label="Edit">
-                                        <i class="fa fa-edit"></i>
-                                    </span>
+                                <a href=" {{ route('address-book-edit',[$arrAddbook[$i]->adddress_book_id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                    <i class="fa fa-edit" ></i></span>
                                 </a>
-                                 <a href="javascript:;" class="delete">
-                                     <span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
-                                        <i class="fa fa-trash-o" ></i>
-                                     </span>
+                                 <a href="javascript:;" class="delete"  data-id="{{ $arrAddbook[$i]->adddress_book_id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                        <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
                         </tr>
+                         @endfor
                     </tbody>
                 </table>
             </div>

@@ -7,9 +7,9 @@ var Addressbook = function(){
     var handleAddressbookAdd = function(){
         var form = $('#addAddressbook');
         var rules = {
-            firstName: {required: true},
+            firstname: {required: true},
             surname: {required: true},
-            company: {email: true, required: true},
+            company: {required: true},
             position: {required: true},
             telephone_number: {required: true},
             email: {required: true},

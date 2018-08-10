@@ -19,14 +19,14 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">First Name</label> 
-                                    <input class="c-input" name="firstName" id="firstName" placeholder="Jason" type="text">
+                                    <input class="c-input" name="firstname" id="firstname" placeholder="First Name" type="text">
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="surname">Surname</label> 
-                                    <input class="c-input" id="surname" name="surname" placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="surname" name="surname" placeholder="Surname" type="text"> 
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="position">Position</label> 
-                                    <input class="c-input" id="position" name="position" placeholder="Jason" type="password"> 
+                                    <input class="c-input" id="position" name="position" placeholder="Position" type="password"> 
                                 </div>
                             </div>
                         </div>
@@ -48,13 +48,13 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="telephone_number">Telephone number</label> 
-                                    <input class="c-input" id="telephone_number" name="telephone_number" placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="telephone_number" name="telephone_number" placeholder="Telephone number" type="text"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="email">Email</label> 
-                                    <input class="c-input" id="email" name="email"  placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="email" name="email"  placeholder="Email" type="text"> 
                                 </div>
                             </div>
                         </div>
