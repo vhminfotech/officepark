@@ -9,7 +9,7 @@ use Auth;
 
 class Customer extends Model {
 
-    protected $table = 'op_customers';
+    protected $table = 'customers';
 
     public function getCustomerList($id = NULL) {
         if ($id) {
