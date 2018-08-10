@@ -45,6 +45,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'customer-list', ['as' => 'customer-list', 'uses' => 'Admin\CustomerController@getCustomerData']);
     Route::match(['get', 'post'], 'customer-add', ['as' => 'customer-add', 'uses' => 'Admin\CustomerController@addCustomer']);
     Route::match(['get', 'post'], 'customer-edit/{id}', ['as' => 'customer-edit', 'uses' => 'Admin\CustomerController@editCustomer']);
+    Route::match(['get', 'post'], 'delete-customer', ['as' => 'delete-customer', 'uses' => 'Admin\CustomerController@customerDelete']);
+    Route::match(['get', 'post'], 'customer-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Admin\CustomerController@ajaxAction']);
 });
 
 

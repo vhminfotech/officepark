@@ -16,8 +16,9 @@ var Customer = function() {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "user/ajaxAction",
-                data: {'action': 'deleteUser', 'data': {'id': id }},
+                url: baseurl + "Admin/delete-customer",
+//                url: baseurl + "customer-ajaxAction",
+                data: {'action': 'deleteCustomer', 'data': {'id': id }},
                 success: function(data) {
                     handleAjaxResponse(data);
 //                    var data = JSON.parse(data);
@@ -27,12 +28,14 @@ var Customer = function() {
     };
     var add_customer = function() {
 
-        var form = $('#addUser');
+        var form = $('#addCustomer');
         var rules = {
             first_name: {required: true},
             email: {required: true, email: true},
-            password: {required: true},
-            cpassword: {required: true, equalTo: "#password"}
+            pacet: {required: true},
+            company_name: {required: true},
+            last_name: {required: true},
+            telephone: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
@@ -41,10 +44,14 @@ var Customer = function() {
     };
 
     var edit_customer = function() {
-
-        var form = $('#editUser');
+        var form = $('#editCustomer');
         var rules = {
             first_name: {required: true},
+            email: {required: true, email: true},
+            pacet: {required: true},
+            company_name: {required: true},
+            last_name: {required: true},
+            telephone: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);

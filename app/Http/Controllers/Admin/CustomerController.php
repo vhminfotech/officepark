@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
-use App\Model\Users;
+use App\Model\Customer;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
@@ -16,24 +16,20 @@ class CustomerController extends Controller {
 
     public function __construct() {
         parent::__construct();
-
         $this->middleware('admin');
-        //$this->middleware('guest:admin', ['except' => ['subDashboard']]);
-        //$this->middleware('guest:subadmin', ['except' => ['mainDashboard', 'subDashboard']]);
     }
 
    
 
     public function getCustomerData() {
-        
-        $objUser = new Users();
-        $userList = $objUser->gtUsrLlist();
+        $objCustomer = new Customer();
+        $customerList = $objCustomer->getCustomerList();
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.listInit()');
      
-        $data['arrUser'] = $userList;
+        $data['arrCustomer'] = $customerList;
         $data['detail'] = $this->loginUser;
         return view('admin.customer.customer-list', $data);
     }
@@ -42,12 +38,12 @@ class CustomerController extends Controller {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
-            $objUser = new Users();
-            $userList = $objUser->saveUserInfo($request);
-            if ($userList) {
+            $objCustomer = new Customer();
+            $customerList = $objCustomer->saveCustomerInfo($request);
+            if ($customerList) {
                 $return['status'] = 'success';
-                $return['message'] = 'User created successfully.';
-                $return['redirect'] =  route('user-list');
+                $return['message'] = 'Customer created successfully.';
+                $return['redirect'] =  route('customer-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -63,16 +59,16 @@ class CustomerController extends Controller {
         return view('admin.customer.customer-add', $data);
     }
     
-    public function editCustomer($userId , Request $request) {
+    public function editCustomer($customerId , Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
-            $objUser = new Users();
-            $userList = $objUser->updateUserInfo($request);
-            if ($userList) {
+            $objCustomer = new Customer();
+            $result = $objCustomer->updateCustomerInfo($request);
+            if ($result) {
                 $return['status'] = 'success';
-                $return['message'] = 'User Edit successfully.';
-                $return['redirect'] =  route('user-list');
+                $return['message'] = 'Customer Edit successfully.';
+                $return['redirect'] =  route('customer-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -80,17 +76,39 @@ class CustomerController extends Controller {
             echo json_encode($return);
             exit;
         }
-
+        $data['arrCustomer'] = Customer::find($customerId);
+        
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.editInit()');
-        
-        $objMuck = new Users();
-        $muckDetail = $objMuck->gtUsrLlist($userId);
-        $data['userDetail'] = $muckDetail;
-        
         return view('admin.customer.customer-edit', $data);
     }
 
+     public function customerDelete(Request $request) {
+         echo 'dfsfds';exit;
+        $result = Customer::find($postData['id'])->delete();
+        if ($result) {
+            $return['status'] = 'success';
+            $return['message'] = 'Customer Delete successfully.';
+            $return['redirect'] = route('customer-list');
+        } else {
+            $return['status'] = 'error';
+            $return['message'] = 'something will be wrong.';
+        }
+        echo json_encode($return);
+        exit;
+    }
+
+    public function ajaxAction(Request $request) {
+        $action = $request->input('action');
+        echo $action;exit; 
+        switch ($action) {
+            case 'deleteCustomer':
+                echo 'fsd';exit;
+                $result = $this->customerDelete($request->input('data'));
+                break;
+        }
+    }
+    
 }
