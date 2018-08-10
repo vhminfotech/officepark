@@ -28,6 +28,11 @@ $currentRoute = Route::current()->getName();
                     <i class="fa fa-user-o u-mr-xsmall"></i>Customer
                 </a>
             </li>
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'address-book-list' || $currentRoute == 'address-book-add' || $currentRoute == 'address-book-edit' ? 'is-active' : '') }}" href="{{ route('address-book-list') }}">
+                    <i class="fa fa-user-o u-mr-xsmall"></i>Adressbook
+                </a>
+            </li>
         </ul>
     </div>
 </div>

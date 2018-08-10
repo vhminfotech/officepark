@@ -10,10 +10,10 @@
                         <i class="fa fa-plus"></i>
                     </div>
                     <div class="c-stage__header-title o-media__body">
-                        <h6 class="u-mb-zero">Add new System User</h6>
+                        <h6 class="u-mb-zero">Edit Addressbook</h6>
                     </div>
                 </div>
-                <form name="add-user" id="addSystemUser" action="{{ route('system-add-user') }}" method="post">
+                <form name="edit-address" id="editAddress" action="{{ route('address-book-edit') }}" method="post">
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-6">
@@ -25,35 +25,35 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="lastName">Last Name</label> 
-                                    <input class="c-input" id="lastName" name="lastName" placeholder="Jason" type="text"> 
+                                    <label class="c-field__label" for="surname">Surname</label> 
+                                    <input class="c-input" id="surname" name="surname" placeholder="Jason" type="text"> 
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="email">Email</label> 
-                                    <input class="c-input" id="email" name="email" placeholder="Enter Email" type="text"> 
+                                    <label class="c-field__label" for="company">Company</label> 
+                                    <input class="c-input" id="company" name="company" placeholder="Enter Company" type="text"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="password">Password</label> 
-                                    <input class="c-input" id="password" name="password" placeholder="Jason" type="password"> 
+                                    <label class="c-field__label" for="position">Position</label> 
+                                    <input class="c-input" id="position" name="position" placeholder="Jason" type="password"> 
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="inoplaName">Inopla username</label> 
-                                    <input class="c-input" id="inoplaName" name="inoplaName" placeholder="Jason" type="text"> 
+                                    <label class="c-field__label" for="telephone_number">Telephone number</label> 
+                                    <input class="c-input" id="telephone_number" name="telephone_number" placeholder="Jason" type="text"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="exNumber">Extension number</label> 
+                                    <label class="c-field__label" for="exNumber">Email</label> 
                                     <input class="c-input" id="exNumber" name="exNumber"  placeholder="Jason" type="text"> 
                                 </div>
                             </div>
@@ -65,31 +65,6 @@
                                     <input class="c-input" id="langauge" name="langauge" placeholder="Jason" type="text"> 
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="firstName">Permissions</label> 
-                                    <div class="row">
-                                        @php
-                                        $count = 1;
-                                        @endphp
-                                        @for($i = 0 ;$i < count($masterPermission);$i++,$count++)
-                                        <div class="c-choice c-choice--checkbox col-lg-3">
-                                            <input class="c-choice__input" value="{{ $masterPermission[$i]->id }}" id="checkbox{{ $count }}" name="checkboxes[]" type="checkbox">
-                                            <label class="c-choice__label" for="checkbox{{ $count }}">{{ $masterPermission[$i]->name }}</label>
-                                        </div>
-                                        @endfor
-                                    </div>   
-
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <input class="c-btn c-btn--info c-btn--fullwidth" value="Add" type="submit">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </form>
