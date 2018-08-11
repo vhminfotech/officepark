@@ -96,5 +96,21 @@ class SystemuserController extends Controller {
         
         return view('admin.systemuser.system-edit-user', $data);
     }
+    
+    public function deleteUser(Request $request){
+        if ($request->isMethod('post')) {
+            $objUsers = new Users;
+            $muckDetail = $objUsers->userDelete($request);
+            
+            if($muckDetail)
+            {
+                $return['status'] = 'success';
+                $return['message'] = 'User delete successfully.';
+                $return['redirect'] =  route('system-user-list');
+                echo json_encode($return);
+                exit;
+            }
+        }
+    }
 
 }
