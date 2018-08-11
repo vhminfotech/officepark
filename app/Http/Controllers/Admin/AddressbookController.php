@@ -57,7 +57,8 @@ class AddressbookController extends Controller {
         return view('admin.addressbook.addressbook-add', $data);
     }
 
-    public function editAddressbook($Id, Request $request) {
+    public function editAddressbook($bookId, Request $request) {
+        
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
         $objeditbook= new Addressbook();
@@ -70,19 +71,40 @@ class AddressbookController extends Controller {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
             }
-            echo json_encode($return);
-            exit;
+            echo json_encode($return); exit;
         }
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/addressbook.js');
         $data['funinit'] = array('Addressbook.edit_init()');
 
-        $objeditaddbook= new Addressbook();
-        $addbkDetail = $objeditaddbook->getAddBookLlist($Id);
+        $objeditaddbook = new Addressbook();
+        $addbkDetail = $objeditaddbook->getAddBookLlist($bookId);
         $data['addbkDetail'] = $addbkDetail;
-    
+        
         return view('admin.addressbook.addressbook-edit', $data);
+    }
+    
+    public function deleteAddressbook(Request $request){
+        if ($request->isMethod('post')) {
+           
+            $objUsers = new Addressbook;
+            $userDelete = $objUsers->AddressBookDelete($request);
+            
+            if($userDelete)
+            {
+                $return['status'] = 'success';
+                $return['message'] = 'Address Book delete successfully.';
+                $return['redirect'] =  route('address-book-list');
+                echo json_encode($return);
+                exit;
+            }else{
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+                echo json_encode($return);
+                exit;
+            }
+        }
     }
 
 }

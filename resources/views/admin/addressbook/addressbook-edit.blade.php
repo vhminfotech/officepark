@@ -13,22 +13,21 @@
                         <h6 class="u-mb-zero">Edit Addressbook</h6>
                     </div>
                 </div>
-                <form name="edit-address" id="editAddress" action="{{ route('address-book-edit') }}" method="post">
+                <form name="edit-addressbook" id="editAddressbook" action="{{ route('address-book-edit' ,$addbkDetail[0]->id ) }}" method="post">
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">First Name</label> 
-                                    <input class="c-input" name="firstName" id="firstName" placeholder="Jason" type="text">
+                                    <input class="c-input" name="firstname" id="firstname" placeholder="First Name" type="text" value="{{ $addbkDetail[0]->firstname }}">
+                                    <input class="c-input" name="address_book_id" placeholder="First Name" type="hidden" value="{{ $addbkDetail[0]->id }}">
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="adddress_book_id" value="{{ $addbkDetail[0]->adddress_book_id }}"  class="form-control">
-
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="surname">Surname</label> 
-                                    <input class="c-input" id="surname" name="surname" placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="surname" name="surname" placeholder="Surname" type="text" value="{{ $addbkDetail[0]->surname }}"> 
                                 </div>
                             </div>
                         </div>
@@ -36,13 +35,13 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="company">Company</label> 
-                                    <input class="c-input" id="company" name="company" placeholder="Enter Company" type="text"> 
+                                    <input class="c-input" id="company" name="company" placeholder="Enter Company" type="text" value="{{ $addbkDetail[0]->company }}"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="position">Position</label> 
-                                    <input class="c-input" id="position" name="position" placeholder="Jason" type="password"> 
+                                    <input class="c-input" id="position" name="position" placeholder="Position" type="text" value="{{ $addbkDetail[0]->position }}"> 
                                 </div>
                             </div>
                         </div>
@@ -50,22 +49,20 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="telephone_number">Telephone number</label> 
-                                    <input class="c-input" id="telephone_number" name="telephone_number" placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="telephone_number" name="telephone_number" placeholder="Telephone number" type="text" value="{{ $addbkDetail[0]->telephone_number }}"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="exNumber">Email</label> 
-                                    <input class="c-input" id="exNumber" name="exNumber"  placeholder="Jason" type="text"> 
+                                    <label class="c-field__label" for="email">Email</label> 
+                                    <input class="c-input" id="email" name="email"  placeholder="Email" type="text" value="{{ $addbkDetail[0]->email }}" readonly="true">
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="langauge">Language selection</label> 
-                                    <input class="c-input" id="langauge" name="langauge" placeholder="Jason" type="text"> 
-                                </div>
+                            <div class="col-lg-3">
+                                <input class="c-btn c-btn--info c-btn--fullwidth" value="Edit" type="submit">
                             </div>
                         </div>
                     </div>
@@ -75,8 +72,6 @@
     </div>
 </div>
 <style>
-    input.has-error {
-        border-color: red;
-    }
+    input.has-error { border-color: red; }
 </style>
 @endsection

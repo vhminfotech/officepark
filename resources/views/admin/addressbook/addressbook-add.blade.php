@@ -40,7 +40,7 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="position">Position</label> 
-                                    <input class="c-input" id="position" name="position" placeholder="Position" type="password"> 
+                                    <input class="c-input" id="position" name="position" placeholder="Position" type="text"> 
                                 </div>
                             </div>
                         </div>

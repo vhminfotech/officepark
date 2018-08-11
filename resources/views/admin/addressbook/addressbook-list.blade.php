@@ -35,10 +35,10 @@
                             <td class="c-table__cell">{{ $arrAddbook[$i]->company }}</td>
                             <td class="c-table__cell">{{ $arrAddbook[$i]->position }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('address-book-edit',[$arrAddbook[$i]->adddress_book_id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('address-book-edit',[$arrAddbook[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                     <i class="fa fa-edit" ></i></span>
                                 </a>
-                                 <a href="javascript:;" class="delete"  data-id="{{ $arrAddbook[$i]->adddress_book_id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                 <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrAddbook[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
