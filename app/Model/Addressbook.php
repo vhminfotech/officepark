@@ -70,6 +70,40 @@ class Addressbook extends Model {
             }
         
     }
+    function editaddbookInfo($request){
+        $userId = $request->input('id');
+        $objadd = Addressbook::find($userId);
+        $objadd->firstname = $request->input('firstname');
+        $objadd->surname = $request->input('surname');
+        $objadd->company = $request->input('company');
+        $objadd->position = $request->input('position');
+        $objadd->telephone_number = $request->input('telephone_number');
+        $objadd->email = $request->input('email');
+        
+        if ($objUser->save()) {
+            if (!empty($request->input('checkboxes'))) {
+                $delete = UserHasPermission::where('user_id', $userId)->delete();
+
+                if ($delete) {
+                    $permisson = $request->input('checkboxes');
+                    for ($i = 0; $i < count($permisson); $i++) {
+                        $systemUser = new UserHasPermission();
+                        $systemUser->permission_id = $permisson[$i];
+                        $systemUser->user_id = $userId;
+                        $systemUser->updated_at = date('Y-m-d H:i:s');
+                        $systemUser->created_at = date('Y-m-d H:i:s');
+                        $result = $systemUser->save();
+                    }
+                }
+            }
+            if($result){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }
+        
+    }
     
     
 

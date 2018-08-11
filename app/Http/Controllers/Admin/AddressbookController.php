@@ -33,10 +33,10 @@ class AddressbookController extends Controller {
     public function addAddressbook(Request $request) {
 
         $data['detail'] = $this->loginUser;
-        $objUser = new Addressbook();
+        $objaddressbook = new Addressbook();
         if ($request->isMethod('post')) {
            
-            $addressList = $objUser->addAddresBook($request);
+            $addressList = $objaddressbook->addAddresBook($request);
             if ($addressList) {
                 $return['status'] = 'success';
                 $return['message'] = 'Addressbook created successfully.';
@@ -57,13 +57,12 @@ class AddressbookController extends Controller {
         return view('admin.addressbook.addressbook-add', $data);
     }
 
-    public function editAddressbook($userId, Request $request) {
+    public function editAddressbook($Id, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
-
-        $objaddbook= new Addressbook();
-        $addbkList = $objaddbook->editaddbookInfo($request);
-        if ($addbkList) {
+        $objeditbook= new Addressbook();
+        $editbklist = $objeditbook->editaddbookInfo($request);
+        if ($editbklist) {
                 $return['status'] = 'success';
                 $return['message'] = 'Address Book Edit successfully.';
                 $return['redirect'] = route('address-book-list');
@@ -79,7 +78,10 @@ class AddressbookController extends Controller {
         $data['js'] = array('admin/addressbook.js');
         $data['funinit'] = array('Addressbook.edit_init()');
 
-
+        $objeditaddbook= new Addressbook();
+        $addbkDetail = $objeditaddbook->getAddBookLlist($Id);
+        $data['addbkDetail'] = $addbkDetail;
+    
         return view('admin.addressbook.addressbook-edit', $data);
     }
 
