@@ -3,9 +3,12 @@
 <script src="{!! asset('js/plugins/toastr/toastr.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('js/comman_function.js') !!}" type="text/javascript"></script>
 
+<!--<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>-->
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>-->
+
 @if (!empty($js)) 
 @foreach ($js as $value) 
-<script src="{{ asset('js/'.$value) }}" type="text/javascript"></script>
+<script src="{{ asset('js/front/'.$value) }}" type="text/javascript"></script>
 @endforeach
 @endif
 <script>

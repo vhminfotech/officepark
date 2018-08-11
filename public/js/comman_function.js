@@ -735,3 +735,12 @@ $('#show_notification').on('hidden.bs.modal', function () {
     $(".allNotifDiv").html('');
     $('body').removeClass('page-quick-sidebar-open');
 });
+
+function dateFormate(field) {
+    
+    $(field).datepicker({
+        autoclose: true,
+        format: 'dd-mm-yyyy'
+                //format: 'yyyy-mm-dd'
+    });
+}
