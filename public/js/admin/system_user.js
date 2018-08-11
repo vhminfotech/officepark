@@ -32,8 +32,33 @@ var System_user = function() {
             handleAjaxFormSubmit(form);
         });
     };
+    
+    var delete_user = function(){
+        $('body').on('click','.delete',function(){
+            var id = $(this).attr('data-id');
+            var token = $(this).attr('data-token');
+            setTimeout(function(){
+                $('.yes-sure:visible').attr('data-id',id);
+                $('.yes-sure:visible').attr('data-token',token);    
+            },500);
+            
+        })
+        
+        $('body').on('click','.yes-sure',function(){
+            var id = $(this).attr('data-id');
+            var token = $(this).attr('data-token');
+            var data = { id : id ,_token :token};
+            var url = baseurl + 'admin/system-user-delete';
+            ajaxcall(url,data,function(output){
+                handleAjaxResponse(output);
+            });
+        });
+    }
 
     return{
+        listInit : function(){
+            delete_user();
+        },
         addInit: function() {
             add_user();
         },

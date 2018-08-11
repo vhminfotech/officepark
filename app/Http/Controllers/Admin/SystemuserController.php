@@ -25,8 +25,8 @@ class SystemuserController extends Controller {
         $userList = $objUser->gtUsrLlist();
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/customer.js');
-        $data['funinit'] = array('Customer.listInit()');
+        $data['js'] = array('admin/system_user.js');
+        $data['funinit'] = array('System_user.listInit()');
 
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
@@ -99,13 +99,20 @@ class SystemuserController extends Controller {
     
     public function deleteUser(Request $request){
         if ($request->isMethod('post')) {
+           
             $objUsers = new Users;
-            $muckDetail = $objUsers->userDelete($request);
+            $userDelete = $objUsers->userDelete($request);
             
-            if($muckDetail)
+            if($userDelete)
             {
                 $return['status'] = 'success';
                 $return['message'] = 'User delete successfully.';
+                $return['redirect'] =  route('system-user-list');
+                echo json_encode($return);
+                exit;
+            }else{
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
                 $return['redirect'] =  route('system-user-list');
                 echo json_encode($return);
                 exit;

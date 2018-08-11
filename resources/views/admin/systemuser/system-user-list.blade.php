@@ -38,7 +38,7 @@
                                 <a href=" {{ route('system-edit-user',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                     <i class="fa fa-edit" ></i></span>
                                 </a>
-                                 <a href="javascript:;" class="delete"  data-id="{{ $arrUser[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                 <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrUser[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
