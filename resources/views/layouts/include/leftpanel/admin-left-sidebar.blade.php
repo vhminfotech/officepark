@@ -15,7 +15,7 @@ $currentRoute = Route::current()->getName();
             </li>
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'user-list' || $currentRoute == 'add-user' || $currentRoute == 'edit-user' ? 'is-active' : '') }}" href="{{ route('user-list') }}">
-                    <i class="fa fa-user-o u-mr-xsmall"></i>Manage user
+                    <i class="fa fa-users u-mr-xsmall"></i>Manage user
                 </a>
             </li>
             <li class="c-sidebar__item">
@@ -25,12 +25,17 @@ $currentRoute = Route::current()->getName();
             </li>
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-list' || $currentRoute == 'customer-add' || $currentRoute == 'customer-edit' ? 'is-active' : '') }}" href="{{ route('customer-list') }}">
-                    <i class="fa fa-user-o u-mr-xsmall"></i>Customer
+                    <i class="fa fa-user-circle-o u-mr-xsmall"></i>Customer
                 </a>
             </li>
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'address-book-list' || $currentRoute == 'address-book-add' || $currentRoute == 'address-book-edit' ? 'is-active' : '') }}" href="{{ route('address-book-list') }}">
-                    <i class="fa fa-user-o u-mr-xsmall"></i>Adressbook
+                    <i class="fa fa-address-book u-mr-xsmall"></i>Adressbook
+                </a>
+            </li>
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'order-list' ? 'is-active' : '') }}" href="{{ route('order-list') }}">
+                    <i class="fa fa-shopping-cart u-mr-xsmall"></i>Order
                 </a>
             </li>
         </ul>
