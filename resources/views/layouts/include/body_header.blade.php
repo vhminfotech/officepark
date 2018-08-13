@@ -7,6 +7,16 @@
 
         <h2 class="c-navbar__title u-mr-auto">&nbsp;</h2>
 
+        <div class="form-group">
+           
+            <select class="form-control language">
+                <option value="">- - {{ trans('words.Select') }} - -</option>
+                <option value="en" {{ ($_COOKIE['language'] == 'en') ? "selected" : "" }} > English </option>
+                <option value="gr" {{ ($_COOKIE['language'] == 'gr') ? "selected" : "" }} > German </option>
+                <option value="tr" {{ ($_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
+            </select>
+        </div>
+        
         <div class="c-dropdown dropdown">
             <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="c-avatar__img" src="{{ asset('img/avatar-72.jpg') }}" alt="User's Profile Picture">
@@ -14,7 +24,7 @@
 
             <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
                 <!--<a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>-->
-                <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">Logout</a>
+                <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">{{ trans('words.Logout') }}</a>
 <!--                <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>-->
             </div>
         </div>

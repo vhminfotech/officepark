@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Auth;
+use App;
 
 class Controller extends BaseController
 {
@@ -16,6 +17,14 @@ class Controller extends BaseController
     public function __construct() {         
          
         $this->middleware(function ($request, $next) {
+            
+            $lang = $_COOKIE["language"];
+
+            if (!empty($lang)) {
+                App::setLocale($lang);
+            } else {
+                App::setLocale('en');
+            }
             
             if (!empty(Auth()->guard('admin')->user())) {
                 $this->loginUser = Auth()->guard('admin')->user();

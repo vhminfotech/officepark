@@ -7,6 +7,7 @@ use App\Model\Users;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
+use APP;
 use Illuminate\Http\Request;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
