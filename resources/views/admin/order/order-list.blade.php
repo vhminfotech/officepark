@@ -22,7 +22,7 @@
                             <th class="c-table__cell c-table__cell--head">Fullname&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">DOB&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Address&nbsp;&nbsp;</th>
-                            <!--<th class="c-table__cell c-table__cell--head no-sort">Action</th>-->
+                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,14 +38,14 @@
                             <td class="c-table__cell">{{ $arrOrder[$i]->fullname }}</td>
                             <td class="c-table__cell">{{ date('d-m-Y',strtotime($arrOrder[$i]->date_of_birth)) }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->address }}</td>
-<!--                            <td class="c-table__cell">
-                                <a href="{{ route('edit-user',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
-                                        <i class="fa fa-edit" ></i></span>
+                            <td class="c-table__cell">
+                                <a href="{{ route('view-order',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                        <i class="fa fa-eye" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $arrOrder[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+<!--                                <a href="javascript:;" class="delete"  data-id="{{ $arrOrder[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
-                                </a>
-                            </td>-->
+                                </a>-->
+                            </td>
                         </tr>
                         @endfor
                     </tbody>

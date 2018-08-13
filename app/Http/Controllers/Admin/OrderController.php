@@ -31,4 +31,17 @@ class OrderController extends Controller {
         
         return view('admin.order.order-list', $data);
     }
+    
+    public function viewOrder(Request $request,$id){
+        
+        $objOrder = new OrderInfo();
+        $data['arrOrder'] = $objOrder->getInfo();
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('admin/order.js');
+        $data['funinit'] = array('Order.init()');
+        
+        return view('admin.order.view-order', $data);
+    }
 }

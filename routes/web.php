@@ -59,6 +59,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     
     
     Route::match(['get', 'post'], 'order-list', ['as' => 'order-list', 'uses' => 'Admin\OrderController@index']);
+    Route::match(['get', 'post'], 'view-order/{id}', ['as' => 'view-order', 'uses' => 'Admin\OrderController@viewOrder']);
 
 });
 
