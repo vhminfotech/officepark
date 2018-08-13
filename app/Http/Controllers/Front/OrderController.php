@@ -23,7 +23,7 @@ class OrderController extends Controller {
         if ($request->isMethod('post')) {
             
             $dataArr = $request->input();
-            //echo "<hr>";print_r($dataArr);exit;
+//            echo "<hr>";print_r($dataArr);exit;
             
             $validator = Validator::make($request->all(), [
                         //'is_package'                   => 'required',
@@ -35,7 +35,7 @@ class OrderController extends Controller {
                         'info_type'                 => 'required',
                         'company_name'              => 'required',
                         'company_type'              => 'required',
-                        'company_info'              => 'required',
+//                        'company_info'              => 'required',
                         'gender'                    => 'required',
                         'fullname'                  => 'required',
                         'date_of_birth'             => 'required',
