@@ -14,12 +14,12 @@ $currentRoute = Route::current()->getName();
                     {{ trans('words.Overview') }}
                 </a>
             </li>
-            <li class="c-sidebar__item">
+<!--            <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'user-list' || $currentRoute == 'add-user' || $currentRoute == 'edit-user' ? 'is-active' : '') }}" href="{{ route('user-list') }}">
                     <i class="fa fa-users u-mr-xsmall"></i>
                     {{ trans('words.Manage user') }}
                 </a>
-            </li>
+            </li>-->
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-user-list' || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('system-user-list') }}">
                     <i class="fa fa-user-o u-mr-xsmall"></i>

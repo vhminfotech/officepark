@@ -17,12 +17,12 @@
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-6">
-                               @php
+                                @php
                                 $name = explode(' ',$userDetail[0]->name);
-                                
+
                                 $firstname = $name[0];
-                                $lastname = $name[1];
-                               @endphp
+                                $lastname = (isset($name[1]) && !empty($name[1]) ? $name[1] : '');
+                                @endphp
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">First Name</label> 
                                     <input class="c-input" name="firstName" id="firstName" placeholder="Jason" type="text" value='{{ $firstname }}'>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
@@ -76,7 +76,7 @@
                                         $checked = '';
                                         @endphp
                                         @for($i = 0 ;$i < count($masterPermission);$i++,$count++)
-                                        
+
                                         <div class="c-choice c-choice--checkbox col-lg-3">
                                             <input class="c-choice__input" value="{{ $masterPermission[$i]->id }}" id="checkbox{{ $count }}" name="checkboxes[]" type="checkbox" 
                                                    {{ (in_array($masterPermission[$i]->id,$userPermission)) ? 'checked="checked" ' : '' }} >
