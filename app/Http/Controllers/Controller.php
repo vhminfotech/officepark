@@ -18,7 +18,12 @@ class Controller extends BaseController
          
         $this->middleware(function ($request, $next) {
             
-            $lang = $_COOKIE["language"];
+            if(isset($_COOKIE["language"])){
+                $lang = $_COOKIE["language"];
+            }else{
+                $lang = 'en';
+            }
+            
 
             if (!empty($lang)) {
                 App::setLocale($lang);

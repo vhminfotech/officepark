@@ -11,9 +11,9 @@
            
             <select class="form-control language">
                 <option value="">- - {{ trans('words.Select') }} - -</option>
-                <option value="en" {{ ($_COOKIE['language'] == 'en') ? "selected" : "" }} > English </option>
-                <option value="gr" {{ ($_COOKIE['language'] == 'gr') ? "selected" : "" }} > German </option>
-                <option value="tr" {{ ($_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
+                <option value="en" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'en') ? "selected" : "" }} > English </option>
+                <option value="gr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'gr') ? "selected" : "" }} > German </option>
+                <option value="tr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
             </select>
         </div>
         
