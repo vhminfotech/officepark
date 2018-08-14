@@ -1,7 +1,12 @@
-var Order = function() {
-   
+var Order = function () {
+
+    var testalert = function () {
+        alert("CALL");
+    };
+
     return{
-        init: function() {
-        }
+        Init: function () {
+            testalert();
+        },
     };
 }();

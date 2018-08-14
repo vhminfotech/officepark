@@ -1,5 +1,14 @@
 @extends('front.layouts.app')
 @section('content')
+<script>
+    $(document).ready(function () {
+        window.setTimeout(function () {
+            $(".flash_message").fadeTo(2500, 0).slideUp(1500, function () {
+                $(this).hide();
+            });
+        });
+    });
+</script>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -9,6 +18,13 @@
             </div>
         </div>
     </div>
+    @if(Session::has('message'))
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="flash_message alert {{ Session::get('class') }}">{{ Session::get('message') }}</p>
+        </div>
+    </div>
+    @endif
 
     <div class="row">
         <div class="col-sm-12 col-lg-4">

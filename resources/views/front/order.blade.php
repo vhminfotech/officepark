@@ -1,5 +1,14 @@
 @extends('front.layouts.app')
 @section('content')
+<script>
+    $(document).ready(function () {
+        window.setTimeout(function () {
+            $(".flash_message").fadeTo(2500, 0).slideUp(1500, function () {
+                $(this).hide();
+            });
+        });
+    });
+</script>
 
 <body class="page-container-bg-solid">
     <div class="page-wrapper">
@@ -15,6 +24,13 @@
                                         <!--<input name="_token" value="{{ csrf_token() }}" type="hidden">-->
                                     <div class="row">
                                         <div class="col-md-12">
+                                            @if(Session::has('message'))
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <p class="flash_message alert {{ Session::get('class') }}">{{ Session::get('message') }}</p>
+                                                </div>
+                                            </div>
+                                            @endif
                                             @if($errors->count() > 0)
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -123,7 +139,7 @@
                                                                 <div class="form-group">
                                                                     <label>What is your company doing?</label>
                                                                 </div>
-                                                                
+
                                                                 <div class="form-group">
                                                                     <label>gender</label>
                                                                     <select required name="gender" class="form-control">

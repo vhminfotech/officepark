@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Model\OrderInfo;
 use Auth;
 use Config;
+use Session;
+
 
 
 class OrderController extends Controller {
@@ -63,10 +65,14 @@ class OrderController extends Controller {
             $resultArr = $objOrderInfo->saveOrderInfo($dataArr);
             
             if($resultArr){
-                $request->session()->flash('session_success', 'Add successfully.');
+//                $request->session()->flash('session_success', 'Add successfully.');
+                Session::flash('message', 'Order Add successfully.!'); 
+                Session::flash('class', 'alert-info'); 
                 return redirect(route('home'));
             }else{
-                $request->session()->flash('session_error', 'Something will be wrong. Please try again.');
+//                $request->session()->flash('session_error', 'Something will be wrong. Please try again.');
+                Session::flash('message', 'Something will be wrong. Please try again.!'); 
+                Session::flash('class', 'alert-danger');
                 return redirect(route('order'));
             }
             
@@ -76,7 +82,7 @@ class OrderController extends Controller {
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('order.js');
-        $data['funinit'] = array('Test.initDemoAddInfo()');
+        $data['funinit'] = array('Order.Init');
        
 
         
