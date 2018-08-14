@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Route;
 use Illuminate\Http\Request;
-
+use Config;
 class AddressbookController extends Controller {
 
     public function __construct() {
@@ -48,7 +48,7 @@ class AddressbookController extends Controller {
             }
             echo json_encode($return); exit;
         }
-
+        $data['gender']= Config::get('constants.gender');
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/addressbook.js');
@@ -58,7 +58,7 @@ class AddressbookController extends Controller {
     }
 
     public function editAddressbook($bookId, Request $request) {
-        
+        $data['gender']= Config::get('constants.gender');
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
         $objeditbook= new Addressbook();
