@@ -20,6 +20,11 @@ class OrderController extends Controller {
     
     public function index(Request $request){
         
+         $data['welcome_note']= Config::get('constants.welcome_note');
+         $data['reroute_confirm']= Config::get('constants.reroute_confirm');
+         $data['unreach_note']= Config::get('constants.unreach_note');
+         $data['gender']= Config::get('constants.gender');
+        
         if ($request->isMethod('post')) {
             
             $dataArr = $request->input();
@@ -72,6 +77,8 @@ class OrderController extends Controller {
         $data['css'] = array('');
         $data['js'] = array('order.js');
         $data['funinit'] = array('Test.initDemoAddInfo()');
+       
+
         
         return view('front.order', $data);
     }
