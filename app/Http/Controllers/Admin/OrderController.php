@@ -35,7 +35,8 @@ class OrderController extends Controller {
     public function viewOrder(Request $request,$id){
         
         $objOrder = new OrderInfo();
-        $data['arrOrder'] = $objOrder->getInfo();
+        $data['arrOrder'] = $objOrder->getOrderInfo($id);
+//        print_r($data['arrOrder']);exit;
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');

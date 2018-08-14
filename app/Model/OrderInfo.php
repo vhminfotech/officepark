@@ -85,5 +85,10 @@ class OrderInfo extends Model {
     public function getInfo() {
         return DB::table('order_info')->get()->toArray();
     }
+    
+    public function getOrderInfo($orderId) {
+        return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
+    }
+
 
 }
