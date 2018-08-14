@@ -6,7 +6,7 @@ return [
     'Dashboard'     => 'Dashboard',
     'Overview'      => 'Overview',
     'Manage user'   => 'Manage user',
-    'System users'  => 'System users',
+    'System-users'  => 'System-users',
     'Customer'      => 'Customer',
     'Addressbook'   => 'Addressbook',
     'Order'         => 'Order',
