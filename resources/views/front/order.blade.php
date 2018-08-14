@@ -3,7 +3,7 @@
 <script>
     $(document).ready(function () {
         window.setTimeout(function () {
-            $(".flash_message").fadeTo(2500, 0).slideUp(1500, function () {
+            $(".flash_message").fadeTo(4500, 0).slideUp(4500, function () {
                 $(this).hide();
             });
         });
