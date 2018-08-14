@@ -6,7 +6,7 @@ return [
     'Dashboard'     => 'Instrumententafel',
     'Overview'      => 'Überblick',
     'Manage user'   => 'Benutzer verwalten',
-    'System users'  => 'Systembenutzer',
+    'System-users'  => 'Systembenutzer',
     'Customer'      => 'Kunde',
     'Addressbook'   => 'Adressbuch',
     'Order'         => 'Auftrag',

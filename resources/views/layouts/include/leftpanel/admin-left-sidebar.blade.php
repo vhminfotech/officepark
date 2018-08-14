@@ -23,7 +23,7 @@ $currentRoute = Route::current()->getName();
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-user-list' || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('system-user-list') }}">
                     <i class="fa fa-user-o u-mr-xsmall"></i>
-                    {{ trans('words.System users') }}
+                    {{ trans('words.System-users') }}
                 </a>
             </li>
             <li class="c-sidebar__item">
