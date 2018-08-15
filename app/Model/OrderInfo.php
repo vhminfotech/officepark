@@ -27,8 +27,8 @@ class OrderInfo extends Model {
 //        $objInfo->company_info = $dataArr['company_info'];
         $objInfo->gender = $dataArr['gender'];
         $objInfo->fullname = $dataArr['fullname'];
-        //$objInfo->date_of_birth             = $dataArr['date_of_birth'];
-        $objInfo->date_of_birth = '1992-12-27';
+        $objInfo->date_of_birth = date('Y-m-d',  strtotime($dataArr['date_of_birth']));
+//        $objInfo->date_of_birth = '1992-12-27';
         $objInfo->address = $dataArr['address'];
         $objInfo->postal_code = $dataArr['postal_code'];
         $objInfo->phone = $dataArr['phone'];
@@ -85,10 +85,9 @@ class OrderInfo extends Model {
     public function getInfo() {
         return DB::table('order_info')->get()->toArray();
     }
-    
+
     public function getOrderInfo($orderId) {
         return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
     }
-
 
 }
