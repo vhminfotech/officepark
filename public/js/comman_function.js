@@ -751,6 +751,14 @@ function dateFormate(field) {
         
     //console.log(getCookie('language'));
 
+    $("body").on("click", ".language",function(){
+        var lang = ($(this).attr('data-lang') !== '') ? $(this).attr('data-lang') : 'en';
+        if(lang){
+            setCookie('language', lang, 365);
+            window.location.reload();
+        }
+    });
+    
     $("body").on("change", ".language",function(){
         var lang = ($(this).val() !== '') ? $(this).val() : 'en';
         if(lang){

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Route;
 use App;
+use PDF;
 use Illuminate\Http\Request;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -36,12 +37,12 @@ class SystemuserController extends Controller {
     
     public function createPDF($id){
         
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadHTML('<h1>Test</h1>');
+//        return $pdf->stream();
 
         //Or use the facade:
-
+        $data['id'] = $id;
         $pdf = PDF::loadView('admin.invoice-pdf', $data);
         return $pdf->download('invoice.pdf');
 

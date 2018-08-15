@@ -3,6 +3,7 @@
         <title>Invoice</title>
     </head>
     <body>
-        <h1> Test </h1>
+        <h1> Test Invoice </h1>
+        <p>User ID : {{ $id }}</p>
     </body>
 </html>

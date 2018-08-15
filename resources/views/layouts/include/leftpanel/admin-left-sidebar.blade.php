@@ -44,6 +44,23 @@ $currentRoute = Route::current()->getName();
                     {{ trans('words.Order') }}
                 </a>
             </li>
+            <li class="c-sidebar__item">
+                <i class="fa fa-flag-icon-us"></i>
+            </li>
+        </ul>
+        
+        <ul class="c-sidebar__list">
+            <li class="c-sidebar__item" style="padding-left: 35px;">
+                <a href="javascript:;" class="language" data-lang="gr">
+                    <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50px">
+                </a>
+                <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
+                    <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50px">
+                </a>
+                <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
+                    <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50px">
+                </a>
+            </li>
         </ul>
     </div>
 </div>
