@@ -60,7 +60,15 @@
                             <td class="c-table__cell">Dogum Tarihi</td>
                             <td class="c-table__cell ">
                                 <span class="u-text-bold html1 ">{{ date('d-m-Y',strtotime($arrOrder[0]->date_of_birth)) }}</span>
-                                <span class="u-text-bold data1" style="display: none;"><input class="form-control dob"  id="dob" name='dob'></span>
+
+                                <span class="u-text-bold data1" style="display: none;">
+                                    <!--<input class="form-control dob"  id="dob" name='dob'>-->
+                                    <div class="c-field has-addon-left">
+                                        <span class="c-field__addon"><i class="fa fa-calendar"></i></span>
+                                        <label class="c-field__label u-hidden-visually" for="input9">Disabled Input</label>
+                                        <input class="c-input" data-toggle="datepicker" id="input9" name="date_of_birth" value="{{ date('d-m-Y',strtotime($arrOrder[0]->date_of_birth)) }}" type="text" placeholder="Date of birth" required>
+                                    </div>
+                                </span>
                             </td>
                         </tr>
 
