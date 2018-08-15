@@ -11,7 +11,6 @@ use App\Model\OrderInfo;
 use Auth;
 use Config;
 
-
 class OrderController extends Controller {
     
     public function __construct(){
@@ -42,7 +41,7 @@ class OrderController extends Controller {
         $data['css'] = array('');
         $data['js'] = array('admin/order.js');
         $data['funinit'] = array('Order.Init()');
-        
+        $data['gender']= Config::get('constants.gender');
         return view('admin.order.view-order', $data);
     }
 }
