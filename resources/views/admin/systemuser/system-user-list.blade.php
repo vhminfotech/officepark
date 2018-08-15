@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
@@ -39,7 +41,10 @@
                                     <i class="fa fa-edit" ></i></span>
                                 </a>
                                  <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrUser[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
-                                        <i class="fa fa-trash-o" ></i></span>
+                                    <i class="fa fa-trash-o" ></i></span>
+                                </a>
+                                <a href=" {{ route('create-pdf',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
+                                    <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
                             </td>
                         </tr>

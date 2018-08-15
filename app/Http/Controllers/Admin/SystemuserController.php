@@ -7,6 +7,7 @@ use App\Model\Users;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
+use App;
 use Illuminate\Http\Request;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -31,6 +32,19 @@ class SystemuserController extends Controller {
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
         return view('admin.systemuser.system-user-list', $data);
+    }
+    
+    public function createPDF($id){
+        
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+        //Or use the facade:
+
+        $pdf = PDF::loadView('admin.invoice-pdf', $data);
+        return $pdf->download('invoice.pdf');
+
     }
 
     public function addUser(Request $request) {

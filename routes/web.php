@@ -39,6 +39,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'user/ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Admin\AdminController@ajaxAction']);
 
     
+    Route::match(['get', 'post'], 'create-pdf/{id}', ['as' => 'create-pdf', 'uses' => 'Admin\SystemuserController@createPDF']);
+    
     Route::match(['get', 'post'], 'system-user-list', ['as' => 'system-user-list', 'uses' => 'Admin\SystemuserController@getUserData']);
     Route::match(['get', 'post'], 'system-add-user', ['as' => 'system-add-user', 'uses' => 'Admin\SystemuserController@addUser']);
     Route::match(['get', 'post'], 'system-edit-user/{id}', ['as' => 'system-edit-user', 'uses' => 'Admin\SystemuserController@editUser']);
