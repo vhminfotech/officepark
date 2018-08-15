@@ -187,15 +187,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="portlet-body form">
-                                                            <div class="form-body">
+                                                            <div class="form-body accountInfo">
                                                                 <div class="form-group">
-                                                                    {{ Form::text('account_name', null, array('class' => 'form-control', 'placeholder' => 'Kontoinhaber', 'required')) }}
+                                                                    {{ Form::text('account_name', null, array('class' => 'form-control', 'placeholder' => 'Kontoinhaber')) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    {{ Form::text('account_iban', null, array('class' => 'form-control', 'placeholder' => 'IBAN', 'required')) }}
+                                                                    {{ Form::text('account_iban', null, array('class' => 'form-control', 'placeholder' => 'IBAN')) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    {{ Form::text('account_bic', null, array('class' => 'form-control', 'placeholder' => 'BIC', 'required')) }}
+                                                                    {{ Form::text('account_bic', null, array('class' => 'form-control', 'placeholder' => 'BIC')) }}
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

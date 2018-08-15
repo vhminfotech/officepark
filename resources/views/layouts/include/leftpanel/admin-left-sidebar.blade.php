@@ -1,6 +1,12 @@
 @php
 $currentRoute = Route::current()->getName();
 @endphp
+<style type="text/css">
+    .language-selection.active a img{
+        border: 1px solid;
+        padding: 3px;
+    }
+</style>
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
@@ -47,20 +53,27 @@ $currentRoute = Route::current()->getName();
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>
+            <li class="c-sidebar__item" style="position: absolute; bottom: 0px; padding-left: 35px;">
+                <div class="language-selection {{ ($_COOKIE['language'] == 'gr' ? 'active' : '') }}" style="display: inline;">
+                    <a href="javascript:;" class="language" data-lang="gr">
+                        <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50" style='height : 29px;'>
+                    </a>
+                </div>
+                <div class="language-selection {{ ($_COOKIE['language'] == 'tr' ? 'active' : '') }}" style="display: inline;">
+                    <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
+                        <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50" style='height : 29px;'>
+                    </a>
+                </div>
+                <div class="language-selection {{ ($_COOKIE['language'] == 'en' ? 'active' : '') }}" style="display: inline;">
+                    <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
+                        <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50" style='height : 29px;'>
+                    </a>
+                </div>
         </ul>
         
-        <ul class="c-sidebar__list">
-            <li class="c-sidebar__item" style="padding-left: 35px;">
-                <a href="javascript:;" aria-label="German" class="language c-tooltip c-tooltip--top" data-lang="gr">
-                    <img class="" title="German" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50px">
-                </a>
-                <a href="javascript:;" aria-label="Turkish" class="language c-tooltip c-tooltip--top" data-lang="tr" style="padding-left: 10px;">
-                    <img class="" title="Turkish"  src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50px">
-                </a>
-                <a href="javascript:;" aria-label="English" class="language c-tooltip c-tooltip--top" data-lang="en" style="padding-left: 10px;">
-                    <img class="" title="English" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50px">
-                </a>
-            </li>
-        </ul>
+        
+<!--        <ul class="c-sidebar__list">
+            
+        </ul>-->
     </div>
 </div>
