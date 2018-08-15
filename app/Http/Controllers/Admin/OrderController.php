@@ -27,7 +27,7 @@ class OrderController extends Controller {
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('admin/order.js');
-        $data['funinit'] = array('Order.init()');
+        $data['funinit'] = array('Order.Init()');
         
         return view('admin.order.order-list', $data);
     }
@@ -41,7 +41,7 @@ class OrderController extends Controller {
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('admin/order.js');
-        $data['funinit'] = array('Order.init()');
+        $data['funinit'] = array('Order.Init()');
         
         return view('admin.order.view-order', $data);
     }

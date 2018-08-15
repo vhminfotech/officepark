@@ -51,14 +51,14 @@ $currentRoute = Route::current()->getName();
         
         <ul class="c-sidebar__list">
             <li class="c-sidebar__item" style="padding-left: 35px;">
-                <a href="javascript:;" class="language" data-lang="gr">
-                    <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50px">
+                <a href="javascript:;" aria-label="German" class="language c-tooltip c-tooltip--top" data-lang="gr">
+                    <img class="" title="German" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50px">
                 </a>
-                <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
-                    <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50px">
+                <a href="javascript:;" aria-label="Turkish" class="language c-tooltip c-tooltip--top" data-lang="tr" style="padding-left: 10px;">
+                    <img class="" title="Turkish"  src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50px">
                 </a>
-                <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
-                    <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50px">
+                <a href="javascript:;" aria-label="English" class="language c-tooltip c-tooltip--top" data-lang="en" style="padding-left: 10px;">
+                    <img class="" title="English" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50px">
                 </a>
             </li>
         </ul>
