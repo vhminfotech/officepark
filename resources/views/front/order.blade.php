@@ -1,9 +1,9 @@
 @extends('front.layouts.app')
 @section('content')
 <script>
-    $(document).ready(function () {
-        window.setTimeout(function () {
-            $(".flash_message").fadeTo(4500, 0).slideUp(4500, function () {
+    $(document).ready(function() {
+        window.setTimeout(function() {
+            $(".flash_message").fadeTo(4500, 0).slideUp(4500, function() {
                 $(this).hide();
             });
         });
@@ -142,8 +142,8 @@
 
                                                                 <div class="form-group">
                                                                     <label>gender</label>
-                                                                    <select required name="gender" class="form-control">
-                                                                        <option>choose an option</option>
+                                                                    <select name="gender" required="required" class="form-control">
+                                                                        <option value="">choose an option</option>
                                                                         @foreach ($gender as $indexkey=>$val)
                                                                         <option value="{{$indexkey}}">{{$val}}</option>
                                                                         @endforeach
@@ -153,7 +153,12 @@
                                                                     {{ Form::text('fullname', null, array('class' => 'form-control', 'placeholder' => 'First and Last Name', 'required')) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    {{ Form::text('date_of_birth', null, array('class' => 'form-control dateField', 'placeholder' => 'Date of birth', 'required')) }}
+                                                                    <div class="c-field has-addon-left">
+                                                                        <span class="c-field__addon"><i class="fa fa-calendar"></i></span>
+                                                                        <label class="c-field__label u-hidden-visually" for="input9">Disabled Input</label>
+                                                                        <input class="c-input" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
+                                                                    </div>
+                                                                    <!--{{ Form::text('date_of_birth', null, array('class' => 'form-control dateField', 'placeholder' => 'Date of birth', 'required')) }}-->
                                                                 </div>
                                                                 <div class="form-group">
                                                                     {{ Form::text('address', null, array('class' => 'form-control', 'placeholder' => 'Address & House number', 'required')) }}
