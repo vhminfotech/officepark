@@ -11,7 +11,7 @@
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
@@ -19,7 +19,9 @@
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
     @if (!empty($css)) 
     @foreach ($css as $value) 
+    @if(!empty($value))
     <link rel="stylesheet" href="{{ asset('css/'.$value) }}">
+    @endif
     @endforeach
     @endif
     <script>

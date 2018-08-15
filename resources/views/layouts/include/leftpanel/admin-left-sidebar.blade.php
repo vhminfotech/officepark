@@ -69,8 +69,8 @@ $currentRoute = Route::current()->getName();
                         <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50" style='height : 29px;'>
                     </a>
                 </div>
-            </li>
         </ul>
+        
         
 <!--        <ul class="c-sidebar__list">
             
