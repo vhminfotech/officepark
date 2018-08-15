@@ -3,8 +3,10 @@ var Order = function() {
     $("body").on("change", ".accept", function(){
         if ($(this).val() == 'sepa') {
             $("#sepa").show();
+            $('.accountInfo').show();
         }else {
             $("#sepa").hide();
+            $('.accountInfo').hide();
         }
     });
         

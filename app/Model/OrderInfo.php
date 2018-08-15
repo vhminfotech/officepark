@@ -34,9 +34,9 @@ class OrderInfo extends Model {
         $objInfo->phone = $dataArr['phone'];
         $objInfo->email = $dataArr['email'];
 
-        $objInfo->account_name = $dataArr['account_name'];
-        $objInfo->account_iban = $dataArr['account_iban'];
-        $objInfo->account_bic = $dataArr['account_bic'];
+        $objInfo->account_name = ($dataArr['accept'] != 'uber') ? $dataArr['account_name'] : '';
+        $objInfo->account_iban = ($dataArr['accept'] != 'uber') ? $dataArr['account_iban'] : '';
+        $objInfo->account_bic = ($dataArr['accept'] != 'uber') ? $dataArr['account_bic'] : '';
         $objInfo->accept = $dataArr['accept'];
         $objInfo->aggrement = $dataArr['aggrement'];
 
