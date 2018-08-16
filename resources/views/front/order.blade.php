@@ -138,7 +138,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>What is your company doing?</label>
-                                                                    {{ Form::textarea('company_info', null, array('class' => 'form-control', 'placeholder' => "Company Info", 'required')) }}
+                                                                    {{ Form::textarea('company_info', null, array('class' => 'form-control', 'placeholder' => "Company Info", 'rows'=>'3','required')) }}
                                                                 </div>
 
                                                                 <div class="form-group">
