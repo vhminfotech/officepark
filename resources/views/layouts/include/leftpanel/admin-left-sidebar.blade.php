@@ -58,17 +58,17 @@ $currentRoute = Route::current()->getName();
             <li class="c-sidebar__item" style="position: absolute; bottom: 0px; padding-left: 35px;">
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) == 'gr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="gr">
-                        <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50" style='height : 29px;'>
+                        <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo"  style='height : 22px;'>
                     </a>
                 </div>
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'tr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
-                        <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50" style='height : 29px;'>
+                        <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo"  style='height : 22px;'>
                     </a>
                 </div>
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'en' ? 'active' : (!isset($_COOKIE['language']))?'active':'')  }} " style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
-                        <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50" style='height : 29px;'>
+                        <img class="" src="{{ asset('img/flag/english.png') }}" alt="English-Logo"  style='height : 22px;'>
                     </a>
                 </div>
         </ul>
