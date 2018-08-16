@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <table class="">
+                <table class="col-lg-12">
                     <tbody>
                         <tr class="c-table__row u-border-top-zero">
                             <td class="c-table__cell">Order #:</td>
@@ -22,9 +22,9 @@
                             </td>
                         </tr>
                         <tr class="c-table__row">
-                            <td class="c-table__cell">Order Date & Time</td>
+                            <td class="c-table__cell">Order Date</td>
                             <td class="c-table__cell ">
-                                <span class="u-text-bold">{{ date('d.m.Y H:i:s',strtotime($arrOrder[0]->created_at)) }}</span>
+                                <span class="u-text-bold">{{ date('d.m.Y',strtotime($arrOrder[0]->created_at)) }}</span>
                             </td>
                         </tr>
                         <tr class="c-table__row">
@@ -46,7 +46,7 @@
                     <a class="editCustomer" href="javascript:;">Edit</a>
                 </div>
                 <form class="customerInfo" name="customerInfo" method="post" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="customerInfo">
-                    <table class=" u-border-zero">
+                    <table class=" u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
                                 <td class="c-table__cell">Customer Name</td>
@@ -133,7 +133,7 @@
                     <a class="c-card__meta text-danger red edit2" href="javascript:;">Edit</a>
                 </div>  
                 <form class="companyInfo" name="companyInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="companyInfo">
-                    <table class=" u-border-zero">
+                    <table class=" u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
                                 <td class="c-table__cell">Company Name:</td>
@@ -182,7 +182,7 @@
                     <a class="c-card__meta text-danger red edit3" data-id="3" href="javascript:;">Edit</a>
                 </div>
                 <form class="paymentInfo" name="paymentInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="paymentInfo">
-                    <table class="u-border-zero">
+                    <table class="u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
                                 <td class="c-table__cell">Account Owner:</td>
@@ -239,7 +239,7 @@
                     <a class="c-card__meta text-danger red edit4" href="javascript:;">Edit</a>
                 </div>
                 <form class="secInfo" name="secInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="secInfo">
-                    <table class=" u-border-zero">
+                    <table class=" u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
                                 <td class="c-table__cell">Phone to Redirect</td>
