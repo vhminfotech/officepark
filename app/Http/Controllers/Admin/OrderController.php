@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 //use Validator;
 use App\Model\OrderInfo;
+use App\Model\Users;
 use Auth;
 use Config;
 
@@ -104,6 +105,7 @@ class OrderController extends Controller {
             }
         }
     }
+
     public function customerEditInfo(Request $request) {
         if ($request->isMethod('post')) {
             $objOrder = new OrderInfo();
@@ -117,6 +119,27 @@ class OrderController extends Controller {
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Something went wrong.';
+                echo json_encode($return);
+                exit;
+            }
+        }
+    }
+
+    public function createUser(Request $request) {
+        if ($request->isMethod('post')) {
+
+            $objCustomer = OrderInfo::find($request->input('orderId'));
+            $objUser = new Users();
+            $result = $objUser->createCustomer($objCustomer);
+            if ($result == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'customere created Successfully.';
+                $return['redirect'] = route('view-order', array('id' => $request->input('orderId')));
+                echo json_encode($return);
+                exit;
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already Exists';
                 echo json_encode($return);
                 exit;
             }

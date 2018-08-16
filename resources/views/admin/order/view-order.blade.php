@@ -299,6 +299,17 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-5 ">
+            <div class="c-card c-card--responsive u-mb-medium">
+                <div class="col">
+                    <input type="button" data-id="{{ $arrOrder[0]->id }}" class="c-btn c-btn--info c-btn--fullwidth confirm" value="Confirm">
+                </div>
+            </div>
+        </div>
+    </div>
 </div><!-- // .container -->
 <style>
     .error {

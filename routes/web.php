@@ -68,6 +68,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
             Route::match(['get', 'post'], 'edit-payment-info', ['as' => 'edit-payment-info', 'uses' => 'Admin\OrderController@paymentEditInfo']);
             Route::match(['get', 'post'], 'edit-sec-info', ['as' => 'edit-sec-info', 'uses' => 'Admin\OrderController@secEditInfo']);
             Route::match(['get', 'post'], 'edit-customer-info', ['as' => 'edit-customer-info', 'uses' => 'Admin\OrderController@customerEditInfo']);
+            Route::match(['get', 'post'], 'create-user', ['as' => 'create-user', 'uses' => 'Admin\OrderController@createUser']);
         });
 
 

@@ -27,9 +27,6 @@ var Order = function() {
             $('.html4').hide();
         });
 
-        $('body').on('click', '.submit1', function() {
-
-        });
 
         $("#companyInfo").validate({
             rules: {
@@ -55,7 +52,7 @@ var Order = function() {
                 });
             }
         });
-        
+
         $("#paymentInfo").validate({
             rules: {
                 account_name: {required: true},
@@ -82,7 +79,7 @@ var Order = function() {
                 });
             }
         });
-        
+
         $("#secInfo").validate({
             rules: {
                 phone_to_reroute: {required: true},
@@ -114,7 +111,7 @@ var Order = function() {
                 customer_name: {required: true},
                 date_of_birth: {required: true},
                 gender: {required: true},
-                email: {required: true,email:true},
+                email: {required: true, email: true},
                 address: {required: true},
                 postal_code: {required: true},
             },
@@ -137,6 +134,17 @@ var Order = function() {
                     handleAjaxResponse(output);
                 });
             }
+        });
+
+
+        $('body').on('click', '.confirm', function() {
+            var orderId = $(this).data('id');
+            var token = $('#_token').val();
+            var data = { orderId : orderId ,_token :token};
+            var url = baseurl + 'admin/create-user';
+            ajaxcall(url,data,function(output){
+                handleAjaxResponse(output);
+            });
         });
     };
 
