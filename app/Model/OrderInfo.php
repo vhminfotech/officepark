@@ -24,7 +24,7 @@ class OrderInfo extends Model {
 
         $objInfo->company_name = $dataArr['company_name'];
         $objInfo->company_type = $dataArr['company_type'];
-//        $objInfo->company_info = $dataArr['company_info'];
+        $objInfo->company_info = $dataArr['company_info'];
         $objInfo->gender = $dataArr['gender'];
         $objInfo->fullname = $dataArr['fullname'];
         $objInfo->date_of_birth = date('Y-m-d', strtotime($dataArr['date_of_birth']));
@@ -136,6 +136,10 @@ class OrderInfo extends Model {
         if ($objCusEdit->save()) {
             return TRUE;
         }
+    }
+    
+    public function newOrderCount($statusValue){
+        return OrderInfo::Where('status', $statusValue)->count();
     }
 
 }

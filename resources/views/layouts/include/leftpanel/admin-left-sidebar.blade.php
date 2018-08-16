@@ -47,24 +47,26 @@ $currentRoute = Route::current()->getName();
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('order-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall"></i>
-                    {{ trans('words.Order') }}
+                    {{ trans('words.Order') }} - 
+                    <span class="info">{{ Session::get('logindata.0.ordercount')}} </span>
+                    
                 </a>
             </li>
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>
             <li class="c-sidebar__item" style="position: absolute; bottom: 0px; padding-left: 35px;">
-                <div class="language-selection {{ ($_COOKIE['language'] == 'gr' ? 'active' : '') }}" style="display: inline;">
+                <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) == 'gr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="gr">
                         <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50" style='height : 29px;'>
                     </a>
                 </div>
-                <div class="language-selection {{ ($_COOKIE['language'] == 'tr' ? 'active' : '') }}" style="display: inline;">
+                <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'tr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
                         <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50" style='height : 29px;'>
                     </a>
                 </div>
-                <div class="language-selection {{ ($_COOKIE['language'] == 'en' ? 'active' : '') }}" style="display: inline;">
+                <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'en' ? 'active' : (!isset($_COOKIE['language']))?'active':'')  }} " style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
                         <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50" style='height : 29px;'>
                     </a>

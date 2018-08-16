@@ -124,7 +124,7 @@
                                                         <div class="portlet-title">
                                                             <div class="caption">
                                                                 <span class="caption-subject font-dark-sharp bold uppercase">YOUR COMPANY DATA</span>
-                                                                <h5>Please enter your data correctly as follows:</h5>
+                                                                <p>Please enter your data correctly as follows:</p>
                                                             </div>
 
                                                         </div>
@@ -138,6 +138,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>What is your company doing?</label>
+                                                                    {{ Form::text('company_info', null, array('class' => 'form-control', 'placeholder' => "Company Info", 'required')) }}
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -154,9 +155,9 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="c-field has-addon-left">
-                                                                        <span class="c-field__addon"><i class="fa fa-calendar"></i></span>
+                                                                        <!--<span class="c-field__addon"><i class="fa fa-calendar"></i></span>-->
                                                                         <label class="c-field__label u-hidden-visually" for="input9">Disabled Input</label>
-                                                                        <input class="c-input" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
+                                                                        <input class="c-input form-control" style="border: 1px solid #c2cad8;color:#555;" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
                                                                     </div>
                                                                     <!--{{ Form::text('date_of_birth', null, array('class' => 'form-control dateField', 'placeholder' => 'Date of birth', 'required')) }}-->
                                                                 </div>
@@ -183,7 +184,7 @@
                                                         <div class="portlet-title">
                                                             <div class="caption">
                                                                 <span class="caption-subject font-dark-sharp bold uppercase">PAYMENT DATA</span>
-                                                                <h5>Please enter your data correctly as follows:</h5>
+                                                                <p>Please enter your data correctly as follows:</p>
                                                             </div>
                                                         </div>
                                                         <div class="portlet-body form">
@@ -222,7 +223,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Sent</button>
+                                                            <button type="submit" class="btn btn-primary">Send</button>
                                                         </div>
                                                     </div>
                                                     <!-- END SAMPLE FORM PORTLET-->
