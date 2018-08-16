@@ -8,6 +8,11 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600" rel="stylesheet">
+    <!--- chetan added css Start -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--- chetan added css End -->
+
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -25,6 +30,6 @@
     @endforeach
     @endif
     <script>
-        var baseurl = "{{ asset('/') }}";
+var baseurl = "{{ asset('/') }}";
     </script>
 </head>

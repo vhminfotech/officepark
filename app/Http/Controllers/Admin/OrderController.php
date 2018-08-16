@@ -11,7 +11,7 @@ use App\Model\OrderInfo;
 use App\Model\Users;
 use Auth;
 use Config;
-
+use Session;
 class OrderController extends Controller {
 
     public function __construct() {
@@ -35,6 +35,12 @@ class OrderController extends Controller {
     public function viewOrder(Request $request, $id) {
 
         $objOrder = new OrderInfo();
+        $orderstatus = $objOrder->updateStatus($id);
+        $resultArr = $objOrder->newOrderCount('new');
+        if($orderstatus){
+            Session::put('ordercount', $resultArr);
+        }
+        
         $data['arrOrder'] = $objOrder->getOrderInfo($id);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();

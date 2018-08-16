@@ -15,3 +15,9 @@ ALTER TABLE `op_customers` CHANGE `customer_number` `customer_number` VARCHAR(12
 
 **************** 15-08-2018 **********************
 ALTER TABLE `addressbook` ADD `gender` ENUM('M','F') NOT NULL DEFAULT 'M' AFTER `company`, ADD `mobile` INT NULL AFTER `gender`, ADD `telefax` INT NULL AFTER `mobile`, ADD `note` TEXT NULL AFTER `telefax`;
+
+**************** 16-08-2018 **********************
+ALTER TABLE `order_info` ADD `status` ENUM('new','viewed') NOT NULL DEFAULT 'new' AFTER `aggrement`; 
+
+
+

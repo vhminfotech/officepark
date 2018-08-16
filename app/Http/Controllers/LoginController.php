@@ -94,9 +94,11 @@ class LoginController extends Controller {
                     'email' => Auth::guard('admin')->user()->email,
                     'type' => Auth::guard('admin')->user()->type,
                     'id' => Auth::guard('admin')->user()->id,
-                    'ordercount'=> $resultArr
                 );
                 Session::push('logindata', $loginData);
+                
+                Session::put('ordercount', $resultArr);
+                
                 // $return['status'] = 'success';
                 // $return['message'] = 'Admin Login successfully.';
                 // $return['redirect'] =   route('admin-dashboard');
