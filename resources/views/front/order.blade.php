@@ -123,7 +123,7 @@
                                                     <div class="portlet light bordered">
                                                         <div class="portlet-title">
                                                             <div class="caption">
-                                                                <span class="caption-subject font-dark-sharp bold uppercase">YOUR COMPANY DATA</span>
+                                                                <span class="caption-subject font-dark-sharp bold uppercase" style="margin-bottom: 10px;display: block;">YOUR COMPANY DATA</span>
                                                                 <p>Please enter your data correctly as follows:</p>
                                                             </div>
 
@@ -138,7 +138,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>What is your company doing?</label>
-                                                                    {{ Form::text('company_info', null, array('class' => 'form-control', 'placeholder' => "Company Info", 'required')) }}
+                                                                    {{ Form::textarea('company_info', null, array('class' => 'form-control', 'placeholder' => "Company Info", 'required')) }}
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -183,7 +183,7 @@
                                                     <div class="portlet light bordered">
                                                         <div class="portlet-title">
                                                             <div class="caption">
-                                                                <span class="caption-subject font-dark-sharp bold uppercase">PAYMENT DATA</span>
+                                                                <span class="caption-subject font-dark-sharp bold uppercase" style="margin-bottom: 10px;display: block;">PAYMENT DATA</span>
                                                                 <p>Please enter your data correctly as follows:</p>
                                                             </div>
                                                         </div>
