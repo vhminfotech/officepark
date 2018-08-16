@@ -30,6 +30,114 @@ var Order = function() {
         $('body').on('click', '.submit1', function() {
 
         });
+
+        $("#companyInfo").validate({
+            rules: {
+                company_name: {required: true},
+                company_type: {required: true},
+                company_info: {required: true},
+            },
+            messages: {},
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                var company_name = $('.company_name').val();
+                var token = $('._token').val();
+                var data = {
+                    company_name: $('.company_name').val(),
+                    company_type: $('.company_type').val(),
+                    company_info: $('.company_info').val(),
+                    orderId: $('.orderId').val(),
+                    _token: token};
+                var url = baseurl + 'admin/edit-company-info';
+                ajaxcall(url, data, function(output) {
+                    handleAjaxResponse(output);
+                });
+            }
+        });
+        
+        $("#paymentInfo").validate({
+            rules: {
+                account_name: {required: true},
+                account_iban: {required: true},
+                account_bic: {required: true},
+                sepa: {required: true},
+            },
+            messages: {},
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                var company_name = $('.company_name').val();
+                var token = $('._token').val();
+                var data = {
+                    account_name: $('.account_name').val(),
+                    account_iban: $('.account_iban').val(),
+                    account_bic: $('.account_bic').val(),
+                    sepa: $('.sepa').val(),
+                    orderId: $('.orderId').val(),
+                    _token: token};
+                var url = baseurl + 'admin/edit-payment-info';
+                ajaxcall(url, data, function(output) {
+                    handleAjaxResponse(output);
+                });
+            }
+        });
+        
+        $("#secInfo").validate({
+            rules: {
+                phone_to_reroute: {required: true},
+                welcome_note: {required: true},
+                unreach_note: {required: true},
+                forward_message: {required: true},
+            },
+            messages: {},
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                var company_name = $('.company_name').val();
+                var token = $('._token').val();
+                var data = {
+                    phone_to_reroute: $('.phone_to_reroute').val(),
+                    welcome_note: $('.welcome_note').val(),
+                    unreach_note: $('.unreach_note').val(),
+                    forward_message: $('.forward_message').val(),
+                    orderId: $('.orderId').val(),
+                    _token: token};
+                var url = baseurl + 'admin/edit-sec-info';
+                ajaxcall(url, data, function(output) {
+                    handleAjaxResponse(output);
+                });
+            }
+        });
+        $("#customerInfo").validate({
+            rules: {
+                customer_name: {required: true},
+                date_of_birth: {required: true},
+                gender: {required: true},
+                email: {required: true,email:true},
+                address: {required: true},
+                postal_code: {required: true},
+            },
+            messages: {},
+            errorPlacement: function(error, element) {
+            },
+            submitHandler: function(form) {
+                var token = $('._token').val();
+                var data = {
+                    date_of_birth: $('.date_of_birth').val(),
+                    customer_name: $('.customer_name').val(),
+                    gender: $('.gender').val(),
+                    email: $('.email').val(),
+                    address: $('.address').val(),
+                    postal_code: $('.postal_code').val(),
+                    orderId: $('.orderId').val(),
+                    _token: token};
+                var url = baseurl + 'admin/edit-customer-info';
+                ajaxcall(url, data, function(output) {
+                    handleAjaxResponse(output);
+                });
+            }
+        });
     };
 
     return{

@@ -27,7 +27,7 @@ class OrderInfo extends Model {
 //        $objInfo->company_info = $dataArr['company_info'];
         $objInfo->gender = $dataArr['gender'];
         $objInfo->fullname = $dataArr['fullname'];
-        $objInfo->date_of_birth = date('Y-m-d',  strtotime($dataArr['date_of_birth']));
+        $objInfo->date_of_birth = date('Y-m-d', strtotime($dataArr['date_of_birth']));
 //        $objInfo->date_of_birth = '1992-12-27';
         $objInfo->address = $dataArr['address'];
         $objInfo->postal_code = $dataArr['postal_code'];
@@ -62,7 +62,7 @@ class OrderInfo extends Model {
         $objInfo->company_info = $dataArr['company_info'];
         $objInfo->gender = $dataArr['gender'];
         $objInfo->fullname = $dataArr['fullname'];
-        $objInfo->date_of_birth = $dataArr['date_of_birth'];
+        $objInfo->date_of_birth = date('Y-m-d', strtotime($dataArr['date_of_birth']));
         $objInfo->address = $dataArr['address'];
         $objInfo->postal_code = $dataArr['postal_code'];
         $objInfo->phone = $dataArr['phone'];
@@ -88,6 +88,54 @@ class OrderInfo extends Model {
 
     public function getOrderInfo($orderId) {
         return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
+    }
+
+    public function editCompanyInfo($request) {
+//        echo 'hii';exit;
+//        print_r($request->input('orderId'));exit;
+//        exit;
+        $objInfoEdit = OrderInfo::find($request->input('orderId'));
+        $objInfoEdit->company_name = $request->input('company_name');
+        $objInfoEdit->company_type = $request->input('company_type');
+        $objInfoEdit->company_info = $request->input('company_info');
+        if ($objInfoEdit->save()) {
+            return TRUE;
+        }
+    }
+
+    public function paymentEditInfo($request) {
+        $objPaymntEdit = OrderInfo::find($request->input('orderId'));
+        $objPaymntEdit->account_name = ($request->input('accept') != 'uber') ? $request->input('account_name') : '';
+        $objPaymntEdit->account_iban = ($request->input('accept') != 'uber') ? $request->input('account_iban') : '';
+        $objPaymntEdit->account_bic = ($request->input('accept') != 'uber') ? $request->input('account_bic') : '';
+        $objPaymntEdit->accept = $request->input('sepa');
+        if ($objPaymntEdit->save()) {
+            return TRUE;
+        }
+    }
+
+    public function secretaryEditInfo($request) {
+        $objSecEdit = OrderInfo::find($request->input('orderId'));
+        $objSecEdit->phone_to_reroute = $request->input('phone_to_reroute');
+        $objSecEdit->welcome_note = $request->input('welcome_note');
+        $objSecEdit->unreach_note = $request->input('unreach_note');
+//        $objSecEdit->info_type = $request->input('info_type');
+        if ($objSecEdit->save()) {
+            return TRUE;
+        }
+    }
+
+    public function customerEditInfo($request) {
+        $objCusEdit = OrderInfo::find($request->input('orderId'));
+        $objCusEdit->gender = $request->input('gender');
+        $objCusEdit->fullname = $request->input('customer_name');
+        $objCusEdit->date_of_birth = date('Y-m-d',  strtotime($request->input('date_of_birth')));
+        $objCusEdit->address = $request->input('address');
+        $objCusEdit->postal_code = $request->input('postal_code');
+        $objCusEdit->email = $request->input('email');
+        if ($objCusEdit->save()) {
+            return TRUE;
+        }
     }
 
 }
