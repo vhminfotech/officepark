@@ -86,7 +86,7 @@
                                                                 {{ Form::text('center_to_customer_route', null, array('class' => 'form-control', 'placeholder' => 'Your phone number', 'required')) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>If you are not available, what message should we tell your caller?</label>
+                                                                <label>if they are not reachable, we should inform the caller of the soft message.</label>
                                                                 <select name="unreach_note"  required="required" class="form-control">
                                                                     @foreach ($unreach_note as $indexkey=>$val)
                                                                     <option value="{{$indexkey}}">{{$val}}</option>

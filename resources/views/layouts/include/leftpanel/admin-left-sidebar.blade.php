@@ -48,7 +48,7 @@ $currentRoute = Route::current()->getName();
                 <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('order-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall"></i>
                     {{ trans('words.Order') }}     &nbsp;
-                    <span class="badge red info">55{{ Session::get('ordercount')}} </span>
+                    <span class="badge red info">{{ Session::get('ordercount')}} </span>
                     
                 </a>
             </li>
