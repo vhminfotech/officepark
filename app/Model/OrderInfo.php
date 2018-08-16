@@ -141,5 +141,14 @@ class OrderInfo extends Model {
     public function newOrderCount($statusValue){
         return OrderInfo::Where('status', $statusValue)->count();
     }
+    
+    public function updateStatus($id) {
+        $objCusEdit = OrderInfo::find($id);
+        $objCusEdit->status = 'viewed';
+        
+        if ($objCusEdit->save()) {
+            return TRUE;
+        }
+    }
 
 }
