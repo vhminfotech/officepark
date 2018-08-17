@@ -131,10 +131,10 @@ class Users extends Model {
     }
 
     function userDelete($request) {
-        $delete = UserHasPermission::where('user_id', $request->input('id'))->delete();
-        if ($delete) {
-            return Users::where('id', $request->input('id'))->delete();
-        }
+         
+        UserHasPermission::where('user_id', $request->input('id'))->delete();
+        return Users::where('id', $request->input('id'))->delete();
+        
     }
 
     public function createCustomer($postData) {
