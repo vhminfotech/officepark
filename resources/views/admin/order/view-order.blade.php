@@ -52,7 +52,7 @@
                                 <td class="c-table__cell">Customer Name</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ $arrOrder[0]->fullname }}</span>
-                                    <span class="u-text-bold data1" style="display: none;"><input class="form-control customer_name" value="{{ $arrOrder[0]->fullname }}" id="customer_name" name='customer_name'></span>
+                                    <span class="u-text-bold data1" style="display: none;"><input class="c-input customer_name" value="{{ $arrOrder[0]->fullname }}" id="customer_name" name='customer_name'></span>
                                 </td>
                             </tr>
 
@@ -75,7 +75,7 @@
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ ($arrOrder[0]->gender == 'M' ? 'Sir' : 'Mrs') }}</span>
                                     <span class="u-text-bold data1" style="display: none;">
-                                        <select name="gender" required="required" id="gender" class="form-control gender">
+                                        <select name="gender" required="required" id="gender" class="c-input gender">
                                             @foreach ($gender as $indexkey=>$val)
                                             <option value="{{$indexkey}}">{{$val}}</option>
                                             @endforeach
@@ -88,21 +88,21 @@
                                 <td class="c-table__cell">Email</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ $arrOrder[0]->email }}</span>
-                                    <span class="u-text-bold data1" style="display: none;"><input class="form-control email" value="{{ $arrOrder[0]->email }}" id="email" name='email'></span>
+                                    <span class="u-text-bold data1" style="display: none;"><input class="c-input email" value="{{ $arrOrder[0]->email }}" id="email" name='email'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
                                 <td class="c-table__cell">Address</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1">{{ $arrOrder[0]->address }}</span>
-                                    <span class="u-text-bold data1" style="display: none;"><input class="form-control address" value="{{ $arrOrder[0]->address }}" id="address" name='address'></span>
+                                    <span class="u-text-bold data1" style="display: none;"><input class="c-input address" value="{{ $arrOrder[0]->address }}" id="address" name='address'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
                                 <td class="c-table__cell">PostCode</td>
                                 <td class="c-table__cell">
                                     <span class="u-text-bold html1">{{ $arrOrder[0]->postal_code }}</span>
-                                    <span class="u-text-bold data1"  style="display: none;"><input class="form-control postal_code" value="{{ $arrOrder[0]->postal_code }}" id="postal_code" name='postal_code'></span>
+                                    <span class="u-text-bold data1"  style="display: none;"><input class="c-input postal_code" value="{{ $arrOrder[0]->postal_code }}" id="postal_code" name='postal_code'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row data1" style="display: none;">
@@ -123,7 +123,7 @@
             </div>
         </div>
     </div><!-- // .row -->
-    <input class="form-control orderId" value="{{ $arrOrder[0]->id }}" id="orderId" type="hidden" name='orderId'>
+    <input class="c-input orderId" value="{{ $arrOrder[0]->id }}" id="orderId" type="hidden" name='orderId'>
     <input class="c-input _token" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
     <div class="row">
         <div class="col-lg-4">
@@ -139,14 +139,14 @@
                                 <td class="c-table__cell">Company Name:</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html2">{{ $arrOrder[0]->company_name }}</span>
-                                    <span class="u-text-bold data2"  style="display: none;"><input class="form-control company_name" value="{{ $arrOrder[0]->company_name }}" id="company_name" name='company_name'></span>
+                                    <span class="u-text-bold data2"  style="display: none;"><input class="c-input company_name" value="{{ $arrOrder[0]->company_name }}" id="company_name" name='company_name'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
                                 <td class="c-table__cell">Company Title:</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html2">{{ $arrOrder[0]->company_type }}</span>
-                                    <span class="u-text-bold data2"  style="display: none;"><input class="form-control company_type" value="{{ $arrOrder[0]->company_type }}" id="company_type" name='company_type'></span>
+                                    <span class="u-text-bold data2"  style="display: none;"><input class="c-input company_type" value="{{ $arrOrder[0]->company_type }}" id="company_type" name='company_type'></span>
                                 </td>
                             </tr>
 
@@ -154,7 +154,7 @@
                                 <td class="c-table__cell">Company Info:</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html2">{{ $arrOrder[0]->company_info }}</span>
-                                    <span class="u-text-bold data2"  style="display: none;"><input class="form-control company_info" value="{{ $arrOrder[0]->company_info }}" id="company_info" name='company_info'></span>
+                                    <span class="u-text-bold data2"  style="display: none;"><input class="c-input company_info" value="{{ $arrOrder[0]->company_info }}" id="company_info" name='company_info'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row data2" style="display: none;">
@@ -188,7 +188,7 @@
                                 <td class="c-table__cell">Account Owner:</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html3">{{ $arrOrder[0]->account_name }}</span>
-                                    <span class="u-text-bold data3"  style="display: none;"><input class="form-control account_name" value="{{ $arrOrder[0]->account_name }}" id="account_name" name='account_name'></span>
+                                    <span class="u-text-bold data3"  style="display: none;"><input class="c-input account_name" value="{{ $arrOrder[0]->account_name }}" id="account_name" name='account_name'></span>
                                 </td>
                             </tr>
 
@@ -196,7 +196,7 @@
                                 <td class="c-table__cell">IBAN:</td>
                                 <td class="c-table__cell">
                                     <span class="u-text-bold html3">{{ $arrOrder[0]->account_iban }}</span>
-                                    <input style="display: none;" class="form-control data3 account_iban" value="{{ $arrOrder[0]->account_iban }}" id="account_iban" name='account_iban'>
+                                    <input style="display: none;" class="c-input data3 account_iban" value="{{ $arrOrder[0]->account_iban }}" id="account_iban" name='account_iban'>
                                 </td>
                             </tr>
 
@@ -204,14 +204,14 @@
                                 <td class="c-table__cell">BIC:</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html3">{{ $arrOrder[0]->account_bic }}</span>
-                                    <input  style="display: none;" class="form-control data3 account_bic" value="{{ $arrOrder[0]->account_bic }}" id="account_bic" name='account_bic'>
+                                    <input  style="display: none;" class="c-input data3 account_bic" value="{{ $arrOrder[0]->account_bic }}" id="account_bic" name='account_bic'>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
                                 <td class="c-table__cell">SEPA:</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html3">{{ $arrOrder[0]->accept }}</span>
-                                    <input  style="display: none;" class="form-control data3 sepa" value="{{ $arrOrder[0]->accept }}" id="sepa" name='sepa'>
+                                    <input  style="display: none;" class="c-input data3 sepa" value="{{ $arrOrder[0]->accept }}" id="sepa" name='sepa'>
                                 </td>
                             </tr>
                             <tr class="c-table__row data3" style="display: none;">
@@ -245,7 +245,7 @@
                                 <td class="c-table__cell">Phone to Redirect</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $arrOrder[0]->phone_to_reroute }}</span>
-                                    <input  style="display: none;" class="form-control data4 phone_to_reroute" value="{{ $arrOrder[0]->phone_to_reroute }}" id="phone_to_reroute" name='phone_to_reroute'>
+                                    <input  style="display: none;" class="c-input data4 phone_to_reroute" value="{{ $arrOrder[0]->phone_to_reroute }}" id="phone_to_reroute" name='phone_to_reroute'>
                                 </td>
                             </tr>
 
@@ -253,8 +253,8 @@
                                 <td class="c-table__cell">Welcome Message</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $welcome_note[$arrOrder[0]->welcome_note] }}</span>
-                                    <!--<input  style="display: none;" class="form-control data4 welcome_note" value="{{ $arrOrder[0]->welcome_note }}" id="welcome_note" name='welcome_note'>-->
-                                    <select name="welcome_note" style="display: none;" required="required" class="form-control data4 welcome_note">
+                                    <!--<input  style="display: none;" class="c-input data4 welcome_note" value="{{ $arrOrder[0]->welcome_note }}" id="welcome_note" name='welcome_note'>-->
+                                    <select name="welcome_note" style="display: none;" required="required" class="c-input data4 welcome_note">
                                         @foreach ($welcome_note as $indexkey=>$val)
                                         <option value="{{$indexkey}}">{{$val}}</option>
                                         @endforeach
@@ -266,19 +266,19 @@
                                 <td class="c-table__cell">Unavailable Message</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $unreach_note[$arrOrder[0]->unreach_note] }}</span>
-                                    <select name="unreach_note" style="display: none;" required="required" class="form-control data4 unreach_note">
+                                    <select name="unreach_note" style="display: none;" required="required" class="c-input data4 unreach_note">
                                         @foreach ($unreach_note as $indexkey=>$val)
                                         <option value="{{$indexkey}}">{{$val}}</option>
                                         @endforeach
                                     </select>
-        <!--<input style="display: none;" class="form-control data4 unreach_note" value="{{ $arrOrder[0]->unreach_note }}" id="unreach_note" name='unreach_note'>-->
+        <!--<input style="display: none;" class="c-input data4 unreach_note" value="{{ $arrOrder[0]->unreach_note }}" id="unreach_note" name='unreach_note'>-->
                                 </td>
                             </tr>
                             <tr class="c-table__row">
                                 <td class="c-table__cell">Forward Message</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $arrOrder[0]->unreach_note }}</span>
-                                    <input  style="display: none;" class="form-control data4 forward_message" value="{{ $arrOrder[0]->unreach_note }}" id="forward_message" name='forward_message'>
+                                    <input  style="display: none;" class="c-input data4 forward_message" value="{{ $arrOrder[0]->unreach_note }}" id="forward_message" name='forward_message'>
                                 </td>
                             </tr>
                             <tr class="c-table__row data4" style="display: none;">

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
 use App\Model\UserHasPermission;
+use App\Model\Sendmail;
+use PDF;
 
 class Users extends Model {
 
@@ -151,8 +153,29 @@ class Users extends Model {
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $objUser->save();
+            
+            
+            $data['id'] = $postData['fullname'];
+            $pdf = PDF::loadView('admin.invoice-pdf', $data);
+            $pdf->save(public_path('pdf/some-filename.pdf'));
+        
+            $mailData['subject'] = 'Interest in wanted listing';
+            $mailData['template'] = 'emails.confirm-order';
+            $mailData['attachment'] = public_path('pdf/some-filename.pdf');
+         
+            $mailData['mailto'] = $postData['email'];
+
+            $sendMail = new Sendmail;
+            
+            
+            $mailData['data']['interUser'] = 'fff';
+            
+            $sendMail->sendSMTPMail($mailData);
+            
             return TRUE;
+            
         } else {
+            
             return false;
         }
     }
