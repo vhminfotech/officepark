@@ -32,22 +32,15 @@ class Sendmail extends Model {
 //      catch(\Exception $e) {
 //        return true;
 //      }
-      // $pathToFile = $mailData['attachment'];
-       // the message
-        $msg = "First line of text\nSecond line of text";
-
-        // use wordwrap() if lines are longer than 70 characters
-        $msg = wordwrap($msg,70);
-
-        // send email
-        mail("kartikdesai123@gmail.com","My subject",$msg);
-       $mailsend = Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData) {
+       $pathToFile = $mailData['attachment'];
+      
+       $mailsend = Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
             $m->from('kartikdesai123@gmail.com', 'Office Park');
 
             $m->to($mailData['mailto'], "Office Park")->subject($mailData['subject']);
-//            if($pathToFile != ""){
-//                $m->attach($pathToFile);
-//            }
+            if($pathToFile != ""){
+                $m->attach($pathToFile);
+            }
             
            //  $m->cc($mailData['bcc']);
         });
