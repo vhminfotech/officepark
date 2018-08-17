@@ -131,10 +131,9 @@ class Users extends Model {
     }
 
     function userDelete($request) {
-         
+
         UserHasPermission::where('user_id', $request->input('id'))->delete();
         return Users::where('id', $request->input('id'))->delete();
-        
     }
 
     public function createCustomer($postData) {
@@ -153,30 +152,46 @@ class Users extends Model {
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $objUser->save();
-            
+
 //            chmod(public_path('pdf/some-filename.pdf'), 0777);
 //            $data['id'] = $postData['fullname'];
 //            $pdf = PDF::loadView('admin.invoice-pdf', $data);
 //            $pdf->save(public_path('pdf/some-filename.pdf'));
-        
+
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
-           // $mailData['attachment'] = public_path('pdf/some-filename.pdf');
-         
+            // $mailData['attachment'] = public_path('pdf/some-filename.pdf');
+
             $mailData['mailto'] = $postData['email'];
 
             $sendMail = new Sendmail;
-            
-            
+
+
             $mailData['data']['interUser'] = 'fff';
-            
+
             $sendMail->sendSMTPMail($mailData);
-            
+
             return TRUE;
-            
         } else {
-            
+
             return false;
+        }
+    }
+
+    public function saveEditUserInfo($request) {
+        $userId = $request->input('id');
+        $objUser = Users::find($userId);
+        $objUser->name = $request->input('name');
+        $objUser->inopla_username = $request->input('inopla_username');
+        $objUser->email = $request->input('email');
+        $objUser->extension_number = $request->input('extension_number');
+        $objUser->type = $request->input('type');
+        $objUser->extension_number = $request->input('extension_number');
+
+        if ($objUser->save()) {
+            return TRUE;
+        } else {
+            return FALSE;
         }
     }
 

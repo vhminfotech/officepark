@@ -25,6 +25,7 @@
             <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
                 <!--<a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>-->
                 <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">{{ trans('words.Logout') }}</a>
+                <a class="c-dropdown__item dropdown-item" href="{{ route('update-profile') }}">Edit info</a>
 <!--                <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>-->
             </div>
         </div>
