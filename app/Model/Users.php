@@ -158,6 +158,9 @@ class Users extends Model {
             $pdf = PDF::loadView('admin.invoice-pdf', $data);
             $pdf->save(public_path('pdf/some-filename.pdf'));
 
+            $pdf = PDF::loadView('admin.invoice-pdf1', $data);
+            $pdf->save(public_path('pdf/some-filename1.pdf'));
+            
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
              $mailData['attachment'] = array(public_path('pdf/some-filename.pdf'),public_path('pdf/some-filename1.pdf'));
