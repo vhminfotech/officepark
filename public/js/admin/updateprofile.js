@@ -16,18 +16,17 @@ var Updateprofile = function () {
     };
     var handleDivision = function () {
         $('.c-tabs__link').click(function () {
-            if ($('.c-tabs__link').hasClass("userdetail")) {
-
-                $('.changepassworddiv').hide();
-                $('.userdetaildiv').show();
-            } else {
-                $('.changepassworddiv').show();
-                $('.userdetaildiv').hide();
-
-            }
+            var status = $(this).attr('data-id');
+                  if(status == '1'){
+                      $(".userdetaildiv").show();
+                      $(".changepassworddiv").hide();
+                  }else{
+                      $(".userdetaildiv").hide();
+                      $(".changepassworddiv").show();
+                  }
         });
     };
-
+    
 
     return{
 
