@@ -21,6 +21,7 @@
                                                 <img class="c-avatar__img" src="{{ url('img/avatar-200.jpg') }}" alt="Avatar">
                                             </div>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" class="isDiv" name="isDiv" value="">
                                             <input type="hidden" name="id" value="{{ $detail['id'] }}"  class="form-control">
 
                                             <a class="u-block u-color-primary" href="#">Edit Avatar</a>
@@ -44,41 +45,27 @@
                                                 <label class="c-field__label" for="extension_number">Extension number</label>
                                                 <input class="c-input" id="companyName"  value="{{ $detail['extension_number'] }}" name="extension_number"  type="text">
                                             </div>
-                                            <!--                                            <div class="c-field u-mb-small">
-                                                                                            <label class="c-field__label"  for="type">Type</label>
-                                            <?php $selectedVal = $detail['type']; ?>
-                                                                                            <select class="c-select" id="type" name="type">
-                                                                                                <option value="ADMIN" @if($detail['type'] == 'ADMIN') {{ 'selected' }} @endif>ADMIN</option>
-                                                                                                <option value="CUSTOMER" @if($detail['type'] == 'CUSTOMER') {{ 'selected'  }} {{'disabled'}} @endif>CUSTOMER</option>
-                                                                                                <option value="AGENT" @if($detail['type'] == 'AGENT') {{ 'selected' }} @endif>AGENT</option>
-                                                                                                <option value="USER" @if($detail['type'] == 'USER') {{ 'selected' }} @endif>USER</option>
-                                                                                            </select>
-                                                                                        </div>-->
                                         </div>
                                     </div>
                                     <div class="row changepassworddiv" style="display: none;" >
-                                        <input type="hidden" name="id" value="{{ $detail['id'] }}"  class="form-control">
                                         <div class="col-lg-2 u-text-center">
                                             <div class="c-avatar c-avatar--xlarge u-inline-block">
                                                 <img class="c-avatar__img" src="{{ url('img/avatar-200.jpg') }}" alt="Avatar">
                                             </div>
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="hidden" name="id" value="{{ $detail['id'] }}"  class="form-control">
-
                                             <a class="u-block u-color-primary" href="#">Edit Avatar</a>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="oldpassword">Old Password</label> 
-                                                <input class="c-input" id="oldpassword"  name="oldpassword"  type="text"> 
+                                                <input class="c-input" id="oldpassword"  name="oldpassword"  type="password"> 
                                             </div>
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="newpassword">New Password</label> 
-                                                <input class="c-input" id="newpassword"  name="newpassword"  type="text"> 
+                                                <input class="c-input" id="newpassword"  name="newpassword"  type="password"> 
                                             </div>
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="confirmpassword">Confirm Password</label>
-                                                <input class="c-input" id="confirmpassword"  name="confirmpassword"  type="email">
+                                                <input class="c-input" id="confirmpassword"  name="confirmpassword"  type="password">
                                             </div>
                                         </div>
                                     </div>

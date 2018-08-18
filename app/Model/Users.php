@@ -185,7 +185,7 @@ class Users extends Model {
         $objUser->inopla_username = $request->input('inopla_username');
         $objUser->email = $request->input('email');
         $objUser->extension_number = $request->input('extension_number');
-        $objUser->type = $request->input('type');
+        //$objUser->type = $request->input('type');
         $objUser->extension_number = $request->input('extension_number');
 
         if ($objUser->save()) {
@@ -194,5 +194,9 @@ class Users extends Model {
             return FALSE;
         }
     }
+    public function saveEditUserPassword($id,$password){
+         return Users::where('id', '=', $id)->update(['password' => Hash::make($newpassword)]);
+    }
+    
 
 }
