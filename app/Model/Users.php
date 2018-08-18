@@ -191,11 +191,12 @@ class Users extends Model {
         if ($objUser->save()) {
             return TRUE;
         } else {
+            
             return FALSE;
         }
     }
     public function saveEditUserPassword($id,$password){
-         return Users::where('id', '=', $id)->update(['password' => Hash::make($newpassword)]);
+         return Users::where('id', '=', $id)->update(['password' => Hash::make($password)]);
     }
     
 
