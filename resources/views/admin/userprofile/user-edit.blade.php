@@ -9,13 +9,13 @@
                     <div class="c-tabs">
 
                         <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
-                            <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Update Profile</a></li>
-                            <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Change Password</a></li>
+                            <li class="c-tabs__item userdetail"><a class="c-tabs__link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Update Profile</a></li>
+                            <li class="c-tabs__item changepassword"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Change Password</a></li>
                         </ul>
                         <div class="c-tabs__content tab-content" id="nav-tabContent">
                             <form name="editUser" id="editUser" action="{{ route('update-profile') }}" method="post">
-                                <div class="c-tabs__pane active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div class="row">
+                                <div class="c-tabs__pane active show " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <div class="row userdetaildiv">
                                         <div class="col-lg-2 u-text-center">
                                             <div class="c-avatar c-avatar--xlarge u-inline-block">
                                                 <img class="c-avatar__img" src="{{ url('img/avatar-200.jpg') }}" alt="Avatar">
@@ -53,6 +53,24 @@
                                                     <option value="AGENT" @if($detail['type'] == 'AGENT') {{ 'selected' }} @endif>AGENT</option>
                                                     <option value="USER" @if($detail['type'] == 'USER') {{ 'selected' }} @endif>USER</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row changepassworddiv" style="display: none;">
+                                        <input type="hidden" name="id" value="{{ $detail['id'] }}"  class="form-control">
+
+                                        <div class="col-lg-5">
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="oldpassword">Old Password</label> 
+                                                <input class="c-input" id="oldpassword"  name="oldpassword"  type="text"> 
+                                            </div>
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="newpassword">New Password</label> 
+                                                <input class="c-input" id="newpassword"  name="newpassword"  type="text"> 
+                                            </div>
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="confirmpassword">Confirm Password</label>
+                                                <input class="c-input" id="confirmpassword"  name="confirmpassword"  type="email">
                                             </div>
                                         </div>
                                     </div>
