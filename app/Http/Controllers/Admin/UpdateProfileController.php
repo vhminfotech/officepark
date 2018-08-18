@@ -47,7 +47,7 @@ class UpdateProfileController extends Controller {
                 exit;
             } else {
                 
-                $user = Auth::user();
+                $user  = Auth()->guard('admin')->user();
                   
                 //$data = Auth::user()->password;
                 print_r($user); exit;

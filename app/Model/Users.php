@@ -160,7 +160,7 @@ class Users extends Model {
 
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
-             $mailData['attachment'] = public_path('pdf/some-filename.pdf');
+             $mailData['attachment'] = array(public_path('pdf/some-filename.pdf'),public_path('pdf/some-filename1.pdf'));
 
             $mailData['mailto'] = $postData['email'];
 

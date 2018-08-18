@@ -20,8 +20,12 @@ class Sendmail extends Model {
             $m->from('kartikdesai123@gmail.com', 'Office Park');
 
             $m->to($mailData['mailto'], "Office Park")->subject($mailData['subject']);
-            if($pathToFile != ""){
-                $m->attach($pathToFile);
+//            print_r($pathToFile);
+            if(!empty($pathToFile)){
+                for($i=0;$i<count($pathToFile);$i++){
+                    $m->attach($pathToFile[$i]);
+                }
+                
             }
             
            //  $m->cc($mailData['bcc']);
