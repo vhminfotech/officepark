@@ -1,6 +1,12 @@
 @php
 $currentRoute = Route::current()->getName();
 @endphp
+<style type="text/css">
+    .language-selection.active a img{
+        border: 1px solid;
+        padding: 3px;
+    }
+</style>
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
@@ -41,26 +47,35 @@ $currentRoute = Route::current()->getName();
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('order-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall"></i>
-                    {{ trans('words.Order') }}
+                    {{ trans('words.Order') }}     &nbsp;
+                    <span class="c-badge c-badge--success c-badge--xsmall u-ml-xsmall">{{ Session::get('ordercount')}} </span>
+                    
                 </a>
             </li>
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>
+            <li class="c-sidebar__item" style="position: absolute; bottom: 0px; margin-bottom: 20px; padding-left: 35px;">
+                <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) == 'gr' ? 'active' : '') }}" style="display: inline;">
+                    <a href="javascript:;" class="language" data-lang="gr">
+                        <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo"  style='height : 22px;'>
+                    </a>
+                </div>
+                <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'tr' ? 'active' : '') }}" style="display: inline;">
+                    <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
+                        <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo"  style='height : 22px;'>
+                    </a>
+                </div>
+                <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'en' ? 'active' : (!isset($_COOKIE['language']))?'active':'')  }} " style="display: inline;">
+                    <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
+                        <img class="" src="{{ asset('img/flag/english.png') }}" alt="English-Logo"  style='height : 22px;'>
+                    </a>
+                </div>
         </ul>
         
-        <ul class="c-sidebar__list">
-            <li class="c-sidebar__item" style="padding-left: 35px;">
-                <a href="javascript:;" class="language" data-lang="gr">
-                    <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo" width="50px">
-                </a>
-                <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
-                    <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo" width="50px">
-                </a>
-                <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
-                    <img class="" src="{{ asset('img/flag/english.jpg') }}" alt="English-Logo" width="50px">
-                </a>
-            </li>
-        </ul>
+        
+<!--        <ul class="c-sidebar__list">
+            
+        </ul>-->
     </div>
 </div>

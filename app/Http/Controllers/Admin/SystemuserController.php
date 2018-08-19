@@ -44,6 +44,8 @@ class SystemuserController extends Controller {
         //Or use the facade:
         $data['id'] = $id;
         $pdf = PDF::loadView('admin.invoice-pdf', $data);
+//        $pdf->save(public_path('pdf/some-filename.pdf'));
+//        return '';
         return $pdf->download('invoice.pdf');
 
     }

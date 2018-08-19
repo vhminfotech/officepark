@@ -30,32 +30,29 @@ class OrderController extends Controller {
         if ($request->isMethod('post')) {
             
             $dataArr = $request->input();
-//            echo "<hr>";print_r($dataArr);exit;
             
-            $validator = Validator::make($request->all(), [
-                        //'is_package'                   => 'required',
-                        'phone_to_reroute'          => 'required',
-                        'welcome_note'              => 'required',
-                        'reroute_confirm'           => 'required',
-                        'center_to_customer_route'  => 'required',
-                        'unreach_note'              => 'required',
-                        'info_type'                 => 'required',
-                        'company_name'              => 'required',
-                        'company_type'              => 'required',
-//                        'company_info'              => 'required',
-                        'gender'                    => 'required',
-                        'fullname'                  => 'required',
-                        'date_of_birth'             => 'required',
-                        'address'                   => 'required',
-                        'postal_code'               => 'required',
-                        'phone'                     => 'required',
-                        'email'                     => 'required|email',
-                        'account_name'              => 'required',
-                        'account_iban'              => 'required',
-                        'account_bic'               => 'required',
-                        'accept'                    => 'required',
-                        'aggrement'                 => 'required'
-            ]);
+            if($dataArr['accept'] == 'uber'){
+                $array = [
+                          'phone_to_reroute' => 'required','welcome_note' => 'required','reroute_confirm'=> 'required',
+                          'center_to_customer_route'  => 'required','unreach_note' => 'required','info_type' => 'required',
+                          'company_name'=> 'required','company_type'=> 'required','gender'=> 'required',
+                          'fullname'=> 'required','date_of_birth'=> 'required','address' => 'required',
+                          'postal_code'=> 'required','phone'=> 'required','email'=> 'required|email',
+                          'accept' => 'required','aggrement' => 'required'
+                        ];
+            }else{
+                $array = [
+                          'phone_to_reroute' => 'required','welcome_note' => 'required','reroute_confirm'=> 'required',
+                          'center_to_customer_route'  => 'required','unreach_note' => 'required','info_type' => 'required',
+                          'company_name'=> 'required','company_type'=> 'required','gender'=> 'required',
+                          'fullname'=> 'required','date_of_birth'=> 'required','address' => 'required',
+                          'postal_code'=> 'required','phone'=> 'required','email'=> 'required|email',
+                          'account_name'=> 'required','account_iban'=> 'required','account_bic' => 'required',
+                          'accept' => 'required','aggrement' => 'required'
+                        ];
+            }
+            
+            $validator = Validator::make($request->all(), $array);
 
             if ($validator->fails()) {
                 return redirect(route('order'))->withErrors($validator)->withInput();

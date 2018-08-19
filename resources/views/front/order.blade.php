@@ -86,7 +86,7 @@
                                                                 {{ Form::text('center_to_customer_route', null, array('class' => 'form-control', 'placeholder' => 'Your phone number', 'required')) }}
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>If you are not available, what message should we tell your caller?</label>
+                                                                <label>if they are not reachable, we should inform the caller of the soft message.</label>
                                                                 <select name="unreach_note"  required="required" class="form-control">
                                                                     @foreach ($unreach_note as $indexkey=>$val)
                                                                     <option value="{{$indexkey}}">{{$val}}</option>
@@ -123,8 +123,8 @@
                                                     <div class="portlet light bordered">
                                                         <div class="portlet-title">
                                                             <div class="caption">
-                                                                <span class="caption-subject font-dark-sharp bold uppercase">YOUR COMPANY DATA</span>
-                                                                <h5>Please enter your data correctly as follows:</h5>
+                                                                <span class="caption-subject font-dark-sharp bold uppercase" style="margin-bottom: 10px;display: block;">YOUR COMPANY DATA</span>
+                                                                <p>Please enter your data correctly as follows:</p>
                                                             </div>
 
                                                         </div>
@@ -138,6 +138,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>What is your company doing?</label>
+                                                                    {{ Form::textarea('company_info', null, array('class' => 'form-control', 'placeholder' => "Company Info", 'rows'=>'3','required')) }}
                                                                 </div>
 
                                                                 <div class="form-group">
@@ -154,9 +155,9 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="c-field has-addon-left">
-                                                                        <span class="c-field__addon"><i class="fa fa-calendar"></i></span>
+                                                                        <!--<span class="c-field__addon"><i class="fa fa-calendar"></i></span>-->
                                                                         <label class="c-field__label u-hidden-visually" for="input9">Disabled Input</label>
-                                                                        <input class="c-input" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
+                                                                        <input class="c-input form-control" style="border: 1px solid #c2cad8;color:#555;" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
                                                                     </div>
                                                                     <!--{{ Form::text('date_of_birth', null, array('class' => 'form-control dateField', 'placeholder' => 'Date of birth', 'required')) }}-->
                                                                 </div>
@@ -182,20 +183,20 @@
                                                     <div class="portlet light bordered">
                                                         <div class="portlet-title">
                                                             <div class="caption">
-                                                                <span class="caption-subject font-dark-sharp bold uppercase">PAYMENT DATA</span>
-                                                                <h5>Please enter your data correctly as follows:</h5>
+                                                                <span class="caption-subject font-dark-sharp bold uppercase" style="margin-bottom: 10px;display: block;">PAYMENT DATA</span>
+                                                                <p>Please enter your data correctly as follows:</p>
                                                             </div>
                                                         </div>
                                                         <div class="portlet-body form">
-                                                            <div class="form-body">
+                                                            <div class="form-body accountInfo">
                                                                 <div class="form-group">
-                                                                    {{ Form::text('account_name', null, array('class' => 'form-control', 'placeholder' => 'Kontoinhaber', 'required')) }}
+                                                                    {{ Form::text('account_name', null, array('class' => 'form-control', 'placeholder' => 'Kontoinhaber')) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    {{ Form::text('account_iban', null, array('class' => 'form-control', 'placeholder' => 'IBAN', 'required')) }}
+                                                                    {{ Form::text('account_iban', null, array('class' => 'form-control', 'placeholder' => 'IBAN')) }}
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    {{ Form::text('account_bic', null, array('class' => 'form-control', 'placeholder' => 'BIC', 'required')) }}
+                                                                    {{ Form::text('account_bic', null, array('class' => 'form-control', 'placeholder' => 'BIC')) }}
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -222,7 +223,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Sent</button>
+                                                            <button type="submit" class="btn btn-primary">Send</button>
                                                         </div>
                                                     </div>
                                                     <!-- END SAMPLE FORM PORTLET-->

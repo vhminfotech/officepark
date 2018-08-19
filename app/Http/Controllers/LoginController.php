@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Redirect;
+use App\Model\OrderInfo;
 
 class LoginController extends Controller {
 
@@ -85,13 +86,19 @@ class LoginController extends Controller {
                 // $return['redirect'] = route('customer-dashboard');
                 return redirect()->route('customer-dashboard');
             } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
+                $objOrderInfo = new OrderInfo();
+                $resultArr = $objOrderInfo->newOrderCount('new');
+                
                 $loginData = array(
                     'name' => Auth::guard('admin')->user()->name,
                     'email' => Auth::guard('admin')->user()->email,
                     'type' => Auth::guard('admin')->user()->type,
-                    'id' => Auth::guard('admin')->user()->id
+                    'id' => Auth::guard('admin')->user()->id,
                 );
                 Session::push('logindata', $loginData);
+                
+                Session::put('ordercount', $resultArr);
+                
                 // $return['status'] = 'success';
                 // $return['message'] = 'Admin Login successfully.';
                 // $return['redirect'] =   route('admin-dashboard');

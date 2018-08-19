@@ -39,7 +39,7 @@
                             <td class="c-table__cell">{{ date('d-m-Y',strtotime($arrOrder[$i]->date_of_birth)) }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->address }}</td>
                             <td class="c-table__cell">
-                                <a href="{{ route('view-order',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href="{{ route('view-order',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="View Order Details">
                                         <i class="fa fa-eye" ></i></span>
                                 </a>
 <!--                                <a href="javascript:;" class="delete"  data-id="{{ $arrOrder[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
