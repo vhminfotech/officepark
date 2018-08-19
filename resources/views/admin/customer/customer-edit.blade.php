@@ -20,7 +20,7 @@
                         </ul>
 
                         <div class="c-tabs__content tab-content" id="nav-tabContent">
-                            <form name="editCustomer" id="editCustomer" action="{{ route('customer-edit',array('id'=>$arrCustomer['id'])) }}" method="post">
+                            <form name="editCustomer" id="editCustomer" action="{{ route('customer-edit',array('id'=>$arrCustomer['customer_id'])) }}" method="post">
                                 <div class="c-tabs__pane active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <div class="row">
                                         <div class="col-lg-2 u-text-center">
@@ -33,24 +33,19 @@
                                         <div class="col-lg-5">
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="firstName">Customer number</label> 
-                                                <input class="c-input" id="firstName" name="customer_number" value="{{ $arrCustomer['customer_number'] }}" placeholder="CA021" type="text"> 
+                                                <input class="c-input" id="firstName" readonly="readonly" name="customer_number" value="{{ $arrCustomer['customer_number'] }}" placeholder="CA021" type="text"> 
                                             </div>
                                             <div class="c-field u-mb-small">
-                                                <label class="c-field__label" for="lastName">First Name</label> 
-                                                <input class="c-input" id="first_name" name="first_name" value="{{ $arrCustomer['first_name'] }}" placeholder="Clark" type="text"> 
-                                                <input class="c-input" name="custId" value="{{ $arrCustomer['id'] }}" type="hidden"> 
+                                                <label class="c-field__label" for="lastName">Name</label> 
+                                                <input class="c-input" id="first_name" name="first_name" value="{{ $arrCustomer['fullname'] }}" placeholder="Clark" type="text"> 
+                                                <input class="c-input" name="custId" value="{{ $arrCustomer['customer_id'] }}" type="hidden"> 
                                             </div>
-                                            <div class="c-field u-mb-small">
-                                                <label class="c-field__label" for="email">E-mail Address</label>
-                                                <input class="c-input" id="email" name="email" value="{{ $arrCustomer['email'] }}" placeholder="jason@clark.com" type="email">
-                                            </div>
+                                            
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label"  for="select1">Packet</label>
                                                 <select class="c-select" id="select1" name="pacet">
-                                                    <option {{ ($arrCustomer['packet'] == 1 ? 'selected="selected"' : '') }} value="1">First</option>
-                                                    <option {{ ($arrCustomer['packet'] == 2 ? 'selected="selected"' : '') }} value="2">Second</option>
-                                                    <option {{ ($arrCustomer['packet'] == 3 ? 'selected="selected"' : '') }} value="3">Third</option>
-                                                </select>
+                                                    <option {{ ($arrCustomer['is_package'] == 1 ? 'selected="selected"' : '') }} value="1">BUSINESS PACKAGE STANDARD</option>
+                                               </select>
                                             </div>
                                         </div>
 
@@ -59,14 +54,14 @@
                                                 <label class="c-field__label" for="companyName">Company Name</label>
                                                 <input class="c-input" id="companyName" name="company_name" value="{{ $arrCustomer['company_name'] }}" placeholder="Dashboard Ltd." type="text">
                                             </div>
-
                                             <div class="c-field u-mb-small">
-                                                <label class="c-field__label" for="website">Last Name</label>
-                                                <input class="c-input" id="last_name" name="last_name" value="{{ $arrCustomer['last_name'] }}" placeholder="zawiastudio.com" type="text">
-                                            </div>  
+                                                <label class="c-field__label" for="email">E-mail Address</label>
+                                                <input class="c-input" id="email" readonly="readonly" name="email" value="{{ $arrCustomer['email'] }}" placeholder="jason@clark.com" type="email">
+                                            </div>
+                                              
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="website">Telefon</label>
-                                                <input class="c-input" id="telephone" name="telephone" value="{{ $arrCustomer['telephone'] }}" placeholder="zawiastudio.com" type="text">
+                                                <input class="c-input" id="telephone" name="telephone" value="{{ $arrCustomer['phone'] }}" placeholder="zawiastudio.com" type="text">
                                             </div>  
                                         </div>
                                     </div>

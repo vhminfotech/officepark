@@ -65,6 +65,7 @@ class Users extends Model {
     public function getCustomerList($type){
         return Users::select(
                 'users.id as customer_id',
+                'users.customer_number  as customer_number',
                 'order_info.company_name',
                 'order_info.fullname',
                 'users.email',
@@ -159,6 +160,8 @@ class Users extends Model {
         $count = Users::where('email', $postData['email'])->count();
         if ($count == 0) {
             $newpassword = 123;
+            $result = DB::table('customer_no')->where('id',1)->get();
+            
             $newpass = Hash::make($newpassword);
             $objUser = new Users();
             $objUser->name = $postData['fullname'];
@@ -168,10 +171,14 @@ class Users extends Model {
             $objUser->var_language = 'English';
             $objUser->type = 'CUSTOMER';
             $objUser->password = $newpass;
+            $objUser->customer_number = 'OP-211-'.$result[0]->last_number;
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
 
+            DB::table('customer_no')
+            ->where('id', 1)
+            ->update(['last_number' => $result[0]->last_number + 1]);
             
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
@@ -229,6 +236,42 @@ class Users extends Model {
     
     public function getUserByEmail($email){
         return Users::select('users.*')->where('users.email', '=',$email)->get();
+    }
+    
+    public function updateCustomerInfo($request) {
+        $userId = $request->input('custId');
+        $result = Users::where('id','!=', $userId)->where('email', $request->input('email'))->get()->count();
+        $return = '';
+        if ($result == 0) {
+            $objEditUser = Users::find($userId);
+            $objEditUser->name = $request->input('first_name');
+            $objEditUser->save();
+            
+            OrderInfo::where('user_id', $userId)
+            ->update([
+                'company_name' => $request->input('company_name'),
+                'phone' => $request->input('telephone')
+                    ]);
+            
+            $return = TRUE;
+        } else {
+            $return = false;
+        }
+        return $return;
+    }
+    
+    public function getCustomerInfo($id){
+        return Users::select(
+                'users.id as customer_id',
+                'users.customer_number  as customer_number',
+                'order_info.company_name',
+                'order_info.fullname',
+                'users.email',
+                'order_info.phone',
+                'order_info.is_package'
+                )
+                ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                ->where('users.id', '=',$id)->first()->toArray();
     }
 
 }

@@ -34,38 +34,38 @@ class CustomerController extends Controller {
         return view('admin.customer.customer-list', $data);
     }
 
-    public function addCustomer(Request $request) {
-        $data['detail'] = $this->loginUser;
-        if ($request->isMethod('post')) {
-//            print_r($request->input());exit;
-            $objCustomer = new Customer();
-            $customerResult = $objCustomer->saveCustomerInfo($request);
-            if ($customerResult == true) {
-                $return['status'] = 'success';
-                $return['message'] = 'Customer created successfully.';
-                $return['redirect'] = route('customer-list');
-            } else {
+//    public function addCustomer(Request $request) {
+//        $data['detail'] = $this->loginUser;
+//        if ($request->isMethod('post')) {
+////            print_r($request->input());exit;
+//            $objCustomer = new Customer();
+//            $customerResult = $objCustomer->saveCustomerInfo($request);
+//            if ($customerResult == true) {
+//                $return['status'] = 'success';
+//                $return['message'] = 'Customer created successfully.';
+//                $return['redirect'] = route('customer-list');
+//            } else {
+////                $return['status'] = 'error';
+////                $return['message'] = 'something will be wrong.';
 //                $return['status'] = 'error';
-//                $return['message'] = 'something will be wrong.';
-                $return['status'] = 'error';
-                $return['message'] = 'Email already exists.';
-            }
-            echo json_encode($return);
-            exit;
-        }
-
-        $data['css'] = array();
-        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/customer.js');
-        $data['funinit'] = array('Customer.addInit()');
-        return view('admin.customer.customer-add', $data);
-    }
+//                $return['message'] = 'Email already exists.';
+//            }
+//            echo json_encode($return);
+//            exit;
+//        }
+//
+//        $data['css'] = array();
+//        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+//        $data['js'] = array('admin/customer.js');
+//        $data['funinit'] = array('Customer.addInit()');
+//        return view('admin.customer.customer-add', $data);
+//    }
 
     public function editCustomer($customerId, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
 //            print_r($request->input());exit;
-            $objCustomer = new Customer();
+            $objCustomer = new Users();
             $customerResult = $objCustomer->updateCustomerInfo($request);
             if ($customerResult == true) {
                 $return['status'] = 'success';
@@ -79,7 +79,9 @@ class CustomerController extends Controller {
             echo json_encode($return);
             exit;
         }
-        $data['arrCustomer'] = Customer::find($customerId);
+        $objUsers = new Users();
+        $data['arrCustomer'] = $objUsers->getCustomerInfo($customerId);
+//        $data['arrCustomer'] = Users::find($customerId);
 
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');

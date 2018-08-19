@@ -33,7 +33,7 @@
                         @for($i = 0 ;$i < count($arrCustomer);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">CUST -{{  $arrCustomer[$i]->customer_id }}</td>
+                            <td class="c-table__cell">{{  $arrCustomer[$i]->customer_number  }}</td>
                             <td class="c-table__cell">{{ $arrCustomer[$i]->company_name }}</td>
                             <td class="c-table__cell">{{ $arrCustomer[$i]->fullname }}</td>
                             <td class="c-table__cell">{{ $arrCustomer[$i]->email }}</td>
