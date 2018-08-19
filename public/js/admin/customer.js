@@ -16,8 +16,8 @@ var Customer = function() {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Admin/delete-customer",
-//                url: baseurl + "customer-ajaxAction",
+//                url: baseurl + "admin/delete-customer",
+                url: baseurl + "admin/customer-ajaxAction",
                 data: {'action': 'deleteCustomer', 'data': {'id': id }},
                 success: function(data) {
                     handleAjaxResponse(data);

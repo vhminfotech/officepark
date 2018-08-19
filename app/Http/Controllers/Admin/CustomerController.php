@@ -90,10 +90,9 @@ class CustomerController extends Controller {
         return view('admin.customer.customer-edit', $data);
     }
 
-    public function customerDelete(Request $request) {
-        echo 'dfsfds';
-        exit;
-        $result = Customer::find($postData['id'])->delete();
+    public function customerDelete($postData) {
+       
+        $result = Users::find($postData['id'])->delete();
         if ($result) {
             $return['status'] = 'success';
             $return['message'] = 'Customer Delete successfully.';
@@ -108,12 +107,10 @@ class CustomerController extends Controller {
 
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
-        echo $action;
-        exit;
+       
         switch ($action) {
             case 'deleteCustomer':
-                echo 'fsd';
-                exit;
+                
                 $result = $this->customerDelete($request->input('data'));
                 break;
         }
