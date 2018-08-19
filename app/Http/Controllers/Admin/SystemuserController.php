@@ -46,6 +46,7 @@ class SystemuserController extends Controller {
         $pdf = PDF::loadView('admin.invoice-pdf', $data);
 //        $pdf->save(public_path('pdf/some-filename.pdf'));
 //        return '';
+         return $pdf->stream();
         return $pdf->download('invoice.pdf');
 
     }
