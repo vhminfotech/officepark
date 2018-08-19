@@ -12,160 +12,395 @@
     <head>
         <meta charset="utf-8">
         <title>Office Park</title>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <style>
-            .invoice-box {
-                max-width: 800px;
-                margin: auto;
-                padding: 30px;
-                border: 1px solid #eee;
-                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-                font-size: 16px;
-                line-height: 24px;
-                font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-                color: #555;
-            }
-
-            .invoice-box table {
-                width: 100%;
-
-                text-align: left;
-            }
-
-            .invoice-box table td {
-                padding: 5px;
-                vertical-align: top;
-            }
-
-            .invoice-box table tr td:nth-child(2) {
+            .main-header{
+                font-size: 35px;
+                line-height: 35px;
                 text-align: right;
             }
-
-            .invoice-box table tr.top table td {
-                padding-bottom: 20px;
+            .text-undeline{
+                text-decoration: underline;
             }
-
-            .invoice-box table tr.top table td.title {
-                font-size: 45px;
-                line-height: 45px;
-                color: #333;
-            }
-
-            .invoice-box table tr.information table td {
-                padding-bottom: 40px;
-            }
-
-            .invoice-box table tr.heading td {
-                background: #eee;
-                border-bottom: 1px solid #ddd;
-                font-weight: bold;
-            }
-
-            .invoice-box table tr.details td {
-                padding-bottom: 20px;
-            }
-
-            .invoice-box table tr.item td{
-                border-bottom: 1px solid #eee;
-            }
-
-            .invoice-box table tr.item.last td {
-                border-bottom: none;
-            }
-
-            .invoice-box table tr.total td:nth-child(2) {
-                border-top: 2px solid #eee;
-                font-weight: bold;
-            }
-
-
-
-            /** RTL **/
-            .rtl {
-                direction: rtl;
-                font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-            }
-
-            .rtl table {
+            .small-fornt{
+                font-size: 11px;
                 text-align: right;
             }
-
-            .rtl table tr td:nth-child(2) {
-                text-align: left;
+            .page-break {
+                page-break-after: always;
             }
+
         </style>
     </head>
 
     <body>
         <div class="invoice-box">
-            <table cellpadding="0" cellspacing="0">
-                <tr class="top">
+            <table width="100%">
+                <tr>
+                    <td class="main-header" colspan="3"><span >Office | Park</span></td>
+                </tr>
+                <tr>
+                    <td  class="text-undeline" colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><h3>- persönlich -</h3></td>
+                </tr>
+                <tr>
                     <td colspan="2">
-                        <table>
+                        <table width="100%">
                             <tr>
-                                <td class="title">
-                                    <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
-                                </td>
+                                <td>ATA Finanz GbR</td>
+                            </tr>
+                            <tr>
+                                <td>Promenadenstr. 23</td>
+                            </tr>
+                            <tr>
+                                <td>41460 Neuss</td>
+                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td style="font-size: 20px;"><b>Herzlich Willkommen bei OFFICE PARK</b></td>
+                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Sehr geehrter Herr Tuzkaya,</td>
+                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>wir freuen uns, dass wir Sie als neuen OFFICE PARK-Kunden begrüßen
+                                    dürfen. Ihr Erreichbarkeitsservice ist ab sofort einsatzbereit und unsere
+                                    Agenten nehmen Ihre Anrufe entgegen. </td>
 
+                            </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Mit diesem Schreiben erhalten Sie eine Übersicht über Ihre Kundendaten,
+                                    unsere AGB‘s, die Preisliste sowie Hinweise für Ihren persönlichen Kundenbereich.
+                                    Bitte nehmen Sie sich am Anfang etwas Zeit um alle Daten zu
+                                    kontrollieren und ggf. zu ergänzen!</td>
+
+                            </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Weiterhin bitten wir Sie, uns die beiliegende Sepa-Lastschrift-Verfügung
+                                    unterschrieben zurückzusenden - gerne auch per E-Mail.</td>
+
+                            </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Wir wünschen Ihnen viel Erfolg mit Ihrem neuen Telefonsekretariat und
+                                    freuen uns auf eine gute und langjährige Zusammenarbeit. Sollten Sie
+                                    weitere Fragen haben, stehen Ihnen unsere Mitarbeiter aus dem
+                                    Service-Team gerne telefonisch unter 0211 368 74 190 zur Verfügung</td>
+
+                            </tr>
+
+                        </table>
+
+
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
                                 <td>
-                                    Invoice #: 123<br>
-                                    Created: January 1, 2015<br>
-                                    Due: February 1, 2015
+                                    Mit freundlichen Grüßen
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>
+                                    Ihr OFFICE PARK-Team
                                 </td>
                             </tr>
                         </table>
                     </td>
-                </tr>
+                    <td class="small-fornt">
+                        <table width="100%">
+                            <tr> <td>  Gesellschafter/ Geschäftsführer</td> </tr>
+                            <tr> <td>  Baris Ak</td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">       
+                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>
 
-                <tr class="information">
-                    <td colspan="2">
-                        <table>
-                            <tr>
-                                <td>
-                                    Sparksuite, Inc.<br>
-                                    12345 Sunny Road<br>
-                                    Sunnyville, CA 12345
-                                </td>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Münsterstraße 330 </td> </tr>
+                            <tr> <td>Gebäude B</td></tr> 
+                            <tr> <td>40470 Düsseldorf</td></tr> 
+                            <tr> <td>Telefon: +49 (0) 211 368 74 190</td></tr> 
+                            <tr> <td>Telefax: +49 (0) 211 368 74 190 01</td></tr> 
+                            <tr> <td>Web:    www.officepark.group</td></tr> 
+                            <tr> <td>E-Mail:  info@officepark.group</td></tr> 
+                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>
 
-                                <td>
-                                    Acme Corp.<br>
-                                    John Doe<br>
-                                    john@example.com
-                                </td>
-                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Service-/ Bürozeiten: </td> </tr>
+                            <tr> <td>Mo. bis Fr.</td></tr> 
+                            <tr> <td>09:00 - 19:00 Uhr</td></tr> 
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Düsseldorf, den 22.05.2018 </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Finanzamt </td> </tr>
+                            <tr> <td>Düsseldorf-Nord </td> </tr>
+                            <tr> <td>Steuernummer: 105/5902/4492 </td> </tr>
+                            <tr> <td>Ust-IdNr.: DE317564846 </td> </tr>
                         </table>
                     </td>
                 </tr>
-
-                <tr class="heading">
-                    <td>
-                        Details
-                    </td>
-
-                    <td>
-                       
-                    </td>
-                </tr>
-
-                <tr class="details">
-                    <td>
-                        Here, I would like to Attached PDF file which should be generated when Customer fill order form and click Send button.
-                        <blockquote> <p> <br>
-                                Normally. There are two PDF that issued when customer fill order form.<br>
-                                1. Officepark_- Welcome letter _ATA_Finanz<br>
-                                2. Office Park Call Forwarding _ATA_Finance</p>
-                            <p>"Officepark_- Welcome letter _ATA_Finanz" PDF file should compulsory issued them customer fill order form.<br> 
-                                "Office Park Call Forwarding _ATA_Finance" PSD file should be issued only when customer selected " Yes, I give Office Park GbR a SEPA mandate." payment option.<br> 
-                            </p> 
-                        </blockquote> 
-                    </td>
-
-                    <td>
-                      
-                    </td>
-                </tr>
-               
+                <tr><td colspan="3"><hr/></td></tr>
             </table>
+            <!--            <div class="page-break"></div>-->
+            <table width="100%">
+                <tr>
+                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div class="page-break"></div>
+
+            <table width="100%">
+                <tr>
+                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Ihre persönlichen Daten</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>Kundennummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OP-211-1705</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+49 211 368 741 9004</span></td>
+                </tr>
+
+            </table>
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Vertragsdaten</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>Vertragsbeginn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01.06.2018</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;business</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEPA Lastschrift</span></td>
+                </tr>
+            </table>
+
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Bankverbindung</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DE69 7002 2200 0020 2568 69</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>BIC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FDDODEMMXXX</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OP-211-1705</span></td>
+                </tr>
+            </table>  
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Zugangsdaten</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>UserID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; atafinanz</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tuzkaya2018!</span></td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <div style="width:600px;height:130px;border:1px solid #000;">nur bei Teilnahme am Lastschriftverfahren:
+                            <span style="font-size: 15px;">
+                                Ich ermächtige OFFICE PARK, Zahlungen von meinem Konto mittels Lastschrift einzuziehen.
+                                Zugleich weise ich mein Kreditinstitut an, die von OFFICE PARK auf mein Konto gezogenen Lastschriften
+                                einzulösen. Im Falle einer Rücklastschrift mangels Deckung wird eine Gebühr von 10,- € netto fällig.
+                                Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des
+                                belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
+                                Die Erstlastschrift erfolgt nach 5 Tagen, Folgelastschriften nach 2 Tagen.
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+
+                <br>
+
+            </table>
+
+            <br>
+            <table width="100%">
+                <tr><td colspan="3"><hr/></td></tr>
+                <br>
+                <br>
+                <br>
+                <tr>
+                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="page-break"></div>
+            <table width="100%">
+                <tr>
+                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>
+                </tr>
+            </table>
+            <table width='100%'>
+                <tr>
+                    <td colspan="3">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <table width='700px'>
+                <div style="width:700px;height:510px;border:1px solid #000;">
+                    <span>Telefonservice</span><p style="float: right;">business.call</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <span>Mindestumsatz, pro Monat </span>
+                    <p style="float: right; line-height: 20%;"> 30,00 €</p>
+                    <hr>
+                    <span>Anrufannahme, pro Anruf </span>
+                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
+                    <hr>
+                    <span>Benachrichtigungsanruf an Ihren Kunden, pro Anruf </span>
+                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
+
+                    <hr>
+                    <span>Anrufbearbeitung, pro Minute  </span>
+                    <p style="float: right; line-height: 20%;"> 0,00 €  </p>
+
+                    <hr>
+                    <span>Benachrichtigung per E-Mail, pro E-Mail  </span>
+                    <p style="float: right; line-height: 20%;"> kostenfrei </p>
+
+                    <hr>
+                    <span>Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </span>
+                    <p style="float: right; line-height: 20%;"> 0,25 €  </p>
+
+                    <hr>
+                    <span>Weiterleitungsgebühren, dt. Festnetz, pro Min. </span>
+                    <p style="float: right; line-height: 20%;"> 0,15 €  </p>
+
+                    <hr>
+                    <span>AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</span>
+                    <p style="float: right; line-height: 20%;"> 0,20 €0,20 € </p>
+
+                    <hr>
+                    <span>Vertragslaufzeit</span>
+                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
+
+                    <hr>
+                    <span>Kündigungsfrist</span>
+                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
+
+                    <hr>
+                    <span>Abrechnungszeitraum</span>
+                    <p style="float: right; line-height: 20%;"> 27. - 26. des Folgemonats
+                    </p>
+                    <hr>
+                    <span>Servicezeiten</span>
+                    <p style="float: right; line-height: 20%;"> 09:00 - 19:00 Uhr 
+                    </p>
+
+                    <hr>
+
+                </div>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <table width="100%">
+                <tr><td colspan="3"><hr/></td></tr>
+
+                <tr>
+                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div class="page-break"></div>
+
         </div>
     </body>
 </html>
