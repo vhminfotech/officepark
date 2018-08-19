@@ -77,6 +77,10 @@
                 border-top: 2px solid #eee;
                 font-weight: bold;
             }
+            .small {
+                font-size: smaller;
+                text-align: right;
+            }
 
 
 
@@ -93,78 +97,133 @@
             .rtl table tr td:nth-child(2) {
                 text-align: left;
             }
+            .f-12{
+                font-size:12px;
+            }
         </style>
     </head>
 
     <body>
         <div class="invoice-box">
-            <table cellpadding="0" cellspacing="0">
+            <table width="100%">
                 <tr class="top">
-                    <td colspan="2">
+                    <td>
                         <table>
                             <tr>
-                                <td class="title">
-                                    <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                                <td>
+                                    <u><span style="font-size: 12px;">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</span></u><br>
+                                    <br>
+                                    <b>- persönlich -</b><br><br>
+
+                                    ATA Finanzservice<br>
+                                    Promenadenstr. 23<br>
+                                    41460 Neuss<br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    Rufumleitung einrichten (alle Angaben ohne Gewähr)<br>
+
                                 </td>
 
                                 <td>
-                                    Invoice #: 123<br>
-                                    Created: January 1, 2015<br>
-                                    Due: February 1, 2015
+                                    <span style="font-size:25px;">office Park<br>
+                                        <span style="font-size: 10px;"> GbR</span>
+                                    </span><br>
+                                    <br>
+                                    <br>
+
+                                    <span class="f-12" style="line-height: 80%;">
+                                        Gesellschafter/ Geschäftsführer<br>
+                                        Baris Ak
+                                    </span><br><
+
+                                    <br>
+                                    <span class="f-12" style="line-height: 80%;">Gesellschafter<br>
+                                        Mustafa Basun</span><br><br>
+                                    <span class="f-12" style="line-height: 80%;">
+                                        Münsterstraße 330
+                                        <br>
+                                        Gebäude B
+                                        <br>
+                                        40470 Düsseldorf
+                                        Telefon: +49 (0) 211 368 74 190<br>
+                                        Telefax: +49 (0) 211 368 74 190 01<br>
+                                        Web: www.officepark.group<br>
+                                        E-Mail: info@officepark.group<br><br>
+                                        Service-/ Bürozeiten:<br>
+                                        Mo. bis Fr.<br>
+                                        09:00 - 19:00 Uhr<br><br>
+                                        Düsseldorf, den 22.05.2018<br><br>
+                                        Finanzamt<br>
+                                        Düsseldorf-Nord<br>
+                                        Steuernummer: 105/5902/4492<br>
+                                        Ust-IdNr.: DE317564846
+                                    </span>
                                 </td>
                             </tr>
+                            
                         </table>
                     </td>
                 </tr>
 
                 <tr class="information">
-                    <td colspan="2">
+                    <td>
                         <table>
                             <tr>
                                 <td>
-                                    Sparksuite, Inc.<br>
-                                    12345 Sunny Road<br>
-                                    Sunnyville, CA 12345
-                                </td>
+                                    <b>Sehr geehrter Herr Tuzkaya</b>,<br>
+                                    <br>
+                                    mit dieser Anleitung möchten wir Ihnen die Rufumleitung zu Office Park
+                                    erklären. In wenigen Schritten ist die Rufumleitung aktiviert. So können Sie
+                                    unseren Service schnellstmöglich vollumfänglich nutzen.<br>
 
+                                    <br>
+
+                                    <h4><b>Ihre Anrufe leiten Sie bitte an unsere folgende Rufnummer:</b></h4><br>
+                                    0211/ 368 74 190 04
+                                    <br>
+                                    <br>
+                                    <span><b>Bequeme Rufumleitung über Tasenkombination Ihres Telefons:</b></span>
+                                    <ul>
+                                        <li>Geben Sie bitte folgende Tastenkombination in Ihr Telefon ein: *21*02113687419004#</li>
+                                        <li>Drücken Sie nun die Wähltaste und warten Sie die Bandabsage ab.</li>
+                                        <li>Die Ansage wird Ihnen abschließend bestätigen, dass der Dienst nun aktiviert ist.*</li>
+                                    </ul>
+                                    <span>Mit freundlichen Grüßen</span><br>
+                                    <span>Ihr OFFICE PARK-Team</span>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <span style="font-size: 10px;"> * Zur Deaktivierung der Rufumleitung drücken Sie: #21#und bestätigen Sie die Wähltaste.</span>
+                                    <hr>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%">
+                            <tr>
                                 <td>
-                                    Acme Corp.<br>
-                                    John Doe<br>
-                                    john@example.com
+                                    <span style="font-size: 20px;">Office Park <span class="f-12">GbR</span></span>
+                                </td>
+                                <td>
+                                    <span class="f-12">
+                                        <b>Bankverbindung:</b><br>
+                                        Bank: Postbank AG<br>
+                                        IBAN: DE78 4401 0046 0381 0084 63<br>
+                                        BIC/Swift: PBNKDEFF<br>
+                                        Gläubiger-ID: DE91ZZZ00002054440<br>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="f-12">
+                                        Seite 1 von 1<br>
+                                        Schreiben vom 22.05.18
+                                    </span>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
 
-                <tr class="heading">
-                    <td>
-                        Details
-                    </td>
-
-                    <td>
-                       
-                    </td>
-                </tr>
-
-                <tr class="details">
-                    <td>
-                        Here, I would like to Attached PDF file which should be generated when Customer fill order form and click Send button.
-                        <blockquote> <p> <br>
-                                Normally. There are two PDF that issued when customer fill order form.<br>
-                                1. Officepark_- Welcome letter _ATA_Finanz<br>
-                                2. Office Park Call Forwarding _ATA_Finance</p>
-                            <p>"Officepark_- Welcome letter _ATA_Finanz" PDF file should compulsory issued them customer fill order form.<br> 
-                                "Office Park Call Forwarding _ATA_Finance" PSD file should be issued only when customer selected " Yes, I give Office Park GbR a SEPA mandate." payment option.<br> 
-                            </p> 
-                        </blockquote> 
-                    </td>
-
-                    <td>
-                      
-                    </td>
-                </tr>
-               
             </table>
         </div>
     </body>
