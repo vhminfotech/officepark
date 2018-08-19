@@ -1,10 +1,9 @@
 <!doctype html>
 <html lang="en-us">
 
-    @include('layouts.include.header')
+    @include('layouts.include.login-header')
     <body class="o-page ">
         @yield('content')
-        @include('layouts.include.footer')
+        
     </body>
-
 </html>

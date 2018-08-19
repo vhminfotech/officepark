@@ -1,5 +1,7 @@
-<script src="{{ asset('js/main.min.js') }}"></script>
+<script src="{!! asset('js/main.min.js') !!}"></script>
+<!--<script src="{!! asset('js/jquery-3.1.1.min.js') !!}" type="text/javascript"></script>-->
 <script src="{!! asset('js/plugins/validate/jquery.validate.min.js') !!}" type="text/javascript"></script>
+<!--<script src="{!! asset('js/plugins/validate/datepicker.min.js') !!}" type="text/javascript"></script>-->
 <script src="{!! asset('js/plugins/toastr/toastr.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('js/comman_function.js') !!}" type="text/javascript"></script>
 

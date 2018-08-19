@@ -8,6 +8,30 @@
             </a>
             <h1 class="u-h3 u-text-center u-mb-zero">Welcome back! Please login.</h1>
         </header>
+        
+        <div id="errorSection" style="width:100% !important;">
+
+            @if (session('session_error'))
+            <div class="alert alert-danger">
+                {{ session('session_error') }}
+                <div class="pull-right closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            @endif
+
+            @if (session('session_success'))
+            <div class="alert alert-success">
+                {{ session('session_success') }}
+                <div class="pull-right closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            @endif
+
+            @if (session('session_alert'))
+            <div class="alert alert-warning">
+                {{ session('session_alert') }}
+                <div class="pull-right closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            @endif
+        </div>
 
         <form class="form-horizontal c-card__body" id="login" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
@@ -60,4 +84,19 @@
         <a class="u-text-mute u-text-small" href="forgot-password.html">Forgot Password?</a>
     </div>
 </div>
+
+<style>
+    .alert {
+	margin: 0px 10px;
+    }
+    .alert-danger{
+       background-color: #fc9680; 
+    }
+    .alert-success{
+       background-color: #8ddd72; 
+    }
+    .alert-warning{
+       background-color: #f2ec89; 
+    }
+</style>
 @endsection

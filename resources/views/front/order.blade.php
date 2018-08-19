@@ -1,13 +1,13 @@
 @extends('front.layouts.app')
 @section('content')
 <script>
-    $(document).ready(function() {
-        window.setTimeout(function() {
-            $(".flash_message").fadeTo(4500, 0).slideUp(4500, function() {
-                $(this).hide();
-            });
-        });
-    });
+//    $(document).ready(function() {
+//        window.setTimeout(function() {
+//            $(".flash_message").fadeTo(4500, 0).slideUp(4500, function() {
+//                $(this).hide();
+//            });
+//        });
+//    });
 </script>
 
 <body class="page-container-bg-solid">
@@ -44,7 +44,7 @@
                                             </div>
                                             @endif
                                         </div>
-                                        {{ Form::model(array('method' => 'post'),['class' => '', 'id'=>'addOrderForm']) }}
+                                        {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addOrderForm' )) }} 
                                         <div class="col-md-6">
                                             <div class="portlet light bordered">
                                                 <div class="portlet-title">
@@ -56,14 +56,16 @@
                                                             <div class="form-group">
                                                                 <div class="mt-radio-inline">
                                                                     <label class="mt-radio">
-                                                                        <input type="radio" name="is_package" id="optionsRadios4" value="1" checked="">BUSINESS PACKAGE STANDARD
+                                                                        {{ Form::radio('is_package', 1, array('class' => 'form-control', 'id' => "optionsRadios4", 'checked')) }}
+                                                                        BUSINESS PACKAGE STANDARD
+                                                                        <!--<input type="radio" name="is_package" id="optionsRadios4" value="1" checked="">-->
                                                                         <span></span>
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Please enter the phone number you would like to forward to us</label>
-                                                                <input type="text" class="form-control" required name="phone_to_reroute" placeholder="Your phone number">
+                                                                {{ Form::text('phone_to_reroute', null, array('class' => 'form-control', 'placeholder' => "Your phone number", 'required')) }}
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>How should we contact you on the phone?</label>
@@ -157,7 +159,7 @@
                                                                     <div class="c-field has-addon-left">
                                                                         <!--<span class="c-field__addon"><i class="fa fa-calendar"></i></span>-->
                                                                         <label class="c-field__label u-hidden-visually" for="input9">Disabled Input</label>
-                                                                        <input class="c-input form-control" style="border: 1px solid #c2cad8;color:#555;" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
+                                                                        <input class="c-input form-control" data-toggle="datepicker" id="input9" name="date_of_birth" type="text" placeholder="Date of birth" required>
                                                                     </div>
                                                                     <!--{{ Form::text('date_of_birth', null, array('class' => 'form-control dateField', 'placeholder' => 'Date of birth', 'required')) }}-->
                                                                 </div>
@@ -232,7 +234,6 @@
                                         </div>
                                         {{ Form::close() }}
                                     </div>
-                                    <!--</form>-->
                                 </div>
                             </div>
                         </div>
@@ -242,4 +243,9 @@
         </div>
     </div>
 </body>
+<style>
+    .error {
+        border: 1px solid red !important;
+    }
+</style>
 @endsection

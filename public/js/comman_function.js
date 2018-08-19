@@ -330,15 +330,15 @@ function handleFormValidate(form, rules, submitCallback, showToaster) {
         },
         highlight: function (element) { // hightlight error inputs
             $(element)
-                    .closest('.c-input').addClass('has-error'); // set error class to the control group
+                    .closest('.c-input, .form-control').addClass('has-error'); // set error class to the control group
         },
         unhighlight: function (element) { // revert the change done by hightlight
             $(element)
-                    .closest('.c-input').removeClass('has-error'); // set error class to the control group
+                    .closest('.c-input, .form-control').removeClass('has-error'); // set error class to the control group
         },
         success: function (label) {
             label
-                    .closest('.c-inputv').removeClass('has-error'); // set success class to the control group
+                    .closest('.c-input, .form-control').removeClass('has-error'); // set success class to the control group
         },
         errorPlacement: function (error, element) {
             return true;

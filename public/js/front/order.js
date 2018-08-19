@@ -1,5 +1,5 @@
 var Order = function() {
-
+    
     $("body").on("change", ".accept", function(){
         if ($(this).val() == 'sepa') {
             $("#sepa").show();
@@ -9,73 +9,69 @@ var Order = function() {
             $('.accountInfo').hide();
         }
     });
-        
+    dateFormate('.dateField');
+    
     var addDetails = function() {
-        
-//         $('input:radio[name="accept"]').change(function() {
-//            if ($(this).val() == 'sepa') {
-//                $("#sepa").show();
-//            }else {
-//                $("#sepa").hide();
-//            }
-//        });
         
         $("#addOrderForm").validate({
             rules: {
-                package: {required: true}
+                package: {required: true},
+                phone_to_reroute: {required: true},
+                welcome_note: {required: true},
+                reroute_confirm: {required: true},
+                center_to_customer_route: {required: true},
             },
             messages: {
-//                package: "msg1",
-//                package: "msg2",
+                
             },
              errorPlacement: function(error, element) {
             }
         });
         
-        dateFormate('.dateField');
         //checkDateRange('.dateField', 'today', '.dateField', 'Valid Date Must be Greater from Today');
         
 //        $("#addOrderForm").validate({
 //            rules: {
-//                phone_to_reroute: {
-//                    required: true
-//                },
-//                first_name: {
-//                    required: true, 
-//                    allowAlphaNumeric : true
-//                },
-//                last_name: {
-//                    required: true, 
-//                    allowAlphaNumeric : true
-//                },
-//                email: {
-//                    required: true,
-//                    email:true
-//                },
-//                contact: {
-//                    required: true,
-//                    number:true
-//                },
-//                dob: {
-//                    required: true
-//                },
-//                address: {
-//                    required: true
-//                }
+//                phone_to_reroute: { required: true },
+//                first_name: { required: true, allowAlphaNumeric : true },
+//                email: { required: true, email:true },
+//                contact: { required: true, number:true }
 //            },
 //            messages: {
-////                bank_name: "Please enter Bank Name",
-////                account_name: "Please enter Account Name",
-////                account_no: "Please enter Account No."
+//                //bank_name: "Please enter Bank Name",
+//                //account_name: "Please enter Account Name",
+//                //account_no: "Please enter Account No."
 //            },
 //             errorPlacement: function(error, element) {
 //            }
 //        });
     };
-
+    
+    var addInfo = function() {
+        
+        var formId = "#addOrderForm";
+        var rules = { 
+            package: {required: true},
+            phone_to_reroute: {required: true},
+            welcome_note: {required: true},
+            reroute_confirm: {required: true},
+            center_to_customer_route: {required: true}
+        };
+        handleFormValidate($(formId), rules, function (form) {
+//            ajaxcall($(form).attr('action'), $(form).serialize(), function (output) {
+//                handleAjaxResponse(output);
+//                output = JSON.parse(output);
+//
+//                if (output.status === 'success') {
+//                    //window.location.href = output.redirectLink;
+//                }
+//            });
+        });
+    };
+    
     return{
         initAddInfo: function() {
-            addDetails();
+            addInfo();
         }
     };
 }();

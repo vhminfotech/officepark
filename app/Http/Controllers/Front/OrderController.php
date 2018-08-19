@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
 //use Validator;
 use App\Model\OrderInfo;
@@ -12,16 +13,15 @@ use App\Model\Users;
 use Auth;
 use Config;
 use Session;
-
-
+use DB;
 
 class OrderController extends Controller {
     
     public function __construct(){
-        
+        parent::__construct();
     }
     
-    public function index(Request $request){
+    public function add(Request $request){
         
          $data['welcome_note']= Config::get('constants.welcome_note');
          $data['reroute_confirm']= Config::get('constants.reroute_confirm');
@@ -30,26 +30,53 @@ class OrderController extends Controller {
         
         if ($request->isMethod('post')) {
             
+            echo "hi";exit;
+            
             $dataArr = $request->input();
+            echo "<pre>";print_r($dataArr);exit;
             
             if($dataArr['accept'] == 'uber'){
                 $array = [
-                          'phone_to_reroute' => 'required','welcome_note' => 'required','reroute_confirm'=> 'required',
-                          'center_to_customer_route'  => 'required','unreach_note' => 'required','info_type' => 'required',
-                          'company_name'=> 'required','company_type'=> 'required','gender'=> 'required',
-                          'fullname'=> 'required','date_of_birth'=> 'required','address' => 'required',
-                          'postal_code'=> 'required','phone'=> 'required','email'=> 'required|email',
-                          'accept' => 'required','aggrement' => 'required'
+                    'phone_to_reroute' => 'required',
+                    'welcome_note' => 'required',
+                    'reroute_confirm' => 'required',
+                    'center_to_customer_route' => 'required',
+                    'unreach_note' => 'required',
+                    'info_type' => 'required',
+                    'company_name' => 'required',
+                    'company_type' => 'required',
+                    'gender' => 'required',
+                    'fullname' => 'required',
+                    'date_of_birth' => 'required',
+                    'address' => 'required',
+                    'postal_code' => 'required',
+                    'phone' => 'required',
+                    'email' => 'required|email',
+                    'accept' => 'required',
+                    'aggrement' => 'required'
                         ];
             }else{
                 $array = [
-                          'phone_to_reroute' => 'required','welcome_note' => 'required','reroute_confirm'=> 'required',
-                          'center_to_customer_route'  => 'required','unreach_note' => 'required','info_type' => 'required',
-                          'company_name'=> 'required','company_type'=> 'required','gender'=> 'required',
-                          'fullname'=> 'required','date_of_birth'=> 'required','address' => 'required',
-                          'postal_code'=> 'required','phone'=> 'required','email'=> 'required|email',
-                          'account_name'=> 'required','account_iban'=> 'required','account_bic' => 'required',
-                          'accept' => 'required','aggrement' => 'required'
+                    'phone_to_reroute' => 'required',
+                    'welcome_note' => 'required',
+                    'reroute_confirm'=> 'required',
+                    'center_to_customer_route' => 'required',
+                    'unreach_note' => 'required', 
+                    'info_type' => 'required',
+                    'company_name' => 'required',
+                    'company_type' => 'required',
+                    'gender' => 'required',
+                    'fullname' => 'required',
+                    'date_of_birth' => 'required',
+                    'address' => 'required',
+                    'postal_code' => 'required',
+                    'phone' => 'required',
+                    'email' => 'required|email',
+                    'account_name' => 'required',
+                    'account_iban' => 'required',
+                    'account_bic' => 'required',
+                    'accept' => 'required',
+                    'aggrement' => 'required'
                         ];
             }
             
@@ -89,10 +116,9 @@ class OrderController extends Controller {
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('order.js');
-        $data['funinit'] = array('Order.Init');
-       
-
-        
+        $data['funinit'] = array('Order.initAddInfo()');
+               
         return view('front.order', $data);
     }
+   
 }

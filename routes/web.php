@@ -17,7 +17,7 @@ Route::get('/', function() {
 //Route::get('/', function() { return Redirect::to('login'); });
 
 Route::match(['get', 'post'], 'home', ['as' => 'home', 'uses' => 'Front\HomeController@index']);
-Route::match(['get', 'post'], 'order', ['as' => 'order', 'uses' => 'Front\OrderController@index']);
+Route::match(['get', 'post'], 'order', ['as' => 'order', 'uses' => 'Front\OrderController@add']);
 
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'LoginController@auth']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);

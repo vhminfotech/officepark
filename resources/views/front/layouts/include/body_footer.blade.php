@@ -3,6 +3,6 @@
         Officepark
     </div>
     <div>
-        <strong>Copyright</strong> Officepark &copy; 2014-2017
+        <strong>Copyright</strong> Officepark &copy; 2014-<?php echo date('Y'); ?>
     </div>
 </div>
