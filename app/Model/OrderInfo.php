@@ -24,7 +24,7 @@ class OrderInfo extends Model {
 
         $objInfo->company_name = $dataArr['company_name'];
         $objInfo->company_type = $dataArr['company_type'];
-//        $objInfo->company_info = $dataArr['company_info'];
+//        $objInfo->company_info = $dataArr['order_info'];
         $objInfo->gender = $dataArr['gender'];
         $objInfo->fullname = $dataArr['fullname'];
         $objInfo->date_of_birth = date('Y-m-d',  strtotime($dataArr['date_of_birth']));
@@ -38,6 +38,7 @@ class OrderInfo extends Model {
         $objInfo->account_iban = $dataArr['account_iban'];
         $objInfo->account_bic = $dataArr['account_bic'];
         $objInfo->accept = $dataArr['accept'];
+        $objInfo->status = 'new';
         $objInfo->aggrement = $dataArr['aggrement'];
 
         if ($objInfo->save()) {
@@ -59,7 +60,7 @@ class OrderInfo extends Model {
 
         $objInfo->company_name = $dataArr['company_name'];
         $objInfo->company_type = $dataArr['company_type'];
-        $objInfo->company_info = $dataArr['company_info'];
+        $objInfo->company_info = $dataArr['order_info'];
         $objInfo->gender = $dataArr['gender'];
         $objInfo->fullname = $dataArr['fullname'];
         $objInfo->date_of_birth = $dataArr['date_of_birth'];
@@ -80,6 +81,10 @@ class OrderInfo extends Model {
 
     public function deleteInfo($orderId) {
         return DB::table('order_info')->Where('id', $orderId)->delete();
+    }
+    
+    public function newRecordCount(){
+        return OrderInfo::where('status', 'new')->get()->count();
     }
 
     public function getInfo() {
