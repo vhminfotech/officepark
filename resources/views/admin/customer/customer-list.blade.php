@@ -33,17 +33,17 @@
                         @for($i = 0 ;$i < count($arrCustomer);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $arrCustomer[$i]->customer_number }}</td>
+                            <td class="c-table__cell">CUST -{{  $arrCustomer[$i]->customer_id }}</td>
                             <td class="c-table__cell">{{ $arrCustomer[$i]->company_name }}</td>
-                            <td class="c-table__cell">{{ $arrCustomer[$i]->first_name .' ' . $arrCustomer[$i]->last_name }}</td>
+                            <td class="c-table__cell">{{ $arrCustomer[$i]->fullname }}</td>
                             <td class="c-table__cell">{{ $arrCustomer[$i]->email }}</td>
-                            <td class="c-table__cell">{{ $arrCustomer[$i]->telephone }}</td>
-                            <td class="c-table__cell">{{ $arrCustomer[$i]->packet }}</td>
+                            <td class="c-table__cell">{{ $arrCustomer[$i]->phone }}</td>
+                            <td class="c-table__cell">{{ $arrCustomer[$i]->is_package }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('customer-edit',[$arrCustomer[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('customer-edit',[$arrCustomer[$i]->customer_id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $arrCustomer[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete"  data-id="{{ $arrCustomer[$i]->customer_id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o"></i></span>
                                 </a>
                             </td>

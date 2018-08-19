@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 //use Validator;
 use App\Model\OrderInfo;
+use App\Model\Users;
 use Auth;
 use Config;
 use Session;
@@ -58,6 +59,15 @@ class OrderController extends Controller {
                 return redirect(route('order'))->withErrors($validator)->withInput();
             }
 
+            $objOrderInfo = new Users();
+            $checkEmailArr = $objOrderInfo->getUserByEmail($dataArr['email']);
+            
+            if(!empty($checkEmailArr)){
+                Session::flash('message', 'Email Already Exists.!'); 
+                Session::flash('class', 'alert-danger'); 
+                return redirect(route('order'))->withInput();
+            }
+            
             $objOrderInfo = new OrderInfo();
             $resultArr = $objOrderInfo->saveOrderInfo($dataArr);
             

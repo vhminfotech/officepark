@@ -8,6 +8,7 @@ use DB;
 use Auth;
 use App\Model\UserHasPermission;
 use App\Model\Sendmail;
+use App\Model\OrderInfo;
 use PDF;
 
 class Users extends Model {
@@ -61,8 +62,26 @@ class Users extends Model {
         return TRUE;
     }
 
+    public function getCustomerList($type){
+        return Users::select(
+                'users.id as customer_id',
+                'order_info.company_name',
+                'order_info.fullname',
+                'users.email',
+                'order_info.phone',
+                'order_info.is_package'
+                )
+                ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                ->where('users.type', '=',$type)->get();
+    }
+    
     public function addUserInfo($request) {
 
+        $checkUserExist = Users::select('users.*')->where('users.email', '=', $request->input('email'))->get();
+        
+        if(!empty($checkUserExist)){
+            return FALSE;
+        }
         $newpassword = ($request->input('password') != '') ? $request->input('password') : null;
         $newpass = Hash::make($newpassword);
         $objUser = new Users();
@@ -71,7 +90,7 @@ class Users extends Model {
         $objUser->inopla_username = $request->input('inoplaName');
         $objUser->extension_number = $request->input('exNumber');
         $objUser->var_language = $request->input('langauge');
-        $objUser->type = '2';
+        $objUser->type = 'ADMIN';
         $objUser->password = $newpass;
         $objUser->created_at = date('Y-m-d H:i:s');
         $objUser->updated_at = date('Y-m-d H:i:s');
@@ -151,8 +170,13 @@ class Users extends Model {
             $objUser->password = $newpass;
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
-            $objUser->save();
+            $userId = $objUser->save();
 
+            
+            $objOrderInfo = OrderInfo::find($postData->id);
+            $objOrderInfo->user_id = $objUser->id;
+            $objOrderInfo->save();
+        
             chmod(public_path('pdf/some-filename.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.invoice-pdf', $data);
@@ -198,9 +222,13 @@ class Users extends Model {
             return FALSE;
         }
     }
+    
     public function saveEditUserPassword($id,$password){
          return Users::where('id', '=', $id)->update(['password' => Hash::make($password)]);
     }
     
+    public function getUserByEmail($email){
+        return Users::select('users.*')->where('users.email', '=',$email)->get();
+    }
 
 }

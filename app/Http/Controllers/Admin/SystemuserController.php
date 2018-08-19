@@ -62,7 +62,7 @@ class SystemuserController extends Controller {
 
             } else {
                 $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
+                $return['message'] = 'Something will be wrong. or user already exist.';
             }
             echo json_encode($return); exit;
         }
