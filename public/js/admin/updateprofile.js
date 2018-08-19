@@ -13,8 +13,6 @@ var Updateprofile = function () {
         });
     };
     var handleDivision = function () {
-        $(".isDiv").val("userdetaildiv");
-
         $('.c-tabs__link').click(function () {
             var status = $(this).attr('data-id');
             if (status == '1') {

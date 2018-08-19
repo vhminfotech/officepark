@@ -70,6 +70,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
             Route::match(['get', 'post'], 'edit-customer-info', ['as' => 'edit-customer-info', 'uses' => 'Admin\OrderController@customerEditInfo']);
             Route::match(['get', 'post'], 'create-user', ['as' => 'create-user', 'uses' => 'Admin\OrderController@createUser']);
             Route::match(['get', 'post'], 'update-profile', ['as' => 'update-profile', 'uses' => 'Admin\UpdateProfileController@editProfile']);
+            Route::match(['get', 'post'], 'update-change-password', ['as' => 'update-change-password', 'uses' => 'Admin\UpdateProfileController@changepassword']);
+            
         });
 
 
