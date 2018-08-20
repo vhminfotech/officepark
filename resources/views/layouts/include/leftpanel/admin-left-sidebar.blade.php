@@ -1,12 +1,7 @@
 @php
 $currentRoute = Route::current()->getName();
 @endphp
-<style type="text/css">
-    .language-selection.active a img{
-        border: 1px solid;
-        padding: 3px;
-    }
-</style>
+
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
