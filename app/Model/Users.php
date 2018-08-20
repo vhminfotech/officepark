@@ -151,8 +151,8 @@ class Users extends Model {
     }
 
     public function createCustomer($postData) {
-//        $count = Users::where('email', $postData['email'])->count();
-        $count = 0 ;
+        $count = Users::where('email', $postData['email'])->count();
+//        $count = 0 ;
         if ($count == 0) {
             $newpassword = 123;
             $result = DB::table('customer_no')->where('id', 1)->get();
