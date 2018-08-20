@@ -25,7 +25,7 @@ class Users extends Model {
         if ($id) {
             $result = Users::select('users.*')->where('users.id', '=', $id)->get();
         } else {
-            $result = Users::get();
+            $result = Users::whereIn('type',['ADMIN'])->get();
         }
         return $result;
     }
@@ -72,7 +72,7 @@ class Users extends Model {
 
     public function addUserInfo($request) {
 
-        $checkUserExist = Users::select('users.*')->where('users.email', '=', $request->input('email'))->get();
+        $checkUserExist = Users::select('users.*')->where('users.email', '=', $request->input('email'))->get()->toArray();
 
         if (!empty($checkUserExist)) {
             return FALSE;
