@@ -62,25 +62,19 @@ class Users extends Model {
         return TRUE;
     }
 
-    public function getCustomerList($type){
+    public function getCustomerList($type) {
         return Users::select(
-                'users.id as customer_id',
-                'users.customer_number  as customer_number',
-                'order_info.company_name',
-                'order_info.fullname',
-                'users.email',
-                'order_info.phone',
-                'order_info.is_package'
-                )
-                ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
-                ->where('users.type', '=',$type)->get();
+                                'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
+                        )
+                        ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                        ->where('users.type', '=', $type)->get();
     }
-    
+
     public function addUserInfo($request) {
 
         $checkUserExist = Users::select('users.*')->where('users.email', '=', $request->input('email'))->get();
-        
-        if(!empty($checkUserExist)){
+
+        if (!empty($checkUserExist)) {
             return FALSE;
         }
         $newpassword = ($request->input('password') != '') ? $request->input('password') : null;
@@ -157,11 +151,12 @@ class Users extends Model {
     }
 
     public function createCustomer($postData) {
-        $count = Users::where('email', $postData['email'])->count();
+//        $count = Users::where('email', $postData['email'])->count();
+        $count = 0 ;
         if ($count == 0) {
             $newpassword = 123;
-            $result = DB::table('customer_no')->where('id',1)->get();
-            
+            $result = DB::table('customer_no')->where('id', 1)->get();
+
             $newpass = Hash::make($newpassword);
             $objUser = new Users();
             $objUser->name = $postData['fullname'];
@@ -171,40 +166,39 @@ class Users extends Model {
             $objUser->var_language = 'English';
             $objUser->type = 'CUSTOMER';
             $objUser->password = $newpass;
-            $objUser->customer_number = 'OP-211-'.$result[0]->last_number;
+            $objUser->customer_number = 'OP-211-' . $result[0]->last_number;
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
 
             DB::table('customer_no')
-            ->where('id', 1)
-            ->update(['last_number' => $result[0]->last_number + 1]);
-            
+                    ->where('id', 1)
+                    ->update(['last_number' => $result[0]->last_number + 1]);
+
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
-            $objOrderInfo->save();
-        
-            chmod(public_path('pdf/some-filename.pdf'), 0777);
+//            $objOrderInfo->save();
+
+//            chmod(public_path('pdf/some-filename.pdf'), 0777);
+            chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.invoice-pdf', $data);
-            $pdf->save(public_path('pdf/some-filename.pdf'));
+            $pdf->save(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'));
+//            $pdf->save(public_path('pdf/some-filename.pdf'));
 
             $pdf = PDF::loadView('admin.invoice-pdf1', $data);
-            $pdf->save(public_path('pdf/some-filename1.pdf'));
-            
+//            $pdf->save(public_path('pdf/some-filename1.pdf'));
+            $pdf->save(public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
+
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
-             $mailData['attachment'] = array(public_path('pdf/some-filename.pdf'),public_path('pdf/some-filename1.pdf'));
+//             $mailData['attachment'] = array(public_path('pdf/some-filename.pdf'),public_path('pdf/some-filename1.pdf'));
+            $mailData['attachment'] = array(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
 
             $mailData['mailto'] = $postData['email'];
-
             $sendMail = new Sendmail;
-
-
-            $mailData['data']['interUser'] = 'fff';
-
+            $mailData['data']['interUser'] = $postData['fullname'];
             $sendMail->sendSMTPMail($mailData);
-
             return TRUE;
         } else {
 
@@ -225,53 +219,47 @@ class Users extends Model {
         if ($objUser->save()) {
             return TRUE;
         } else {
-            
+
             return FALSE;
         }
     }
-    
-    public function saveEditUserPassword($id,$password){
-         return Users::where('id', '=', $id)->update(['password' => Hash::make($password)]);
+
+    public function saveEditUserPassword($id, $password) {
+        return Users::where('id', '=', $id)->update(['password' => Hash::make($password)]);
     }
-    
-    public function getUserByEmail($email){
-        return Users::select('users.*')->where('users.email', '=',$email)->get();
+
+    public function getUserByEmail($email) {
+        return Users::select('users.*')->where('users.email', '=', $email)->get();
     }
-    
+
     public function updateCustomerInfo($request) {
         $userId = $request->input('custId');
-        $result = Users::where('id','!=', $userId)->where('email', $request->input('email'))->get()->count();
+        $result = Users::where('id', '!=', $userId)->where('email', $request->input('email'))->get()->count();
         $return = '';
         if ($result == 0) {
             $objEditUser = Users::find($userId);
             $objEditUser->name = $request->input('first_name');
             $objEditUser->save();
-            
+
             OrderInfo::where('user_id', $userId)
-            ->update([
-                'company_name' => $request->input('company_name'),
-                'phone' => $request->input('telephone')
-                    ]);
-            
+                    ->update([
+                        'company_name' => $request->input('company_name'),
+                        'phone' => $request->input('telephone')
+            ]);
+
             $return = TRUE;
         } else {
             $return = false;
         }
         return $return;
     }
-    
-    public function getCustomerInfo($id){
+
+    public function getCustomerInfo($id) {
         return Users::select(
-                'users.id as customer_id',
-                'users.customer_number  as customer_number',
-                'order_info.company_name',
-                'order_info.fullname',
-                'users.email',
-                'order_info.phone',
-                'order_info.is_package'
-                )
-                ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
-                ->where('users.id', '=',$id)->first()->toArray();
+                                'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
+                        )
+                        ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                        ->where('users.id', '=', $id)->first()->toArray();
     }
 
 }
