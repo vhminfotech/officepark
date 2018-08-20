@@ -22,6 +22,7 @@ class Controller extends BaseController
                 $lang = $_COOKIE["language"];
             }else{
                 $lang = 'en';
+                $_COOKIE["language"] = $lang;
             }
             
 
