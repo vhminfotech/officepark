@@ -62,10 +62,15 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="langauge">Language selection</label> 
-                                    <input class="c-input" id="langauge" name="langauge" placeholder="Jason" type="text"> 
+                                    <select class="c-select" id="langauge" name="langauge">
+                                        <option value="">Select Languge</option>
+                                        <option value="DE">DE</option>
+                                        <option value="TR">TR</option>
+                                        <option value="EN">EN</option>
+                                    </select>
                                 </div>
                             </div>
-                        </div>
+                        </div>  
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">

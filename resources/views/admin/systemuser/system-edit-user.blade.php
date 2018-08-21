@@ -19,7 +19,6 @@
                             <div class="col-lg-6">
                                 @php
                                 $name = explode(' ',$userDetail[0]->name);
-
                                 $firstname = $name[0];
                                 $lastname = (isset($name[1]) && !empty($name[1]) ? $name[1] : '');
                                 @endphp
@@ -50,6 +49,8 @@
                                     <input class="c-input" id="inoplaName" name="inoplaName" placeholder="Jason" type="text" value='{{ $userDetail[0]->inopla_username }}'> 
                                 </div>
                             </div>
+
+
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -61,39 +62,46 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="langauge">Language selection</label> 
-                                    <input class="c-input" id="langauge" name="langauge" placeholder="Jason" type="text" value='{{ $userDetail[0]->var_language }}'> 
+                                    <select class="c-select" id="langauge" name="langauge">
+                                        <option value="" >Select Languge</option>
+                                        <option value="EN" {{ $userDetail[0]->var_language == 'EN' ? 'selected="selected"' : '' }}>EN</option>    
+                                        <option value="DE" {{ $userDetail[0]->var_language == 'DE' ? 'selected="selected"' : '' }}>DE</option>    
+                                        <option value="TR" {{ $userDetail[0]->var_language == 'TR' ? 'selected="selected"' : '' }}>TR</option>F
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="firstName">Permissions</label> 
-                                    <div class="row">
-                                        @php
-                                        $count = 1;
-                                        $checked = '';
-                                        @endphp
-                                        @for($i = 0 ;$i < count($masterPermission);$i++,$count++)
+                    </div>
 
-                                        <div class="c-choice c-choice--checkbox col-lg-3">
-                                            <input class="c-choice__input" value="{{ $masterPermission[$i]->id }}" id="checkbox{{ $count }}" name="checkboxes[]" type="checkbox" 
-                                                   {{ (in_array($masterPermission[$i]->id,$userPermission)) ? 'checked="checked" ' : '' }} >
-                                            <label class="c-choice__label" for="checkbox{{ $count }}">{{ $masterPermission[$i]->name }}</label>
-                                        </div>
-                                        @endfor
-                                    </div>   
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="firstName">Permissions</label> 
+                                <div class="row">
+                                    @php
+                                    $count = 1;
+                                    $checked = '';
+                                    @endphp
+                                    @for($i = 0 ;$i < count($masterPermission);$i++,$count++)
 
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <input class="c-btn c-btn--info c-btn--fullwidth" value="Edit" type="submit">
-                                        </div>
+                                    <div class="c-choice c-choice--checkbox col-lg-3">
+                                        <input class="c-choice__input" value="{{ $masterPermission[$i]->id }}" id="checkbox{{ $count }}" name="checkboxes[]" type="checkbox" 
+                                               {{ (in_array($masterPermission[$i]->id,$userPermission)) ? 'checked="checked" ' : '' }} >
+                                        <label class="c-choice__label" for="checkbox{{ $count }}">{{ $masterPermission[$i]->name }}</label>
+                                    </div>
+                                    @endfor
+                                </div>   
+
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <input class="c-btn c-btn--info c-btn--fullwidth" value="Edit" type="submit">
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                    </div>
                     </div>
                 </form>
             </article>
