@@ -30,10 +30,7 @@ class OrderController extends Controller {
         
         if ($request->isMethod('post')) {
             
-            echo "hi";exit;
-            
             $dataArr = $request->input();
-            echo "<pre>";print_r($dataArr);exit;
             
             if($dataArr['accept'] == 'uber'){
                 $array = [
@@ -88,6 +85,7 @@ class OrderController extends Controller {
 
             $objOrderInfo = new Users();
             $checkEmailArr = $objOrderInfo->getUserByEmail($dataArr['email']);
+            
             
             if(!empty($checkEmailArr)){
                 Session::flash('message', 'Email Already Exists.!'); 
