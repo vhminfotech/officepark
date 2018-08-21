@@ -49,7 +49,7 @@ var Order = function() {
     
     var addInfo = function() {
         
-        var formId = "#addOrderForm";
+        var form = "#addOrderForm";
         var rules = { 
             package: {required: true},
             phone_to_reroute: {required: true},
