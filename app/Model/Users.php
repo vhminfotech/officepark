@@ -229,7 +229,7 @@ class Users extends Model {
     }
 
     public function getUserByEmail($email) {
-        return Users::select('users.*')->where('users.email', '=', $email)->get();
+        return Users::select('users.*')->where('users.email', '=', $email)->get()->toArray();
     }
 
     public function updateCustomerInfo($request) {
