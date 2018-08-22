@@ -42,6 +42,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
 
             Route::match(['get', 'post'], 'create-pdf/{id}', ['as' => 'create-pdf', 'uses' => 'Admin\SystemuserController@createPDF']);
+            
 
             Route::match(['get', 'post'], 'system-user-list', ['as' => 'system-user-list', 'uses' => 'Admin\SystemuserController@getUserData']);
             Route::match(['get', 'post'], 'system-add-user', ['as' => 'system-add-user', 'uses' => 'Admin\SystemuserController@addUser']);
@@ -63,6 +64,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
 
             Route::match(['get', 'post'], 'order-list', ['as' => 'order-list', 'uses' => 'Admin\OrderController@index']);
+            Route::match(['get', 'post'], 'order-pdf/{id}', ['as' => 'order-pdf', 'uses' => 'Admin\OrderController@createPDF']);
             Route::match(['get', 'post'], 'view-order/{id}', ['as' => 'view-order', 'uses' => 'Admin\OrderController@viewOrder']);
             Route::match(['get', 'post'], 'edit-company-info', ['as' => 'edit-company-info', 'uses' => 'Admin\OrderController@ajaxAction']);
             Route::match(['get', 'post'], 'edit-payment-info', ['as' => 'edit-payment-info', 'uses' => 'Admin\OrderController@paymentEditInfo']);
