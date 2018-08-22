@@ -25,7 +25,7 @@ class Users extends Model {
         if ($id) {
             $result = Users::select('users.*')->where('users.id', '=', $id)->get();
         } else {
-            $result = Users::whereIn('type',['ADMIN'])->get();
+            $result = Users::whereIn('type', ['ADMIN'])->get();
         }
         return $result;
     }
@@ -112,6 +112,7 @@ class Users extends Model {
     }
 
     function editUserInfo($request) {
+
         $userId = $request->input('user_id');
         $objUser = Users::find($userId);
         $objUser->name = $request->input('firstName') . ' ' . $request->input('lastName');
@@ -123,9 +124,8 @@ class Users extends Model {
         if ($objUser->save()) {
             if (!empty($request->input('checkboxes'))) {
                 $delete = UserHasPermission::where('user_id', $userId)->delete();
-
-                if ($delete) {
-                    $permisson = $request->input('checkboxes');
+                $permisson = $request->input('checkboxes');
+                if ($delete || count($permisson) > 0) {
                     for ($i = 0; $i < count($permisson); $i++) {
                         $systemUser = new UserHasPermission();
                         $systemUser->permission_id = $permisson[$i];
@@ -133,15 +133,19 @@ class Users extends Model {
                         $systemUser->updated_at = date('Y-m-d H:i:s');
                         $systemUser->created_at = date('Y-m-d H:i:s');
                         $result = $systemUser->save();
+                        $systemUser = '';
+                    }
+                    if ($result) {
+                        return TRUE;
+                    } else {
+                        return FALSE;
                     }
                 }
-            }
-            if ($result) {
-                return TRUE;
-            } else {
-                return FALSE;
+            }else{
+                 return TRUE;
             }
         }
+       
     }
 
     function userDelete($request) {
@@ -178,7 +182,6 @@ class Users extends Model {
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
 //            $objOrderInfo->save();
-
 //            chmod(public_path('pdf/some-filename.pdf'), 0777);
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];

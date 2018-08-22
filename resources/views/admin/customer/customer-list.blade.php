@@ -9,10 +9,9 @@
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
                         Customer List  
-
-                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('customer-add') }}" aria-label="Add Customer">
+<!--                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('customer-add') }}" aria-label="Add Customer">
                             <i class="fa fa-plus"></i>
-                        </a>
+                        </a>-->
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
