@@ -22,6 +22,7 @@
                             <th class="c-table__cell c-table__cell--head">Fullname&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">DOB&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Address&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Status&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                         </tr>
                     </thead>
@@ -38,6 +39,7 @@
                             <td class="c-table__cell">{{ $arrOrder[$i]->fullname }}</td>
                             <td class="c-table__cell">{{ date('d-m-Y',strtotime($arrOrder[$i]->date_of_birth)) }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->address }}</td>
+                            <td class="c-table__cell"><span class="c-badge {{ ($arrOrder[$i]->user_id)?'c-badge--success':'c-badge--danger' }} c-badge--xsmall u-ml-xsmall">{{ ($arrOrder[$i]->user_id)?'Confirm':'Not Confirm' }}</span></td>
                             <td class="c-table__cell">
                                 <a href="{{ route('view-order',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="View Order Details">
                                         <i class="fa fa-eye" ></i></span>
