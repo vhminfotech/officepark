@@ -54,27 +54,25 @@ class UpdateProfileController extends Controller {
 
         if ($request->isMethod('post')) {
             
-            $current_loginpassword = Auth()->guard('admin')->user()->password;
-            $dataArr = $request->input();
-            
+            $loginUserpassword = Auth()->guard('admin')->user()->password;
             $currentpassword = $request['currentpassword'];
             $newpassword = $request['newpassword'];
             $hashedpaasword = Hash::make($currentpassword);
-            
-            
-            if (Hash::check($hashedpaasword,$current_loginpassword)) {
-                echo 'in'; exit;
+             
+            if (!Hash::check($loginUserpassword,$hashedpaasword)) {
+                
+                $return['status'] = 'error';
+                $return['message'] = 'Old password Does Not Match !!.';
+                $return['redirect'] = route('admin-dashboard');
+            } else {
+                
                 $objuserpasswordedit = new Users();
                 $updatepassword = $objuserpasswordedit->saveEditUserPassword($id, $newpassword);
 
                 $return['status'] = 'success';
                 $return['message'] = 'User Password successfully Changed.';
                 $return['redirect'] = route('admin-dashboard');
-            } else {
-                echo 'out'; exit;
-                $return['status'] = 'error';
-                $return['message'] = 'Old password Does Not Match !!.';
-                $return['redirect'] = route('admin-dashboard');
+                
             }
         }
     }

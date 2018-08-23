@@ -68,7 +68,7 @@
                                         <div class="col-lg-5">
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="currentpassword">Old Password</label> 
-                                                <input class="c-input" id="oldpassword"  name="currentpassword"  type="password"> 
+                                                <input class="c-input" id="currentpassword"  name="currentpassword"  type="password"> 
                                             </div>
                                             <div class="c-field u-mb-small">
                                                 <label class="c-field__label" for="newpassword">New Password</label> 
