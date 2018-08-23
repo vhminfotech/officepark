@@ -35,7 +35,7 @@
                             <td class="c-table__cell">{{ $arrUser[$i]->name }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->email }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->type }}</td>
-                            <td class="c-table__cell">{{ $arrUser[$i]->type }}</td>
+                            <td class="c-table__cell">{{ $arrUser[$i]->var_language }}</td>
                             <td class="c-table__cell">
                                 <a href=" {{ route('system-edit-user',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                     <i class="fa fa-edit" ></i></span>
