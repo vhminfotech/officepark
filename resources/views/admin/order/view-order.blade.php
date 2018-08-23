@@ -304,7 +304,8 @@
             </div>
         </div>
     </div>
-
+    
+    @if($arrOrder[0]->user_id == "")
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-5 ">
@@ -315,6 +316,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div><!-- // .container -->
 <style>
     .error {
