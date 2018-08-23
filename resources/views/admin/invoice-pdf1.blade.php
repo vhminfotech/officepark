@@ -29,7 +29,19 @@
             .page-break {
                 page-break-after: always;
             }
-
+            table.boxtable{
+/*                border: 1px solid #000;
+                height: 15px;
+                width: 25px;*/
+            }
+            table.boxtable { border-collapse: collapse; }
+table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-height: 10px; }
+/*table.boxtable td .simpletext { border: none; margin: 0px;font-size: 12px;}*/
+/*table.boxtable td.special { border: 2px double Red; }*/
+/*            .special div {
+                border: 1px solid #000;
+                margin: 2px;
+            }*/
         </style>
     </head>
 
@@ -300,6 +312,321 @@
             </table>
 
             <div class="page-break"></div>
+            
+            <table width="100%">
+                <tr>
+                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
+                        <h4 style="margin: 0px;">SEPA-Lastschriftmandat</h4>
+                        <p style="margin: 0px;">Oftice Park</p>                          
+                        <span>Muinsterstr 330, Gebaude B I 40470 Dusseldorf 1 Deutschland</span>                          
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="60%">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                            
+                        </table> 
+                    </td>
+                    <td colspan="1" width="20%">
+                        <table class="boxtable">
+                            <tr>
+                                <td width="30%">&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                    <td colspan="1" width="20%">
+                        <table class="boxtable">
+                            <tr>
+                                <td width="30%">&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                   
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <h4 style="margin: 0px;">Office Park GbR</h4>
+                        <h4 style="margin: 0px;"> Münsterstraße 330, Gebäude B</h4>
+                        <h4 style="margin: 0px;"> 40470 Düsseldorf</h4>
+                        <h4 style="margin: 0px;"> Deutschland</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid #000;" colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                 
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td width="50%">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </td>
+                    <td width="50%">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </td>
+                    <td width="0%">
+                        
+                    </td>
+               </tr>
+            </table>
+            
+            <div class="page-break"></div>
             <table width="100%">
                 <tr>
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
@@ -399,7 +726,7 @@
                     </td>
                 </tr>
             </table>
-            <div class="page-break"></div>
+           
 
         </div>
     </body>

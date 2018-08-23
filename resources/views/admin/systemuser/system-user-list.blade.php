@@ -34,7 +34,7 @@
                             <td class="c-table__cell">{{ $count }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->name }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->email }}</td>
-                            <td class="c-table__cell">{{ $arrUser[$i]->type }}</td>
+                            <td class="c-table__cell">{{ $arrUser[$i]->inopla_username }}</td>
                             <td class="c-table__cell">{{ $arrUser[$i]->var_language }}</td>
                             <td class="c-table__cell">
                                 <a href=" {{ route('system-edit-user',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
@@ -43,9 +43,9 @@
                                  <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrUser[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                     <i class="fa fa-trash-o" ></i></span>
                                 </a>
-<!--                                <a href=" {{ route('create-pdf',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
+                                <a href=" {{ route('create-pdf',[$arrUser[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
                                     <i class="fa fa-file-pdf-o" ></i></span>
-                                </a>-->
+                                </a>
                             </td>
                         </tr>
                         @endfor
