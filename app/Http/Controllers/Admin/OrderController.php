@@ -13,6 +13,8 @@ use Auth;
 use Config;
 use PDF;
 use Session;
+use DB;
+
 class OrderController extends Controller {
 
     public function __construct() {
@@ -42,6 +44,9 @@ class OrderController extends Controller {
             Session::put('ordercount', $resultArr);
         }
         
+        $data['customerNo'] = DB::table('customer_no')->where('id', 1)->get();
+        $data['systemGenerateNo'] = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
+            
         $data['arrOrder'] = $objOrder->getOrderInfo($id);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();

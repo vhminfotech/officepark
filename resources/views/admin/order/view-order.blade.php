@@ -4,6 +4,11 @@
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
     <div class="row">
+        <div class="col-lg-12" style="margin-bottom: 20px;">
+            <a class="c-btn c-btn--info" style="width:100%;" href="#">When you confirm the order next. The next customer number is OP-211-{{ $customerNo[0]->last_number }} and system number {{ $systemGenerateNo[0]->generated_no }}.</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-6">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
