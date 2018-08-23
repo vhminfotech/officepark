@@ -34,7 +34,7 @@
                             <td class="c-table__cell">{{ $count }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->company_name }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->company_type }}</td>
-                            <td class="c-table__cell">{{ $arrOrder[$i]->company_info }}</td>
+                            <td class="c-table__cell">{{ substr($arrOrder[$i]->company_info, 0, 25) }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->fullname }}</td>
                             <td class="c-table__cell">{{ date('d-m-Y',strtotime($arrOrder[$i]->date_of_birth)) }}</td>
                             <td class="c-table__cell">{{ $arrOrder[$i]->address }}</td>
