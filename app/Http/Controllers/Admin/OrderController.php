@@ -139,7 +139,7 @@ class OrderController extends Controller {
             $result = $objUser->createCustomer($objCustomer);
             if ($result == true) {
                 $return['status'] = 'success';
-                $return['message'] = 'customere created Successfully.';
+                $return['message'] = 'customere created Successfully.<br/>Customer no : '.$result['cus_no'].' <br/> System no : '.$result['system_no'].'';
                 $return['redirect'] = route('view-order', array('id' => $request->input('orderId')));
                 echo json_encode($return);
                 exit;

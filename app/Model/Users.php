@@ -160,7 +160,14 @@ class Users extends Model {
         if ($count == 0) {
             $newpassword = 123;
             $result = DB::table('customer_no')->where('id', 1)->get();
-
+            $systemGenrateNo = DB::table('customer_user_no')->orderBy('id', 'desc')->take(1)->get();
+            
+            if(empty($systemGenrateNo)){
+                $genrateNo = '021136874190000';
+            }else{
+                $genrateNo = ($systemGenrateNo[0]->generated_no) + 1;
+            }
+            
             $newpass = Hash::make($newpassword);
             $objUser = new Users();
             $objUser->name = $postData['fullname'];
@@ -171,14 +178,25 @@ class Users extends Model {
             $objUser->type = 'CUSTOMER';
             $objUser->password = $newpass;
             $objUser->customer_number = 'OP-211-' . $result[0]->last_number;
+            $objUser->system_genrate_no = $genrateNo;
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
 
+            DB::table('customer_user_no')
+                    ->insert([
+                              'generated_no' => $genrateNo , 
+                              'user_id' => $objUser->id,
+                              'created_at' => date('Y-m-d H:i:s'),
+                              'updated_at' => date('Y-m-d H:i:s')
+                            ]);
+            
+            
             DB::table('customer_no')
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);
-
+            
+            
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
 //            $objOrderInfo->save();
@@ -202,7 +220,13 @@ class Users extends Model {
             $sendMail = new Sendmail;
             $mailData['data']['interUser'] = $postData['fullname'];
             $sendMail->sendSMTPMail($mailData);
-            return TRUE;
+            
+            
+            $data_array = array(
+                'system_no'=> $genrateNo,
+                'cus_no' => 'OP-211-' . $result[0]->last_number,
+            );
+            return $data_array;
         } else {
 
             return false;
