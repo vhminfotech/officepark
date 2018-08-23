@@ -155,17 +155,10 @@ class Users extends Model {
 
     public function createCustomer($postData) {
         $count = Users::where('email', $postData['email'])->count();
-//        $count = 0;
         if ($count == 0) {
             $newpassword = 123;
             $result = DB::table('customer_no')->where('id', 1)->get();
-            $systemGenrateNo = DB::table('customer_user_no')->orderBy('id', 'desc')->take(1)->get();
-            
-            if(empty($systemGenrateNo)){
-                $genrateNo = '021136874190000';
-            }else{
-                $genrateNo = ($systemGenrateNo[0]->generated_no) + 1;
-            }
+            $systemGenrateNo = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
             
             $newpass = Hash::make($newpassword);
             $objUser = new Users();
@@ -177,37 +170,17 @@ class Users extends Model {
             $objUser->type = 'CUSTOMER';
             $objUser->password = $newpass;
             $objUser->customer_number = 'OP-211-' . $result[0]->last_number;
-            $objUser->system_genrate_no = $genrateNo;
+            $objUser->system_genrate_no = $systemGenrateNo[0]->generated_no;
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
 
-            DB::table('customer_user_no')
-                    ->insert([
-                              'generated_no' => $genrateNo , 
-                              'user_id' => $objUser->id,
-                              'created_at' => date('Y-m-d H:i:s'),
-                              'updated_at' => date('Y-m-d H:i:s')
-                            ]);
-            
             
 
-//            $objUser->id = 1;
-            $count = DB::table('customer_user_no')->where('user_id', $userId)->get()->count();
-            $generateedNum = rand(4, 9999);
-            $systemNo = '02113687419'. $generateedNum;
-            
-            if ($count == 0) {
-                DB::table('customer_user_no')
-                        ->insert(['generated_no' => $systemNo,
-                            'user_id' => $userId,
-                            'created_at' => date('Y-m-d H:i:s')]);
-            } else {
-                DB::table('customer_user_no')
-                        ->where('user_id', $userId)
-                        ->update(['generated_no' => $systemNo]);
-            }
-//            echo 'dsfsd';exit;
+            DB::table('system_genrate_no')
+                        ->where('id', 1)
+                        ->update(['generated_no' => $systemGenrateNo[0]->generated_no + 1]);
+
             DB::table('customer_no')
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);
@@ -215,21 +188,20 @@ class Users extends Model {
             
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
-//            $objOrderInfo->save();
-//            chmod(public_path('pdf/some-filename.pdf'), 0777);
+            $objOrderInfo->save();
+            
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.invoice-pdf', $data);
             $pdf->save(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'));
-//            $pdf->save(public_path('pdf/some-filename.pdf'));
+
 
             $pdf = PDF::loadView('admin.invoice-pdf1', $data);
-//            $pdf->save(public_path('pdf/some-filename1.pdf'));
+
             $pdf->save(public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
 
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
-//             $mailData['attachment'] = array(public_path('pdf/some-filename.pdf'),public_path('pdf/some-filename1.pdf'));
             $mailData['attachment'] = array(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
 
             $mailData['mailto'] = $postData['email'];
@@ -239,7 +211,7 @@ class Users extends Model {
             
             
             $data_array = array(
-                'system_no'=> $genrateNo,
+                'system_no'=> $systemGenrateNo[0]->generated_no,
                 'cus_no' => 'OP-211-' . $result[0]->last_number,
             );
             return $data_array;
