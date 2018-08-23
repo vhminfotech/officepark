@@ -141,11 +141,10 @@ class Users extends Model {
                         return FALSE;
                     }
                 }
-            }else{
-                 return TRUE;
+            } else {
+                return TRUE;
             }
         }
-       
     }
 
     function userDelete($request) {
@@ -156,7 +155,7 @@ class Users extends Model {
 
     public function createCustomer($postData) {
         $count = Users::where('email', $postData['email'])->count();
-//        $count = 0 ;
+//        $count = 0;
         if ($count == 0) {
             $newpassword = 123;
             $result = DB::table('customer_no')->where('id', 1)->get();
@@ -192,6 +191,23 @@ class Users extends Model {
                             ]);
             
             
+
+//            $objUser->id = 1;
+            $count = DB::table('customer_user_no')->where('user_id', $userId)->get()->count();
+            $generateedNum = rand(4, 9999);
+            $systemNo = '02113687419'. $generateedNum;
+            
+            if ($count == 0) {
+                DB::table('customer_user_no')
+                        ->insert(['generated_no' => $systemNo,
+                            'user_id' => $userId,
+                            'created_at' => date('Y-m-d H:i:s')]);
+            } else {
+                DB::table('customer_user_no')
+                        ->where('user_id', $userId)
+                        ->update(['generated_no' => $systemNo]);
+            }
+//            echo 'dsfsd';exit;
             DB::table('customer_no')
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);

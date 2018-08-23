@@ -11,6 +11,7 @@ use App\Model\OrderInfo;
 use App\Model\Users;
 use Auth;
 use Config;
+use PDF;
 use Session;
 class OrderController extends Controller {
 
@@ -150,6 +151,20 @@ class OrderController extends Controller {
                 exit;
             }
         }
+    }
+    
+    public function createPDF($id){
+        
+//        $pdf = App::make('dompdf.wrapper');
+//        $pdf->loadHTML('<h1>Test</h1>');
+//        return $pdf->stream();
+
+        //Or use the facade:
+        $data['id'] = $id;
+        $pdf = PDF::loadView('admin.order-pdf', $data);
+         return $pdf->stream();
+        return $pdf->download('invoice.pdf');
+
     }
 
 }
