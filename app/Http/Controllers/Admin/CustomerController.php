@@ -81,7 +81,6 @@ class CustomerController extends Controller {
         }
         $objUsers = new Users();
         $data['arrCustomer'] = $objUsers->getCustomerInfo($customerId);
-//        $data['arrCustomer'] = Users::find($customerId);
 
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');

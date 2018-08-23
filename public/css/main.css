@@ -13577,7 +13577,7 @@ to {
 .help-block strong {
     color: red !important;
 }
-input.has-error {
+input.has-error,select.has-error,textarea.has-error {
     border-color: red !important;
 }
 .red{

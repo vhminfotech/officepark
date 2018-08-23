@@ -249,6 +249,7 @@ class Users extends Model {
 
     public function updateCustomerInfo($request) {
         $userId = $request->input('custId');
+//        print_r($request->input());exit;
         $result = Users::where('id', '!=', $userId)->where('email', $request->input('email'))->get()->count();
         $return = '';
         if ($result == 0) {
@@ -259,6 +260,7 @@ class Users extends Model {
             OrderInfo::where('user_id', $userId)
                     ->update([
                         'company_name' => $request->input('company_name'),
+                        'fullname' => $request->input('first_name'),
                         'phone' => $request->input('telephone')
             ]);
 
@@ -271,7 +273,13 @@ class Users extends Model {
 
     public function getCustomerInfo($id) {
         return Users::select(
-                                'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
+                             'users.id as customer_id', 
+                             'users.customer_number  as customer_number', 
+                             'order_info.company_name', 
+                             'order_info.fullname', 
+                             'users.email', 
+                             'order_info.phone', 
+                             'order_info.is_package'
                         )
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                         ->where('users.id', '=', $id)->first()->toArray();
