@@ -48,7 +48,10 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
         <div class="invoice-box">
             <table width="100%">
                 <tr>
-                    <td class="main-header" colspan="3"><span >Office | Park</span></td>
+                    <td class="main-header" colspan="3">
+                        <!--<span >Office | Park</span>-->
+                        <img  src="{{  asset('img/officepark-logo.jpg')  }}">
+                    </td>
                 </tr>
                 <tr>
                     <td  class="text-undeline" colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
@@ -111,7 +114,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                                 <td>Wir wünschen Ihnen viel Erfolg mit Ihrem neuen Telefonsekretariat und
                                     freuen uns auf eine gute und langjährige Zusammenarbeit. Sollten Sie
                                     weitere Fragen haben, stehen Ihnen unsere Mitarbeiter aus dem
-<!--                                    Service-Team gerne telefonisch unter {{ $arrOrder[0]['generated_no'] }} zur Verfügung</td>-->
+                                    <!--Service-Team gerne telefonisch unter {{ $arrOrder[0]['system_genrate_no'] }} zur Verfügung</td>-->
                                     Service-Team gerne telefonisch unter 0211 368 74 190 zur Verfügung</td>
 
                             </tr>
@@ -178,7 +181,8 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             <!--            <div class="page-break"></div>-->
             <table width="100%">
                 <tr>
-                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td><img  src="{{  asset('img/officepark-logo.jpg')  }}"></td>
+<!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td><b>Bankverbindung:</b></td></tr>
@@ -203,6 +207,9 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
                         </span><br><span>verbindet</span>
                     </td>
+<!--                    <td style="text-align: right; height: 50px;" colspan="3">
+                        <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
+                    </td>-->
                 </tr>
             </table>
             <table width="100%">
@@ -210,11 +217,11 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><h3>Ihre persönlichen Daten</h3></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>Kundennummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['customer_number'] }}</span></td>
+                    <td colspan="3"><span>Kundennummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['customer_number'] }}</span></td>
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+{{ $arrOrder[0]['generated_no'] }}</span></td>
+                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ (empty($arrOrder[0]['generated_no']) ? 'N/A' : '+'.$arrOrder[0]['generated_no']) }}</span></td>
 <!--                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+49 211 368 741 9004</span></td>-->
                 </tr>
 
@@ -228,7 +235,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['is_package'] == 1 ? 'BUSINESS' : '' }} </span></td>
+                    <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['is_package'] == 1 ? 'BUSINESS' : '' }} </span></td>
                 </tr>
                 <tr>
                     <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEPA Lastschrift</span></td>
@@ -240,7 +247,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><h3>Bankverbindung</h3></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['account_iban'] }}</span></td>
+                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['account_iban'] }}</span></td>
                 </tr>
 
                 <tr>
@@ -248,7 +255,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['customer_number'] }}</span></td>
+                    <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['customer_number'] }}</span></td>
                 </tr>
             </table>  
             <table width="100%">
@@ -256,7 +263,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><h3>Zugangsdaten</h3></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>UserID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; atafinanz</span></td>
+                    <td colspan="3"><span>UserID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['email'] }}</span></td>
                 </tr>
 
                 <tr>
@@ -293,7 +300,8 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 <br>
                 <br>
                 <tr>
-                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td><img src="{{asset('img/officepark-logo.jpg') }}"></td>
+<!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td><b>Bankverbindung:</b></td></tr>
@@ -312,8 +320,9 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 </tr>
             </table>
 
-            <div class="page-break"></div>
             
+          @if($arrOrder[0]['accept'] != 'uber') 
+          <div class="page-break"></div>
             <table width="100%">
                 <tr>
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
@@ -421,7 +430,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     </td>
                 </tr>
                 
-                 <tr>
+                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
                  
@@ -626,7 +635,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     </td>
                </tr>
             </table>
-            
+            @endif
             <div class="page-break"></div>
             <table width="100%">
                 <tr>
@@ -709,7 +718,8 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 <tr><td colspan="3"><hr/></td></tr>
 
                 <tr>
-                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td><img src="{{  asset('img/officepark-logo.jpg')  }}"></td>
+                    <!--<td><b>Office | Park </b><span>GbR</span> </td>-->
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td><b>Bankverbindung:</b></td></tr>
@@ -727,8 +737,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     </td>
                 </tr>
             </table>
-           
-
         </div>
     </body>
 </html>
