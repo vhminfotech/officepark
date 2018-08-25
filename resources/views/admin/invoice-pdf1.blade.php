@@ -47,7 +47,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
 
     <body>
         <div class="invoice-box">
-            <?php /*
+            
             <table width="100%">
                 <tr>
                     <td class="main-header" colspan="3"><span >Office | Park</span></td>
@@ -759,7 +759,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             </table>
             
             <div class="page-break"></div>
-            */ ?>
+
             <table width="100%">
                 <tr>
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
