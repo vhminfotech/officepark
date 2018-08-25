@@ -47,6 +47,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
 
     <body>
         <div class="invoice-box">
+            <?php /*
             <table width="100%">
                 <tr>
                     <td class="main-header" colspan="3"><span >Office | Park</span></td>
@@ -175,7 +176,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 </tr>
                 <tr><td colspan="3"><hr/></td></tr>
             </table>
-            <!--            <div class="page-break"></div>-->
             <table width="100%">
                 <tr>
                     <td><b>Office | Park </b><span>GbR</span> </td>
@@ -196,6 +196,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     </td>
                 </tr>
             </table>
+            
             <div class="page-break"></div>
 
             <table width="100%">
@@ -233,7 +234,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEPA Lastschrift</span></td>
                 </tr>
             </table>
-
             <table width="100%">
                 <tr>
                     <td colspan="3"><h3>Bankverbindung</h3></td>
@@ -284,7 +284,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 <br>
 
             </table>
-
             <br>
             <table width="100%">
                 <tr><td colspan="3"><hr/></td></tr>
@@ -323,50 +322,68 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
                         <h4 style="margin: 0px;">SEPA-Lastschriftmandat</h4>
                         <p style="margin: 0px;">Oftice Park</p>                          
-                        <span>Muinsterstr 330, Gebaude B I 40470 Dusseldorf 1 Deutschland</span>                          
+                        <span>Müinsterstr 330, Gebäude B I 40470 Düsseldorf 1 Deutschland</span>                          
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
-                <tr>
-                    <td colspan="1" width="60%">
-                        <table class="boxtable">
+                <tr width="100%">
+                    <td colspan="3" width="100%">
+                        <table>
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                            </tr>
-                            
-                        </table> 
-                    </td>
-                    <td colspan="1" width="20%">
-                        <table class="boxtable">
-                            <tr>
-                                <td width="30%">&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <td>
+                                    <table class="boxtable">
+                                        <tr>
+                                            <td>D</td>
+                                            <td>E</td>
+                                            <td>9</td>
+                                            <td>1</td>
+                                            <td>Z</td>
+                                            <td>Z</td>
+                                            <td>Z</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>5</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>0</td>
+                                            <td>A</td>
+                                            <td>B</td>
+                                        <p class="simpletext" style="font-size: 12px;margin: 0px;">Gläubiger-Identifikationsnummer / creditor identifier</p>
+                                    </tr>
+                                </table>
+                                </td>
+                                <td width="100%">
+                                    <table class="boxtable">
+                                        <tr>
+                                            <td>X</td>
+                                            <p class="simpletext" style="font-size: 12px;margin: 0px;">
+                                                Zahlungsart: <br/>
+                                                Wlederkehrende Zahlung 
+                                            </p>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="100%">
+                                    <table class="boxtable">
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        <p class="simpletext" style="font-size: 12px;margin: 0px;">
+                                            Zahlungsart: <br/>
+                                            Einmalige Zahlung
+                                        </p>
+                                    </tr>
+                                    </table>
+                                </td>
                             </tr>
                         </table>
                     </td>
-                    <td colspan="1" width="20%">
-                        <table class="boxtable">
-                            <tr>
-                                <td width="30%">&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                            </tr>
-                        </table>
-                    </td>
-                   
                 </tr>
                 <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
@@ -385,7 +402,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 <tr>
                     <td style="border-bottom: 1px solid #000;" colspan="3"><span>&nbsp;</span></td>
                 </tr>
-                
                 <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
@@ -393,63 +409,278 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <td>O</td>
+                                <td>P</td>
+                                <td>-</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>-</td>
+                                <td>1</td>
+                                <td>7</td>
+                                <td>0</td>
+                                <td>5</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Mandatsreferenz</p>
                             </tr>
                         </table>
                     </td>
                 </tr>
-                
-                 <tr>
+                <tr>
+                   <td colspan="3"><span>&nbsp;</span></td>
+               </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>T</td>
+                                <td>A</td>
+                                <td>&nbsp;</td>
+                                <td>F</td>
+                                <td>i</td>
+                                <td>n</td>
+                                <td>a</td>
+                                <td>n</td>
+                                <td>z</td>
+                                <td>&nbsp;</td>
+                                <td>G</td>
+                                <td>b</td>
+                                <td>r</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Name des Zahlungspflichtigen (Kontoinhaber)</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
-                 
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
                 <tr>
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
+                                <td>P</td>
+                                <td>R</td>
+                                <td>O</td>
+                                <td>m</td>
+                                <td>e</td>
+                                <td>n</td>
+                                <td>a</td>
+                                <td>d</td>
+                                <td>e</td>
+                                <td>n</td>
+                                <td>s</td>
+                                <td>t</td>
+                                <td>r</td>
+                                <td>.</td>
+                                <td>&nbsp;</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber)</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>4</td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>6</td>
+                                <td>0</td>
+                                <td>&nbsp;</td>
+                                <td>N</td>
+                                <td>e</td>
+                                <td>u</td>
+                                <td>s</td>
+                                <td>s</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber)</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>D</td>
+                                <td>e</td>
+                                <td>u</td>
+                                <td>t</td>
+                                <td>s</td>
+                                <td>c</td>
+                                <td>h</td>
+                                <td>l</td>
+                                <td>a</td>
+                                <td>n</td>
+                                <td>d</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber)</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>D</td>
+                                <td>E</td>
+                                <td>4</td>
+                                <td>7</td>
+                                <td>&nbsp;</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>4</td>
+                                <td>&nbsp;</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>&nbsp;</td>
+                                <td>0</td>
+                                <td>7</td>
+                                <td>7</td>
+                                <td>0</td>
+                                <td>&nbsp;</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>2</td>
+                                <td>&nbsp;</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">IBAN des Zahlungspflichtigen</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>C</td>
+                                <td>O</td>
                                 <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <td>D</td>
+                                <td>E</td>
+                                <td>F</td>
+                                <td>F</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">BIC des Zahlungspflichtigen</p>
                             </tr>
                         </table>
                     </td>
@@ -458,175 +689,77 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>&nbsp;</span></td>
-                </tr>
-                
-                <tr>
                     <td colspan="3">
-                        <table class="boxtable">
+                        <table>
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <td>
+                                    Ich ermächtige (Wir erméchtigen) den Zahlungsempfänger Office Park GbFI, Zahlungen von meinem (unserem) Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein (weisen wirunser) Kreditinstitut an, die von Office Park GbFi auf mein(unsere) Konto gezogenen Lastschriften einzulésen.
+                                </td>
+                                <td>
+                                    Hinweis: Ich kann (Wir können) innerhalb von acht Wochen,beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem(unserem) Kreditinstitut vereinbarten Bedingungen.
+                                </td>
                             </tr>
                         </table>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td colspan="3">
-                        <table class="boxtable">
-                            <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <table class="boxtable">
-                            <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <table class="boxtable">
-                            <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <table class="boxtable">
-                            <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td width="50%">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                    </td>
-                    <td width="50%">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                    </td>
-                    <td width="0%">
-                        
                     </td>
                </tr>
+                <tr><td colspan="3"><span>&nbsp;</span></td></tr>
+                <tr><td colspan="3"><span>&nbsp;</span></td></tr>
+                <tr><td colspan="3"><span>&nbsp;</span></td></tr>
+                <tr><td colspan="3"><span>&nbsp;</span></td></tr>
+                <tr>
+                    <td colspan="3">
+                        <table width="100%">
+                            <tr>
+                                <td colspan="2"><hr/></td>
+                                <td></td>
+                                <td colspan="2"><hr/></td>
+                                <td></td>
+                                <td colspan="2"><hr/></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Ort</td>
+                                <td></td>
+                                <td></td>
+                                <td>Datum</td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="3">Unterschrift(en) des Zahlungspflichtigen (Kontoinhaber)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table width="100%">
+                            <tr><td colspan="3"><hr/></td></tr>
+                            <tr>
+                                <td><b>Office | Park </b><small>GbR</small> </td>
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%">
+                                        <tr><td><b>Bankverbindung:</b></td></tr>
+                                        <tr><td>Bank: Postbank AG</td></tr>
+                                        <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                                        <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                                        <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%">
+                                        <tr><td>Seite 3 von 4</td></tr>
+                                        <tr><td>Schreiben vom 22.05.18</td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
             </table>
             
             <div class="page-break"></div>
+            */ ?>
             <table width="100%">
                 <tr>
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
@@ -642,71 +775,84 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             <br>
             <br>
             <br>
-            <table width='700px'>
-                <div style="width:700px;height:510px;border:1px solid #000;">
-                    <span>Telefonservice</span><p style="float: right;">business.call</p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <span>Mindestumsatz, pro Monat </span>
-                    <p style="float: right; line-height: 20%;"> 30,00 €</p>
-                    <hr>
-                    <span>Anrufannahme, pro Anruf </span>
-                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
-                    <hr>
-                    <span>Benachrichtigungsanruf an Ihren Kunden, pro Anruf </span>
-                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
-
-                    <hr>
-                    <span>Anrufbearbeitung, pro Minute  </span>
-                    <p style="float: right; line-height: 20%;"> 0,00 €  </p>
-
-                    <hr>
-                    <span>Benachrichtigung per E-Mail, pro E-Mail  </span>
-                    <p style="float: right; line-height: 20%;"> kostenfrei </p>
-
-                    <hr>
-                    <span>Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </span>
-                    <p style="float: right; line-height: 20%;"> 0,25 €  </p>
-
-                    <hr>
-                    <span>Weiterleitungsgebühren, dt. Festnetz, pro Min. </span>
-                    <p style="float: right; line-height: 20%;"> 0,15 €  </p>
-
-                    <hr>
-                    <span>AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</span>
-                    <p style="float: right; line-height: 20%;"> 0,20 €0,20 € </p>
-
-                    <hr>
-                    <span>Vertragslaufzeit</span>
-                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
-
-                    <hr>
-                    <span>Kündigungsfrist</span>
-                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
-
-                    <hr>
-                    <span>Abrechnungszeitraum</span>
-                    <p style="float: right; line-height: 20%;"> 27. - 26. des Folgemonats
-                    </p>
-                    <hr>
-                    <span>Servicezeiten</span>
-                    <p style="float: right; line-height: 20%;"> 09:00 - 19:00 Uhr 
-                    </p>
-
-                    <hr>
-
-                </div>
+            <table width="100%" style="border:1px solid #000;">
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr>
+                    <td>
+                        <b>Telefonservice</b>
+                    </td>
+                    <td>
+                        <b>business.call</b>
+                    </td>
+                </tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr><td colspan="2">&nbsp;</td></tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Mindestumsatz, pro Monat </td>
+                    <td> 30,00 €</td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Anrufannahme, pro Anruf </td>
+                    <td> 1,00 € </td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Benachrichtigungsanruf an Ihren Kunden, pro Anruf </td>
+                    <td> 1,00 €</td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Anrufbearbeitung, pro Minute  </td>
+                    <td> 0,00 € </td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Benachrichtigung per E-Mail, pro E-Mail  </td>
+                    <td> kostenfrei </td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </td>
+                    <td> 0,25 € </td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Weiterleitungsgebühren, dt. Festnetz, pro Min. </td>
+                    <td> 0,15 € </td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</td>
+                    <td> 0,20 €0,20 €</td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Vertragslaufzeit</td>
+                    <td> auf unbestimmte Zeit</td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Kündigungsfrist</td>
+                    <td> auf unbestimmte Zeit</td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Abrechnungszeitraum</td>
+                    <td> 27. - 26. des Folgemonats</td>
+                </tr>
+                <tr><td colspan="2"><hr/></td></tr>
+                <tr>
+                    <td>Servicezeiten</td>
+                    <td> 09:00 - 19:00 Uhr </td>
+                </tr>
             </table>
-            <br>
-            <br>
             <br>
             <br>
             <br>
             <table width="100%">
                 <tr><td colspan="3"><hr/></td></tr>
-
                 <tr>
                     <td><b>Office | Park </b><span>GbR</span> </td>
                     <td>
@@ -720,14 +866,12 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Seite 4 von 4</td></tr>
                             <tr><td>Schreiben vom 22.05.18</td></tr>
                         </table>
                     </td>
                 </tr>
             </table>
-           
-
         </div>
     </body>
 </html>

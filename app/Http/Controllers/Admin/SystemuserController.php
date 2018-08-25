@@ -23,15 +23,16 @@ class SystemuserController extends Controller {
 
     public function getUserData() {
 
-        $objUser = new Users();
-        $userList = $objUser->gtUsrLlist();
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/system_user.js');
         $data['funinit'] = array('System_user.listInit()');
 
+        $objUser = new Users();
+        $userList = $objUser->gtUsrLlist();
         $data['arrUser'] = $userList;
         $data['detail'] = $this->loginUser;
+        
         return view('admin.systemuser.system-user-list', $data);
     }
     
