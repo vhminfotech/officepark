@@ -29,91 +29,706 @@
             .page-break {
                 page-break-after: always;
             }
+            table.boxtable{
+/*                border: 1px solid #000;
+                height: 15px;
+                width: 25px;*/
+            }
+            table.boxtable { border-collapse: collapse; }
+table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-height: 10px; }
+/*table.boxtable td .simpletext { border: none; margin: 0px;font-size: 12px;}*/
+/*table.boxtable td.special { border: 2px double Red; }*/
+/*            .special div {
+                border: 1px solid #000;
+                margin: 2px;
+            }*/
         </style>
     </head>
-
     <body>
         <div class="invoice-box">
             <table width="100%">
                 <tr>
-                    <td class="main-header" colspan="3"><span > Kommunikation</span></td>
+                    <td class="main-header" colspan="3"><span >Office | Park</span></td>
                 </tr>
                 <tr>
-                    <td class="main-header" colspan="3"><span > verbindet</span></td>
-                </tr>
-<!--                <tr>
                     <td  class="text-undeline" colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
-                </tr>-->
-                <tr>
-                    <td colspan="3"><h3>SEPA-Lastschriftmandat</h3></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><h5>Oftice Park GbR</h5></td>
+                    <td colspan="3"><h3>- persönlich -</h3></td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <table width="100%">
                             <tr>
-                                <td>iaubkjer-klentilikaticxisnijmmer / credtor klenlilier</td>
+                                <td>{{ $arrOrder[0]['address'] }}</td>
+                            </tr>
+<!--                            <tr>
+                                <td>Promenadenstr. 23</td>
                             </tr>
                             <tr>
-                                <td>Zahtmgsart:Wiederkeftrende Zahk</td>
-                            </tr>
-                         
+                                <td>41460 Neuss</td>
+                            </tr>-->
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Miinsterstr 330, Gebaude B I 40470 Dusseldorf 1 Deutschland</td>
-                                <td>Office Park GbR Miinsterstr. 330.</td>
-                                <td>Gebaude B 40470 Dusseldorf</td>
-                                <td>Deutschland</td>
-                                <td>Mand&tmferaitZ</td>
-                                <td>Haim das 7.irtLngr^)1licbtKjcn (Korrtoirftnbar}Haim das 7.irtLngr^)1licbtKjcn (Korrtoirftnbar}</td>
+                                <td style="font-size: 20px;"><b>Herzlich Willkommen bei OFFICE PARK</b></td>
                             </tr>
                         </table>
-                        
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Sehr {{ $arrOrder[0]['center_to_customer_route'] }},</td>
+                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>wir freuen uns, dass wir Sie als neuen OFFICE PARK-Kunden begrüßen
+                                    dürfen. Ihr Erreichbarkeitsservice ist ab sofort einsatzbereit und unsere
+                                    Agenten nehmen Ihre Anrufe entgegen. </td>
+
+                            </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Mit diesem Schreiben erhalten Sie eine Übersicht über Ihre Kundendaten,
+                                    unsere AGB‘s, die Preisliste sowie Hinweise für Ihren persönlichen Kundenbereich.
+                                    Bitte nehmen Sie sich am Anfang etwas Zeit um alle Daten zu
+                                    kontrollieren und ggf. zu ergänzen!</td>
+
+                            </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Weiterhin bitten wir Sie, uns die beiliegende Sepa-Lastschrift-Verfügung
+                                    unterschrieben zurückzusenden - gerne auch per E-Mail.</td>
+
+                            </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>Wir wünschen Ihnen viel Erfolg mit Ihrem neuen Telefonsekretariat und
+                                    freuen uns auf eine gute und langjährige Zusammenarbeit. Sollten Sie
+                                    weitere Fragen haben, stehen Ihnen unsere Mitarbeiter aus dem
+<!--                                    Service-Team gerne telefonisch unter {{ $arrOrder[0]['generated_no'] }} zur Verfügung</td>-->
+                                    Service-Team gerne telefonisch unter 0211 368 74 190 zur Verfügung</td>
+
+                            </tr>
+
+                        </table>
+
+
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>
+                                    Mit freundlichen Grüßen
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">
+                            <tr>
+                                <td>
+                                    Ihr OFFICE PARK-Team
+                                </td>
+                            </tr>
+                        </table>
                     </td>
-                    
-               </tr>  
-               <tr>
-                    <td colspan="2">
+                    <td class="small-fornt">
                         <table width="100%">
-                            <tr>
-                                <td>ich ormachtlgo (Wir ermachtlgan) den Zahlung»cmptangor Otlic* Park GbR. Zahlungcn von meinem (unscrem) Konto mitlcts Lastschrift einzuziehen. Zugieich weiee ich mein (weiaen wir unwr) Kredltlnatttut an, die von Office Park GbR auf main (unaare) Konto gezoganen last&cbrrtten einzuioean</td>
-                                 <td>Hlnwets: leb kann (Wir konnan) innerbaib von aebt Wochan, begmnend mit dem Belastungsdatum. die Erstattung des beiasteten Oetrages verlangen. Es gelten dabci die mit meinem (un*er*m) Kreditinetitut vereinbarten Bedingungen.</td>
-                            </tr>
+                            <tr> <td>  Gesellschafter/ Geschäftsführer</td> </tr>
+                            <tr> <td>  Baris Ak</td> </tr>
                         </table>
-                        <table width="100%" style="margin-top: 20px;">
+                        <table width="100%" style="margin-top: 20px;">       
+                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Münsterstraße 330 </td> </tr>
+                            <tr> <td>Gebäude B</td></tr> 
+                            <tr> <td>40470 Düsseldorf</td></tr> 
+                            <tr> <td>Telefon: +49 (0) 211 368 74 190</td></tr> 
+                            <tr> <td>Telefax: +49 (0) 211 368 74 190 01</td></tr> 
+                            <tr> <td>Web:    www.officepark.group</td></tr> 
+                            <tr> <td>E-Mail:  info@officepark.group</td></tr> 
+                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Service-/ Bürozeiten: </td> </tr>
+                            <tr> <td>Mo. bis Fr.</td></tr> 
+                            <tr> <td>09:00 - 19:00 Uhr</td></tr> 
+
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Düsseldorf, den 22.05.2018 </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 20px;">  
+                            <tr> <td>Finanzamt </td> </tr>
+                            <tr> <td>Düsseldorf-Nord </td> </tr>
+                            <tr> <td>Steuernummer: 105/5902/4492 </td> </tr>
+                            <tr> <td>Ust-IdNr.: DE317564846 </td> </tr>
+                        </table>
                     </td>
-               </tr>
-              <tr> <hr/></tr>
-                 <tr>
-                   <td>oct</td>
-                   <td><hr></hr></td>
-               </tr>
-               <tr><td colspan="3"><hr/></td></tr>
+                </tr>
+                <tr><td colspan="3"><hr/></td></tr>
+            </table>
+            <!--            <div class="page-break"></div>-->
+            <table width="100%">
+                <tr>
+                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div class="page-break"></div>
+
+            <table width="100%">
+                <tr>
+                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>
+                </tr>
             </table>
             <table width="100%">
                 <tr>
-                   <td>Office | Park <span>GbR</span> </td>
-                   <td>
-                       <table>
-                           <tr><td>Bankverbindung:</td></tr>
-                           <tr><td>Bank: Postbank AG</td></tr>
-                           <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
-                           <tr><td>BIC/Swift: PBNKDEFF</td></tr>
-                           <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
-                       </table>
-                   </td>
-                   <td>
-                       <table>
-                           <tr><td>Seite 3 von 4</td></tr>
-                           <tr><td>Schreiben vom 22.05.18</td></tr>
-                       </table>
-                   </td>
+                    <td colspan="3"><h3>Ihre persönlichen Daten</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>Kundennummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['customer_number'] }}</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+{{ $arrOrder[0]['generated_no'] }}</span></td>
+<!--                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+49 211 368 741 9004</span></td>-->
+                </tr>
+
+            </table>
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Vertragsdaten</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>Vertragsbeginn:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ date('d.m.Y',strtotime($arrOrder[0]['created_at'])) }}</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['is_package'] == 1 ? 'BUSINESS' : '' }} </span></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEPA Lastschrift</span></td>
+                </tr>
+            </table>
+
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Bankverbindung</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['account_iban'] }}</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>BIC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['account_bic'] }}</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['customer_number'] }}</span></td>
+                </tr>
+            </table>  
+            <table width="100%">
+                <tr>
+                    <td colspan="3"><h3>Zugangsdaten</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>UserID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; atafinanz</span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3"><span>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tuzkaya2018!</span></td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <div style="width:600px;height:130px;border:1px solid #000;">nur bei Teilnahme am Lastschriftverfahren:
+                            <span style="font-size: 15px;">
+                                Ich ermächtige OFFICE PARK, Zahlungen von meinem Konto mittels Lastschrift einzuziehen.
+                                Zugleich weise ich mein Kreditinstitut an, die von OFFICE PARK auf mein Konto gezogenen Lastschriften
+                                einzulösen. Im Falle einer Rücklastschrift mangels Deckung wird eine Gebühr von 10,- € netto fällig.
+                                Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des
+                                belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
+                                Die Erstlastschrift erfolgt nach 5 Tagen, Folgelastschriften nach 2 Tagen.
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+
+                <br>
+
+            </table>
+
+            <br>
+            <table width="100%">
+                <tr><td colspan="3"><hr/></td></tr>
+                <br>
+                <br>
+                <br>
+                <tr>
+                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="page-break"></div>
+            
+            <table width="100%">
+                <tr>
+                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
+                        <h4 style="margin: 0px;">SEPA-Lastschriftmandat</h4>
+                        <p style="margin: 0px;">Oftice Park</p>                          
+                        <span>Muinsterstr 330, Gebaude B I 40470 Dusseldorf 1 Deutschland</span>                          
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="1" width="60%">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                            
+                        </table> 
+                    </td>
+                    <td colspan="1" width="20%">
+                        <table class="boxtable">
+                            <tr>
+                                <td width="30%">&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                    <td colspan="1" width="20%">
+                        <table class="boxtable">
+                            <tr>
+                                <td width="30%">&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                   
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <h4 style="margin: 0px;">Office Park GbR</h4>
+                        <h4 style="margin: 0px;"> Münsterstraße 330, Gebäude B</h4>
+                        <h4 style="margin: 0px;"> 40470 Düsseldorf</h4>
+                        <h4 style="margin: 0px;"> Deutschland</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid #000;" colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                 
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><span>&nbsp;</span></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="boxtable">
+                            <tr>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <td>B</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td width="50%">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </td>
+                    <td width="50%">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </td>
+                    <td width="0%">
+                        
+                    </td>
                </tr>
             </table>
-<div class="page-break"></div>
+            
+            <div class="page-break"></div>
+            <table width="100%">
+                <tr>
+                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>
+                </tr>
+            </table>
+            <table width='100%'>
+                <tr>
+                    <td colspan="3">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <table width='700px'>
+                <div style="width:700px;height:510px;border:1px solid #000;">
+                    <span>Telefonservice</span><p style="float: right;">business.call</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <span>Mindestumsatz, pro Monat </span>
+                    <p style="float: right; line-height: 20%;"> 30,00 €</p>
+                    <hr>
+                    <span>Anrufannahme, pro Anruf </span>
+                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
+                    <hr>
+                    <span>Benachrichtigungsanruf an Ihren Kunden, pro Anruf </span>
+                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
+
+                    <hr>
+                    <span>Anrufbearbeitung, pro Minute  </span>
+                    <p style="float: right; line-height: 20%;"> 0,00 €  </p>
+
+                    <hr>
+                    <span>Benachrichtigung per E-Mail, pro E-Mail  </span>
+                    <p style="float: right; line-height: 20%;"> kostenfrei </p>
+
+                    <hr>
+                    <span>Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </span>
+                    <p style="float: right; line-height: 20%;"> 0,25 €  </p>
+
+                    <hr>
+                    <span>Weiterleitungsgebühren, dt. Festnetz, pro Min. </span>
+                    <p style="float: right; line-height: 20%;"> 0,15 €  </p>
+
+                    <hr>
+                    <span>AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</span>
+                    <p style="float: right; line-height: 20%;"> 0,20 €0,20 € </p>
+
+                    <hr>
+                    <span>Vertragslaufzeit</span>
+                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
+
+                    <hr>
+                    <span>Kündigungsfrist</span>
+                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
+
+                    <hr>
+                    <span>Abrechnungszeitraum</span>
+                    <p style="float: right; line-height: 20%;"> 27. - 26. des Folgemonats
+                    </p>
+                    <hr>
+                    <span>Servicezeiten</span>
+                    <p style="float: right; line-height: 20%;"> 09:00 - 19:00 Uhr 
+                    </p>
+
+                    <hr>
+
+                </div>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <table width="100%">
+                <tr><td colspan="3"><hr/></td></tr>
+
+                <tr>
+                    <td><b>Office | Park </b><span>GbR</span> </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+           
+
         </div>
     </body>
 </html>

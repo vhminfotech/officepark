@@ -9,9 +9,9 @@
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
                         Order List  
-<!--                        <a href="{{ route('add-user') }}" class="c-board__btn c-tooltip c-tooltip--top" aria-label="Add Customer/Client">
-                            <i class="fa fa-plus"></i>
-                        </a>-->
+                        <!--                        <a href="{{ route('add-user') }}" class="c-board__btn c-tooltip c-tooltip--top" aria-label="Add Customer/Client">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>-->
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
@@ -44,9 +44,9 @@
                                 <a href="{{ route('view-order',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="View Order Details">
                                         <i class="fa fa-eye" ></i></span>
                                 </a>
-<!--                                   <a href=" {{ route('order-pdf',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
-                                    <i class="fa fa-file-pdf-o" ></i></span>
-                                </a>-->
+                                <a href=" {{ route('order-pdf',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
+                                        <i class="fa fa-file-pdf-o" ></i></span>
+                                </a>
 <!--                                <a href="javascript:;" class="delete"  data-id="{{ $arrOrder[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>-->
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    
+
 </div>
 </div><!-- // .container -->
 <style>

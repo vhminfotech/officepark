@@ -40,13 +40,13 @@ class OrderController extends Controller {
         $objOrder = new OrderInfo();
         $orderstatus = $objOrder->updateStatus($id);
         $resultArr = $objOrder->newOrderCount('new');
-        if($orderstatus){
+        if ($orderstatus) {
             Session::put('ordercount', $resultArr);
         }
-        
+
         $data['customerNo'] = DB::table('customer_no')->where('id', 1)->get();
         $data['systemGenerateNo'] = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
-            
+
         $data['arrOrder'] = $objOrder->getOrderInfo($id);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
@@ -145,7 +145,7 @@ class OrderController extends Controller {
             $result = $objUser->createCustomer($objCustomer);
             if ($result == true) {
                 $return['status'] = 'success';
-                $return['message'] = 'customere created Successfully.<br/>Customer no : '.$result['cus_no'].' <br/> System no : '.$result['system_no'].'';
+                $return['message'] = 'customere created Successfully.<br/>Customer no : ' . $result['cus_no'] . ' <br/> System no : ' . $result['system_no'] . '';
                 $return['redirect'] = route('view-order', array('id' => $request->input('orderId')));
                 echo json_encode($return);
                 exit;
@@ -157,19 +157,17 @@ class OrderController extends Controller {
             }
         }
     }
-    
-    public function createPDF($id){
-        
-//        $pdf = App::make('dompdf.wrapper');
-//        $pdf->loadHTML('<h1>Test</h1>');
-//        return $pdf->stream();
 
-        //Or use the facade:
+    public function createPDF($id) {
         $data['id'] = $id;
+        $objOrder = new OrderInfo();
+        $data['arrOrder'] = $objOrder->getPdfData($id);
+//        echo '<pre/>';
+//        print_r($data['arrOrder']);
+//        exit;
         $pdf = PDF::loadView('admin.order-pdf', $data);
-         return $pdf->stream();
+        return $pdf->stream();
         return $pdf->download('invoice.pdf');
-
     }
 
 }

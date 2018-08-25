@@ -82,8 +82,8 @@ class OrderInfo extends Model {
     public function deleteInfo($orderId) {
         return DB::table('order_info')->Where('id', $orderId)->delete();
     }
-    
-    public function newRecordCount(){
+
+    public function newRecordCount() {
         return OrderInfo::where('status', 'new')->get()->count();
     }
 
@@ -134,7 +134,7 @@ class OrderInfo extends Model {
         $objCusEdit = OrderInfo::find($request->input('orderId'));
         $objCusEdit->gender = $request->input('gender');
         $objCusEdit->fullname = $request->input('customer_name');
-        $objCusEdit->date_of_birth = date('Y-m-d',  strtotime($request->input('date_of_birth')));
+        $objCusEdit->date_of_birth = date('Y-m-d', strtotime($request->input('date_of_birth')));
         $objCusEdit->address = $request->input('address');
         $objCusEdit->postal_code = $request->input('postal_code');
         $objCusEdit->email = $request->input('email');
@@ -142,18 +142,28 @@ class OrderInfo extends Model {
             return TRUE;
         }
     }
-    
-    public function newOrderCount($statusValue){
+
+    public function newOrderCount($statusValue) {
         return OrderInfo::Where('status', $statusValue)->count();
     }
-    
+
     public function updateStatus($id) {
         $objCusEdit = OrderInfo::find($id);
         $objCusEdit->status = 'viewed';
-        
+
         if ($objCusEdit->save()) {
             return TRUE;
         }
+    }
+
+    public function getPdfData($id) {
+        return OrderInfo::leftjoin('users','users.id','=','order_info.user_id')
+                ->leftjoin('system_genrate_no','system_genrate_no.user_id','=','order_info.user_id')
+                ->select('order_info.*','users.name as username'
+                        ,'users.inopla_username','users.extension_number',
+                        'system_genrate_no.generated_no',
+                        'users.customer_number')
+                ->where('order_info.id', $id)->get()->toArray();
     }
 
 }
