@@ -202,19 +202,22 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             </table>
             <div class="page-break"></div>
 
-            <table width="100%">
+<!--            <table width="100%">
                 <tr>
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
                         </span><br><span>verbindet</span>
                     </td>
-<!--                    <td style="text-align: right; height: 50px;" colspan="3">
+                    <td style="text-align: right; height: 50px;" colspan="3">
                         <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
-                    </td>-->
+                    </td>
                 </tr>
-            </table>
+            </table>-->
             <table width="100%">
                 <tr>
                     <td colspan="3"><h3>Ihre persönlichen Daten</h3></td>
+                    <td style="text-align: right; height: 50px;" colspan="3">
+                        <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="3"><span>Kundennummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['customer_number'] }}</span></td>
@@ -301,7 +304,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                 <br>
                 <tr>
                     <td><img src="{{asset('img/officepark-logo.jpg') }}"></td>
-<!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td><b>Bankverbindung:</b></td></tr>
@@ -325,9 +327,12 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
           <div class="page-break"></div>
             <table width="100%">
                 <tr>
-                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
-                        </span><br><span>verbindet</span>
+                     <td style="text-align: right; height: 50px;" colspan="3">
+                        <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
                     </td>
+<!--                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
+                        </span><br><span>verbindet</span>
+                    </td>-->
                 </tr>
                 <tr>
                     <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
@@ -340,7 +345,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
                 <tr>
-                    <td colspan="1" width="60%">
+                    <td colspan="1" width="55%">
                         <table class="boxtable">
                             <tr>
                                 <td>A</td>
@@ -361,7 +366,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     <td colspan="1" width="20%">
                         <table class="boxtable">
                             <tr>
-                                <td width="30%">&nbsp;</td>
+                                <td width="30%">X</td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
                             </tr>
@@ -637,16 +642,19 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             </table>
             @endif
             <div class="page-break"></div>
-            <table width="100%">
+<!--            <table width="100%">
                 <tr>
                     <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
                         </span><br><span>verbindet</span>
                     </td>
                 </tr>
-            </table>
+            </table>-->
             <table width='100%'>
                 <tr>
-                    <td colspan="3">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
+                    <td colspan="2">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
+                     <td style="text-align: right; height: 50px;" colspan="3">
+                        <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
+                    </td>
                 </tr>
             </table>
             <br>
@@ -719,7 +727,7 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
 
                 <tr>
                     <td><img src="{{  asset('img/officepark-logo.jpg')  }}"></td>
-                    <!--<td><b>Office | Park </b><span>GbR</span> </td>-->
+                    <!--<td><b>Office | Park </b><span>GbR</span> </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td><b>Bankverbindung:</b></td></tr>
