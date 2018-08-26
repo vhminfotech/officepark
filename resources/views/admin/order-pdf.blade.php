@@ -35,13 +35,8 @@
                 width: 25px;*/
             }
             table.boxtable { border-collapse: collapse; }
-table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-height: 10px; }
-/*table.boxtable td .simpletext { border: none; margin: 0px;font-size: 12px;}*/
-/*table.boxtable td.special { border: 2px double Red; }*/
-/*            .special div {
-                border: 1px solid #000;
-                margin: 2px;
-            }*/
+table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
+
         </style>
     </head>
     <body>
@@ -65,12 +60,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                             <tr>
                                 <td>{{ $arrOrder[0]['address'] }}</td>
                             </tr>
-<!--                            <tr>
-                                <td>Promenadenstr. 23</td>
-                            </tr>
-                            <tr>
-                                <td>41460 Neuss</td>
-                            </tr>-->
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
@@ -628,7 +617,6 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                     </td>
                 </tr>
                 <tr>
-                    
                     <td width="50%">
                         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                     </td>
@@ -639,6 +627,18 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
                         
                     </td>
                </tr>
+            </table>
+          <table width='100%'>
+                <tr>
+                    <td>______________</td>
+                    <td>______________</td>
+                    <td>__________________________________</td>
+                </tr>
+                <tr>
+                    <td>ort</td>
+                    <td>Datum</td>
+                    <td>Unterschrift(en) des Zahlungspffichtigen (Kontoinhaber)</td>
+                </tr>
             </table>
             @endif
             <div class="page-break"></div>
@@ -661,60 +661,58 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             <br>
             <br>
             <table width='700px'>
-                <div style="width:700px;height:510px;border:1px solid #000;">
-                    <span>Telefonservice</span><p style="float: right;">business.call</p>
+                <div style="width:700px;height:510px;border:1px solid gray;">
+                    <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; line-height: 20%;margin-right: 30px !important;">business.call</p>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <span>Mindestumsatz, pro Monat </span>
-                    <p style="float: right; line-height: 20%;"> 30,00 €</p>
+                    <span style="margin-left: 10px;">Mindestumsatz, pro Monat </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 30,00 €</p>
                     <hr>
-                    <span>Anrufannahme, pro Anruf </span>
-                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
+                    <span style="margin-left: 10px;">Anrufannahme, pro Anruf </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 1,00 € </p>
                     <hr>
-                    <span>Benachrichtigungsanruf an Ihren Kunden, pro Anruf </span>
-                    <p style="float: right; line-height: 20%;"> 1,00 € </p>
+                    <span style="margin-left: 10px;">Benachrichtigungsanruf an Ihren Kunden, pro Anruf </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 1,00 € </p>
 
                     <hr>
-                    <span>Anrufbearbeitung, pro Minute  </span>
-                    <p style="float: right; line-height: 20%;"> 0,00 €  </p>
+                    <span style="margin-left: 10px;">Anrufbearbeitung, pro Minute  </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,00 €  </p>
 
                     <hr>
-                    <span>Benachrichtigung per E-Mail, pro E-Mail  </span>
-                    <p style="float: right; line-height: 20%;"> kostenfrei </p>
+                    <span style="margin-left: 10px;">Benachrichtigung per E-Mail, pro E-Mail  </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> kostenfrei </p>
 
                     <hr>
-                    <span>Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </span>
-                    <p style="float: right; line-height: 20%;"> 0,25 €  </p>
+                    <span style="margin-left: 10px;">Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,25 €  </p>
 
                     <hr>
-                    <span>Weiterleitungsgebühren, dt. Festnetz, pro Min. </span>
-                    <p style="float: right; line-height: 20%;"> 0,15 €  </p>
+                    <span style="margin-left: 10px;">Weiterleitungsgebühren, dt. Festnetz, pro Min. </span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,15 €  </p>
 
                     <hr>
-                    <span>AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</span>
-                    <p style="float: right; line-height: 20%;"> 0,20 €0,20 € </p>
+                    <span style="margin-left: 10px;">AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,20 €0,20 € </p>
 
                     <hr>
-                    <span>Vertragslaufzeit</span>
-                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
+                    <span style="margin-left: 10px;">Vertragslaufzeit</span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> auf unbestimmte Zeit  </p>
 
                     <hr>
-                    <span>Kündigungsfrist</span>
-                    <p style="float: right; line-height: 20%;"> auf unbestimmte Zeit  </p>
+                    <span style="margin-left: 10px;">Kündigungsfrist</span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> auf unbestimmte Zeit  </p>
 
                     <hr>
-                    <span>Abrechnungszeitraum</span>
-                    <p style="float: right; line-height: 20%;"> 27. - 26. des Folgemonats
+                    <span style="margin-left: 10px;">Abrechnungszeitraum</span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 27. - 26. des Folgemonats
                     </p>
                     <hr>
-                    <span>Servicezeiten</span>
-                    <p style="float: right; line-height: 20%;"> 09:00 - 19:00 Uhr 
+                    <span style="margin-left: 10px;">Servicezeiten</span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 09:00 - 19:00 Uhr 
                     </p>
-
                     <hr>
-
                 </div>
             </table>
             <br>
@@ -724,10 +722,8 @@ table.boxtable td { border: 1px solid #000;font-weight: bold;padding: 5px;line-h
             <br>
             <table width="100%">
                 <tr><td colspan="3"><hr/></td></tr>
-
                 <tr>
                     <td><img src="{{  asset('img/officepark-logo.jpg')  }}"></td>
-                    <!--<td><b>Office | Park </b><span>GbR</span> </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td><b>Bankverbindung:</b></td></tr>
