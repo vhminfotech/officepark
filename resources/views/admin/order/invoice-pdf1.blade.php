@@ -55,10 +55,19 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><h3>- persönlich -</h3></td>
                 </tr>
                 <tr>
+                    @php
+  //  print_r($arrOrder);exit;
+                    @endphp
                     <td colspan="2">
                         <table width="100%">
                             <tr>
+                                <td>{{ $arrOrder[0]['company_name'] }}</td>
+                            </tr>
+                            <tr>
                                 <td>{{ $arrOrder[0]['address'] }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $arrOrder[0]['postal_code'] }}</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
@@ -346,7 +355,9 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                                 <td>A</td>
                                 <td>A</td>
                                 <td>A</td>
-                                <td>B</td>
+                                <td>A</td>
+                                <td>A</td>
+                                <td>A</td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
                             </tr>
                             
@@ -397,27 +408,14 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
+                                @php
+                                $customerNumber = str_split($arrOrder[0]['customer_number']);
+                                @endphp
+                                @for($i = 0; $i < count($customerNumber);$i++)
+                                <td>{{ $customerNumber[$i] }}</td>
+                                @endfor
+                                <td></td>
+                                <td></td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
                             </tr>
                         </table>
@@ -432,28 +430,16 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
+                                @php
+                                $companyName = str_split($arrOrder[0]['company_name']);
+                                @endphp
+                                @for($i = 0; $i < count($companyName);$i++)
+                                <td>{{ $companyName[$i] }}</td>
+                                @endfor
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
                             </tr>
                         </table>
                     </td>
@@ -469,28 +455,16 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
+                                @php
+                                $address = str_split($arrOrder[0]['address']);
+                                @endphp
+                                @for($i = 0; $i < count($address);$i++)
+                                <td>{{ $address[$i] }}</td>
+                                @endfor
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
                             </tr>
                         </table>
                     </td>
@@ -500,27 +474,15 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
+                                @php
+                                $postal_code = str_split($arrOrder[0]['postal_code']);
+                                @endphp
+                                @for($i = 0; $i < count($postal_code);$i++)
+                                <td>{{ $postal_code[$i] }}</td>
+                                @endfor
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
                             </tr>
                         </table>
