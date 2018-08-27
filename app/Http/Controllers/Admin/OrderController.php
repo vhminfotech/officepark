@@ -165,9 +165,9 @@ class OrderController extends Controller {
 //        echo '<pre/>';
 //        print_r($data['arrOrder']);
 //        exit;
-        $pdf = PDF::loadView('admin.order-pdf', $data);
+        $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
         return $pdf->stream();
-        return $pdf->download('invoice.pdf');
+      //  return $pdf->download('invoice.pdf');
     }
 
     public function contractList() {
