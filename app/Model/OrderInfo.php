@@ -91,6 +91,15 @@ class OrderInfo extends Model {
         return DB::table('order_info')->get()->toArray();
     }
 
+    public function getContractInfo() {
+        return OrderInfo::leftjoin('users','users.id','=','order_info.user_id')
+               ->select('order_info.*','users.name as username','users.email as userEmail'
+                        ,'users.inopla_username','users.extension_number',
+                        'users.system_genrate_no',
+                        'users.customer_number')
+                        ->whereNotNull('order_info.user_id')->get()->toArray();
+    }
+
     public function getOrderInfo($orderId) {
         return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
     }
@@ -157,14 +166,11 @@ class OrderInfo extends Model {
     }
 
     public function getPdfData($id) {
-        return OrderInfo::leftjoin('users','users.id','=','order_info.user_id')
-                ->leftjoin('system_genrate_no','system_genrate_no.user_id','=','order_info.user_id')
-                ->select('order_info.*','users.name as username','users.email as userEmail'
-                        ,'users.inopla_username','users.extension_number',
-                        'system_genrate_no.generated_no',
-                        'users.system_genrate_no',
-                        'users.customer_number')
-                ->where('order_info.id', $id)->get()->toArray();
+        return OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
+                        ->leftjoin('system_genrate_no', 'system_genrate_no.user_id', '=', 'order_info.user_id')
+                        ->select('order_info.*', 'users.name as username', 'users.email as userEmail'
+                                , 'users.inopla_username', 'users.extension_number', 'system_genrate_no.generated_no', 'users.system_genrate_no', 'users.customer_number')
+                        ->where('order_info.id', $id)->get()->toArray();
     }
 
 }

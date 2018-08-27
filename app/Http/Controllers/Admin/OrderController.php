@@ -170,4 +170,16 @@ class OrderController extends Controller {
         return $pdf->download('invoice.pdf');
     }
 
+    public function contractList() {
+        $objOrder = new OrderInfo();
+        $data['arrayContract'] = $objOrder->getContractInfo();
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('admin/contract.js');
+        $data['funinit'] = array('Contract.Init()');
+
+        return view('admin.contract.contract-list', $data);
+    }
+
 }
