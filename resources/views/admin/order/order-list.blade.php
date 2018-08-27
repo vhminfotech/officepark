@@ -47,6 +47,7 @@
                                 <a href=" {{ route('order-pdf',[$arrOrder[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
+                                
 <!--                                <a href="javascript:;" class="delete"  data-id="{{ $arrOrder[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>-->

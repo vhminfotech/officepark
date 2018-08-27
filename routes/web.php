@@ -80,6 +80,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
 
 /*
+ * 
 Route::group(['middleware' => ['web']], function () {
     Route::match(['get', 'post'], 'user-dashboard', ['as' => 'user-dashboard', 'uses' => 'UserController@dashboard']);
 });

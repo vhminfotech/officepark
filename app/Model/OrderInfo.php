@@ -169,5 +169,6 @@ class OrderInfo extends Model {
                                 , 'users.inopla_username', 'users.extension_number', 'users.system_genrate_no', 'users.customer_number')
                         ->whereNotNull('order_info.user_id')->get()->toArray();
     }
+    
 
 }

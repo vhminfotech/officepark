@@ -180,6 +180,7 @@ class OrderController extends Controller {
         $data['funinit'] = array('Contract.Init()');
 
         return view('admin.contract.contract-list', $data);
+        
     }
 
 }

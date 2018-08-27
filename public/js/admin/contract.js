@@ -7,6 +7,7 @@ var Contract = function () {
     return{
         Init: function () {
             testalert();
+            
         },
     };
 }();
