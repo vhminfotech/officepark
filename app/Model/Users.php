@@ -159,7 +159,7 @@ class Users extends Model {
             $newpassword = 123;
             $result = DB::table('customer_no')->where('id', 1)->get();
             $systemGenrateNo = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
-            
+
             $newpass = Hash::make($newpassword);
             $objUser = new Users();
             $objUser->name = $postData['fullname'];
@@ -175,28 +175,29 @@ class Users extends Model {
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
 
-            
+
 
             DB::table('system_genrate_no')
-                        ->where('id', 1)
-                        ->update(['generated_no' => $systemGenrateNo[0]->generated_no + 1]);
+                    ->where('id', 1)
+                    ->update(['generated_no' => $systemGenrateNo[0]->generated_no + 1]);
 
             DB::table('customer_no')
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);
-            
-            
+
+
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
             $objOrderInfo->save();
-            
+            $objOrder = new OrderInfo();
+            $data['arrOrder'] = $objOrder->getPdfData($postData->id);
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
-            $pdf = PDF::loadView('admin.invoice-pdf', $data);
+            $pdf = PDF::loadView('admin.order.invoice-pdf', $data);
             $pdf->save(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'));
 
 
-            $pdf = PDF::loadView('admin.invoice-pdf1', $data);
+            $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
 
             $pdf->save(public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
 
@@ -208,10 +209,10 @@ class Users extends Model {
             $sendMail = new Sendmail;
             $mailData['data']['interUser'] = $postData['fullname'];
             $sendMail->sendSMTPMail($mailData);
-            
-            
+
+
             $data_array = array(
-                'system_no'=> $systemGenrateNo[0]->generated_no,
+                'system_no' => $systemGenrateNo[0]->generated_no,
                 'cus_no' => 'OP-211-' . $result[0]->last_number,
             );
             return $data_array;
@@ -273,13 +274,7 @@ class Users extends Model {
 
     public function getCustomerInfo($id) {
         return Users::select(
-                             'users.id as customer_id', 
-                             'users.customer_number  as customer_number', 
-                             'order_info.company_name', 
-                             'order_info.fullname', 
-                             'users.email', 
-                             'order_info.phone', 
-                             'order_info.is_package'
+                                'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
                         )
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                         ->where('users.id', '=', $id)->first()->toArray();
