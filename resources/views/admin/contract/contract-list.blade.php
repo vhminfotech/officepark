@@ -39,10 +39,10 @@
                             <td class="c-table__cell">{{ $arrayContract[$i]['customer_number']  }}</td>
                             <td class="c-table__cell">{{ $arrayContract[$i]['system_genrate_no']  }}</td>
                             <td class="c-table__cell">
-                               <a href="  "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
+                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>1)) }}"><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
-                                </a>
-                                <a href=" "><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
+                                </a>&nbsp;
+                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>2)) }}"><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
                             </td>

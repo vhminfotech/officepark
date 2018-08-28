@@ -170,6 +170,21 @@ class OrderController extends Controller {
       //  return $pdf->download('invoice.pdf');
     }
 
+    public function downloadPDF($id,$pdfNo) {
+        $data['id'] = $id;
+        $objOrder = new OrderInfo();
+        $data['arrOrder'] = $objOrder->getPdfData($id);
+        if($pdfNo == 1){
+            $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
+            return $pdf->download('invoice.pdf');
+        }else{
+            $pdf = PDF::loadView('admin.order.invoice-pdf', $data);
+            return $pdf->download('invoice1.pdf');
+        }
+        
+        
+    }
+
     public function contractList() {
         $objOrder = new OrderInfo();
         $data['arrayContract'] = $objOrder->getContractInfo();
