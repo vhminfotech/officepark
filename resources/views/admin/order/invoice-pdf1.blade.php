@@ -56,7 +56,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                 </tr>
                 <tr>
                     @php
-  //  print_r($arrOrder);exit;
+    // print_r($arrOrder);exit;
                     @endphp
                     <td colspan="2">
                         <table width="100%">
@@ -77,7 +77,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Sehr {{ $arrOrder[0]['center_to_customer_route'] }},</td>
+                                <td>{{ ($arrOrder[0]['gender'] == 'M' ? 'Sir' : 'Mrs') }} {{ $arrOrder[0]['fullname'] .' '. $arrOrder[0]['username'] }},</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
@@ -135,7 +135,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                             </tr>
                         </table>
                     </td>
-                    <td class="small-fornt">
+                    <td class="small-fornt" style="margin-top: -210px !important; ">
                         <table width="100%">
                             <tr> <td>  Gesellschafter/ Geschäftsführer</td> </tr>
                             <tr> <td>  Baris Ak</td> </tr>
@@ -239,27 +239,27 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['is_package'] == 1 ? 'BUSINESS' : '' }} </span></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEPA Lastschrift</span></td>
+                    <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ ($arrOrder[0]['accept'] != 'uber' ? 'SEPA Lastschrift' : 'Überweisung') }}</span></td>
                 </tr>
             </table>
 
             <table width="100%">
                 <tr>
-                    <td colspan="3"><h3>Bankverbindung</h3></td>
+                    <td colspan="3"><h3>Office Park - Bankverbindung </h3></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['account_iban'] }}</span></td>
+                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBAN: {{ wordwrap($arrOrder[0]['account_iban'], 4, ' ', true) }}</span></td>
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>BIC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['account_bic'] }}</span></td>
+                    <td colspan="3"><span>BIC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BIC/Swift: {{ $arrOrder[0]['account_bic'] }}</span></td>
                 </tr>
 
                 <tr>
                     <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['customer_number'] }}</span></td>
                 </tr>
             </table>  
-            <table width="100%">
+            <table width="100%" >
                 <tr>
                     <td colspan="3"><h3>Zugangsdaten</h3></td>
                 </tr>
@@ -274,7 +274,8 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
             <br>
             <br>
             <br>
-            <table>
+            @if($arrOrder[0]['accept'] != 'uber') 
+            <table style="margin-bottom: 50px;">
                 <tr>
                     <td colspan="3">
                         <div style="width:600px;height:130px;border:1px solid #000;">nur bei Teilnahme am Lastschriftverfahren:
@@ -291,9 +292,10 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                 </tr>
 
                 <br>
-
             </table>
-
+            @else
+            <br><br><br><br><br><br><br><br><br><br><br>
+            @endif
             <br>
             <table width="100%">
                 <tr><td colspan="3"><hr/></td></tr>
@@ -681,7 +683,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
             <br>
             <br>
             <br>
-            <br>
+            <br><br><br><br><br>
             <table width="100%">
                 <tr><td colspan="3"><hr/></td></tr>
                 <tr>
