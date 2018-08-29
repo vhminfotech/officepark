@@ -15,12 +15,12 @@ $currentRoute = Route::current()->getName();
                     {{ trans('words.Overview') }}
                 </a>
             </li>
-<!--            <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'user-list' || $currentRoute == 'add-user' || $currentRoute == 'edit-user' ? 'is-active' : '') }}" href="{{ route('user-list') }}">
-                    <i class="fa fa-users u-mr-xsmall"></i>
-                    {{ trans('words.Manage user') }}
-                </a>
-            </li>-->
+            <!--            <li class="c-sidebar__item">
+                            <a class="c-sidebar__link {{ ($currentRoute == 'user-list' || $currentRoute == 'add-user' || $currentRoute == 'edit-user' ? 'is-active' : '') }}" href="{{ route('user-list') }}">
+                                <i class="fa fa-users u-mr-xsmall"></i>
+                                {{ trans('words.Manage user') }}
+                            </a>
+                        </li>-->
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-user-list' || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('system-user-list') }}">
                     <i class="fa fa-user-o u-mr-xsmall"></i>
@@ -44,14 +44,23 @@ $currentRoute = Route::current()->getName();
                     <i class="fa fa-shopping-cart u-mr-xsmall"></i>
                     {{ trans('words.Order') }}     &nbsp;
                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall">{{ Session::get('ordercount')}} </span>
-                    
+
                 </a>
             </li>
-             <li class="c-sidebar__item">
+            <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('contract-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall"></i>
                     {{ trans('words.Contract') }}  &nbsp;
-                    
+
+                </a>
+            </li>
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'invoice-list' || $currentRoute == 'invoice-list' ? 'is-active' : '') }}" href="{{ route('invoice-list') }}">
+                    <i class="fa fa-copy u-mr-xsmall"></i>
+
+
+                    {{ trans('words.Invoice') }}  &nbsp;
+
                 </a>
             </li>
             <li class="c-sidebar__item">
@@ -69,7 +78,7 @@ $currentRoute = Route::current()->getName();
                 </div>
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'tr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
-                       @if(($_COOKIE['language']) ==  'tr')
+                        @if(($_COOKIE['language']) ==  'tr')
                         <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo"  style='height : 22px;'>
                         @else
                         <img class="" src="{{ asset('img/flag/turkisch-notactive.png') }}" alt="Turkish-Logo"  style='height : 22px;'>
@@ -78,18 +87,18 @@ $currentRoute = Route::current()->getName();
                 </div>
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'en' ? 'active' : (!isset($_COOKIE['language']))?'active':'')  }} " style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
-                       @if(($_COOKIE['language']) ==  'en')
+                        @if(($_COOKIE['language']) ==  'en')
                         <img class="" src="{{ asset('img/flag/english.png') }}" alt="English-Logo"  style='height : 22px;'>
-                       @else 
+                        @else 
                         <img class="" src="{{ asset('img/flag/english-notactive.png') }}" alt="English-Logo"  style='height : 22px;'>
                         @endif
                     </a>
                 </div>
         </ul>
-        
-        
-<!--        <ul class="c-sidebar__list">
-            
-        </ul>-->
+
+
+        <!--        <ul class="c-sidebar__list">
+                    
+                </ul>-->
     </div>
 </div>

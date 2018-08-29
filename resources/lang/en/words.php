@@ -11,6 +11,6 @@ return [
     'Order' => 'Order',
     'Select' => 'Select',
     'Logout' => 'Logout',
-    'Contract' => 'Contract'
-    
+    'Contract' => 'Contract',
+    'Invoice' => 'Invoice'
 ];
