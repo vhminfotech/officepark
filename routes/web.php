@@ -64,8 +64,6 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
 
     Route::match(['get', 'post'], 'order-list', ['as' => 'order-list', 'uses' => 'Admin\OrderController@index']);
-    Route::match(['get', 'post'], 'invoice-list', ['as' => 'invoice-list', 'uses' => 'Admin\InvoiceController@index']);
-    Route::match(['get', 'post'], 'invoice-pdf', ['as' => 'invoice-pdf', 'uses' => 'Admin\InvoiceController@createPDF']);
     Route::match(['get', 'post'], 'contract-list', ['as' => 'contract-list', 'uses' => 'Admin\OrderController@contractList']);
     Route::match(['get', 'post'], 'order-pdf/{id}', ['as' => 'order-pdf', 'uses' => 'Admin\OrderController@createPDF']);
     Route::match(['get', 'post'], 'download-pdf/{id}/{pdfNo}', ['as' => 'download-pdf', 'uses' => 'Admin\OrderController@downloadPDF']);
@@ -77,6 +75,11 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'create-user', ['as' => 'create-user', 'uses' => 'Admin\OrderController@createUser']);
     Route::match(['get', 'post'], 'update-profile', ['as' => 'update-profile', 'uses' => 'Admin\UpdateProfileController@editProfile']);
     Route::match(['get', 'post'], 'update-change-password', ['as' => 'update-change-password', 'uses' => 'Admin\UpdateProfileController@changepassword']);
+
+     Route::match(['get', 'post'], 'invoice-list', ['as' => 'invoice-list', 'uses' => 'Admin\InvoiceController@index']);
+    Route::match(['get', 'post'], 'invoice-pdf', ['as' => 'invoice-pdf', 'uses' => 'Admin\InvoiceController@createPDF']);
+   Route::match(['get', 'post'], 'invoice-pdfV2', ['as' => 'invoice-pdfV2', 'uses' => 'Admin\InvoiceController@createPDFV2']);
+     
 });
 
 
