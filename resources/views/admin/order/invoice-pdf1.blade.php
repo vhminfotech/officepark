@@ -77,7 +77,7 @@
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>{{ ($arrOrder[0]['gender'] == 'M' ? 'Sir' : 'Mrs') }} {{ $arrOrder[0]['fullname'] .' '. $arrOrder[0]['username'] }},</td>
+                                <td>{{ ($arrOrder[0]['gender'] == 'M' ? 'Sehr geehrter' : 'Sehr geehrte') }} {{ $arrOrder[0]['fullname'] }},</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
@@ -489,7 +489,18 @@
                         <table class="boxtable">
                             <tr>
                                 @php
-                                $postal_code = str_split($arrOrder[0]['postal_code']);
+                                function str_split_unicode($str, $length = 1) {
+                                    $tmp = preg_split('~~u', $str, -1, PREG_SPLIT_NO_EMPTY);
+                                    if ($length > 1) {
+                                        $chunks = array_chunk($tmp, $length);
+                                        foreach ($chunks as $i => $chunk) {
+                                            $chunks[$i] = join('', (array) $chunk);
+                                        }
+                                        $tmp = $chunks;
+                                    }
+                                    return $tmp;
+                                }
+                                $postal_code = str_split_unicode($arrOrder[0]['postal_code']);
                                 @endphp
                                 @for($i = 0; $i < count($postal_code);$i++)
                                 <td>{{ $postal_code[$i] }}</td>
