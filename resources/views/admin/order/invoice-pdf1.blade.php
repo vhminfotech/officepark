@@ -190,7 +190,7 @@
                     </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Seite 1 von 3</td></tr>
                             <tr><td>Schreiben vom 22.05.18</td></tr>
                         </table>
                     </td>
@@ -313,7 +313,7 @@
                     </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Seite 2 von 3</td></tr>
                             <tr><td>Schreiben vom 22.05.18</td></tr>
                         </table>
                     </td>
@@ -375,7 +375,7 @@
                     <td colspan="1" width="20%">
                         <table class="boxtable">
                             <tr>
-                                <td width="30%">&nbsp;</td>
+                                <td width="30%">X</td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
@@ -694,7 +694,7 @@
                     </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 1 von 1</td></tr>
+                            <tr><td>Seite 3 von 3</td></tr>
                             <tr><td>Schreiben vom 22.05.18</td></tr>
                         </table>
                     </td>
