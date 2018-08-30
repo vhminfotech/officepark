@@ -8,8 +8,8 @@
                    <p>Dear {{ $data['interUser'] }}</p>
                    <p>Here, I would like to Attached PDF file which should be generated when Customer fill order form and click Send button.</p>
                    <p>Normally. There are two PDF that issued when customer fill order form.</p>
-                   <p>1. Officepark_- Welcome letter _ATA_Finanz</p>
-                   <p>2. Office Park Call Forwarding _ATA_Finance</p>
+                   <p>1. OfficePark-Begrüßungsschreiben-OP-211-XXX.pdf</p>
+                   <p>2. OfficePark-Rufumleitung-OP-211-XXX.pdf</p>
                    <p>"Officepark_- Welcome letter _ATA_Finanz" PDF file should compulsory issued them customer fill order form. </p>
                    <p>"Office Park Call Forwarding _ATA_Finance" PSD file should be issued only when customer selected " Yes, I give Office Park GbR a SEPA mandate." payment option.</p>
 

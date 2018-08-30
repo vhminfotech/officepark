@@ -194,16 +194,16 @@ class Users extends Model {
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.order.invoice-pdf', $data);
-            $pdf->save(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'));
+            $pdf->save(public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'));
 
 
             $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
 
-            $pdf->save(public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
+            $pdf->save(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'));
 
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
-            $mailData['attachment'] = array(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), public_path('pdf/Office Park Call Forwarding_ATA_Finance.pdf'));
+            $mailData['attachment'] = array(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'), public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'));
 
             $mailData['mailto'] = $postData['email'];
             $sendMail = new Sendmail;
