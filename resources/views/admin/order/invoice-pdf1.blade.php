@@ -55,9 +55,7 @@
                     <td colspan="3"><h3>- persönlich -</h3></td>
                 </tr>
                 <tr>
-                    @php
-    // print_r($arrOrder);exit;
-                    @endphp
+                  
                     <td colspan="2">
                         <table width="100%">
                             <tr>
@@ -489,7 +487,7 @@
                         <table class="boxtable">
                             <tr>
                                 @php
-                                function str_split_unicode($str, $length = 1) {
+                                function str_split_unicode1($str, $length = 1) {
                                     $tmp = preg_split('~~u', $str, -1, PREG_SPLIT_NO_EMPTY);
                                     if ($length > 1) {
                                         $chunks = array_chunk($tmp, $length);
@@ -500,7 +498,7 @@
                                     }
                                     return $tmp;
                                 }
-                                $postal_code = str_split_unicode($arrOrder[0]['postal_code']);
+                                $postal_code = str_split_unicode1($arrOrder[0]['postal_code']);
                                 @endphp
                                 @for($i = 0; $i < count($postal_code);$i++)
                                 <td>{{ $postal_code[$i] }}</td>
@@ -519,7 +517,19 @@
                             <tr>
                                 
                                 @php
-                                $address = str_split($arrOrder[0]['address']);
+                                function str_split_unicode2($str, $length = 1) {
+                                    $tmp = preg_split('~~u', $str, -1, PREG_SPLIT_NO_EMPTY);
+                                    if ($length > 1) {
+                                        $chunks = array_chunk($tmp, $length);
+                                        foreach ($chunks as $i => $chunk) {
+                                            $chunks[$i] = join('', (array) $chunk);
+                                        }
+                                        $tmp = $chunks;
+                                    }
+                                    return $tmp;
+                                }
+                                $address = str_split_unicode2($arrOrder[0]['address']);
+                                
                                 @endphp
                                 @for($i = 0; $i < count($address);$i++)
                                 <td>{{ $address[$i] }}</td>
