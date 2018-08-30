@@ -343,7 +343,7 @@
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
                 <tr>
-                    <td colspan="1" width="55%">
+                    <td colspan="1">
                         <table class="boxtable">
                             <tr>
                                 @php
@@ -358,19 +358,19 @@
                             
                         </table> 
                     </td>
-                    <td colspan="1" width="20%">
+                    <td colspan="1">
                         <table class="boxtable">
                             <tr>
-                                <td width="30%">X</td>
+                                <td width="20%">X</td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
                         </table>
                     </td>
-                    <td colspan="1" width="20%">
+                    <td colspan="1">
                         <table class="boxtable">
                             <tr>
-                                <td width="30%">X</td>
+                                <td width="20%">X</td>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
