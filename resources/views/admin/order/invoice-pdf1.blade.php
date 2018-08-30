@@ -7,10 +7,10 @@
         <p>User ID : {{ $id }}</p>
     </body>
 </html>-->
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+<!--        <meta charset="utf-8">-->
         <title>Office Park</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <style>
@@ -35,7 +35,7 @@
                 width: 25px;*/
             }
             table.boxtable { border-collapse: collapse; }
-table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
+            table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
 
         </style>
     </head>
@@ -337,8 +337,8 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                 <tr>
                     <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
                         <h4 style="margin: 0px;">SEPA-Lastschriftmandat</h4>
-                        <p style="margin: 0px;">Oftice Park</p>                          
-                        <span>Muinsterstr 330, Gebaude B I 40470 Dusseldorf 1 Deutschland</span>                          
+                        <p style="margin: 0px;">Office Park GbR</p>                          
+                        <span>Münsterstr 330, Gebäude B | 40470 Düsseldorf | Deutschland</span>                          
                     </td>
                 </tr>
                 <tr>
@@ -360,7 +360,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                                 <td>A</td>
                                 <td>A</td>
                                 <td>A</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Gläubiger-Identifikationsnummer / creditor identifler</p>
                             </tr>
                             
                         </table> 
@@ -369,8 +369,8 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                         <table class="boxtable">
                             <tr>
                                 <td width="30%">X</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
                         </table>
                     </td>
@@ -378,8 +378,8 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                         <table class="boxtable">
                             <tr>
                                 <td width="30%">&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
                         </table>
                     </td>
@@ -390,7 +390,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <h4 style="margin: 0px;">Office Park GbR</h4>
+                        <h4 style="margin: 0px;">Office Park GbR,</h4>
                         <h4 style="margin: 0px;"> Münsterstraße 330, Gebäude B</h4>
                         <h4 style="margin: 0px;"> 40470 Düsseldorf</h4>
                         <h4 style="margin: 0px;"> Deutschland</h4>
@@ -418,7 +418,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                                 @endfor
                                 <td></td>
                                 <td></td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Mandatsreferenz / Mandate reference</p>
                             </tr>
                         </table>
                     </td>
@@ -438,7 +438,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                                 @for($i = 0; $i < count($companyName);$i++)
                                 <td>{{ $companyName[$i] }}</td>
                                 @endfor
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Name des Zahlungspflichtigen (Kontoinhaber) / Name of the debtor (account holder)</p>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -458,12 +458,24 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                         <table class="boxtable">
                             <tr>
                                 @php
-                                $address = str_split($arrOrder[0]['address']);
+                                function str_split_unicode($str, $length = 1) {
+                                    $tmp = preg_split('~~u', $str, -1, PREG_SPLIT_NO_EMPTY);
+                                    if ($length > 1) {
+                                        $chunks = array_chunk($tmp, $length);
+                                        foreach ($chunks as $i => $chunk) {
+                                            $chunks[$i] = join('', (array) $chunk);
+                                        }
+                                        $tmp = $chunks;
+                                    }
+                                    return $tmp;
+                                }
+                                $address = str_split_unicode($arrOrder[0]['address']);
+                                
                                 @endphp
                                 @for($i = 0; $i < count($address);$i++)
                                 <td>{{ $address[$i] }}</td>
                                 @endfor
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -485,7 +497,7 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
                             </tr>
                         </table>
                     </td>
@@ -494,28 +506,14 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                
+                                @php
+                                $address = str_split($arrOrder[0]['address']);
+                                @endphp
+                                @for($i = 0; $i < count($address);$i++)
+                                <td>{{ $address[$i] }}</td>
+                                @endfor
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
                             </tr>
                         </table>
                     </td>
@@ -524,28 +522,16 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                               @php
+                                $account_iban = str_split($arrOrder[0]['account_iban']);
+                                @endphp
+                                @for($i = 0; $i < count($account_iban);$i++)
+                                <td>{{ $account_iban[$i] }}</td>
+                                @endfor
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">IBAN des Zahlungspflichtigen / IBAN of the debtor</p>
                             </tr>
                         </table>
                     </td>
@@ -554,28 +540,16 @@ table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-h
                     <td colspan="3">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <td>B</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Lorem Ipsum is simply</p>
+                                @php
+                                $account_bic = str_split($arrOrder[0]['account_bic']);
+                                @endphp
+                                @for($i = 0; $i < count($account_bic);$i++)
+                                <td>{{ $account_bic[$i] }}</td>
+                                @endfor
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 12px;margin: 0px;">BIC des Zahlungspflichtigen / BIC of the debtor</p>
                             </tr>
                         </table>
                     </td>
