@@ -157,10 +157,12 @@ class OrderInfo extends Model {
     }
 
     public function getPdfData($id) {
-        return OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
+        return  OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
                         ->select('order_info.*', 'users.name as username', 'users.email as userEmail'
                                 , 'users.inopla_username', 'users.extension_number', 'users.system_genrate_no', 'users.customer_number')
                         ->where('order_info.id', $id)->get()->toArray();
+        
+//        echo "<pre/>"; print_r($abc); exit();
     }
 
     public function getContractInfo() {
