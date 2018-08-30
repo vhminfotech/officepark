@@ -35,6 +35,14 @@ class InvoiceController extends Controller {
         return $pdf->stream();
         exit;
         return $pdf->download('invoice.pdf');
+    } 
+    public function createPDFV2() {
+       
+
+        $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        return $pdf->stream();
+        exit;
+        return $pdf->download('invoice.pdfV2');
     }
 
 }

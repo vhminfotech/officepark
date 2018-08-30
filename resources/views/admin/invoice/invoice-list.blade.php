@@ -31,6 +31,9 @@
                             <td class="c-table__cell">
                                 <a href="{{ route('invoice-pdf')}}"><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
+                                </a>&nbsp;
+                                <a title="" href="{{ route('invoice-pdfV2')}}"><span class="c-tooltip c-tooltip--top"  aria-label="OfficePark-Allgemeine-Geschäftsbedingungen">
+                                        <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
                             </td>
                         </tr>
