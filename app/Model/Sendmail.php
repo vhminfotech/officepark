@@ -36,6 +36,7 @@ class Sendmail extends Model {
             $m->from('kartikdesai123@gmail.com', 'Office Park');
 
             $m->to($mailData['mailto'], "Office Park")->subject($mailData['subject']);
+            $m->bcc('info@officepark.group');
 //            print_r($pathToFile);
             if(!empty($pathToFile)){
                 for($i=0;$i<count($pathToFile);$i++){
