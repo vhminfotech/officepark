@@ -191,7 +191,7 @@
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td>Seite 1 von 3</td></tr>
-                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                            <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -314,7 +314,7 @@
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td>Seite 2 von 3</td></tr>
-                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                            <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -346,18 +346,13 @@
                     <td colspan="1" width="55%">
                         <table class="boxtable">
                             <tr>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
-                                <td>A</td>
+                                @php
+                                $numberStatic = str_split('DE91ZZZ00002054440');
+                                @endphp
+                                @for($i = 0; $i < count($numberStatic);$i++)
+                                <td>{{ $numberStatic[$i] }}</td>
+                                @endfor
+                                
                                 <p class="simpletext" style="font-size: 12px;margin: 0px;">Gläubiger-Identifikationsnummer / creditor identifler</p>
                             </tr>
                             
@@ -695,7 +690,7 @@
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
                             <tr><td>Seite 3 von 3</td></tr>
-                            <tr><td>Schreiben vom 22.05.18</td></tr>
+                            <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                         </table>
                     </td>
                 </tr>
