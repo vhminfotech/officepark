@@ -141,6 +141,7 @@ class OrderInfo extends Model {
         $objCusEdit->date_of_birth = date('Y-m-d', strtotime($request->input('date_of_birth')));
         $objCusEdit->address = $request->input('address');
         $objCusEdit->postal_code = $request->input('postal_code');
+        $objCusEdit->phone = $request->input('phone');
         $objCusEdit->email = $request->input('email');
         if ($objCusEdit->save()) {
             return TRUE;

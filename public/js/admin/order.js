@@ -121,6 +121,7 @@ var Order = function() {
                 email: {required: true, email: true},
                 address: {required: true},
                 postal_code: {required: true},
+                phone: {required: true},
             },
             messages: {},
             errorPlacement: function(error, element) {
@@ -134,6 +135,7 @@ var Order = function() {
                     email: $('.email').val(),
                     address: $('.address').val(),
                     postal_code: $('.postal_code').val(),
+                    phone: $('.phone').val(),
                     orderId: $('.orderId').val(),
                     _token: token};
                 var url = baseurl + 'admin/edit-customer-info';

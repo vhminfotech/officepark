@@ -110,6 +110,13 @@
                                     <span class="u-text-bold data1"  style="display: none;"><input class="c-input postal_code" value="{{ $arrOrder[0]->postal_code }}" id="postal_code" name='postal_code'></span>
                                 </td>
                             </tr>
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">Telephone</td>
+                                <td class="c-table__cell">
+                                    <span class="u-text-bold html1">{{ $arrOrder[0]->phone }}</span>
+                                    <span class="u-text-bold data1"  style="display: none;"><input class="c-input phone" value="{{ $arrOrder[0]->phone }}" id="phone" name='phone'></span>
+                                </td>
+                            </tr>
                             <tr class="c-table__row data1" style="display: none;">
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
