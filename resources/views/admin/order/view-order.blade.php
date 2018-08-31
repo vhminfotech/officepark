@@ -261,7 +261,7 @@
                                     <!--<input  style="display: none;" class="c-input data4 welcome_note" value="{{ $arrOrder[0]->welcome_note }}" id="welcome_note" name='welcome_note'>-->
                                     <select name="welcome_note" style="display: none;" required="required" class="c-input data4 welcome_note">
                                         @foreach ($welcome_note as $indexkey=>$val)
-                                        <option value="{{$indexkey}}">{{$val}}</option>
+                                        <option value="{{$indexkey}}" {{ ($welcome_note[$arrOrder[0]->welcome_note] == $val ? 'selected="selected"' : '') }}>{{$val}}</option>
                                         @endforeach
                                     </select>
                                 </td>
@@ -273,10 +273,55 @@
                                     <span class="u-text-bold html4">{{ $unreach_note[$arrOrder[0]->unreach_note] }}</span>
                                     <select name="unreach_note" style="display: none;" required="required" class="c-input data4 unreach_note">
                                         @foreach ($unreach_note as $indexkey=>$val)
-                                        <option value="{{$indexkey}}">{{$val}}</option>
+                                        <option value="{{$indexkey}}" {{ ($unreach_note[$arrOrder[0]->unreach_note] == $val ? 'selected="selected"' : '') }}>{{$val}}</option>
                                         @endforeach
                                     </select>
         <!--<input style="display: none;" class="c-input data4 unreach_note" value="{{ $arrOrder[0]->unreach_note }}" id="unreach_note" name='unreach_note'>-->
+                                </td>
+                            </tr>
+                            
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">Reroute Confirm</td>
+                                <td class="c-table__cell ">
+                                    <span class="u-text-bold html4">{{ $reroute_confirm[$arrOrder[0]->reroute_confirm] }}</span>
+                                    <select name="reroute_confirm" style="display: none;" required="required" class="c-input data4 reroute_confirm">
+                                        @foreach ($reroute_confirm as $indexkey=>$val)
+                                        <option value="{{$indexkey}}" {{ ($reroute_confirm[$arrOrder[0]->reroute_confirm] == $val ? 'selected="selected"' : '') }}>{{$val}}</option>
+                                        @endforeach
+                                    </select>
+        <!--<input style="display: none;" class="c-input data4 unreach_note" value="{{ $arrOrder[0]->unreach_note }}" id="unreach_note" name='unreach_note'>-->
+                                </td>
+                            </tr>
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">Info Type</td>
+                                <td class="c-table__cell ">
+                                    @php
+                                    $text = '';
+                                    @endphp
+                                    
+                                    @if($arrOrder[0]->info_type == '1')
+                                       @php $text = 'only via email'; @endphp
+                                    @elseif($arrOrder[0]->info_type == '2')
+                                        @php $text = 'only by SMS'; @endphp
+                                    @elseif($arrOrder[0]->info_type == '3')
+                                       @php $text = 'via e-mail and SMS'; @endphp
+                                    @endif
+                                    
+                                    <span class="u-text-bold html4">{{ $text }}</span>
+                                    <select name="info_type" style="display: none;" required="required" class="c-input data4 info_type">
+                                        <option value="1" {{ ($arrOrder[0]->info_type == 1 ? 'selected="selected"' : '') }}>only via email</option>
+                                        <option value="2" {{ ($arrOrder[0]->info_type == 2 ? 'selected="selected"' : '') }}>only by SMS</option>
+                                        <option value="3" {{ ($arrOrder[0]->info_type == 3 ? 'selected="selected"' : '') }}>via e-mail and SMS</option>
+                                        
+                                    </select>
+        <!--<input style="display: none;" class="c-input data4 unreach_note" value="{{ $arrOrder[0]->unreach_note }}" id="unreach_note" name='unreach_note'>-->
+                                </td>
+                            </tr>
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">Center to customer route</td>
+                                <td class="c-table__cell ">
+                                    <span class="u-text-bold html4">{{ $arrOrder[0]->center_to_customer_route }}</span>
+                                    <input  style="display: none;" class="c-input data4 center_to_customer_route" value="{{ $arrOrder[0]->center_to_customer_route }}" id="center_to_customer_route" name='center_to_customer_route'>
                                 </td>
                             </tr>
                             <tr class="c-table__row">

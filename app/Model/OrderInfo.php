@@ -120,10 +120,14 @@ class OrderInfo extends Model {
     }
 
     public function secretaryEditInfo($request) {
+        
         $objSecEdit = OrderInfo::find($request->input('orderId'));
         $objSecEdit->phone_to_reroute = $request->input('phone_to_reroute');
         $objSecEdit->welcome_note = $request->input('welcome_note');
         $objSecEdit->unreach_note = $request->input('unreach_note');
+        $objSecEdit->reroute_confirm = $request->input('reroute_confirm');
+        $objSecEdit->info_type = $request->input('info_type');
+        $objSecEdit->center_to_customer_route = $request->input('center_to_customer_route');
 //        $objSecEdit->info_type = $request->input('info_type');
         if ($objSecEdit->save()) {
             return TRUE;

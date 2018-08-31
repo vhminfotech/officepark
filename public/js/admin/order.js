@@ -86,6 +86,9 @@ var Order = function() {
                 welcome_note: {required: true},
                 unreach_note: {required: true},
                 forward_message: {required: true},
+                reroute_confirm: {required: true},
+                info_type: {required: true},
+                center_to_customer_route: {required: true},
             },
             messages: {},
             errorPlacement: function(error, element) {
@@ -98,8 +101,12 @@ var Order = function() {
                     welcome_note: $('.welcome_note').val(),
                     unreach_note: $('.unreach_note').val(),
                     forward_message: $('.forward_message').val(),
+                    center_to_customer_route: $('.center_to_customer_route').val(),
+                    info_type: $('.info_type').val(),
+                    reroute_confirm: $('.reroute_confirm').val(),
                     orderId: $('.orderId').val(),
                     _token: token};
+                   
                 var url = baseurl + 'admin/edit-sec-info';
                 ajaxcall(url, data, function(output) {
                     handleAjaxResponse(output);

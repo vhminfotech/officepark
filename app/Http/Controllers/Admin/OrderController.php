@@ -36,7 +36,7 @@ class OrderController extends Controller {
     }
 
     public function viewOrder(Request $request, $id) {
-
+        
         $objOrder = new OrderInfo();
         $orderstatus = $objOrder->updateStatus($id);
         $resultArr = $objOrder->newOrderCount('new');
