@@ -193,17 +193,24 @@ class Users extends Model {
             $data['arrOrder'] = $objOrder->getPdfData($postData->id);
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
-            $pdf = PDF::loadView('admin.order.invoice-pdf', $data);
+            $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
             $pdf->save(public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'));
 
 
-            $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
+            $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
 
             $pdf->save(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'));
+            
+            $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
+            $pdf->save(public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf'));
 
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
-            $mailData['attachment'] = array(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'), public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'));
+            $mailData['attachment'] = array(
+                public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'), 
+                public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'),
+                public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf')
+                );
 
             $mailData['mailto'] = $postData['email'];
             $sendMail = new Sendmail;

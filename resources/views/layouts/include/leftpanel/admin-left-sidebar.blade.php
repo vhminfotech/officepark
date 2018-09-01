@@ -48,7 +48,7 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('contract-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'contract-list' ? 'is-active' : '') }}" href="{{ route('contract-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall"></i>
                     {{ trans('words.Contract') }}  &nbsp;
 

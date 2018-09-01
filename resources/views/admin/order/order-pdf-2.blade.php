@@ -1,12 +1,3 @@
-<!--<html>
-    <head>
-        <title>Invoice</title>
-    </head>
-    <body>
-        <h1> Test Invoice </h1>
-        <p>User ID : {{ $id }}</p>
-    </body>
-</html>-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +27,8 @@
             }
             table.boxtable { border-collapse: collapse; }
             table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
-
+            table.boxtable1 td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px;}
+             table.boxtable1 { border-collapse: collapse; }
         </style>
     </head>
     <body>
@@ -133,7 +125,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td class="small-fornt" style="margin-top: -210px !important; ">
+                    <td class="small-fornt" >
                         <table width="100%">
                             <tr> <td>  Gesellschafter/ Geschäftsführer</td> </tr>
                             <tr> <td>  Baris Ak</td> </tr>
@@ -172,6 +164,9 @@
                         </table>
                     </td>
                 </tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
                 <tr><td colspan="3"><hr/></td></tr>
             </table>
             <!--            <div class="page-break"></div>-->
@@ -180,8 +175,8 @@
                     <td><img  src="{{  asset('img/officepark-logo.jpg')  }}"></td>
 <!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
                     <td>
-                        <table style="font-size: 12px; line-height: 80%">
-                            <tr><td><b>Bankverbindung:</b></td></tr>
+                        <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                            <tr><td><b style="color: #0c0c0c;">Bankverbindung:</b></td></tr>
                             <tr><td>Bank: Postbank AG</td></tr>
                             <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
                             <tr><td>BIC/Swift: PBNKDEFF</td></tr>
@@ -189,25 +184,14 @@
                         </table>
                     </td>
                     <td>
-                        <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 1 von 3</td></tr>
+                        <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                            <tr><td>Seite 1 von 4</td></tr>
                             <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                         </table>
                     </td>
                 </tr>
             </table>
             <div class="page-break"></div>
-
-<!--            <table width="100%">
-                <tr>
-                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
-                        </span><br><span>verbindet</span>
-                    </td>
-                    <td style="text-align: right; height: 50px;" colspan="3">
-                        <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
-                    </td>
-                </tr>
-            </table>-->
             <table width="100%">
                 <tr>
                     <td colspan="3"><h3>Ihre persönlichen Daten</h3></td>
@@ -257,7 +241,7 @@
                     <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['customer_number'] }}</span></td>
                 </tr>
             </table>  
-            <table width="100%" >
+            <table width="100%" style="margin-bottom: 70px;">
                 <tr>
                     <td colspan="3"><h3>Zugangsdaten</h3></td>
                 </tr>
@@ -269,15 +253,13 @@
                     <td colspan="3"><span>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tuzkaya2018!</span></td>
                 </tr>
             </table>
-            <br>
-            <br>
-            <br>
+            
             @if($arrOrder[0]['accept'] != 'uber') 
-            <table style="margin-bottom: 50px;">
+            <table style="margin-bottom: 80px;">
                 <tr>
                     <td colspan="3">
-                        <div style="width:600px;height:130px;border:1px solid #000;">nur bei Teilnahme am Lastschriftverfahren:
-                            <span style="font-size: 15px;">
+                        <div style="border:1px solid #000;padding: 5px;">nur bei Teilnahme am Lastschriftverfahren:<br/>
+                            <span style="font-size: 12px;">
                                 Ich ermächtige OFFICE PARK, Zahlungen von meinem Konto mittels Lastschrift einzuziehen.
                                 Zugleich weise ich mein Kreditinstitut an, die von OFFICE PARK auf mein Konto gezogenen Lastschriften
                                 einzulösen. Im Falle einer Rücklastschrift mangels Deckung wird eine Gebühr von 10,- € netto fällig.
@@ -292,29 +274,34 @@
                 <br>
             </table>
             @else
-            <br><br><br><br><br><br><br><br><br><br><br>
+            
             @endif
             <br>
             <table width="100%">
                 <tr><td colspan="3"><hr/></td></tr>
-                <br>
-                <br>
-                <br>
+                
                 <tr>
-                    <td><img src="{{asset('img/officepark-logo.jpg') }}"></td>
-                    <td>
-                        <table style="font-size: 12px; line-height: 80%">
-                            <tr><td><b>Bankverbindung:</b></td></tr>
-                            <tr><td>Bank: Postbank AG</td></tr>
-                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
-                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
-                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 2 von 3</td></tr>
-                            <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
+                    <td colspan="3">
+                        <table width="100%">
+                            <tr>
+                                <td><img  src="{{  asset('img/officepark-logo.jpg')  }}"></td>
+            <!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                                        <tr><td><b style="color: #0c0c0c;">Bankverbindung:</b></td></tr>
+                                        <tr><td>Bank: Postbank AG</td></tr>
+                                        <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                                        <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                                        <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                                        <tr><td>Seite 2 von 4</td></tr>
+                                        <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
+                                    </table>
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
@@ -325,18 +312,16 @@
           <div class="page-break"></div>
             <table width="100%">
                 <tr>
-                     <td style="text-align: right; height: 50px;" colspan="3">
+                     <td style="text-align: right; height: 30px;" colspan="3">
                         <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
                     </td>
-<!--                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
-                        </span><br><span>verbindet</span>
-                    </td>-->
+
                 </tr>
                 <tr>
                     <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
                         <h4 style="margin: 0px;">SEPA-Lastschriftmandat</h4>
-                        <p style="margin: 0px;">Office Park GbR</p>                          
-                        <span>Münsterstr 330, Gebäude B | 40470 Düsseldorf | Deutschland</span>                          
+                        <p style="margin: 0px;font-size: 12px;">Office Park GbR</p>                          
+                        <span style="margin: 0px;font-size: 10px;">Münsterstr 330, Gebäude B | 40470 Düsseldorf | Deutschland</span>                          
                     </td>
                 </tr>
                 <tr>
@@ -344,7 +329,7 @@
                 </tr>
                 <tr>
                     <td colspan="1">
-                        <table class="boxtable">
+                        <table class="boxtable1">
                             <tr>
                                 @php
                                 $numberStatic = str_split('DE91ZZZ00002054440');
@@ -352,27 +337,27 @@
                                 @for($i = 0; $i < count($numberStatic);$i++)
                                 <td>{{ $numberStatic[$i] }}</td>
                                 @endfor
-                                
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Gläubiger-Identifikationsnummer / creditor identifler</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">&nbsp;</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Gläubiger-Identifikationsnummer / creditor identifler</p>
                             </tr>
                             
                         </table> 
                     </td>
                     <td colspan="1">
-                        <table class="boxtable">
+                        <table class="boxtable1">
                             <tr>
-                                <td width="20%">X</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
+                                <td>X</td>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Zahlungsart:</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
                         </table>
                     </td>
                     <td colspan="1">
-                        <table class="boxtable">
+                        <table class="boxtable1">
                             <tr>
-                                <td width="20%">X</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Zahlungsart:</p>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Wiederkehrende Zahlung</p>
+                                <td>X</td>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Zahlungsart:</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Wiederkehrende Zahlung</p>
                             </tr>
                         </table>
                     </td>
@@ -383,10 +368,10 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <h4 style="margin: 0px;">Office Park GbR,</h4>
-                        <h4 style="margin: 0px;"> Münsterstraße 330, Gebäude B</h4>
-                        <h4 style="margin: 0px;"> 40470 Düsseldorf</h4>
-                        <h4 style="margin: 0px;"> Deutschland</h4>
+                        <h4 style="margin: 0px;font-size: 13px;">Office Park GbR,</h4>
+                        <h4 style="margin: 0px;font-size: 13px;"> Münsterstraße 330, Gebäude B</h4>
+                        <h4 style="margin: 0px;font-size: 13px;"> 40470 Düsseldorf</h4>
+                        <h4 style="margin: 0px;font-size: 13px;"> Deutschland</h4>
                     </td>
                 </tr>
                 <tr>
@@ -411,7 +396,7 @@
                                 @endfor
                                 <td></td>
                                 <td></td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Mandatsreferenz / Mandate reference</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Mandatsreferenz / Mandate reference</p>
                             </tr>
                         </table>
                     </td>
@@ -431,7 +416,7 @@
                                 @for($i = 0; $i < count($companyName);$i++)
                                 <td>{{ $companyName[$i] }}</td>
                                 @endfor
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Name des Zahlungspflichtigen (Kontoinhaber) / Name of the debtor (account holder)</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Name des Zahlungspflichtigen (Kontoinhaber) / Name of the debtor (account holder)</p>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -468,7 +453,7 @@
                                 @for($i = 0; $i < count($address);$i++)
                                 <td>{{ $address[$i] }}</td>
                                 @endfor
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -501,7 +486,7 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
                             </tr>
                         </table>
                     </td>
@@ -529,7 +514,7 @@
                                 @for($i = 0; $i < count($address);$i++)
                                 <td>{{ $address[$i] }}</td>
                                 @endfor
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Anschrift des Zahlungspflichtigen (Kontoinhaber / Address of the debtor (account holder)</p>
                             </tr>
                         </table>
                     </td>
@@ -547,7 +532,7 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">IBAN des Zahlungspflichtigen / IBAN of the debtor</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">IBAN des Zahlungspflichtigen / IBAN of the debtor</p>
                             </tr>
                         </table>
                     </td>
@@ -565,44 +550,80 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <p class="simpletext" style="font-size: 12px;margin: 0px;">BIC des Zahlungspflichtigen / BIC of the debtor</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">BIC des Zahlungspflichtigen / BIC of the debtor</p>
                             </tr>
                         </table>
                     </td>
                 </tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
                 <tr>
-                    <td width="50%">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                    </td>
-                    <td width="50%">
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                    </td>
-                    <td width="0%">
-                        
+                    <td colspan="3">
+                        <table width='100%'>
+                            <tr>
+                                <td style="font-size: 10px;width:50%;">
+                                    Ich ermächtige (Wir ermächtigen) den Zahlungsempfänger Office Park GbR, Zahlungen von meinem (unserem) Konto mittels Lastschrift einzuziehen. Zugleich weise ich mein (weisen wir unser) Kreditinstitut an, die von Office Park GbR auf mein (unsere) Konto gezogenen Lastschriften einzulösen.
+                                </td>
+                                <td  style="font-size: 10px;width:40%;">
+                                     Hinweis: Ich kann (Wir können) innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit einem (unserem) Kreditinstitut vereinbarten Bedingungen.
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                </tr>
-            </table>
-          <table width='100%'>
+               <tr><td colspan="3">&nbsp;</td></tr>
+               <tr>
+                   <td colspan="3">
+                       <table width='100%'>
+                            <tr>
+                                <td>______________</td>
+                                <td>______________</td>
+                                <td>__________________________________</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 12px;">ort</td>
+                                <td style="font-size: 12px;">Datum</td>
+                                <td style="font-size: 12px;">Unterschrift(en) des Zahlungspffichtigen (Kontoinhaber)</td>
+                            </tr>
+                        </table>
+                   </td>
+               </tr>
+               
+               <tr>
+                   <td colspan="3">
+                       <table width="100%">
+                <tr><td colspan="3"><hr/></td></tr>
                 <tr>
-                    <td>______________</td>
-                    <td>______________</td>
-                    <td>__________________________________</td>
-                </tr>
-                <tr>
-                    <td>ort</td>
-                    <td>Datum</td>
-                    <td>Unterschrift(en) des Zahlungspffichtigen (Kontoinhaber)</td>
-                </tr>
-            </table>
-            @endif
-            <div class="page-break"></div>
-<!--            <table width="100%">
-                <tr>
-                    <td style="text-align: right; font-size: 22px;" colspan="3"><span >Kommunikation
-                        </span><br><span>verbindet</span>
+                    <td colspan="3">
+                        <table width="100%">
+                            <tr>
+                                <td><img  src="{{  asset('img/officepark-logo.jpg')  }}"></td>
+            <!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                                        <tr><td><b style="color: #0c0c0c;">Bankverbindung:</b></td></tr>
+                                        <tr><td>Bank: Postbank AG</td></tr>
+                                        <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                                        <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                                        <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                                        <tr><td>Seite 3 von 4</td></tr>
+                                        <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
-            </table>-->
+            </table>
+                   </td>
+               </tr>
+            </table>
+          
+            @endif
+            <div class="page-break"></div>
             <table width='100%'>
                 <tr>
                     <td colspan="2">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
@@ -614,7 +635,7 @@
             <br>
             <br>
             <br>
-            <table width='700px'>
+            <table width='100%'>
                 <div style="width:700px;height:510px;border:1px solid gray;">
                     <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; line-height: 20%;margin-right: 30px !important;">business.call</p>
                     <br>
@@ -669,28 +690,31 @@
                     <hr>
                 </div>
             </table>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br><br><br><br><br>
-            <table width="100%">
+            <br/>
+            <table width="100%" style="margin-top: 100px;">
                 <tr><td colspan="3"><hr/></td></tr>
                 <tr>
-                    <td><img src="{{  asset('img/officepark-logo.jpg')  }}"></td>
-                    <td>
-                        <table style="font-size: 12px; line-height: 80%">
-                            <tr><td><b>Bankverbindung:</b></td></tr>
-                            <tr><td>Bank: Postbank AG</td></tr>
-                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
-                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
-                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Seite 3 von 3</td></tr>
-                            <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
+                    <td colspan="3">
+                        <table width="100%">
+                            <tr>
+                                <td><img  src="{{  asset('img/officepark-logo.jpg')  }}"></td>
+            <!--                    <td><b>Office | Park </b><span>GbR</span> </td>-->
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                                        <tr><td><b style="color: #0c0c0c;">Bankverbindung:</b></td></tr>
+                                        <tr><td>Bank: Postbank AG</td></tr>
+                                        <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                                        <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                                        <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table style="font-size: 12px; line-height: 80%;color: #45484d;">
+                                        <tr><td>Seite 4 von 4</td></tr>
+                                        <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
+                                    </table>
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>

@@ -163,7 +163,7 @@ class OrderController extends Controller {
         $objOrder = new OrderInfo();
         $data['arrOrder'] = $objOrder->getPdfData($id);
 
-        $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
+        $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
         return $pdf->stream();
       //  return $pdf->download('invoice.pdf');
     }
@@ -171,13 +171,17 @@ class OrderController extends Controller {
     public function downloadPDF($id,$pdfNo) {
         $data['id'] = $id;
         $objOrder = new OrderInfo();
-        $data['arrOrder'] = $objOrder->getPdfData($id);
+        $data['arrOrder'] = $arrOrder = $objOrder->getPdfData($id);
+        $customer_number = $arrOrder[0]['customer_number'];
         if($pdfNo == 1){
-            $pdf = PDF::loadView('admin.order.invoice-pdf1', $data);
-            return $pdf->download('invoice.pdf');
-        }else{
-            $pdf = PDF::loadView('admin.order.invoice-pdf', $data);
-            return $pdf->download('invoice1.pdf');
+            $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
+            return $pdf->download('Rufumleitung-'.$customer_number.'.pdf');
+        }elseif($pdfNo == 2){
+            $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
+            return $pdf->download('Begrüßungsschreiben-'.$customer_number.'.pdf');
+        }elseif($pdfNo == 3){
+            $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
+            return $pdf->download('Allgemeine Geschaftsbedingungen.pdf');
         }
         
         
