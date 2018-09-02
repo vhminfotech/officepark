@@ -47,9 +47,7 @@
                             </div>
 
                             <div class="col-lg-3" style="display: inline-block" >
-                                <a href=" {{ route('order-pdf',[$arrOrder[$i]->id])}} "><span class="c-btn c-btn--info c-btn--fullwidth"  aria-label="PDF">
-                                        <i class="fa fa-file-pdf-o" ></i></span>
-                                </a>
+                                
                                 <input class="c-btn c-btn--info c-btn--fullwidth" value="Create New Bill" type="submit">
                             </div>
 
