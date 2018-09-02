@@ -10,55 +10,151 @@
                         <i class="fa fa-plus"></i>
                     </div>
                     <div class="c-stage__header-title o-media__body">
-                        <h6 class="u-mb-zero">Add Addressbook</h6>
+                        <h6 class="u-mb-zero">Create bill for OP-211-1719</h6>
                     </div>
                 </div>
-                <form name="addInvoice" id="addInvoice"  method="post">
-                    <div class="c-stage__panel u-p-medium">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="invoiceno">Invoice No</label> 
-                                    <input class="c-input" name="invoice_no" id="invoice_no" placeholder="Invoice No" type="text">
-                                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="customer">Select Customer</label> 
-                                    <select class="c-select" id="select1" name="customer">
-                                        <option>choose an Customer</option>
-                                        @foreach($customers as $indexkey)
-                                        <option value="{{$indexkey['id']}}">{{$indexkey['first_name']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                <div class="invoice-box">
+                    <div class="row">
+
+
+                        <div class="col-md-9">
+                            <br/><br/>
+                            <span><u>Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</u></span><br/>
+                            <span><h3>- persönlich -</h3></span><br/>
+                            <span>Proton GmbH</span><br/>
+                            <span>Münsterstraße 330 </span><br/>
+                            <span>40470 Düsseldorf </span><br/><br/>
+
+                            <span><b>Ihre Rechnung für den Zeitraum </b>&nbsp;&nbsp;&nbsp;<input type="tex" name="start_date"> -- <input type="tex" name="end_date"></span>
+                            <br/><br/>
+
+                            <span>Sehr geehret Damen und Herren, <br/> anbei übersenden wir ihnen ihre aktuelle Monatsabrechnung.</span>
+                            <br/><br/>
+
+                            <span> Ihr gebuchter Telefonservice -Tarif:  &nbsp;&nbsp;&nbsp;<select>
+                                    <option>Business Packet Stander</option>
+                                    <option>Business Packet Stander1</option>
+                                    <option>Business Packet Stander2</option>
+                                </select></span>
 
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="date_from">Date From</label> 
-                                    <input class="c-input form-control" data-toggle="datepicker" id="date_from" name="date_from" type="text" placeholder="Date From" required>
 
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="date_to">Date To</label> 
-                                    <input class="c-input form-control" data-toggle="datepicker" id="date_to" name="date_to" type="text" placeholder="Date To" required>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <input class="c-btn c-btn--info c-btn--fullwidth" value="Add" type="submit">
-                            </div>
+                        <div class="col-md-3">
+                            <p><img  src="{{  asset('img/officepark-logo.jpg')  }}"></p>
+                            <p> Gesellschafter/ </p>
+                            <p> Geschäftsführer </p>
+                            <p> Baris Ak </p><br/>
+                            <p> Gesellschafter </p>
+                            <p> Mustafa Basun </p><br/>
+                            <p> Münsterstraße 330 </p>
+                            <p> 40470 Düsseldorf </p>
+                            <p> Telefon: +49 (0) 211 368 74 190 </p>
+                            <p> Telefax: +49 (0) 211 368 74 190 01 </p>
+                            <p> Web:www.officepark.group </p>
+                            <p> E-Mail: info@officepark.group </p><br/>
+                            <p> Service-/ Bürozeiten: </p>
+                            <p> Mo. bis Fr. </p>
+                            <p> 09:00 - 19:00 Uhr </p><br/>
+                            <p> Düsseldorf, den 22.05.2018 </p><br/>
+                            <p> Finanzamt </p>
+                            <p> Düsseldorf-Nord </p><br/>
+                            <p> Rechnungs-Nr. 002/17</p>
+                            <p> Kunden-Nr. OP-211-1704 </p><br/>
                         </div>
                     </div>
-                </form>
+
+                    <hr/>
+                    <br/>
+                    <!--                    <div class="row">-->
+                    <table class="c-table">
+
+                        <thead class="c-table__head c-table__head--slim">
+                            <tr class="c-table__row">
+                                <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Bezeichnung</th>
+                                <th class="c-table__cell c-table__cell--head">Menge&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">Einzelpreis&nbsp;&nbsp;</th>
+                                <th colspan="2" class="c-table__cell c-table__cell--head">Betrag&nbsp;&nbsp;<a href="javascript:;" class="add_new_row">Add</a></th>
+                            </tr>
+                        </thead>
+                        <tbody class="dataAppend">    
+                            <tr class="c-table__row">
+                                <td>
+                                    <select>
+                                        <option>Option Address 1</option>
+                                        <option>Option Address 2</option>
+                                        <option>Option Address 3</option>
+                                        <option>Option Address 4</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="menge" value="2"/></td>
+                                <td><input type="text" name="price" value="1,00"/>€</td>
+                                <td>2,00€</td>
+                            </tr>
+                            <tr class="c-table__row">
+                                <td>
+                                    <select>
+                                        <option>Option Address 1</option>
+                                        <option>Option Address 2</option>
+                                        <option>Option Address 3</option>
+                                        <option>Option Address 4</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="menge" value="2"/></td>
+                                <td><input type="text" name="price" value="1,00"/>€</td>
+                                <td>2,00€</td>
+                            </tr>
+                            <tr class="c-table__row">
+                                <td>
+                                    <select>
+                                        <option>Option Address 1</option>
+                                        <option>Option Address 2</option>
+                                        <option>Option Address 3</option>
+                                        <option>Option Address 4</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="menge" value="2"/></td>
+                                <td><input type="text" name="price" value="1,00"/>€</td>
+                                <td>2,00€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="c-table">
+                        <tr class="c-table__row">
+                            <td></td>
+                            <td></td>
+                            <td>Endbetrag : </td>
+                            <td>10,00€</td>
+                        </tr>
+                        <tr class="c-table__row">
+                            <td></td>
+                            <td></td>
+                            <td colspan="2">Gemba 19 UstG enthalt der Rechnungsbetrag keine Umsatzsteuer</td>
+                        </tr>
+
+                    </table>
+
+                    <!--</div>-->
+                    <br/><br/>
+                    <span>
+                        Der Betrag in Hohe 47,45 € wird per SEPA-Mandat von ihrem Konto eingezogen.Erstlastschriften werden ihrem Konto nach 3 werktagen, Folgelastschriften nach 1 Werktagen belastet.
+                    </span>
+                    <br/>
+                    <span>
+                        Ihre Bankeverbindung: DE14 3005 0110 1007 340182 . DUSSDEDDXXX <br/>
+                        Stadtsparkasse Dusseldorf  . Kontoinhaber : Chousein Touzlatzi <br/>
+                        Mandatsreferenz : OP-211-1704 . Glaubiger-ID : DE91ZZZZ00002054440
+                    </span>
+                    <br/>
+
+                    <hr/>
+                    <br/>
+                    <div class="c-field u-mb-small right">
+                        <div class="col-mg-3">
+                            <input class="c-btn c-btn--info c-btn--fullwidth" value="Create New Bill" type="submit">
+                        </div>
+
+                    </div>
+                </div>
             </article>
         </div>
     </div>
@@ -68,4 +164,5 @@
         border-color: red;
     }
 </style>
+
 @endsection
