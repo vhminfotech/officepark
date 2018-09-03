@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <form action="{{ route('add-invoice',$customerNumber ) }}" method='post' id='invoiceForm'>
-                     <div class="invoice-box">
+                     <div class="c-card u-p-medium u-mb-small">
                     <div class="row">
 
 
@@ -37,12 +37,17 @@
 
                             <span>Sehr geehret Damen und Herren, <br/> anbei übersenden wir ihnen ihre aktuelle Monatsabrechnung.</span>
                             <br/><br/>
-
-                            <span> Ihr gebuchter Telefonservice -Tarif:  &nbsp;&nbsp;&nbsp;<select class='form-control' name='telefone_service'>
+                            <div class='row'>
+                                <div class='col-md-5'>Ihr gebuchter Telefonservice -Tarif:</div>
+                                <div class='col-md-3'>
+                                    <select class='form-control c-select' name='telefone_service'>
                                     <option value='Business Packet Stander'>Business Packet Stander</option>
-                                    <option value='Business Packet Stander1'>Business Packet Stander1</option>
-                                    <option value='Business Packet Stander2'>Business Packet Stander2</option>
-                                </select></span>
+                               </select>
+                                </div>
+                            </div>
+                            <span>   &nbsp;&nbsp;&nbsp;
+                                
+                            </span>
 
                         </div>
 
@@ -78,25 +83,25 @@
                         <thead class="c-table__head c-table__head--slim">
                             <tr class="c-table__row">
                                 <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Bezeichnung</th>
-                                <th class="c-table__cell c-table__cell--head">Menge&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">Menge&nbsp;&nbsp;€</th>
                                 <th class="c-table__cell c-table__cell--head">Einzelpreis&nbsp;&nbsp;</th>
-                                <th colspan="2" class="c-table__cell c-table__cell--head">Betrag&nbsp;&nbsp;<a href="javascript:;" class="add_new_row">Add</a></th>
+                                <th colspan="2" class="c-table__cell c-table__cell--head">Betrag&nbsp;&nbsp;€<a href="javascript:;" class="add_new_row" style="margin-left: 20px;"><i class="fa fa-plus"></i></a></th>
                             </tr>
                         </thead>
                         <tbody class="dataAppend">    
                             
                             <tr class="c-table__row">
                                 <td>
-                                    <select name='bezeichnung[]'>
+                                    <select class='c-select' name='bezeichnung[]'>
                                         <option value=''>Select Bezeichnung</option>
                                         @foreach($bezeichnung as $key => $val)
                                             <option value='{{$key}}'>{{$val}}</option>
                                         @endforeach
                                     </select>
                                 </td>
-                                <td><input type="text" class="qty" name="menge[]"/></td>
-                                <td><input type="text" class="price" name="price[]"/>€</td>
-                                <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total">€</span></td>
+                                <td><input type="text" class="qty c-input" name="menge[]"/></td>
+                                <td><input type="text" class="price c-input" name="price[]"/></td>
+                                <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
                             </tr>
                         </tbody>
                     </table>

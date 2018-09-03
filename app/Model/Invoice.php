@@ -16,7 +16,19 @@ class Invoice extends Model {
     protected $table = 'invoice';
 
     public function invoiceList() {
-        return Invoice::select('invoice.*')->get();
+        return Invoice::select(
+                'invoice.id',
+                'invoice.created_at',
+                'invoice.invoice_no',
+                'users.customer_number',
+                'order_info.company_name',
+                'invoice.total',
+                'order_info.accept',
+                'invoice.mail_send'
+                )
+                ->leftjoin('users','users.id','=','invoice.customer_id')
+                ->leftjoin('order_info','users.id','=','order_info.user_id')
+                ->get();
     }
     
     public function addInvoice($request){
@@ -26,14 +38,16 @@ class Invoice extends Model {
         $finalStartDate = $startDate[2].'-'.$startDate[0].'-'.$startDate[1];
         $finalEndDate = $endDate[2].'-'.$endDate[0].'-'.$endDate[1];
         
-        
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $invoice_no =  substr(str_shuffle($chars),0,$length);
+    
         $objInvoice = new Invoice();
         
         $objInvoice->customer_id = $request->input('customer_id');
         $objInvoice->start_date = date('Y-m-d',  strtotime($finalStartDate));
         $objInvoice->end_date = date('Y-m-d',  strtotime($finalEndDate));
         $objInvoice->telephone_service = $request->input('telefone_service');
-        $objInvoice->invoice_no = 'sfsf123';
+        $objInvoice->invoice_no = $invoice_no;
         $objInvoice->created_at = date('Y-m-d H:i:s');
         $objInvoice->updated_at = date('Y-m-d H:i:s');
         $objInvoice->save();

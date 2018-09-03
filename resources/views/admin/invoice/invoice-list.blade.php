@@ -83,24 +83,26 @@
                             <th class="c-table__cell c-table__cell--head no-sort">Customer Number</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Company Name</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Packet</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Mall</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Price</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Status</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">Payment Method</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">Mail Send</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Paid</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @for($i = 0 ;$i < count($getInvoice);$i++)
                         <tr class="c-table__row">
-                            <td class="c-table__cell">col-1</td>
-                            <td class="c-table__cell">col-2</td>
-                            <td class="c-table__cell">col-3</td>
-                            <td class="c-table__cell">col-4</td>
-                            <td class="c-table__cell">col-5</td>
-                            <td class="c-table__cell">col-6</td>
-                            <td class="c-table__cell">col-7</td>
-                            <td class="c-table__cell">col-8</td>
-                            <td class="c-table__cell">col-9</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->id }}</td>
+                            <td class="c-table__cell">{{ date('Y-m-d',strtotime($getInvoice[$i]->created_at)) }}</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->invoice_no }}</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->customer_number }}</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->company_name }}</td>
+                            <td class="c-table__cell">Business Packet Stander</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->total }}</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->accept }}</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->mail_send }}</td>
+                            
 
                             <td class="c-table__cell">
                                 <a href="{{ route('invoice-pdf')}}"><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
@@ -110,8 +112,9 @@
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
                             </td>
-                            <td class="c-table__cell">col-10</td>
+                            <td class="c-table__cell"><input type="checkbox"></td>
                         </tr>
+                        @endfor
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->

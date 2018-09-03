@@ -27,6 +27,10 @@ class InvoiceController extends Controller {
         
         $objUser = new Users();
         $data['getCustomer'] = $objUser->getCustomer();
+        
+        $objinvoice = new Invoice();
+        $data['getInvoice'] = $objinvoice->invoiceList();
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/invoice.js');
