@@ -11,56 +11,7 @@
                     <caption class="c-table__title">
                         Invoice List
                         <br/>
-<!--                        <div class="col-md-12">
-                            
-                            <div class="col-md-7" style="display: flex;">
-                                <label><h5>Filter </h5></label>
-                                <div class="col-md-5">
-                                <div class="c-field u-mb-small">
-                                    <select class="c-select form-control" id="select1">
-                                        <option>Select Payment method</option>
-                                        <option>Payment method1</option>
-                                        <option>Payment method2</option>
-                                    </select>
-                                </div>                      
-                            </div>
-                            <div class="col-md-4">
-                                <div class="c-field u-mb-small">
-                                    <select class="c-select">
-                                        <option>August</option>
-                                        <option>Sept</option>
-                                        <option>Oct</option>
-                                    </select>
-                                </div>                      
-                            </div>
-                            <div class="col-md-3">
-                                <div class="c-field u-mb-small">
-                                    <select class="c-select">
-                                        <option>2018</option>
-                                        <option>2019</option>
-                                        <option>2020</option>
-                                    </select>
-                                </div>                      
-                            </div>
-                            </div>
-                            <div class="col-md-5" style="display: flex;">
-                                <div class="col-md-2">
-                                <div class="c-field u-mb-small">
-                                    <select class="c-select">
-                                        <option>2018</option>
-                                        <option>2019</option>
-                                        <option>2020</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <input class="c-btn c-btn--info c-btn--fullwidth" value="Create New Bill" type="submit">
-                            </div>
-                                
-                            </div>
-                            
-                            
-                        </div>-->
+
                         <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <label>Filter</label>
@@ -76,33 +27,45 @@
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select">
-                                        <option>August</option>
-                                        <option>Sept</option>
-                                        <option>Oct</option>
+                                        <option value=''>Select Month</option>
+                                        <option value='01'>January</option>
+                                        <option value='02'>February</option>
+                                        <option value='03'>March</option>
+                                        <option value='04'>April</option>
+                                        <option value='05'>May</option>
+                                        <option value='06'>June</option>
+                                        <option value='07'>July</option>
+                                        <option value='08'>August</option>
+                                        <option value='09'>September</option>
+                                        <option value='10'>October</option>
+                                        <option value='11'>November</option>
+                                        <option value='12'>December</option>
+                                        
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select">
-                                         <option>2018</option>
-                                        <option>2019</option>
-                                        <option>2020</option>
+                                        @for($i=date('Y'); $i<=2050; $i++)
+                                            <option>{{ $i }}</option>
+                                         @endfor
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
-                                    <select class="c-select form-control" id="select2">
-                                        <option>Select Customer</option>
-                                        <option>Payment method1</option>
-                                        <option>Payment method2</option>
+                                    <select class="c-select form-control selectCustomer" id="select2">
+                                        <option value=''>Select Customer</option>
+                                        @for($i = 0; $i < count($getCustomer);$i++)
+                                            <option value="{{ $getCustomer[$i]->customer_number }}">{{ $getCustomer[$i]->name }}</option>
+                                        @endfor
                                     </select>
                                 </div>
                             </div>
                                 <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
-                                    <input class="c-btn c-btn--info c-btn--fullwidth" value="Create New Bill" type="submit">
+                                    <input class="c-btn c-btn--info c-btn--fullwidth createBill" value="Create New Bill" type="button">
                                 </div>
                             </div>
                         </div>

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
-use App\Model\Customer;
+use App\Model\Users;
+use App\Model\Invoice;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
+use Config;
 use App;
 use PDF;
 use Illuminate\Http\Request;
@@ -22,11 +24,17 @@ class InvoiceController extends Controller {
     }
 
     public function index() {
-
+        
+        $objUser = new Users();
+        $data['getCustomer'] = $objUser->getCustomer();
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
+        $data['js'] = array('admin/invoice.js');
+        $data['funinit'] = array('Invoice.list_init()');
         $data['css'] = array('');
-        return view('admin.invoice.invoice-list');
+    
+        return view('admin.invoice.invoice-list',$data);
+        
     }
 
     public function createPDF() {
@@ -47,22 +55,33 @@ class InvoiceController extends Controller {
         return $pdf->download('invoice.pdfV2');
     }
 
-    public function createInvoice(Request $request) {
+    public function createInvoice(Request $request,$customerId) {
+        $objinvoice = new Invoice();
+        $objUser = new Users();
         $data['detail'] = $this->loginUser;
-        $objCustomer = new Customer();
-
+        $data['customerNumber'] = $customerId;
+       
         if ($request->isMethod('post')) {   
+            $invoiceAdd = $objinvoice->addInvoice($request);
+            if ($invoiceAdd) {
+                $return['status'] = 'success';
+                $return['message'] = 'Invoice created successfully.';
+                $return['redirect'] =  route('invoice-list');
 
-            echo"call";exit;
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return); exit;
         }
 
-        $data['customers'] = $objCustomer->getCustomerList();
-        //print_r($data['customers']);exit;
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/invoice.js');
         $data['funinit'] = array('Invoice.add_init()');
-
+        $data['bezeichnung'] = Config::get('constants.bezeichnung');
+       
+        $data['getCustomerInfo'] = $objUser->getCustomer($customerId);
         return view('admin.invoice.invoice-add', $data);
     }
 

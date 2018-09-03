@@ -76,10 +76,10 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'update-profile', ['as' => 'update-profile', 'uses' => 'Admin\UpdateProfileController@editProfile']);
     Route::match(['get', 'post'], 'update-change-password', ['as' => 'update-change-password', 'uses' => 'Admin\UpdateProfileController@changepassword']);
 
-     Route::match(['get', 'post'], 'invoice-list', ['as' => 'invoice-list', 'uses' => 'Admin\InvoiceController@index']);
+    Route::match(['get', 'post'], 'invoice-list', ['as' => 'invoice-list', 'uses' => 'Admin\InvoiceController@index']);
     Route::match(['get', 'post'], 'invoice-pdf', ['as' => 'invoice-pdf', 'uses' => 'Admin\InvoiceController@createPDF']);
-   Route::match(['get', 'post'], 'invoice-pdfV2', ['as' => 'invoice-pdfV2', 'uses' => 'Admin\InvoiceController@createPDFV2']);
-   Route::match(['get', 'post'], 'add-invoice', ['as' => 'add-invoice', 'uses' => 'Admin\InvoiceController@createInvoice']);
+    Route::match(['get', 'post'], 'invoice-pdfV2', ['as' => 'invoice-pdfV2', 'uses' => 'Admin\InvoiceController@createPDFV2']);
+    Route::match(['get', 'post'], 'add-invoice/{id}', ['as' => 'add-invoice', 'uses' => 'Admin\InvoiceController@createInvoice']);
      
 });
 

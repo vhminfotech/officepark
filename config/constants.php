@@ -36,7 +36,14 @@ return [
     ],
     'gender' => [
         'M' => 'Sir',
-        'F' => 'Mrs']
+        'F' => 'Mrs'
+    ],
+    'bezeichnung' => [
+        '1' => 'Anrufannahme Business Paket Standard (Stück)',
+        '2' => 'Weiterleitungsgebühren, dt. Mobilnetz, pro Min.',
+        '3' => 'Monatliche Gebühr (Mindestumsatz).',
+        '4' => 'Einrichtungsgebühr(einmalig)',
+    ],
 ];
 
 

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+
+<script>
+    var bezeichnung = '<?php echo json_encode($bezeichnung) ?>';
+</script>
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
@@ -10,31 +14,34 @@
                         <i class="fa fa-plus"></i>
                     </div>
                     <div class="c-stage__header-title o-media__body">
-                        <h6 class="u-mb-zero">Create bill for OP-211-1719</h6>
+                        <h6 class="u-mb-zero">Create bill for {{ $customerNumber }}</h6>
                     </div>
                 </div>
-                <div class="invoice-box">
+                <form action="{{ route('add-invoice',$customerNumber ) }}" method='post' id='invoiceForm'>
+                     <div class="invoice-box">
                     <div class="row">
 
 
                         <div class="col-md-9">
                             <br/><br/>
+                            <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                            <input class="c-input" type="hidden" name="customer_id"  value="{{ $getCustomerInfo['customer_id'] }}">
                             <span><u>Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</u></span><br/>
                             <span><h3>- persönlich -</h3></span><br/>
-                            <span>Proton GmbH</span><br/>
-                            <span>Münsterstraße 330 </span><br/>
-                            <span>40470 Düsseldorf </span><br/><br/>
+                            <span>{{ $getCustomerInfo['company_name'] }}</span><br/>
+                            <span>{{ $getCustomerInfo['address'] }} </span><br/><br/>
+                            <!--<span>40470 Düsseldorf </span><br/>-->
 
-                            <span><b>Ihre Rechnung für den Zeitraum </b>&nbsp;&nbsp;&nbsp;<input type="tex" name="start_date"> -- <input type="tex" name="end_date"></span>
+                            <span><b>Ihre Rechnung für den Zeitraum </b>&nbsp;&nbsp;&nbsp;<input type="tex" class='c-input form-control' data-toggle="datepicker" name="start_date" style='display:inline-block;width: 30%;'> -- <input type="tex" data-toggle="datepicker" name="end_date" class='c-input form-control' style='display:inline-block;width: 30%;'></span>
                             <br/><br/>
 
                             <span>Sehr geehret Damen und Herren, <br/> anbei übersenden wir ihnen ihre aktuelle Monatsabrechnung.</span>
                             <br/><br/>
 
-                            <span> Ihr gebuchter Telefonservice -Tarif:  &nbsp;&nbsp;&nbsp;<select>
-                                    <option>Business Packet Stander</option>
-                                    <option>Business Packet Stander1</option>
-                                    <option>Business Packet Stander2</option>
+                            <span> Ihr gebuchter Telefonservice -Tarif:  &nbsp;&nbsp;&nbsp;<select class='form-control' name='telefone_service'>
+                                    <option value='Business Packet Stander'>Business Packet Stander</option>
+                                    <option value='Business Packet Stander1'>Business Packet Stander1</option>
+                                    <option value='Business Packet Stander2'>Business Packet Stander2</option>
                                 </select></span>
 
                         </div>
@@ -77,44 +84,19 @@
                             </tr>
                         </thead>
                         <tbody class="dataAppend">    
+                            
                             <tr class="c-table__row">
                                 <td>
-                                    <select>
-                                        <option>Option Address 1</option>
-                                        <option>Option Address 2</option>
-                                        <option>Option Address 3</option>
-                                        <option>Option Address 4</option>
+                                    <select name='bezeichnung[]'>
+                                        <option value=''>Select Bezeichnung</option>
+                                        @foreach($bezeichnung as $key => $val)
+                                            <option value='{{$key}}'>{{$val}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
-                                <td><input type="text" name="menge" value="2"/></td>
-                                <td><input type="text" name="price" value="1,00"/>€</td>
-                                <td>2,00€</td>
-                            </tr>
-                            <tr class="c-table__row">
-                                <td>
-                                    <select>
-                                        <option>Option Address 1</option>
-                                        <option>Option Address 2</option>
-                                        <option>Option Address 3</option>
-                                        <option>Option Address 4</option>
-                                    </select>
-                                </td>
-                                <td><input type="text" name="menge" value="2"/></td>
-                                <td><input type="text" name="price" value="1,00"/>€</td>
-                                <td>2,00€</td>
-                            </tr>
-                            <tr class="c-table__row">
-                                <td>
-                                    <select>
-                                        <option>Option Address 1</option>
-                                        <option>Option Address 2</option>
-                                        <option>Option Address 3</option>
-                                        <option>Option Address 4</option>
-                                    </select>
-                                </td>
-                                <td><input type="text" name="menge" value="2"/></td>
-                                <td><input type="text" name="price" value="1,00"/>€</td>
-                                <td>2,00€</td>
+                                <td><input type="text" class="qty" name="menge[]"/></td>
+                                <td><input type="text" class="price" name="price[]"/>€</td>
+                                <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total">€</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -123,7 +105,7 @@
                             <td></td>
                             <td></td>
                             <td>Endbetrag : </td>
-                            <td>10,00€</td>
+                            <td><span class='finalTotal'></span>€</td>
                         </tr>
                         <tr class="c-table__row">
                             <td></td>
@@ -136,7 +118,7 @@
                     <!--</div>-->
                     <br/><br/>
                     <span>
-                        Der Betrag in Hohe 47,45 € wird per SEPA-Mandat von ihrem Konto eingezogen.Erstlastschriften werden ihrem Konto nach 3 werktagen, Folgelastschriften nach 1 Werktagen belastet.
+                        Der Betrag in Hohe <span class='finalTotal'>47,45</span> € wird per SEPA-Mandat von ihrem Konto eingezogen.Erstlastschriften werden ihrem Konto nach 3 werktagen, Folgelastschriften nach 1 Werktagen belastet.
                     </span>
                     <br/>
                     <span>
@@ -150,11 +132,13 @@
                     <br/>
                     <div class="c-field u-mb-small right">
                         <div class="col-mg-3">
+                            
                             <input class="c-btn c-btn--info c-btn--fullwidth" value="Create New Bill" type="submit">
                         </div>
 
                     </div>
                 </div>
+                </form>
             </article>
         </div>
     </div>

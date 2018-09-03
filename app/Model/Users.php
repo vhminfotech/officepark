@@ -280,11 +280,20 @@ class Users extends Model {
     }
 
     public function getCustomerInfo($id) {
-        return Users::select(
-                                'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
-                        )
+        return Users::select('users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package' )
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                         ->where('users.id', '=', $id)->first()->toArray();
+    }
+    
+    public function getCustomer($cutomerNum = NULL) {
+        if($cutomerNum){
+            return Users::select('users.id as customer_id','order_info.company_name', 'order_info.address')
+                        ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                        ->where('users.customer_number', '=', $cutomerNum)->first()->toArray();
+        }else{
+            return Users::where('type', 'CUSTOMER')->get();
+        }
+       
     }
 
 }
