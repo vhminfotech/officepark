@@ -37,7 +37,7 @@ class Invoice extends Model {
         
         $finalStartDate = $startDate[2].'-'.$startDate[0].'-'.$startDate[1];
         $finalEndDate = $endDate[2].'-'.$endDate[0].'-'.$endDate[1];
-        
+        $length = 8;
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         $invoice_no =  substr(str_shuffle($chars),0,$length);
     
@@ -74,7 +74,8 @@ class Invoice extends Model {
                     $objInvoiceDetail->created_at = date('Y-m-d H:i:s');
                     $objInvoiceDetail->updated_at = date('Y-m-d H:i:s');
                     $result = $objInvoiceDetail->save();
-                }    
+                }   
+                $objInvoiceDetail = ''; 
             }
             
             if($result){
@@ -87,6 +88,38 @@ class Invoice extends Model {
                  }
             }
         }
+    }
+
+    public function getInvoiceDetail($invoiceId) {
+
+        return Invoice::select(
+                'invoice.id',
+                'invoice.created_at',
+                'invoice.customer_id',
+                'invoice.start_date',
+                'invoice.end_date',
+                'invoice.telephone_service',
+                'invoice.total as invoiceTotal',
+                'invoice.invoice_no',
+                'users.customer_number',
+                'users.system_genrate_no',
+                'order_info.company_name',
+                'order_info.account_name',
+                'order_info.account_iban',
+                'order_info.account_bic',
+                'order_info.company_info',
+                'order_info.accept',
+                'invoice.mail_send',
+                'invoice_detail.bezeichnung',
+                'invoice_detail.menge',
+                'invoice_detail.einzelpreis',
+                'invoice_detail.total'
+                )
+                ->leftjoin('users','users.id','=','invoice.customer_id')
+                ->leftjoin('invoice_detail','invoice_detail.invoice_id','=','invoice.id')
+                ->leftjoin('order_info','users.id','=','order_info.user_id')
+                ->where('invoice.id',$invoiceId)
+                ->get();
     }
 
 }

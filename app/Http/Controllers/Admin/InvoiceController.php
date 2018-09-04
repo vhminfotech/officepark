@@ -41,10 +41,17 @@ class InvoiceController extends Controller {
         
     }
 
-    public function createPDF() {
+    public function createPDF(Request $request,$invoiceId) {
 
+        $objinvoice = new Invoice();
+        $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
+        $data['bezeichnung'] = Config::get('constants.bezeichnung');
 
-        $pdf = PDF::loadView('admin.invoice.invoice-pdf');
+        $objUser = new Users();
+        $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
+        // echo '<pre/>';
+        // print_r($data['getInvoice']);exit;
+        $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
         return $pdf->stream();
         exit;
         return $pdf->download('invoice.pdf');

@@ -20,6 +20,9 @@
             .page-break {
                 page-break-after: always;
             }
+            .padding-l-5{
+                padding-left: 5px;
+            }
         </style>
     </head>
 
@@ -39,18 +42,15 @@
                     <td colspan="2">
                         <table width="100%">
                             <tr>
-                                <td>ATA FinanzserviceAta Finanz GbR</td>
+                                <td>{{ $getCustomerInfo['company_name'] }}</td>
                             </tr>
                             <tr>
-                                <td>Promenadenstr. 23</td>
-                            </tr>
-                            <tr>
-                                <td>41460 Neuss</td>
+                                <td>{{ $getCustomerInfo['address'] }}</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Your invoice for the period 01.06 - 30.06.2018)</td>
+                                <td>Your invoice for the period ({{ date('d.m.Y',strtotime($getInvoice[0]['start_date'])) .' - '. date('d.m.Y',strtotime($getInvoice[0]['end_date'])) }})</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
@@ -63,7 +63,7 @@
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Your booked telephone service tariff: Business Package Standard</td>
+                                <td>Your booked telephone service tariff: {{ $getInvoice[0]['telephone_service'] }} </td>
                             </tr>
                         </table>
                     </td>
@@ -117,37 +117,28 @@
                 <thead>
                     <tr>
                         <td>designation</td>
-                        <td>amount</td>
-                        <td>Price</td>
-                        <td>amount</td>
+                        <td class="padding-l-5">amount</td>
+                        <td class="padding-l-5">Price</td>
+                        <td class="padding-l-5">amount</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Answering Business Package Standard (piece)</td>
-                        <td>29</td>
-                        <td>1,00€x</td>
-                        <td>29,00 €</td>
-                    </tr>
-                    <tr>
-                        <td>Forwarding charges, ie mobile network, per min.</td>
-                        <td>92</td>
-                        <td>0,25€</td>
-                        <td>23,00 €</td>
-                    </tr>
-                    <tr>
-                        <td>Monthly fee (minimum sales)</td>
-                        <td>1</td>
-                        <td>30,00€</td>
-                        <td>30,00€</td>
-                    </tr>
+                    
+                    @for($k = 0; $k < count($getInvoice); $k++)
+                        <tr>
+                            <td >{{ $bezeichnung[$getInvoice[$k]['bezeichnung']] }}</td>
+                            <td class="padding-l-5">{{ $getInvoice[$k]['menge'] }}</td>
+                            <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }}€x</td>
+                            <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} €</td>
+                        </tr>
+                    @endfor
                     <tr>
                         <td colspan="2"></td>
                         <td>final amount
                             <br>
                             <span class="small-fornt">According to §19 UStG, the invoice amount does not include VAT</span>
                         </td>
-                        <td>82,00 €</td>
+                        <td>{{ number_format($getInvoice[0]['invoiceTotal'],2) }} €</td>
 
                     </tr>
                 </tbody>
@@ -156,26 +147,28 @@
             <table width="100%">
                 <tr>
                     <td>
-                        <span>The amount of € 82.00 will be withdrawn from your account via SEPA mandate. First direct debits will be charged to your account after 3 business days, follow-up direct debits after 1 business day.</span>
+                        <span>The amount of € {{ number_format($getInvoice[0]['invoiceTotal'],2) }} will be withdrawn from your account via {{ $getInvoice[0]['accept'] }} mandate. First direct debits will be charged to your account after 3 business days, follow-up direct debits after 1 business day.</span>
                     </td>
                 </tr>
                 <br>
                 <tr>
                     <td>
-                        <span>Your bank details: DE47 3004 0000 0770 3242 00 • COBADEFFXXX</span>
+                        <span>Your bank details:
+                        {{ chunk_split($getInvoice[0]['account_iban'], 4, ' ') }}  • 
+                        {{ $getInvoice[0]['account_bic'] }}  
+                    </span>
                     </td>
 
                 </tr>
                 <br>
                 <tr>
                     <td>
-                        <span>Commerzbank Düsseldorf • Account holder: Ahmet Tuzkaya</span>
+                        <span>Commerzbank Düsseldorf • Account holder: {{ $getInvoice[0]['account_name'] }}</span>
                     </td>
-
                 </tr>
                 <tr>
                     <td>
-                        <span>Mandate Reference: OP-211-1705 • Creditor ID: DE91ZZZZ00002054440</span>
+                        <span>Mandate Reference: {{ $getInvoice[0]['customer_number'] }} • Creditor ID:  {{ $getInvoice[0]['system_genrate_no'] }} </span>
                     </td>
                 </tr>
                 <tr>
