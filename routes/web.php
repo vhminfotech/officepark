@@ -81,6 +81,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'invoice-pdfV2', ['as' => 'invoice-pdfV2', 'uses' => 'Admin\InvoiceController@createPDFV2']);
     Route::match(['get', 'post'], 'add-invoice/{id}', ['as' => 'add-invoice', 'uses' => 'Admin\InvoiceController@createInvoice']);
      
+    Route::match(['get', 'post'], 'employee', ['as' => 'employee', 'uses' => 'Admin\EmployeeController@getEmployerData']);
+    Route::match(['get', 'post'], 'employee-add', ['as' => 'employee-add', 'uses' => 'Admin\EmployeeController@addEmployee']);
 });
 
 

@@ -12,5 +12,6 @@ return [
     'Select' => 'Select',
     'Logout' => 'Logout',
     'Contract' => 'Contract',
-    'Invoice' => 'Invoice'
+    'Invoice' => 'Invoice',
+    'Employee' => 'Employee',
 ];

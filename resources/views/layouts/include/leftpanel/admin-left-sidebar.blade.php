@@ -64,6 +64,14 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'employee' || $currentRoute == 'employee' ? 'is-active' : '') }}" href="{{ route('employee') }}">
+                    <i class="fa-users u-mr-xsmall"></i>
+
+                    {{ trans('words.Employee') }}  &nbsp;
+
+                </a>
+            </li>
+            <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>
             <li class="c-sidebar__item" style="position: absolute; bottom: 0px; margin-bottom: 20px; padding-left: 35px;">
