@@ -117,26 +117,75 @@
                         </div>
 
                     </div>
-               
+
             </article>
         </div>
         <div class="col-6">
             <article class="c-stage">
-                    <div class="c-stage__panel u-p-medium">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h5>My Profile</h5>
+                <div class="c-stage__panel u-p-medium">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="callbacksms">My Profile</label> 
+                                <select class="c-select" id="callbacksms" name="standard">
+                                    <option value="Standard">Standard</option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="lastName">Last Name</label> 
-                                    <input class="c-input" name="lastName" id="lastName" placeholder="lastName" type="text">
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
+                                <div class="c-choice c-choice--checkbox">
+                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Telephone</label>
+                                </div>
+                            </div>
+                            <div class="c-field u-mb-small">
+                                <div class="c-choice c-choice--checkbox">
+                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>
                         </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="callbacksms"> Call Notification</label> 
+                                <div class="c-choice c-choice--checkbox">
+                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Telephone</label>
+                                </div>
+                            </div>
+                            <div class="c-field u-mb-small">
+                                <div class="c-choice c-choice--checkbox">
+                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Mobile Phone</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-panel2" aria-expanded="false" aria-controls="stage-panel2">
+                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Bussines Hours/Global</h6>
+
+                                <i class="fa fa-angle-down u-text-mute"></i>
+                            </a>
+
+                           <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-panel2" style="">
+                                <div class="u-p-medium">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita quo dicta, accusantium, nesciunt vero reiciendis deserunt voluptas ullam aperiam ipsa obcaecati. Perspiciatis est, ut quas at, eaque itaque dicta quibusdam.</p>
+                                </div>   
+                            </div>
+                        </div>
                     </div>
+                </div>
                 </form>
             </article>
         </div>
@@ -146,5 +195,8 @@
     input.has-error {
         border-color: red;
     }
+
+
 </style>
+
 @endsection
