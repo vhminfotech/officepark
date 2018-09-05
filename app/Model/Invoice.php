@@ -102,6 +102,8 @@ class Invoice extends Model {
                 'invoice.total as invoiceTotal',
                 'invoice.invoice_no',
                 'users.customer_number',
+                'users.name',
+                'users.email',
                 'users.system_genrate_no',
                 'order_info.company_name',
                 'order_info.account_name',

@@ -12,7 +12,8 @@ use Config;
 use App;
 use PDF;
 use Illuminate\Http\Request;
-
+use App\Model\Sendmail;
+ 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 //use Illuminate\Http\Request;
 
@@ -46,15 +47,28 @@ class InvoiceController extends Controller {
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
-
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
-        // echo '<pre/>';
-        // print_r($data['getInvoice']);exit;
+        $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
         $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
-        return $pdf->stream();
-        exit;
-        return $pdf->download('invoice.pdf');
+        $pdf->save(public_path($target_path));
+     
+
+        $mailData['subject'] = 'Invoice-'.$data['getInvoice'][0]['customer_number'];
+        $mailData['template'] = 'emails.invoice';
+        $mailData['attachment'] = array(
+            public_path($target_path));
+         $mailData['mailto'] = ['shaileshvanaliya91@gmail.com',$data['getInvoice'][0]['email']];
+        $sendMail = new Sendmail;
+        $mailData['data']['interUser'] = $data['getInvoice'][0]['name'];
+        $mail =  $sendMail->sendSMTPMail($mailData);
+        if(file_exists('public/'.$target_path)){
+            unlink('public/'.$target_path);         
+        }
+        return redirect('admin/invoice-list');
+        // return $pdf->stream();
+        // exit;
+        // return $pdf->download('invoice.pdf');
     }
 
     public function createPDFV2() {
