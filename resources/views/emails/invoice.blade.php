@@ -84,7 +84,7 @@ div[style*="margin: 16px 0;"] { margin: 0 !important; }
                            Wir wünschen Ihnen viel Erfolg mit Ihrem neuen Telefonsekretariat und freuen uns auf eine gute und langjährige Zusammenarbeit. Sollten Sie weitere Fragen haben, stehen Ihnen unsere Mitarbeiter aus dem Service-Team gerne telefonisch unter 0211 368 74 190 zur Verfügung.<br><br>
 
                             Mit freundlichen Grüßen,<br>
-                           <img src="<?php echo url('img/logo.png'); ?>" width="130" height="168" style="display: block; border: 0px;"/>
+                           <img src="<?php echo url('img/signatur.png'); ?>" width="130" height="168" style="display: block; border: 0px;"/>
                            Baris Ak <br>
 Geschäftsführer<br>
                        </p>

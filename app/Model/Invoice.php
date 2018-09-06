@@ -123,5 +123,13 @@ class Invoice extends Model {
                 ->where('invoice.id',$invoiceId)
                 ->get();
     }
+    
+    public function getMailStatusUpdate($invoiceId){
+         $objInfo = Invoice::find($invoiceId);
+         $objInfo->mail_send = 'YES';
+         if ($objInfo->save()) {
+            return TRUE;
+        }
+    }
 
 }
