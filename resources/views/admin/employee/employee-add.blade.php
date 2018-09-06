@@ -72,8 +72,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="callbacksms"> Call Back msg</label> 
-                                    <select class="c-select" id="callbacksms" name="callbacksms">
+                                    <label class="c-field__label" for="callbacksms1"> Call Back msg</label> 
+                                    <select class="c-select" id="callbacksms1" name="callbacksms1">
                                         <option value=""></option>
                                         <option value=""></option>
                                         <option value=""></option>
@@ -141,14 +141,14 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
-                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Telephone</label>
+                                    <input class="c-choice__input" id="checkbox1" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox1">Transfer Incoming call To Telephone</label>
                                 </div>
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
-                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Mobile Phone</label>
+                                    <input class="c-choice__input" id="checkbox2" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox2">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>
                         </div>
@@ -164,24 +164,86 @@
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
-                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Mobile Phone</label>
+                                    <input class="c-choice__input" id="checkbox4" name="checkboxes" type="checkbox">
+                                    <label class="c-choice__label" for="checkbox4">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>
                         </div>
                     </div> 
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-panel2" aria-expanded="false" aria-controls="stage-panel2">
-                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Bussines Hours/Global</h6>
-
-                                <i class="fa fa-angle-down u-text-mute"></i>
+                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-panel" aria-expanded="false" aria-controls="stage-panel">
+                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> Bussines Hours/Global</h6>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
 
-                           <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-panel2" style="">
+                            <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-panel" style="">
                                 <div class="u-p-medium">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita quo dicta, accusantium, nesciunt vero reiciendis deserunt voluptas ullam aperiam ipsa obcaecati. Perspiciatis est, ut quas at, eaque itaque dicta quibusdam.</p>
+                                    <div class="u-p-medium">
+                                        
+                                    </div>
                                 </div>   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane2" aria-expanded="false" aria-controls="stage-pane2">
+                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Launch Time /Global</h6>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </a>
+
+                            <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-pane2" style="">
+                                <div class="u-p-medium">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-2">
+                                            <input class="c-choice__input" id="checkbox5" name="checkboxes" type="checkbox">
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="c-field u-mb-small">
+                                                <select class="c-select" id="ch1" name="ch1">
+                                                    <option value="Standard">Standard</option>
+                                                    <option value="">1</option>
+                                                    <option value="">12</option>
+                                                </select>
+                                            </div>
+                                        </div>
+\                                    </div>   
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="c-choice c-choice--checkbox">
+                                <input class="c-choice__input" id="checkboxs5" name="checkboxes" type="checkbox">
+                                <label class="c-choice__label" for="checkboxs5">No Bussiness Hours Adjust</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane3" aria-expanded="false" aria-controls="stage-pane3">
+                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Global Holidays</h6>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </a>
+                            <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-pane3" style="">
+                                <div class="u-p-medium">
+                                    <div class="form-group">
+                                        <div class="c-field has-addon-left">
+                                            <label class="c-field__label" for="holidayfrom">Holiday Global From</label> 
+                                            <input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" required>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="c-field has-addon-left">
+                                            <label class="c-field__label" for="holidayto">Holiday Global To</label> 
+                                            <input class="c-input form-control" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" required>
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
