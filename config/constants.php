@@ -43,7 +43,51 @@ return [
         '2' => 'Weiterleitungsgebühren, dt. Mobilnetz, pro Min.',
         '3' => 'Monatliche Gebühr (Mindestumsatz).',
         '4' => 'Einrichtungsgebühr(einmalig)',
+    ], 
+    'job_title' => [
+        '1' => 'Sekretär/in',
+        '2' => 'Auszubildene/r',
+        '3' => 'Mitarbeiter/in',
+        '4' => 'Geschäftsführer',
+        '5' => 'Secretary',
+        '6' => 'Trainee/R',
+        '7' => 'Employee',
+        '8' => 'Managing director',
     ],
+    'responsibility' => [
+        '1' => 'Kundenberater/in',
+        '2' => 'Buchhaltung',
+        '3' => 'Technischer Kundenservice',
+        '4' => 'Neukunden',
+        '5' => 'Customer Advisor',
+        '6' => 'Accounting',
+        '7' => 'Technical Customer Service',
+        '8' => 'New Customers',
+    ], 
+    'p_away_msg' => [
+        '' => 'Abwesendheit / P Away Msg',
+        '1' => 'Derzeit im Telefongespräch',
+        '2' => 'Derzeit im Urlaub',
+        '3' => 'Derzeit in einer Schulung',
+        '4' => 'Derzeit in einem Termin',
+        '5' => 'Currently in the phone conversation',
+        '6' => 'Currently on vacation',
+        '7' => 'Currently in a training',
+        '8' => 'Currently in an appointmen',
+    ],
+    'call_back_msg' => [
+            '1' => 'Rückrufzeitpunkt / Call Back Msg',
+            '2' => 'Rufe zurück am nächsten Tag',
+            '3' => 'Rufe zurück am gleichen Tag',
+            '4' => 'Rufe zurück in den nächsten 60 Minuten',
+            '5' => 'Rufe zurück in den nächsten 30 Minuten',
+            '6' => 'Call back the next day',
+            '7' => 'Call back the same day',
+            '8' => 'Call back in the next 60 Minutes',
+            '9' => 'Call back in the next 30 minutes',
+        ],
+
+   
 ];
 
 

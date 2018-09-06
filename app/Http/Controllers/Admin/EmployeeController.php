@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Route;
 use Illuminate\Http\Request;
+use Config;
 
 class EmployeeController extends Controller {
 
@@ -20,8 +21,11 @@ class EmployeeController extends Controller {
         return view('admin.employee.employee-list');
     }
     public function addEmployee() {
-
-        return view('admin.employee.employee-add');
+        $data['call_back_msg'] = Config::get('constants.call_back_msg');
+        $data['p_away_msg'] = Config::get('constants.p_away_msg');
+        $data['responsibility'] = Config::get('constants.responsibility');
+        $data['job_title'] = Config::get('constants.job_title');
+        return view('admin.employee.employee-add',$data);
     }
 
 }

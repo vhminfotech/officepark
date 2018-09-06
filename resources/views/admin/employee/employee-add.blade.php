@@ -13,7 +13,7 @@
                         <h6 class="u-mb-zero">Add New Employeer</h6>
                     </div>
                 </div>
-                <form name="add-user" id="addSystemUser" action="{{ route('system-add-user') }}" method="post">
+                {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addEmpForm' )) }}
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-12">
@@ -36,11 +36,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="jobtitle">job Title</label> 
-                                    <select class="c-select" id="jobtitle" name="jobtitle">
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                    {{ Form::select('jobtitle', $job_title , null, array('class' => 'c-select', 'id' => 'jobtitle')) }}
                                 </div>
                             </div>
                         </div>  
@@ -48,11 +44,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="responsibility">Responsibility</label> 
-                                    <select class="c-select" id="responsibility" name="responsibility">
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                    {{ Form::select('responsibility', $responsibility , null, array('class' => 'c-select', 'id' => 'responsibility')) }}
                                 </div>
                             </div>
                         </div>  
@@ -60,12 +52,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="langauge">P away msg</label> 
-                                    <select class="c-select" id="langauge" name="langauge">
-
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                    {{ Form::select('p_away_msg', $p_away_msg , null, array('class' => 'c-select', 'id' => 'p_away_msg')) }}
                                 </div>
                             </div>
                         </div>  
@@ -73,11 +60,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="callbacksms1"> Call Back msg</label> 
-                                    <select class="c-select" id="callbacksms1" name="callbacksms1">
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
+                                    {{ Form::select('call_back_msg', $call_back_msg , null, array('class' => 'c-select', 'id' => 'call_back_msg')) }}
                                 </div>
                             </div>
                         </div>  
@@ -109,7 +92,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="anyotherinformation">Any Other information</label> 
-                                    <textarea rows="4" cols="60" name="anyotherinformation">
+                                    <textarea rows="4" class="c-input" cols="50" name="anyotherinformation">
                                         
                                     </textarea>
                                 </div>
@@ -123,15 +106,12 @@
         <div class="col-6">
             <article class="c-stage">
                 <div class="c-stage__panel u-p-medium">
-
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms">My Profile</label> 
                                 <select class="c-select" id="callbacksms" name="standard">
                                     <option value="Standard">Standard</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
@@ -178,14 +158,43 @@
                             </a>
 
                             <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-panel" style="">
-                                <div class="u-p-medium">
-                                    <div class="u-p-medium">
-                                        
+                              @php
+                              $days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                              @endphp 
+                              @for($m = 0;$m < count($days);$m++)
+                              @if($m == 0)
+                                <div class="row u-mb-xlarge" style="margin-bottom: -0.75rem!important;margin-top: 10px;">
+                                @else
+                                <div class="row u-mb-xlarge" style=" margin-bottom: -0.75rem!important;">
+                                @endif
+                                    <div class="col-md-4 u-mb-medium">
+                                        <div class="c-choice c-choice--checkbox">
+                                        <input class="c-choice__input" id="{{ $days[$m].$m }}" name="monday" type="checkbox">
+                                    <label class="c-choice__label" for="{{ $days[$m].$m }}">{{ $days[$m] }}</label>
                                     </div>
-                                </div>   
+                                    </div>
+                                   <div class="col-md-4 u-mb-medium">
+                                        <select class="c-select col-md-2" id="start{{ $days[$m] }}" name="callbacksms10">
+                                            @for($i = 5;$i < 10;$i++)
+                                              <option value="{{ $i }}">{{ $i.':00' }}</option>    
+                                            @endfor
+                                    </select>
+                                    </div>
+                                    <div class="col-md-4 u-mb-medium">
+                                        <select class="c-select col-md-2" id="end{{ $days[$m] }}" name="callbacksms1">
+                                        @for($k = 5;$k < 12;$k++)
+                                            <option value="{{ $k }}">{{ number_format($k,2) }}</option>   
+                                        @endfor
+                                        </select>
+                                    </div>
+                                </div>
+                                @endfor
+                                
+                                
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-md-12">
                             <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane2" aria-expanded="false" aria-controls="stage-pane2">
@@ -194,21 +203,27 @@
                             </a>
 
                             <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-pane2" style="">
-                                <div class="u-p-medium">
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-2">
-                                            <input class="c-choice__input" id="checkbox5" name="checkboxes" type="checkbox">
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="c-field u-mb-small">
-                                                <select class="c-select" id="ch1" name="ch1">
-                                                    <option value="Standard">Standard</option>
-                                                    <option value="">1</option>
-                                                    <option value="">12</option>
-                                                </select>
-                                            </div>
-                                        </div>
-\                                    </div>   
+                                <div class="row u-mb-xlarge" style="margin-top: 10px!important;    margin-bottom: 0px !important;">
+                                    <div class="col-md-4 u-mb-medium">
+                                    <div class="c-choice c-choice--checkbox">
+                                    <input class="c-choice__input" id="mondaddy" name="monddday" type="checkbox">
+                                    <label class="c-choice__label" for="mondaddy">&nbsp;</label>
+                                    </div>
+                                    </div>
+                                   <div class="col-md-4 u-mb-medium">
+                                        <select class="c-select col-md-2" id="start" name="callbacksms10">
+                                            @for($i = 5;$i < 10;$i++)
+                                              <option value="{{ $i }}">{{ $i.':00' }}</option>    
+                                            @endfor
+                                    </select>
+                                    </div>
+                                    <div class="col-md-4 u-mb-medium">
+                                        <select class="c-select col-md-2" id="end" name="callbacksms1">
+                                        @for($k = 5;$k < 12;$k++)
+                                            <option value="{{ $k }}">{{ number_format($k,2) }}</option>   
+                                        @endfor
+                                        </select>
+                                    </div>
                                 </div>   
                             </div>
                         </div>
@@ -224,11 +239,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane3" aria-expanded="false" aria-controls="stage-pane3">
+                            <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane3" aria-expanded="true" aria-controls="stage-pane3">
                                 <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Global Holidays</h6>
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
-                            <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-pane3" style="">
+                            <div class="c-stage__panel c-stage__panel--mute collapse show" id="stage-pane3" style="">
                                 <div class="u-p-medium">
                                     <div class="form-group">
                                         <div class="c-field has-addon-left">
@@ -247,8 +262,15 @@
                             </div>
                         </div>
                     </div>
+                    <br/>
+                    <div class="c-field u-mb-small left">
+                        <div class="col-mg-3">
+                            <input class="c-btn c-btn--info " value="Add Employee" type="submit">&nbsp;&nbsp;
+                            <input class="c-btn c-btn--secondary " value="cancel" type="submit">
+                        </div> 
+                    </div>
                 </div>
-                </form>
+                {{ Form::close() }}
             </article>
         </div>
     </div>
