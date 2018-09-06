@@ -42,8 +42,10 @@ class InvoiceController extends Controller {
         
     }
 
-    public function createPDF(Request $request,$invoiceId) {
+    public function createPDF(Request $request) {
 
+        // print_r($request->input());exit;
+        $invoiceId = $request->input('orderId');
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
@@ -65,7 +67,16 @@ class InvoiceController extends Controller {
         if(file_exists('public/'.$target_path)){
             unlink('public/'.$target_path);         
         }
-        return redirect('admin/invoice-list');
+        if ($mail =='') {
+            $return['status'] = 'success';
+            $return['message'] = 'Invoice sent successfully.';
+            $return['redirect'] =  route('invoice-list');
+        } else {
+            $return['status'] = 'error';
+            $return['message'] = 'something will be wrong.';
+        }
+            echo json_encode($return); exit;
+        // return redirect('admin/invoice-list');
         // return $pdf->stream();
         // exit;
         // return $pdf->download('invoice.pdf');

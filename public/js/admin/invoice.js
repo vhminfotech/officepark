@@ -68,6 +68,7 @@ var Invoice = function () {
     }
     
     var handleList = function(){
+    }
         $('body').on('click','.createBill',function(){
             var value = $('.selectCustomer option:selected').val();
             if(value == ''){
@@ -75,8 +76,17 @@ var Invoice = function () {
             }else{
                window.location.href = baseurl + 'admin/add-invoice/'+ value; 
             }
+        });  
+          $('body').on('click','.sendInvoice',function(){
+            
+            var orderId = $(this).data('id');
+            var token = $('#_token').val();
+            var data = { orderId : orderId ,_token :token};
+            var url = baseurl + 'admin/invoice-pdf';
+            ajaxcall(url,data,function(output){
+                handleAjaxResponse(output);
+            });
         });
-    }
 
     return {
         add_init: function () {
