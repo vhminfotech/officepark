@@ -8,7 +8,7 @@
             <div c-table-responsive>
 
                 <div class="col-lg-12">Service
-                    <form action="{{route('employee-add')}}" method="post" name="addEmployee" id="addEmployee">
+                    <form action="{{route('service-add')}}" method="post" name="addService" id="addService">
                         <div class="left">
                             <input class="c-btn c-btn--info c-btn--fullwidth" value="Create Package" type="submit">
                             <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 

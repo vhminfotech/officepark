@@ -14,4 +14,5 @@ return [
     'Contract' => 'Contract',
     'Invoice' => 'Invoice',
     'Employee' => 'Employee',
+    'Service' => 'Service',
 ];

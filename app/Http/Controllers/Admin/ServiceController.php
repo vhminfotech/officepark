@@ -21,4 +21,12 @@ class ServiceController extends Controller {
         return view('admin.service.service-list');
     }
 
+    public function addService() {
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/service.js');
+        $data['funinit'] = array('Service.list_init()');
+        return view('admin.service.service-add',$data);
+    }
+
 }
