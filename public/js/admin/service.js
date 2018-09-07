@@ -2,7 +2,7 @@ var Service = function () {
 
     var handleGenral = function () {
         $('body').on('click', '.add_new_row', function () {
-            var html = '<tr class="c-table__row"><td><input type="text" class="qty c-input" name="fddirst[]"/></td><td><input type="text" class="qty c-input" name="second[]"/></td><td><input type="text" class="c-input" name="third[]"/></td><td><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="checkboxs" name="checkboxes" type="checkbox"><label class="c-choice__label" for="checkboxs">Invoice</label></td><td colspan="1"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
+            var html = '<tr class="c-table__row"><td class="c-table__cell"><input type="text" class="qty c-input" name="fddirst[]"/></td><td class="c-table__cell"><input type="text" class="qty c-input" name="second[]"/></td><td class="c-table__cell"><input type="text" class="c-input" name="third[]"/></td><td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="checkboxs" name="checkboxes" type="checkbox"><label class="c-choice__label" for="checkboxs">Invoice</label></td><td colspan="1"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
             $('.dataAppend').append(html);
             $('.c-select').select2();
             var finalTotal = 0;

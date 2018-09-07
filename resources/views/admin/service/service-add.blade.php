@@ -39,7 +39,7 @@
                             </select>
                         </div>
                     </div>
-                 
+                    <br>
                     
 
                     <br>
@@ -57,11 +57,11 @@
                             <tbody class="dataAppend">    
 
                                 <tr class="c-table__row">
-                                    <td><input type="text" class="qty c-input" name="first[]"/></td>
-                                    <td><input type="text" class="qty c-input" name="second[]"/></td>
-                                    <td><input type="text" class="price c-input" name="third[]"/></td>
-                                    <td><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="checkboxs" name="checkboxes" type="checkbox"><label class="c-choice__label" for="checkboxs">Invoice</label></td>
-                                    <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
+                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="first[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="second[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="price c-input" name="third[]"/></td>
+                                    <td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="checkboxs" name="checkboxes" type="checkbox"><label class="c-choice__label" for="checkboxs">Invoice</label></td>
+                                    <td class="c-table__cell"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
                                 </tr>
                             </tbody>
                         </table>
