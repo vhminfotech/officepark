@@ -31,6 +31,8 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4">  
+                            <label class="c-field__label" for="select1">Category</label> 
+
                             <select class="c-select" id="select1">
                                 <option>Select category</option>
                                 <option>First</option>
@@ -38,9 +40,16 @@
                                 <option>Third</option>
                             </select>
                         </div>
+
                     </div>
                     <br>
-                    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label class="c-field__label">Create new category</label> 
+                        </div> 
+                    </div> 
+                    <br>
+
 
                     <br>
                     <div class="row">
