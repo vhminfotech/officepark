@@ -83,6 +83,10 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
      
     Route::match(['get', 'post'], 'employee', ['as' => 'employee', 'uses' => 'Admin\EmployeeController@getEmployerData']);
     Route::match(['get', 'post'], 'employee-add', ['as' => 'employee-add', 'uses' => 'Admin\EmployeeController@addEmployee']);
+
+    Route::match(['get', 'post'], 'service', ['as' => 'service', 'uses' => 'Admin\ServiceController@getServiceData']);
+    //Route::match(['get', 'post'], 'add-user', ['as' => 'add-user', 'uses' => 'Admin\AdminController@addUser']);
+
 });
 
 
