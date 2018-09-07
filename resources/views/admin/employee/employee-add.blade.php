@@ -15,6 +15,15 @@
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addEmpForm' )) }}
                     <div class="c-stage__panel u-p-medium">
+                         <div class="row">
+                            <div class="col-lg-12">
+                                <div class="c-field u-mb-small">
+                                    <label class="c-field__label" for="firstName">Select Image</label> 
+                                    <input class="c-input" name="file" id="file"  type="file">
+                                    
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
