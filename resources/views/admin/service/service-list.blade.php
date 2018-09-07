@@ -7,7 +7,7 @@
         <div class="col-12">
             <div c-table-responsive>
 
-                <div class="col-lg-12">Service
+                <div class="col-lg-12">
                     <form action="{{route('service-add')}}" method="post" name="addService" id="addService">
                         <div class="left">
                             <input class="c-btn c-btn--info c-btn--fullwidth" value="Create Package" type="submit">
@@ -34,11 +34,10 @@
                             <div class="row">
                                 <label><h5>Service</h5></label>
                             </div>
-
                         </div>
                     </caption>
 
-                    <thead class="c-table__head c-table__head--slim" style="background: black; color: white; font-weight: bold;">
+                    <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Website&nbsp;&nbsp;&nbsp;</th>

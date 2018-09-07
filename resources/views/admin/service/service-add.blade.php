@@ -39,14 +39,32 @@
                             </select>
                         </div>
                     </div>
+                 
+                    
+
                     <br>
-                    <div class="input_fields_wrap">
-                        
-                    </div>
                     <div class="row">
-                        <div class="col-lg-2">
-                            <button class="c-btn c-btn--info c-btn--fullwidth add_field_button">Create New Input</button>
-                        </div>
+                        <table class="c-table">
+
+                            <thead class="c-table__head c-table__head--slim">
+                                <tr class="c-table__row">
+                                    <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Name</th>
+                                    <th class="c-table__cell c-table__cell--head"></th>
+                                    <th class="c-table__cell c-table__cell--head"></th>
+                                    <th colspan="2" class="c-table__cell c-table__cell--head"><a href="javascript:;" class="add_new_row" style="margin-left: 20px;"><i class="fa fa-plus"></i></a></th>
+                                </tr>
+                            </thead>
+                            <tbody class="dataAppend">    
+
+                                <tr class="c-table__row">
+                                    <td><input type="text" class="qty c-input" name="first[]"/></td>
+                                    <td><input type="text" class="qty c-input" name="second[]"/></td>
+                                    <td><input type="text" class="price c-input" name="third[]"/></td>
+                                    <td><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="checkboxs" name="checkboxes" type="checkbox"><label class="c-choice__label" for="checkboxs">Invoice</label></td>
+                                    <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
 
