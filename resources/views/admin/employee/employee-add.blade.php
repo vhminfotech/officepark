@@ -28,7 +28,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">First Name</label> 
-                                    <input class="c-input" name="firstName" id="firstName" placeholder="Firstname" type="text">
+                                    <input class="c-input" name="firstName" id="firstName" placeholder="Firstname" type="text" required>
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="telephone">Telephone</label> 
-                                    <input class="c-input" name="telephone" id="telephone" placeholder="telephone" type="text">
+                                    <input class="c-input" required name="telephone" id="telephone" placeholder="telephone" type="number">
                                 </div>
                             </div>
                         </div> 
@@ -85,7 +85,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="lastName">Mobile Phone</label> 
-                                    <input class="c-input" name="mobile" id="mobile" placeholder="mobile" type="text">
+                                    <input class="c-input" required name="mobile" id="mobile" placeholder="mobile" type="number">
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="lastName">E-mail</label> 
-                                    <input class="c-input" name="email" id="email" placeholder="email" type="email">
+                                    <input class="c-input" required name="email" id="email" placeholder="email" type="email">
                                 </div>
                             </div>
                         </div>
@@ -101,8 +101,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="anyotherinformation">Any Other information</label> 
-                                    <textarea rows="4" class="c-input" cols="50" name="anyotherinformation">
-                                        
+                                    <textarea rows="4" required class="c-input" cols="50" name="anyotherinformation">
                                     </textarea>
                                 </div>
                             </div>
@@ -119,7 +118,7 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms">My Profile</label> 
-                                <select class="c-select" id="callbacksms" name="standard">
+                                <select class="c-select" required id="callbacksms" name="standard">
                                     <option value="Standard">Standard</option>
                                 </select>
                             </div>
@@ -130,13 +129,13 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox1" name="checkboxes" type="checkbox">
+                                    <input class="c-choice__input" id="checkbox1" name="checkboxes" type="checkbox" required>
                                     <label class="c-choice__label" for="checkbox1">Transfer Incoming call To Telephone</label>
                                 </div>
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox2" name="checkboxes" type="checkbox">
+                                    <input class="c-choice__input" id="checkbox2" name="checkboxes" type="checkbox" required>
                                     <label class="c-choice__label" for="checkbox2">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>
@@ -153,7 +152,7 @@
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox4" name="checkboxes" type="checkbox">
+                                    <input class="c-choice__input" id="checkbox4" name="checkboxes" type="checkbox" >
                                     <label class="c-choice__label" for="checkbox4">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>

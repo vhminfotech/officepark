@@ -76,16 +76,16 @@ return [
         '8' => 'Currently in an appointmen',
     ],
     'call_back_msg' => [
-            '1' => 'Rückrufzeitpunkt / Call Back Msg',
-            '2' => 'Rufe zurück am nächsten Tag',
-            '3' => 'Rufe zurück am gleichen Tag',
-            '4' => 'Rufe zurück in den nächsten 60 Minuten',
-            '5' => 'Rufe zurück in den nächsten 30 Minuten',
-            '6' => 'Call back the next day',
-            '7' => 'Call back the same day',
-            '8' => 'Call back in the next 60 Minutes',
-            '9' => 'Call back in the next 30 minutes',
-        ],
+        '' => 'Rückrufzeitpunkt / Call Back Msg',
+        '1' => 'Rufe zurück am nächsten Tag',
+        '2' => 'Rufe zurück am gleichen Tag',
+        '3' => 'Rufe zurück in den nächsten 60 Minuten',
+        '4' => 'Rufe zurück in den nächsten 30 Minuten',
+        '5' => 'Call back the next day',
+        '6' => 'Call back the same day',
+        '7' => 'Call back in the next 60 Minutes',
+        '8' => 'Call back in the next 30 minutes',
+    ],
 
    
 ];

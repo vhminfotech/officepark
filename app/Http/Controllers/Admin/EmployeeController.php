@@ -25,6 +25,13 @@ class EmployeeController extends Controller {
         $data['p_away_msg'] = Config::get('constants.p_away_msg');
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
+
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['js'] = array('admin/employee.js');
+        $data['funinit'] = array('Employee.list_init()');
+        $data['css'] = array('');
+
         return view('admin.employee.employee-add',$data);
     }
 
