@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Model\Service;
 use Auth;
 use Route;
 use Illuminate\Http\Request;
@@ -17,16 +18,40 @@ class ServiceController extends Controller {
     }
 
     public function getServiceData() {
+        $data['websites'] = Config::get('constants.websites');
 
-        return view('admin.service.service-list');
+        return view('admin.service.service-list', $data);
     }
 
     public function addService() {
+        $data['websites'] = Config::get('constants.websites');
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/service.js');
         $data['funinit'] = array('Service.list_init()');
-        return view('admin.service.service-add',$data);
+
+        return view('admin.service.service-add', $data);
+    }
+
+    public function addCategory(Request $request) {
+
+        $objCategory = new Service();
+        if ($request->isMethod('post')) {
+
+            $category = $objCategory->addCategory($request);
+            if ($category) {
+                $return['status'] = 'success';
+                $return['message'] = 'Category created successfully.';
+                $return['redirect'] = route('service');
+                echo json_encode($return);
+                exit;
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
     }
 
 }

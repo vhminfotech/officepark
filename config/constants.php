@@ -43,7 +43,7 @@ return [
         '2' => 'Weiterleitungsgebühren, dt. Mobilnetz, pro Min.',
         '3' => 'Monatliche Gebühr (Mindestumsatz).',
         '4' => 'Einrichtungsgebühr(einmalig)',
-    ], 
+    ],
     'job_title' => [
         '1' => 'Sekretär/in',
         '2' => 'Auszubildene/r',
@@ -63,7 +63,7 @@ return [
         '6' => 'Accounting',
         '7' => 'Technical Customer Service',
         '8' => 'New Customers',
-    ], 
+    ],
     'p_away_msg' => [
         '' => 'Abwesendheit / P Away Msg',
         '1' => 'Derzeit im Telefongespräch',
@@ -86,8 +86,12 @@ return [
         '7' => 'Call back in the next 60 Minutes',
         '8' => 'Call back in the next 30 minutes',
     ],
-
-   
+    'websites' => [
+        '1' => 'http://www.uzaktansekreter.de',
+        '2' => 'http://www.buerocall.de',
+        '3' => 'http://www.sanal-sekreter.de',
+        '4' => 'https://uzaktansekreter.de/',
+        ],
 ];
 
 

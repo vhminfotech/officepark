@@ -16,9 +16,10 @@
                         </div>
                         <div class="col-md-4">
                         </div>
-
-                        <div class="col-md-2">
-                            <input class="c-btn c-btn--info c-btn--fullwidth" value="Create Package" type="submit">
+                        <div class="col-md-3">
+                            <button type="button" class="c-btn c-btn--success u-ml-small" data-toggle="modal" data-target="#onBoardModal">
+                                Create
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -26,6 +27,7 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="packagename">Package name</label> 
                                 <input class="c-input" name="packagename" id="packagename" placeholder="" type="text">
+
                             </div>
                         </div>
                     </div>
@@ -48,6 +50,8 @@
                             <label class="c-field__label">Create new category</label> 
                         </div> 
                     </div> 
+
+
                     <br>
 
 
@@ -79,6 +83,42 @@
 
 
                     {{ Form::close() }}
+                </div>
+                <div class="c-modal c-modal--xlarge modal fade" id="onBoardModal" tabindex="-1" role="dialog" aria-labelledby="onBoardModal" data-backdrop="static">
+                    <div class="c-modal__dialog modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <header class="c-modal__header">
+                                <h1 class="c-modal__title">Add New Category</h1>
+                                <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                                    <i class="fa fa-close"></i>
+                                </span>
+                            </header>
+
+                            <form action="{{route('category-add')}}" method="post" name="addCategory" id="addService">
+                                <div class="c-modal__body u-text-center u-pb-small">
+
+
+                                    <div class="row">
+                                        <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+
+                                        <div class="col-lg-6">
+                                            <div class="c-field u-mb-small">
+                                                <label class="c-field__label" for="category">Category name</label> 
+                                                <input class="c-input" name="category" id="category" placeholder="" type="text">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Create Package" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </article>
         </div>
