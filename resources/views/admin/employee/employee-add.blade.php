@@ -10,17 +10,16 @@
                         <i class="fa fa-plus"></i>
                     </div>
                     <div class="c-stage__header-title o-media__body">
-                        <h6 class="u-mb-zero">Add New Employeer</h6>
+                        <h6 class="u-mb-zero">Add New Employer</h6>
                     </div>
                 </div>
-                {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addEmpForm' )) }}
+                {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addEmpForm' )) }}
                     <div class="c-stage__panel u-p-medium">
                          <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">Select Image</label> 
-                                    <input class="c-input" name="file" id="file"  type="file">
-                                    
+                                    {{ Form::file('file', null, array('class' => 'c-input')) }}
                                 </div>
                             </div>
                         </div>
@@ -28,7 +27,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">First Name</label> 
-                                    <input class="c-input" name="firstName" id="firstName" placeholder="Firstname" type="text" required>
+                                    {{ Form::text('firstName', null, array('class' => 'c-input firstName' ,'required')) }}
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 </div>
                             </div>
@@ -37,7 +36,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="lastName">Last Name</label> 
-                                    <input class="c-input" name="lastName" id="lastName" placeholder="lastName" type="text">
+                                    <input class="c-input" name="lastName" id="last_name" placeholder="lastName" type="text">
                                 </div>
                             </div>
                         </div>
@@ -118,8 +117,8 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms">My Profile</label> 
-                                <select class="c-select" required id="callbacksms" name="standard">
-                                    <option value="Standard">Standard</option>
+                                <select class="c-select" required id="callbacksms" name="my_profile">
+                                    <option value="0">Standard</option>
                                 </select>
                             </div>
                         </div>
@@ -129,14 +128,14 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox1" name="checkboxes" type="checkbox" required>
-                                    <label class="c-choice__label" for="checkbox1">Transfer Incoming call To Telephone</label>
+                                    <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" required>
+                                    <label class="c-choice__label" for="call_transfer_telephone">Transfer Incoming call To Telephone</label>
                                 </div>
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox2" name="checkboxes" type="checkbox" required>
-                                    <label class="c-choice__label" for="checkbox2">Transfer Incoming call To Mobile Phone</label>
+                                    <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" required>
+                                    <label class="c-choice__label" for="call_transfer_mobile_phone">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>
                         </div>
@@ -146,14 +145,14 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms"> Call Notification</label> 
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox3" name="checkboxes" type="checkbox">
-                                    <label class="c-choice__label" for="checkbox3">Transfer Incoming call To Telephone</label>
+                                    <input class="c-choice__input" id="transfer_notification_to_call" name="transfer_notification_to_call" value="1" type="checkbox">
+                                    <label class="c-choice__label" for="transfer_notification_to_call">Transfer Incoming call To Telephone</label>
                                 </div>
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox4" name="checkboxes" type="checkbox" >
-                                    <label class="c-choice__label" for="checkbox4">Transfer Incoming call To Mobile Phone</label>
+                                    <input class="c-choice__input" id="transfer_notification_to_mobile_phone" name="transfer_notification_to_mobile_phone" value="1" type="checkbox" >
+                                    <label class="c-choice__label" for="transfer_notification_to_mobile_phone">Transfer Incoming call To Mobile Phone</label>
                                 </div>
                             </div>
                         </div>
@@ -175,21 +174,24 @@
                                 @else
                                 <div class="row u-mb-xlarge" style=" margin-bottom: -0.75rem!important;">
                                 @endif
+                                @php
+                                $dayName = $days[$m];
+                                @endphp
                                     <div class="col-md-4 u-mb-medium">
                                         <div class="c-choice c-choice--checkbox">
-                                        <input class="c-choice__input" id="{{ $days[$m].$m }}" name="monday" type="checkbox">
+                                        {{ Form::checkbox('day['.$days[$m].']',  $days[$m] , true,array('class' => 'c-choice__input', 'id' => $days[$m].$m)) }}
                                     <label class="c-choice__label" for="{{ $days[$m].$m }}">{{ $days[$m] }}</label>
                                     </div>
                                     </div>
                                    <div class="col-md-4 u-mb-medium">
-                                        <select class="c-select col-md-2" id="start{{ $days[$m] }}" name="callbacksms10">
+                                        <select class="c-select col-md-2" id="start{{ $days[$m] }}" name="start[{{ $days[$m] }}]">
                                             @for($i = 5;$i < 10;$i++)
                                               <option value="{{ $i }}">{{ $i.':00' }}</option>    
                                             @endfor
                                     </select>
                                     </div>
                                     <div class="col-md-4 u-mb-medium">
-                                        <select class="c-select col-md-2" id="end{{ $days[$m] }}" name="callbacksms1">
+                                        <select class="c-select col-md-2" id="end{{ $days[$m] }}" name="end[{{ $days[$m] }}]">
                                         @for($k = 5;$k < 12;$k++)
                                             <option value="{{ $k }}">{{ number_format($k,2) }}</option>   
                                         @endfor
@@ -214,19 +216,19 @@
                                 <div class="row u-mb-xlarge" style="margin-top: 10px!important;    margin-bottom: 0px !important;">
                                     <div class="col-md-4 u-mb-medium">
                                     <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="mondaddy" name="monddday" type="checkbox">
-                                    <label class="c-choice__label" for="mondaddy">&nbsp;</label>
+                                    <input class="c-choice__input" id="launch_time" name="launch_time" value="1" type="checkbox">
+                                    <label class="c-choice__label" for="launch_time">&nbsp;</label>
                                     </div>
                                     </div>
                                    <div class="col-md-4 u-mb-medium">
-                                        <select class="c-select col-md-2" id="start" name="callbacksms10">
+                                        <select class="c-select col-md-2" id="start" name="global_start_time">
                                             @for($i = 5;$i < 10;$i++)
                                               <option value="{{ $i }}">{{ $i.':00' }}</option>    
                                             @endfor
                                     </select>
                                     </div>
                                     <div class="col-md-4 u-mb-medium">
-                                        <select class="c-select col-md-2" id="end" name="callbacksms1">
+                                        <select class="c-select col-md-2" id="end" name="global_end_time">
                                         @for($k = 5;$k < 12;$k++)
                                             <option value="{{ $k }}">{{ number_format($k,2) }}</option>   
                                         @endfor
@@ -240,8 +242,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="c-choice c-choice--checkbox">
-                                <input class="c-choice__input" id="checkboxs5" name="checkboxes" type="checkbox">
-                                <label class="c-choice__label" for="checkboxs5">No Bussiness Hours Adjust</label>
+                                <input class="c-choice__input" id="no_business_hour_adjust" value="1" name="no_business_hour_adjust" type="checkbox">
+                                <label class="c-choice__label" for="no_business_hour_adjust">No Bussiness Hours Adjust</label>
                             </div>
                         </div>
                     </div>
@@ -274,7 +276,7 @@
                     <div class="c-field u-mb-small left">
                         <div class="col-mg-3">
                             <input class="c-btn c-btn--info " value="Add Employee" type="submit">&nbsp;&nbsp;
-                            <input class="c-btn c-btn--secondary " value="cancel" type="submit">
+                            <input class="c-btn c-btn--secondary " value="cancel" type="reset">
                         </div> 
                     </div>
                 </div>

@@ -16,7 +16,7 @@ var Employee = function () {
             
         };
         handleFormValidate(form, rules, function (form) {
-            handleAjaxFormSubmit(form);
+            handleAjaxFormSubmit(form,true);
         });
     }
     
