@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Model\Service;
 use Auth;
 use Route;
 use Illuminate\Http\Request;
@@ -32,12 +33,25 @@ class ServiceController extends Controller {
         return view('admin.service.service-add', $data);
     }
 
-    public function addCategory() {
-       if ($request->isMethod('post')) {
-           echo 'ccall';
-           
+    public function addCategory(Request $request) {
+
+        $objCategory = new Service();
+        if ($request->isMethod('post')) {
+
+            $category = $objCategory->addCategory($request);
+            if ($category) {
+                $return['status'] = 'success';
+                $return['message'] = 'Category created successfully.';
+                $return['redirect'] = route('service');
+                echo json_encode($return);
+                exit;
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
         }
     }
-    
 
 }
