@@ -49,5 +49,10 @@ class EmployeeDetails extends Model {
         }
         return true;
     }
+    
+    public function deleteEmpDetails($empId){
+         EmployeeDetails::where('employee_id',$empId)->delete();
+         return true;
+    }
 
 }

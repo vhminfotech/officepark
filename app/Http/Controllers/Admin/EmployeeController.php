@@ -23,6 +23,9 @@ class EmployeeController extends Controller {
         $data['employeeList'] = $objEmployee->employeeList();
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
+        $data['js'] = array('admin/employee.js');
+        $data['funinit'] = array('Employee.list_init()');
+        
         return view('admin.employee.employee-list', $data);
     }
 
@@ -35,7 +38,7 @@ class EmployeeController extends Controller {
         $data['arrDayName'] = Config::get('constants.arrDayName');
 
         if ($request->isMethod('post')) {
-            
+
             $objEmployee = new Employee();
             $employeeId = $objEmployee->saveEmployeeInfo($request);
             if ($employeeId == true) {
@@ -62,14 +65,14 @@ class EmployeeController extends Controller {
     }
 
     public function editEmployee(Request $request) {
-        
+
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
         $data['p_away_msg'] = Config::get('constants.p_away_msg');
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
         $data['arrTime'] = Config::get('constants.arrTime');
         $data['arrDayName'] = Config::get('constants.arrDayName');
-        
+
         $objEmployee = new Employee();
         $data['arrEditEmp'] = $objEmployee->geteEmployeeEdit($request->id);
 //        echo '<pre/>';
@@ -80,7 +83,7 @@ class EmployeeController extends Controller {
             $arrEmployee = $objEmployee->editEmployeeInfo($request);
             $objEmployeeDetails = new EmployeeDetails();
             $arrEmployeeDetails = $objEmployeeDetails->saveEmployeeDetail($request, $request->input('empId'));
-            
+
             if ($arrEmployeeDetails == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Employee Edit successfully.';
@@ -98,6 +101,32 @@ class EmployeeController extends Controller {
         $data['funinit'] = array('Employee.list_init()');
         $data['css'] = array('');
         return view('admin.employee.employee-edit', $data);
+    }
+
+    public function ajaxAction(Request $request) {
+        $action = $request->input('action');
+        switch ($action) {
+            case 'deleteEmployee':
+                
+                $deleteId = $request->input('data')['id'];
+                $objEmployee = new Employee();
+                $arrEmployee = $objEmployee->deleteEmployee($deleteId);
+                
+                $objEmployeeDetails = new EmployeeDetails();
+                $employeeDelete = $objEmployeeDetails->deleteEmpDetails($deleteId);
+
+                if ($employeeDelete == true) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Employee Delete successfully.';
+                    $return['redirect'] = route('employee');
+                } else {
+                    $return['status'] = 'error';
+                    $return['message'] = 'Email already exists.';
+                }
+                echo json_encode($return);
+                exit;
+                break;
+        }
     }
 
 }

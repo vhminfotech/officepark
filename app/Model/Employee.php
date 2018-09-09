@@ -74,7 +74,7 @@ class Employee extends Model {
                         ->get()->count();
         $return = '';
         if ($result == 0) {
-             $destinationPath = Config::get('constants.EmployeePath');
+            $destinationPath = Config::get('constants.EmployeePath');
             if ($request->file('file')) {
                 $logo_name = str_replace(" ", "_", $request->file('file')->getClientOriginalName());
                 $filename = 'employee' . '-' . $logo_name;
@@ -82,7 +82,7 @@ class Employee extends Model {
             } else {
                 $filename = $request->input('employee_image');
             }
-            
+
             $objEmpEdit = Employee::find($request->input('empId'));
             $objEmpEdit->first_name = $request->input('firstName');
 
@@ -103,7 +103,7 @@ class Employee extends Model {
             $objEmpEdit->transfer_notification_to_call = (empty($request->input('transfer_notification_to_call')) ? 0 : 1);
             $objEmpEdit->transfer_notification_to_mobile_phone = empty($request->input('transfer_notification_to_mobile_phone')) ? 0 : 1;
             $objEmpEdit->is_lunch_time = $request->input('launch_time');
-            $objEmpEdit->lunch_start_time = (empty($request->input('launch_time'))) ? '' :$request->input('global_start_time');
+            $objEmpEdit->lunch_start_time = (empty($request->input('launch_time'))) ? '' : $request->input('global_start_time');
             $objEmpEdit->lunch_end_time = (empty($request->input('launch_time'))) ? '' : $request->input('global_end_time');
             $objEmpEdit->no_business_hour_adjust = (empty($request->input('no_business_hour_adjust')) ? 0 : 1);
             $objEmpEdit->holiday_global_from = date('Y-m-d', strtotime($request->input('holidayfrom')));
@@ -135,6 +135,11 @@ class Employee extends Model {
                             'employee_details.day_name',
                             'employee_details.day_start_time',
                             'employee_details.day_end_time']);
+    }
+
+    public function deleteEmployee($empId) {
+        Employee::where('id', $empId)->delete();
+        return true;
     }
 
 }

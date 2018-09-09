@@ -37,12 +37,36 @@ var Employee = function () {
             handleAjaxFormSubmit(form,true);
         });
     }
+    var handleDelete = function () {
+        $('.delete').click(function() {
+            var dataid = $(this).attr('data-id');
+            var dataurl = $(this).attr('data-url');
+            $('.yes-sure').attr('data-id', dataid);
+            $('.yes-sure').attr('data-url', dataurl);
+        });
+
+        $('.yes-sure').click(function() {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/employee-ajaxAction",
+                data: {'action': 'deleteEmployee', 'data': {'id': id }},
+                success: function(data) {
+                    handleAjaxResponse(data);
+                }
+            });
+        });
+    }
     
 
     return {
         list_init : function(){
             handleAddEmploye();
             handleEditEmploye();
-        }        
+            handleDelete();
+        }
     }
 }();
