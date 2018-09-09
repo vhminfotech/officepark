@@ -17,9 +17,15 @@ var Service = function () {
         handleFormValidate(form2, rules2, function(form2) {
             handleAjaxFormSubmit(form2);
         });
-        var count = 1;
+        
+        if(typeof totalCount === 'undefined'){
+            var count = 1;
+        }else{
+            var count = totalCount;
+        }
+        
         $('body').on('click', '.add_new_row', function () {
-            var html = '<tr class="c-table__row"><td class="c-table__cell"><input type="text" class="qty c-input" name="title['+count+']"/></td><td class="c-table__cell"><input type="text" class="qty c-input" name="qty['+count+']"/></td><td class="c-table__cell"><input type="text" class="c-input" name="price['+count+']"/></td><td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="invoice'+count+'" value="yes" name="in_invoice['+count+']" type="checkbox"><label class="c-choice__label" for="invoice'+count+'">Invoice</label></td><td colspan="1"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
+            var html = '<tr class="c-table__row"><td class="c-table__cell"><input type="text" class="c-input" name="title[]"/></td><td class="c-table__cell"><input type="text" class="qty c-input" name="qty[]"/></td><td class="c-table__cell"><input type="text" class="price c-input" name="price[]"/></td><td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="invoice'+count+'" name="in_invoice['+count+']" type="checkbox"><label class="c-choice__label" for="invoice'+count+'">Invoice</label></td><td colspan="1"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
             $('.dataAppend').append(html);
             count++;
         });
@@ -29,7 +35,6 @@ var Service = function () {
             var price = $(this).closest('tr').find('.price').val();
             if (qty != '' && price != '') {
                 var total = parseInt(qty) * parseInt(price);
-                $(this).closest('tr').find('.Rowtotal').val(total);
                 $(this).closest('tr').find('.total').text(total + '€');
             }
         });
@@ -39,8 +44,7 @@ var Service = function () {
             var qty = $(this).closest('tr').find('.qty').val();
             if (qty != '' && price != '') {
                 var total = parseInt(qty) * parseInt(price);
-                $(this).closest('tr').find('.Rowtotal').val(total);
-                $(this).closest('tr').find('.total').text(total + '€');
+                $(this).closest('tr').find('.total').text(total + ' €');
             }
         });
 
@@ -49,6 +53,17 @@ var Service = function () {
         $('body').on('click', '.removetData', function () {
             $(this).closest('tr').remove();
 
+        });
+        
+        var form3 = $('#editServiceForm');
+        var rules3 = {
+            packagename: {required: true},
+            websites: {required: true},
+            category: {required: true}
+         };
+         
+        handleFormValidate(form3, rules3, function(form3) {
+            handleAjaxFormSubmit(form3);
         });
     }
     
@@ -65,9 +80,33 @@ var Service = function () {
         });
         
     }
+    
+    var handleDelete = function(){
+        $('body').on('click','.delete',function(){
+            var id = $(this).attr('data-id');
+            var token = $(this).attr('data-token');
+            setTimeout(function(){
+                $('.yes-sure:visible').attr('data-id',id);
+                $('.yes-sure:visible').attr('data-token',token);    
+            },500);
+            
+        })
+        
+        $('body').on('click','.yes-sure',function(){
+            var id = $(this).attr('data-id');
+            var token = $(this).attr('data-token');
+            var data = { id : id ,_token :token};
+            var url = baseurl + 'admin/service-delete';
+            ajaxcall(url,data,function(output){
+                handleAjaxResponse(output);
+            });
+        });
+    }
+    
     return {
         list_init: function () {
             handleList();
+            handleDelete();
         },
         add_init: function () {
             handleAdd();

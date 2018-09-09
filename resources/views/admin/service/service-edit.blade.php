@@ -1,13 +1,17 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+
+<script>
+    var totalCount = '<?php count($getService['service_detail']); ?>';
+</script>
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
             <article class="c-stage">
                 <br>
                 <div class="col-md-12">
-                    {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addServiceForm' )) }}
+                    {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'editServiceForm' )) }}
                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                     <div class="row">
                         <div class="col-md-4">
@@ -18,8 +22,26 @@
                         <div class="col-lg-4">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="packagename">Package name</label> 
-                                <input class="c-input" name="packagename" id="packagename" placeholder="" type="text">
+                                <input class="c-input" name="packagename" id="packagename" value="{{ $getService['service'][0]->packages_name }}" placeholder="" type="text">
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 left">
+                                    <div class="left c-field u-mb-medium">  
+                                        
+                                    </div>
+                                </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="website">Websites</label> 
+                                <select class="c-select websiteList" id="websites" name="websites">
+                                            <option value="">Select Website</option>
+                                           @foreach($websites as $index=>$val)
+                                           <option value="{{$index}}" {{ ($getService['service'][0]->website_id == $index ? 'selected="selected"' : '') }}>{{$val}}</option>
+                                           @endforeach
+                                        </select>
                             </div>
                         </div>
                     </div>
@@ -30,7 +52,7 @@
                             <select class="c-select" id="category" name="category">
                                 <option>Select category</option>
                                 @foreach($allCategory as $val)
-                                <option value="{{$val['id']}}">{{$val['categoryname']}}</option>
+                                <option value="{{$val['id']}}" {{ ($getService['service'][0]->category_id == $val['id'] ? 'selected="selected"' : '') }} >{{$val['categoryname']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -54,18 +76,20 @@
                                 </tr>
                             </thead>
                             <tbody class="dataAppend">    
+                                @for($i=0; $i< count($getService['service_detail']); $i++)
                                 <tr class="c-table__row">
-                                    <td class="c-table__cell"><input type="text" class="c-input" name="title[]"/></td>
-                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="qty[]"/></td>
-                                    <td class="c-table__cell"><input type="text" class="price c-input" name="price[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="c-input"  value="{{ $getService['service_detail'][$i]->title }}" name="title[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="qty c-input" value="{{ $getService['service_detail'][$i]->qty }}" name="qty[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="price c-input" value="{{ $getService['service_detail'][$i]->price }}" name="price[]"/></td>
                                     <td class="c-table__cell">
                                         <div class="c-choice c-choice--checkbox">
-                                            <input class="c-choice__input" id="checkboxs" name="in_invoice[]" type="checkbox">
+                                            <input class="c-choice__input" id="checkboxs" name="in_invoice[{{$i}}]" type="checkbox" {{ ($getService['service_detail'][$i]->is_invoice == "Yes" ? 'checked="checked"' : '')}} >
                                             <label class="c-choice__label" for="checkboxs">Invoice</label>
                                         </div>
                                     </td>
-                                    <td class="c-table__cell"><span class="total"></span></td>
+                                    <td class="c-table__cell"><span class="total">{{ $getService['service_detail'][$i]->total }} €</span></td>
                                 </tr>
+                                @endfor
                             </tbody>
                         </table>
                     </div>

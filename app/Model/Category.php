@@ -22,7 +22,7 @@ class Category extends Model {
     }
 
     public function addCategory($request) {
-//        print_r($request->input());exit;
+        
         $result = Category::where('category.categoryname', '=', $request->input('category'))->count();
         
         if($result == 0){

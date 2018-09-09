@@ -20,11 +20,13 @@ class ServiceController extends Controller {
 
     public function getServiceData() {
         $data['websites'] = Config::get('constants.websites');
-
+        
+        $objService = new Service();
         $data['css'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/service.js');
         $data['funinit'] = array('Service.list_init()');
+        $data['getServiceData'] = $objService->getServiceData();
         
         return view('admin.service.service-list', $data);
     }
@@ -34,10 +36,21 @@ class ServiceController extends Controller {
         $objService = new Service();
         
         $data['allCategory'] = $objCategory->getCategory();
+        
         if ($request->isMethod('post')) {
             $data = $request->input();
-            $objService->saveService($data,$websiteId);
-            print_r($request->input());exit;
+            $service = $objService->saveService($data,$websiteId);
+            if ($service) {
+                $return['status'] = 'success';
+                $return['message'] = 'Service added success fully';
+                $return['redirect'] = route('service');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+            
         }
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
@@ -46,6 +59,38 @@ class ServiceController extends Controller {
         
 
         return view('admin.service.service-add', $data);
+    }
+    
+    public function editService($serviceId,Request $request) {
+        $objCategory = new Category();
+        $objService = new Service();
+        
+        $data['allCategory'] = $objCategory->getCategory();
+        $data['getService'] = $objService->getServices($serviceId);
+        $data['websites'] = Config::get('constants.websites');
+
+        if ($request->isMethod('post')) {
+            $data = $request->input();
+            $service = $objService->saveEditService($data,$serviceId);
+            if ($service) {
+                $return['status'] = 'success';
+                $return['message'] = 'Service edit success fully';
+                $return['redirect'] = route('service');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+            
+        }
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/service.js');
+        $data['funinit'] = array('Service.add_init()');
+        
+
+        return view('admin.service.service-edit', $data);
     }
 
     public function addCategory(Request $request) {
@@ -64,6 +109,28 @@ class ServiceController extends Controller {
             }
             echo json_encode($return);
             exit;
+        }
+    }
+    
+    public function deleteService(Request $request){
+         if ($request->isMethod('post')) {
+           
+            $objService = new Service();
+            $userDelete = $objService->ServiceDelete($request);
+            
+            if($userDelete)
+            {
+                $return['status'] = 'success';
+                $return['message'] = 'Service delete successfully.';
+                $return['redirect'] =  route('service');
+                echo json_encode($return);
+                exit;
+            }else{
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+                echo json_encode($return);
+                exit;
+            }
         }
     }
 

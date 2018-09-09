@@ -33,7 +33,7 @@
 
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">No</th>
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Website&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Packagname&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Category&nbsp;&nbsp;</th>
@@ -41,7 +41,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        @php
+                        $count = 1;
+                         @endphp
+<!--                        function getWebsite($website_id){
+                            foreach($websites as $index=>$val){
+                                if($index == $website_id){
+                                    return $val;
+                                    break;
+                                }
+                            }
+                        }-->
+                        
+                        
+                       
+                        @for($i = 0 ;$i < count($getServiceData);$i++,$count++)
+                        <tr class="c-table__row">
+                            <td class="c-table__cell">{{ $count }}</td>
+                            <td class="c-table__cell">{{ $getServiceData[$i]->website_id }}</td>
+                            <td class="c-table__cell">{{ $getServiceData[$i]->packages_name }}</td>
+                            <td class="c-table__cell">{{ $getServiceData[$i]->categoryname }}</td>
+                            <td class="c-table__cell">
+                                <a href=" {{ route('service-edit',[$getServiceData[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                        <i class="fa fa-edit" ></i></span>
+                                </a>
+                                <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}"  data-id="{{ $getServiceData[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                        <i class="fa fa-trash-o"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                        @endfor
+<!--                        <tr>
                             <td class="c-table__cell">1</td>
                             <td class="c-table__cell">www.uzaktansekreter.de</td>
                             <td class="c-table__cell">Business</td>
@@ -54,7 +84,7 @@
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->
