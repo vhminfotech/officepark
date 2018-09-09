@@ -18,7 +18,7 @@ var Employee = function() {
             handleAjaxFormSubmit(form, true);
         });
         $('.holiday').on('changeDate', function(ev) {
-            $(this).datepicker('hide');
+            $('.datepicker-dropdown').hide();
         });
 //        $('.holiday').datepicker({
 //            autoclose: true
@@ -29,11 +29,13 @@ var Employee = function() {
 //            format: "dd/mm/yyyy",
 //            autoclose: true
 //        });
-//        $('.holiday').datepicker({
-//            format: "dd/mm/yyyy"
-//        }).on('change', function() {
-//            $('.datepicker').hide();
-//        });
+        $('.holiday').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            closeOnDateSelect: true
+        }).on('change', function() {
+            $('.datepicker-dropdown').hide();
+        });
     }
     var handleEditEmploye = function() {
         var form = $('#editEmpForm');
