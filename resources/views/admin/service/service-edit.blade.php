@@ -87,7 +87,8 @@
                                             <label class="c-choice__label" for="checkboxs">Invoice</label>
                                         </div>
                                     </td>
-                                    <td class="c-table__cell"><span class="total">{{ $getService['service_detail'][$i]->total }} €</span></td>
+                                    <!--<td class="c-table__cell"><span class="total">{{ $getService['service_detail'][$i]->total }} €</span></td>-->
+                                    <td class="c-table__cell"><span class="total">&nbsp; </span></td>
                                 </tr>
                                 @endfor
                             </tbody>

@@ -58,7 +58,7 @@
                         @for($i = 0 ;$i < count($getServiceData);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $getServiceData[$i]->website_id }}</td>
+                            <td class="c-table__cell">{{ $websites[$getServiceData[$i]->website_id] }}</td>
                             <td class="c-table__cell">{{ $getServiceData[$i]->packages_name }}</td>
                             <td class="c-table__cell">{{ $getServiceData[$i]->categoryname }}</td>
                             <td class="c-table__cell">
