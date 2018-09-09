@@ -20,16 +20,7 @@ var Employee = function() {
         $('.holiday').on('changeDate', function(ev) {
             $('.datepicker-dropdown').hide();
         });
-//        $('.holiday').datepicker({
-//            autoclose: true
-//        }).on('changeDate', function(ev) {
-//            (ev.viewMode == 'days') ? $(this).datepicker('hide') : '';
-//        });
-//        $('.holiday').datepicker({
-//            format: "dd/mm/yyyy",
-//            autoclose: true
-//        });
-        $('.holiday').datepicker({
+        $('[data-toggle="datepicker"]').datepicker({
             format: "dd/mm/yyyy",
             autoclose: true,
             closeOnDateSelect: true
