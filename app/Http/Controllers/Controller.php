@@ -9,29 +9,32 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Auth;
 use App;
 
-class Controller extends BaseController
-{
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
-    public $loginUser;
-    public function __construct() {         
-         
-        $this->middleware(function ($request, $next) {
-            
-            if(isset($_COOKIE["language"])){
-                $lang = $_COOKIE["language"];
-            }else{
-                $lang = 'en';
-                $_COOKIE["language"] = $lang;
-            }
-            
+class Controller extends BaseController {
 
-            if (!empty($lang)) {
-                App::setLocale($lang);
-            } else {
-                App::setLocale('en');
-            }
-            
+    use AuthorizesRequests,
+        DispatchesJobs,
+        ValidatesRequests;
+
+    public $loginUser;
+
+    public function __construct() {
+
+        if (isset($_COOKIE["language"])) {
+            $lang = $_COOKIE["language"];
+        } else {
+            $lang = 'en';
+            $_COOKIE["language"] = $lang;
+        }
+
+
+        if (!empty($lang)) {
+            App::setLocale($lang);
+        } else {
+            App::setLocale('en');
+        }
+
+        $this->middleware(function ($request, $next) {
+
             if (!empty(Auth()->guard('admin')->user())) {
                 $this->loginUser = Auth()->guard('admin')->user();
             }
@@ -44,10 +47,9 @@ class Controller extends BaseController
             if (!empty(Auth::user())) {
                 $this->loginUser = Auth::user();
             }
-            
+
             return $next($request);
         });
-       
-       
     }
+
 }
