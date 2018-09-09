@@ -24,11 +24,14 @@ class ServiceController extends Controller {
     }
 
     public function addService() {
+        $objCategory = new Service();
         $data['websites'] = Config::get('constants.websites');
+        $data['allCategory'] = $objCategory->getCategory();
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/service.js');
         $data['funinit'] = array('Service.list_init()');
+        
 
         return view('admin.service.service-add', $data);
     }
@@ -43,8 +46,6 @@ class ServiceController extends Controller {
                 $return['status'] = 'success';
                 $return['message'] = 'Category created successfully.';
                 $return['redirect'] = route('service');
-                echo json_encode($return);
-                exit;
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';

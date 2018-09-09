@@ -33,13 +33,13 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4">  
-                            <label class="c-field__label" for="select1">Category</label> 
+                            <label class="c-field__label" for="category">Category</label> 
 
-                            <select class="c-select" id="select1">
+                            <select class="c-select" id="category" name="category">
                                 <option>Select category</option>
-                                <option>First</option>
-                                <option>Second</option>
-                                <option>Third</option>
+                                @foreach($allCategory as $val)
+                                <option value="{{$val['id']}}">{{$val['categoryname']}}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -104,7 +104,7 @@
 
                                         <div class="col-lg-6">
                                             <div class="c-field u-mb-small">
-                                                <label class="c-field__label" for="category">Category name</label> 
+                                                <label for="category">Category name</label> 
                                                 <input class="c-input" name="category" id="category" placeholder="" type="text">
 
                                             </div>
