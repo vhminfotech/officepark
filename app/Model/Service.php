@@ -11,13 +11,21 @@ class Service extends Model {
 
     protected $table = 'category';
 
-   
+    public function getCategory($id = NULL) {
+
+        if ($id) {
+            $result = Service::select('category.*')->where('category.id', '=', $id)->get();
+        } else {
+            $result = Service::get();
+        }
+        return $result;
+    }
 
     public function addCategory($request) {
 //        print_r($request->input());exit;
         $objadd = new Service();
         $objadd->categoryname = $request->input('category');
-        
+
         $result = $objadd->save();
 
         if ($result) {
@@ -27,10 +35,6 @@ class Service extends Model {
         }
     }
 
-    
-
-    
-    
 }
 
 ?>
