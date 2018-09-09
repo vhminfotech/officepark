@@ -7,19 +7,11 @@
             <article class="c-stage">
                 <br>
                 <div class="col-md-12">
-                    {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addEmpForm' )) }}
+                    {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addServiceForm' )) }}
                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
-
                     <div class="row">
                         <div class="col-md-4">
                             <label><h3>Service Packages</h3></label>
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" class="c-btn c-btn--success u-ml-small" data-toggle="modal" data-target="#onBoardModal">
-                                Create
-                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -42,84 +34,78 @@
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-lg-4">
-                            <label class="c-field__label">Create new category</label> 
+                            <label data-toggle="modal" data-target="#modal4" class="c-field__label">Create new category</label> 
                         </div> 
                     </div> 
-
-
                     <br>
-
-
                     <br>
                     <div class="row">
                         <table class="c-table">
-
                             <thead class="c-table__head c-table__head--slim">
                                 <tr class="c-table__row">
-                                    <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Name</th>
-                                    <th class="c-table__cell c-table__cell--head"></th>
-                                    <th class="c-table__cell c-table__cell--head"></th>
+                                    <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Title</th>
+                                    <th class="c-table__cell c-table__cell--head">Qty</th>
+                                    <th class="c-table__cell c-table__cell--head">Price</th>
                                     <th colspan="2" class="c-table__cell c-table__cell--head"><a href="javascript:;" class="add_new_row" style="margin-left: 20px;"><i class="fa fa-plus"></i></a></th>
                                 </tr>
                             </thead>
                             <tbody class="dataAppend">    
-
                                 <tr class="c-table__row">
-                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="first[]"/></td>
-                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="second[]"/></td>
-                                    <td class="c-table__cell"><input type="text" class="price c-input" name="third[]"/></td>
-                                    <td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="checkboxs" name="checkboxes" type="checkbox"><label class="c-choice__label" for="checkboxs">Invoice</label></td>
-                                    <td class="c-table__cell"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
+                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="title[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="qty[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="price c-input" name="price[]"/></td>
+                                    <td class="c-table__cell">
+                                        <div class="c-choice c-choice--checkbox">
+                                            <input class="c-choice__input" id="checkboxs" name="in_invoice[]" type="checkbox">
+                                            <label class="c-choice__label" for="checkboxs">Invoice</label>
+                                        </div>
+                                    </td>
+                                    <td class="c-table__cell"><span class="total"></span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-
-
-
+                    <br/>
+                    <input style="margin-bottom: 20px;" class="c-btn c-btn--success" type="submit" value="Enter Servicer">
+                    <br/>
                     {{ Form::close() }}
                 </div>
-                <div class="c-modal c-modal--xlarge modal fade" id="onBoardModal" tabindex="-1" role="dialog" aria-labelledby="onBoardModal" data-backdrop="static">
+
+
+                <!-- Modal -->
+                <div class="c-modal c-modal--xsmall modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="modal4" data-backdrop="static">
                     <div class="c-modal__dialog modal-dialog" role="document">
-                        <div class="modal-content">
-
-                            <header class="c-modal__header">
-                                <h1 class="c-modal__title">Add New Category</h1>
-                                <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
-                                    <i class="fa fa-close"></i>
-                                </span>
-                            </header>
-
-                            <form action="{{route('category-add')}}" method="post" name="addCategory" id="addService">
-                                <div class="c-modal__body u-text-center u-pb-small">
-
-
-                                    <div class="row">
-                                        <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
-
-                                        <div class="col-lg-6">
-                                            <div class="c-field u-mb-small">
-                                                <label for="category">Category name</label> 
-                                                <input class="c-input" name="category" id="category" placeholder="" type="text">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Create Package" type="submit">
-                                        </div>
-                                    </div>
+                        <form action="{{route('category-add')}}" method="post" name="addCategory" id="addService">
+                            <div class="c-modal__content">
+                                <div class="c-modal__header">
+                                    <h3 class="c-modal__title">Add New Category</h3>
+                                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-close"></i>
+                                    </span>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                                <div class="c-modal__body">
+                                    <div class="c-field u-mb-xsmall">
+                                        <label class="c-field__label" for="select12">Category Name:</label>
+                                        <!-- Select2 jquery plugin is used -->
+                                        <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+                                        <input class="c-input" name="category" id="category" placeholder="Enter Category Name:" type="text">
+                                    </div>
+
+                                    <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Add New Category" type="submit">
+                                    <!--                <a class="c-btn c-btn--success c-btn--fullwidth" href="#">
+                                                        Connect Service
+                                                    </a>-->
+                                </div>
+                            </div><!-- // .c-modal__content -->
+                        </form>
+                    </div><!-- // .c-modal__dialog -->
+                </div><!-- // .c-modal -->
+
+
             </article>
         </div>
     </div>
