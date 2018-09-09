@@ -54,7 +54,14 @@
                             <td class="c-table__cell">{{ $job_title[$employeeList[$i]['job_title']] }}</td>
                             <td class="c-table__cell">{{ $responsibility[$employeeList[$i]['responsibility']] }}</td>
                             <td class="c-table__cell">{{ $employeeList[$i]['email'] }}</td>
-                            <td class="c-table__cell">Action</td>
+                             <td class="c-table__cell">
+                                <a href=" {{ route('employee-edit',$employeeList[$i]['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                        <i class="fa fa-edit" ></i></span>
+                                </a>
+                                <a href="javascript:;" class="delete"  data-id="{{ $employeeList[$i]['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                        <i class="fa fa-trash-o"></i></span>
+                                </a>
+                            </td>
                         </tr>
                        @endfor
                     </tbody>
