@@ -182,7 +182,7 @@
                                         @endphp
                                         <div class="col-md-4 u-mb-medium">
                                             <div class="c-choice c-choice--checkbox">
-                                                {{ Form::checkbox('day['.$days[$m].']',  $days[$m] ,($arrEditEmp[$m]['day_name'] == $days[$m] ? true : false),array('class' => 'c-choice__input', 'id' => $days[$m].$m)) }}
+                                                {{ Form::checkbox('day['.$days[$m].']',  $days[$m] ,($arrEditEmp[$m]['day_name'] == $days[$m] && $arrEditEmp[$m]['day_start_time'] !='' ? true : false),array('class' => 'c-choice__input', 'id' => $days[$m].$m)) }}
                                                 <label class="c-choice__label" for="{{ $days[$m].$m }}">{{ $days[$m] }}</label>
                                             </div>
                                         </div>
@@ -209,7 +209,6 @@
                                     <div class="row u-mb-xlarge" style="margin-top: 10px!important;    margin-bottom: 0px !important;">
                                         <div class="col-md-4 u-mb-medium">
                                             <div class="c-choice c-choice--checkbox">
-                                                <!--<input class="c-choice__input" id="launch_time" name="launch_time" value="1" type="checkbox">-->
                                                 {{ Form::checkbox('launch_time',1,($arrEditEmp[0]['is_lunch_time'] == 1 ? true : false),array('class' => 'c-choice__input', 'id' => 'launch_time')) }}
                                                 <label class="c-choice__label" for="launch_time">&nbsp;</label>
                                             </div>
@@ -244,14 +243,14 @@
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
                                                 <label class="c-field__label" for="holidayfrom">Holiday Global From</label> 
-                                                <input class="c-input form-control" value="{{  date('m/d/Y',strtotime($arrEditEmp[0]['holiday_global_from'])) }}" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" required>
+                                                <input class="c-input form-control" value="{{  date('m/d/Y',strtotime($arrEditEmp[0]['holiday_global_from'])) }}" data-toggle="datepicker" id="holidayfrom" name="holidayfrom holiday" type="text" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
                                                 <label class="c-field__label" for="holidayto">Holiday Global To</label> 
-                                                <input class="c-input form-control" value="{{ date('m/d/Y',strtotime($arrEditEmp[0]['holiday_global_to'])) }}" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" required>
+                                                <input class="c-input form-control" value="{{ date('m/d/Y',strtotime($arrEditEmp[0]['holiday_global_to'])) }}" data-toggle="datepicker" id="holidayto" name="holidayto holiday" type="text" required>
                                             </div>
                                         </div>
                                     </div> 

@@ -20,8 +20,10 @@ class EmployeeDetails extends Model {
             $objEmpDetails = new EmployeeDetails();
             $objEmpDetails->employee_id = $lastId;
             $objEmpDetails->day_name = $key;
-            $objEmpDetails->day_start_time = (empty($value) ? '' : $value);
-            $objEmpDetails->day_end_time = (empty($endTimeArray[$key]) ? '' :$endTimeArray[$key]);
+            $objEmpDetails->day_start_time = (array_key_exists($key,$dayArray) ? $value : '');
+            $objEmpDetails->day_end_time = (array_key_exists($key,$dayArray) ? $endTimeArray[$key] : '');
+//            $objEmpDetails->day_start_time = (empty($value) || $dayArray[$key]=='' ? '' : $value);
+//            $objEmpDetails->day_end_time = (empty($endTimeArray[$key]) || $dayArray[$key]=='' ? '' :$endTimeArray[$key]);
             $objEmpDetails->created_at = date('Y-m-d H:i:s');
             $objEmpDetails->updated_at = date('Y-m-d H:i:s');
             $objEmpDetails->save();

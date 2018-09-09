@@ -1,6 +1,6 @@
-var Employee = function () {
+var Employee = function() {
 
-    var handleAddEmploye = function () {
+    var handleAddEmploye = function() {
         var form = $('#addEmpForm');
         var rules = {
             firstName: {required: true},
@@ -9,17 +9,33 @@ var Employee = function () {
             responsibility: {required: true},
             p_away_msg: {required: true},
             call_back_msg: {required: true},
-            telephone: {required: true,number:true},
-            mobile: {required: true,number:true},
+            telephone: {required: true, number: true},
+            mobile: {required: true, number: true},
             anyotherinformation: {required: true},
-            email: {required: true,email:true},
-            
+            email: {required: true, email: true},
         };
-        handleFormValidate(form, rules, function (form) {
-            handleAjaxFormSubmit(form,true);
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form, true);
         });
+        $('.holiday').on('changeDate', function(ev) {
+            $(this).datepicker('hide');
+        });
+//        $('.holiday').datepicker({
+//            autoclose: true
+//        }).on('changeDate', function(ev) {
+//            (ev.viewMode == 'days') ? $(this).datepicker('hide') : '';
+//        });
+//        $('.holiday').datepicker({
+//            format: "dd/mm/yyyy",
+//            autoclose: true
+//        });
+//        $('.holiday').datepicker({
+//            format: "dd/mm/yyyy"
+//        }).on('change', function() {
+//            $('.datepicker').hide();
+//        });
     }
-    var handleEditEmploye = function () {
+    var handleEditEmploye = function() {
         var form = $('#editEmpForm');
         var rules = {
             firstName: {required: true},
@@ -28,16 +44,16 @@ var Employee = function () {
             responsibility: {required: true},
             p_away_msg: {required: true},
             call_back_msg: {required: true},
-            telephone: {required: true,number:true},
-            mobile: {required: true,number:true},
+            telephone: {required: true, number: true},
+            mobile: {required: true, number: true},
             anyotherinformation: {required: true},
-            email: {required: true,email:true},
+            email: {required: true, email: true},
         };
-        handleFormValidate(form, rules, function (form) {
-            handleAjaxFormSubmit(form,true);
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form, true);
         });
     }
-    var handleDelete = function () {
+    var handleDelete = function() {
         $('.delete').click(function() {
             var dataid = $(this).attr('data-id');
             var dataurl = $(this).attr('data-url');
@@ -53,17 +69,17 @@ var Employee = function () {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
                 url: baseurl + "admin/employee-ajaxAction",
-                data: {'action': 'deleteEmployee', 'data': {'id': id }},
+                data: {'action': 'deleteEmployee', 'data': {'id': id}},
                 success: function(data) {
                     handleAjaxResponse(data);
                 }
             });
         });
     }
-    
+
 
     return {
-        list_init : function(){
+        list_init: function() {
             handleAddEmploye();
             handleEditEmploye();
             handleDelete();

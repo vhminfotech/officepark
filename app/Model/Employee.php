@@ -106,8 +106,8 @@ class Employee extends Model {
             $objEmpEdit->lunch_start_time = (empty($request->input('launch_time'))) ? '' : $request->input('global_start_time');
             $objEmpEdit->lunch_end_time = (empty($request->input('launch_time'))) ? '' : $request->input('global_end_time');
             $objEmpEdit->no_business_hour_adjust = (empty($request->input('no_business_hour_adjust')) ? 0 : 1);
-            $objEmpEdit->holiday_global_from = date('Y-m-d', strtotime($request->input('holidayfrom')));
-            $objEmpEdit->holiday_global_to = date('Y-m-d', strtotime($request->input('holidayto')));
+            $objEmpEdit->holiday_global_from = date('Y-m-d', strtotime($request->input('holidayfrom_holiday')));
+            $objEmpEdit->holiday_global_to = date('Y-m-d', strtotime($request->input('holiday_global_to')));
             $objEmpEdit->created_at = date('Y-m-d H:i:s');
             $objEmpEdit->updated_at = date('Y-m-d H:i:s');
             $objEmpEdit->save();
