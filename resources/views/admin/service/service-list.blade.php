@@ -10,15 +10,15 @@
                     <caption class="c-table__title">
                         Service
                         <div class="col-lg-12">
-                            <form action="{{route('service-add')}}" method="post" name="addService" id="addService">
+                            
                                 <div class="left">
-                                    <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Create Package" type="submit">
+                                    <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Create Package" type="button">
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
                                 </div>
                                 <div class="col-lg-3 left">
                                     <div class="left c-field u-mb-medium">  
-                                        <select class="c-select" id="websites" name="websites">
+                                        <select class="c-select websiteList" id="websites" name="websites">
                                             <option value="">Select Website</option>
                                            @foreach($websites as $index=>$val)
                                            <option value="{{$index}}">{{$val}}</option>
@@ -26,7 +26,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </form>
+                           
                         </div>
 
                     </caption>
@@ -42,10 +42,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>www.uzaktansekreter.de</td>
-                            <td>Business</td>
-                            <td>Phone Service</td>
+                            <td class="c-table__cell">1</td>
+                            <td class="c-table__cell">www.uzaktansekreter.de</td>
+                            <td class="c-table__cell">Business</td>
+                            <td class="c-table__cell">Phone Service</td>
                             <td class="c-table__cell">
                                 <a href=""><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                         <i class="fa fa-edit" ></i></span>

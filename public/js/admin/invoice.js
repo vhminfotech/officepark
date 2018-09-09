@@ -68,7 +68,6 @@ var Invoice = function () {
     }
     
     var handleList = function(){
-    }
         $('body').on('click','.createBill',function(){
             var value = $('.selectCustomer option:selected').val();
             if(value == ''){
@@ -87,6 +86,8 @@ var Invoice = function () {
                 handleAjaxResponse(output);
             });
         });
+    }
+        
 
     return {
         add_init: function () {

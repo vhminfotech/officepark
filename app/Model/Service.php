@@ -9,7 +9,7 @@ use Auth;
 
 class Service extends Model {
 
-    protected $table = 'category';
+    protected $table = 'service';
 
     public function getCategory($id = NULL) {
 
@@ -21,18 +21,13 @@ class Service extends Model {
         return $result;
     }
 
-    public function addCategory($request) {
-//        print_r($request->input());exit;
-        $objadd = new Service();
-        $objadd->categoryname = $request->input('category');
-
-        $result = $objadd->save();
-
-        if ($result) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
+    public function saveService($request) {
+            $objadd = new Service();
+            $objadd->packages_name = $request->input('category');
+            $objadd->category_id = $request->input('category');
+            $objadd->website_id = $request->input('category');
+            $resultSave = $objadd->save();
+        
     }
 
 }
