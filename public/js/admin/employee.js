@@ -17,16 +17,12 @@ var Employee = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form, true);
         });
-        $('.holiday').on('changeDate', function(ev) {
-            $('.datepicker-dropdown').hide();
-        });
-        $('[data-toggle="datepicker"]').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            closeOnDateSelect: true
-        }).on('change', function() {
-            $('.datepicker-dropdown').hide();
-        });
+//        $('[data-toggle="datepicker"]').datepicker({
+//            format: "dd/mm/yyyy",
+//            autoclose: true,
+//        }).on('change', function() {
+//            $('.datepicker-dropdown').hide();
+//        });
     }
     var handleEditEmploye = function() {
         var form = $('#editEmpForm');
