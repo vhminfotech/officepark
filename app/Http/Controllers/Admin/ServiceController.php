@@ -20,26 +20,26 @@ class ServiceController extends Controller {
 
     public function getServiceData() {
         $data['websites'] = Config::get('constants.websites');
-        
+
         $objService = new Service();
         $data['css'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/service.js');
         $data['funinit'] = array('Service.list_init()');
         $data['getServiceData'] = $objService->getServiceData();
-        
+
         return view('admin.service.service-list', $data);
     }
 
-    public function addService($websiteId,Request $request) {
+    public function addService($websiteId, Request $request) {
         $objCategory = new Category();
         $objService = new Service();
-        
+
         $data['allCategory'] = $objCategory->getCategory();
-        
+
         if ($request->isMethod('post')) {
             $data = $request->input();
-            $service = $objService->saveService($data,$websiteId);
+            $service = $objService->saveService($data, $websiteId);
             if ($service) {
                 $return['status'] = 'success';
                 $return['message'] = 'Service added success fully';
@@ -50,28 +50,27 @@ class ServiceController extends Controller {
             }
             echo json_encode($return);
             exit;
-            
         }
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/service.js');
         $data['funinit'] = array('Service.add_init()');
-        
+
 
         return view('admin.service.service-add', $data);
     }
-    
-    public function editService($serviceId,Request $request) {
+
+    public function editService($serviceId, Request $request) {
         $objCategory = new Category();
         $objService = new Service();
-        
+
         $data['allCategory'] = $objCategory->getCategory();
         $data['getService'] = $objService->getServices($serviceId);
         $data['websites'] = Config::get('constants.websites');
 
         if ($request->isMethod('post')) {
             $data = $request->input();
-            $service = $objService->saveEditService($data,$serviceId);
+            $service = $objService->saveEditService($data, $serviceId);
             if ($service) {
                 $return['status'] = 'success';
                 $return['message'] = 'Service edit success fully';
@@ -82,13 +81,12 @@ class ServiceController extends Controller {
             }
             echo json_encode($return);
             exit;
-            
         }
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/service.js');
         $data['funinit'] = array('Service.add_init()');
-        
+
 
         return view('admin.service.service-edit', $data);
     }
@@ -111,26 +109,54 @@ class ServiceController extends Controller {
             exit;
         }
     }
-    
-    public function deleteService(Request $request){
-         if ($request->isMethod('post')) {
-           
+
+    public function deleteService(Request $request) {
+        if ($request->isMethod('post')) {
+
             $objService = new Service();
             $userDelete = $objService->ServiceDelete($request);
-            
-            if($userDelete)
-            {
+
+            if ($userDelete) {
                 $return['status'] = 'success';
                 $return['message'] = 'Service delete successfully.';
-                $return['redirect'] =  route('service');
+                $return['redirect'] = route('service');
                 echo json_encode($return);
                 exit;
-            }else{
+            } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Something went wrong.';
                 echo json_encode($return);
                 exit;
             }
+        }
+    }
+
+    public function getCategoryList(Request $request) {
+        if ($request->isMethod('post')) {
+//            print_r($request->input());
+//            exit;
+            $data['arrCategory'] = Category::get()->toArray();
+            $resultTable = view('admin.service.get-category', $data)->render();
+            echo $resultTable;
+            exit;
+        }
+    }
+
+    public function deleteCategory(Request $request) {
+        if ($request->isMethod('post')) {
+
+            $objCategory = new Category();
+            $resultCategory = $objCategory->deleteCategory($request->input('id'));
+            if ($resultCategory) {
+                $return['status'] = 'success';
+                $return['message'] = 'Category delete successfully.';
+                $return['jscode'] = 'setTimeout(function(){$(".addCategory").trigger("click");},1000)';
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+            }
+            echo json_encode($return);
+            exit;
         }
     }
 

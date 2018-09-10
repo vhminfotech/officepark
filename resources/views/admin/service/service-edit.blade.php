@@ -60,7 +60,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-4">
-                            <label data-toggle="modal" data-target="#modal4" class="c-field__label">Create new category</label> 
+                            <label data-toggle="modal" data-target="#modal4" class="c-field__label getCategory">Create new category</label> 
                         </div> 
                     </div> 
                     <br>
@@ -121,6 +121,8 @@
                                         <input class="c-input" name="category" id="category" placeholder="Enter Category Name:" type="text">
                                     </div>
                                     <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Add New Category" type="submit">
+                                </div>
+                                <div class="c-modal__footer appendCategory">
                                 </div>
                             </div><!-- // .c-modal__content -->
                         </form>

@@ -38,9 +38,12 @@ class Category extends Model {
         }else{
             return FALSE;
         }
-        
     }
-
+    
+     public function deleteCategory($categoryId) {
+        Category::where('id', $categoryId)->delete();
+        return true;
+    }
 }
 
 ?>
