@@ -94,7 +94,7 @@ class InvoiceController extends Controller {
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
         $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
-        $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
+        $pdf = PDF::loadView('admin.invoice.invoice-pdfV2',$data);
       //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
         exit;
