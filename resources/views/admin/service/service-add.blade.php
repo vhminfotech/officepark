@@ -90,15 +90,10 @@
                                 <div class="c-modal__body">
                                     <div class="c-field u-mb-xsmall">
                                         <label class="c-field__label" for="select12">Category Name:</label>
-                                        <!-- Select2 jquery plugin is used -->
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                                         <input class="c-input" name="category" id="category" placeholder="Enter Category Name:" type="text">
                                     </div>
-
                                     <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Add New Category" type="submit">
-                                    <!--                <a class="c-btn c-btn--success c-btn--fullwidth" href="#">
-                                                        Connect Service
-                                                    </a>-->
                                 </div>
                             </div><!-- // .c-modal__content -->
                         </form>

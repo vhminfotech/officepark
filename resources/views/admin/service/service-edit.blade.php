@@ -83,12 +83,13 @@
                                     <td class="c-table__cell"><input type="text" class="price c-input" value="{{ $getService['service_detail'][$i]->price }}" name="price[]"/></td>
                                     <td class="c-table__cell">
                                         <div class="c-choice c-choice--checkbox">
-                                            <input class="c-choice__input" id="checkboxs" name="in_invoice[{{$i}}]" type="checkbox" {{ ($getService['service_detail'][$i]->is_invoice == "Yes" ? 'checked="checked"' : '')}} >
-                                            <label class="c-choice__label" for="checkboxs">Invoice</label>
+                                            <input class="c-choice__input" id="checkboxs{{ $i }}" name="in_invoice[{{$i}}]" type="checkbox" {{ ($getService['service_detail'][$i]->is_invoice == "Yes" ? 'checked="checked"' : '')}} >
+                                            <label class="c-choice__label" for="checkboxs{{ $i }}">Invoice</label>
                                         </div>
                                     </td>
                                     <!--<td class="c-table__cell"><span class="total">{{ $getService['service_detail'][$i]->total }} €</span></td>-->
-                                    <td class="c-table__cell"><span class="total">&nbsp; </span></td>
+                                    <!--<td class="c-table__cell"><span class="total">&nbsp; </span></td>-->
+                                    <td class="c-table__cell"><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td>
                                 </tr>
                                 @endfor
                             </tbody>
@@ -119,18 +120,12 @@
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                                         <input class="c-input" name="category" id="category" placeholder="Enter Category Name:" type="text">
                                     </div>
-
                                     <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Add New Category" type="submit">
-                                    <!--                <a class="c-btn c-btn--success c-btn--fullwidth" href="#">
-                                                        Connect Service
-                                                    </a>-->
                                 </div>
                             </div><!-- // .c-modal__content -->
                         </form>
                     </div><!-- // .c-modal__dialog -->
                 </div><!-- // .c-modal -->
-
-
             </article>
         </div>
     </div>
