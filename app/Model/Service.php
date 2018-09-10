@@ -136,7 +136,7 @@ class Service extends Model {
 
         for ($i = 0; $i < count($title); $i++) {
             $objServiceDetail = new ServiceDetail();
-            $total = ($qty[$i]) * ($price[$i]);
+            $total = 0;
             if ($title[$i] != '') {
                 $objServiceDetail->service_id = $serviceId;
                 $objServiceDetail->title = $title[$i];
