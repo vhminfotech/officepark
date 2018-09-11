@@ -126,7 +126,7 @@ class InvoiceController extends Controller {
         $data['js'] = array('admin/invoice.js');
         $data['funinit'] = array('Invoice.add_init()');
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
-       
+        $data['getServiceName'] = $objinvoice->getServiceName();
         $data['getCustomerInfo'] = $objUser->getCustomer($customerId);
         return view('admin.invoice.invoice-add', $data);
     }

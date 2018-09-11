@@ -40,8 +40,11 @@
                             <div class='row'>
                                 <div class='col-md-5'>Ihr gebuchter Telefonservice -Tarif:</div>
                                 <div class='col-md-3'>
-                                    <select class='form-control c-select' name='telefone_service'>
-                                    <option value='Business Packet Stander'>Business Packet Stander</option>
+                                    <select class='form-control c-select' name='service_id'>
+                                        @foreach($getServiceName as $value)
+                                        <option value='{{$value->id}}'>{{$value->packages_name}}</option>
+                                        <!--<option value='Business Packet Stander'>Business Packet Stander</option>-->
+                                        @endforeach
                                </select>
                                 </div>
                             </div>

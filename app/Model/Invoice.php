@@ -9,6 +9,7 @@ use Auth;
 use App\Model\UserHasPermission;
 use App\Model\Sendmail;
 use App\Model\InvoiceDetail;
+use App\Model\Service;
 use PDF;
 
 class Invoice extends Model {
@@ -46,7 +47,7 @@ class Invoice extends Model {
         $objInvoice->customer_id = $request->input('customer_id');
         $objInvoice->start_date = date('Y-m-d',  strtotime($finalStartDate));
         $objInvoice->end_date = date('Y-m-d',  strtotime($finalEndDate));
-        $objInvoice->telephone_service = $request->input('telefone_service');
+        $objInvoice->service_id = $request->input('service_id');
         $objInvoice->invoice_no = $invoice_no;
         $objInvoice->created_at = date('Y-m-d H:i:s');
         $objInvoice->updated_at = date('Y-m-d H:i:s');
@@ -98,7 +99,7 @@ class Invoice extends Model {
                 'invoice.customer_id',
                 'invoice.start_date',
                 'invoice.end_date',
-                'invoice.telephone_service',
+                'invoice.service_id',
                 'invoice.total as invoiceTotal',
                 'invoice.invoice_no',
                 'users.customer_number',
@@ -130,6 +131,11 @@ class Invoice extends Model {
          if ($objInfo->save()) {
             return TRUE;
         }
+    }
+    
+    public function getServiceName(){
+          return Service::select('id','packages_name')->get();
+          
     }
 
 }
