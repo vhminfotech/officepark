@@ -132,7 +132,7 @@ class Service extends Model {
                 $objServiceDetail->qty = $qty[$i];
                 $objServiceDetail->price = $price[$i];
                 $objServiceDetail->is_invoice = (isset($is_invoice[$i])) ? 'Yes' : 'No';
-                $objServiceDetail->total = $total;
+                $objServiceDetail->total =  ($qty[$i] * $price[$i]);
                 $objServiceDetail->created_at = date('Y-m-d H:i:s');
                 $objServiceDetail->updated_at = date('Y-m-d H:i:s');
                 $result = $objServiceDetail->save();

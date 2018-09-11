@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 //use Validator;
 use App\Model\OrderInfo;
 use App\Model\Users;
+use App\Model\Category;
+use App\Model\Service;
 use Auth;
 use Config;
 use PDF;
@@ -48,6 +50,7 @@ class OrderController extends Controller {
         $data['systemGenerateNo'] = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
 
         $data['arrOrder'] = $objOrder->getOrderInfo($id);
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -172,6 +175,14 @@ class OrderController extends Controller {
         $data['id'] = $id;
         $objOrder = new OrderInfo();
         $data['arrOrder'] = $arrOrder = $objOrder->getPdfData($id);
+
+        $objCategory = new Category();
+        $objService = new Service();
+        $serviceId = $data['arrOrder'][0]['is_package'];
+        
+        $data['allCategory'] = $objCategory->getCategory();
+        $data['getService'] = $objService->getServices($serviceId);
+//        print_r($data['getService']);exit;
         $customer_number = $arrOrder[0]['customer_number'];
         if($pdfNo == 1){
             $pdf = PDF::loadView('admin.order.order-pdf-1', $data);

@@ -636,58 +636,20 @@
             <br>
             <br>
             <table width='100%'>
-                <div style="width:700px;height:510px;border:1px solid gray;">
+                <div style="width:700px;height:auto;border:1px solid gray;">
                     <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; line-height: 20%;margin-right: 30px !important;">business.call</p>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <span style="margin-left: 10px;">Mindestumsatz, pro Monat </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 30,00 €</p>
+                    @php
+                    $storeAyy = $getService['service_detail'];
+                    @endphp
+                    @for($j = 0; $j < count($storeAyy);$j++)
+                    <span style="margin-left: 10px;">{{  $storeAyy[$j]['title'] }}</span>
+                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> {{  number_format($storeAyy[$j]['total'],2) }} €</p>
                     <hr>
-                    <span style="margin-left: 10px;">Anrufannahme, pro Anruf </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 1,00 € </p>
-                    <hr>
-                    <span style="margin-left: 10px;">Benachrichtigungsanruf an Ihren Kunden, pro Anruf </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 1,00 € </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Anrufbearbeitung, pro Minute  </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,00 €  </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Benachrichtigung per E-Mail, pro E-Mail  </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> kostenfrei </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Weiterleitungsgebühren, dt. Mobilnetz, pro Min. </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,25 €  </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Weiterleitungsgebühren, dt. Festnetz, pro Min. </span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,15 €  </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">AnrufaBenachrichtigung per SMS, pro SMS (optional)nnahme</span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 0,20 €0,20 € </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Vertragslaufzeit</span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> auf unbestimmte Zeit  </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Kündigungsfrist</span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> auf unbestimmte Zeit  </p>
-
-                    <hr>
-                    <span style="margin-left: 10px;">Abrechnungszeitraum</span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 27. - 26. des Folgemonats
-                    </p>
-                    <hr>
-                    <span style="margin-left: 10px;">Servicezeiten</span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> 09:00 - 19:00 Uhr 
-                    </p>
-                    <hr>
+                   @endfor
                 </div>
             </table>
             <br/>

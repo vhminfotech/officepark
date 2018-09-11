@@ -9,6 +9,8 @@ use Auth;
 use App\Model\UserHasPermission;
 use App\Model\Sendmail;
 use App\Model\OrderInfo;
+use App\Model\Category;
+use App\Model\Service;
 use PDF;
 
 class Users extends Model {
@@ -174,8 +176,7 @@ class Users extends Model {
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
-
-
+//            $userId = 61;
 
             DB::table('system_genrate_no')
                     ->where('id', 1)
@@ -185,12 +186,19 @@ class Users extends Model {
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);
 
-
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
             $objOrderInfo->save();
+            
             $objOrder = new OrderInfo();
             $data['arrOrder'] = $objOrder->getPdfData($postData->id);
+            
+            $objCategory = new Category();
+            $objService = new Service();
+            $serviceId = $data['arrOrder'][0]['is_package'];
+            $data['allCategory'] = $objCategory->getCategory();
+            $data['getService'] = $objService->getServices($serviceId);
+            
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
@@ -212,11 +220,11 @@ class Users extends Model {
                 public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf')
                 );
 
+//            $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
             $mailData['mailto'] = $postData['email'];
             $sendMail = new Sendmail;
             $mailData['data']['interUser'] = $postData['fullname'];
             $sendMail->sendSMTPMail($mailData);
-
 
             $data_array = array(
                 'system_no' => $systemGenrateNo[0]->generated_no,
@@ -224,7 +232,6 @@ class Users extends Model {
             );
             return $data_array;
         } else {
-
             return false;
         }
     }
