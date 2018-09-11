@@ -54,7 +54,6 @@
                                                     <div class="portlet-body form">
                                                         <div class="form-body">
                                                             <div class="form-group">
-                                                                {{ Form::select('is_package', $arrServices , null, array('class' => 'c-select', 'id' => 'is_package')) }}
 <!--                                                                <div class="mt-radio-inline">
                                                                     <label class="mt-radio">
                                                                         {{ Form::radio('is_package', 1, array('class' => 'form-control', 'id' => "optionsRadios4", 'checked')) }}
@@ -62,6 +61,10 @@
                                                                         <span></span>
                                                                     </label>
                                                                 </div>-->
+                                                            </div><br/>
+                                                            <div class="form-group">
+                                                                <label>Please select package</label>
+                                                                {{ Form::select('is_package', $arrServices , null, array('class' => 'form-control c-select', 'id' => 'is_package')) }}
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Please enter the phone number you would like to forward to us</label>
