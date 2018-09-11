@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -14,8 +14,10 @@
                 text-decoration: underline;
             }
             .small-fornt{
-                font-size: 11px;
+                font-size: 12px;
                 text-align: right;
+                padding-top: -80px;
+                padding-left: -30px;
             }
             .page-break {
                 page-break-after: always;
@@ -23,6 +25,8 @@
             .padding-l-5{
                 padding-left: 5px;
             }
+            table.boxtable { border-collapse: collapse; }
+            table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
         </style>
     </head>
 
@@ -30,15 +34,18 @@
         <div class="invoice-box">
             <table width="100%">
                 <tr>
-                    <td class="main-header" colspan="3"><span >Office | Park</span></td>
+                    <td class="main-header" colspan="3">
+                        <!--<span >Office | Park</span>-->
+                        <img  src="{{  asset('img/officepark-logo.jpg')  }}">
+                    </td>
                 </tr>
                 <tr>
-                    <td  class="text-undeline" colspan="3">O ffi ce Park GbR - Münsterstraße 330, Building B - 40470 Düsseldorf</td>
+                    <td  class="text-undeline" colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
                 </tr>
                 <tr>
-                    <td colspan="3"><h3>- personally -</h3></td>
+                    <td colspan="3"><h3>- persönlich -</h3></td>
                 </tr>
-                <tr>
+                <tr style='margin-bottom: -80px;'>
                     <td colspan="2">
                         <table width="100%">
                             <tr>
@@ -50,7 +57,7 @@
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Your invoice for the period ({{ date('d.m.Y',strtotime($getInvoice[0]['start_date'])) .' - '. date('d.m.Y',strtotime($getInvoice[0]['end_date'])) }})</td>
+                                <td>Ihre Rechnung für den Zeitraum ({{ date('d.m.Y',strtotime($getInvoice[0]['start_date'])) .' - '. date('d.m.Y',strtotime($getInvoice[0]['end_date'])) }})</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
@@ -63,82 +70,80 @@
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Your booked telephone service tariff: {{ $getInvoice[0]['telephone_service'] }} </td>
+                                <td>Your booked telephone service tariff: {{ $getInvoice[0]['packages_name'] }} </td>
                             </tr>
                         </table>
                     </td>
-                    <td class="small-fornt">
+
+                    <td width="20%"  class="small-fornt">
                         <table width="100%">
-                            <tr> <td>  Partner / Managing Director Baris Ak</td> </tr>
+                            <tr> <td>  Gesellschafter/ Geschäftsführer</td> </tr>
                             <tr> <td>  Baris Ak</td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">       
-                            <tr> <td>  shareholder</td> </tr>
+                            <tr> <td>  Gesellschafter</td> </tr>
                             <tr> <td>  Mustafa Basun</td> </tr>
-
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
                             <tr> <td>Münsterstraße 330 </td> </tr>
-                            <tr> <td>building B</td></tr> 
+                            <tr> <td>Gebäude B</td></tr> 
                             <tr> <td>40470 Düsseldorf</td></tr> 
-                            <tr> <td>phone: +49 (0) 211 368 74 190</td></tr> 
-                            <tr> <td>fax: +49 (0) 211 368 74 190 01</td></tr> 
-                            <tr> <td>Web:www.oﬃcepark.group</td></tr> 
-                            <tr> <td>E-Mail: info@oﬃcepark.group</td></tr> 
-
-
+                            <tr> <td>Telefon: +49 (0) 211 368 74 190</td></tr> 
+                            <tr> <td>Telefax: +49 (0) 211 368 74 190 01</td></tr> 
+                            <tr> <td>Web:    www.officepark.group</td></tr> 
+                            <tr> <td>E-Mail:  info@officepark.group</td></tr> 
+                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>Service-/ office hours: </td> </tr>
-                            <tr> <td>Mon.  to  Fri.</td></tr> 
+                            <tr> <td>Service-/ Bürozeiten: </td> </tr>
+                            <tr> <td>Mo. bis Fr.</td></tr> 
                             <tr> <td>09:00 - 19:00 Uhr</td></tr> 
-
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>Düsseldorf, den 01.07.2018</td> </tr>
+                            <tr> <td>Düsseldorf, den 22.05.2018 </td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>Tax office </td> </tr>
-                            <tr> <td>Dusseldorf-Nord </td> </tr>
-                            <tr> <td>Tax number: 105/5902/4492 </td> </tr>
-                            <tr> <td>VAT ID: DE317564846</td> </tr>
+                            <tr> <td>Finanzamt </td> </tr>
+                            <tr> <td>Düsseldorf-Nord </td></tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>billing -Nr. 016/18 </td> </tr>
-                            <tr> <td>Customer -Nr. OP-211-1705</td> </tr>
+                            <tr> <td>Rechnungs-Nr. 002/17 </td> </tr>
+                            <tr> <td>Kunden-Nr. OP-211-1704 </td> </tr>
                         </table>
                     </td>
                 </tr>
 
             </table>
 
-            <table width="100%" border="1">
+            <table width="100%" border="1" rules="rows">
 
                 <thead>
                     <tr>
-                        <td>designation</td>
-                        <td class="padding-l-5">amount</td>
-                        <td class="padding-l-5">Price</td>
-                        <td class="padding-l-5">amount</td>
+                        <td>Bezeichnung</td>
+                        <td>Menge</td>
+                        <td>Einzelpreis</td>
+                        <td>Betrag</td>
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     @for($k = 0; $k < count($getInvoice); $k++)
-                        <tr>
-                            <td >{{ $bezeichnung[$getInvoice[$k]['bezeichnung']] }}</td>
-                            <td class="padding-l-5">{{ $getInvoice[$k]['menge'] }}</td>
-                            <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }}€x</td>
-                            <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} €</td>
-                        </tr>
+                    <tr>
+                        <td>{{ $bezeichnung[$getInvoice[$k]['bezeichnung']] }}</td>
+                        <td class="padding-l-5">{{ $getInvoice[$k]['menge'] }}</td>
+                        <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }}€</td>
+                        <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} €</td>
+                    </tr>
                     @endfor
                     <tr>
                         <td colspan="2"></td>
-                        <td>final amount
+                        
+                        <td colspan="2">Final amount  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{ number_format($getInvoice[0]['invoiceTotal'],2) }} €</b>
                             <br>
-                            <span class="small-fornt">According to §19 UStG, the invoice amount does not include VAT</span>
+                            <span class="small-fornt">Gemäß §19 UStG enthält der Rechnungsbetrag keine Umsatzsteuer</span>
                         </td>
-                        <td>{{ number_format($getInvoice[0]['invoiceTotal'],2) }} €</td>
 
                     </tr>
                 </tbody>
@@ -154,9 +159,9 @@
                 <tr>
                     <td>
                         <span>Your bank details:
-                        {{ chunk_split($getInvoice[0]['account_iban'], 4, ' ') }}  • 
-                        {{ $getInvoice[0]['account_bic'] }}  
-                    </span>
+                            {{ chunk_split($getInvoice[0]['account_iban'], 4, ' ') }}  • 
+                            {{ $getInvoice[0]['account_bic'] }}  
+                        </span>
                     </td>
 
                 </tr>
@@ -177,30 +182,31 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <table width="100%">
-            <tr>
-                <td>Office | Park <span>GbR</span> </td>
-                <td>
-                    <table>
-                        <tr><td><b>Bank details:</b></td></tr>
-                        <tr><td>Postbank AG</td></tr>
-                        <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
-                        <tr><td>BIC/Swift: PBNKDEFF</td></tr>
-                        <tr><td>creditor -ID: DE91ZZZ00002054440</td></tr>
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <tr><td>Page 1 of 1
-                            </td>
-                        </tr>
-                        <tr><td>Write from 01.07.18</td></tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+            <table width="100%">
+                <tr><td colspan="3"><hr/></td></tr>
+                <tr>
+                    <td><img src="{{  asset('img/officepark-logo.jpg')  }}"></td>
+                    <td>
+                        <table>
+                            <tr><td><b>Bankverbindung:</b></td></tr>
+                            <tr><td>Bank: Postbank AG</td></tr>
+                            <tr><td>IBAN: DE78 4401 0046 0381 0084 63</td></tr>
+                            <tr><td>BIC/Swift: PBNKDEFF</td></tr>
+                            <tr><td>Gläubiger-ID: DE91ZZZ00002054440</td></tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="font-size: 12px; line-height: 80%">
+                            <tr><td>Page 1 of 1</td>
+                            </tr>
+                            <tr><td>Write from {{ date('d.m.y') }}</td></tr>
 
-    </div>
-</body>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </body>
 </html>

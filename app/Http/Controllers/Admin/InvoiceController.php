@@ -48,20 +48,23 @@ class InvoiceController extends Controller {
         $invoiceId = $request->input('orderId');
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
+//        print_r($data['getInvoice']); exit();
         $objinvoice->getMailStatusUpdate($invoiceId);
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
         $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
         $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
+        
         $pdf->save(public_path($target_path));
      
 
         $mailData['subject'] = 'Invoice-'.$data['getInvoice'][0]['customer_number'];
         $mailData['template'] = 'emails.invoice';
         $mailData['attachment'] = array(
-            public_path($target_path));
-         $mailData['mailto'] = [$data['getInvoice'][0]['email']];
+        public_path($target_path));
+        
+        $mailData['mailto'] = [$data['getInvoice'][0]['email']];
         $sendMail = new Sendmail;
         $mailData['data']['interUser'] = $data['getInvoice'][0]['name'];
         $mail =  $sendMail->sendSMTPMail($mailData);
@@ -94,7 +97,7 @@ class InvoiceController extends Controller {
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
         $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
-        $pdf = PDF::loadView('admin.invoice.invoice-pdfV2',$data);
+        $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
       //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
         exit;

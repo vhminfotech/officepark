@@ -106,6 +106,7 @@ class Invoice extends Model {
                 'users.name',
                 'users.email',
                 'users.system_genrate_no',
+                'service.packages_name',
                 'order_info.company_name',
                 'order_info.account_name',
                 'order_info.account_iban',
@@ -120,6 +121,7 @@ class Invoice extends Model {
                 )
                 ->leftjoin('users','users.id','=','invoice.customer_id')
                 ->leftjoin('invoice_detail','invoice_detail.invoice_id','=','invoice.id')
+                ->leftjoin('service','invoice.service_id','=','service.id')
                 ->leftjoin('order_info','users.id','=','order_info.user_id')
                 ->where('invoice.id',$invoiceId)
                 ->get();
