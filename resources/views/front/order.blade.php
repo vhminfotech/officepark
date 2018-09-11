@@ -64,7 +64,7 @@
                                                             </div><br/>
                                                             <div class="form-group">
                                                                 <label>Please select package</label>
-                                                                {{ Form::select('is_package', $arrServices , null, array('class' => 'form-control c-select', 'id' => 'is_package')) }}
+                                                                {{ Form::select('is_package', $arrServices , null, array('class' => 'form-control', 'id' => 'is_package')) }}
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Please enter the phone number you would like to forward to us</label>
@@ -80,7 +80,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Shall we put the caller through to you (anteroom)?</label>
-                                                                <select name="reroute_confirm" required class="form-control">
+                                                                <select name="reroute_confirm" required class="form-control ">
                                                                     @foreach ($reroute_confirm as $indexkey=>$val)
                                                                     <option value="{{$indexkey}}">{{$val}}</option>
                                                                     @endforeach
