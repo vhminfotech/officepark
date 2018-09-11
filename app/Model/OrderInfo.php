@@ -92,7 +92,15 @@ class OrderInfo extends Model {
     }
 
     public function getOrderInfo($orderId) {
-        return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
+//        return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
+        return DB::table('order_info')
+               ->leftjoin('users', 'users.id', '=', 'order_info.user_id')
+               ->leftjoin('service', 'service.id', '=', 'order_info.is_package')
+                        ->select('order_info.*', 'users.name as username', 'users.email as userEmail'
+                                , 'users.inopla_username', 'users.extension_number', 
+                                'service.packages_name', 
+                                'users.customer_number')
+                        ->Where('order_info.id', $orderId)->get()->toArray();
     }
 
     public function editCompanyInfo($request) {

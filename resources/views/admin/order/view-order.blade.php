@@ -35,7 +35,8 @@
                         <tr class="c-table__row">
                             <td class="c-table__cell">Order Package</td>
                             <td class="c-table__cell ">
-                                <span class="c-badge c-badge--small c-badge--success">Business Standard</span>
+                                <span class="c-badge c-badge--small c-badge--success">{{ ($arrOrder[0]->packages_name == '' ? 'N/A' : $arrOrder[0]->packages_name) }}</span>
+                                <!--<span class="c-badge c-badge--small c-badge--success">Business Standard</span>-->
                             </td>
                         </tr>
                     </tbody>
