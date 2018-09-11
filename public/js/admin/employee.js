@@ -11,7 +11,7 @@ var Employee = function() {
             call_back_msg: {required: true},
             telephone: {required: true, number: true},
             mobile: {required: true, number: true},
-            anyotherinformation: {required: true},
+//            anyotherinformation: {required: true},
             email: {required: true, email: true},
         };
         handleFormValidate(form, rules, function(form) {

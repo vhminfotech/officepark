@@ -86,7 +86,16 @@ class InvoiceController extends Controller {
     public function createPDFV2() {
 
 
-        $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        $invoiceId = 1;
+        $objinvoice = new Invoice();
+        $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
+        $objinvoice->getMailStatusUpdate($invoiceId);
+        $data['bezeichnung'] = Config::get('constants.bezeichnung');
+        $objUser = new Users();
+        $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
+        $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
+        $pdf = PDF::loadView('admin.invoice.invoice-pdfV2',$data);
+      //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
         exit;
         return $pdf->download('invoice.pdfV2');

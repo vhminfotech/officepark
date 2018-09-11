@@ -26,7 +26,7 @@ class Category extends Model {
         $result = Category::where('category.categoryname', '=', $request->input('category'))->count();
         
         if($result == 0){
-            $objadd = new Service();
+            $objadd = new Category();
             $objadd->categoryname = $request->input('category');
             $resultSave = $objadd->save();
 
@@ -38,9 +38,12 @@ class Category extends Model {
         }else{
             return FALSE;
         }
-        
     }
-
+    
+     public function deleteCategory($categoryId) {
+        Category::where('id', $categoryId)->delete();
+        return true;
+    }
 }
 
 ?>

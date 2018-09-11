@@ -8,8 +8,12 @@
             <div c-table-responsive>                
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        Service
-                        <div class="col-lg-12">
+                        <div class="row">
+                        <div class="col-lg-2">
+                             Service
+                        </div>
+                       
+                        <div class="col-lg-10">
                             
                                 <div class="left">
                                     <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Create Package" type="button">
@@ -17,7 +21,7 @@
 
                                 </div>
                                 <div class="col-lg-3 left">
-                                    <div class="left c-field u-mb-medium">  
+                                    <div class="left c-field">  
                                         <select class="c-select websiteList" id="websites" name="websites">
                                             <option value="">Select Website</option>
                                            @foreach($websites as $index=>$val)
@@ -28,7 +32,7 @@
                                 </div>
                            
                         </div>
-
+                        </div>
                     </caption>
 
                     <thead class="c-table__head c-table__head--slim">
@@ -58,7 +62,7 @@
                         @for($i = 0 ;$i < count($getServiceData);$i++,$count++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ $getServiceData[$i]->website_id }}</td>
+                            <td class="c-table__cell">{{ $websites[$getServiceData[$i]->website_id] }}</td>
                             <td class="c-table__cell">{{ $getServiceData[$i]->packages_name }}</td>
                             <td class="c-table__cell">{{ $getServiceData[$i]->categoryname }}</td>
                             <td class="c-table__cell">

@@ -7,34 +7,25 @@
         <div class="col-12">
             <div c-table-responsive>
                 <table class="c-table table-responsive" id="datatable">
-                    <div class="col-lg-3"><h2>Employee</h2></div>
-                    <div class="col-lg-3 left">
-                        <a href="{{route('employee-add')}}" class="c-btn c-btn--info" style="margin-top: -75px;" >Add New Employee</a>
-                    </div>
-                    <br>
+                   
                     <caption class="c-table__title">
-                        <div class="c-stage__panel u-p-small">
-                            <div class="row">
-                                <label><h5>Show</h5></label>
-                                <div class="col-lg-2">
-                                    <div class="c-field u-mb-small">
-                                        <select class="c-select">
-                                            <option value=''>Select</option>
-                                            <option value='10'>10</option>
-                                        </select>
-                                    </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                Employee
+                            </div>
+
+                            <div class="col-lg-10">
+
+                                <div class="left">
+                                    <a href="{{route('employee-add')}}" class="c-btn c-btn--info" >Add New Employee</a>
+
                                 </div>
-                                <div class="col-lg-2"><h5>Entryies</h5></div>
-                                <div class="col-lg-3"></div>
-                                <label><h5>Search</h5></label>
-                                <div class="col-lg-3">
-                                    <div class="c-field u-mb-small">
-                                        <input class="c-input" name="search" id="search" placeholder="search" type="text">
-                                    </div>
-                                </div>
+
+
                             </div>
                         </div>
                     </caption>
+                    
 
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
@@ -54,7 +45,7 @@
                             <td class="c-table__cell">{{ $job_title[$employeeList[$i]['job_title']] }}</td>
                             <td class="c-table__cell">{{ $responsibility[$employeeList[$i]['responsibility']] }}</td>
                             <td class="c-table__cell">{{ $employeeList[$i]['email'] }}</td>
-                             <td class="c-table__cell">
+                            <td class="c-table__cell">
                                 <a href=" {{ route('employee-edit',$employeeList[$i]['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
@@ -63,7 +54,7 @@
                                 </a>
                             </td>
                         </tr>
-                       @endfor
+                        @endfor
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->
@@ -71,15 +62,15 @@
     </div>
 </div>
 <style>
-/*    a.c-board__btn.c-tooltip.c-tooltip--top {
-        position: absolute;
-        margin-left: 743px;
-        margin-bottom: 41px;
-    }
-    tr:nth-child(even) {
-        background-color: #f2f2f2
-    }
-*/    .left {
+    /*    a.c-board__btn.c-tooltip.c-tooltip--top {
+            position: absolute;
+            margin-left: 743px;
+            margin-bottom: 41px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+    */    .left {
         float: right;
     }
 </style>

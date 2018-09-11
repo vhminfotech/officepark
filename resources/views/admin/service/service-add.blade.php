@@ -38,7 +38,7 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-4">
-                            <label data-toggle="modal" data-target="#modal4" class="c-field__label">Create new category</label> 
+                            <label data-toggle="modal" data-target="#modal4" class="c-field__label getCategory">Create new category</label> 
                         </div> 
                     </div> 
                     <br>
@@ -90,16 +90,12 @@
                                 <div class="c-modal__body">
                                     <div class="c-field u-mb-xsmall">
                                         <label class="c-field__label" for="select12">Category Name:</label>
-                                        <!-- Select2 jquery plugin is used -->
                                         <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                                         <input class="c-input" name="category" id="category" placeholder="Enter Category Name:" type="text">
                                     </div>
-
                                     <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="Add New Category" type="submit">
-                                    <!--                <a class="c-btn c-btn--success c-btn--fullwidth" href="#">
-                                                        Connect Service
-                                                    </a>-->
                                 </div>
+                                 <div class="c-modal__footer appendCategory"></div>
                             </div><!-- // .c-modal__content -->
                         </form>
                     </div><!-- // .c-modal__dialog -->
