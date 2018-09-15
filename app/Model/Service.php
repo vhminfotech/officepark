@@ -109,7 +109,7 @@ class Service extends Model {
         $objInfoEdit->packages_name = $data['packagename'];
         $objInfoEdit->category_id = $data['category'];
         $objInfoEdit->website_id = $data['websites'];
-        $serviceEdit = $objInfoEdit->save();
+        $result = $serviceEdit = $objInfoEdit->save();
 
         /* Delete Service Detail */
 
@@ -117,28 +117,29 @@ class Service extends Model {
 
         /* Add Detail */
 
-        $title = $data['title'];
-        $qty = $data['qty'];
-        $price = $data['price'];
-        $is_invoice = $data['in_invoice'];
+        if(isset($data['title'])){
+            $title = $data['title'];
+            $qty = $data['qty'];
+            $price = $data['price'];
+            $is_invoice = $data['in_invoice'];
 
 
-        for ($i = 0; $i < count($title); $i++) {
-            $objServiceDetail = new ServiceDetail();
-            $total = 0;
-            if ($title[$i] != '') {
-                $objServiceDetail->service_id = $serviceId;
-                $objServiceDetail->title = $title[$i];
-                $objServiceDetail->qty = $qty[$i];
-                $objServiceDetail->price = $price[$i];
-                $objServiceDetail->is_invoice = (isset($is_invoice[$i])) ? 'Yes' : 'No';
-                $objServiceDetail->total =  ($qty[$i] * $price[$i]);
-                $objServiceDetail->created_at = date('Y-m-d H:i:s');
-                $objServiceDetail->updated_at = date('Y-m-d H:i:s');
-                $result = $objServiceDetail->save();
+            for ($i = 0; $i < count($title); $i++) {
+                $objServiceDetail = new ServiceDetail();
+                $total = 0;
+                if ($title[$i] != '') {
+                    $objServiceDetail->service_id = $serviceId;
+                    $objServiceDetail->title = $title[$i];
+                    $objServiceDetail->qty = $qty[$i];
+                    $objServiceDetail->price = $price[$i];
+                    $objServiceDetail->is_invoice = (isset($is_invoice[$i])) ? 'Yes' : 'No';
+                    $objServiceDetail->total =  $total;
+                    $objServiceDetail->created_at = date('Y-m-d H:i:s');
+                    $objServiceDetail->updated_at = date('Y-m-d H:i:s');
+                    $result = $objServiceDetail->save();
+                }
             }
         }
-
         if ($result) {
             return TRUE;
         } else {
