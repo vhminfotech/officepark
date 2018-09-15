@@ -12,6 +12,16 @@ var Invoice = function () {
         handleFormValidate(form, rules, function (form) {
             handleAjaxFormSubmit(form);
         });
+        
+        $('body').on('change','.selectpackege',function(){
+            var packegeId = $(this).val();
+            var token = $('#_token').val();
+            var data = { packegeId : packegeId ,_token :token};
+            var url = baseurl + 'admin/invoice-packege-detail';
+            ajaxcall(url,data,function(output){
+                $('.dataAppend').html(output);
+            });
+        });
     }
     
     var handleGenral = function (){

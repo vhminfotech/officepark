@@ -40,7 +40,8 @@
                             <div class='row'>
                                 <div class='col-md-5'>Ihr gebuchter Telefonservice -Tarif:</div>
                                 <div class='col-md-3'>
-                                    <select class='form-control c-select' name='service_id'>
+                                    <select class='form-control c-select selectpackege' name='service_id'>
+                                        <option value="">Select Packages</option>
                                         @foreach($getServiceName as $value)
                                         <option value='{{$value->id}}'>{{$value->packages_name}}</option>
                                         <!--<option value='Business Packet Stander'>Business Packet Stander</option>-->
@@ -93,7 +94,7 @@
                         </thead>
                         <tbody class="dataAppend">    
                             
-                            <tr class="c-table__row">
+<!--                            <tr class="c-table__row">
                                 <td>
                                     <select class='c-select' name='bezeichnung[]'>
                                         <option value=''>Select Bezeichnung</option>
@@ -105,7 +106,7 @@
                                 <td><input type="text" class="qty c-input" name="menge[]"/></td>
                                 <td><input type="text" class="price c-input" name="price[]"/></td>
                                 <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
-                            </tr>
+                            </tr>-->
                         </tbody>
                     </table>
                     <table class="c-table">

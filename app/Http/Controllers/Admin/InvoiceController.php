@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Model\Users;
 use App\Model\Invoice;
+use App\Model\ServiceDetail;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
@@ -132,6 +133,17 @@ class InvoiceController extends Controller {
         $data['getServiceName'] = $objinvoice->getServiceName();
         $data['getCustomerInfo'] = $objUser->getCustomer($customerId);
         return view('admin.invoice.invoice-add', $data);
+    }
+    
+    public function invoicePackegeDetail(Request $request){
+        $requestdata = $request->input();
+        
+        $objinvoice = new ServiceDetail();
+        $data['getServiceDetails'] = $objinvoice->getServiceDetail($requestdata);
+        
+//        $options = view("home.ajax",compact('data','type'))->render();
+        return view('admin.invoice.service-list',$data)->render();
+       
     }
 
 }

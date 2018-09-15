@@ -80,6 +80,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'invoice-pdf', ['as' => 'invoice-pdf', 'uses' => 'Admin\InvoiceController@createPDF']);
     Route::match(['get', 'post'], 'invoice-pdfV2', ['as' => 'invoice-pdfV2', 'uses' => 'Admin\InvoiceController@createPDFV2']);
     Route::match(['get', 'post'], 'add-invoice/{id}', ['as' => 'add-invoice', 'uses' => 'Admin\InvoiceController@createInvoice']);
+    Route::match(['get', 'post'], 'invoice-packege-detail', ['as' => 'invoice-packege-detail', 'uses' => 'Admin\InvoiceController@invoicePackegeDetail']);
      
     Route::match(['get', 'post'], 'employee', ['as' => 'employee', 'uses' => 'Admin\EmployeeController@getEmployerData']);
     Route::match(['get', 'post'], 'employee-add', ['as' => 'employee-add', 'uses' => 'Admin\EmployeeController@addEmployee']);
