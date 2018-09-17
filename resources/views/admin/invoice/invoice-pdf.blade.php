@@ -130,7 +130,7 @@
 
                     @for($k = 0; $k < count($getInvoice); $k++)
                     <tr>
-                        <td>{{ $bezeichnung[$getInvoice[$k]['bezeichnung']] }}</td>
+                        <td>{{ $getInvoice[$k]['bezeichnung'] }}</td>
                         <td class="padding-l-5">{{ $getInvoice[$k]['menge'] }}</td>
                         <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }}€</td>
                         <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} €</td>
