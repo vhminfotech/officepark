@@ -35,9 +35,9 @@ var Invoice = function () {
                 option += '<option value=' + index + '>' + value + '</option>';
             });
               
-            var html = '<tr class="c-table__row"><td><input type="text" class="c-select" name="bezeichnung[]"></td><td><input type="text" class="qty c-input" name="menge[]"/></td><td><input type="text" class="price c-input" name="price[]"/></td><td colspan="2"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
+            var html = '<tr class="c-table__row"><td><input type="text" class="c-input" name="bezeichnung[]"></td><td><input type="text" class="qty c-input" name="menge[]"/></td><td><input type="text" class="price c-input" name="price[]"/></td><td colspan="2"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
             $('.dataAppend').append(html);
-            $('.c-select').select2();
+            
             var finalTotal = 0;
             $(".total").each(function(){
                 var value = $(this).val();
