@@ -33,6 +33,7 @@ class Invoice extends Model {
     }
     
     public function addInvoice($request){
+//        print_r($request->input());exit;
         $startDate = explode('/',$request->input('start_date'));
         $endDate = explode('/',$request->input('start_date'));
         
@@ -47,16 +48,13 @@ class Invoice extends Model {
         $objInvoice->customer_id = $request->input('customer_id');
         $objInvoice->start_date = date('Y-m-d',  strtotime($finalStartDate));
         $objInvoice->end_date = date('Y-m-d',  strtotime($finalEndDate));
-        $objInvoice->service_id = $request->input('service_id');
+//        $objInvoice->service_id = $request->input('service_id');
         $objInvoice->invoice_no = $invoice_no;
         $objInvoice->created_at = date('Y-m-d H:i:s');
         $objInvoice->updated_at = date('Y-m-d H:i:s');
-        $objInvoice->save();
-        
+//        $objInvoice->save();
         if ($objInvoice->save()) {
-            
             $sum = 0;
-            
             $lastId = $objInvoice->id;
             $bezeichnung = $request->input('bezeichnung');
             $menge = $request->input('menge');
@@ -65,7 +63,8 @@ class Invoice extends Model {
             
             for($i=0; $i<count($bezeichnung); $i++){
                 $objInvoiceDetail = new InvoiceDetail();
-                $sum += $total[$i];
+//                $sum += $total[$i];
+                $sum += $menge[$i] * $einzelpreis[$i];
                 if($bezeichnung[$i] !=''){
                     $objInvoiceDetail->invoice_id = $lastId;
                     $objInvoiceDetail->bezeichnung = $bezeichnung[$i];
@@ -79,7 +78,6 @@ class Invoice extends Model {
                 }   
                 $objInvoiceDetail = ''; 
             }
-            
             if($result){
                  $objInvoice1 = Invoice::find($lastId);
                  $objInvoice1->total = $sum;
