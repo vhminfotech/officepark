@@ -71,7 +71,8 @@ class Invoice extends Model {
                     $objInvoiceDetail->bezeichnung = $bezeichnung[$i];
                     $objInvoiceDetail->menge = $menge[$i];
                     $objInvoiceDetail->einzelpreis = $einzelpreis[$i];
-                    $objInvoiceDetail->total = $total[$i];
+                    $objInvoiceDetail->total = $menge[$i] * $einzelpreis[$i];
+//                    $objInvoiceDetail->total = $total[$i];
                     $objInvoiceDetail->created_at = date('Y-m-d H:i:s');
                     $objInvoiceDetail->updated_at = date('Y-m-d H:i:s');
                     $result = $objInvoiceDetail->save();

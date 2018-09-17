@@ -58,6 +58,16 @@ var Invoice = function () {
                 $(this).closest('tr').find('.total').text(total + '€');
             }
         });
+        $("body").on("click", ".deleteInvoice" , function(){
+            var dataId = $(this).data('id');
+            $('.yes-sure').attr('data-id',dataId);
+        });
+        $("body").on("click", ".yes-sure" , function(){
+            var dataId = $(this).data('id');
+            $('.remove'+dataId).remove();
+            $('#deleteModel').modal('hide');
+            showToster('success','Invoice Delete successfully.')
+        });
         
         $("body").on("blur" , ".price" , function(){
             var price = $(this).val();
