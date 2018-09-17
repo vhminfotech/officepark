@@ -12,7 +12,8 @@ class ServiceDetail extends Model {
     protected $table = 'service_detail';
 
     public function getServiceDetail($data){
-          return ServiceDetail::select('*')->where('service_id',$data['packegeId'])->get()->toArray();
+          return ServiceDetail::select('*')->where('service_id',$data['packegeId'])
+                 ->where('is_invoice','Yes')->get()->toArray();
     }
 
 }

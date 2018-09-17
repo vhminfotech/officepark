@@ -5,6 +5,6 @@
     </td>
     <td><input type="text" class="qty c-input" value="{{ $getServiceDetail['qty'] }}" name="menge[]"/></td>
     <td><input type="text" class="price c-input" value="{{ $getServiceDetail['price'] }}" name="price[]"/></td>
-    <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span></td>
+    <td><input type="hidden" name="total[] "class="Rowtotal"><span class="total">{{ $getServiceDetail['qty'] * $getServiceDetail['price'] }}</span></td>
 </tr>
 @endforeach
