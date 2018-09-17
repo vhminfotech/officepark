@@ -5,7 +5,7 @@ $price = preg_replace("/[^0-9.]/", "", $getServiceDetail['price']);
 @endphp
 <tr class="c-table__row remove{{ $getServiceDetail['id'] }}">
     <td>
-       <input type="text" class="qty c-input" value="{{ $getServiceDetail['title'] }}" name="bezeichnung[]"/>
+       <input type="text" class="bezeichnung c-input" value="{{ $getServiceDetail['title'] }}" name="bezeichnung[]"/>
     </td>
     <td><input type="text" class="qty c-input" value="{{ $qty }}" name="menge[]"/></td>
     <td><input type="text" class="price c-input" value="{{ $price }}" name="price[]"/></td>

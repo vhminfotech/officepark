@@ -35,14 +35,14 @@ var Invoice = function () {
                 option += '<option value=' + index + '>' + value + '</option>';
             });
               
-            var html = '<tr class="c-table__row"><td><select class="c-select" name="bezeichnung[]">'+option+'</select></td><td><input type="text" class="qty c-input" name="menge[]"/></td><td><input type="text" class="price c-input" name="price[]"/></td><td colspan="2"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
+            var html = '<tr class="c-table__row"><td><input type="text" class="c-select" name="bezeichnung[]"></td><td><input type="text" class="qty c-input" name="menge[]"/></td><td><input type="text" class="price c-input" name="price[]"/></td><td colspan="2"><input type="hidden" name="total[] "class="Rowtotal"><span class="total"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
             $('.dataAppend').append(html);
             $('.c-select').select2();
             var finalTotal = 0;
             $(".total").each(function(){
                 var value = $(this).val();
                 if(value != ''){
-                    finalTotal += parseInt(value);
+                    finalTotal += parseFloat(value);
                 }
             });
             $(".finalTotal").text(finalTotal);
@@ -53,9 +53,9 @@ var Invoice = function () {
             var qty = $(this).val();
             var price = $(this).closest('tr').find('.price').val();
             if(qty !='' && price !=''){
-                var total = parseInt(qty) * parseInt(price);
+                var total = parseFloat(qty) * parseFloat(price);
                 $(this).closest('tr').find('.Rowtotal').val(total);
-                $(this).closest('tr').find('.total').text(total + '€');
+                $(this).closest('tr').find('.total').text(total + ' €');
             }
         });
         $("body").on("click", ".deleteInvoice" , function(){
@@ -72,10 +72,11 @@ var Invoice = function () {
         $("body").on("blur" , ".price" , function(){
             var price = $(this).val();
             var qty = $(this).closest('tr').find('.qty').val();
+            
             if(qty !='' && price !=''){
-                var total = parseInt(qty) * parseInt(price);
+                var total = parseFloat(qty) * parseFloat(price);
                 $(this).closest('tr').find('.Rowtotal').val(total);
-                $(this).closest('tr').find('.total').text(total + '€');
+                $(this).closest('tr').find('.total').text(total + ' €');
             }
         });
         
