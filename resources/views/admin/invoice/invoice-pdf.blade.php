@@ -172,7 +172,7 @@
                 <br>
                 <tr>
                     <td>
-                        <span>Account holder: {{ $getInvoice[0]['account_namestr'] }}</span>
+                        <span>Account holder: {{ $getInvoice[0]['account_name'] }}</span>
                     </td>
                 </tr>
                 <tr>
