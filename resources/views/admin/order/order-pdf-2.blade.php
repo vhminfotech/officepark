@@ -72,9 +72,11 @@
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>wir freuen uns, dass wir Sie als neuen OFFICE PARK-Kunden begrüßen
+                                <td>
+                                    wir freuen uns, dass wir Sie als neuen OFFICE PARK-Kunden begrüßen
                                     dürfen. Ihr Erreichbarkeitsservice ist ab sofort einsatzbereit und unsere
-                                    Agenten nehmen Ihre Anrufe entgegen. </td>
+                                    Agenten nehmen Ihre Anrufe entgegen. 
+                                </td>
 
                             </tr>
 
