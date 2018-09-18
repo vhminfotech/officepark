@@ -112,7 +112,7 @@
                             <tr> <td>Düsseldorf-Nord </td></tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>Rechnungs-Nr. 002/17 </td> </tr>
+                            <tr> <td>Rechnungs-Nr. {{ $getInvoice[0]['invoice_no'] }} </td> </tr>
                             <tr> <td>Kunden-Nr. {{ $getInvoice[0]['customer_number'] }} </td> </tr>
                         </table>
                     </td>
