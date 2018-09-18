@@ -83,7 +83,7 @@ $currentRoute = Route::current()->getName();
             <li class="c-sidebar__item" style="position: absolute; bottom: 0px; margin-bottom: 20px; padding-left: 35px;">
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) == 'gr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="gr">
-                        @if(($_COOKIE['language']) ==  'gr')
+                        @if(isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'gr')
                         <img class="" src="{{ asset('img/flag/german.png') }}" alt="German-Logo"  style='height : 22px;'>
                         @else
                         <img class="" src="{{ asset('img/flag/german-notactive.png') }}" alt="German-Logo"  style='height : 22px;'>
@@ -92,7 +92,7 @@ $currentRoute = Route::current()->getName();
                 </div>
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'tr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="tr" style="padding-left: 10px;">
-                        @if(($_COOKIE['language']) ==  'tr')
+                        @if(isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'tr')
                         <img class="" src="{{ asset('img/flag/turkish.png') }}" alt="Turkish-Logo"  style='height : 22px;'>
                         @else
                         <img class="" src="{{ asset('img/flag/turkisch-notactive.png') }}" alt="Turkish-Logo"  style='height : 22px;'>
@@ -101,7 +101,7 @@ $currentRoute = Route::current()->getName();
                 </div>
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'en' ? 'active' : (!isset($_COOKIE['language']))?'active':'')  }} " style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="en" style="padding-left: 10px;">
-                        @if(($_COOKIE['language']) ==  'en')
+                        @if(isset($_COOKIE['language']) && ($_COOKIE['language']) ==  'en')
                         <img class="" src="{{ asset('img/flag/english.png') }}" alt="English-Logo"  style='height : 22px;'>
                         @else 
                         <img class="" src="{{ asset('img/flag/english-notactive.png') }}" alt="English-Logo"  style='height : 22px;'>
