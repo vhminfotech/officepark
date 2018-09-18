@@ -66,9 +66,9 @@ class InvoiceController extends Controller {
         $mailData['mailto'] = [$data['getInvoice'][0]['email']];
         $sendMail = new Sendmail;
         if($data['getInvoice'][0]['gender'] = 'M'){
-            $name = 'geehrte ' .$data['getInvoice'][0]['fullname'];
-        } else {
             $name = 'geehrter ' .$data['getInvoice'][0]['fullname'];
+        } else {
+            $name = 'geehrte ' .$data['getInvoice'][0]['fullname'];
         }
         $mailData['data']['interUser'] = $name;
         $mailData['data']['month'] = date('m',strtotime($data['getInvoice'][0]['start_date']));
