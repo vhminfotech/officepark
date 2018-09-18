@@ -94,6 +94,10 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'get-category-list', ['as' => 'get-category-list', 'uses' => 'Admin\ServiceController@getCategoryList']);
     Route::match(['get', 'post'], 'delete-category', ['as' => 'delete-category', 'uses' => 'Admin\ServiceController@deleteCategory']);
     //Route::match(['get', 'post'], 'add-user', ['as' => 'add-user', 'uses' => 'Admin\AdminController@addUser']);
+    
+    
+    Route::match(['get', 'post'], 'system-mail', ['as' => 'system-mail', 'uses' => 'Admin\SystemMail@index']);
+    
 
 });
 
