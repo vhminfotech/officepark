@@ -25,6 +25,10 @@
             .padding-l-5{
                 padding-left: 5px;
             }
+            .sectionClient{
+                padding-top: -200px;
+            }
+            
             table.boxtable { border-collapse: collapse; }
             table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
         </style>
@@ -45,8 +49,8 @@
                 <tr>
                     <td colspan="3"><h3>- persönlich -</h3></td>
                 </tr>
-                <tr style='margin-bottom: -80px;'>
-                    <td colspan="2">
+                <tr>
+                    <td colspan="2" class="sectionClient">
                         <table width="100%">
                             <tr>
                                 <td>{{ $getCustomerInfo['company_name'] }}</td>
@@ -109,7 +113,7 @@
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
                             <tr> <td>Rechnungs-Nr. 002/17 </td> </tr>
-                            <tr> <td>Kunden-Nr. OP-211-1704 </td> </tr>
+                            <tr> <td>Kunden-Nr. {{ $getInvoice[0]['customer_number'] }} </td> </tr>
                         </table>
                     </td>
                 </tr>
@@ -168,7 +172,7 @@
                 <br>
                 <tr>
                     <td>
-                        <span>Commerzbank Düsseldorf • Account holder: {{ $getInvoice[0]['account_name'] }}</span>
+                        <span>Account holder: {{ $getInvoice[0]['account_namestr'] }}</span>
                     </td>
                 </tr>
                 <tr>

@@ -35,7 +35,7 @@ class Invoice extends Model {
     public function addInvoice($request){
 //        print_r($request->input());exit;
         $startDate = explode('/',$request->input('start_date'));
-        $endDate = explode('/',$request->input('start_date'));
+        $endDate = explode('/',$request->input('end_date'));
         
         $finalStartDate = $startDate[2].'-'.$startDate[0].'-'.$startDate[1];
         $finalEndDate = $endDate[2].'-'.$endDate[0].'-'.$endDate[1];
@@ -112,6 +112,8 @@ class Invoice extends Model {
                 'order_info.account_bic',
                 'order_info.company_info',
                 'order_info.accept',
+                'order_info.gender',
+                'order_info.fullname',
                 'invoice.mail_send',
                 'invoice_detail.bezeichnung',
                 'invoice_detail.menge',

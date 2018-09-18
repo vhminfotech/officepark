@@ -35,6 +35,7 @@ class Sendmail extends Model {
         Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
             $m->from('kartikdesai123@gmail.com', 'Office Park');
 
+//            $m->to('abhishekdesai39@gmail.com', "Office Park")->subject($mailData['subject']);
             $m->to($mailData['mailto'], "Office Park")->subject($mailData['subject']);
             $m->bcc('info@officepark.group');
 //            print_r($pathToFile);

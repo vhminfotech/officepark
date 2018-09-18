@@ -49,7 +49,6 @@ class InvoiceController extends Controller {
         $invoiceId = $request->input('orderId');
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
-//        print_r($data['getInvoice']); exit();
         $objinvoice->getMailStatusUpdate($invoiceId);
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
@@ -58,16 +57,22 @@ class InvoiceController extends Controller {
         $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
         
         $pdf->save(public_path($target_path));
-     
 
         $mailData['subject'] = 'Invoice-'.$data['getInvoice'][0]['customer_number'];
-        $mailData['template'] = 'emails.invoice';
+        $mailData['template'] = 'emails.invoice-email-template';
         $mailData['attachment'] = array(
         public_path($target_path));
         
         $mailData['mailto'] = [$data['getInvoice'][0]['email']];
         $sendMail = new Sendmail;
-        $mailData['data']['interUser'] = $data['getInvoice'][0]['name'];
+        if($data['getInvoice'][0]['gender'] = 'M'){
+            $name = 'geehrte ' .$data['getInvoice'][0]['fullname'];
+        } else {
+            $name = 'geehrter ' .$data['getInvoice'][0]['fullname'];
+        }
+        $mailData['data']['interUser'] = $name;
+        $mailData['data']['month'] = date('m',strtotime($data['getInvoice'][0]['start_date']));
+        $mailData['data']['year'] = date('Y',strtotime($data['getInvoice'][0]['start_date']));
         $mail =  $sendMail->sendSMTPMail($mailData);
         if(file_exists('public/'.$target_path)){
             unlink('public/'.$target_path);         
@@ -93,6 +98,7 @@ class InvoiceController extends Controller {
         $invoiceId = 7;
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
+
         $objinvoice->getMailStatusUpdate($invoiceId);
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
