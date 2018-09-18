@@ -98,7 +98,6 @@ class InvoiceController extends Controller {
         $invoiceId = 7;
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
-
         $objinvoice->getMailStatusUpdate($invoiceId);
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
