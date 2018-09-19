@@ -41,6 +41,9 @@ class InvoiceController extends Controller {
         $data['js'] = array('admin/invoice.js');
         $data['funinit'] = array('Invoice.list_init()');
         $data['css'] = array('');
+        $data['year'] = $year;
+        $data['month'] = $month;
+        $data['method'] = $method;
 
         return view('admin.invoice.invoice-list', $data);
     }

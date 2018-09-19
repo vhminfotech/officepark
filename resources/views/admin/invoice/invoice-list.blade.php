@@ -19,8 +19,8 @@
                                 <div class="c-field u-mb-small">
                                     <select id="payment_method" class="c-select form-control filter paymnt_method" >
                                         <option value="">Select Payment method</option>
-                                        <option value="sepa">Sepa</option>
-                                        <option value="uber">transfer</option>
+                                        <option value="sepa" {{ ($method == 'sepa' ? 'selected="selected"' : '') }}>Sepa</option>
+                                        <option value="uber" {{ ($method == 'uber' ? 'selected="selected"' : '') }}>transfer</option>
                                     </select>
                                 </div>
                             </div>
@@ -28,18 +28,18 @@
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter month" name="month" id="month">
                                         <option value=''>Select Month</option>
-                                        <option value='01'>January</option>
-                                        <option value='02'>February</option>
-                                        <option value='03'>March</option>
-                                        <option value='04'>April</option>
-                                        <option value='05'>May</option>
-                                        <option value='06'>June</option>
-                                        <option value='07'>July</option>
-                                        <option value='08'>August</option>
-                                        <option value='09'>September</option>
-                                        <option value='10'>October</option>
-                                        <option value='11'>November</option>
-                                        <option value='12'>December</option>
+                                        <option value='01' {{ ($month == '01' ? 'selected="selected"' : '') }}>January</option>
+                                        <option value='02' {{ ($month == '02' ? 'selected="selected"' : '') }}>February</option>
+                                        <option value='03' {{ ($month == '03' ? 'selected="selected"' : '') }}>March</option>
+                                        <option value='04' {{ ($month == '04' ? 'selected="selected"' : '') }}>April</option>
+                                        <option value='05' {{ ($month == '05' ? 'selected="selected"' : '') }}>May</option>
+                                        <option value='06' {{ ($month == '06' ? 'selected="selected"' : '') }}>June</option>
+                                        <option value='07' {{ ($month == '07' ? 'selected="selected"' : '') }}>July</option>
+                                        <option value='08' {{ ($month == '08' ? 'selected="selected"' : '') }}>August</option>
+                                        <option value='09' {{ ($month == '09' ? 'selected="selected"' : '') }}>September</option>
+                                        <option value='10' {{ ($month == '10' ? 'selected="selected"' : '') }}>October</option>
+                                        <option value='11' {{ ($month == '11' ? 'selected="selected"' : '') }}>November</option>
+                                        <option value='12' {{ ($month == '12' ? 'selected="selected"' : '') }}>December</option>
                                     </select>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter year" id="year" name="year">
                                         @for($i=date('Y'); $i<=2050; $i++)
-                                            <option>{{ $i }}</option>
+                                            <option {{ ($year == $i ? 'selected="selected"' : '') }}>{{ $i }}</option>
                                          @endfor
                                     </select>
                                 </div>
