@@ -14,7 +14,7 @@ use App;
 use PDF;
 use Illuminate\Http\Request;
 use App\Model\Sendmail;
- 
+
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 //use Illuminate\Http\Request;
 
@@ -25,22 +25,24 @@ class InvoiceController extends Controller {
         $this->middleware('admin');
     }
 
-    public function index() {
-        
+    public function index(Request $request) {
+
         $objUser = new Users();
         $data['getCustomer'] = $objUser->getCustomer();
-        
+
+        $year = (empty($request->get('year'))) ? '' : $request->get('year');
+        $month = (empty($request->get('month'))) ? '' : $request->get('month');
+        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
         $objinvoice = new Invoice();
-        $data['getInvoice'] = $objinvoice->invoiceList();
-        
+        $data['getInvoice'] = $objinvoice->invoiceList($year,$month,$method);
+
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/invoice.js');
         $data['funinit'] = array('Invoice.list_init()');
         $data['css'] = array('');
-    
-        return view('admin.invoice.invoice-list',$data);
-        
+
+        return view('admin.invoice.invoice-list', $data);
     }
 
     public function createPDF(Request $request) {
@@ -53,39 +55,40 @@ class InvoiceController extends Controller {
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
-        $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
-        $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
-        
+        $target_path = 'pdf/invoice-' . $data['getInvoice'][0]['customer_number'] . '.pdf';
+        $pdf = PDF::loadView('admin.invoice.invoice-pdf', $data);
+
         $pdf->save(public_path($target_path));
 
-        $mailData['subject'] = 'Invoice-'.$data['getInvoice'][0]['customer_number'];
+        $mailData['subject'] = 'Invoice-' . $data['getInvoice'][0]['customer_number'];
         $mailData['template'] = 'emails.invoice-email-template';
         $mailData['attachment'] = array(
-        public_path($target_path));
-        
+            public_path($target_path));
+
         $mailData['mailto'] = [$data['getInvoice'][0]['email']];
         $sendMail = new Sendmail;
-        if($data['getInvoice'][0]['gender'] = 'M'){
-            $name = 'geehrter ' .$data['getInvoice'][0]['fullname'];
+        if ($data['getInvoice'][0]['gender'] = 'M') {
+            $name = 'geehrter ' . $data['getInvoice'][0]['fullname'];
         } else {
-            $name = 'geehrte ' .$data['getInvoice'][0]['fullname'];
+            $name = 'geehrte ' . $data['getInvoice'][0]['fullname'];
         }
         $mailData['data']['interUser'] = $name;
-        $mailData['data']['month'] = date('m',strtotime($data['getInvoice'][0]['start_date']));
-        $mailData['data']['year'] = date('Y',strtotime($data['getInvoice'][0]['start_date']));
-        $mail =  $sendMail->sendSMTPMail($mailData);
-        if(file_exists('public/'.$target_path)){
-            unlink('public/'.$target_path);         
+        $mailData['data']['month'] = date('m', strtotime($data['getInvoice'][0]['start_date']));
+        $mailData['data']['year'] = date('Y', strtotime($data['getInvoice'][0]['start_date']));
+        $mail = $sendMail->sendSMTPMail($mailData);
+        if (file_exists('public/' . $target_path)) {
+            unlink('public/' . $target_path);
         }
-        if ($mail =='') {
+        if ($mail == '') {
             $return['status'] = 'success';
             $return['message'] = 'Invoice sent successfully.';
-            $return['redirect'] =  route('invoice-list');
+            $return['redirect'] = route('invoice-list');
         } else {
             $return['status'] = 'error';
             $return['message'] = 'something will be wrong.';
         }
-            echo json_encode($return); exit;
+        echo json_encode($return);
+        exit;
         // return redirect('admin/invoice-list');
         // return $pdf->stream();
         // exit;
@@ -102,32 +105,32 @@ class InvoiceController extends Controller {
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
-        $target_path = 'pdf/invoice-'.$data['getInvoice'][0]['customer_number'].'.pdf';
-        $pdf = PDF::loadView('admin.invoice.invoice-pdf',$data);
-      //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        $target_path = 'pdf/invoice-' . $data['getInvoice'][0]['customer_number'] . '.pdf';
+        $pdf = PDF::loadView('admin.invoice.invoice-pdf', $data);
+        //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
         exit;
         return $pdf->download('invoice.pdfV2');
     }
 
-    public function createInvoice(Request $request,$customerId) {
+    public function createInvoice(Request $request, $customerId) {
         $objinvoice = new Invoice();
         $objUser = new Users();
         $data['detail'] = $this->loginUser;
         $data['customerNumber'] = $customerId;
-       
-        if ($request->isMethod('post')) {   
+
+        if ($request->isMethod('post')) {
             $invoiceAdd = $objinvoice->addInvoice($request);
             if ($invoiceAdd) {
                 $return['status'] = 'success';
                 $return['message'] = 'Invoice created successfully.';
-                $return['redirect'] =  route('invoice-list');
-
+                $return['redirect'] = route('invoice-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
             }
-            echo json_encode($return); exit;
+            echo json_encode($return);
+            exit;
         }
 
         $data['css'] = array();
@@ -139,16 +142,15 @@ class InvoiceController extends Controller {
         $data['getCustomerInfo'] = $objUser->getCustomer($customerId);
         return view('admin.invoice.invoice-add', $data);
     }
-    
-    public function invoicePackegeDetail(Request $request){
+
+    public function invoicePackegeDetail(Request $request) {
         $requestdata = $request->input();
-        
+
         $objinvoice = new ServiceDetail();
         $data['getServiceDetails'] = $objinvoice->getServiceDetail($requestdata);
-        
+
 //        $options = view("home.ajax",compact('data','type'))->render();
-        return view('admin.invoice.service-list',$data)->render();
-       
+        return view('admin.invoice.service-list', $data)->render();
     }
 
 }

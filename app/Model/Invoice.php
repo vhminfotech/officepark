@@ -16,38 +16,52 @@ class Invoice extends Model {
 
     protected $table = 'invoice';
 
-    public function invoiceList() {
-        return Invoice::select(
-                'invoice.id',
-                'invoice.created_at',
-                'invoice.invoice_no',
-                'users.customer_number',
-                'order_info.company_name',
-                'invoice.total',
-                'order_info.accept',
-                'invoice.mail_send'
+    public function invoiceList($year, $month, $method) {
+        $sql = Invoice::select(
+                        'invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send'
                 )
-                ->leftjoin('users','users.id','=','invoice.customer_id')
-                ->leftjoin('order_info','users.id','=','order_info.user_id')
-                ->get();
+                ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
+                ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
+
+        if (!empty($year)) {
+            $sql->whereYear('invoice.start_date', '=', $year);
+            $sql->orWhere(function($nest) use($year) {
+                        $nest->whereYear('invoice.end_date', '=', $year);
+                    });
+        }
+        if (!empty($month)) {
+             $sql->whereMonth('invoice.start_date', '=', $month);
+            $sql->orWhere(function($subMonth) use($month) {
+//                        $subMonth->whereMonth('invoice.start_date', '=', $month);
+                        $subMonth->whereMonth('invoice.end_date', '=', $month);
+                    });
+        }
+        if (!empty($method)) {
+            $sql->where('order_info.accept', '=', $method);
+        }
+        $result = $sql->get();
+        return $result;
+//        echo '<pre/>';
+//        print_r($result);
+//        exit;
     }
-    
-    public function addInvoice($request){
+
+    public function addInvoice($request) {
 //        print_r($request->input());exit;
-        $startDate = explode('/',$request->input('start_date'));
-        $endDate = explode('/',$request->input('end_date'));
-        
-        $finalStartDate = $startDate[2].'-'.$startDate[0].'-'.$startDate[1];
-        $finalEndDate = $endDate[2].'-'.$endDate[0].'-'.$endDate[1];
+        $startDate = explode('/', $request->input('start_date'));
+        $endDate = explode('/', $request->input('end_date'));
+
+        $finalStartDate = $startDate[2] . '-' . $startDate[0] . '-' . $startDate[1];
+        $finalEndDate = $endDate[2] . '-' . $endDate[0] . '-' . $endDate[1];
         $length = 8;
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $invoice_no =  substr(str_shuffle($chars),0,$length);
-    
+        $invoice_no = substr(str_shuffle($chars), 0, $length);
+
         $objInvoice = new Invoice();
-        
+
         $objInvoice->customer_id = $request->input('customer_id');
-        $objInvoice->start_date = date('Y-m-d',  strtotime($finalStartDate));
-        $objInvoice->end_date = date('Y-m-d',  strtotime($finalEndDate));
+        $objInvoice->start_date = date('Y-m-d', strtotime($finalStartDate));
+        $objInvoice->end_date = date('Y-m-d', strtotime($finalEndDate));
         $objInvoice->service_id = $request->input('service_id');
         $objInvoice->invoice_no = $invoice_no;
         $objInvoice->created_at = date('Y-m-d H:i:s');
@@ -60,12 +74,12 @@ class Invoice extends Model {
             $menge = $request->input('menge');
             $einzelpreis = $request->input('price');
             $total = $request->input('total');
-            
-            for($i=0; $i<count($bezeichnung); $i++){
+
+            for ($i = 0; $i < count($bezeichnung); $i++) {
                 $objInvoiceDetail = new InvoiceDetail();
 //                $sum += $total[$i];
                 $sum += $menge[$i] * $einzelpreis[$i];
-                if($bezeichnung[$i] !=''){
+                if ($bezeichnung[$i] != '') {
                     $objInvoiceDetail->invoice_id = $lastId;
                     $objInvoiceDetail->bezeichnung = $bezeichnung[$i];
                     $objInvoiceDetail->menge = $menge[$i];
@@ -75,17 +89,17 @@ class Invoice extends Model {
                     $objInvoiceDetail->created_at = date('Y-m-d H:i:s');
                     $objInvoiceDetail->updated_at = date('Y-m-d H:i:s');
                     $result = $objInvoiceDetail->save();
-                }   
-                $objInvoiceDetail = ''; 
+                }
+                $objInvoiceDetail = '';
             }
-            if($result){
-                 $objInvoice1 = Invoice::find($lastId);
-                 $objInvoice1->total = $sum;
-                 if($objInvoice1->save()){
-                     return TRUE;
-                 }else{
-                     return FALSE;
-                 }
+            if ($result) {
+                $objInvoice1 = Invoice::find($lastId);
+                $objInvoice1->total = $sum;
+                if ($objInvoice1->save()) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
             }
         }
     }
@@ -93,52 +107,26 @@ class Invoice extends Model {
     public function getInvoiceDetail($invoiceId) {
 
         return Invoice::select(
-                'invoice.id',
-                'invoice.created_at',
-                'invoice.customer_id',
-                'invoice.start_date',
-                'invoice.end_date',
-                'invoice.service_id',
-                'invoice.total as invoiceTotal',
-                'invoice.invoice_no',
-                'users.customer_number',
-                'users.name',
-                'users.email',
-                'users.system_genrate_no',
-                'service.packages_name',
-                'order_info.company_name',
-                'order_info.account_name',
-                'order_info.account_iban',
-                'order_info.account_bic',
-                'order_info.company_info',
-                'order_info.accept',
-                'order_info.gender',
-                'order_info.fullname',
-                'invoice.mail_send',
-                'invoice_detail.bezeichnung',
-                'invoice_detail.menge',
-                'invoice_detail.einzelpreis',
-                'invoice_detail.total'
-                )
-                ->leftjoin('users','users.id','=','invoice.customer_id')
-                ->leftjoin('invoice_detail','invoice_detail.invoice_id','=','invoice.id')
-                ->leftjoin('service','invoice.service_id','=','service.id')
-                ->leftjoin('order_info','users.id','=','order_info.user_id')
-                ->where('invoice.id',$invoiceId)
-                ->get();
+                                'invoice.id', 'invoice.created_at', 'invoice.customer_id', 'invoice.start_date', 'invoice.end_date', 'invoice.service_id', 'invoice.total as invoiceTotal', 'invoice.invoice_no', 'users.customer_number', 'users.name', 'users.email', 'users.system_genrate_no', 'service.packages_name', 'order_info.company_name', 'order_info.account_name', 'order_info.account_iban', 'order_info.account_bic', 'order_info.company_info', 'order_info.accept', 'order_info.gender', 'order_info.fullname', 'invoice.mail_send', 'invoice_detail.bezeichnung', 'invoice_detail.menge', 'invoice_detail.einzelpreis', 'invoice_detail.total'
+                        )
+                        ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
+                        ->leftjoin('invoice_detail', 'invoice_detail.invoice_id', '=', 'invoice.id')
+                        ->leftjoin('service', 'invoice.service_id', '=', 'service.id')
+                        ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                        ->where('invoice.id', $invoiceId)
+                        ->get();
     }
-    
-    public function getMailStatusUpdate($invoiceId){
-         $objInfo = Invoice::find($invoiceId);
-         $objInfo->mail_send = 'YES';
-         if ($objInfo->save()) {
+
+    public function getMailStatusUpdate($invoiceId) {
+        $objInfo = Invoice::find($invoiceId);
+        $objInfo->mail_send = 'YES';
+        if ($objInfo->save()) {
             return TRUE;
         }
     }
-    
-    public function getServiceName(){
-          return Service::select('id','packages_name')->get();
-          
+
+    public function getServiceName() {
+        return Service::select('id', 'packages_name')->get();
     }
 
 }

@@ -17,16 +17,16 @@
                             <label>Filter</label>
                             <div class="col-lg-3">
                                 <div class="c-field u-mb-small">
-                                    <select class="c-select form-control" id="select1">
-                                        <option>Select Payment method</option>
-                                        <option>Payment method1</option>
-                                        <option>Payment method2</option>
+                                    <select id="payment_method" class="c-select form-control filter paymnt_method" >
+                                        <option value="">Select Payment method</option>
+                                        <option value="sepa">Sepa</option>
+                                        <option value="uber">transfer</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
-                                    <select class="c-select">
+                                    <select class="c-select filter month" name="month" id="month">
                                         <option value=''>Select Month</option>
                                         <option value='01'>January</option>
                                         <option value='02'>February</option>
@@ -40,13 +40,12 @@
                                         <option value='10'>October</option>
                                         <option value='11'>November</option>
                                         <option value='12'>December</option>
-                                        
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
-                                    <select class="c-select">
+                                    <select class="c-select filter year" id="year" name="year">
                                         @for($i=date('Y'); $i<=2050; $i++)
                                             <option>{{ $i }}</option>
                                          @endfor
