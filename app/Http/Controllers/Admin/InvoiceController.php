@@ -156,4 +156,21 @@ class InvoiceController extends Controller {
         return view('admin.invoice.service-list', $data)->render();
     }
 
+        public function deleteInvoice(Request $request) {
+        if ($request->isMethod('post')) {
+            $objinvoice = new Invoice();
+            $resultCategory = $objinvoice->deleteInvoice($request->input('id'));
+            $ids = $request->input('id');
+            if ($resultCategory) {
+                $return['status'] = 'success';
+                $return['message'] = 'Invoice delete successfully.';
+                $return['jscode'] = 'setTimeout(function(){ $("#deleteModel").modal("hide");$(".hide'.$ids.'").hide();},1000)';
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
 }

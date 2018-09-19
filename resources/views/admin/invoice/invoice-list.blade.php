@@ -91,7 +91,7 @@
                     </thead>
                     <tbody>
                         @for($i = 0 ;$i < count($getInvoice);$i++)
-                        <tr class="c-table__row">
+                        <tr class="c-table__row hide{{ $getInvoice[$i]->id }}">
                             <td class="c-table__cell">{{ $getInvoice[$i]->id }}</td>
                             <td class="c-table__cell">{{ date('Y-m-d',strtotime($getInvoice[$i]->created_at)) }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->invoice_no }}</td>
@@ -107,6 +107,9 @@
                                 <a href="javascript:;" class="sendInvoice" data-id="{{ $getInvoice[$i]->id }}"><span class="c-tooltip c-tooltip--top " aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>&nbsp;  
+                                 <a href="javascript:;" class="deleteInvoice" data-token="{{ csrf_token() }}"  data-id="{{ $getInvoice[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                        <i class="fa fa-trash-o"></i></span>
+                                </a>
                                 <!--  <a href="{{ route('invoice-pdf',array('id'=> $getInvoice[$i]->id )) }}"><span class="c-tooltip c-tooltip--top"  aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>&nbsp; -->

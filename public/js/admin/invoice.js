@@ -120,6 +120,23 @@ var Invoice = function() {
             location.href = baseurl + 'admin/invoice-list?' + querystring;
         });
 
+        $('body').on('click', '.deleteInvoice', function() {
+            $('#deleteModel').modal('show');
+            var id = $(this).data('id');
+            setTimeout(function() {
+                $('.yes-sure:visible').attr('data-id', id);
+            }, 500);
+        })
+
+        $('body').on('click', '.yes-sure', function() {
+            var id = $(this).attr('data-id');
+            var data = {id: id, _token: $('#_token').val()};
+            var url = baseurl + 'admin/delete-invoice';
+            ajaxcall(url, data, function(output) {
+                handleAjaxResponse(output);
+            });
+        });
+
         $('body').on('click', '.sendInvoice', function() {
 
             var orderId = $(this).data('id');

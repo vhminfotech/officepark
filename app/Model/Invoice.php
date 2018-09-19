@@ -129,4 +129,8 @@ class Invoice extends Model {
         return Service::select('id', 'packages_name')->get();
     }
 
+    public function deleteInvoice($invoiceId) {
+        Invoice::where('id', $invoiceId)->delete();
+        return true;
+    }
 }
