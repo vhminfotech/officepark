@@ -156,7 +156,7 @@ class InvoiceController extends Controller {
         return view('admin.invoice.service-list', $data)->render();
     }
 
-        public function deleteInvoice(Request $request) {
+    public function deleteInvoice(Request $request) {
         if ($request->isMethod('post')) {
             $objinvoice = new Invoice();
             $resultCategory = $objinvoice->deleteInvoice($request->input('id'));
@@ -172,5 +172,12 @@ class InvoiceController extends Controller {
             echo json_encode($return);
             exit;
         }
+    }
+    
+    public function createPDFV3(){
+        $pdf = PDF::loadView('admin.invoice.invoice-pdfV3');
+        //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
+        return $pdf->stream();
+        exit;
     }
 }
