@@ -8,13 +8,28 @@
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                       Addressbook List
-                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('address-book-add') }}" aria-label="Add User">
-                            <i class="fa fa-plus"></i>
-                        </a>
+                        <div class="c-stage__panel u-p-low">
+                            <div class="row">
+                                <label>Addressbook List</label>
+                                <div class=" col-lg-offset-4 col-lg-4">
+                                    <div class="c-field u-mb-small">
+                                        {{ Form::select('customer_id', $arrOrderInfo , (empty($addbkDetail[0]->customer_id) ? null : $addbkDetail[0]->customer_id), array('class' => 'c-select filter selectCustomer customer_id', 'id' => 'customer_id')) }}
+                                    </div>
+                                </div>
+                              
+                                <div class="right">
+                                    <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('address-book-add') }}" aria-label="Add Addressbook">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Customer Number</th>
                             <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
                             <th class="c-table__cell c-table__cell--head">First Name&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Surname&nbsp;&nbsp;</th>
@@ -29,6 +44,7 @@
                         @endphp
                         @for($i = 0 ;$i < count($arrAddbook);$i++,$count++)                
                         <tr class="c-table__row">
+                            <td class="c-table__cell">{{ $arrAddbook[$i]->customer_number}}</td>
                             <td class="c-table__cell">{{ $count }}</td>
                             <td class="c-table__cell">{{ $arrAddbook[$i]->firstname }}</td>
                             <td class="c-table__cell">{{ $arrAddbook[$i]->surname }}</td>
@@ -36,14 +52,14 @@
                             <td class="c-table__cell">{{ $arrAddbook[$i]->position }}</td>
                             <td class="c-table__cell">
                                 <a href=" {{ route('address-book-edit',[$arrAddbook[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
-                                    <i class="fa fa-edit" ></i></span>
+                                        <i class="fa fa-edit" ></i></span>
                                 </a>
-                                 <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrAddbook[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrAddbook[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
                         </tr>
-                         @endfor
+                        @endfor
                     </tbody>
                 </table>
             </div>
@@ -51,8 +67,8 @@
     </div>
 </div>
 <style>
-.c-table__title .c-tooltip{
-    position: absolute;
-}
+    .c-table__title .c-tooltip{
+        position: absolute;
+    }
 </style>
 @endsection

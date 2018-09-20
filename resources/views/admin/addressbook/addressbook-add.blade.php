@@ -16,6 +16,14 @@
                 <form name="add-addressbook" id="addAddressbook" action="{{ route('address-book-add') }}" method="post">
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
+                            <div class="col-lg-6 col-lg-offset-6">
+                                <div class="c-field u-mb-small">
+                                    <label class="c-field__label" for="firstName">Customer Number</label> 
+                                    {{ Form::select('customer_id', $arrOrderInfo , null, array('class' => 'c-select', 'id' => 'is_package')) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">Gender</label> 

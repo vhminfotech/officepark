@@ -15,6 +15,14 @@
                 </div>
                 <form name="edit-addressbook" id="editAddressbook" action="{{ route('address-book-edit' ,$addbkDetail[0]->id ) }}" method="post">
                     <div class="c-stage__panel u-p-medium">
+                         <div class="row">
+                            <div class="col-lg-6 col-lg-offset-6">
+                                <div class="c-field u-mb-small">
+                                    <label class="c-field__label" for="firstName">Customer Number</label> 
+                                    {{ Form::select('customer_id', $arrOrderInfo , (empty($addbkDetail[0]->customer_id) ? null : $addbkDetail[0]->customer_id), array('class' => 'c-select', 'id' => 'customer_id')) }}
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">

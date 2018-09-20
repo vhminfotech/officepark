@@ -20,6 +20,12 @@ var Addressbook = function(){
                 handleAjaxResponse(output);
             });
         });
+        
+         $('body').on('change', '.filter', function() {
+            var customer_id = $('#customer_id').val();
+            var querystring = (customer_id == '' && typeof customer_id === 'undefined') ? 'customer_id=' : 'customer_id=' + customer_id;
+            location.href = baseurl + 'admin/address-book-list?' + querystring;
+        });
     }
     
     var handleAddressbookAdd = function(){

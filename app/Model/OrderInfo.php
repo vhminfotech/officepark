@@ -185,5 +185,14 @@ class OrderInfo extends Model {
                         ->whereNotNull('order_info.user_id')->get()->toArray();
     }
     
-
+    public function getCustomerDetails() {
+        $result = OrderInfo::join('users', 'users.id', '=', 'order_info.user_id')
+                ->select(DB::raw('CONCAT_WS(" - ",users.customer_number, order_info.company_name) AS cust_name_num'), 'order_info.user_id')
+                ->pluck('cust_name_num','order_info.user_id')
+                ->toArray();
+        if(empty($result)){
+            $result = array(''=> 'No Customer Found');
+        }
+        return $result;
+    }
 }

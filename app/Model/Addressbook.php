@@ -12,7 +12,6 @@ class Addressbook extends Model {
     protected $table = 'addressbook';
 
     public function getAddBookLlist($id = NULL) {
-
         if ($id) {
             $result = addressbook::select('addressbook.*')->where('addressbook.id', '=', $id)->get();
         } else {
@@ -21,9 +20,19 @@ class Addressbook extends Model {
         return $result;
     }
 
+    public function getAddBookLlistV2($id = NULL) {
+        $sql = addressbook::leftjoin('order_info', 'order_info.user_id', '=', 'addressbook.customer_id')
+                ->leftjoin('users', 'users.id', '=', 'order_info.user_id');
+        if(!empty($id)){
+            $sql->where('addressbook.customer_id', '=', $id);
+        }
+        $result = $sql->get(['addressbook.*', 'users.customer_number', 'order_info.company_name as cname']);
+        return $result;
+    }
+
     public function addAddresBook($request) {
-//        print_r($request->input());exit;
         $objadd = new Addressbook();
+        $objadd->customer_id = $request->input('customer_id');
         $objadd->firstname = $request->input('firstname');
         $objadd->surname = $request->input('surname');
         $objadd->company = $request->input('company');
@@ -46,6 +55,7 @@ class Addressbook extends Model {
     function editaddbookInfo($request) {
         $userId = $request->input('address_book_id');
         $objEdit = Addressbook::find($userId);
+        $objEdit->customer_id = $request->input('customer_id');
         $objEdit->firstname = $request->input('firstname');
         $objEdit->surname = $request->input('surname');
         $objEdit->company = $request->input('company');
