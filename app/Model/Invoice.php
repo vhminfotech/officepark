@@ -23,17 +23,17 @@ class Invoice extends Model {
                 ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
                 ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
 
-        if (!empty($year)) {
-            $sql->whereYear('invoice.start_date', '=', $year);
+        if (!empty($year) && empty($month)) {
+//            $sql->whereYear('invoice.start_date', '=', $year);
+            $sql->whereBetween('invoice.start_date',[date($year.'-01-01'),date($year.'-12-31') ]);
             $sql->orWhere(function($nest) use($year) {
-                        $nest->whereYear('invoice.end_date', '=', $year);
+                        $nest->whereBetween('invoice.end_date',[date($year.'-01-01'),date($year.'-12-31') ]);
                     });
         }
-        if (!empty($month)) {
-             $sql->whereMonth('invoice.start_date', '=', $month);
-            $sql->orWhere(function($subMonth) use($month) {
-//                        $subMonth->whereMonth('invoice.start_date', '=', $month);
-                        $subMonth->whereMonth('invoice.end_date', '=', $month);
+        if (!empty($year) && !empty($month)) {
+             $sql->whereBetween('invoice.start_date',[date($year.'-'.$month.'-01'),date($year.'-'.$month.'-31') ]);
+            $sql->orWhere(function($nest) use($year,$month) {
+                        $nest->whereBetween('invoice.end_date',[date($year.'-'.$month.'-01'),date($year.'-'.$month.'-31') ]);
                     });
         }
         if (!empty($method)) {
