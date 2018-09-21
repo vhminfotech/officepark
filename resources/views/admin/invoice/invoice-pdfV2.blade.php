@@ -24,6 +24,15 @@
                 padding-left: 5px;
             }
         </style>
+          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="https://dashboard.zawiastudio.com/demo/css/main.min.css?v=2.0">
+   
     </head>
 
     <body>
@@ -122,7 +131,7 @@
 
                     @for($k = 0; $k < count($getInvoice); $k++)
                     <tr>
-                        <td >{{ $bezeichnung[$getInvoice[$k]['bezeichnung']] }}</td>
+                        <td >{{ $getInvoice[$k]['bezeichnung'] }}</td>
                         <td class="padding-l-5">{{ $getInvoice[$k]['menge'] }}</td>
                         <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }}€x</td>
                         <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} €</td>
