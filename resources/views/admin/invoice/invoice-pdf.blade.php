@@ -55,8 +55,8 @@
             }
             .euroicone{
                 font-weight: normal;
-                font-size: 10px;
-                color: #767671;
+                font-size: 8px;
+                color: #000;
                 margin-top: 3px;
             }
         </style>
