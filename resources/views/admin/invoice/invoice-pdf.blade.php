@@ -193,7 +193,7 @@
             <table class="lastdescription" width="100%">
                 <tr>
                     <td>
-                        <span>The amount of € {{ number_format($getInvoice[0]['invoiceTotal'],2) }} will be withdrawn from your account via {{ $getInvoice[0]['accept'] }} mandate. First direct debits will be charged to your account after 3 business days, follow-up direct debits after 1 business day.</span>
+                        <span>The amount of <i class="fa fa-eur euroicone" aria-hidden="true"></i> {{ number_format($getInvoice[0]['invoiceTotal'],2) }} will be withdrawn from your account via {{ $getInvoice[0]['accept'] }} mandate. First direct debits will be charged to your account after 3 business days, follow-up direct debits after 1 business day.</span>
                     </td>
                 </tr>
                 <br>
