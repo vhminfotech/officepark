@@ -133,7 +133,7 @@
                             <tr> <td>09:00 - 19:00 Uhr</td></tr> 
                         </table>
                         <table width="100%" style="margin-top: 10px;">  
-                            <tr> <td>Düsseldorf, den 22.05.2018 </td> </tr>
+                            <tr> <td>Düsseldorf, den {{ date('d.m.Y') }} </td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 10px;">  
                             <tr> <td>Finanzamt </td> </tr>
