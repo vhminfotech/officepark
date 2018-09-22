@@ -8,3 +8,5 @@ CREATE TABLE `customer_user_no` ( `id` INT NOT NULL AUTO_INCREMENT , `generated_
 RENAME TABLE `customer_user_no` to `system_genrate_no`;
 ALTER TABLE `system_genrate_no` DROP `user_id`;
 INSERT INTO `system_genrate_no` (`id`, `generated_no`, `created_at`, `updated_at`) VALUES ('1', '021136874190000', '2018-08-24 00:00:00', CURRENT_TIMESTAMP); 
+
+ALTER TABLE `invoice` ADD `is_paid` ENUM('Yes','No') NOT NULL DEFAULT 'No' AFTER `mail_send`;
