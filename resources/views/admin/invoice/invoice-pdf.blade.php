@@ -15,10 +15,11 @@
    
         <style>
             .main-header{
-                font-size: 35px;
-                line-height: 35px;
+/*                font-size: 35px;
+                line-height: 35px;*/
                 text-align: right;
             }
+            
             .text-undeline{
                 text-decoration: underline;
                 font-size: 11px;
@@ -27,7 +28,7 @@
             .small-fornt{
                 font-size: 10px;
                 text-align: right;
-                padding-top: -70px;
+                padding-top: -85px;
                 padding-left: -10px;
                 color: #40403f;
             }
@@ -52,16 +53,19 @@
                 font-size: 12px;
                 line-height: 17px;
             }
+            .euroicone{
+                font-weight: normal;
+            }
         </style>
     </head>
 
     <body style="background-color: #fff;">
         <div class="invoice-box">
-            <table width="100%">
+            <table class="mainleftside" width="100%">
                 <tr>
                     <td class="main-header" colspan="3">
                         <!--<span >Office | Park</span>-->
-                        <img   src="{{  asset('img/officepark-logo.jpg')  }}">
+                        <img style="margin: 0px;"  src="{{  asset('img/officepark-logo.jpg')  }}">
                     </td>
                 </tr>
                 <tr>
@@ -120,8 +124,8 @@
                             <tr> <td>Telefax: +49 (0) 211 368 74 190 01</td></tr> 
                             <tr> <td>Web:    www.officepark.group</td></tr> 
                             <tr> <td>E-Mail:  info@officepark.group</td></tr> 
-                            <tr> <td>  Gesellschafter</td> </tr>
-                            <tr> <td>  Mustafa Basun</td> </tr>
+<!--                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>-->
                         </table>
                         <table width="100%" style="margin-top: 10px;">  
                             <tr> <td>Service-/ Bürozeiten: </td> </tr>
@@ -162,8 +166,8 @@
                         <td>&nbsp;</td>
                         <td>{{ $getInvoice[$k]['bezeichnung'] }}</td>
                         <td class="padding-l-5">{{ $getInvoice[$k]['menge'] }}</td>
-                        <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }}€</td>
-                        <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} €</td>
+                        <td class="padding-l-5">{{ number_format($getInvoice[$k]['einzelpreis'],2) }} <i class="fa fa-eur euroicone" aria-hidden="true"></i></td>
+                        <td class="padding-l-5">{{ number_format($getInvoice[$k]['total'],2) }} <i class="fa fa-eur euroicone" aria-hidden="true"></i></td>
                     </tr>
                     @endfor
                     <tr>
