@@ -18,32 +18,45 @@ class Invoice extends Model {
 
     public function invoiceList($year, $month, $method) {
         $sql = Invoice::select(
-                        'invoice.id','invoice.is_paid', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send'
+                        'invoice.id', 'invoice.is_paid', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send'
                 )
                 ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
                 ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
 
-        if (!empty($year)) {
-            $sql->whereYear('invoice.start_date', '=', $year);
-            $sql->orWhere(function($nest) use($year) {
-                        $nest->whereYear('invoice.end_date', '=', $year);
+        if (!empty($year) && empty($month)) {
+            $sql->orWhere(function($sql) use($year) {
+                        $sql->orWhere(function($sql) use($year) {
+                                    $sql->whereBetween('invoice.start_date', [date($year . '-01-01'), date($year . '-12-31')]);
+                                });
+                        $sql->orWhere(function($sql) use($year) {
+                                    $sql->whereBetween('invoice.end_date', [date($year . '-01-01'), date($year . '-12-31')]);
+                                });
                     });
         }
+
         if (!empty($month)) {
             $sql->whereMonth('invoice.start_date', '=', $month);
             $sql->orWhere(function($subMonth) use($month) {
 //                        $subMonth->whereMonth('invoice.start_date', '=', $month);
                         $subMonth->whereMonth('invoice.end_date', '=', $month);
                     });
+
+            if (!empty($year) && !empty($month)) {
+                $sql->orWhere(function($sql) use($year, $month) {
+                            $sql->orWhere(function($sql) use($year, $month) {
+                                        $sql->whereBetween('invoice.start_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
+                                    });
+                            $sql->orWhere(function($sql) use($year, $month) {
+                                        $sql->whereBetween('invoice.end_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
+                                    });
+                        });
+            }
+            if (!empty($method)) {
+                $sql->where('order_info.accept', '=', $method);
+            }
+            $result = $sql->get();
+            return $result;
         }
-        if (!empty($method)) {
-            $sql->where('order_info.accept', '=', $method);
-        }
-        $result = $sql->get();
-        return $result;
-//        echo '<pre/>';
-//        print_r($result);
-//        exit;
     }
 
     public function addInvoice($request) {
@@ -58,12 +71,12 @@ class Invoice extends Model {
 //        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 //        $invoice_no = substr(str_shuffle($chars), 0, $length);
         if (strlen($invoiceId) < 4) {
-            $invoice_no = str_pad($invoiceId, 3, "0", STR_PAD_LEFT) ;
-            $invoice_no .= '-'.date('y');
+            $invoice_no = str_pad($invoiceId, 3, "0", STR_PAD_LEFT);
+            $invoice_no .= '-' . date('y');
         } else {
-            $invoice_no = $invoiceId.'-'.date('y');
+            $invoice_no = $invoiceId . '-' . date('y');
         }
-        
+
         $objInvoice = new Invoice();
 
         $objInvoice->customer_id = $request->input('customer_id');
@@ -140,7 +153,7 @@ class Invoice extends Model {
         Invoice::where('id', $invoiceId)->delete();
         return true;
     }
-    
+
     public function changePaidStatus($invoiceArray) {
         $objInfo = Invoice::find($invoiceArray['id']);
         $objInfo->is_paid = ($invoiceArray['status'] == 'No') ? 'YES' : 'No';

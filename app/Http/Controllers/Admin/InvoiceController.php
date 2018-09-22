@@ -101,7 +101,7 @@ class InvoiceController extends Controller {
     public function createPDFV2() {
 
 
-        $invoiceId = 7;
+        $invoiceId = 3;
         $objinvoice = new Invoice();
         $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
         $objinvoice->getMailStatusUpdate($invoiceId);
