@@ -18,7 +18,7 @@ class Invoice extends Model {
 
     public function invoiceList($year, $month, $method) {
         $sql = Invoice::select(
-                        'invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send'
+                        'invoice.id','invoice.is_paid', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send'
                 )
                 ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
                 ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
@@ -30,7 +30,7 @@ class Invoice extends Model {
                     });
         }
         if (!empty($month)) {
-             $sql->whereMonth('invoice.start_date', '=', $month);
+            $sql->whereMonth('invoice.start_date', '=', $month);
             $sql->orWhere(function($subMonth) use($month) {
 //                        $subMonth->whereMonth('invoice.start_date', '=', $month);
                         $subMonth->whereMonth('invoice.end_date', '=', $month);
@@ -50,13 +50,20 @@ class Invoice extends Model {
 //        print_r($request->input());exit;
         $startDate = explode('/', $request->input('start_date'));
         $endDate = explode('/', $request->input('end_date'));
-
+        $invoiceResult = Invoice::orderBy('created_at', 'desc')->first();
+        $invoiceId = $invoiceResult->id + 1;
         $finalStartDate = $startDate[2] . '-' . $startDate[0] . '-' . $startDate[1];
         $finalEndDate = $endDate[2] . '-' . $endDate[0] . '-' . $endDate[1];
         $length = 8;
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $invoice_no = substr(str_shuffle($chars), 0, $length);
-
+//        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+//        $invoice_no = substr(str_shuffle($chars), 0, $length);
+        if (strlen($invoiceId) < 4) {
+            $invoice_no = str_pad($invoiceId, 3, "0", STR_PAD_LEFT) ;
+            $invoice_no .= '-'.date('y');
+        } else {
+            $invoice_no = $invoiceId.'-'.date('y');
+        }
+        
         $objInvoice = new Invoice();
 
         $objInvoice->customer_id = $request->input('customer_id');
@@ -133,4 +140,13 @@ class Invoice extends Model {
         Invoice::where('id', $invoiceId)->delete();
         return true;
     }
+    
+    public function changePaidStatus($invoiceArray) {
+        $objInfo = Invoice::find($invoiceArray['id']);
+        $objInfo->is_paid = ($invoiceArray['status'] == 'No') ? 'YES' : 'No';
+        if ($objInfo->save()) {
+            return TRUE;
+        }
+    }
+
 }

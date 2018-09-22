@@ -84,6 +84,7 @@
                             <th class="c-table__cell c-table__cell--head no-sort">Packet</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Price</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Payment Method</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">Paid Status</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Mail Send</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Action</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Paid</th>
@@ -100,6 +101,7 @@
                             <td class="c-table__cell">Business Packet Stander</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->total }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->accept }}</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->is_paid }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->mail_send }}</td>
                             
 
@@ -117,7 +119,7 @@
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a> -->
                             </td>
-                            <td class="c-table__cell"><input type="checkbox"></td>
+                            <td class="c-table__cell"><input data-id="{{ $getInvoice[$i]->id }}" data-status="{{ $getInvoice[$i]->is_paid }}" {{ ($getInvoice[$i]->is_paid == 'Yes' ? 'checked="checked"' : '') }} class="changeStatus" type="checkbox"></td>
                         </tr>
                         @endfor
                     </tbody>

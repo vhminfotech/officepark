@@ -180,4 +180,22 @@ class InvoiceController extends Controller {
         return $pdf->stream();
         exit;
     }
+    
+      public function changeStatus(Request $request) {
+        if ($request->isMethod('post')) {
+            $objinvoice = new Invoice();
+            $resultCategory = $objinvoice->changePaidStatus($request->input());
+            $ids = $request->input('id');
+            if ($resultCategory) {
+                $return['status'] = 'success';
+                $return['message'] = 'Paid Status Change successfully.';
+                $return['jscode'] = 'setTimeout(function(){ location.reload();},1000)';
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
 }

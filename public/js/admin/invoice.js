@@ -136,6 +136,15 @@ var Invoice = function() {
                 handleAjaxResponse(output);
             });
         });
+        $('body').on('change', '.changeStatus', function() {
+            var id = $(this).attr('data-id');
+            var status = $(this).data('status');
+            var data = {id: id,status: status, _token: $('#_token').val()};
+            var url = baseurl + 'admin/change-status';
+            ajaxcall(url, data, function(output) {
+                handleAjaxResponse(output);
+            });
+        });
 
         $('body').on('click', '.sendInvoice', function() {
 

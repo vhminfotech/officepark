@@ -83,6 +83,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'add-invoice/{id}', ['as' => 'add-invoice', 'uses' => 'Admin\InvoiceController@createInvoice']);
     Route::match(['get', 'post'], 'delete-invoice', ['as' => 'delete-invoice', 'uses' => 'Admin\InvoiceController@deleteInvoice']);
     Route::match(['get', 'post'], 'invoice-packege-detail', ['as' => 'invoice-packege-detail', 'uses' => 'Admin\InvoiceController@invoicePackegeDetail']);
+    Route::match(['get', 'post'], 'change-status', ['as' => 'change-status', 'uses' => 'Admin\InvoiceController@changeStatus']);
      
     Route::match(['get', 'post'], 'employee', ['as' => 'employee', 'uses' => 'Admin\EmployeeController@getEmployerData']);
     Route::match(['get', 'post'], 'employee-add', ['as' => 'employee-add', 'uses' => 'Admin\EmployeeController@addEmployee']);
