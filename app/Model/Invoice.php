@@ -24,26 +24,33 @@ class Invoice extends Model {
                 ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
 
         if (!empty($year) && empty($month)) {
-//            $sql->whereYear('invoice.start_date', '=', $year);
-            $sql->whereBetween('invoice.start_date',[date($year.'-01-01'),date($year.'-12-31') ]);
-            $sql->orWhere(function($nest) use($year) {
-                        $nest->whereBetween('invoice.end_date',[date($year.'-01-01'),date($year.'-12-31') ]);
-                    });
+            $sql->orWhere(function($sql) use($year) {
+                $sql->orWhere(function($sql) use($year) {
+                    $sql->whereBetween('invoice.start_date', [date($year . '-01-01'), date($year . '-12-31')]);
+                });
+                $sql->orWhere(function($sql) use($year) {
+                    $sql->whereBetween('invoice.end_date', [date($year . '-01-01'), date($year . '-12-31')]);
+                });
+                
+            });
         }
         if (!empty($year) && !empty($month)) {
-             $sql->whereBetween('invoice.start_date',[date($year.'-'.$month.'-01'),date($year.'-'.$month.'-31') ]);
-            $sql->orWhere(function($nest) use($year,$month) {
-                        $nest->whereBetween('invoice.end_date',[date($year.'-'.$month.'-01'),date($year.'-'.$month.'-31') ]);
-                    });
+            $sql->orWhere(function($sql) use($year, $month) {
+                $sql->orWhere(function($sql) use($year, $month) {
+                    $sql->whereBetween('invoice.start_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
+                });
+                $sql->orWhere(function($sql) use($year, $month) {
+                    $sql->whereBetween('invoice.end_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
+                });
+                
+            });
         }
         if (!empty($method)) {
             $sql->where('order_info.accept', '=', $method);
         }
         $result = $sql->get();
         return $result;
-//        echo '<pre/>';
-//        print_r($result);
-//        exit;
+
     }
 
     public function addInvoice($request) {
@@ -133,4 +140,5 @@ class Invoice extends Model {
         Invoice::where('id', $invoiceId)->delete();
         return true;
     }
+
 }
