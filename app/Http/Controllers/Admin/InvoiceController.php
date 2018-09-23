@@ -28,7 +28,7 @@ class InvoiceController extends Controller {
     public function index(Request $request) {
 
         $objUser = new Users();
-        $data['getCustomer'] = $objUser->getCustomer();
+        $data['getCustomer'] = $objUser->getCustomer(null);
 
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
