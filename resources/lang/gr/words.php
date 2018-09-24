@@ -11,6 +11,7 @@ return [
     'Addressbook'   => 'Adressbuch',
     'Order'         => 'Auftrag',
     'Select'        => 'Wählen',
+    'Calls'         => 'Calls',
     'Logout'        => 'Ausloggen'
     
 ];

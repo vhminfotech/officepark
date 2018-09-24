@@ -11,6 +11,7 @@ return [
     'Addressbook'   => 'Adres defteri',
     'Order'         => 'Sipariş',
     'Select'        => 'seçmek',
+    'Calls'         => 'Aramalar',
     'Logout'        => 'Çıkış Yap'
     
 ];

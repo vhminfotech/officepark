@@ -100,6 +100,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     
     
     Route::match(['get', 'post'], 'system-mail', ['as' => 'system-mail', 'uses' => 'Admin\SystemMail@index']);
+    Route::match(['get', 'post'], 'calls', ['as' => 'calls', 'uses' => 'Admin\CallController@index']);
     
 
 });

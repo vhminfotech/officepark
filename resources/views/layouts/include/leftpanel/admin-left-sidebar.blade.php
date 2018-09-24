@@ -81,6 +81,12 @@ $currentRoute = Route::current()->getName();
                     <!--{{ trans('words.Service') }} --> System Mail &nbsp;
                 </a>
             </li>
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'calls' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('calls') }}">
+                    <i class="fa fa-bullhorn u-mr-xsmall"></i>
+                    {{ trans('words.Calls') }} &nbsp;
+                </a>
+            </li>
 
 
             <li class="c-sidebar__item">
