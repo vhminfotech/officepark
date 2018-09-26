@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Redirect;
+use App\Model\Calls;
 use App\Model\OrderInfo;
 
 class LoginController extends Controller {
@@ -82,7 +83,7 @@ class LoginController extends Controller {
             } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
                 $objOrderInfo = new OrderInfo();
                 $resultArr = $objOrderInfo->newOrderCount('new');
-                
+
                 $loginData = array(
                     'name' => Auth::guard('admin')->user()->name,
                     'email' => Auth::guard('admin')->user()->email,
@@ -90,7 +91,7 @@ class LoginController extends Controller {
                     'id' => Auth::guard('admin')->user()->id,
                 );
                 Session::push('logindata', $loginData);
-                
+
                 Session::put('ordercount', $resultArr);
                 $request->session()->flash('session_success', 'Admin Login successfully.');
                 return redirect()->route('admin-dashboard');
@@ -110,7 +111,7 @@ class LoginController extends Controller {
                 return redirect()->route('login');
             }
         }
-        
+
         return view('auth.login');
     }
 
@@ -126,17 +127,27 @@ class LoginController extends Controller {
         Auth::guard('customer')->logout();
         Session::forget('logindata');
     }
-    
-    public function newcall(){
-    $date = date('YmdHis');
-        $handle = fopen($date."pcall.txt", "a");
-        foreach($_REQUEST as $variable => $value) {
-        fwrite($handle, $variable);
-        fwrite($handle, "=");
-        fwrite($handle, $value);
-        fwrite($handle, "\r\n");
+
+    public function newcall1() {
+        $date = date('YmdHis');
+        $handle = fopen($date . "pcall.txt", "a");
+        foreach ($_REQUEST as $variable => $value) {
+            fwrite($handle, $variable);
+            fwrite($handle, "=");
+            fwrite($handle, $value);
+            fwrite($handle, "\r\n");
         }
         fwrite($handle, "\r\n");
         fclose($handle);
     }
+
+    public function newcall(Request $request) {
+        $objCall = new Calls();
+        $result = $objCall->addCalls($request->input());
+        $return['status'] = 'success';
+        $return['message'] = 'Call added successfully.';
+        echo json_encode($return);
+        exit;
+    }
+
 }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Users;
 use App\Model\Invoice;
+use App\Model\Calls;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 
 class CallController extends Controller {
 
@@ -19,17 +19,19 @@ class CallController extends Controller {
 
         $objUser = new Users();
         $data['getCustomer'] = $objUser->getCustomer(null);
-
+        $objCall = new Calls();
+        $data['getCall'] = $objCall->getCallListing();
+//        echo '<pre/>';
+//        print_r($data['getCall']);
+//        exit;
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
-        $objinvoice = new Invoice();
-        $data['getInvoice'] = $objinvoice->invoiceList($year,$month,$method);
 
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
-        $data['js'] = array('admin/invoice.js');
-        $data['funinit'] = array('Invoice.list_init()');
+        $data['js'] = array('admin/calls.js');
+        $data['funinit'] = array('Calls.list_init()');
         $data['css'] = array('');
         $data['year'] = $year;
         $data['month'] = $month;
@@ -38,5 +40,4 @@ class CallController extends Controller {
         return view('admin.call.call-list', $data);
     }
 
-  
 }

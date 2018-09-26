@@ -91,14 +91,14 @@
                         @php
                         $count = 1;
                         @endphp
-                        @for($i = 0 ;$i < count($getInvoice);$i++,$count++)
-                        <tr class="c-table__row hide{{ $getInvoice[$i]->id }}">
+                        @for($i = 0 ;$i < count($getCall);$i++)
+                        <tr class="c-table__row hide{{ $getCall[$i]->id }}">
                             <td class="c-table__cell"><input class="changeStatus" type="checkbox"></td>
-                            <td class="c-table__cell">{{ $count }}</td>
-                            <td class="c-table__cell">{{ date('d-m-Y h:i:s') }}</td>
-                            <td class="c-table__cell">Agent {{ $count }}</td>
-                            <td class="c-table__cell">Customer {{ $count }}</td>
-                            <td class="c-table__cell">Lorem Ipsum is simply dummy text<br/> of the printing and typesetting<br/> industry.</td>
+                            <td class="c-table__cell">{{ $getCall[$i]->id }}</td>
+                            <td class="c-table__cell">{{ date('d-m-Y h:i:s',strtotime($getCall[$i]->date_time)) }}</td>
+                            <td class="c-table__cell">{{ empty($getCall[$i]->agentName) ? 'N/A' : $getCall[$i]->agentName }}</td>
+                            <td class="c-table__cell"></td>
+                            <td class="c-table__cell"></td>
                             <td class="c-table__cell">
                                 @if($i %2 == 0)
                                 Sent
@@ -109,7 +109,7 @@
                             <td class="c-table__cell">
                                 @if($i %2 == 0)
                                 <div class="col u-mb-medium">
-                                    <a class="c-btn c-btn--secondary c-btn--fullwidth" href="#">
+                                    <a class="c-btn c-btn--secondary" href="#">
                                         <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail again</a>
                                 </div>
                                 @else

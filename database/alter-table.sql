@@ -12,3 +12,7 @@ INSERT INTO `system_genrate_no` (`id`, `generated_no`, `created_at`, `updated_at
 ALTER TABLE `invoice` ADD `is_paid` ENUM('Yes','No') NOT NULL DEFAULT 'No' AFTER `mail_send`;
 
 ALTER TABLE `employee` ADD `customer_id` INT NULL AFTER `id`;
+
+CREATE TABLE `officepark`.`calls` ( `id` INT NOT NULL AUTO_INCREMENT , `event` VARCHAR(255) NOT NULL , `uuid` VARCHAR(255) NOT NULL , `kid` INT NOT NULL , `cdr_id` BIGINT NOT NULL , `routing_id` INT NOT NULL , `service` VARCHAR(100) NOT NULL , `ddi` INT NOT NULL , `caller` BIGINT NOT NULL , `destination_number` BIGINT NOT NULL , `duration_in` INT NOT NULL , `duration_out` INT NOT NULL , `successfully` TINYINT NOT NULL , `date_time` DATETIME NOT NULL , `session_id` VARCHAR(255) NOT NULL , `timestamp` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `calls` ADD `created_at` DATETIME NOT NULL AFTER `timestamp`, ADD `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `created_at`;
