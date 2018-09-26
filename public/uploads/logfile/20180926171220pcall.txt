@@ -1,0 +1,13 @@
+event=ringing_outbound
+uuid=aaeb7bee-4b9b-49c4-a0c2-b1b1f802c153
+kid=5721
+cdr_id=269639644
+routing_id=80544
+service=0211-36874190
+ddi=10
+caller=004921136874190
+destination_number=0005721001
+date_time=20180926191215
+session_id=
+timestamp=1537981939
+

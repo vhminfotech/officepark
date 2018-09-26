@@ -1,0 +1,16 @@
+event=hangup
+uuid=c3b6c66e-1106-4f70-8f02-3db963bf6d5a
+kid=5721
+cdr_id=269640213
+routing_id=80544
+service=0211-36874190
+ddi=10
+caller=004921136874190
+destination_number=0005721001
+duration_in=25
+duration_out=21
+successfully=1
+date_time=20180926192038
+session_id=
+timestamp=1537982464
+
