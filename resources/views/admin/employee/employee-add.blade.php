@@ -26,6 +26,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="customer_id">Customer Number</label> 
+                                {{ Form::select('customer_id', $arrOrderInfo , null, array('class' => 'c-select', 'id' => 'is_package')) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="firstName">First Name</label> 
                                 {{ Form::text('firstName', null, array('class' => 'c-input firstName' ,'required')) }}
                                 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">

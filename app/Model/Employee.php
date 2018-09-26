@@ -32,7 +32,7 @@ class Employee extends Model {
 
             $objUser = new Employee();
             $objUser->first_name = $request->input('firstName');
-
+            $objUser->customer_id = $request->input('customer_id');
             $objUser->last_name = $request->input('lastName');
             $objUser->employee_image = $filename;
             $objUser->job_title = $request->input('jobtitle');
@@ -85,6 +85,7 @@ class Employee extends Model {
 
             $objEmpEdit = Employee::find($request->input('empId'));
             $objEmpEdit->first_name = $request->input('firstName');
+            $objEmpEdit->customer_id = $request->input('customer_id');
 
             $objEmpEdit->last_name = $request->input('lastName');
             $objEmpEdit->employee_image = $filename;

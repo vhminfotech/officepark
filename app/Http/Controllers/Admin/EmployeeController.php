@@ -9,6 +9,7 @@ use Route;
 use Illuminate\Http\Request;
 use App\Model\Employee;
 use App\Model\EmployeeDetails;
+use App\Model\OrderInfo;
 use Config;
 
 class EmployeeController extends Controller {
@@ -36,7 +37,11 @@ class EmployeeController extends Controller {
         $data['job_title'] = Config::get('constants.job_title');
         $data['arrTime'] = Config::get('constants.arrTime');
         $data['arrDayName'] = Config::get('constants.arrDayName');
-
+        $objOrderInfo = new OrderInfo();
+        $arrOrderInfo = $objOrderInfo->getCustomerDetails();
+        $arrOrderInfo1[''] = 'Select Customer';
+        $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
+       
         if ($request->isMethod('post')) {
 
             $objEmployee = new Employee();
@@ -72,7 +77,11 @@ class EmployeeController extends Controller {
         $data['job_title'] = Config::get('constants.job_title');
         $data['arrTime'] = Config::get('constants.arrTime');
         $data['arrDayName'] = Config::get('constants.arrDayName');
-
+        $objOrderInfo = new OrderInfo();
+        $arrOrderInfo = $objOrderInfo->getCustomerDetails();
+        $arrOrderInfo1[''] = 'Select Customer';
+        $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
+       
         $objEmployee = new Employee();
         $data['arrEditEmp'] = $objEmployee->geteEmployeeEdit($request->id);
 //        echo '<pre/>';

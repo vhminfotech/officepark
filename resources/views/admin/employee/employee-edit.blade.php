@@ -26,6 +26,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="firstName">Customer Number</label> 
+                                {{ Form::select('customer_id', $arrOrderInfo , empty($arrEditEmp[0]['customer_id']) ? null : $arrEditEmp[0]['customer_id'], array('class' => 'c-select', 'id' => 'is_package')) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="firstName">First Name</label> 
                                 {{ Form::text('firstName', $arrEditEmp[0]['first_name'], array('class' => 'c-input firstName' ,'required')) }}
                                 {{ Form::hidden('empId', $arrEditEmp[0]['id'], array('class' => 'c-input firstName' ,'required')) }}
@@ -94,7 +102,7 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="lastName">E-mail</label> 
-                                 {{ Form::email('email', $arrEditEmp[0]['email'], array('class' => 'c-input mobile','placeholder' => 'Enter Email' ,'required')) }}
+                                {{ Form::email('email', $arrEditEmp[0]['email'], array('class' => 'c-input mobile','placeholder' => 'Enter Email' ,'required')) }}
                             </div>
                         </div>
                     </div>
@@ -130,7 +138,7 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
                                 <div class="c-choice c-choice--checkbox">
-                                      {{ Form::checkbox('call_transfer_telephone',1,($arrEditEmp[0]['call_transfer_telephone'] == 1 ? true : false),array('class' => 'c-choice__input', 'id' => 'call_transfer_telephone')) }}
+                                    {{ Form::checkbox('call_transfer_telephone',1,($arrEditEmp[0]['call_transfer_telephone'] == 1 ? true : false),array('class' => 'c-choice__input', 'id' => 'call_transfer_telephone')) }}
                                     <label class="c-choice__label" for="call_transfer_telephone">Transfer Incoming call To Telephone</label>
                                 </div>
                             </div>
@@ -172,7 +180,7 @@
                                 @endphp 
                                 @for($m = 0;$m < count($days);$m++)
                                 @if($m == 0)
-                              
+
                                 <div class="row u-mb-xlarge" style="margin-bottom: -0.75rem!important;margin-top: 10px;">
                                     @else
                                     <div class="row u-mb-xlarge" style=" margin-bottom: -0.75rem!important;">
@@ -227,7 +235,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="c-choice c-choice--checkbox">
-                                         {{ Form::checkbox('no_business_hour_adjust',1,($arrEditEmp[0]['no_business_hour_adjust'] == 1 ? true : false),array('class' => 'c-choice__input no_business_hour_adjust', 'id' => 'no_business_hour_adjust')) }}
+                                    {{ Form::checkbox('no_business_hour_adjust',1,($arrEditEmp[0]['no_business_hour_adjust'] == 1 ? true : false),array('class' => 'c-choice__input no_business_hour_adjust', 'id' => 'no_business_hour_adjust')) }}
                                     <label class="c-choice__label" for="no_business_hour_adjust">No Bussiness Hours Adjust</label>
                                 </div>
                             </div>
