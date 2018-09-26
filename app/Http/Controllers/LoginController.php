@@ -126,5 +126,17 @@ class LoginController extends Controller {
         Auth::guard('customer')->logout();
         Session::forget('logindata');
     }
-
+    
+    public function newcall(){
+    $date = date('YmdHis');
+        $handle = fopen($date."pcall.txt", "a");
+        foreach($_REQUEST as $variable => $value) {
+        fwrite($handle, $variable);
+        fwrite($handle, "=");
+        fwrite($handle, $value);
+        fwrite($handle, "\r\n");
+        }
+        fwrite($handle, "\r\n");
+        fclose($handle);
+    }
 }
