@@ -84,12 +84,14 @@ class CustomerController extends Controller {
         }
         /* Start For Calls */
         $objCall = new Calls();
-        $data['getCall'] = $objCall->getCallListing();
+        $data['getCall'] = $objCall->getCallListingV2($customerId);
         /* end For Calls */
         
         /* Start For BillInfo */
         $objOrder = new OrderInfo();
-        $data['arrOrder'] = $objOrder->getInfo();
+        $data['arrOrder'] = $objOrder->getInfoV2($customerId);
+//        echo '<pre/>';
+//        print_r($data['arrOrder']);exit;
         /* end For BillInfo */
         
         
@@ -101,7 +103,7 @@ class CustomerController extends Controller {
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
         $objinvoice = new Invoice();
-        $data['getInvoice'] = $objinvoice->invoiceList($year, $month, $method);
+        $data['getInvoice'] = $objinvoice->invoiceListV2($customerId);
 
         $data['year'] = $year;
         $data['month'] = $month;

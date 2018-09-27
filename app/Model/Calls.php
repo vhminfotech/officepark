@@ -44,6 +44,16 @@ class Calls extends Model {
         ]);
         return $result;
     }
+    public function getCallListingV2($customerNo) {
+        $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.id');
+        $sql->where('users.id',$customerNo);
+        $sql->where('users.type','CUSTOMER');
+        $result = $sql->get(['calls.*',
+            'users.name as agentName',
+            'users.inopla_username'
+        ]);
+        return $result;
+    }
 
 }
 

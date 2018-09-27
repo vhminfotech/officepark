@@ -17,7 +17,7 @@ class Invoice extends Model {
     protected $table = 'invoice';
 
     public function invoiceList($year, $month, $method) {
-        $sql = Invoice::select('invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send','invoice.is_paid')->leftjoin('users', 'users.id', '=', 'invoice.customer_id')->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
+        $sql = Invoice::select('invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send', 'invoice.is_paid')->leftjoin('users', 'users.id', '=', 'invoice.customer_id')->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
         if (!empty($year) && empty($month)) {
             $sql->orWhere(function($sql) use($year) {
                         $sql->orWhere(function($sql) use($year) {
@@ -38,6 +38,14 @@ class Invoice extends Model {
                     });
         } if (!empty($method)) {
             $sql->where('order_info.accept', '=', $method);
+        } $result = $sql->get();
+        return $result;
+    }
+
+    public function invoiceListV2($customer_id ) {
+        $sql = Invoice::select('invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send', 'invoice.is_paid')->leftjoin('users', 'users.id', '=', 'invoice.customer_id')->leftjoin('order_info', 'users.id', '=', 'order_info.user_id');
+        if (!empty($customer_id)) {
+            $sql->where('invoice.customer_id', '=', $customer_id);
         } $result = $sql->get();
         return $result;
     }

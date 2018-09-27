@@ -91,15 +91,21 @@ class OrderInfo extends Model {
         return DB::table('order_info')->get()->toArray();
     }
 
+    public function getInfoV2($customerId) {
+        return OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
+                        ->where('order_info.user_id', $customerId)
+                        ->where('users.type', 'CUSTOMER')
+                        ->get(['order_info.*', 'users.name as username', 'users.email as userEmail'
+                                , 'users.inopla_username', 'users.extension_number', 'users.system_genrate_no', 'users.customer_number'])->toArray();
+    }
+
     public function getOrderInfo($orderId) {
 //        return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
         return DB::table('order_info')
-               ->leftjoin('users', 'users.id', '=', 'order_info.user_id')
-               ->leftjoin('service', 'service.id', '=', 'order_info.is_package')
+                        ->leftjoin('users', 'users.id', '=', 'order_info.user_id')
+                        ->leftjoin('service', 'service.id', '=', 'order_info.is_package')
                         ->select('order_info.*', 'users.name as username', 'users.email as userEmail'
-                                , 'users.inopla_username', 'users.extension_number', 
-                                'service.packages_name', 
-                                'users.customer_number')
+                                , 'users.inopla_username', 'users.extension_number', 'service.packages_name', 'users.customer_number')
                         ->Where('order_info.id', $orderId)->get()->toArray();
     }
 
@@ -128,7 +134,7 @@ class OrderInfo extends Model {
     }
 
     public function secretaryEditInfo($request) {
-        
+
         $objSecEdit = OrderInfo::find($request->input('orderId'));
         $objSecEdit->phone_to_reroute = $request->input('phone_to_reroute');
         $objSecEdit->welcome_note = $request->input('welcome_note');
@@ -170,11 +176,11 @@ class OrderInfo extends Model {
     }
 
     public function getPdfData($id) {
-        return  OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
+        return OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
                         ->select('order_info.*', 'users.name as username', 'users.email as userEmail'
                                 , 'users.inopla_username', 'users.extension_number', 'users.system_genrate_no', 'users.customer_number')
                         ->where('order_info.id', $id)->get()->toArray();
-        
+
 //        echo "<pre/>"; print_r($abc); exit();
     }
 
@@ -184,15 +190,16 @@ class OrderInfo extends Model {
                                 , 'users.inopla_username', 'users.extension_number', 'users.system_genrate_no', 'users.customer_number')
                         ->whereNotNull('order_info.user_id')->get()->toArray();
     }
-    
+
     public function getCustomerDetails() {
         $result = OrderInfo::join('users', 'users.id', '=', 'order_info.user_id')
                 ->select(DB::raw('CONCAT_WS(" - ",users.customer_number, order_info.company_name) AS cust_name_num'), 'order_info.user_id')
-                ->pluck('cust_name_num','order_info.user_id')
+                ->pluck('cust_name_num', 'order_info.user_id')
                 ->toArray();
-        if(empty($result)){
-            $result = array(''=> 'No Customer Found');
+        if (empty($result)) {
+            $result = array('' => 'No Customer Found');
         }
         return $result;
     }
+
 }
