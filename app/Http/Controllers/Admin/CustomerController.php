@@ -110,8 +110,8 @@ class CustomerController extends Controller {
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.editInit()');
-//        return view('admin.customer.customer-edit', $data);
-        return view('admin.customer.customer-edit1', $data);
+        return view('admin.customer.customer-edit', $data);
+//        return view('admin.customer.customer-edit1', $data);
     }
 
     public function customerDelete($postData) {
