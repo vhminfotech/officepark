@@ -177,11 +177,18 @@ class Users extends Model {
             $objUser->updated_at = date('Y-m-d H:i:s');
             $userId = $objUser->save();
 //            $userId = 61;
+            $explodeArr = explode('-', $systemGenrateNo[0]->generated_no);
+            if (strlen($explodeArr[2]) < 4) {
+                $systemNo = $explodeArr[0] . '-' . $explodeArr[1] . '-' . str_pad($explodeArr[2] + 1, 3, "0", STR_PAD_LEFT);
+            } else {
+                $systemNo = $explodeArr[0] . '-' . $explodeArr[1] . '-' . $explodeArr[2] + 1;
+            }
 
             DB::table('system_genrate_no')
                     ->where('id', 1)
-                    ->update(['generated_no' => $systemGenrateNo[0]->generated_no + 1]);
-
+                    ->update(['generated_no' => $systemNo]);
+//                    ->update(['generated_no' => $systemGenrateNo[0]->generated_no + 1]);
+         
             DB::table('customer_no')
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);
@@ -189,36 +196,36 @@ class Users extends Model {
             $objOrderInfo = OrderInfo::find($postData->id);
             $objOrderInfo->user_id = $objUser->id;
             $objOrderInfo->save();
-            
+
             $objOrder = new OrderInfo();
             $data['arrOrder'] = $objOrder->getPdfData($postData->id);
-            
+
             $objCategory = new Category();
             $objService = new Service();
             $serviceId = $data['arrOrder'][0]['is_package'];
             $data['allCategory'] = $objCategory->getCategory();
             $data['getService'] = $objService->getServices($serviceId);
-            
+
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
-            $pdf->save(public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'));
+            $pdf->save(public_path('pdf/OfficePark-Rufumleitung-OP-211-' . $result[0]->last_number . '.pdf'));
 
 
             $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
 
-            $pdf->save(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'));
-            
+            $pdf->save(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-' . $result[0]->last_number . '.pdf'));
+
             $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
             $pdf->save(public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf'));
 
             $mailData['subject'] = 'Interest in wanted listing';
             $mailData['template'] = 'emails.confirm-order';
             $mailData['attachment'] = array(
-                public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-'. $result[0]->last_number.'.pdf'), 
-                public_path('pdf/OfficePark-Rufumleitung-OP-211-'.$result[0]->last_number.'.pdf'),
+                public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-' . $result[0]->last_number . '.pdf'),
+                public_path('pdf/OfficePark-Rufumleitung-OP-211-' . $result[0]->last_number . '.pdf'),
                 public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf')
-                );
+            );
 
 //            $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
             $mailData['mailto'] = $postData['email'];
@@ -287,20 +294,19 @@ class Users extends Model {
     }
 
     public function getCustomerInfo($id) {
-        return Users::select('users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package' )
+        return Users::select('users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package')
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                         ->where('users.id', '=', $id)->first()->toArray();
     }
-    
+
     public function getCustomer($cutomerNum = NULL) {
-        if($cutomerNum){
-            return Users::select('users.id as customer_id','order_info.company_name', 'order_info.address')
-                        ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
-                        ->where('users.customer_number', '=', $cutomerNum)->first()->toArray();
-        }else{
+        if ($cutomerNum) {
+            return Users::select('users.id as customer_id', 'order_info.company_name', 'order_info.address')
+                            ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                            ->where('users.customer_number', '=', $cutomerNum)->first()->toArray();
+        } else {
             return Users::where('type', 'CUSTOMER')->get();
         }
-       
     }
 
 }

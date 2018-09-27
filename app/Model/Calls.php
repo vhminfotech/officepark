@@ -28,21 +28,23 @@ class Calls extends Model {
         $objCalls->duration_in = $postData['duration_in'];
         $objCalls->duration_out = $postData['duration_out'];
         $objCalls->successfully = $postData['successfully'];
-        $objCalls->date_time = date('Y-m-d H:i:s',  strtotime($postData['date_time']));
-        $objCalls->timestamp = date('Y-m-d H:i:s',strtotime($postData['timestamp']));
+        $objCalls->date_time = date('Y-m-d H:i:s', strtotime($postData['date_time']));
+        $objCalls->timestamp = date('Y-m-d H:i:s', strtotime($postData['timestamp']));
         $objCalls->created_at = date('Y-m-d H:i:s');
         $objCalls->updated_at = date('Y-m-d H:i:s');
         $objCalls->save();
         return $objCalls->id;
     }
 
-        public function getCallListing() {
-        return Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.id')
-                        ->get(['calls.*',
-                            'users.name as agentName',
-                            'users.inopla_username'
-                            ]);
+    public function getCallListing() {
+        $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.id');
+        $result = $sql->get(['calls.*',
+            'users.name as agentName',
+            'users.inopla_username'
+        ]);
+        return $result;
     }
+
 }
 
 ?>

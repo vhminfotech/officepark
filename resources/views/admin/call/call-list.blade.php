@@ -17,7 +17,7 @@
                                 <label>Filter</label>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        <select class="c-select form-control selectCustomer" id="select2">
+                                        <select class="c-select form-control filter selectCustomer" id="select2">
                                             <option value=''>Select Customer</option>
                                             @for($i = 0; $i < count($getCustomer);$i++)
                                             <option value="{{ $getCustomer[$i]->customer_number }}">{{ $getCustomer[$i]->name }}</option>
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        <select class="c-select form-control selectAgent" id="selectAgent">
+                                        <select class="c-select form-control filter selectAgent" id="selectAgent">
                                             <option value=''>Select Agent</option>
                                             @for($i = 0; $i < count($getCustomer);$i++)
                                             <option value="{{ $getCustomer[$i]->customer_number }}">{{ $getCustomer[$i]->name }}</option>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        {{ Form::text('firstName', null, array('class' => 'c-input firstName' ,'placeholder' => 'Enter value' ,'required')) }}
+                                        {{ Form::text('searchString', null, array('class' => 'c-input filter searchString' ,'id'=>'searchString','placeholder' => 'Enter value' ,'required')) }}
                                     </div>
                                 </div>
                             </div>
