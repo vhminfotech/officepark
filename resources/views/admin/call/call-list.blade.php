@@ -9,7 +9,7 @@
                 <table class="c-table table-responsive" id="datatable">
 
                     <caption class="c-table__title">
-                        Invoice List
+                        Call List
                         <br/>
 
                         <div class="c-stage__panel u-p-medium">

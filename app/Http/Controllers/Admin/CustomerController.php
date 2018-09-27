@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Model\Customer;
 use App\Model\Users;
+use App\Model\Invoice;
+use App\Model\Calls;
+use App\Model\OrderInfo;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
@@ -23,7 +26,7 @@ class CustomerController extends Controller {
     public function getCustomerData() {
         $objCustomer = new Users();
         $customerList = $objCustomer->getCustomerList('CUSTOMER');
-        
+
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
@@ -79,18 +82,40 @@ class CustomerController extends Controller {
             echo json_encode($return);
             exit;
         }
-        $objUsers = new Users();
-        $data['arrCustomer'] = $objUsers->getCustomerInfo($customerId);
+        /* Start For Calls */
+        $objCall = new Calls();
+        $data['getCall'] = $objCall->getCallListing();
+        /* end For Calls */
+        
+        /* Start For BillInfo */
+        $objOrder = new OrderInfo();
+        $data['arrOrder'] = $objOrder->getInfo();
+        /* end For BillInfo */
+        
+        
+        $objUser = new Users();
+        $data['arrCustomer'] = $objUser->getCustomerInfo($customerId);
+        $data['getCustomer'] = $objUser->getCustomer(null);
 
+        $year = (empty($request->get('year'))) ? '' : $request->get('year');
+        $month = (empty($request->get('month'))) ? '' : $request->get('month');
+        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
+        $objinvoice = new Invoice();
+        $data['getInvoice'] = $objinvoice->invoiceList($year, $month, $method);
+
+        $data['year'] = $year;
+        $data['month'] = $month;
+        $data['method'] = $method;
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/customer.js');
         $data['funinit'] = array('Customer.editInit()');
-        return view('admin.customer.customer-edit', $data);
+//        return view('admin.customer.customer-edit', $data);
+        return view('admin.customer.customer-edit1', $data);
     }
 
     public function customerDelete($postData) {
-       
+
         $result = Users::find($postData['id'])->delete();
         if ($result) {
             $return['status'] = 'success';
@@ -106,10 +131,10 @@ class CustomerController extends Controller {
 
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
-       
+
         switch ($action) {
             case 'deleteCustomer':
-                
+
                 $result = $this->customerDelete($request->input('data'));
                 break;
         }
