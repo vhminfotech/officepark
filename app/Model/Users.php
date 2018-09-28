@@ -178,12 +178,7 @@ class Users extends Model {
             $userId = $objUser->save();
 //            $userId = 61;
             $explodeArr = explode('-', $systemGenrateNo[0]->generated_no);
-            if (strlen($explodeArr[2]) < 4) {
-                $systemNo = $explodeArr[0] . '-' . $explodeArr[1] . '-' . str_pad($explodeArr[2] + 1, 3, "0", STR_PAD_LEFT);
-            } else {
-                $systemNo = $explodeArr[0] . '-' . $explodeArr[1] . '-' . $explodeArr[2] + 1;
-            }
-
+            $systemNo = $explodeArr[0] . '-' . $explodeArr[1] . '-' . ($explodeArr[2] + 1);
             DB::table('system_genrate_no')
                     ->where('id', 1)
                     ->update(['generated_no' => $systemNo]);
