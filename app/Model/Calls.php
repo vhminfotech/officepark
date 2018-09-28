@@ -15,6 +15,17 @@ class Calls extends Model {
     public function addCalls($postData) {
 //        print_r($postData);
 //        exit;
+        $date = date('YmdHis');
+        $handle = fopen($date . "pcall.txt", "a");
+        foreach ($postData as $variable => $value) {
+            fwrite($handle, $variable);
+            fwrite($handle, "=");
+            fwrite($handle, $value);
+            fwrite($handle, "\r\n");
+        }
+        fwrite($handle, "\r\n");
+        fclose($handle);
+        
         $objCalls = new Calls();
         $objCalls->event = $postData['event'];
         $objCalls->uuid = $postData['uuid'];
