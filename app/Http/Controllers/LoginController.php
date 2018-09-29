@@ -153,13 +153,13 @@ class LoginController extends Controller {
         }
         fwrite($handle, "\r\n");
         fclose($handle);
-        
+        $dd = $_REQUEST;
         $objCall = new Calls();
-        $result = $objCall->addCalls($_REQUEST);
+        $result = $objCall->addCalls($dd);
         $return['status'] = 'success';
         $return['message'] = 'Call added successfully.';
-        echo json_encode($return);
-        exit;
+//        echo json_encode($return);
+//        exit;
     }
 
 }
