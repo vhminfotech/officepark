@@ -15,19 +15,7 @@ class Calls extends Model {
     public function addCalls($postData) {
 //        print_r($postData);
 //        exit;
-        $date = date('YmdHis');
-        $handle = fopen($date . "pcall.txt", "a");
-        foreach ($postData as $variable => $value) {
-            fwrite($handle, $variable);
-            fwrite($handle, "=");
-            fwrite($handle, $value);
-            fwrite($handle, "\r\n");
-        }
-        fwrite($handle, "\r\n");
-         fwrite($handle, "ddd");
-         fwrite($handle, $postData);
-         fwrite($handle, "ddxxd");
-        fclose($handle);
+        
         
         $objCalls = new Calls();
         $objCalls->event = $postData['event'];
@@ -47,7 +35,23 @@ class Calls extends Model {
         $objCalls->created_at = date('Y-m-d H:i:s');
         $objCalls->updated_at = date('Y-m-d H:i:s');
         $objCalls->save();
+        
+        $date = date('YmdHis');
+        $handle = fopen($date . "pcall.txt", "a");
+        foreach ($postData as $variable => $value) {
+            fwrite($handle, $variable);
+            fwrite($handle, "=");
+            fwrite($handle, $value);
+            fwrite($handle, "\r\n");
+        }
+        fwrite($handle, "\r\n");
+         fwrite($handle, "ddd");
+         fwrite($handle, $postData);
+         fwrite($handle, "ddxxd");
+        fclose($handle);
+        
         return $objCalls->id;
+        
     }
 
     public function getCallListing() {
