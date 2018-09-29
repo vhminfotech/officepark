@@ -155,7 +155,7 @@ class LoginController extends Controller {
         fclose($handle);
         
         $objCall = new Calls();
-        $result = $objCall->addCalls($request->input());
+        $result = $objCall->addCalls($_REQUEST);
         $return['status'] = 'success';
         $return['message'] = 'Call added successfully.';
         echo json_encode($return);
