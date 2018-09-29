@@ -24,6 +24,8 @@ class Calls extends Model {
             fwrite($handle, "\r\n");
         }
         fwrite($handle, "\r\n");
+        
+         fwrite($handle, $postData);
         fclose($handle);
         
         $objCalls = new Calls();
