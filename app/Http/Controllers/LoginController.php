@@ -142,6 +142,18 @@ class LoginController extends Controller {
     }
 
     public function newcall(Request $request) {
+        
+        $date = date('YmdHis');
+        $handle = fopen($date . "pcallCONTROLLLR.txt", "a");
+        foreach ($_REQUEST as $variable => $value) {
+            fwrite($handle, $variable);
+            fwrite($handle, "=");
+            fwrite($handle, $value);
+            fwrite($handle, "\r\n");
+        }
+        fwrite($handle, "\r\n");
+        fclose($handle);
+        
         $objCall = new Calls();
         $result = $objCall->addCalls($request->input());
         $return['status'] = 'success';
