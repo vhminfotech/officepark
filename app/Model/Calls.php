@@ -37,7 +37,7 @@ class Calls extends Model {
     }
 
     public function getCallListing() {
-        $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.id');
+        $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.destination_number');
         $result = $sql->get(['calls.*',
             'users.name as agentName',
             'users.inopla_username'
@@ -45,7 +45,7 @@ class Calls extends Model {
         return $result;
     }
     public function getCallListingV2($customerNo) {
-        $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.id');
+        $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.destination_number');
         $sql->where('users.id',$customerNo);
         $sql->where('users.type','CUSTOMER');
         $result = $sql->get(['calls.*',
