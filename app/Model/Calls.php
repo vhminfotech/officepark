@@ -13,43 +13,25 @@ class Calls extends Model {
     protected $table = 'calls';
 
     public function addCalls($postData) {
-//        print_r($postData);
-//        exit;
-        
-        
+      
         $objCalls = new Calls();
-        $objCalls->event = $postData['event'];
-        $objCalls->uuid = $postData['uuid'];
-        $objCalls->kid = $postData['kid'];
-        $objCalls->cdr_id = $postData['cdr_id'];
-        $objCalls->routing_id = $postData['routing_id'];
-        $objCalls->service = $postData['service'];
-        $objCalls->ddi = $postData['ddi'];
-        $objCalls->caller = $postData['caller'];
-        $objCalls->destination_number = $postData['destination_number'];
-        $objCalls->duration_in = $postData['duration_in'];
-        $objCalls->duration_out = $postData['duration_out'];
-        $objCalls->successfully = $postData['successfully'];
-        $objCalls->date_time = date('Y-m-d H:i:s', strtotime($postData['date_time']));
-        $objCalls->timestamp = date('Y-m-d H:i:s', strtotime($postData['timestamp']));
+        $objCalls->event = (isset($postData['event']))?$postData['event']:'';
+        $objCalls->uuid = (isset($postData['uuid']))?$postData['uuid']:'';
+        $objCalls->kid = (isset($postData['kid']))?$postData['kid']:'';
+        $objCalls->cdr_id = (isset($postData['cdr_id']))?$postData['cdr_id']:'';
+        $objCalls->routing_id = (isset($postData['routing_id']))?$postData['routing_id']:'';
+        $objCalls->service = (isset($postData['service']))?$postData['service']:'';
+        $objCalls->ddi = (isset($postData['ddi']))?$postData['ddi']:'';
+        $objCalls->caller = (isset($postData['caller']))?$postData['caller']:'';
+        $objCalls->destination_number = (isset($postData['destination_number']))?$postData['destination_number']:'';
+        $objCalls->duration_in = (isset($postData['duration_in']))?$postData['duration_in']:'';
+        $objCalls->duration_out = (isset($postData['duration_out']))?$postData['duration_out']:'';
+        $objCalls->successfully = (isset($postData['successfully']))?$postData['successfully']:'';
+        $objCalls->date_time = (isset($postData['date_time']))?date('Y-m-d H:i:s', strtotime($postData['date_time'])):'';
+        $objCalls->timestamp = (isset($postData['timestamp']))?date('Y-m-d H:i:s', strtotime($postData['timestamp'])):'';
         $objCalls->created_at = date('Y-m-d H:i:s');
         $objCalls->updated_at = date('Y-m-d H:i:s');
         $objCalls->save();
-        
-        $date = date('YmdHis');
-        $handle = fopen($date . "pcall.txt", "a");
-        foreach ($postData as $variable => $value) {
-            fwrite($handle, $variable);
-            fwrite($handle, "=");
-            fwrite($handle, $value);
-            fwrite($handle, "\r\n");
-        }
-        fwrite($handle, "\r\n");
-         fwrite($handle, "ddd");
-         fwrite($handle, $postData);
-         fwrite($handle, "ddxxd");
-        fclose($handle);
-        
         return $objCalls->id;
         
     }
