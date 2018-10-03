@@ -119,12 +119,10 @@
                             <tr> <td>Münsterstraße 330 </td> </tr>
                             <tr> <td>Gebäude B</td></tr> 
                             <tr> <td>40470 Düsseldorf</td></tr> 
-                            <tr> <td>Telefon: +49 (0) 211 368 74 190</td></tr> 
+                           <tr> <td>Telefon: +49 (0) 211 368 74 190</td></tr> 
                             <tr> <td>Telefax: +49 (0) 211 368 74 190 01</td></tr> 
                             <tr> <td>Web:    www.officepark.group</td></tr> 
                             <tr> <td>E-Mail:  info@officepark.group</td></tr> 
-                            <tr> <td>  Gesellschafter</td> </tr>
-                            <tr> <td>  Mustafa Basun</td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
                             <tr> <td>Service-/ Bürozeiten: </td> </tr>
@@ -132,7 +130,7 @@
                             <tr> <td>09:00 - 19:00 Uhr</td></tr> 
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>Düsseldorf, den 22.05.2018 </td> </tr>
+                            <tr> <td>Düsseldorf, den {{ date('d.m.y') }} </td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
                             <tr> <td>Finanzamt </td> </tr>
@@ -140,6 +138,23 @@
                             <tr> <td>Steuernummer: 105/5902/4492 </td> </tr>
                             <tr> <td>Ust-IdNr.: DE317564846 </td> </tr>
                         </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp;</td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        
                     </td>
                 </tr>
                 <tr>
@@ -163,7 +178,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 1 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -277,7 +292,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 2 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -377,7 +392,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 3 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -482,7 +497,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 4 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -611,7 +626,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 5 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -732,7 +747,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 6 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -842,7 +857,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 7 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -960,7 +975,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 8 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -1074,7 +1089,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 9 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>
@@ -1199,7 +1214,7 @@
                                             </td>
                                             <td>
                                                 <table style="font-size: 12px; line-height: 80%;color: #45484d;">
-                                                    <tr><td>Seite 4 von 4</td></tr>
+                                                    <tr><td>Seite 10 von 10</td></tr>
                                                     <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
                                                 </table>
                                             </td>

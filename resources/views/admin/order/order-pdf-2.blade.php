@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-<meta charset="utf-8">
+        <meta charset="utf-8">
         <title>Office Park</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
             <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600" rel="stylesheet">
@@ -57,8 +57,18 @@
                 font-weight: normal;
                 font-size: 8px;
                 color: #000;
-                margin-top: 3px;
+                margin-top: 0px;
             }
+            table.boxtable{
+/*                border: 1px solid #000;
+                height: 15px;
+                width: 25px;*/
+            }
+            table.boxtable { border-collapse: collapse; }
+            table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;font-size: 10px;line-height: 10px; }
+            table.boxtable1 td { border: 1px solid gray;font-weight: bold;font-size: 10px;padding: 5px;line-height: 10px;}
+             table.boxtable1 { border-collapse: collapse; }
+     
         </style>
     </head>
     <body style="background-color: #fff;">
@@ -175,8 +185,8 @@
                             <tr> <td>Telefax: +49 (0) 211 368 74 190 01</td></tr> 
                             <tr> <td>Web:    www.officepark.group</td></tr> 
                             <tr> <td>E-Mail:  info@officepark.group</td></tr> 
-                            <tr> <td>  Gesellschafter</td> </tr>
-                            <tr> <td>  Mustafa Basun</td> </tr>
+<!--                            <tr> <td>  Gesellschafter</td> </tr>
+                            <tr> <td>  Mustafa Basun</td> </tr>-->
 
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
@@ -186,7 +196,7 @@
 
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
-                            <tr> <td>Düsseldorf, den 22.05.2018 </td> </tr>
+                            <tr> <td>Düsseldorf, den {{ date('d.m.y') }} </td> </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">  
                             <tr> <td>Finanzamt </td> </tr>
@@ -210,8 +220,20 @@
                             <tr> <td>&nbsp; </td> </tr>
                             <tr> <td>&nbsp; </td> </tr>
                         </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
                         
-                       
+                        
                     </td>
                 </tr>
                 <tr><td colspan="3">&nbsp;</td></tr>
@@ -253,7 +275,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ (empty($arrOrder[0]['generated_no']) ? 'N/A' : '+'.$arrOrder[0]['generated_no']) }}</span></td>
+                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ (empty($arrOrder[0]['system_genrate_no']) ? 'N/A' : $arrOrder[0]['system_genrate_no']) }}</span></td>
 <!--                    <td colspan="3"><span>Ihre Umleitungsnummer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+49 211 368 741 9004</span></td>-->
                 </tr>
 
@@ -279,18 +301,18 @@
                     <td colspan="3"><h3>Office Park - Bankverbindung </h3></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBAN: {{ wordwrap($arrOrder[0]['account_iban'], 4, ' ', true) }}</span></td>
+                    <td colspan="3"><span>IBAN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ wordwrap($arrOrder[0]['account_iban'], 4, ' ', true) }}</span></td>
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>BIC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BIC/Swift: {{ $arrOrder[0]['account_bic'] }}</span></td>
+                    <td colspan="3"><span>BIC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $arrOrder[0]['account_bic'] }}</span></td>
                 </tr>
 
                 <tr>
                     <td colspan="3"><span>Mandatsreferenz:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['customer_number'] }}</span></td>
                 </tr>
             </table>  
-            <table width="100%" style="margin-bottom: 70px;">
+            <table width="100%" style="margin-bottom: 10px;">
                 <tr>
                     <td colspan="3"><h3>Zugangsdaten</h3></td>
                 </tr>
@@ -304,14 +326,14 @@
             </table>
             
             @if($arrOrder[0]['accept'] != 'uber') 
-            <table style="margin-bottom: 80px;">
+            <table style="margin-bottom: 10px;">
                 <tr>
                     <td colspan="3">
                         <div style="border:1px solid #000;padding: 5px;">nur bei Teilnahme am Lastschriftverfahren:<br/>
                             <span style="font-size: 12px;">
                                 Ich ermächtige OFFICE PARK, Zahlungen von meinem Konto mittels Lastschrift einzuziehen.
                                 Zugleich weise ich mein Kreditinstitut an, die von OFFICE PARK auf mein Konto gezogenen Lastschriften
-                                einzulösen. Im Falle einer Rücklastschrift mangels Deckung wird eine Gebühr von 10,- € netto fällig.
+                                einzulösen. Im Falle einer Rücklastschrift mangels Deckung wird eine Gebühr von 10,- <i class="fa fa-eur euroicone" aria-hidden="true"></i> netto fällig.
                                 Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des
                                 belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
                                 Die Erstlastschrift erfolgt nach 5 Tagen, Folgelastschriften nach 2 Tagen.
@@ -358,24 +380,25 @@
 
             
           @if($arrOrder[0]['accept'] != 'uber') 
-          <div class="page-break"></div>
+          <!--<div class="page-break"></div>-->
             <table width="100%">
                 <tr>
-                     <td style="text-align: right; height: 30px;" colspan="3">
-                        <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
+                    
+                     <td colspan="3">
+                        <img style="float: right; " src="{{  asset('img/officepark-logo-footr.jpg')  }}">
                     </td>
-
+                    
                 </tr>
                 <tr>
-                    <td colspan="3" style="border-bottom: 1px solid #ccc;width: 100%;">
+                    <td colspan="3" style="margin-bottom: 10px;border-bottom: 1px solid #ccc;width: 100%;">
                         <h4 style="margin: 0px;">SEPA-Lastschriftmandat</h4>
                         <p style="margin: 0px;font-size: 12px;">Office Park GbR</p>                          
                         <span style="margin: 0px;font-size: 10px;">Münsterstr 330, Gebäude B | 40470 Düsseldorf | Deutschland</span>                          
                     </td>
                 </tr>
-                <tr>
+<!--                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td colspan="1">
                         <table class="boxtable1">
@@ -396,43 +419,45 @@
                         <table class="boxtable1">
                             <tr>
                                 <td>X</td>
-                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Zahlungsart:</p>
                                 <p class="simpletext" style="font-size: 10px;margin: 0px;">Wiederkehrende Zahlung</p>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Zahlungsart:</p>
+                                
                             </tr>
                         </table>
                     </td>
                     <td colspan="1">
                         <table class="boxtable1">
                             <tr>
-                                <td>X</td>
+                                <td>&nbsp;</td>
+                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Einmalige Zahlung</p>
                                 <p class="simpletext" style="font-size: 10px;margin: 0px;">Zahlungsart:</p>
-                                <p class="simpletext" style="font-size: 10px;margin: 0px;">Wiederkehrende Zahlung</p>
+                                
                             </tr>
                         </table>
                     </td>
                    
                 </tr>
-                <tr>
+<!--                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td colspan="3">
-                        <h4 style="margin: 0px;font-size: 13px;">Office Park GbR,</h4>
-                        <h4 style="margin: 0px;font-size: 13px;"> Münsterstraße 330, Gebäude B</h4>
-                        <h4 style="margin: 0px;font-size: 13px;"> 40470 Düsseldorf</h4>
-                        <h4 style="margin: 0px;font-size: 13px;"> Deutschland</h4>
+                        <h4 style="margin: 0px;font-size: 10px;">Office Park GbR,</h4>
+                        <h4 style="margin: 0px;font-size: 10px;"> Münsterstraße 330, Gebäude B</h4>
+                        <h4 style="margin: 0px;font-size: 10px;"> 40470 Düsseldorf</h4>
+                        <h4 style="margin: 0px;font-size: 10px;"> Deutschland</h4>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
-                <tr>
-                    <td style="border-bottom: 1px solid #000;" colspan="3"><span>&nbsp;</span></td>
-                </tr>
+<!--                <tr>
+                    <td style="margin: 0px;border-bottom: 1px solid #000;" colspan="3"><span>&nbsp;</span></td>
+                </tr>-->
                 
-                <tr>
+<!--                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td colspan="3">
                         <table class="boxtable">
@@ -451,9 +476,9 @@
                     </td>
                 </tr>
                 
-                <tr>
+<!--                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
-                </tr>
+                </tr>-->
                  
                 <tr>
                     <td colspan="3">
@@ -476,9 +501,9 @@
                 <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
                 </tr>
-                <tr>
+<!--                <tr>
                     <td colspan="3"><span>&nbsp;</span></td>
-                </tr>
+                </tr>-->
                 
                 <tr>
                     <td colspan="3">
@@ -604,7 +629,7 @@
                         </table>
                     </td>
                 </tr>
-                <tr><td colspan="3">&nbsp;</td></tr>
+                <!--<tr><td colspan="3">&nbsp;</td></tr>-->
                 <tr>
                     <td colspan="3">
                         <table width='100%'>
@@ -619,7 +644,7 @@
                         </table>
                     </td>
                </tr>
-               <tr><td colspan="3">&nbsp;</td></tr>
+               <!--<tr><td colspan="3">&nbsp;</td></tr>-->
                <tr>
                    <td colspan="3">
                        <table width='100%'>
@@ -672,7 +697,11 @@
             </table>
           
             @endif
-            <div class="page-break"></div>
+             
+            @if($arrOrder[0]['accept'] == 'uber') 
+             <div class="page-break"></div>
+            @endif
+            
             <table width='100%'>
                 <tr>
                     <td colspan="2">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
@@ -686,7 +715,7 @@
             <br>
             <table width='100%'>
                 <div style="width:700px;height:auto;border:1px solid gray;">
-                    <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; line-height: 20%;margin-right: 30px !important;">business.call</p>
+                    <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; margin-right: 30px !important;">business.call</p>
                     <br>
                     <br>
                     <br>
@@ -696,7 +725,7 @@
                     @endphp
                     @for($j = 0; $j < count($storeAyy);$j++)
                     <span style="margin-left: 10px;">{{  $storeAyy[$j]['title'] }}</span>
-                    <p style="float: right; line-height: 20%;margin-right: 30px !important;"> {{  number_format($storeAyy[$j]['total'],2) }} €</p>
+                    <p style="float: right; margin-right: 30px !important;"> {{  number_format($storeAyy[$j]['total'],2) }} <i class="fa fa-eur euroicone" aria-hidden="true"></i></p>
                     <hr>
                    @endfor
                 </div>
