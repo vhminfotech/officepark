@@ -139,7 +139,62 @@
     <input class="c-input orderId" value="{{ $arrOrder[0]->id }}" id="orderId" type="hidden" name='orderId'>
     <input class="c-input _token" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
+            <div class="c-card c-card--responsive u-mb-medium">
+                <div class="c-card__header c-card__header--transparent o-line">
+                    <h5 class="c-card__title">Payment information</h5>
+                    <a class="c-card__meta text-danger red edit3" data-id="3" href="javascript:;">Edit</a>
+                </div>
+                <form class="paymentInfo" name="paymentInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="paymentInfo">
+                    <table class="u-border-zero col-lg-12">
+                        <tbody>
+                            <tr class="c-table__row u-border-top-zero">
+                                <td class="c-table__cell">Account Owner:</td>
+                                <td class="c-table__cell ">
+                                    <span class="u-text-bold html3">{{ $arrOrder[0]->account_name }}</span>
+                                    <span class="u-text-bold data3"  style="display: none;"><input class="c-input account_name" value="{{ $arrOrder[0]->account_name }}" id="account_name" name='account_name'></span>
+                                </td>
+                            </tr>
+
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">IBAN:</td>
+                                <td class="c-table__cell">
+                                    <span class="u-text-bold html3">{{ $arrOrder[0]->account_iban }}</span>
+                                    <input style="display: none;" class="c-input data3 account_iban" value="{{ $arrOrder[0]->account_iban }}" id="account_iban" name='account_iban'>
+                                </td>
+                            </tr>
+
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">BIC:</td>
+                                <td class="c-table__cell ">
+                                    <span class="u-text-bold html3">{{ $arrOrder[0]->account_bic }}</span>
+                                    <input  style="display: none;" class="c-input data3 account_bic" value="{{ $arrOrder[0]->account_bic }}" id="account_bic" name='account_bic'>
+                                </td>
+                            </tr>
+                            <tr class="c-table__row">
+                                <td class="c-table__cell">SEPA:</td>
+                                <td class="c-table__cell ">
+                                    <span class="u-text-bold html3">{{ ($arrOrder[0]->accept == 'uber' ? 'Transfer' : 'Sepa')   }}</span>
+                                    <input  style="display: none;" class="c-input data3 sepa" value="{{ $arrOrder[0]->accept }}" id="sepa" name='sepa'>
+                                </td>
+                            </tr>
+                            <tr class="c-table__row data3" style="display: none;">
+                                <td class="c-table__cell">
+                                    <div class="col u-mb-medium">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit3" value="Edit">
+                                    </div>
+                                </td>
+                                <td class="c-table__cell">
+                                    <div class="col u-mb-medium">
+                                        <input type="button" class="c-btn c-btn--info c-btn--fullwidth cancel3 canceltn" data-id="3" value="Cancel">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title">Company Info</h5>
@@ -188,64 +243,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
-            <div class="c-card c-card--responsive u-mb-medium">
-                <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title">Payment information</h5>
-                    <a class="c-card__meta text-danger red edit3" data-id="3" href="javascript:;">Edit</a>
-                </div>
-                <form class="paymentInfo" name="paymentInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="paymentInfo">
-                    <table class="u-border-zero col-lg-12">
-                        <tbody>
-                            <tr class="c-table__row u-border-top-zero">
-                                <td class="c-table__cell">Account Owner:</td>
-                                <td class="c-table__cell ">
-                                    <span class="u-text-bold html3">{{ $arrOrder[0]->account_name }}</span>
-                                    <span class="u-text-bold data3"  style="display: none;"><input class="c-input account_name" value="{{ $arrOrder[0]->account_name }}" id="account_name" name='account_name'></span>
-                                </td>
-                            </tr>
-
-                            <tr class="c-table__row">
-                                <td class="c-table__cell">IBAN:</td>
-                                <td class="c-table__cell">
-                                    <span class="u-text-bold html3">{{ $arrOrder[0]->account_iban }}</span>
-                                    <input style="display: none;" class="c-input data3 account_iban" value="{{ $arrOrder[0]->account_iban }}" id="account_iban" name='account_iban'>
-                                </td>
-                            </tr>
-
-                            <tr class="c-table__row">
-                                <td class="c-table__cell">BIC:</td>
-                                <td class="c-table__cell ">
-                                    <span class="u-text-bold html3">{{ $arrOrder[0]->account_bic }}</span>
-                                    <input  style="display: none;" class="c-input data3 account_bic" value="{{ $arrOrder[0]->account_bic }}" id="account_bic" name='account_bic'>
-                                </td>
-                            </tr>
-                            <tr class="c-table__row">
-                                <td class="c-table__cell">SEPA:</td>
-                                <td class="c-table__cell ">
-                                    <span class="u-text-bold html3">{{ $arrOrder[0]->accept }}</span>
-                                    <input  style="display: none;" class="c-input data3 sepa" value="{{ $arrOrder[0]->accept }}" id="sepa" name='sepa'>
-                                </td>
-                            </tr>
-                            <tr class="c-table__row data3" style="display: none;">
-                                <td class="c-table__cell">
-                                    <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit3" value="Edit">
-                                    </div>
-                                </td>
-                                <td class="c-table__cell">
-                                    <div class="col u-mb-medium">
-                                        <input type="button" class="c-btn c-btn--info c-btn--fullwidth cancel3 canceltn" data-id="3" value="Cancel">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title">Secretary Information</h5>
@@ -335,8 +333,13 @@
                             <tr class="c-table__row">
                                 <td class="c-table__cell">Forward Message</td>
                                 <td class="c-table__cell ">
-                                    <span class="u-text-bold html4">{{ $arrOrder[0]->unreach_note }}</span>
-                                    <input  style="display: none;" class="c-input data4 forward_message" value="{{ $arrOrder[0]->unreach_note }}" id="forward_message" name='forward_message'>
+                                    <span class="u-text-bold html4">{{ (!array_key_exists($arrOrder[0]->unreach_note, $unreach_note) ? '' : $unreach_note[$arrOrder[0]->unreach_note]) }}</span>
+                                    <input  style="display: none;" class="" value="{{ $arrOrder[0]->unreach_note }}" id="forward_message-" name='forward_message-'>
+                                    <select id="forward_message" name='forward_message' style="display: none;" required="required" class="c-input data4 forward_message">
+                                        @foreach ($unreach_note as $indexkeys=>$vals)
+                                        <option value="{{$indexkeys}}" {{ ($unreach_note[$arrOrder[0]->unreach_note] == $vals ? 'selected="selected"' : '') }}>{{$vals}}</option>
+                                        @endforeach
+                                    </select>
                                 </td>
                             </tr>
                             <tr class="c-table__row data4" style="display: none;">
@@ -357,6 +360,7 @@
             </div>
         </div>
     </div>
+ 
     
     @if($arrOrder[0]->user_id == "")
     <div class="row">

@@ -99,8 +99,8 @@ var Order = function() {
                 var data = {
                     phone_to_reroute: $('.phone_to_reroute').val(),
                     welcome_note: $('.welcome_note').val(),
-                    unreach_note: $('.unreach_note').val(),
-                    forward_message: $('.forward_message').val(),
+                    unreach_note: $('.unreach_note ').val(),
+                    forward_message: $('.forward_message option:selected').val(),
                     center_to_customer_route: $('.center_to_customer_route').val(),
                     info_type: $('.info_type').val(),
                     reroute_confirm: $('.reroute_confirm').val(),
