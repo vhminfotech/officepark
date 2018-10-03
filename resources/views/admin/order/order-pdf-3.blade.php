@@ -4,6 +4,12 @@
         <!--        <meta charset="utf-8">-->
         <title>Office Park</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- Stylesheet -->
+       
         <style>
             .main-header{
                 font-size: 35px;

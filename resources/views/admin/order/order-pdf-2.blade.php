@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html>
     <head>
-<!--        <meta charset="utf-8">-->
+<meta charset="utf-8">
         <title>Office Park</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="{{  asset('css/main.pdf.css?v=2.0') }}">
+   
         <style>
             .main-header{
-                font-size: 35px;
-                line-height: 35px;
+/*                font-size: 35px;
+                line-height: 35px;*/
                 text-align: right;
             }
+            
             .text-undeline{
                 text-decoration: underline;
+                font-size: 11px;
+                line-height: 200%;
             }
             .small-fornt{
-                font-size: 11px;
+                font-size: 10px;
                 text-align: right;
+                padding-top: -85px;
+                padding-left: -10px;
+                color: #40403f;
             }
             .page-break {
                 page-break-after: always;
             }
-            table.boxtable{
-/*                border: 1px solid #000;
-                height: 15px;
-                width: 25px;*/
+            .padding-l-5{
+                padding-left: 5px;
             }
-            table.boxtable { border-collapse: collapse; }
-            table.boxtable td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px; }
-            table.boxtable1 td { border: 1px solid gray;font-weight: bold;padding: 5px;line-height: 10px;}
-             table.boxtable1 { border-collapse: collapse; }
+            .sectionClient td{
+                /*padding-top: -200px;*/
+                 line-height: 11px;
+            }
+            .small-fornt td{
+                line-height: 7px;
+            }
+            .lastdescription td{
+                line-height: 11px;
+                font-size: 11px;
+            }
+            .lastdescription th{
+                font-size: 12px;
+                line-height: 17px;
+            }
+            .euroicone{
+                font-weight: normal;
+                font-size: 8px;
+                color: #000;
+                margin-top: 3px;
+            }
         </style>
     </head>
-    <body>
+    <body style="background-color: #fff;">
         <div class="invoice-box">
-            <table width="100%">
+            <table class="mainleftside"  width="100%">
                 <tr>
                     <td class="main-header" colspan="3">
                         <!--<span >Office | Park</span>-->
@@ -41,14 +71,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td  class="text-undeline" colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
+                    <td colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
                 </tr>
                 <tr>
                     <td colspan="3"><h3>- persönlich -</h3></td>
                 </tr>
                 <tr>
                   
-                    <td colspan="2">
+                    <td colspan="2" class="sectionClient">
                         <table width="100%">
                             <tr>
                                 <td>{{ $arrOrder[0]['company_name'] }}</td>
@@ -127,7 +157,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td class="small-fornt" >
+                    <td width="20%"  class="small-fornt" >
                         <table width="100%">
                             <tr> <td>  Gesellschafter/ Geschäftsführer</td> </tr>
                             <tr> <td>  Baris Ak</td> </tr>
@@ -164,6 +194,24 @@
                             <tr> <td>Steuernummer: 105/5902/4492 </td> </tr>
                             <tr> <td>Ust-IdNr.: DE317564846 </td> </tr>
                         </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp;</td> </tr>
+                        </table>
+                        <table width="100%" style="margin-top: 10px;">  
+                            <tr> <td>&nbsp; </td> </tr>
+                            <tr> <td>&nbsp; </td> </tr>
+                        </table>
+                        
+                       
                     </td>
                 </tr>
                 <tr><td colspan="3">&nbsp;</td></tr>
@@ -171,7 +219,6 @@
                 <tr><td colspan="3">&nbsp;</td></tr>
                 <tr><td colspan="3"><hr/></td></tr>
             </table>
-            <!--            <div class="page-break"></div>-->
             <table width="100%">
                 <tr>
                     <td><img  src="{{  asset('img/officepark-logo.jpg')  }}"></td>
@@ -193,7 +240,7 @@
                     </td>
                 </tr>
             </table>
-            <div class="page-break"></div>
+            
             <table width="100%">
                 <tr>
                     <td colspan="3"><h3>Ihre persönlichen Daten</h3></td>
