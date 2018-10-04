@@ -130,7 +130,7 @@
                             <tr>
                                 <td>
                                     <ul>
-                                        <li> Geben Sie bitte folgende Tastenkombination in Ihr Telefon ein: *21*{{ $arrOrder[0]['system_genrate_no'] }}#</li>
+                                        <li> Geben Sie bitte folgende Tastenkombination in Ihr Telefon ein: *21*{{ str_replace("-","",$arrOrder[0]['system_genrate_no']) }}#</li>
                                         <li> Drücken Sie nun die Wähltaste und warten Sie die Bandabsage ab. </li>
                                         <li> Die Ansage wird Ihnen abschließend bestätigen, dass der Dienst nun aktiviert ist.*</li>
                                     </ul> 

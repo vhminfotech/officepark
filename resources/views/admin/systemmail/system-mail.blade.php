@@ -8,6 +8,7 @@
         max-width: 20% !important;
         word-wrap: break-word !important;
         border: 1px solid #f5f8fa;
+        margin-top: 10px;
     }
     .c-table__cell {
         padding: 20px 0 20px 30px;
@@ -33,8 +34,9 @@
                     <h2 class="u-mb-zero">System Mails </h2>
                 <!--</div>-->
             </div>
+            
             <div c-table-responsive> 
-                <div class="c-card u-p-medium u-mb-small">
+                <div class="c-card1 u-p-medium u-mb-small">
                     <div class="row">
                         <div class="col-md-3">
                             <h3>Today</h3>
@@ -60,64 +62,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br/>
-                            <table class="c-table" id="" style="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Sent Mail</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">jalian thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">14</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Not Sent Mails</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">shrikant thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">baric</td>
-                                        <td class="c-table__cell">u-rain</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Agent Statistics</td>
-                                        <td colspan="" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td colspan="" class="c-table__cell">julian thomas</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                    <tr class="c-table__row">
-                                        <td colspan="" class="c-table__cell">baric</td>
-                                        <td colspan="" class="c-table__cell">&nbsp;</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            
+                           
                         </div>
                         <div class="col-md-3">
                             <h3>Week</h3>
@@ -143,64 +89,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Sent Mail</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">jalian thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">14</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Not Sent Mails</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">shrikant thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">baric</td>
-                                        <td class="c-table__cell">u-rain</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Agent Statistics</td>
-                                        <td colspan="" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td colspan="" class="c-table__cell">julian thomas</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell">baric</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                          
                         </div>
                         <div class="col-md-3">
                             <h3>Months</h3>
@@ -228,64 +117,8 @@
                                 </tbody>
 
                             </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Sent Mail</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">jalian thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">14</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Not Sent Mails</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">shrikant thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell">baric</td>
-                                        <td class="c-table__cell">u-rain</td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
-                                    <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Agent Statistics</td>
-                                        <td colspan="" class="c-table__cell" style="">31</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="c-table__row">
-                                        <td colspan="" class="c-table__cell">julian thomas</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                    <tr class="c-table__row">
-                                        <td colspan="" class="c-table__cell">baric</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                           
+                            
                         </div>
                         <div class="col-md-3">
                             <h3>Years</h3>
@@ -311,64 +144,325 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br/>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
                             <table class="c-table" id="">
                                 <thead class=" c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Sent Mail</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
+                                        <td colspan="" class="c-table__cell " style="">Calls</td>
+                                        <td colspan="" class="c-table__cell" style="">42</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell">jalian thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">14</td>
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <br/>
+                            
+                           
+                        </div>
+                        <div class="col-md-3">
                             <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
+                                <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Not Sent Mails</td>
-                                        <td colspan="2" class="c-table__cell" style="">31</td>
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell">shrikant thomas</td>
-                                        <td class="c-table__cell">mustram</td>
-                                        <td class="c-table__cell">2</td>
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
                                     </tr>
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell">baric</td>
-                                        <td class="c-table__cell">u-rain</td>
-                                        <td class="c-table__cell">2</td>
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <br/>
+                          
+                        </div>
+                        <div class="col-md-3">
                             <table class="c-table" id="">
-                                <thead class=" c-table__head--slim">
+
+                                <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <td colspan="2" class="c-table__cell " style="">Agent Statistics</td>
-                                        <td colspan="" class="c-table__cell" style="">31</td>
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell">julian thomas</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
                                     </tr>
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell">baric</td>
-                                        <td colspan="" class="c-table__cell"></td>
-                                        <td class="c-table__cell">2</td>
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                           
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class=" c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <td colspan="" class="c-table__cell " style="">Calls</td>
+                                        <td colspan="" class="c-table__cell" style="">42</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                           
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                           
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class=" c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <td colspan="" class="c-table__cell " style="">Calls</td>
+                                        <td colspan="" class="c-table__cell" style="">42</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                           
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                           
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <table class="c-table" id="">
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th colspan="" class="c-table__cell " style="">Calls</th>
+                                        <th colspan="" class="c-table__cell" style="">42</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell">mustermann gmbh</td>
+                                        <td class="c-table__cell">Company Name</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
                         </div>
                     </div>
                 </div>

@@ -172,7 +172,12 @@ class OrderController extends Controller {
         
         $data['allCategory'] = $objCategory->getCategory();
         $data['getService'] = $objService->getServices($serviceId);
-        $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
+        $webname = $data['getService']['service'][0]['website_id'];
+       
+        $websites = Config::get('constants.websites');
+        $data['websites'] = $websites[$webname];
+        
+        $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
         return $pdf->stream();
       //  return $pdf->download('invoice.pdf');
     }
@@ -188,6 +193,12 @@ class OrderController extends Controller {
         
         $data['allCategory'] = $objCategory->getCategory();
         $data['getService'] = $objService->getServices($serviceId);
+        
+        $webname = $data['getService']['service'][0]['website_id'];
+       
+        $websites = Config::get('constants.websites');
+        $data['websites'] = $websites[$webname];
+        
 //        print_r($data['getService']);exit;
         $customer_number = $arrOrder[0]['customer_number'];
         if($pdfNo == 1){
