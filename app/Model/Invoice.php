@@ -55,7 +55,13 @@ class Invoice extends Model {
         $startDate = explode('/', $request->input('start_date'));
         $endDate = explode('/', $request->input('end_date'));
         $invoiceResult = Invoice::orderBy('created_at', 'desc')->first();
-        $invoiceId = $invoiceResult->id + 1;
+        
+        if(!empty($invoiceResult)){
+            $invoiceId = $invoiceResult->id + 1;
+        }else{
+             $invoiceId =  1;
+        }
+        
         $finalStartDate = $startDate[2] . '-' . $startDate[0] . '-' . $startDate[1];
         $finalEndDate = $endDate[2] . '-' . $endDate[0] . '-' . $endDate[1];
         $length = 8;
