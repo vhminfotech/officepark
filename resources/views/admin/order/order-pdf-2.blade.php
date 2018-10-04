@@ -341,8 +341,6 @@
                         </div>
                     </td>
                 </tr>
-
-                <br>
             </table>
             @else
             
@@ -725,7 +723,12 @@
                     @endphp
                     @for($j = 0; $j < count($storeAyy);$j++)
                     <span style="margin-left: 10px;">{{  $storeAyy[$j]['title'] }}</span>
-                    <p style="float: right; margin-right: 30px !important;"> {{  number_format($storeAyy[$j]['total'],2) }} <i class="fa fa-eur euroicone" aria-hidden="true"></i></p>
+                    @if(is_numeric($storeAyy[$j]['price']))
+                    @php $price = $storeAyy[$j]['price']; @endphp
+                    @else
+                    @php $price = 0; @endphp
+                    @endif
+                    <p style="float: right; margin-right: 30px !important;"> {{  number_format($price,2) }} <i class="fa fa-eur euroicone" ari($storeAyya-hidden="true"></i></p>
                     <hr>
                    @endfor
                 </div>
