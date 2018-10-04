@@ -177,7 +177,7 @@ class OrderController extends Controller {
         $websites = Config::get('constants.websites');
         $data['websites'] = $websites[$webname];
         
-        $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
+        $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
         return $pdf->stream();
       //  return $pdf->download('invoice.pdf');
     }
