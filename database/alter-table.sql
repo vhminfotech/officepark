@@ -17,3 +17,5 @@ CREATE TABLE `officepark`.`calls` ( `id` INT NOT NULL AUTO_INCREMENT , `event` V
 
 ALTER TABLE `calls` ADD `created_at` DATETIME NOT NULL AFTER `timestamp`, ADD `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `created_at`;
 UPDATE `system_genrate_no` SET `generated_no` = '0211-36874190-001' WHERE `system_genrate_no`.`id` = 1;
+
+ALTER TABLE `calls` ADD `sent_mail` SMALLINT NOT NULL DEFAULT '0' AFTER `session_id`, ADD `gender` ENUM('M','F') NULL AFTER `sent_mail`, ADD `first_and_last_name` VARCHAR(255) NULL AFTER `gender`, ADD `caller_email` VARCHAR(255) NULL AFTER `first_and_last_name`, ADD `telephone_number` INT(80) NULL AFTER `caller_email`, ADD `caller_note` TEXT NULL AFTER `telephone_number`;

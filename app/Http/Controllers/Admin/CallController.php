@@ -7,6 +7,7 @@ use App\Model\Invoice;
 use App\Model\Calls;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Config;
 
 class CallController extends Controller {
 
@@ -27,9 +28,9 @@ class CallController extends Controller {
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
-
+        $data['gender'] = Config::get('constants.gender');
         $data['plugincss'] = array();
-        $data['pluginjs'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/calls.js');
         $data['funinit'] = array('Calls.list_init()');
         $data['css'] = array('');
@@ -38,6 +39,38 @@ class CallController extends Controller {
         $data['method'] = $method;
 
         return view('admin.call.call-list', $data);
+    }
+
+    public function sendMail(Request $request) {
+        if ($request->isMethod('post')) {
+//            print_r($request->input());
+//            exit;
+            $objUser = new Calls();
+            $userList = $objUser->updateCalles($request);
+            if ($userList) {
+                $return['status'] = 'success';
+                $return['message'] = 'Email Sent successfully.';
+                $return['redirect'] = route('calls');
+//                $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
+
+    public function ajaxAction(Request $request) {
+        $action = $request->input('action');
+        switch ($action) {
+            case 'getSentEmailData':
+                $id = $request->input('data')['id'];
+                $result = Calls::find($id);
+                echo json_encode($result);
+                exit;
+                break;
+        }
     }
 
 }
