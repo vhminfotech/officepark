@@ -97,7 +97,7 @@
                             <td class="c-table__cell">{{ $getCall[$i]->id }}</td>
                             <td class="c-table__cell">{{ date('d-m-Y h:i:s',strtotime($getCall[$i]->date_time)) }}</td>
                             <td class="c-table__cell">{{ empty($getCall[$i]->agentName) ? 'N/A' : $getCall[$i]->agentName }}</td>
-                            <td class="c-table__cell"></td>
+                            <td class="c-table__cell">{{ empty($getCall[$i]->customerName) ? 'N/A' : $getCall[$i]->customerName }}</td>
                             <td class="c-table__cell"></td>
                             <td class="c-table__cell">
                                 @if($i %2 == 0)
