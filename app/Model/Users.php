@@ -201,6 +201,11 @@ class Users extends Model {
             $data['allCategory'] = $objCategory->getCategory();
             $data['getService'] = $objService->getServices($serviceId);
 
+            $webname = $data['getService']['service'][0]['website_id'];
+       
+            $websites = Config::get('constants.websites');
+            $data['websites'] = $websites[$webname];
+        
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.order.order-pdf-1', $data);

@@ -289,7 +289,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $arrOrder[0]['is_package'] == 1 ? 'BUSINESS' : '' }} </span></td>
+                    <td colspan="3"><span>Vertrag:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $websites  }} - {{ $getService['service'][0]['packages_name']  }} </span></td>
                 </tr>
                 <tr>
                     <td colspan="3"><span>Zahlungsweise:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ ($arrOrder[0]['accept'] != 'uber' ? 'SEPA Lastschrift' : 'Überweisung') }}</span></td>
@@ -702,7 +702,7 @@
             
             <table width='100%'>
                 <tr>
-                    <td colspan="2">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Business</td>
+                    <td colspan="2">Ihr gebuchter Telefonservice-Tarif: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $websites  }} - {{ $getService['service'][0]['packages_name']  }}</td>
                      <td style="text-align: right; height: 50px;" colspan="3">
                         <img src="{{  asset('img/officepark-logo-footr.jpg')  }}">
                     </td>
@@ -713,7 +713,7 @@
             <br>
             <table width='100%'>
                 <div style="width:700px;height:auto;border:1px solid gray;">
-                    <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; margin-right: 30px !important;">business.call</p>
+                    <span style="margin-left: 10px;">Telefonservice</span><p style="float: right; margin-right: 30px !important;">{{ $websites  }} - {{ $getService['service'][0]['packages_name']  }}</p>
                     <br>
                     <br>
                     <br>
