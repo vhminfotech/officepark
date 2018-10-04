@@ -172,7 +172,7 @@ class OrderController extends Controller {
         
         $data['allCategory'] = $objCategory->getCategory();
         $data['getService'] = $objService->getServices($serviceId);
-        $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
+        $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
         return $pdf->stream();
       //  return $pdf->download('invoice.pdf');
     }
