@@ -86,11 +86,13 @@ class Calls extends Model {
         $requestData = $_REQUEST;
         $columns = array(
             // datatable column index  => database column name
-            0 => 'u1.name',
-            1 => 'u1.id',
-            2 => 'u1.inopla_username',
-            3 => 'cal3ls.date_time',
-            4 => 'calls.sent_mail',
+            0 => 'calls.id',
+            1 => 'calls.date_time',
+            2 => 'u1.name',
+            3 => 'u2.name',
+            4 => 'calls.caller_note',
+            5 => 'calls.sent_mail',
+            6 => 'calls.sent_mail',
         );
 
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
@@ -115,7 +117,7 @@ class Calls extends Model {
                                     $query->where($value, 'like', '%' . $searchVal . '%');
                                 } else {
 //                                    $query->orWhere($value, 'like',"%$searchVal%");
-                                    $query->orWhere($value, 'like', "$searchVal%");
+                                    $query->orWhere($value, 'like', '%'.$searchVal.'%');
                                 }
                             }
                         }
@@ -128,15 +130,28 @@ class Calls extends Model {
         $totalFiltered = count($temp->get());
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('u1.name as agentName', 'u2.name as customerName', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail','calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi'
+                        ->select(
+                                'u1.name as agentName', 
+                                'u2.name as customerName', 
+                                'u1.inopla_username',
+                                'calls.event', 
+                                'calls.uuid',
+                                'calls.kid',
+                                'calls.cdr_id', 
+                                'calls.date_time', 
+                                'calls.sent_mail',
+                                'calls.id', 
+                                'calls.routing_id', 
+                                'calls.service',
+                                'calls.ddi',
+                                'calls.caller_note'
                         )->get();
 
         $data = array();
-//        print_r($resultArr);
-//        exit;
+       
         foreach ($resultArr as $row) {
             $nestedData = array();
-            $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent ');
+            $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
 
             if ($row['sent_mail'] == 1) {
                 $actionHtml = '  <div class="col u-mb-medium">
@@ -150,13 +165,12 @@ class Calls extends Model {
                                 </div>';
             }
 
-            $nestedData[] = '<input class="changeStatus" type="checkbox">';
+//            $nestedData[] = '<input class="changeStatus" type="checkbox">';
             $nestedData[] = $row["id"];
             $nestedData[] = date('d-m-Y h:i:s', strtotime($row['date_time']));
-
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
-            $nestedData[] = '-';
+            $nestedData[] = $row['caller_note'];
             $nestedData[] = $msgStatus;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;

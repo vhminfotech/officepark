@@ -66,8 +66,8 @@ var Calls = function() {
             'ajaxAction': 'getdatatable',
             'postData': dataArr,
             'hideColumnList': [],
-            'noSearchApply': [],
-            'noSortingApply': [],
+            'noSearchApply': [0],
+            'noSortingApply': [0],
             'defaultSortColumn': 0,
             'defaultSortOrder': 'desc',
             'setColumnWidth': columnWidth

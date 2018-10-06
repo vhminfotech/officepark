@@ -51,7 +51,7 @@ class CallController extends Controller {
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'Email Sent successfully.';
-                $return['redirect'] = route('calls');
+//                $return['redirect'] = route('calls');
 //                $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
             } else {
                 $return['status'] = 'error';
