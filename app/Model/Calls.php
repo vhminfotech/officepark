@@ -82,15 +82,15 @@ class Calls extends Model {
         }
     }
 
-    //    Data Table Changes Start chetan
     public function getDatatable($request) {
         $requestData = $_REQUEST;
         $columns = array(
             // datatable column index  => database column name
             0 => 'u1.name',
-            1 => 'u1.inopla_username',
-            2 => 'calls.date_time',
-            3 => 'calls.sent_mail',
+            1 => 'u1.id',
+            2 => 'u1.inopla_username',
+            3 => 'cal3ls.date_time',
+            4 => 'calls.sent_mail',
         );
 
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
