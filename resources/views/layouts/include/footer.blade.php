@@ -2,6 +2,8 @@
 <script src="{!! asset('js/plugins/validate/jquery.validate.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('js/plugins/toastr/toastr.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('js/comman_function.js') !!}" type="text/javascript"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.js') }}"></script>
 <div class="c-modal modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="standard-modal" data-backdrop="static">
         <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content">

@@ -57,9 +57,22 @@ var Calls = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
-
-
-
+        var dataArr = {};
+        var columnWidth = {};
+        var columnWidth = {};
+        var arrList = {
+            'tableID': '#ManageEmployerList',
+            'ajaxURL': baseurl + "admin/calls-ajaxAction",
+            'ajaxAction': 'getdatatable',
+            'postData': dataArr,
+            'hideColumnList': [],
+            'noSearchApply': [],
+            'noSortingApply': [],
+            'defaultSortColumn': 0,
+            'defaultSortOrder': 'desc',
+            'setColumnWidth': columnWidth
+        };
+        getDataTable(arrList);
     }
 
 

@@ -1,4 +1,8 @@
 <head>
+    @php
+    $currentRoute = Route::current()->getName();
+    
+    @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,6 +26,9 @@
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
     <!--<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>-->
+    @if($currentRoute == 'calls')
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.css') }}">
+    @endif
     @if (!empty($css)) 
     @foreach ($css as $value) 
     @if(!empty($value))
@@ -30,6 +37,6 @@
     @endforeach
     @endif
     <script>
-var baseurl = "{{ asset('/') }}";
+        var baseurl = "{{ asset('/') }}";
     </script>
 </head>

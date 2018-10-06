@@ -35,6 +35,7 @@ class CallController extends Controller {
         $data['funinit'] = array('Calls.list_init()');
         $data['css'] = array('');
         $data['year'] = $year;
+        $data['datatableJsCss'] = true;
         $data['month'] = $month;
         $data['method'] = $method;
 
@@ -69,6 +70,11 @@ class CallController extends Controller {
                 $result = Calls::find($id);
                 echo json_encode($result);
                 exit;
+                break;
+            case 'getdatatable':
+                $objRtoEmployer = new Calls();
+                $employerLists = $objRtoEmployer->getDatatable($request);
+                echo json_encode($employerLists);
                 break;
         }
     }
