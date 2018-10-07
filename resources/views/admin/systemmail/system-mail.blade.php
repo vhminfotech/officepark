@@ -520,18 +520,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($getSystemMailList as $row => $val)
                         <tr>
-                            <td class="c-table__cell">17.05.2018 - 10:23:10</td>
-                            <td class="c-table__cell">+663527411477</td>
-                            <td class="c-table__cell">Julian</td>
-                            <td class="c-table__cell">Mustafir</td>
-                            <td class="c-table__cell">If you’re in the Windows.. </td>
+                            <td class="c-table__cell">{{ date('d.m.Y h:i:s',strtotime($val['date_time'])) }}</td>
+                            <td class="c-table__cell">{{ $val['caller'] }}</td>
+                            <td class="c-table__cell">{{ $val['agentName'] }}</td>
+                            <td class="c-table__cell">{{ $val['customerName'] }}</td>
+                            <td class="c-table__cell" style="max-width: 20% !important;width: 20% !important;">{{ $val['caller_note'] }}</td>
                             <td class="c-table__cell"><div class="c-choice c-choice--checkbox">
                                     <input class="c-choice__input" id="checkbox1" name="checkboxes" type="checkbox">
                                     <label class="c-choice__label" for="checkbox1">Save</label>
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->

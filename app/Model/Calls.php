@@ -283,6 +283,18 @@ class Calls extends Model {
         return $result;
     }
 
+    public function getSystemMailList() {
+        $sql = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
+                ->groupBy('calls.id');
+        $result = $sql->get(['calls.*',
+            'u1.name as agentName',
+            'u2.name as customerName',
+            'u1.inopla_username'
+        ]);
+        return $result;
+    }
+
     public function getSystemMailData111() {
         $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number');
         $sql->where('calls.created_at', '>', "DATE_SUB(now(), INTERVAL 1 DAY)");

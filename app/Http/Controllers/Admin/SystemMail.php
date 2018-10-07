@@ -34,6 +34,8 @@ class SystemMail extends Controller {
         $data['monthCallStatics'] = $objCall->getAgentStatics('month');
         $data['yearCallStatics'] = $objCall->getAgentStatics('year');
         
+        $data['getSystemMailList'] = $objCall->getSystemMailList();
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/invoice.js');
