@@ -47,12 +47,6 @@ class Calls extends Model {
         return $result;
     }
 
-    public function test() {
-        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')->where('calls.created_at', '>', 'DATE_SUB(now(), INTERVAL 1 DAY)')->groupBy('calls.destination_number')->orderBy('TotalCount', 'DESC');
-        $result = $sql->get(array('u1.inopla_username', DB::raw('COUNT(calls.id)as TotalCount')));
-        return $result;
-    }
-
     public function getCallListingV2($customerNo) {
         $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.destination_number');
         $sql->where('users.id', $customerNo);
@@ -164,7 +158,7 @@ class Calls extends Model {
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];
-            $nestedData[] = $msgStatus ;
+            $nestedData[] = $msgStatus;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;
         }
@@ -176,6 +170,126 @@ class Calls extends Model {
             "data" => $data   // total data array
         );
         return $json_data;
+    }
+
+    public function getSystemMailCalls($name) {
+        $weekStart = date('Y-m-d', strtotime('last Monday'));
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
+        if ($name == 'today') {
+            $sql->whereRaw('Date(calls.created_at) = CURDATE()');
+        }
+        if ($name == 'week') {
+            $sql->whereBetween('calls.created_at', [$weekStart, date('Y-m-d')]);
+        }
+        if ($name == 'month') {
+            $sql->whereBetween('calls.created_at', [date('Y-m-01'), date('Y-m-t')]);
+        }
+        if ($name == 'year') {
+            $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
+        }
+
+        $sql->groupBy('calls.destination_number');
+        $sql->orderBy('TotalCount', 'DESC');
+        $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', 'u1.name', 'order_info.company_name', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
+        $result['finalTotal'] = 0;
+        foreach ($result as $row => $val) {
+            $result['finalTotal'] += $val['TotalCount'];
+        }
+        return $result;
+    }
+
+    public function getSystemSentMail($name) {
+        $weekStart = date('Y-m-d', strtotime('last Monday'));
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
+        $sql->where('calls.sent_mail', '=', 1);
+        if ($name == 'today') {
+            $sql->whereRaw('Date(calls.created_at) = CURDATE()');
+        }
+        if ($name == 'week') {
+            $sql->whereBetween('calls.created_at', [$weekStart, date('Y-m-d')]);
+        }
+        if ($name == 'month') {
+            $sql->whereBetween('calls.created_at', [date('Y-m-01'), date('Y-m-t')]);
+        }
+        if ($name == 'year') {
+            $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
+        }
+
+        $sql->groupBy('calls.destination_number');
+        $sql->orderBy('TotalCount', 'DESC');
+        $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', 'u1.name', 'order_info.company_name', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
+        $result['finalTotal'] = 0;
+        foreach ($result as $row => $val) {
+            $result['finalTotal'] += $val['TotalCount'];
+        }
+        return $result;
+    }
+
+    public function getSystemNotSentMail($name) {
+        $weekStart = date('Y-m-d', strtotime('last Monday'));
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
+        $sql->where('calls.sent_mail', '=', 0);
+        if ($name == 'today') {
+            $sql->whereRaw('Date(calls.created_at) = CURDATE()');
+        }
+        if ($name == 'week') {
+            $sql->whereBetween('calls.created_at', [$weekStart, date('Y-m-d')]);
+        }
+        if ($name == 'month') {
+            $sql->whereBetween('calls.created_at', [date('Y-m-01'), date('Y-m-t')]);
+        }
+        if ($name == 'year') {
+            $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
+        }
+
+        $sql->groupBy('calls.destination_number');
+        $sql->orderBy('TotalCount', 'DESC');
+        $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', 'u1.name', 'order_info.company_name', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
+        $result['finalTotal'] = 0;
+        foreach ($result as $row => $val) {
+            $result['finalTotal'] += $val['TotalCount'];
+        }
+        return $result;
+    }
+
+    public function getAgentStatics($name) {
+        $weekStart = date('Y-m-d', strtotime('last Monday'));
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
+        $sql->where('calls.sent_mail', '=', 1);
+        if ($name == 'today') {
+            $sql->whereRaw('Date(calls.created_at) = CURDATE()');
+        }
+        if ($name == 'week') {
+            $sql->whereBetween('calls.created_at', [$weekStart, date('Y-m-d')]);
+        }
+        if ($name == 'month') {
+            $sql->whereBetween('calls.created_at', [date('Y-m-01'), date('Y-m-t')]);
+        }
+        if ($name == 'year') {
+            $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
+        }
+
+        $sql->groupBy('u1.id');
+        $sql->orderBy('TotalCount', 'DESC');
+        $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', 'u1.name', 'order_info.company_name', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
+        $result['finalTotal'] = 0;
+        foreach ($result as $row => $val) {
+            $result['finalTotal'] += $val['TotalCount'];
+        }
+        return $result;
+    }
+
+    public function getSystemMailData111() {
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number');
+        $sql->where('calls.created_at', '>', "DATE_SUB(now(), INTERVAL 1 DAY)");
+        $sql->groupBy('calls.destination_number');
+        $sql->orderBy('TotalCount', 'DESC');
+        $result = $sql->get(array('u1.inopla_username', DB::raw('COUNT(calls.id)as TotalCount')));
+        return $result;
     }
 
 }

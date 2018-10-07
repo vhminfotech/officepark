@@ -22,8 +22,7 @@ class CallController extends Controller {
         $data['getCustomer'] = $objUser->getCustomer(null);
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListing();
-        $data['test'] = $objCall->test();
-     
+        
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
