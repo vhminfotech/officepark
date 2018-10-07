@@ -529,7 +529,7 @@
                             <td class="c-table__cell" style="max-width: 20% !important;width: 20% !important;">{{ $val['caller_note'] }}</td>
                             <td class="c-table__cell">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" id="checkbox{{ $val['id'] }}" name="checkboxes" type="checkbox">
+                                    <input class="c-choice__input" id="checkbox{{ $val['id'] }}" {{ ($val['sent_mail'] == 1 ? "checked=checked" : '') }} disabled="true" name="checkboxes" type="checkbox">
                                     <label class="c-choice__label" for="checkbox{{ $val['id'] }}">Save</label>
                                 </div>
                             </td>

@@ -176,6 +176,7 @@ class Calls extends Model {
         $weekStart = date('Y-m-d', strtotime('last Monday'));
         $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
+        $sql->where('u1.type','CUSTOMER');
         if ($name == 'today') {
             $sql->whereRaw('Date(calls.created_at) = CURDATE()');
         }
@@ -189,7 +190,8 @@ class Calls extends Model {
             $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
         }
 
-        $sql->groupBy('calls.destination_number');
+        $sql->groupBy('order_info.user_id');
+//        $sql->groupBy('calls.destination_number');
         $sql->orderBy('TotalCount', 'DESC');
         $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', 'u1.name', 'order_info.company_name', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
         $result['finalTotal'] = 0;
@@ -204,6 +206,7 @@ class Calls extends Model {
         $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
         $sql->where('calls.sent_mail', '=', 1);
+        $sql->where('u1.type','CUSTOMER');
         if ($name == 'today') {
             $sql->whereRaw('Date(calls.created_at) = CURDATE()');
         }
@@ -217,7 +220,8 @@ class Calls extends Model {
             $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
         }
 
-        $sql->groupBy('calls.destination_number');
+        $sql->groupBy('order_info.user_id');
+//        $sql->groupBy('calls.destination_number');
         $sql->orderBy('TotalCount', 'DESC');
         $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', 'u1.name', 'order_info.company_name', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
         $result['finalTotal'] = 0;
@@ -259,6 +263,7 @@ class Calls extends Model {
         $weekStart = date('Y-m-d', strtotime('last Monday'));
         $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'u1.id');
+        $sql->where('u1.type','AGENT');
         $sql->where('calls.sent_mail', '=', 1);
         if ($name == 'today') {
             $sql->whereRaw('Date(calls.created_at) = CURDATE()');
@@ -290,6 +295,7 @@ class Calls extends Model {
         $result = $sql->get(['calls.*',
             'u1.name as agentName',
             'u2.name as customerName',
+            'calls.sent_mail',
             'u1.inopla_username'
         ]);
         return $result;
