@@ -308,5 +308,8 @@ class Users extends Model {
             return Users::where('type', 'CUSTOMER')->get();
         }
     }
+    public function getAgent() {
+            return Users::where('type', 'AGENT')->get();
+    }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Calls;
+use App\Model\Users;
 
 class SystemMail extends Controller {
 
@@ -13,6 +14,11 @@ class SystemMail extends Controller {
 
     public function index() {
         
+        $objUser = new Users();
+        $data['customer'] = $objUser->getCustomer(null);
+        
+        $objAgent = new Users();
+        $data['agent'] = $objAgent->getAgent();
         $objCall = new Calls();
         $data['todayCalls'] = $objCall->getSystemMailCalls('today');
         $data['weekCalls'] = $objCall->getSystemMailCalls('week');
