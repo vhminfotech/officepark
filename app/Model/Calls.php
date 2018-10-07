@@ -47,6 +47,12 @@ class Calls extends Model {
         return $result;
     }
 
+    public function test() {
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')->where('calls.created_at', '>', 'DATE_SUB(now(), INTERVAL 1 DAY)')->groupBy('calls.destination_number')->orderBy('TotalCount', 'DESC');
+        $result = $sql->get(array('u1.inopla_username', DB::raw('COUNT(calls.id)as TotalCount')));
+        return $result;
+    }
+
     public function getCallListingV2($customerNo) {
         $sql = Calls::leftjoin('users', 'users.inopla_username', '=', 'calls.destination_number');
         $sql->where('users.id', $customerNo);
@@ -112,12 +118,12 @@ class Calls extends Model {
                             }
 
                             if ($requestData['columns'][$key]['searchable'] == 'true') {
-                                if ($flag == 0 ) {
+                                if ($flag == 0) {
                                     $flag = $flag + 1;
                                     $query->where($value, 'like', '%' . $searchVal . '%');
                                 } else {
 //                                    $query->orWhere($value, 'like',"%$searchVal%");
-                                    $query->orWhere($value, 'like', '%'.$searchVal.'%');
+                                    $query->orWhere($value, 'like', '%' . $searchVal . '%');
                                 }
                             }
                         }
@@ -131,24 +137,11 @@ class Calls extends Model {
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select(
-                                'u1.name as agentName', 
-                                'u2.name as customerName', 
-                                'u1.inopla_username',
-                                'calls.event', 
-                                'calls.uuid',
-                                'calls.kid',
-                                'calls.cdr_id', 
-                                'calls.date_time', 
-                                'calls.sent_mail',
-                                'calls.id', 
-                                'calls.routing_id', 
-                                'calls.service',
-                                'calls.ddi',
-                                'calls.caller_note'
+                                'u1.name as agentName', 'u2.name as customerName', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail', 'calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi', 'calls.caller_note'
                         )->get();
 
         $data = array();
-       
+
         foreach ($resultArr as $row) {
             $nestedData = array();
             $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
@@ -171,7 +164,7 @@ class Calls extends Model {
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];
-            $nestedData[] = $msgStatus;
+            $nestedData[] = $msgStatus ;
             $nestedData[] = $actionHtml;
             $data[] = $nestedData;
         }
