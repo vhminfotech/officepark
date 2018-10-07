@@ -487,21 +487,25 @@
                                         </select>
                                     </div>
                                 </div>
+                               
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
-                                        <select class="c-select">
-                                            <option value=''>Customer</option>
-                                            <option value=''>aheemad</option>
-                                            <option value=''>jecllin</option>
+                                        <select class="c-select customer" name="customer">
+                                             <option value="">Select Customer</option>
+                                            @foreach($customer as $row => $val)
+                                               <option value="{{ $val['id'] }}">{{ $val['name'] }}</option>
+                                            @endforeach
+                                         
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="c-field u-mb-small">
                                         <select class="c-select">
-                                            <option>Agent</option>
-                                            <option>mustafir</option>
-                                            <option>shehjad</option>
+                                            <option value="">Select Agent</option>
+                                            @foreach($agent as $row => $val)
+                                               <option value="{{ $val['id'] }}">{{ $val['name'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
