@@ -4,9 +4,10 @@
         <div style="width: 560px; margin: 0 auto; display: block; box-shadow: 0px 0px 14px 0px rgba(142, 140, 140, 0.67); background: #fff; padding: 48px;">
             <!-- wrapper -->
             <p style="">
-                <img src="<?php echo url('img/logo.png'); ?>" style="width: 50%; display: block;text-align: right !important;width: 100px;">
+                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;text-align: right !important;width: 100px;">
+                <div style="width: 50%;text-align: right;margin-top: -120px;margin-left: 155px;"><h1>International Communication</h1></div>
             </p>
-            <div style="width: 50%;text-align: right;margin-top: -120px;margin-left: 155px;"><h1>International Communication</h1></div>
+            
             <h2 style="padding: 26px 0 0px 7px;">   You have new incoming call!</h2>
             <div style="margin-top: 78px; box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.33); padding: 16px;">
                 <table>
