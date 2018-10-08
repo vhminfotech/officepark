@@ -64,8 +64,16 @@
                             <input type="text" name="telephone_number" class="c-input telephone_number" id="telephone_number" placeholder="telephone number">
                         </div>
                         <div class="c-field u-mb-xsmall">
+                            <label class="c-field__label" for="input-project">Caller Notes Template <span style="float: right;"><a href="javascript:;">+ add new Template</a></span></label>
+                            <select class="c-select">
+                                
+                                <option value="1">They were unfortunately not reacheble. Mrs X will get back to you soon.</option>
+                                
+                            </select>
+                        </div>
+                        <div class="c-field u-mb-xsmall">
                             <label class="c-field__label" for="input-project">Caller Notes</label>
-                            <textarea name="caller_note" class="c-input" id="caller_note" placeholder="Caller Notes"></textarea>
+                            <textarea name="caller_note" class="c-input" id="caller_note" placeholder="Caller Notes" value="They were unfortunately not reacheble. Mrs X will get back to you soon.">They were unfortunately not reacheble. Mrs X will get back to you soon.</textarea>
                         </div>
                         <div class="c-modal__footer u-justify-center">
                             <input type="submit" name="submit" class="c-btn c-btn--success" value="Send E-mail">

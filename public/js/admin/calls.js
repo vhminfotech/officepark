@@ -42,6 +42,11 @@ var Calls = function() {
                     $('#caller_email').val(data['caller_email']);
                     $('#telephone_number').val(data['telephone_number']);
                     $('#caller_note').val(data['caller_note']);
+                    if(data['caller_note'] == "" || data['caller_note'] == null){
+                        $('#caller_note').val('They were unfortunately not reacheble. Mrs X will get back to you soon.');
+                    }else{
+                        $('#caller_note').val(data['caller_note']);
+                    }
                 }
             });
         });
