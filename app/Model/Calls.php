@@ -68,13 +68,18 @@ class Calls extends Model {
         $objInfoEdit->caller_note = $request->input('caller_note');
         $objInfoEdit->sent_mail = 1;
 
+       
         $mailData['subject'] = 'Calls - Sent Email';
-        $mailData['template'] = 'emails.sent-email';
         $mailData['attachment'] = array();
 //        $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
         $mailData['mailto'] = $request->input('caller_email');
         $sendMail = new Sendmail;
         $mailData['data']['caller_note'] = $request->input('caller_note');
+        $mailData['data']['first_last_name'] = $request->input('first_last_name');
+        $mailData['data']['caller_email'] = $request->input('caller_email');
+        $mailData['data']['telephone_number'] = $request->input('telephone_number');
+        $mailData['data']['gender'] = $request->input('gender');
+        $mailData['template'] = 'emails.sent-email';
         $sendMail->sendSMTPMail($mailData);
 
         if ($objInfoEdit->save()) {
