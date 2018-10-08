@@ -4,8 +4,8 @@
         <div style="width: 560px; margin: 0 auto; display: block; box-shadow: 0px 0px 14px 0px rgba(142, 140, 140, 0.67); background: #fff; padding: 48px;">
             <!-- wrapper -->
             <p style="">
-                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;text-align: right !important;width: 100px;">
-                <div style="width: 50%;text-align: right;margin-top: -120px;margin-left: 155px;"><h1>International Communication</h1></div>
+                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;float: left;width: 100px;">
+                <span style="margin-left: 15px;"><h1>International Communication</h1></span>
             </p>
             
             <h2 style="padding: 26px 0 0px 7px;">   You have new incoming call!</h2>
