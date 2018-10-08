@@ -4,11 +4,11 @@
         <div style="width: 560px; margin: 0 auto; display: block; box-shadow: 0px 0px 14px 0px rgba(142, 140, 140, 0.67); background: #fff; padding: 48px;">
             <!-- wrapper -->
             <p style="">
-                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;float: left;width: 100px;">
-                <span style="margin-left: 15px;"><h1>International Communication</h1></span>
+                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;float: left;width: 50px;">
+                <span style="margin-left: 65px;"><h1>International Communication</h1></span>
             </p>
             
-            <h2 style="padding: 26px 0 0px 7px;">   You have new incoming call!</h2>
+            <h2 style="padding: 26px 0 0px 7px;text-align: center;">   You have new incoming call!</h2>
             <div style="margin-top: 78px; box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.33); padding: 16px;">
                 <table>
                     <tr>
