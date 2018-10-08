@@ -5,7 +5,7 @@
             <!-- wrapper -->
             <p style="">
                 <img src="<?php echo url('img/logo.png'); ?>" style="display: block;float: left;width: 50px;">
-                <span style="margin-left: 65px;"><h1>International Communication</h1></span>
+                <h1>International Communication</h1>
             </p>
             
             <h2 style="padding: 26px 0 0px 7px;text-align: center;">   You have new incoming call!</h2>
