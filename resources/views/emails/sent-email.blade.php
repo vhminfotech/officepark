@@ -4,7 +4,7 @@
         <div style="width: 560px; margin: 0 auto; display: block; box-shadow: 0px 0px 14px 0px rgba(142, 140, 140, 0.67); background: #fff; padding: 48px;">
             <!-- wrapper -->
             <p style="">
-                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;float: left;width: 50px;">
+                <img src="<?php echo url('img/logo.png'); ?>" style="display: block;float: left;width: 50px;margin-right: 20px;">
                 <h1>International Communication</h1>
             </p>
             
