@@ -24,3 +24,4 @@ CREATE TABLE `officepark`.`template` ( `id` INT NOT NULL AUTO_INCREMENT , `messa
 ALTER TABLE `template` ADD `created_at` INT NOT NULL AFTER `message`;
 ALTER TABLE `template` CHANGE `created_at` `created_at` DATETIME NOT NULL;
 ALTER TABLE `template` CHANGE `updated_at` `updated_at` DATETIME NOT NULL;
+ALTER TABLE `template` ADD `user_id` INT NULL AFTER `id`;

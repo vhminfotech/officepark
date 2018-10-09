@@ -77,6 +77,9 @@ var Calls = function() {
                 success: function(data) {
                     var obj = jQuery.parseJSON(data);
                     $('#template').find('option').remove();
+                    if(obj.length == 0){
+                        $('#template').append($('<option>', {value: '', text: 'No Record Found'}));
+                    }
                     $.each(obj, function(i, item) {
                         $('#template').append($('<option>', {
                             value: item['id'],

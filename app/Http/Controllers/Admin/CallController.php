@@ -23,9 +23,6 @@ class CallController extends Controller {
         $data['getCustomer'] = $objUser->getCustomer(null);
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListing();
-        $objTemplate = new Template();
-        $data['template'] = $objTemplate->getTemplate();
-
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
@@ -66,7 +63,10 @@ class CallController extends Controller {
     public function addTempate(Request $request) {
         if ($request->isMethod('post')) {
             $objUser = new Template();
-            $userList = $objUser->addTemplate($request);
+            $session = $request->session()->all();
+
+            $session = $request->session()->all();
+            $userList = $objUser->addTemplate($request, $session['logindata'][0]['id']);
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'Tmplate added successfully.';
@@ -100,8 +100,9 @@ class CallController extends Controller {
                 echo json_encode($employerLists);
                 break;
             case 'gettemplate':
+                $session = $request->session()->all();
                 $objTemplate = new Template();
-                $template = $objTemplate->getTemplate();
+                $template = $objTemplate->getTemplate($session['logindata'][0]['id']);
 //                print_r($template);exit;
                 echo json_encode($template);
                 break;
