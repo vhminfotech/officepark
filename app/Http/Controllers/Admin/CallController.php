@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Model\Users;
 use App\Model\Invoice;
 use App\Model\Calls;
+use App\Model\Template;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
@@ -22,7 +23,9 @@ class CallController extends Controller {
         $data['getCustomer'] = $objUser->getCustomer(null);
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListing();
-        
+        $objTemplate = new Template();
+        $data['template'] = $objTemplate->getTemplate();
+
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
@@ -60,6 +63,28 @@ class CallController extends Controller {
         }
     }
 
+    public function addTempate(Request $request) {
+        if ($request->isMethod('post')) {
+            $objUser = new Template();
+            $userList = $objUser->addTemplate($request);
+            if ($userList) {
+                $return['status'] = 'success';
+                $return['message'] = 'Tmplate added successfully.';
+//                $return['redirect'] = route('calls');
+                $return['jscode'] = "setTimeout(function(){
+                        $('#templateModel').modal('hide');
+                        $('#modal8').modal('show');
+                        $('#template').trigger('click');
+                    },1000)";
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
+
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
         switch ($action) {
@@ -73,6 +98,12 @@ class CallController extends Controller {
                 $objRtoEmployer = new Calls();
                 $employerLists = $objRtoEmployer->getDatatable($request);
                 echo json_encode($employerLists);
+                break;
+            case 'gettemplate':
+                $objTemplate = new Template();
+                $template = $objTemplate->getTemplate();
+//                print_r($template);exit;
+                echo json_encode($template);
                 break;
         }
     }

@@ -21,6 +21,20 @@ var Calls = function() {
             querystring += (search_string == '' && typeof search_string === 'undefined') ? '&search_string=' : '&search_string=' + search_string;
             location.href = baseurl + 'admin/calls?' + querystring;
         });
+
+        $('body').on('click', '.addTemplate', function() {
+            $('#modal8').modal('hide');
+            $('#templateModel').modal('show');
+        });
+        $('body').on('change', '#template', function() {
+            var template = $('#template option:selected').text();
+            $('#caller_note').val(template);
+
+        });
+        $('body').on('click', '#template', function() {
+           hadaleTemplate();
+        });
+
         $('body').on('click', '.sentEmailBtn', function() {
             $('.editId').val($(this).attr('data-id'));
             $('.first_last_name').text($(this).attr('data-name'));
@@ -34,23 +48,52 @@ var Calls = function() {
                 url: baseurl + "admin/calls-ajaxAction",
                 data: {'action': 'getSentEmailData', 'data': {'id': id}},
                 success: function(data) {
-//                    handleAjaxResponse(data);
                     var data = JSON.parse(data);
-                    console.log(data);
                     $('#gender').val(data['gender']);
                     $('#first_last_name').val(data['first_and_last_name']);
                     $('#caller_email').val(data['caller_email']);
                     $('#telephone_number').val(data['telephone_number']);
                     $('#caller_note').val(data['caller_note']);
-                    if(data['caller_note'] == "" || data['caller_note'] == null){
+                    if (data['caller_note'] == "" || data['caller_note'] == null) {
                         $('#caller_note').val('They were unfortunately not reacheble. Mrs X will get back to you soon.');
-                    }else{
+                    } else {
                         $('#caller_note').val(data['caller_note']);
                     }
                 }
             });
         });
-
+        setTimeout(function() {
+            hadaleTemplate();
+        }, 500);
+        function hadaleTemplate() {
+            var template = $('#template').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/calls-ajaxAction",
+                data: {'action': 'gettemplate', 'data': {'template': template}},
+                success: function(data) {
+                    var obj = jQuery.parseJSON(data);
+                    $('#template').find('option').remove();
+                    $.each(obj, function(i, item) {
+                        $('#template').append($('<option>', {
+                            value: item['id'],
+                            text: item['message']
+                        }));
+                    });
+                    $('#template').trigger('change');
+                }
+            });
+        }
+        var form = $('#addTemlate');
+        var rules = {
+            message: {required: true},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
         var form = $('#send_email');
         var rules = {
             gender: {required: true},
@@ -64,7 +107,7 @@ var Calls = function() {
         });
         var dataArr = {};
         var columnWidth = {};
-        var columnWidth = {"width": "20%", "targets":4};
+        var columnWidth = {"width": "20%", "targets": 4};
         var arrList = {
             'tableID': '#ManageEmployerList',
             'ajaxURL': baseurl + "admin/calls-ajaxAction",

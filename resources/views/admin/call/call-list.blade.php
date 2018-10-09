@@ -64,16 +64,13 @@
                             <input type="text" name="telephone_number" class="c-input telephone_number" id="telephone_number" placeholder="telephone number">
                         </div>
                         <div class="c-field u-mb-xsmall">
-                            <label class="c-field__label" for="input-project">Caller Notes Template <span style="float: right;"><a href="javascript:;">+ add new Template</a></span></label>
-                            <select class="c-select">
-                                
-                                <option value="1">They were unfortunately not reacheble. Mrs X will get back to you soon.</option>
-                                
+                            <label class="c-field__label" for="input-project">Caller Notes Template <span style="float: right;"><a href="javascript:;" class="addTemplate">+ add new Template</a></span></label>
+                            <select class="c-select" name="template" id="template">
                             </select>
                         </div>
                         <div class="c-field u-mb-xsmall">
                             <label class="c-field__label" for="input-project">Caller Notes</label>
-                            <textarea name="caller_note" class="c-input" id="caller_note" placeholder="Caller Notes" value="They were unfortunately not reacheble. Mrs X will get back to you soon.">They were unfortunately not reacheble. Mrs X will get back to you soon.</textarea>
+                            <textarea name="caller_note" class="c-input" id="caller_note" placeholder="Caller Notes" value=""></textarea>
                         </div>
                         <div class="c-modal__footer u-justify-center">
                             <input type="submit" name="submit" class="c-btn c-btn--success" value="Send E-mail">
@@ -83,6 +80,36 @@
             </div><!-- // .c-modal__content -->
         </div><!-- // .c-modal__dialog -->
     </div><!-- // .c-modal -->
+
+    <!-- Modal -->
+    <div class="c-modal c-modal--small modal fade" id="templateModel" tabindex="-1" role="dialog" aria-labelledby="modal8" data-backdrop="static">
+        <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content">
+
+                <div class="c-modal__header">
+                    <h3 class="c-modal__title">Add template</h3>
+                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+
+                <div class="c-modal__body">
+                    <form action="{{ route('add-template') }}" method="post" class=" u-mb-small addTemlate" id="addTemlate" style="">
+                        <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
+
+                        <div class="c-field u-mb-xsmall">
+                            <label class="c-field__label" for="input-project">Enter Message</label>
+                            <textarea name="message" class="c-input" id="message" placeholder="Enter Message" value=""></textarea>
+                        </div>
+                        <div class="c-modal__footer u-justify-center">
+                            <input type="submit" name="submit" class="c-btn c-btn--success" value="Add Template">
+                        </div>
+                    </form>
+                </div>
+            </div><!-- // .c-modal__content -->
+        </div><!-- // .c-modal__dialog -->
+    </div><!-- // .c-modal -->
+
 </div>
 
 <style>
