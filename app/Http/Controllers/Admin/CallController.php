@@ -69,11 +69,33 @@ class CallController extends Controller {
             $userList = $objUser->addTemplate($request, $session['logindata'][0]['id']);
             if ($userList) {
                 $return['status'] = 'success';
-                $return['message'] = 'Tmplate added successfully.';
+                $return['message'] = 'Template added successfully.';
 //                $return['redirect'] = route('calls');
                 $return['jscode'] = "setTimeout(function(){
                         $('#templateModel').modal('hide');
                         $('#modal8').modal('show');
+                        $('#template').trigger('click');
+                    },1000)";
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
+
+    public function deleteTemplate($postData) {
+        if ($postData) {
+            $result = Template::where('id', $postData['id'])->delete();
+
+            if ($result) {
+                $return['status'] = 'success';
+                $return['message'] = 'Template delete successfully.';
+//                $return['redirect'] = route('calls');
+                $return['jscode'] = "setTimeout(function(){
+                        $('#deleteModel').modal('hide');
+                        $('#templateModel').modal('show');
                         $('#template').trigger('click');
                     },1000)";
             } else {
@@ -98,6 +120,17 @@ class CallController extends Controller {
                 $objRtoEmployer = new Calls();
                 $employerLists = $objRtoEmployer->getDatatable($request);
                 echo json_encode($employerLists);
+                break;
+            case 'getTemplateList':
+                $session = $request->session()->all();
+                $objRtoEmployer = new Template();
+                $data['templateList'] = $objRtoEmployer->getTemplate($session['logindata'][0]['id']);
+                $result = view('admin.call.template-list', $data)->render();
+                echo $result;
+                exit;
+                break;
+            case 'deleteTemplate':
+                $result = $this->deleteTemplate($request->input('data'));
                 break;
             case 'gettemplate':
                 $session = $request->session()->all();

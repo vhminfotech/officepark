@@ -25,6 +25,7 @@ var Calls = function() {
         $('body').on('click', '.addTemplate', function() {
             $('#modal8').modal('hide');
             $('#templateModel').modal('show');
+            templateList();
         });
         $('body').on('change', '#template', function() {
             var template = $('#template option:selected').text();
@@ -32,7 +33,8 @@ var Calls = function() {
 
         });
         $('body').on('click', '#template', function() {
-           hadaleTemplate();
+            hadaleTemplate();
+            templateList();
         });
 
         $('body').on('click', '.sentEmailBtn', function() {
@@ -62,8 +64,49 @@ var Calls = function() {
                 }
             });
         });
+
+        $('body').on('click', '.deleteTemplate', function() {
+            $('#templateModel').modal('hide');
+            $('#deleteModel').modal('show');
+            var id = $(this).data('id');
+            setTimeout(function() {
+                $('.yes-sure:visible').attr('data-id', id);
+            }, 500);
+        })
+
+        $('body').on('click', '.yes-sure', function() {
+            var id = $(this).attr('data-id');
+            var data = {id: id, _token: $('#_token').val()};
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/calls-ajaxAction",
+                data: {'action': 'deleteTemplate', 'data': data},
+                success: function(data) {
+                    handleAjaxResponse(data);
+                }
+            });
+        });
+
+        function templateList() {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/calls-ajaxAction",
+                data: {'action': 'getTemplateList', 'data': {'id': id}},
+                success: function(data) {
+                    $('.templateList').html(data);
+                }
+            });
+        }
         setTimeout(function() {
             hadaleTemplate();
+
         }, 500);
         function hadaleTemplate() {
             var template = $('#template').val();
@@ -77,7 +120,7 @@ var Calls = function() {
                 success: function(data) {
                     var obj = jQuery.parseJSON(data);
                     $('#template').find('option').remove();
-                    if(obj.length == 0){
+                    if (obj.length == 0) {
                         $('#template').append($('<option>', {value: '', text: 'No Record Found'}));
                     }
                     $.each(obj, function(i, item) {
@@ -87,6 +130,7 @@ var Calls = function() {
                         }));
                     });
                     $('#template').trigger('change');
+                    templateList();
                 }
             });
         }

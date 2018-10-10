@@ -24,6 +24,7 @@
                 </div>
             </div><!-- // .col-12 -->
         </div>
+        
     </div>
     <!-- Modal -->
     <div class="c-modal c-modal--small modal fade" id="modal8" tabindex="-1" role="dialog" aria-labelledby="modal8" data-backdrop="static">
@@ -105,6 +106,9 @@
                             <input type="submit" name="submit" class="c-btn c-btn--success" value="Add Template">
                         </div>
                     </form>
+                </div>
+                <div class="c-modal__footer templateList">
+                    
                 </div>
             </div><!-- // .c-modal__content -->
         </div><!-- // .c-modal__dialog -->
