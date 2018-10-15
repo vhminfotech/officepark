@@ -68,7 +68,7 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="telephone_number">Telephone number</label> 
-                                    <input class="c-input" id="telephone_number" name="telephone_number" maxlength="12" placeholder="Telephone number" type="number"> 
+                                    <input class="c-input" id="telephone_number" value="{{ $phoneNumber }}" name="telephone_number" maxlength="12" placeholder="Telephone number" type="number"> 
                                 </div>
                             </div>
                         </div>

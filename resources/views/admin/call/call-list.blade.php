@@ -13,6 +13,7 @@
                                 <!--<th><input class="checkAll" type="checkbox"></th>-->
                                 <th class="c-table__cell c-table__cell--head">Id &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Date/Time</th>
+                                <th class="c-table__cell c-table__cell--head">Caller</th>
                                 <th class="c-table__cell c-table__cell--head">Agent</th>
                                 <th class="c-table__cell c-table__cell--head">Customer</th>
                                 <th class="c-table__cell c-table__cell--head">Notiz</th>

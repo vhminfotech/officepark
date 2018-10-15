@@ -93,7 +93,7 @@ class Calls extends Model {
             // datatable column index  => database column name
             0 => 'calls.id',
             1 => 'calls.date_time',
-            2 => 'u1.name',
+            2 => 'calls.caller',
             3 => 'u2.name',
             4 => 'calls.caller_note',
             5 => 'calls.sent_mail',
@@ -136,7 +136,7 @@ class Calls extends Model {
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select(
-                                'u1.name as agentName', 'u2.name as customerName', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail', 'calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi', 'calls.caller_note'
+                                'u1.name as agentName', 'u2.name as customerName','calls.caller', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail', 'calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi', 'calls.caller_note'
                         )->get();
 
         $data = array();
@@ -160,6 +160,8 @@ class Calls extends Model {
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
             $nestedData[] = $row["id"];
             $nestedData[] = date('d-m-Y h:i:s', strtotime($row['date_time']));
+            $nestedData[] = (empty($row['caller']) ? 'N/A' : $row['caller']) . "<a href='". route('address-book-add',array('phoneNumber'=>$row["caller"])) ."'><span class='c-tooltip c-tooltip--top'  aria-label='Add Addressbook'>
+                                        <i class='fa fa-plus-circle' ></i></span></a>";
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];

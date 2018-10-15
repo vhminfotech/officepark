@@ -37,7 +37,7 @@ class AddressbookController extends Controller {
         return view('admin.addressbook.addressbook-list', $data);
     }
 
-    public function addAddressbook(Request $request) {
+    public function addAddressbook(Request $request,$phoneNumber = null) {
 
         $data['detail'] = $this->loginUser;
         $objaddressbook = new Addressbook();
@@ -57,6 +57,7 @@ class AddressbookController extends Controller {
             echo json_encode($return);
             exit;
         }
+        $data['phoneNumber'] = $phoneNumber;
         $data['gender'] = Config::get('constants.gender');
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
