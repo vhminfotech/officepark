@@ -107,6 +107,16 @@ var Invoice = function() {
             }
         });
 
+        $('body').on('click', '.invoicechk', function() {
+            var str = '';
+            $(".invoicechk:checked").each(function() {
+                var value = $(this).val();
+                str += value+',';
+               
+            });
+            $("#checkInvNo").val(str);
+        });
+        
         $('body').on('change', '.filter', function() {
             var consult_id = [];
             var payment_method = $('#payment_method').val();

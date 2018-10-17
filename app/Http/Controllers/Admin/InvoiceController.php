@@ -14,6 +14,9 @@ use App;
 use PDF;
 use Illuminate\Http\Request;
 use App\Model\Sendmail;
+use AbcAeffchen\Sephpa\SephpaCreditTransfer;
+use AbcAeffchen\Sephpa\SephpaDirectDebit;
+use AbcAeffchen\SepaUtilities\SepaUtilities;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 //use Illuminate\Http\Request;
@@ -33,8 +36,61 @@ class InvoiceController extends Controller {
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
+
         $objinvoice = new Invoice();
-        $data['getInvoice'] = $objinvoice->invoiceList($year,$month,$method);
+
+        if ($request->isMethod('post')) {
+            $debitInfo = array('pmtInfId' => 'PaymentID-1235', // ID of the payment collection
+                'lclInstrm' => SepaUtilities::LOCAL_INSTRUMENT_CORE_DIRECT_DEBIT,
+                'seqTp' => SepaUtilities::SEQUENCE_TYPE_RECURRING,
+                'cdtr' => 'Name of Creditor', // (max 70 characters)
+                'iban' => 'DE87200500001234567890', // IBAN of the Creditor
+                'bic' => 'BELADEBEXXX', // BIC of the Creditor
+                'ci' => 'DE98ZZZ09999999999', // Creditor-Identifier
+            );
+
+            $data = $request->input();
+            $invoiceData = $objinvoice->getInvoiceData($data['invoiceId']);
+
+            $directDebitFile = new SephpaDirectDebit('Initiator Name', 'MessageID-1235', SephpaDirectDebit::SEPA_PAIN_008_002_02, $debitInfo);
+
+            foreach ($invoiceData as $value) {
+
+                if ($value->invoiceTotal != "" && $value->account_bic != "" && $value->account_name != "" && $value->account_iban != "") {
+                    $directDebitFile->addPayment([
+                        // required information about the debtor
+                        'pmtId' => 'TransferID-1235-1', // ID of the payment (EndToEndId)
+                        'instdAmt' => $value->invoiceTotal, // amount
+                        'mndtId' => 'Mandate-Id', // Mandate ID
+                        'dtOfSgntr' => '2010-04-12', // Date of signature
+                        'bic' => $value->account_bic, // BIC of the Debtor
+                        'dbtr' => $value->account_name, // (max 70 characters)
+                        'iban' => $value->account_iban, // IBAN of the Debtor
+                        // optional
+                        'amdmntInd' => 'false', // Did the mandate change
+                        'elctrncSgntr' => 'test', // do not use this if there is a paper-based mandate
+                        'ultmtDbtr' => 'Ultimate Debtor Name', // just an information, this do not affect the payment (max 70 characters)
+                        //'purp'        => ,                        // Do not use this if you not know how. For further information read the SEPA documentation
+                        'rmtInf' => 'Remittance Information', // unstructured information about the remittance (max 140 characters)
+                        // only use this if 'amdmntInd' is 'true'. at least one must be used
+                        'orgnlMndtId' => 'Original-Mandat-ID',
+                        'orgnlCdtrSchmeId_nm' => 'Creditor-Identifier Name',
+                        'orgnlCdtrSchmeId_id' => 'DE98AAA09999999999',
+                        'orgnlDbtrAcct_iban' => 'DE87200500001234567890', // Original Debtor Account
+                        'orgnlDbtrAgt' => 'SMNDA'          // only 'SMNDA' allowed if used
+                    ]);
+                }
+            }
+
+            try{
+                $directDebitFile->download();
+            } catch (Exception $e){
+                print_r($e);exit;
+            }
+            
+        }
+
+        $data['getInvoice'] = $objinvoice->invoiceList($year, $month, $method);
 
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
@@ -46,6 +102,85 @@ class InvoiceController extends Controller {
         $data['method'] = $method;
 
         return view('admin.invoice.invoice-list', $data);
+    }
+
+    public function index2() {
+
+        $debitInfo = array('pmtInfId' => 'PaymentID-1235', // ID of the payment collection
+            'lclInstrm' => SepaUtilities::LOCAL_INSTRUMENT_CORE_DIRECT_DEBIT,
+            'seqTp' => SepaUtilities::SEQUENCE_TYPE_RECURRING,
+            'cdtr' => 'Name of Creditor', // (max 70 characters)
+            'iban' => 'DE87200500001234567890', // IBAN of the Creditor
+            'bic' => 'BELADEBEXXX', // BIC of the Creditor
+            'ci' => 'DE98ZZZ09999999999', // Creditor-Identifier
+        );
+
+        $directDebitFile = new SephpaDirectDebit('Initiator Name', 'MessageID-1235', SephpaDirectDebit::SEPA_PAIN_008_002_02, $debitInfo);
+
+//        $directDebitCollection = $directDebitFile->addCollection([
+//// required information about the creditor
+//            'pmtInfId' => 'PaymentID-1235', // ID of the payment collection
+//            'lclInstrm' => SepaUtilities::LOCAL_INSTRUMENT_CORE_DIRECT_DEBIT,
+//            'seqTp' => SepaUtilities::SEQUENCE_TYPE_RECURRING,
+//            'cdtr' => 'Name of Creditor', // (max 70 characters)
+//            'iban' => 'DE87200500001234567890', // IBAN of the Creditor
+//            'bic' => 'BELADEBEXXX', // BIC of the Creditor
+//            'ci' => 'DE98ZZZ09999999999', // Creditor-Identifier
+//// optional
+//            'ccy' => 'EUR', // Currency. Default is 'EUR'
+//            'btchBookg' => 'true', // BatchBooking, only 'true' or 'false'
+//            //'ctgyPurp'      => ,                      // Do not use this if you not know how. For further information read the SEPA documentation
+//            'ultmtCdtr' => 'Ultimate Creditor Name', // just an information, this do not affect the payment (max 70 characters)
+//            'reqdColltnDt' => '2013-11-25'             // Requested Collection Date: YYYY-MM-DD
+//        ]);
+
+        $directDebitFile->addPayment([
+// required information about the debtor
+            'pmtId' => 'TransferID-1235-1', // ID of the payment (EndToEndId)
+            'instdAmt' => 2.34, // amount
+            'mndtId' => 'Mandate-Id', // Mandate ID
+            'dtOfSgntr' => '2010-04-12', // Date of signature
+            'bic' => 'BELADEBEXXX', // BIC of the Debtor
+            'dbtr' => 'Name of Debtor', // (max 70 characters)
+            'iban' => 'DE87200500001234567890', // IBAN of the Debtor
+// optional
+            'amdmntInd' => 'false', // Did the mandate change
+            'elctrncSgntr' => 'test', // do not use this if there is a paper-based mandate
+            'ultmtDbtr' => 'Ultimate Debtor Name', // just an information, this do not affect the payment (max 70 characters)
+            //'purp'        => ,                        // Do not use this if you not know how. For further information read the SEPA documentation
+            'rmtInf' => 'Remittance Information', // unstructured information about the remittance (max 140 characters)
+            // only use this if 'amdmntInd' is 'true'. at least one must be used
+            'orgnlMndtId' => 'Original-Mandat-ID',
+            'orgnlCdtrSchmeId_nm' => 'Creditor-Identifier Name',
+            'orgnlCdtrSchmeId_id' => 'DE98AAA09999999999',
+            'orgnlDbtrAcct_iban' => 'DE87200500001234567890', // Original Debtor Account
+            'orgnlDbtrAgt' => 'SMNDA'          // only 'SMNDA' allowed if used
+        ]);
+
+        $directDebitFile->addPayment([
+// required information about the debtor
+            'pmtId' => 'TransferID-1235-2', // ID of the payment (EndToEndId)
+            'instdAmt' => 2.34, // amount
+            'mndtId' => 'Mandate-Id', // Mandate ID
+            'dtOfSgntr' => '2010-04-15', // Date of signature
+            'bic' => 'BELADEBEXXX', // BIC of the Debtor
+            'dbtr' => 'Name of 3', // (max 70 characters)
+            'iban' => 'DE87200500001234567890', // IBAN of the Debtor
+// optional
+            'amdmntInd' => 'false', // Did the mandate change
+            'elctrncSgntr' => 'test', // do not use this if there is a paper-based mandate
+            'ultmtDbtr' => 'Ultimate Debtor Name', // just an information, this do not affect the payment (max 70 characters)
+            //'purp'        => ,                        // Do not use this if you not know how. For further information read the SEPA documentation
+            'rmtInf' => 'Remittance Information', // unstructured information about the remittance (max 140 characters)
+            // only use this if 'amdmntInd' is 'true'. at least one must be used
+            'orgnlMndtId' => 'Original-Mandat-ID',
+            'orgnlCdtrSchmeId_nm' => 'Creditor-Identifier Name',
+            'orgnlCdtrSchmeId_id' => 'DE98AAA09999999999',
+            'orgnlDbtrAcct_iban' => 'DE87200500001234567890', // Original Debtor Account
+            'orgnlDbtrAgt' => 'SMNDA'          // only 'SMNDA' allowed if used
+        ]);
+
+        $directDebitFile->download();
     }
 
     public function createPDF(Request $request) {
@@ -164,7 +299,7 @@ class InvoiceController extends Controller {
             if ($resultCategory) {
                 $return['status'] = 'success';
                 $return['message'] = 'Invoice delete successfully.';
-                $return['jscode'] = 'setTimeout(function(){ $("#deleteModel").modal("hide");$(".hide'.$ids.'").hide();},1000)';
+                $return['jscode'] = 'setTimeout(function(){ $("#deleteModel").modal("hide");$(".hide' . $ids . '").hide();},1000)';
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Something went wrong.';
@@ -173,15 +308,15 @@ class InvoiceController extends Controller {
             exit;
         }
     }
-    
-    public function createPDFV3(){
+
+    public function createPDFV3() {
         $pdf = PDF::loadView('admin.invoice.invoice-pdfV3');
         //  $pdf = PDF::loadView('admin.invoice.invoice-pdfV2');
         return $pdf->stream();
         exit;
     }
-    
-      public function changeStatus(Request $request) {
+
+    public function changeStatus(Request $request) {
         if ($request->isMethod('post')) {
             $objinvoice = new Invoice();
             $resultCategory = $objinvoice->changePaidStatus($request->input());
@@ -198,4 +333,5 @@ class InvoiceController extends Controller {
             exit;
         }
     }
+
 }

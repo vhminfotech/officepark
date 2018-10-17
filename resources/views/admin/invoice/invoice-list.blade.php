@@ -76,6 +76,7 @@
 
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
+                            <th class="c-table__cell c-table__cell--head no-sort">#</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Id</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Date</th>
                             <th class="c-table__cell c-table__cell--head no-sort">Invoice</th>
@@ -93,6 +94,7 @@
                     <tbody>
                         @for($i = 0 ;$i < count($getInvoice);$i++)
                         <tr class="c-table__row hide{{ $getInvoice[$i]->id }}">
+                            <td class="c-table__cell"><input type="checkbox" name="invoice_{{ $getInvoice[$i]->id }}" value="{{ $getInvoice[$i]->id }}" class="invoicechk"></td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->id }}</td>
                             <td class="c-table__cell">{{ date('Y-m-d',strtotime($getInvoice[$i]->created_at)) }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->invoice_no }}</td>
@@ -125,7 +127,17 @@
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->
+            
         </div>
+        <!--<div class="row">-->
+            <div class="col-lg-2">
+                <form method="post" action="{{ route('invoice-list') }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="invoiceId" id="checkInvNo" value="">
+                    <input class="c-btn c-btn--info c-btn--fullwidth" value="Generate SEPL" type="submit">
+                </form>
+            <!--</div>-->
+            </div>
     </div>
 
 

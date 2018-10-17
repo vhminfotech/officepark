@@ -133,6 +133,41 @@ class Invoice extends Model {
                         ->where('invoice.id', $invoiceId)
                         ->get();
     }
+    public function getInvoiceData($invoiceId) {
+
+       $invoiceData = rtrim($invoiceId,',');
+      
+        return Invoice::select(
+                                'invoice.id',
+                                'invoice.created_at', 
+                                'invoice.customer_id', 
+                                'invoice.start_date', 
+                                'invoice.end_date', 
+                                'invoice.service_id', 
+                                'invoice.total as invoiceTotal', 
+                                'invoice.invoice_no', 
+                                'users.customer_number', 
+                                'users.name', 
+                                'users.email', 
+                                'users.system_genrate_no', 
+                                'service.packages_name', 
+                                'order_info.company_name', 
+                                'order_info.account_name', 
+                                'order_info.account_iban', 
+                                'order_info.account_bic', 
+                                'order_info.company_info', 
+                                'order_info.accept', 
+                                'order_info.gender', 
+                                'order_info.fullname', 
+                                'invoice.mail_send'
+                        )
+                        ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
+//                        ->leftjoin('invoice_detail', 'invoice_detail.invoice_id', '=', 'invoice.id')
+                        ->leftjoin('service', 'invoice.service_id', '=', 'service.id')
+                        ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
+                        ->whereIn('invoice.id', [$invoiceData])
+                        ->get();
+    }
 
     public function getMailStatusUpdate($invoiceId) {
         $objInfo = Invoice::find($invoiceId);
