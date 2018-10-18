@@ -53,16 +53,17 @@ class InvoiceController extends Controller {
             $invoiceData = $objinvoice->getInvoiceData($data['invoiceId']);
 
             $directDebitFile = new SephpaDirectDebit('Initiator Name', 'MessageID-1235', SephpaDirectDebit::SEPA_PAIN_008_002_02, $debitInfo);
-
+            echo '<pre>';
+            print_r($invoiceData);exit;
             foreach ($invoiceData as $value) {
 
                 if ($value->invoiceTotal != "" && $value->account_bic != "" && $value->account_name != "" && $value->account_iban != "") {
                     $directDebitFile->addPayment([
                         // required information about the debtor
-                        'pmtId' => 'TransferID-1235-1', // ID of the payment (EndToEndId)
+                        'pmtId' => '', // ID of the payment (EndToEndId)
                         'instdAmt' => $value->invoiceTotal, // amount
-                        'mndtId' => 'Mandate-Id', // Mandate ID
-                        'dtOfSgntr' => '2010-04-12', // Date of signature
+                        'mndtId' => $value->customer_number, // Mandate ID
+                        'dtOfSgntr' => date('Y-m-01'), // Date of signature
                         'bic' => $value->account_bic, // BIC of the Debtor
                         'dbtr' => $value->account_name, // (max 70 characters)
                         'iban' => $value->account_iban, // IBAN of the Debtor
@@ -71,7 +72,7 @@ class InvoiceController extends Controller {
                         'elctrncSgntr' => 'test', // do not use this if there is a paper-based mandate
                         'ultmtDbtr' => 'Ultimate Debtor Name', // just an information, this do not affect the payment (max 70 characters)
                         //'purp'        => ,                        // Do not use this if you not know how. For further information read the SEPA documentation
-                        'rmtInf' => 'Remittance Information', // unstructured information about the remittance (max 140 characters)
+                        'rmtInf' => 'Ihre Rechnung für den Zeitraum '.date('Y-m-d').' - Rechnungs-Nr. '.$value->invoice_no.' . Vielen Dank. Ihr Office Park Team', // unstructured information about the remittance (max 140 characters)
                         // only use this if 'amdmntInd' is 'true'. at least one must be used
                         'orgnlMndtId' => 'Original-Mandat-ID',
                         'orgnlCdtrSchmeId_nm' => 'Creditor-Identifier Name',
