@@ -53,7 +53,7 @@ class InvoiceController extends Controller {
             $invoiceData = $objinvoice->getInvoiceData($data['invoiceId']);
 
             $directDebitFile = new SephpaDirectDebit('Initiator Name', 'MessageID-1235', SephpaDirectDebit::SEPA_PAIN_008_002_02, $debitInfo);
-            
+            print_r($invoiceData);exit;
             foreach ($invoiceData as $value) {
 
                 if ($value->invoiceTotal != "" && $value->account_bic != "" && $value->account_name != "" && $value->account_iban != "") {
