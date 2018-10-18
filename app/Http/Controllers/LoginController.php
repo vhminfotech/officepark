@@ -9,6 +9,7 @@ use Auth;
 use Session;
 use Redirect;
 use App\Model\Calls;
+use App\Model\Users;
 use App\Model\OrderInfo;
 
 class LoginController extends Controller {
@@ -83,7 +84,12 @@ class LoginController extends Controller {
             } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
                 $objOrderInfo = new OrderInfo();
                 $resultArr = $objOrderInfo->newOrderCount('new');
-
+                $this->getUserRoleList(Auth::guard('admin')->user()->id,$request);
+                $role = $request->session()->get('userRole');
+//                $role = $request->session()->get('currentRole');
+//              $roles =  Session::get('currentRole');
+                $roles =  Session::get('userRole');
+        
                 $loginData = array(
                     'name' => Auth::guard('admin')->user()->name,
                     'email' => Auth::guard('admin')->user()->email,
@@ -115,6 +121,14 @@ class LoginController extends Controller {
         return view('auth.login');
     }
 
+    public function getUserRoleList($userId, $request) {
+        $objUser = new Users();
+        $userPermission = $objUser->getPermissionV2($userId);
+        $request->session()->put('userRole', $userPermission);
+//        Session::push('logindata', $loginData);
+        return TRUE;
+    }
+
     public function getLogout() {
         $this->resetGuard();
         //return Redirect::to('login'); 
@@ -126,6 +140,7 @@ class LoginController extends Controller {
         Auth::guard('admin')->logout();
         Auth::guard('customer')->logout();
         Session::forget('logindata');
+        Session::forget('userRole');
     }
 
     public function newcall1() {
@@ -142,8 +157,8 @@ class LoginController extends Controller {
     }
 
     public function newcall(Request $request) {
-        
-      
+
+
         $dd = $_REQUEST;
         $objCall = new Calls();
         $result = $objCall->addCalls($dd);

@@ -37,6 +37,15 @@ class Users extends Model {
         return $result;
     }
 
+    public function getPermissionV2($userId) {
+        $result = UserHasPermission::join('permission_master', 'permission_master.id', '=', 'user_has_permission.permission_id')
+                ->select('permission_master.name', 'user_has_permission.id')
+                ->where('user_has_permission.user_id', '=', $userId)
+                ->pluck('permission_master.name', 'user_has_permission.id')
+                ->toArray();
+        return $result;
+    }
+
     public function saveUserInfo($request) {
 
         $newpassword = ($request->input('password') != '') ? $request->input('password') : null;
@@ -183,7 +192,7 @@ class Users extends Model {
                     ->where('id', 1)
                     ->update(['generated_no' => $systemNo]);
 //                    ->update(['generated_no' => $systemGenrateNo[0]->generated_no + 1]);
-         
+
             DB::table('customer_no')
                     ->where('id', 1)
                     ->update(['last_number' => $result[0]->last_number + 1]);
@@ -202,10 +211,10 @@ class Users extends Model {
             $data['getService'] = $objService->getServices($serviceId);
 
             $webname = $data['getService']['service'][0]['website_id'];
-       
+
             $websites = Config::get('constants.websites');
             $data['websites'] = $websites[$webname];
-        
+
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
             $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
@@ -308,8 +317,9 @@ class Users extends Model {
             return Users::where('type', 'CUSTOMER')->get();
         }
     }
+
     public function getAgent() {
-            return Users::where('type', 'AGENT')->get();
+        return Users::where('type', 'AGENT')->get();
     }
 
 }
