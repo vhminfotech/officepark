@@ -71,7 +71,7 @@ class InvoiceController extends Controller {
                         'elctrncSgntr' => 'test', // do not use this if there is a paper-based mandate
                         'ultmtDbtr' => 'Ultimate Debtor Name', // just an information, this do not affect the payment (max 70 characters)
                         //'purp'        => ,                        // Do not use this if you not know how. For further information read the SEPA documentation
-                        'rmtInf' => 'Ihre Rechnung für den Zeitraum '.date('Y-m-d').' - Rechnungs-Nr. '.$value->invoice_no.' . Vielen Dank. Ihr Office Park Team', // unstructured information about the remittance (max 140 characters)
+                        'rmtInf' => 'Ihre Rechnung für den Zeitraum '.date('d.m.Y', strtotime($value->start_date)).' - '.date('d.m.Y', strtotime($value->end_date)).'- Rechnungs-Nr. '.$value->invoice_no.' . Vielen Dank. Ihr Office Park Team', // unstructured information about the remittance (max 140 characters)
                         // only use this if 'amdmntInd' is 'true'. at least one must be used
                         'orgnlMndtId' => 'Original-Mandat-ID',
                         'orgnlCdtrSchmeId_nm' => 'Creditor-Identifier Name',
@@ -84,7 +84,7 @@ class InvoiceController extends Controller {
 
             try{
                 $directDebitFile->store('speafile');
-                return response()->download(public_path('speafile/Sephpa.DirectDebit.MessageID-1235.xml'));
+                return response()->download(public_path('speafile/op-'.date('m').'-'.date('Y').'.xml'));
 //                $directDebitFile->download();
             } catch (Exception $e){
                 print_r($e);exit;
