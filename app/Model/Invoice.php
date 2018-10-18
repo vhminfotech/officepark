@@ -136,7 +136,7 @@ class Invoice extends Model {
     public function getInvoiceData($invoiceId) {
 
        $invoiceData = rtrim($invoiceId,',');
-      
+      echo $invoiceData;
         return Invoice::select(
                                 'invoice.id',
                                 'invoice.created_at', 
