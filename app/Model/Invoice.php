@@ -136,7 +136,8 @@ class Invoice extends Model {
     public function getInvoiceData($invoiceId) {
 
        $invoiceData = rtrim($invoiceId,',');
-      echo $invoiceData;
+      $arrId = explode(',', $invoiceData);
+     
         return Invoice::select(
                                 'invoice.id',
                                 'invoice.created_at', 
@@ -165,7 +166,7 @@ class Invoice extends Model {
 //                        ->leftjoin('invoice_detail', 'invoice_detail.invoice_id', '=', 'invoice.id')
                         ->leftjoin('service', 'invoice.service_id', '=', 'service.id')
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
-                        ->whereIn('invoice.id', [$invoiceData])
+                        ->whereIn('invoice.id', $arrId)
                         ->get();
     }
 
