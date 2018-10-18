@@ -83,7 +83,8 @@ class InvoiceController extends Controller {
             }
 
             try{
-                $directDebitFile->store('public');
+                $directDebitFile->store('speafile');
+                return response()->download(public_path('speafile/Sephpa.DirectDebit.MessageID-1235.xml'));
 //                $directDebitFile->download();
             } catch (Exception $e){
                 print_r($e);exit;
