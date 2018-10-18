@@ -59,7 +59,7 @@ class InvoiceController extends Controller {
                 if ($value->invoiceTotal != "" && $value->account_bic != "" && $value->account_name != "" && $value->account_iban != "") {
                     $directDebitFile->addPayment([
                         // required information about the debtor
-                        'pmtId' => '', // ID of the payment (EndToEndId)
+                        'pmtId' => '-', // ID of the payment (EndToEndId)
                         'instdAmt' => $value->invoiceTotal, // amount
                         'mndtId' => $value->customer_number, // Mandate ID
                         'dtOfSgntr' => date('Y-m-01'), // Date of signature
