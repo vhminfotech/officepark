@@ -113,6 +113,19 @@ var Order = function() {
                 });
             }
         });
+        
+          var form = $('#orderStatus');
+        var rules = {
+            phone_to_reroute: {required: true},
+            welcome_note: {required: true},
+            unreach_note: {required: true},
+            forward_message: {required: true},
+            reroute_confirm: {required: true},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+        
         $("#customerInfo").validate({
             rules: {
                 customer_name: {required: true},

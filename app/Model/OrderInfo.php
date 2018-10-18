@@ -147,6 +147,18 @@ class OrderInfo extends Model {
             return TRUE;
         }
     }
+    
+    public function secretaryEditInfoV2($request) {
+        $objSecEdit = OrderInfo::find($request->input('orderid'));
+        $objSecEdit->phone_to_reroute = $request->input('phone_to_reroute');
+        $objSecEdit->welcome_note = $request->input('welcome_note');
+        $objSecEdit->unreach_note = $request->input('unreach_note');
+        $objSecEdit->reroute_confirm = $request->input('reroute_confirm');
+        $objSecEdit->phone = $request->input('telephone_number');
+        if ($objSecEdit->save()) {
+            return TRUE;
+        }
+    }
 
     public function customerEditInfo($request) {
         $objCusEdit = OrderInfo::find($request->input('orderId'));
@@ -201,5 +213,14 @@ class OrderInfo extends Model {
         }
         return $result;
     }
+                                
+  public function getCustomerData($userId) {
+        return OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
+                        ->select('order_info.*', 'users.name as username', 'users.email as userEmail'
+                                , 'users.inopla_username', 'users.extension_number', 'users.system_genrate_no', 'users.customer_number')
+                        ->where('order_info.user_id', $userId)->get()->toArray();
 
+//        echo "<pre/>"; print_r($abc); exit();
+    }
+    
 }

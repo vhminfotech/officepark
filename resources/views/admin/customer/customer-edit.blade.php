@@ -12,7 +12,7 @@
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-invoice-tab" data-toggle="tab" href="#nav-invoice" role="tab" aria-controls="nav-invoice" aria-selected="false">Invoice</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-calls-tab" data-toggle="tab" href="#nav-calls" role="tab" aria-controls="nav-calls" aria-selected="false">Calls</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">EOC</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Status</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Status</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Ticket</a></li>
                 </ul>
 
@@ -224,6 +224,45 @@
                                 N/A
                             </div>
                         </div>
+                    </div>
+                    <div class="c-tabs__pane" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+                        <div c-table-responsive>
+                            <table class="c-table" id="datatable">
+                                <thead class="c-table__head c-table__head--slim">
+                                    <tr class="c-table__row">
+                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">ID&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">Company Number&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">Welcome Message&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">Unavailable Message&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">Reroute Confirm&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">Forward Message&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                    $count = 1;
+                                    @endphp
+                                    @for($i = 0 ;$i < count($arrOrderInfoStatus);$i++,$count++)
+                              
+                                    <tr class="c-table__row">
+                                        <td class="c-table__cell" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">{{ $count }}</td>
+                                        <td class="c-table__cell" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">{{ $arrOrderInfoStatus[$i]['customer_number'] }}</td>
+                                        <td class="c-table__cell">{!! (!array_key_exists($arrOrderInfoStatus[$i]['welcome_note'], $welcome_note) ? '' : wordwrap($welcome_note[$arrOrderInfoStatus[$i]['welcome_note']],18,"<br>\n",TRUE) ) !!}</td>
+                                        <!--<td class="c-table__cell">{{ $arrOrderInfoStatus[$i]['unreach_note'] }}</td>-->
+                                        <td class="c-table__cell">{!! (!array_key_exists($arrOrderInfoStatus[$i]['unreach_note'], $unreach_note) ? '' : wordwrap($unreach_note[$arrOrderInfoStatus[$i]['unreach_note']],18,"<br>\n",TRUE)) !!}</td>
+                                        <td class="c-table__cell">{!! (!array_key_exists($arrOrderInfoStatus[$i]['reroute_confirm'], $reroute_confirm) ? '' : wordwrap($reroute_confirm[$arrOrderInfoStatus[$i]['reroute_confirm']],18,"<br>\n",TRUE)) !!}</td>
+                                        <td class="c-table__cell">{!! (!array_key_exists($arrOrderInfoStatus[$i]['unreach_note'], $unreach_note) ? '' : wordwrap($unreach_note[$arrOrderInfoStatus[$i]['unreach_note']],18,"<br>\n",TRUE)) !!}</td>
+                                        <td class="c-table__cell">
+                                            <a href="{{ route('edit-order',array('id' => $arrOrderInfoStatus[$i]['id'],'userId' => $arrOrderInfoStatus[$i]['user_id'] )) }}"><span class="c-tooltip c-tooltip--top"  aria-label="View Order Details">
+                                                    <i class="fa fa-eye" ></i></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endfor
+                                </tbody>
+                            </table>
+                        </div><!-- // .col-12 -->
                     </div>
                 </div>
             </div>

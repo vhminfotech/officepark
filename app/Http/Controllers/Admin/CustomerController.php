@@ -11,6 +11,7 @@ use App\Model\OrderInfo;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
+use Config;
 use Illuminate\Http\Request;
 
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -86,15 +87,20 @@ class CustomerController extends Controller {
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListingV2($customerId);
         /* end For Calls */
-        
+
         /* Start For BillInfo */
         $objOrder = new OrderInfo();
         $data['arrOrder'] = $objOrder->getInfoV2($customerId);
+        $data['arrOrderInfoStatus'] = $objOrder->getCustomerData($customerId);
 //        echo '<pre/>';
-//        print_r($data['arrOrder']);exit;
+//        print_r($data['arrOrderInfoStatus']);
+//        exit;
         /* end For BillInfo */
-        
-        
+
+        $data['welcome_note'] = Config::get('constants.welcome_note');
+        $data['reroute_confirm'] = Config::get('constants.reroute_confirm');
+        $data['unreach_note'] = Config::get('constants.unreach_note');
+
         $objUser = new Users();
         $data['arrCustomer'] = $objUser->getCustomerInfo($customerId);
         $data['getCustomer'] = $objUser->getCustomer(null);

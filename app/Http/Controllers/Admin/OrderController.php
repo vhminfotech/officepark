@@ -63,6 +63,36 @@ class OrderController extends Controller {
 
         return view('admin.order.view-order', $data);
     }
+    public function editOrder(Request $request, $id, $userId) {
+//        echo 'fsddf';exit;
+        $objOrder = new OrderInfo();
+        $data['arrOrder'] = $objOrder->getOrderInfo($id);
+//        print_r($data['arrOrder']);exit;
+         if ($request->isMethod('post')) {
+            $editResult = $objOrder->secretaryEditInfoV2($request);
+            if ($editResult) {
+                $return['status'] = 'success';
+                $return['message'] = 'Order updated successfully.';
+                $return['redirect'] =  route('customer-edit',array('id'=>$request->input('user_id')));
+
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something will be wrong. or user already exist.';
+            }
+            echo json_encode($return); exit;
+        }
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('admin/order.js');
+        $data['funinit'] = array('Order.Init()');
+        $data['gender'] = Config::get('constants.gender');
+        $data['welcome_note'] = Config::get('constants.welcome_note');
+        $data['reroute_confirm'] = Config::get('constants.reroute_confirm');
+        $data['unreach_note'] = Config::get('constants.unreach_note');
+
+        return view('admin.order.edit-order', $data);
+    }
 
     public function ajaxAction(Request $request) {
         if ($request->isMethod('post')) {

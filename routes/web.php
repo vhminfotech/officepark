@@ -69,6 +69,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'order-pdf/{id}', ['as' => 'order-pdf', 'uses' => 'Admin\OrderController@createPDF']);
     Route::match(['get', 'post'], 'download-pdf/{id}/{pdfNo}', ['as' => 'download-pdf', 'uses' => 'Admin\OrderController@downloadPDF']);
     Route::match(['get', 'post'], 'view-order/{id}', ['as' => 'view-order', 'uses' => 'Admin\OrderController@viewOrder']);
+    Route::match(['get', 'post'], 'edit-order/{id}/{userId}', ['as' => 'edit-order', 'uses' => 'Admin\OrderController@editOrder']);
     Route::match(['get', 'post'], 'edit-company-info', ['as' => 'edit-company-info', 'uses' => 'Admin\OrderController@ajaxAction']);
     Route::match(['get', 'post'], 'edit-payment-info', ['as' => 'edit-payment-info', 'uses' => 'Admin\OrderController@paymentEditInfo']);
     Route::match(['get', 'post'], 'edit-sec-info', ['as' => 'edit-sec-info', 'uses' => 'Admin\OrderController@secEditInfo']);
