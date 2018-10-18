@@ -28,14 +28,14 @@ $roles  = array_values($roles);
             @if($logindata[0]['id'] == 1 ||  in_array('System User', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-user-list' || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('system-user-list') }}">
-                    <i class="fa fa-user-o u-mr-xsmall"></i>
+                    <i class="fa fa-gears u-mr-xsmall"></i>
                     {{ trans('words.System-users') }}
                 </a>
             </li>
             @endif
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-list' || $currentRoute == 'customer-add' || $currentRoute == 'customer-edit' ? 'is-active' : '') }}" href="{{ route('customer-list') }}">
-                    <i class="fa fa-user-circle-o u-mr-xsmall"></i>
+                    <i class="fa fa-user u-mr-xsmall"></i>
                     {{ trans('words.Customer') }}
                 </a>
             </li>
@@ -58,14 +58,14 @@ $roles  = array_values($roles);
             @endif
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'contract-list' ? 'is-active' : '') }}" href="{{ route('contract-list') }}">
-                    <i class="fa fa-shopping-cart u-mr-xsmall"></i>
+                    <i class="fa fa-file-text-o u-mr-xsmall"></i>
                     {{ trans('words.Contract') }}  &nbsp;
                 </a>
             </li>
             @if($logindata[0]['id'] == 1 ||  in_array('Invoices', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'invoice-list' || $currentRoute == 'invoice-list' ? 'is-active' : '') }}" href="{{ route('invoice-list') }}">
-                    <i class="fa fa-copy u-mr-xsmall"></i>
+                    <i class="fa fa-eur u-mr-xsmall"></i>
                     {{ trans('words.Invoice') }}  &nbsp;
                 </a>
             </li>
@@ -80,14 +80,14 @@ $roles  = array_values($roles);
             @endif
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'service' || $currentRoute == 'service' ? 'is-active' : '') }}" href="{{ route('service') }}">
-                    <i class="fa fa-bullhorn u-mr-xsmall"></i>
+                    <i class="fa fa-gears u-mr-xsmall"></i>
                     {{ trans('words.Service') }} &nbsp;
                 </a>
             </li>
             @if($logindata[0]['id'] == 1 ||  in_array('System Mails', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-mail' || $currentRoute == 'system-mail' ? 'is-active' : '') }}" href="{{ route('system-mail') }}">
-                    <i class="fa fa-bullhorn u-mr-xsmall"></i>
+                    <i class="fa fa-envelope u-mr-xsmall"></i>
                     <!--{{ trans('words.Service') }} --> System Mail &nbsp;
                 </a>
             </li>
@@ -95,7 +95,7 @@ $roles  = array_values($roles);
             @if($logindata[0]['id'] == 1 ||  in_array('Calls', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'calls' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('calls') }}">
-                    <i class="fa fa-bullhorn u-mr-xsmall"></i>
+                    <i class="fa fa-phone u-mr-xsmall"></i>
                     {{ trans('words.Calls') }} &nbsp;
                 </a>
             </li>
