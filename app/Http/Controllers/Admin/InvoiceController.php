@@ -88,7 +88,7 @@ class InvoiceController extends Controller {
             } catch (Exception $e){
                 print_r($e);exit;
             }
-            
+            $data['getCustomer'] = $objUser->getCustomer(null);
         }
 
         $data['getInvoice'] = $objinvoice->invoiceList($year, $month, $method);
