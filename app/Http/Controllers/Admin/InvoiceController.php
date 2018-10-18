@@ -83,7 +83,8 @@ class InvoiceController extends Controller {
             }
 
             try{
-                $directDebitFile->download();
+                $directDebitFile->store();
+//                $directDebitFile->download();
             } catch (Exception $e){
                 print_r($e);exit;
             }
