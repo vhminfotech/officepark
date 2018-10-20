@@ -33,7 +33,7 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
-              @if($logindata[0]['id'] == 1 ||  in_array('Addressbook', $roles))
+              @if($logindata[0]['id'] == 1 ||  in_array('Customer', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-list' || $currentRoute == 'customer-add' || $currentRoute == 'customer-edit' ? 'is-active' : '') }}" href="{{ route('customer-list') }}">
                     <i class="fa fa-user u-mr-xsmall"></i>
