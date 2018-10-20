@@ -33,12 +33,14 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+              @if($logindata[0]['id'] == 1 ||  in_array('Addressbook', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-list' || $currentRoute == 'customer-add' || $currentRoute == 'customer-edit' ? 'is-active' : '') }}" href="{{ route('customer-list') }}">
                     <i class="fa fa-user u-mr-xsmall"></i>
                     {{ trans('words.Customer') }}
                 </a>
             </li>
+             @endif
             @if($logindata[0]['id'] == 1 ||  in_array('Addressbook', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'address-book-list' || $currentRoute == 'address-book-add' || $currentRoute == 'address-book-edit' ? 'is-active' : '') }}" href="{{ route('address-book-list') }}">
@@ -56,12 +58,14 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+            @if($logindata[0]['id'] == 1 ||  in_array('Contract', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'contract-list' ? 'is-active' : '') }}" href="{{ route('contract-list') }}">
                     <i class="fa fa-file-text-o u-mr-xsmall"></i>
                     {{ trans('words.Contract') }}  &nbsp;
                 </a>
             </li>
+            @endif
             @if($logindata[0]['id'] == 1 ||  in_array('Invoices', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'invoice-list' || $currentRoute == 'invoice-list' ? 'is-active' : '') }}" href="{{ route('invoice-list') }}">
@@ -78,12 +82,14 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+            @if($logindata[0]['id'] == 1 ||  in_array('Service', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'service' || $currentRoute == 'service' ? 'is-active' : '') }}" href="{{ route('service') }}">
                     <i class="fa fa-gears u-mr-xsmall"></i>
                     {{ trans('words.Service') }} &nbsp;
                 </a>
             </li>
+             @endif
             @if($logindata[0]['id'] == 1 ||  in_array('System Mails', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-mail' || $currentRoute == 'system-mail' ? 'is-active' : '') }}" href="{{ route('system-mail') }}">
