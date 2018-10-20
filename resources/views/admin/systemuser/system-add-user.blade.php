@@ -19,14 +19,14 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">First Name</label> 
-                                    <input class="c-input" name="firstName" id="firstName" placeholder="Jason" type="text">
+                                    <input class="c-input" name="firstName" id="firstName" placeholder="Please enter your first name" type="text">
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="lastName">Last Name</label> 
-                                    <input class="c-input" id="lastName" name="lastName" placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="lastName" name="lastName" placeholder="Please enter your last name" type="text"> 
                                 </div>
                             </div>
                         </div>
@@ -34,13 +34,13 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="email">Email</label> 
-                                    <input class="c-input" id="email" name="email" placeholder="Enter Email" type="text"> 
+                                    <input class="c-input" id="email" name="email" placeholder="Please enter your email" type="text"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="password">Password</label> 
-                                    <input class="c-input" id="password" name="password" placeholder="Jason" type="password"> 
+                                    <input class="c-input" id="password" name="password" placeholder="Please enter your passsword" type="password"> 
                                 </div>
                             </div>
                         </div>
@@ -48,13 +48,13 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="inoplaName">Inopla username</label> 
-                                    <input class="c-input" id="inoplaName" name="inoplaName" placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="inoplaName" name="inoplaName" placeholder="Please enter your inopla username" type="text"> 
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="exNumber">Extension number</label> 
-                                    <input class="c-input" id="exNumber" name="exNumber"  placeholder="Jason" type="text"> 
+                                    <input class="c-input" id="exNumber" name="exNumber"  placeholder="Please enter your extension number" type="text"> 
                                 </div>
                             </div>
                         </div>
