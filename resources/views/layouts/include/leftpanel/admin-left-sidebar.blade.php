@@ -5,7 +5,11 @@ $logindata = Session::get('logindata');
 $roles  = array_values($roles);
 // print_r($roles);exit;
 @endphp
-
+<style>
+    .c-sidebar__item a i {
+        font-size:13px;
+        }
+</style>
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
