@@ -92,11 +92,8 @@ class CustomerController extends Controller {
         $objOrder = new OrderInfo();
         $data['arrOrder'] = $objOrder->getInfoV2($customerId);
         $data['arrOrderInfoStatus'] = $objOrder->getCustomerData($customerId);
-//        echo '<pre/>';
-//        print_r($data['arrOrderInfoStatus']);
-//        exit;
-        /* end For BillInfo */
-
+        $data['arrTime'] = Config::get('constants.arrTime');
+        $data['arrDayName'] = Config::get('constants.arrDayName');
         $data['welcome_note'] = Config::get('constants.welcome_note');
         $data['reroute_confirm'] = Config::get('constants.reroute_confirm');
         $data['unreach_note'] = Config::get('constants.unreach_note');

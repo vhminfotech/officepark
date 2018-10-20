@@ -3,7 +3,7 @@
             <span class="c-sidebar-toggle__bar"></span>
             <span class="c-sidebar-toggle__bar"></span>
             <span class="c-sidebar-toggle__bar"></span>
-        </button><!-- // .c-sidebar-toggle -->
+        </button>
 
         <h2 class="c-navbar__title u-mr-auto">&nbsp;</h2>
 

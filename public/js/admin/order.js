@@ -114,7 +114,7 @@ var Order = function() {
             }
         });
         
-          var form = $('#orderStatus');
+        var form = $('#orderStatus');
         var rules = {
             phone_to_reroute: {required: true},
             welcome_note: {required: true},
