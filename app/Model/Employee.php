@@ -120,7 +120,7 @@ class Employee extends Model {
     }
 
     public function employeeList() {
-        return DB::table('Employee')
+        return DB::table('employee')
                 ->join('users', 'users.id', '=', 'employee.customer_id')
                 ->join('employee_details', 'employee_details.employee_id', '=', 'employee.id')
                 ->groupBy('employee.id')
