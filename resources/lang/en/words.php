@@ -5,7 +5,7 @@ return [
     'Dashboard' => 'Dashboard',
     'Overview' => 'Overview',
     'Manage user' => 'Manage user',
-    'System-users' => 'OP System-users',
+    'System-users' => 'OP System Users',
     'Customer' => 'Customer',
     'Addressbook' => 'Addressbook',
     'Order' => 'Order',
@@ -14,6 +14,6 @@ return [
     'Contract' => 'Contract',
     'Invoice' => 'Invoice',
     'Employee' => 'Employee',
-    'Service' => 'OP Service',
+    'Service' => 'OP Services',
     'Calls' => 'Calls',
 ];

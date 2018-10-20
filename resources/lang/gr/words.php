@@ -13,6 +13,6 @@ return [
     'Select'        => 'Wählen',
     'Calls'         => 'Calls',
     'Logout'        => 'Ausloggen',
-    'Service'       => 'OP Service',
+    'Service'       => 'OP Services',
     
 ];
