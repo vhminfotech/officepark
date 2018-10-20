@@ -7,7 +7,7 @@ $roles  = array_values($roles);
 @endphp
 <style>
     .c-sidebar__item a i {
-        font-size:13px;
+        font-size:22px;
         }
 </style>
 <div class="o-page__sidebar js-page-sidebar">
