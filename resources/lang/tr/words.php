@@ -12,6 +12,7 @@ return [
     'Order'         => 'Sipariş',
     'Select'        => 'seçmek',
     'Calls'         => 'Aramalar',
-    'Logout'        => 'Çıkış Yap'
+    'Logout'        => 'Çıkış Yap',
+    'Service' => 'OP Service',
     
 ];

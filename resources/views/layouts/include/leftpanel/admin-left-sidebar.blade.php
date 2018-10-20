@@ -33,6 +33,16 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+            
+            @if($logindata[0]['id'] == 1 ||  in_array('Service', $roles))
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'service' || $currentRoute == 'service' ? 'is-active' : '') }}" href="{{ route('service') }}">
+                    <i class="fa fa-gears u-mr-xsmall"></i>
+                    {{ trans('words.Service') }} &nbsp;
+                </a>
+            </li>
+             @endif
+             
               @if($logindata[0]['id'] == 1 ||  in_array('Customer', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-list' || $currentRoute == 'customer-add' || $currentRoute == 'customer-edit' ? 'is-active' : '') }}" href="{{ route('customer-list') }}">
@@ -82,14 +92,7 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
-            @if($logindata[0]['id'] == 1 ||  in_array('Service', $roles))
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'service' || $currentRoute == 'service' ? 'is-active' : '') }}" href="{{ route('service') }}">
-                    <i class="fa fa-gears u-mr-xsmall"></i>
-                    {{ trans('words.Service') }} &nbsp;
-                </a>
-            </li>
-             @endif
+            
             @if($logindata[0]['id'] == 1 ||  in_array('System Mails', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-mail' || $currentRoute == 'system-mail' ? 'is-active' : '') }}" href="{{ route('system-mail') }}">

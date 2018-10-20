@@ -12,6 +12,7 @@ return [
     'Order'         => 'Auftrag',
     'Select'        => 'Wählen',
     'Calls'         => 'Calls',
-    'Logout'        => 'Ausloggen'
+    'Logout'        => 'Ausloggen',
+    'Service'       => 'OP Service',
     
 ];
