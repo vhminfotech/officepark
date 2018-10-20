@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
     <div class="row u-mb-large">
@@ -29,6 +30,7 @@
 
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
+                            <th class="c-table__cell c-table__cell--head" style="">Customer Number&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head" style="">First Name&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Last name&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Job Title&nbsp;&nbsp;</th>
@@ -40,16 +42,17 @@
                     <tbody>
                         @for($i = 0 ;$i < count($employeeList);$i++)
                         <tr class="c-table__row">
-                            <td class="c-table__cell">{{ $employeeList[$i]['first_name'] }}</td>
-                            <td class="c-table__cell">{{ $employeeList[$i]['last_name'] }}</td>
-                            <td class="c-table__cell">{{ $job_title[$employeeList[$i]['job_title']] }}</td>
-                            <td class="c-table__cell">{{ $responsibility[$employeeList[$i]['responsibility']] }}</td>
-                            <td class="c-table__cell">{{ $employeeList[$i]['email'] }}</td>
+                            <td class="c-table__cell">{{ $employeeList[$i]->customer_number }}</td>
+                            <td class="c-table__cell">{{ $employeeList[$i]->first_name }}</td>
+                            <td class="c-table__cell">{{ $employeeList[$i]->last_name }}</td>
+                            <td class="c-table__cell">{{ $job_title[$employeeList[$i]->job_title] }}</td>
+                            <td class="c-table__cell">{{ $responsibility[$employeeList[$i]->responsibility] }}</td>
+                            <td class="c-table__cell">{{ $employeeList[$i]->email }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('employee-edit',$employeeList[$i]['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('employee-edit',$employeeList[$i]->id)}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $employeeList[$i]['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete"  data-id="{{ $employeeList[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
                                         <i class="fa fa-trash-o"></i></span>
                                 </a>
                             </td>

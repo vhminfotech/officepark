@@ -120,16 +120,26 @@ class Employee extends Model {
     }
 
     public function employeeList() {
-        return Employee::
-                        leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
-                        ->groupBy('employee.id')
-                        ->get(['employee.*',
+        return DB::table('Employee')
+                ->join('users', 'users.id', '=', 'employee.customer_id')
+                ->join('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                ->groupBy('employee.id')
+                ->get(['employee.*',
                             'employee_details.day_name',
                             'employee_details.day_start_time',
-                            'employee_details.day_end_time']);
+                            'employee_details.day_end_time','users.customer_number']);
+                        
+                        
+//        return Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+//                        ->groupBy('employee.id')
+//                        ->get(['employee.*',
+//                            'employee_details.day_name',
+//                            'employee_details.day_start_time',
+//                            'employee_details.day_end_time']);
     }
 
     public function geteEmployeeEdit($id) {
+        
         return Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
                         ->where('employee.id', $id)
                         ->get(['employee.*',

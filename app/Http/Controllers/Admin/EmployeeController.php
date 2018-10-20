@@ -22,6 +22,7 @@ class EmployeeController extends Controller {
     public function getEmployerData() {
         $objEmployee = new Employee();
         $data['employeeList'] = $objEmployee->employeeList();
+        
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
         $data['js'] = array('admin/employee.js');
@@ -43,7 +44,7 @@ class EmployeeController extends Controller {
         $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
         if ($request->isMethod('post')) {
-
+           
             $objEmployee = new Employee();
             $employeeId = $objEmployee->saveEmployeeInfo($request);
             if ($employeeId == true) {

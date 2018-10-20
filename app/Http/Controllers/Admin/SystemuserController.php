@@ -74,7 +74,6 @@ class SystemuserController extends Controller {
         $data['js'] = array('admin/system_user.js');
         $data['funinit'] = array('System_user.addInit()');
         $data['masterPermission'] = $objUser->getMasterPermisson($request);
-
         return view('admin.systemuser.system-add-user', $data);
     }
 
