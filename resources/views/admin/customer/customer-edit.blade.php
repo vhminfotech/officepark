@@ -116,7 +116,7 @@
                             </div>
                                 
                             <div class="col-lg-5">
-                                    <div class="row">
+                                    <div class="">
                                         <div class="col-md-12">
                                             <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-panel" aria-expanded="false" aria-controls="stage-panel">
                                                 <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> Bussines Hours/Global</h6>
@@ -150,7 +150,6 @@
                                                         </div>
                                                     </div>
                                                     @endfor
-                                                </div>
                                             </div>
                                         </div>
 
