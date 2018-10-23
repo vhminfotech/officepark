@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Model\Employee;
 use App\Model\EmployeeDetails;
 use App\Model\OrderInfo;
+use App\Model\Users;
 use Config;
 
 class EmployeeController extends Controller {
@@ -19,15 +20,16 @@ class EmployeeController extends Controller {
         $this->middleware('admin');
     }
 
-    public function getEmployerData() {
+    public function getEmployerData(Request $request) {
+        $userName = (empty($request->get('userName'))) ? '' : $request->get('userName');
         $objEmployee = new Employee();
-        $data['employeeList'] = $objEmployee->employeeList();
-        
+        $data['employeeList'] = $objEmployee->employeeList($userName);
+        $data['employeeCusList'] = $objEmployee->getemployeeCusList();
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
         $data['js'] = array('admin/employee.js');
         $data['funinit'] = array('Employee.list_init()');
-        
+        $data['userName'] = $userName;
         return view('admin.employee.employee-list', $data);
     }
 

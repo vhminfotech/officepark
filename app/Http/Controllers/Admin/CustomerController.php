@@ -7,6 +7,8 @@ use App\Model\Customer;
 use App\Model\Users;
 use App\Model\Invoice;
 use App\Model\Calls;
+use App\Model\Customer_info;
+use App\Model\Customer_details;
 use App\Model\OrderInfo;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -68,10 +70,22 @@ class CustomerController extends Controller {
     public function editCustomer($customerId, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
-//            print_r($request->input());exit;
+            
+            
             $objCustomer = new Users();
             $customerResult = $objCustomer->updateCustomerInfo($request);
-            if ($customerResult == true) {
+            
+            if($customerResult == true){
+            $objCustomerInfo= new Customer_info();
+            $customerInfo=$objCustomerInfo->updateCustomerInfo($request);            
+            }
+            
+            if($customerInfo == true){
+            $objCustomerDetails= new Customer_details();
+            $customerDetails=$objCustomerDetails->updateDetails($request);            
+            }
+            
+            if ($customerDetails == true) {                
                 $return['status'] = 'success';
                 $return['message'] = 'Customer Edit successfully.';
                 $return['redirect'] = route('customer-list');

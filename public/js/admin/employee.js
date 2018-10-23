@@ -17,6 +17,15 @@ var Employee = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form, true);
         });
+        
+        $(document).on('change','#fillter',function(){
+         
+           
+            var userName=$(this).val(); 
+            var querystring = (userName == '' && typeof userName === 'undefined') ? 'userName=' : 'userName=' + userName;
+            location.href = baseurl + 'admin/employee?' + querystring;
+            
+        });
 //        $('[data-toggle="datepicker"]').datepicker({
 //            format: "dd/mm/yyyy",
 //            autoclose: true,
@@ -65,7 +74,7 @@ var Employee = function() {
             });
         });
     }
-
+    
 
     return {
         list_init: function() {

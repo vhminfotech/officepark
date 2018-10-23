@@ -21,7 +21,7 @@ class Users extends Model {
         $result = DB::table('permission_master')->get();
         return $result;
     }
-
+    
     public function gtUsrLlist($id = NULL) {
 
         if ($id) {
@@ -100,6 +100,7 @@ class Users extends Model {
         $objUser->password = $newpass;
         $objUser->created_at = date('Y-m-d H:i:s');
         $objUser->updated_at = date('Y-m-d H:i:s');
+        
 
         if ($objUser->save()) {
             $lastId = $objUser->id;

@@ -119,7 +119,19 @@ class Employee extends Model {
         return $return;
     }
 
-    public function employeeList() {
+    public function employeeList($request=null) {
+        if(!empty($request)){
+           return DB::table('employee')
+                ->join('users', 'users.id', '=', 'employee.customer_id')
+                ->join('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                ->groupBy('employee.id')
+                ->where('users.customer_number','=',$request)
+                ->get(['employee.*',
+                            'employee_details.day_name',
+                            'employee_details.day_start_time',
+                            'employee_details.day_end_time',
+                    'users.customer_number']);
+        }else{
         return DB::table('employee')
                 ->join('users', 'users.id', '=', 'employee.customer_id')
                 ->join('employee_details', 'employee_details.employee_id', '=', 'employee.id')
@@ -128,14 +140,22 @@ class Employee extends Model {
                             'employee_details.day_name',
                             'employee_details.day_start_time',
                             'employee_details.day_end_time','users.customer_number']);
-                        
-                        
-//        return Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
-//                        ->groupBy('employee.id')
-//                        ->get(['employee.*',
-//                            'employee_details.day_name',
-//                            'employee_details.day_start_time',
-//                            'employee_details.day_end_time']);
+        }
+              
+    }
+    public function getemployeeCusList($request=null) {
+       
+        return DB::table('employee')
+                ->join('users', 'users.id', '=', 'employee.customer_id')
+                ->join('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                ->groupBy('users.customer_number')
+                ->get(['employee.*',
+                            'employee_details.day_name',
+                            'employee_details.day_start_time',
+                            'employee_details.day_end_time',
+                            'users.customer_number']);
+        
+              
     }
 
     public function geteEmployeeEdit($id) {
