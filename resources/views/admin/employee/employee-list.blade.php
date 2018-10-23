@@ -11,11 +11,25 @@
                    
                     <caption class="c-table__title">
                         <div class="row">
-                            <div class="col-lg-2">
-                                Employee
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                    Employee
+                                    </div>
+                                    
+                                    <div class="col-lg-6 ">
+                                        <select class="c-select" name='fillter' id='fillter'>
+                                            <option value=""><b>Select Customer</b></option>
+                                            @for($i = 0; $i < count($employeeCusList);$i++)
+                                            <option @if($userName == $employeeCusList[$i]->customer_number) {{ 'selected="selected"'}} @endif value="{{$employeeCusList[$i]->customer_number}}"><b>{{$employeeCusList[$i]->customer_number}}</b></option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                    
+                                </div>
                             </div>
 
-                            <div class="col-lg-10">
+                            <div class="col-lg-6">
 
                                 <div class="left">
                                     <a href="{{route('employee-add')}}" class="c-btn c-btn--info" >Add New Employee</a>

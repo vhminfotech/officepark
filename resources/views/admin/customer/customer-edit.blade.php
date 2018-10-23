@@ -83,13 +83,13 @@
                                       <div class="c-field u-mb-small">
                                           <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
                                           <div class="c-choice c-choice--checkbox">
-                                              <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" required>
+                                              <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" >
                                               <label class="c-choice__label" for="call_transfer_telephone">Transfer Incoming call To Telephone</label>
                                           </div>
                                       </div>
                                       <div class="c-field u-mb-small">
                                           <div class="c-choice c-choice--checkbox">
-                                              <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" required>
+                                              <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" >
                                               <label class="c-choice__label" for="call_transfer_mobile_phone">Transfer Incoming call To Mobile Phone</label>
                                           </div>
                                       </div>
@@ -198,14 +198,14 @@
                                                         <div class="form-group">
                                                             <div class="c-field has-addon-left">
                                                                 <label class="c-field__label" for="holidayfrom">Holiday Global From</label> 
-                                                                <input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" required>
+                                                                <input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" >
                                                             </div>
                                                         </div>
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="c-field has-addon-left">
                                                                 <label class="c-field__label" for="holidayto">Holiday Global To</label> 
-                                                                <input class="c-input form-control" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" required>
+                                                                <input class="c-input form-control" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" >
                                                             </div>
                                                         </div>
                                                     </div> 
