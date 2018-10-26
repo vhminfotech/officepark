@@ -797,6 +797,7 @@ function dateFormate(field) {
 /* Start manage datatable with Ajax & hide/show column dynamic */
 
 function getDataTable(arr) {
+    
     var dataTable = $(arr.tableID).DataTable({
         //"scrollY": "200px",
         "processing": true,

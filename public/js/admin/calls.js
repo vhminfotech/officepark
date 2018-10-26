@@ -152,6 +152,7 @@ var Calls = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
+        
         var dataArr = {};
         var columnWidth = {};
         var columnWidth = {"width": "20%", "targets": 4};

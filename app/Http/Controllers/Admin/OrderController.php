@@ -247,7 +247,7 @@ class OrderController extends Controller {
 
     public function contractList() {
         $objOrder = new OrderInfo();
-        $data['arrayContract'] = $objOrder->getContractInfo();
+        $data['arrayContract']=$objOrder->getContractInfo();
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');

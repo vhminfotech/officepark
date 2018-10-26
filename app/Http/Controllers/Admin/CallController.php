@@ -108,7 +108,9 @@ class CallController extends Controller {
     }
 
     public function ajaxAction(Request $request) {
+       
         $action = $request->input('action');
+
         switch ($action) {
             case 'getSentEmailData':
                 $id = $request->input('data')['id'];

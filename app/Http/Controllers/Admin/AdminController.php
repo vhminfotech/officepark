@@ -26,6 +26,7 @@ class AdminController extends Controller {
     public function dashboard() {
 
         $data['detail'] = $this->loginUser;
+        
         return view('admin.dashboard', $data);
     }
 

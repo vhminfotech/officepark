@@ -88,7 +88,9 @@ class Calls extends Model {
     }
 
     public function getDatatable($request) {
+        
         $requestData = $_REQUEST;
+
         $columns = array(
             // datatable column index  => database column name
             0 => 'calls.id',
@@ -151,7 +153,7 @@ class Calls extends Model {
                                         <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail again</a>
                                 </div>';
             } else {
-                $actionHtml = '  <div class="col u-mb-medium">
+                $actionHtml = '<div class="col u-mb-medium">
                                     <a  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
                                         <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail</a>
                                 </div>';
