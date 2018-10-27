@@ -3,6 +3,10 @@
 @include('layouts.include.body_header')
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
+    @include('admin.call.popUp.popUpModel')
+    
+    
+    
     <div class="row u-mb-large">
         <div class="col-12">
             <div c-table-responsive>
@@ -19,6 +23,7 @@
                                 <th class="c-table__cell c-table__cell--head">Notiz</th>
                                 <th class="c-table__cell c-table__cell--head">Mail Notification</th>
                                 <th></th>
+                                <th>Call View</th>
                             </tr>
                         </thead>
                     </table>
@@ -114,6 +119,8 @@
             </div><!-- // .c-modal__content -->
         </div><!-- // .c-modal__dialog -->
     </div><!-- // .c-modal -->
+    
+    
 
 </div>
 

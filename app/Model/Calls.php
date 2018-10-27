@@ -146,7 +146,9 @@ class Calls extends Model {
         foreach ($resultArr as $row) {
             $nestedData = array();
             $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
-
+            $actionHtml2='<button type="button" class="c-btn c-btn--info" data-toggle="modal" data-target="#myModal2">
+                      Call Popup
+                    </button>';
             if ($row['sent_mail'] == 1) {
                 $actionHtml = '  <div class="col u-mb-medium">
                                     <a  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
@@ -169,6 +171,7 @@ class Calls extends Model {
             $nestedData[] = $row['caller_note'];
             $nestedData[] = $msgStatus;
             $nestedData[] = $actionHtml;
+            $nestedData[] = $actionHtml2;
             $data[] = $nestedData;
         }
 
