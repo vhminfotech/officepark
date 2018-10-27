@@ -109,6 +109,7 @@ class LoginController extends Controller {
                     'type' => Auth::guard('agent')->user()->type,
                     'id' => Auth::guard('agent')->user()->id
                 );
+                $this->getUserRoleList(Auth::guard('agent')->user()->id,$request);
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'Agent Login successfully.');
                 return redirect()->route('agent-dashboard');
@@ -139,6 +140,7 @@ class LoginController extends Controller {
         Auth::logout();
         Auth::guard('admin')->logout();
         Auth::guard('customer')->logout();
+        Auth::guard('agent')->logout();
         Session::forget('logindata');
         Session::forget('userRole');
     }

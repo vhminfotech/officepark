@@ -27,7 +27,7 @@ class Users extends Model {
         if ($id) {
             $result = Users::select('users.*')->where('users.id', '=', $id)->get();
         } else {
-            $result = Users::whereIn('type', ['ADMIN'])->get();
+            $result = Users::whereIn('type', ['AGENT'])->get();
         }
         return $result;
     }
@@ -96,7 +96,7 @@ class Users extends Model {
         $objUser->inopla_username = $request->input('inoplaName');
         $objUser->extension_number = $request->input('exNumber');
         $objUser->var_language = $request->input('langauge');
-        $objUser->type = 'ADMIN';
+        $objUser->type = 'AGENT';
         $objUser->password = $newpass;
         $objUser->created_at = date('Y-m-d H:i:s');
         $objUser->updated_at = date('Y-m-d H:i:s');
