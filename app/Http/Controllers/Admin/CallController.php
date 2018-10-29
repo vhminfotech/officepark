@@ -128,6 +128,11 @@ class CallController extends Controller {
                 $getdatatableIncomingCall = $objRtoEmployer->getdatatableIncomingCall($request);
                 echo json_encode($getdatatableIncomingCall);
                 break;
+            case 'customerpopupdetail':
+                $objRtoEmployer = new Calls();
+                $getdatatableIncomingCall = $objRtoEmployer->customerpopupdetail($request);
+                echo json_encode($getdatatableIncomingCall);
+                break;
             
             case 'getTemplateList':
                 $session = $request->session()->all();

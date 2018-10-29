@@ -146,12 +146,10 @@ class Calls extends Model {
         foreach ($resultArr as $row) {
             $nestedData = array();
             $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
-            $actionHtml2='<button type="button" class="c-btn c-btn--info" data-toggle="modal" data-target="#myModal2">
+            $actionHtml2='<button type="button" class="c-btn c-btn--info customerpopupdetail" data-id="'.$row["id"].'" data-toggle="modal" data-target="#myModal2">
                       Call Popup
                     </button>';
-            $actionHtml3='<button type="button" class="c-btn c-btn--success ">
-                      Confirm
-                    </button>';
+
             if ($row['sent_mail'] == 1) {
                 $actionHtml = '  <div class="col u-mb-medium">
                                     <a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
@@ -177,7 +175,7 @@ class Calls extends Model {
             $nestedData[] = $msgStatus;
             $nestedData[] = $actionHtml;
             $nestedData[] = $actionHtml2;
-             $nestedData[] = $actionHtml3;
+
             $data[] = $nestedData;
         }
 
@@ -431,6 +429,27 @@ class Calls extends Model {
         $sql->orderBy('TotalCount', 'DESC');
         $result = $sql->get(array('u1.inopla_username', DB::raw('COUNT(calls.id)as TotalCount')));
         return $result;
+    }
+    
+    public function customerpopupdetail($id){
+        
+        $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')
+                ->groupBy('calls.id')
+                ->where('calls.id',8);
+        $resultArr = $query->select(
+                'users.name',
+                'users.email',
+                'users.id as user_id',
+                'users.customer_number',
+                'order_info.company_name',
+                'order_info.company_info',
+                'order_info.name as customerName'
+                )->get();
+        
+        // write other query to get houres data from table:select * from customer_details where user_id = $resultArr[0]->userid 
+        print_r($resultArr);
+        exit;
     }
 
 }

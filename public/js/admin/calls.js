@@ -90,6 +90,23 @@ var Calls = function() {
             });
         });
 
+        $('body').on('click', '.customerpopupdetail', function() {
+            var id = $(this).attr('data-id');
+            
+            var data = {id: id, _token: $('#_token').val()};
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/calls-ajaxAction",
+                data: {'action': 'customerpopupdetail', 'data': data},
+                success: function(data) {
+//                    handleAjaxResponse(data);
+                }
+            });
+        });
+        
         function templateList() {
             var id = $(this).attr('data-id');
             $.ajax({

@@ -42,7 +42,6 @@
                                 <th class="c-table__cell_head">Mail Notification</th>
                                 <th class="c-table__cell_head">Send Mail</th>
                                 <th class="c-table__cell_head">Call View</th>
-                                 <th class="c-table__cell_head">Status</th>
                             </tr>
                         </thead>
                     </table>
