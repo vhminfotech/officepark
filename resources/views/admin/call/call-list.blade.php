@@ -9,13 +9,19 @@
             text-align: center;
             }
             table.dataTable thead th, table.dataTable thead td {
-                padding: 0px 26px;
+                /*padding: 0px 26px;*/
                 border-bottom: 1px solid #111111;
             }
             .c-table__cell_head{
                 color: #7f8fa4;
                 font-size: .875rem;
                 font-weight: 500;
+            }
+            table.dataTable thead .sorting,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc{
+                background: none;
+            }
+            .dataTables_scrollBody th{
+                display: none;
             }
     </style>
   
