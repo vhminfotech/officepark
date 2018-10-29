@@ -113,6 +113,16 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+            
+            @if($logindata[0]['id'] != 1))
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'incoming-call' || $currentRoute == 'incoming-call' ? 'is-active' : '') }}" href="{{ route('incoming-call') }}">
+                    <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:2px"></i>
+                    <!--{{ trans('words.Service') }} -->Incoming Call &nbsp;
+                </a>
+            </li>
+            @endif
+            
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>

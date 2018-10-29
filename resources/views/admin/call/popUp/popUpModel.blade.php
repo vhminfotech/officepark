@@ -1,8 +1,16 @@
-<div class="col-sm-4 u-mb-medium">
-                    <!-- Button trigger modal -->
-                   
-
-                    <!-- Modal -->
+<style>
+    
+    .c-modal__body{
+        padding-top:70px;
+    }
+    
+    .fa-close{
+        padding: 0px;
+        margin: 0px;
+    }
+</style>
+                <div class=" u-mb-medium">
+                  
                     <div class="c-modal c-modal--huge modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
                         <div class="c-modal__dialog modal-dialog" role="document">
                             <div class="c-modal__content modal-content">

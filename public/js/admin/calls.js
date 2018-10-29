@@ -155,7 +155,7 @@ var Calls = function() {
         
         var dataArr = {};
         var columnWidth = {};
-        var columnWidth = {"width": "20%", "targets": 4};
+       
         var arrList = {
             'tableID': '#ManageEmployerList',
             'ajaxURL': baseurl + "admin/calls-ajaxAction",

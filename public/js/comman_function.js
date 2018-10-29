@@ -797,14 +797,14 @@ function dateFormate(field) {
 /* Start manage datatable with Ajax & hide/show column dynamic */
 
 function getDataTable(arr) {
-    
+   
     var dataTable = $(arr.tableID).DataTable({
-        //"scrollY": "200px",
+        "scrollX": true,        
         "processing": true,
         "serverSide": true,
         "bAutoWidth": false,
         "bLengthChange": false,
-        "bInfo": false,
+        "bInfo": true,
         "language": {
             "search": "_INPUT_",
             "searchPlaceholder": "Search..."

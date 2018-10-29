@@ -20,14 +20,11 @@ class Admin
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                
                 if (Auth::guard('agent')->check()) {
-                    
                 }else{
-                    //print_r(Auth::guard('agent')->user());
                     return redirect()->route('login');
                 }
-               // return redirect()->route('login');
+               
             }
         }
 

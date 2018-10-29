@@ -108,9 +108,8 @@ class CallController extends Controller {
     }
 
     public function ajaxAction(Request $request) {
-       
+        
         $action = $request->input('action');
-
         switch ($action) {
             case 'getSentEmailData':
                 $id = $request->input('data')['id'];
@@ -123,6 +122,13 @@ class CallController extends Controller {
                 $employerLists = $objRtoEmployer->getDatatable($request);
                 echo json_encode($employerLists);
                 break;
+            
+            case 'getdatatableIncomingCall':
+                $objRtoEmployer = new Calls();
+                $getdatatableIncomingCall = $objRtoEmployer->getdatatableIncomingCall($request);
+                echo json_encode($getdatatableIncomingCall);
+                break;
+            
             case 'getTemplateList':
                 $session = $request->session()->all();
                 $objRtoEmployer = new Template();

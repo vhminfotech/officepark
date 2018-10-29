@@ -4,26 +4,39 @@
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
     @include('admin.call.popUp.popUpModel')
-    
-    
-    
+    <style>
+        #ManageEmployerList td {
+            text-align: center;
+            }
+            table.dataTable thead th, table.dataTable thead td {
+                padding: 0px 26px;
+                border-bottom: 1px solid #111111;
+            }
+            .c-table__cell_head{
+                color: #7f8fa4;
+                font-size: .875rem;
+                font-weight: 500;
+            }
+    </style>
+  
     <div class="row u-mb-large">
         <div class="col-12">
             <div c-table-responsive>
-                <div class="c-table table-responsive">
-                    <table class="" id="ManageEmployerList">
+                <div class=" table-responsive">
+                    <table class="c-table" id="ManageEmployerList" >
                         <thead class="c-table__head c-table__head--slim">
                             <tr class="c-table__row">
                                 <!--<th><input class="checkAll" type="checkbox"></th>-->
-                                <th class="c-table__cell c-table__cell--head">Id &nbsp;&nbsp;</th>
-                                <th class="c-table__cell c-table__cell--head">Date/Time</th>
-                                <th class="c-table__cell c-table__cell--head">Caller</th>
-                                <th class="c-table__cell c-table__cell--head">Agent</th>
-                                <th class="c-table__cell c-table__cell--head">Customer</th>
-                                <th class="c-table__cell c-table__cell--head">Notiz</th>
-                                <th class="c-table__cell c-table__cell--head">Mail Notification</th>
-                                <th></th>
-                                <th>Call View</th>
+                                <th class="c-table__cell_head">Id </th>
+                                <th class="c-table__cell_head">Date/Time</th>
+                                <th class="c-table__cell_head">Caller</th>
+                                <th class="c-table__cell_head">Agent</th>
+                                <th class="c-table__cell_head">Customer</th>
+                                <th class="c-table__cell_head">Notes</th>
+                                <th class="c-table__cell_head">Mail Notification</th>
+                                <th class="c-table__cell_head">Send Mail</th>
+                                <th class="c-table__cell_head">Call View</th>
+                                 <th class="c-table__cell_head">Status</th>
                             </tr>
                         </thead>
                     </table>

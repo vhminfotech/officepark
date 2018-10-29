@@ -149,16 +149,21 @@ class Calls extends Model {
             $actionHtml2='<button type="button" class="c-btn c-btn--info" data-toggle="modal" data-target="#myModal2">
                       Call Popup
                     </button>';
+            $actionHtml3='<button type="button" class="c-btn c-btn--success ">
+                      Confirm
+                    </button>';
             if ($row['sent_mail'] == 1) {
                 $actionHtml = '  <div class="col u-mb-medium">
-                                    <a  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
-                                        <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail again</a>
+                                    <a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
+                                        <i class="fa fa-refresh"></i>
+                                    </a>
                                 </div>';
             } else {
                 $actionHtml = '<div class="col u-mb-medium">
-                                    <a  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
-                                        <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail</a>
-                                </div>';
+                                    <a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </a>
+                               </div>';
             }
 
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
@@ -172,6 +177,112 @@ class Calls extends Model {
             $nestedData[] = $msgStatus;
             $nestedData[] = $actionHtml;
             $nestedData[] = $actionHtml2;
+             $nestedData[] = $actionHtml3;
+            $data[] = $nestedData;
+        }
+
+        $json_data = array(
+            "draw" => intval($requestData['draw']), // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+            "recordsTotal" => intval($totalData), // total number of records
+            "recordsFiltered" => intval($totalFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+            "data" => $data   // total data array
+        );
+        return $json_data;
+    }
+    
+    public function getdatatableIncomingCall($request) {
+         $logindata = Session::get('logindata');
+        $requestData = $_REQUEST;
+
+        $columns = array(
+            // datatable column index  => database column name
+            0 => 'calls.id',
+            1 => 'calls.date_time',
+            2 => 'calls.caller',
+            3 => 'u2.name',
+            4 => 'calls.caller_note',
+            5 => 'calls.sent_mail',
+            6 => 'calls.sent_mail',
+        );
+       
+        $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
+                ->where('u1.id','=',$logindata)
+                ->groupBy('calls.id');
+        
+
+        if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+            $searchVal = $requestData['search']['value'];
+            $query->where(function($query) use ($columns, $searchVal, $requestData) {
+                        $flag = 0;
+                        foreach ($columns as $key => $value) {
+                            $searchVal = $requestData['search']['value'];
+                            if ($key == 3 && ($searchVal == 'Not Sent' || $searchVal == 'not sent')) {
+                                $searchVal = 0;
+                            } else if ($key == 3 && ($searchVal == 'sent' || $searchVal == 'Sent')) {
+                                $searchVal = 1;
+                            }
+
+                            if ($requestData['columns'][$key]['searchable'] == 'true') {
+                                if ($flag == 0) {
+                                    $flag = $flag + 1;
+                                    $query->where($value, 'like', '%' . $searchVal . '%');
+                                } else {
+//                                    $query->orWhere($value, 'like',"%$searchVal%");
+                                    $query->orWhere($value, 'like', '%' . $searchVal . '%');
+                                }
+                            }
+                        }
+                    });
+        }
+
+        $temp = $query->orderBy($columns[$requestData['order'][0]['column']], $requestData['order'][0]['dir']);
+
+        $totalData = count($temp->get());
+        $totalFiltered = count($temp->get());
+        $resultArr = $query->skip($requestData['start'])
+                        ->take($requestData['length'])
+                        ->select(
+                                'u1.name as agentName', 'u2.name as customerName','calls.caller', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail', 'calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi', 'calls.caller_note'
+                        )->where('u1.id','=',$logindata)->get();
+
+        $data = array();
+
+        foreach ($resultArr as $row) {
+            $nestedData = array();
+            $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
+            $actionHtml2='<button type="button" class="c-btn c-btn--info" data-toggle="modal" data-target="#myModal2">
+                      Call Popup
+                    </button>';
+            $actionHtml3='<button type="button" class="c-btn c-btn--success ">
+                      Confirm
+                    </button>';
+            if ($row['sent_mail'] == 1) {
+                $actionHtml = '  <div class="col u-mb-medium">
+                                    <a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
+                                        <i class="fa fa-refresh"></i>
+                                    </a>
+                                </div>';
+            } else {
+                $actionHtml = '<div class="col u-mb-medium">
+                                    <a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </a>
+                               </div>';
+            }
+
+//            $nestedData[] = '<input class="changeStatus" type="checkbox">';
+            $nestedData[] = $row["id"];
+            $nestedData[] = date('d-m-Y h:i:s', strtotime($row['date_time']));
+            $nestedData[] = (empty($row['caller']) ? 'N/A' : $row['caller']) . "<a href='". route('address-book-add',array('phoneNumber'=>$row["caller"])) ."'><span class='c-tooltip c-tooltip--top'  aria-label='Add Addressbook'>
+                                        <i class='fa fa-plus-circle' ></i></span></a>";
+            $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
+            $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
+            $nestedData[] = $row['caller_note'];
+            $nestedData[] = $msgStatus;
+            $nestedData[] = $actionHtml;
+            $nestedData[] = $actionHtml2;
+             $nestedData[] = $actionHtml3;
             $data[] = $nestedData;
         }
 
