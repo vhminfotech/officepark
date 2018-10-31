@@ -33,11 +33,20 @@ class UpdateProfileController extends Controller {
             if ($edituserinfo) {
                 $return['status'] = 'success';
                 $return['message'] = 'User Info Edit successfully.';
-                $return['redirect'] = route('admin-dashboard');
+                 if (Auth::guard('agent')->check()) {
+                   $return['redirect'] = route('agent-dashboard');
+                }else{
+                   $return['redirect'] = route('admin-dashboard');
+                }
+                
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
-                $return['redirect'] = route('admin-dashboard');
+                 if (Auth::guard('agent')->check()) {
+                   $return['redirect'] = route('agent-dashboard');
+                }else{
+                   $return['redirect'] = route('admin-dashboard');
+                }
             }
             echo json_encode($return);
             exit;
@@ -63,7 +72,11 @@ class UpdateProfileController extends Controller {
                 
                 $return['status'] = 'error';
                 $return['message'] = 'Old password Does Not Match !!.';
-                $return['redirect'] = route('admin-dashboard');
+                 if (Auth::guard('agent')->check()) {
+                   $return['redirect'] = route('agent-dashboard');
+                }else{
+                   $return['redirect'] = route('admin-dashboard');
+                }
             } else {
                 
                 $objuserpasswordedit = new Users();
@@ -71,7 +84,11 @@ class UpdateProfileController extends Controller {
 
                 $return['status'] = 'success';
                 $return['message'] = 'User Password successfully Changed.';
-                $return['redirect'] = route('admin-dashboard');
+                 if (Auth::guard('agent')->check()) {
+                   $return['redirect'] = route('agent-dashboard');
+                }else{
+                   $return['redirect'] = route('admin-dashboard');
+                }
                 
             }
         }
