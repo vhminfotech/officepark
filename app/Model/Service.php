@@ -76,7 +76,7 @@ class Service extends Model {
             $title = $data['title'];
             $qty = $data['qty'];
             $price = $data['price'];
-            $is_invoice = $data['in_invoice'];
+            $is_invoice = (isset($data['in_invoice']))?$data['in_invoice']:'';
 
 
             for ($i = 0; $i < count($title); $i++) {
