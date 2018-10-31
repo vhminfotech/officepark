@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use Auth;
 use App\Model\ServiceDetail;
+use Config;
 
 class Calls extends Model {
 
@@ -145,23 +146,28 @@ class Calls extends Model {
 
         foreach ($resultArr as $row) {
             $nestedData = array();
-            $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
-            $actionHtml2='<button type="button" class="c-btn c-btn--info customerpopupdetail" data-id="'.$row["id"].'" data-toggle="modal" data-target="#myModal2">
-                      Call Popup
-                    </button>';
-
+            //$msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
+            if($row['sent_mail']==1)
+            {
+                $actionHtml3='<span class="c-badge c-badge--success">Confirm</span>';
+                        
+            }else{
+                $actionHtml3='<span class="c-badge c-badge--danger">Not Confirm</span>';
+            }
+            
+            $actionHtml2='<a  title="Call Popup"    data-toggle="modal" data-target="#myModal2">
+                            <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
+                          </a>';
+            
             if ($row['sent_mail'] == 1) {
-                $actionHtml = '  <div class="col u-mb-medium">
-                                    <a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
-                                        <i class="fa fa-refresh"></i>
-                                    </a>
-                                </div>';
+                $actionHtml = '<a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                    <i class="fa fa-refresh"></i>
+                                 
+                              </a>';
             } else {
-                $actionHtml = '<div class="col u-mb-medium">
-                                    <a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
+                $actionHtml = '<a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
                                         <i class="fa fa-envelope-o"></i>
-                                    </a>
-                               </div>';
+                                    </a>';
             }
 
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
@@ -172,10 +178,10 @@ class Calls extends Model {
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];
-            $nestedData[] = $msgStatus;
+            $nestedData[] = $actionHtml3;
             $nestedData[] = $actionHtml;
             $nestedData[] = $actionHtml2;
-
+             
             $data[] = $nestedData;
         }
 
@@ -187,7 +193,6 @@ class Calls extends Model {
         );
         return $json_data;
     }
-    
     public function getdatatableIncomingCall($request) {
          $logindata = Session::get('logindata');
         $requestData = $_REQUEST;
@@ -436,21 +441,74 @@ class Calls extends Model {
         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')
                 ->groupBy('calls.id')
-                ->where('calls.id',8);
+                ->where('calls.id',$id['data']['id']);
         $resultArr = $query->select(
                 'users.name',
                 'users.email',
                 'users.id as user_id',
                 'users.customer_number',
+                'users.system_genrate_no',
                 'order_info.company_name',
                 'order_info.company_info',
-                'order_info.name as customerName'
-                )->get();
+                'order_info.fullname as customerName',
+                'calls.service',
+                'calls.caller'
+                )->get()->toArray();
         
-        // write other query to get houres data from table:select * from customer_details where user_id = $resultArr[0]->userid 
-        print_r($resultArr);
-        exit;
+        return $resultArr;
+
     }
+    
+    public function customerpopupdetailbussinesshours($id){
+        
+        $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('customer_details', 'customer_details.user_id', '=', 'users.id')                
+                ->where('calls.id',$id['data']['id']);
+        $result = $query->select(
+                    'customer_details.day_name',
+                    'customer_details.day_start_time',
+                    'customer_details.day_end_time'
+                )->get()->toArray();
+       
+        return $result;
+    }   
+    
+    public function customer_info($id){
+         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('customer_info', 'customer_info.user_id', '=', 'users.id')                
+                ->where('calls.id',$id['data']['id']);
+         $result = $query->select(
+                    'customer_info.lunch_start_time',
+                    'customer_info.lunch_end_time',
+                    'customer_info.holiday_global_from',
+                    'customer_info.holiday_global_to'
+                )->get()->toArray();
+         
+          return $result;
+     }
+     
+     
+    public function orderinfo($id){
+         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')                
+                ->where('calls.id',$id['data']['id']);
+         $result = $query->select(
+                    'order_info.welcome_note',
+                    'order_info.reroute_confirm',
+                    'order_info.company_info'
+                )->get()->toArray();
+        $welcome=$result[0]['welcome_note'];
+        $reroute=$result[0]['reroute_confirm'];
+        
+        $constant_note=Config::get('constants.welcome_note');
+         $constant_reroute=Config::get('constants.reroute_confirm');
+        $details['note']=$constant_note[$welcome];
+        $details['reroute']=$constant_reroute[$reroute];
+        $details['company_info']=$result[0]['company_info'];
+          return $details;
+     }
+     
+    
 
 }
 

@@ -172,5 +172,24 @@ class Employee extends Model {
         Employee::where('id', $empId)->delete();
         return true;
     }
-
+    
+    public function employeinfo($id){
+        $result= Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                        ->groupBy('employee.id')
+                        ->get(['employee.first_name',
+                                'employee.employee_image',
+                                'employee.last_name',
+                                'employee.job_title',
+                                'employee.my_profile'
+                            ]);
+        for($i=0;$i<count($result);$i++){
+            $jobtitle=$result[$i]['job_title'];            
+            $constant_job=Config::get('constants.job_title');
+            $result[$i]['job_title']=$constant_job[$jobtitle];
+        }
+        return $result;
+        
+        
+        
+    }
 }

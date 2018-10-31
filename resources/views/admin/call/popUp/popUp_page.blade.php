@@ -41,29 +41,29 @@
                         <div class="col-md-3">
                             <article class="c-plan">
                                 <h4>
-                                    <b>Company 1</b></h4>                                        
+                                    <b><span id="company_name"></span></b></h4>                                        
                                 <ul>
                                     <li class="c-plan__feature">
                                         <strong>Customer Number :</strong>
-                                        <br> op-211-1741
+                                        <br> <span id="customer_number"></span>
                                     </li>
                                     <li class="c-plan__feature">
                                         <strong>System Number :</strong>
-                                        <br> 0213-145236
+                                        <br> <span id="system_number"></span>
                                     </li>
                                     <li class="c-plan__feature">
                                         <strong>Name Surname :</strong> 
-                                        <br>Mr. Max Mustermann
+                                        <br><span id="name"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Email :</strong> 
-                                        <br>xyz@gmail.com 
+                                        <br><span id="email"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Telephone :</strong>
-                                        <br>+9111111111
+                                        <br><span id="caller"></span>
                                     </li>
                                 </ul>
                                 <br>
@@ -71,42 +71,42 @@
                                 <ul>
                                     <li class="c-plan__feature">
                                         <strong>Monday :</strong>
-                                        <br> 09:00 - 10:00
+                                        <br> <span id="start_time_1"></span> - <span id="end_time_1"></span> 
                                     </li>
                                     <li class="c-plan__feature">
                                         <strong>Tuesday :</strong>
-                                        <br> 09:00 - 10:00
+                                        <br> <span id="start_time_2"></span> - <span id="end_time_2"></span> 
                                     </li>
                                     <li class="c-plan__feature">
                                         <strong>Wednesday :</strong> 
-                                        <br>09:00 - 10:00
+                                        <br> <span id="start_time_3"></span> - <span id="end_time_3"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Thursday :</strong> 
-                                        <br>09:00 - 10:00 
+                                        <br>    <span id="start_time_4"></span> - <span id="end_time_4"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Friday :</strong>
-                                        <br>09:00 - 10:00
+                                        <br><span id="start_time_5"></span> - <span id="end_time_5"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Saturday :</strong>
-                                        <br>Closed
+                                        <br><span id="start_time_6"></span> - <span id="end_time_6"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Sunday :</strong>
-                                        <br>Closed
+                                        <br><span id="start_time_0"></span> - <span id="end_time_0"></span>
                                     </li>
                                 </ul>
                                 <br>
                                 <h4><b>Lunch Time</b></h4>
                                 <ul >
                                     <li class="c-plan__feature" >
-                                        <strong>12:00 - 13:00</strong>                                                
+                                        <strong><span id="start_time_lunch"></span> - <span id="end_time_lunch"></span></strong>                                                
                                     </li>
                                 </ul>
                                 <br>
@@ -115,11 +115,11 @@
                                 <ul >
                                     <li class="c-plan__feature">
                                         <strong>Global Holidays From :</strong>
-                                        <br>20.11.2018
+                                        <br><span id="holiday_start"></span>
                                     </li>                                            
                                     <li class="c-plan__feature">
                                         <strong>Global Holidays To :</strong>
-                                        <br>30.11.2018
+                                        <br><span id="holiday_end"></span>
                                     </li>
                                 </ul>
                                 <br>
@@ -133,19 +133,17 @@
                                 <ul>
                                     <li class="c-plan__feature">
                                         <strong>How should we contact you on the phone ?</strong>
-                                        <br> Company Schmidt - Hello My name is max mustermann.
+                                        <br> <span id="welcome_note"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Shall we put the caller though to you ?</strong>
-                                        <br> Yes, Please only make calls that want to place a new order.
+                                        <br> <span id="reroute_confirm"></span>
                                     </li>
 
                                     <li class="c-plan__feature">
                                         <strong>Information</strong>
-                                        <br> vcnxv,xcnbvbnvnlblkgnf,xngoifgf
-                                        <br> vcnxv,xcnbvbnvnlblkgnf,xngoifgf
-                                        <br> vcnxv,xcnbvbnvnlblkgnf,xngoifgf
+                                        <br> <span id="company_info"></span>
                                     </li>
                                 </ul>
                                 <h4><b>Employee</b></h4>
@@ -157,9 +155,48 @@
                                             <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#services" role="tab" aria-controls="nav-profile" aria-selected="false">Technical Services</a></li>
                                         </ul>
 
-                                            <div class="c-tabs__content " id="nav-tabContent">
-                                                <div class="c-tabs__pane active" id="accounting" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                    <div class="row">
+                                            <div class="c-tabs__content " id="nav-tabContent"> 
+                                                <div class="c-tabs__pane active" id="accounting" role="tabpanel" aria-labelledby="nav-home-tab" style="overflow-y:auto;height:300px">
+<!--                                                    <div class="row" >
+                                                                <div class="col-3 ">
+                                                                    <div class="c-avatar  u-inline-block">
+                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-9">
+                                                                     <ul>
+                                                                        <li class="c-plan__feature">
+                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
+                                                                            <br> Job title :</strong> Accounting
+                                                                            <br> Company Schmidt - Hello My name is max mustermann.
+                                                                        </li>
+                                                                     </ul>
+                                                                </div>
+                                                          
+                                                     </div>-->
+                                                    
+<!--                                                    <div class="row">
+                                                          
+                                                                <div class="col-3 ">
+                                                                    <div class="c-avatar  u-inline-block">
+                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-9">
+                                                                     <ul>
+                                                                        <li class="c-plan__feature">
+                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
+                                                                            <br> Job title :</strong> Accounting
+                                                                            <br> Company Schmidt - Hello My name is max mustermann.
+                                                                        </li>
+                                                                     </ul>
+                                                                </div>
+                                                          
+                                                     </div>
+                                                    
+                                                    <div class="row" >
                                                           
                                                                 <div class="col-3 ">
                                                                     <div class="c-avatar  u-inline-block">
@@ -198,7 +235,6 @@
                                                                 </div>
                                                           
                                                      </div>
-                                                    
                                                     
                                                     <div class="row">
                                                           
@@ -218,10 +254,10 @@
                                                                      </ul>
                                                                 </div>
                                                           
-                                                     </div>
+                                                     </div>-->
                                                 </div>
 
-                                            <div class="c-tabs__pane" id="advisor" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                            <div class="c-tabs__pane" id="advisor" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-y:auto;height:300px">
                                                 <div class="row">
                                                           
                                                                 <div class="col-3 ">
@@ -284,7 +320,7 @@
                                                      </div>
                                             </div>
 
-                                            <div class="c-tabs__pane" id="services" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                            <div class="c-tabs__pane" id="services" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-y:auto;height:300px">
                                                 <div class="row">
                                                           
                                                                 <div class="col-3 ">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Model\Users;
 use App\Model\Invoice;
 use App\Model\Calls;
+use App\Model\Employee;
 use App\Model\Template;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -128,10 +129,19 @@ class CallController extends Controller {
                 $getdatatableIncomingCall = $objRtoEmployer->getdatatableIncomingCall($request);
                 echo json_encode($getdatatableIncomingCall);
                 break;
+            
             case 'customerpopupdetail':
                 $objRtoEmployer = new Calls();
-                $getdatatableIncomingCall = $objRtoEmployer->customerpopupdetail($request);
-                echo json_encode($getdatatableIncomingCall);
+                $employeDetails=new Employee();
+                $getdatatableIncomingCall = $objRtoEmployer->customerpopupdetail($request);               
+                $getdatatablebuesnesshours = $objRtoEmployer->customerpopupdetailbussinesshours($request);               
+                $customer_info=$objRtoEmployer->customer_info($request); 
+                $orderinfo=$objRtoEmployer->orderinfo($request);
+                $employeinfo=$employeDetails->employeinfo($request);
+                
+                $response=['company_details'=>$getdatatableIncomingCall,'bussiness_hours'=>$getdatatablebuesnesshours,'customer_info'=>$customer_info,'orderinfo'=>$orderinfo,'employeinfo'=>$employeinfo];               
+                
+                echo json_encode($response);
                 break;
             
             case 'getTemplateList':
