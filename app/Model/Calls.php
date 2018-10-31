@@ -97,10 +97,10 @@ class Calls extends Model {
             0 => 'calls.id',
             1 => 'calls.date_time',
             2 => 'calls.caller',
-            3 => 'u2.name',
+            3 => 'u1.name',
             4 => 'calls.caller_note',
             5 => 'calls.sent_mail',
-            6 => 'calls.sent_mail',
+            6 => 'u2.name',
         );
 
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
@@ -118,7 +118,9 @@ class Calls extends Model {
                             } else if ($key == 3 && ($searchVal == 'sent' || $searchVal == 'Sent')) {
                                 $searchVal = 1;
                             }
-
+                            if ($key == 1) {
+                                $searchVal = date('Y-m-d', strtotime($searchVal));
+                            }
                             if ($requestData['columns'][$key]['searchable'] == 'true') {
                                 if ($flag == 0) {
                                     $flag = $flag + 1;
