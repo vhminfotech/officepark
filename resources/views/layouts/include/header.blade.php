@@ -23,12 +23,13 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/main.min.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/plugins/toastr/toastr.min.css') }}">
     <!--<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>-->
-    @if($currentRoute == 'calls')
+    <!-- @if($currentRoute == 'calls') -->
     <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.css') }}">
-    @endif
+    <!-- @endif -->
     @if (!empty($css)) 
     @foreach ($css as $value) 
     @if(!empty($value))

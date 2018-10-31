@@ -17,12 +17,12 @@
                 font-size: .875rem;
                 font-weight: 500;
             }
-            table.dataTable thead .sorting,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc{
+         /*   table.dataTable thead .sorting,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc{
                 background: none;
             }
             .dataTables_scrollBody th{
                 display: none;
-            }
+            }*/
     </style>
   
     <div class="row u-mb-large">

@@ -253,7 +253,7 @@ var Calls = function() {
         });
         
         var dataArr = {};
-        var columnWidth = {};
+       var columnWidth = {"width": "20%", "targets": 5};
        
         var arrList = {
             'tableID': '#ManageEmployerList',
