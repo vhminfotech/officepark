@@ -6725,6 +6725,9 @@ be a descendant of the grid when it is being dragged.
     font-size: 30px;
     color: #E2E3E9; }
 
+.c-sidebar__item a i {
+    font-size: 22px;
+}
 /* ==========================================================================
    #DATATABLES CUSTOM STYLES
    ========================================================================== */
@@ -10089,7 +10092,8 @@ to {
     -webkit-transition: background-color .2s;
     transition: background-color .2s;
     color: #B7C0CD;
-    font-size: .875rem; }
+    /*font-size: .875rem; */
+}
 .c-sidebar__link.is-active {
     background-color: #1D2531;
     -webkit-box-shadow: inset 3px 0 0 0 #00A8FF;
