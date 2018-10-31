@@ -9,13 +9,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title"><i class="fa fa-dribbble"></i> Order Details</h5>
-                    <div class="c-card__meta">
+                    <!--<div class="c-card__meta">-->
                         <a href="#">Edit</a>
-                    </div>
+                    <!--</div>-->
                 </div>
 
                 <table class="col-lg-12">
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title">Customer Information</h5>
@@ -139,11 +139,11 @@
     <input class="c-input orderId" value="{{ $arrOrder[0]->id }}" id="orderId" type="hidden" name='orderId'>
     <input class="c-input _token" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title">Payment information</h5>
-                    <a class="c-card__meta text-danger red edit3" data-id="3" href="javascript:;">Edit</a>
+                    <a class="edit3" data-id="3" href="javascript:;">Edit</a>
                 </div>
                 <form class="paymentInfo" name="paymentInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="paymentInfo">
                     <table class="u-border-zero col-lg-12">
@@ -198,7 +198,7 @@
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title">Company Info</h5>
-                    <a class="c-card__meta text-danger red edit2" href="javascript:;">Edit</a>
+                    <a class="edit2" href="javascript:;">Edit</a>
                 </div>  
                 <form class="companyInfo" name="companyInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="companyInfo">
                     <table class=" u-border-zero col-lg-12">
@@ -243,11 +243,11 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title">Secretary Information</h5>
-                    <a class="c-card__meta text-danger red edit4" href="javascript:;">Edit</a>
+                    <a class="edit4" href="javascript:;">Edit</a>
                 </div>
                 <form class="secInfo" name="secInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="secInfo">
                     <table class=" u-border-zero col-lg-12">
