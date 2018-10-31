@@ -21,7 +21,6 @@ var Calls = function() {
             querystring += (search_string == '' && typeof search_string === 'undefined') ? '&search_string=' : '&search_string=' + search_string;
             location.href = baseurl + 'admin/calls?' + querystring;
         });
-
         $('body').on('click', '.addTemplate', function() {
             $('#modal8').modal('hide');
             $('#templateModel').modal('show');
@@ -93,7 +92,8 @@ var Calls = function() {
         $('body').on('click', '.customerpopupdetail', function() {
             var id = $(this).attr('data-id');
             
-            var data = {id: id, _token: $('#_token').val()};
+            var data = {id: id, token: $('#_token').val()};
+            
             $.ajax({
                 type: "POST",
                 headers: {
@@ -101,8 +101,90 @@ var Calls = function() {
                 },
                 url: baseurl + "admin/calls-ajaxAction",
                 data: {'action': 'customerpopupdetail', 'data': data},
-                success: function(data) {
-//                    handleAjaxResponse(data);
+                success: function(details) {
+                   var det=JSON.parse(details);
+                   $('#customer_number').text(det['company_details'][0].customer_number);
+                   $('#system_number').text(det['company_details'][0].system_genrate_no);
+                   $('#name').text(det['company_details'][0].name);
+                   $('#email').text(det['company_details'][0].email);
+                   $('#caller').text(det['company_details'][0].caller);
+                   $('#company_name').text(det['company_details'][0].company_name);
+                   $('#start_time_1').text(det['bussiness_hours'][0].day_start_time);
+                   $('#end_time_1').text(det['bussiness_hours'][0].day_end_time);
+                   
+                   $('#start_time_2').text(det['bussiness_hours'][2].day_start_time);
+                   $('#end_time_2').text(det['bussiness_hours'][2].day_end_time);
+                   
+                   $('#start_time_3').text(det['bussiness_hours'][3].day_start_time);
+                   $('#end_time_3').text(det['bussiness_hours'][3].day_end_time);
+                   
+                   $('#start_time_4').text(det['bussiness_hours'][4].day_start_time);
+                   $('#end_time_4').text(det['bussiness_hours'][4].day_end_time);
+                   
+                   $('#start_time_5').text(det['bussiness_hours'][5].day_start_time);
+                   $('#end_time_5').text(det['bussiness_hours'][5].day_end_time);
+                   
+                   $('#start_time_6').text(det['bussiness_hours'][6].day_start_time);
+                   $('#end_time_6').text(det['bussiness_hours'][6].day_end_time);
+                   
+                   $('#start_time_0').text(det['bussiness_hours'][0].day_start_time);
+                   $('#end_time_0').text(det['bussiness_hours'][0].day_end_time);
+                   
+                   $('#start_time_lunch').text(det['customer_info'][0].lunch_start_time);
+                   $('#end_time_lunch').text(det['customer_info'][0].lunch_end_time);
+                   
+                   
+                   if(det['customer_info'][0].holiday_global_from == null){
+                       var start="No Holidays";
+                   }else{
+                       start=det['customer_info'][0].holiday_global_from;
+                   }
+                   
+                   if(det['customer_info'][0].holiday_global_to == null)
+                   {
+                       var end="No Holidays"
+                   }else{
+                       end=det['customer_info'][0].holiday_global_to;
+                   }
+                   
+                   $('#holiday_start').text(start);
+                   $('#holiday_end').text(end);
+                   
+                   $('#welcome_note').text(det['orderinfo'].note);
+                   $('#reroute_confirm').text(det['orderinfo'].reroute);
+                   $('#company_info').text(det['orderinfo'].company_info);
+                   var markup_div='';
+                   for(var employee=0;employee<det['employeinfo'].length;employee++)
+                   {
+                    var path='uploads/employee/' +det["employeinfo"][employee].employee_image;
+
+                    var markup='<div class="row" >'+
+                                     '<div class="col-3 ">'+
+                                         '<div class="c-avatar  u-inline-block">'+
+                                             '<img class="c-avatar__img" src="'+ baseurl + path +'" alt="Avatar">'+
+                                         '</div>'+
+
+                                     '</div>'+
+                                     '<div class="col-9">'+
+                                          '<ul>'+
+                                             '<li class="c-plan__feature">'+
+                                             //C:\xampp\htdocs\officepark\public\uploads\employee
+                                                 '<strong><span style="font-size:16px;">'+ det['employeinfo'][employee].first_name+' '+ det['employeinfo'][employee].last_name + '</span>'+
+                                                 '<br> Job title :</strong> '+ det['employeinfo'][employee].job_title + 
+                                                 '<br> Company Schmidt - Hello My name is max mustermann.'+
+                                             '</li>'+
+                                          '</ul>'+
+                                     '</div>'+
+                          '</div>';
+                        markup_div=markup_div+markup;
+                   }
+                   
+                   $("#accounting").append(markup_div);
+                    
+                   console.log(det['employeinfo']);
+                   exit;
+                   
+                   // handleAjaxResponse(data);
                 }
             });
         });
