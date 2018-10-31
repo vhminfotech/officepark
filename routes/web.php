@@ -107,11 +107,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'send-email', ['as' => 'send-email', 'uses' => 'Admin\CallController@sendMail']);
     Route::match(['get', 'post'], 'add-template', ['as' => 'add-template', 'uses' => 'Admin\CallController@addTempate']);
     Route::match(['get', 'post'], 'calls-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Admin\CallController@ajaxAction']);
-   
-    Route::match(['get', 'post'], 'incoming-call', ['as' => 'incoming-call', 'uses' => 'Admin\IncomingCallController@index']);
-    
 });
-Route::match(['get', 'post'], 'admin/IncomingcallsAjaxAction', ['as' => 'IncomingcallsAjaxAction', 'uses' => 'Admin\IncomingCallController@ajaxcall']);
+
 
 
 

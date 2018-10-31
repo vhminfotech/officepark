@@ -8,6 +8,7 @@ use DB;
 use Auth;
 use App\Model\ServiceDetail;
 use Config;
+use Session;
 
 class Calls extends Model {
 
@@ -196,7 +197,7 @@ class Calls extends Model {
         return $json_data;
     }
     public function getdatatableIncomingCall($request) {
-         $logindata = Session::get('logindata');
+        $logindata = Session::get('logindata');
         $requestData = $_REQUEST;
 
         $columns = array(
@@ -204,15 +205,15 @@ class Calls extends Model {
             0 => 'calls.id',
             1 => 'calls.date_time',
             2 => 'calls.caller',
-            3 => 'u2.name',
+            3 => 'u1.name',
             4 => 'calls.caller_note',
             5 => 'calls.sent_mail',
-            6 => 'calls.sent_mail',
+            6 => 'u2.name',
         );
        
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
                 ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
-                ->where('u1.id','=',$logindata)
+                // ->where('u1.id','=',$logindata)
                 ->groupBy('calls.id');
         
 
@@ -227,7 +228,9 @@ class Calls extends Model {
                             } else if ($key == 3 && ($searchVal == 'sent' || $searchVal == 'Sent')) {
                                 $searchVal = 1;
                             }
-
+                             if ($key == 1) {
+                                $searchVal = date('Y-m-d', strtotime($searchVal));
+                            }
                             if ($requestData['columns'][$key]['searchable'] == 'true') {
                                 if ($flag == 0) {
                                     $flag = $flag + 1;
@@ -249,45 +252,66 @@ class Calls extends Model {
                         ->take($requestData['length'])
                         ->select(
                                 'u1.name as agentName', 'u2.name as customerName','calls.caller', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail', 'calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi', 'calls.caller_note'
-                        )->where('u1.id','=',$logindata)->get();
+                        )->get();
 
         $data = array();
 
         foreach ($resultArr as $row) {
             $nestedData = array();
-            $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
-            $actionHtml2='<button type="button" class="c-btn c-btn--info" data-toggle="modal" data-target="#myModal2">
-                      Call Popup
-                    </button>';
-            $actionHtml3='<button type="button" class="c-btn c-btn--success ">
-                      Confirm
-                    </button>';
-            if ($row['sent_mail'] == 1) {
-                $actionHtml = '  <div class="col u-mb-medium">
-                                    <a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
-                                        <i class="fa fa-refresh"></i>
-                                    </a>
-                                </div>';
-            } else {
-                $actionHtml = '<div class="col u-mb-medium">
-                                    <a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
-                                        <i class="fa fa-envelope-o"></i>
-                                    </a>
-                               </div>';
+            if($row['sent_mail']==1)
+            {
+                $actionHtml3='<span class="c-badge c-badge--success">Confirm</span>';
+                        
+            }else{
+                $actionHtml3='<span class="c-badge c-badge--danger">Not Confirm</span>';
             }
+            
+            $actionHtml2='<a  title="Call Popup"    data-toggle="modal" data-target="#myModal2">
+                            <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
+                          </a>';
+            
+            if ($row['sent_mail'] == 1) {
+                $actionHtml = '<a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                    <i class="fa fa-refresh"></i>
+                                 
+                              </a>';
+            } else {
+                $actionHtml = '<a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </a>';
+            }
+            // $msgStatus = ($row['sent_mail'] == 1 ? 'Sent' : 'Not Sent');
+            // $actionHtml2='<button type="button" class="c-btn c-btn--info" data-toggle="modal" data-target="#myModal2">
+            //           Call Popup
+            //         </button>';
+            // $actionHtml3='<button type="button" class="c-btn c-btn--success ">
+            //           Confirm
+            //         </button>';
+            // if ($row['sent_mail'] == 1) {
+            //     $actionHtml = '  <div class="col u-mb-medium">
+            //                         <a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--secondary sentEmailBtn" href="javascript:;">
+            //                             <i class="fa fa-refresh"></i>
+            //                         </a>
+            //                     </div>';
+            // } else {
+            //     $actionHtml = '<div class="col u-mb-medium">
+            //                         <a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '" class="c-btn c-btn--info sentEmailBtn" href="javascript:;">
+            //                             <i class="fa fa-envelope-o"></i>
+            //                         </a>
+            //                    </div>';
+            // }
 
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
-            $nestedData[] = $row["id"];
+            $nestedData[] = "<span style='margin-left:10px;'>".$row["id"]."<span>";
             $nestedData[] = date('d-m-Y h:i:s', strtotime($row['date_time']));
             $nestedData[] = (empty($row['caller']) ? 'N/A' : $row['caller']) . "<a href='". route('address-book-add',array('phoneNumber'=>$row["caller"])) ."'><span class='c-tooltip c-tooltip--top'  aria-label='Add Addressbook'>
                                         <i class='fa fa-plus-circle' ></i></span></a>";
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];
-            $nestedData[] = $msgStatus;
+            $nestedData[] = $actionHtml3;
             $nestedData[] = $actionHtml;
             $nestedData[] = $actionHtml2;
-             $nestedData[] = $actionHtml3;
             $data[] = $nestedData;
         }
 

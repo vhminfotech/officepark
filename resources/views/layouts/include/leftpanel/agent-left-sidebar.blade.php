@@ -126,7 +126,7 @@ $roles  = array_values($roles);
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>
-            <li class="c-sidebar__item" style="position: absolute; bottom: 0px; margin-bottom: -223px; padding-left: 35px;">
+            <li class="c-sidebar__item" style="position: absolute; bottom: 0px; margin-bottom: -275px; padding-left: 35px;">
                 <div class="language-selection {{ (isset($_COOKIE['language']) && ($_COOKIE['language']) == 'gr' ? 'active' : '') }}" style="display: inline;">
                     <a href="javascript:;" class="language" data-lang="gr">
                         @if((isset($_COOKIE['language'])))

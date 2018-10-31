@@ -4,7 +4,7 @@
 
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
-    @include('admin.call.popUp.popUpModel')
+    @include('agent.incomingCall.popUp.popUpModel')
     <style>
         #ManageEmployerList td {
             text-align: center;
@@ -37,7 +37,7 @@
                                 <th class="c-table__cell_head">Mail Notification</th>
                                 <th class="c-table__cell_head">Send Mail</th>
                                 <th class="c-table__cell_head">Call View</th>
-                                 <th class="c-table__cell_head">Status</th>
+                                 <!-- <th class="c-table__cell_head">Status</th> -->
                             </tr>
                         </thead>
                     </table>
@@ -61,7 +61,7 @@
                     <p>Customer First and Last Name : <span class="first_last_name"></span></p>
                 </div>
                 <div class="c-modal__body">
-                    <form action="{{ route('send-email') }}" method="post" class=" u-mb-small send_email" id="send_email" style="">
+                    <form action="{{ route('agent-send-email') }}" method="post" class=" u-mb-small send_email" id="send_email" style="">
                         <div class="c-field u-mb-xsmall">
                             <label class="c-field__label" for="input-project">Gender</label>
                             <select class="c-select" name="gender" id="gender">
@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="c-modal__body">
-                    <form action="{{ route('add-template') }}" method="post" class=" u-mb-small addTemlate" id="addTemlate" style="">
+                    <form action="{{ route('agent-add-template') }}" method="post" class=" u-mb-small addTemlate" id="addTemlate" style="">
                         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 
                         <div class="c-field u-mb-xsmall">
