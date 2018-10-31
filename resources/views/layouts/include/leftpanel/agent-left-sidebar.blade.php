@@ -18,7 +18,7 @@ $roles  = array_values($roles);
         <h4 class="c-sidebar__title">{{ trans('words.Dashboard') }}</h4>
         <ul class="c-sidebar__list">
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'admin-dashboard' ? 'is-active' : '') }}" href="{{ route('admin-dashboard') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'agent-dashboard' ? 'is-active' : '') }}" href="{{ route('agent-dashboard') }}">
                     <i class="fa fa-home u-mr-xsmall" style="padding-right:3px"></i>
                     {{trans('words.Overview')}}
                 </a>

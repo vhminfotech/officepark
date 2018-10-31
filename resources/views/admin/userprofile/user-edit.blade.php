@@ -55,7 +55,7 @@
                                         </div> 
                                     </div>
                                 </form>
-                                <form name="editUser" id="editUser" action="{{ route('update-change-password') }}" method="post">
+                                <form name="editUser" id="changepassword" action="{{ route('update-change-password') }}" method="post">
                                     <div class="row changepassworddiv" style="display: none;" >
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

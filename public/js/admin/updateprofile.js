@@ -11,6 +11,17 @@ var Updateprofile = function () {
         handleFormValidate(form, rules, function (form) {
             handleAjaxFormSubmit(form);
         });
+        
+        var form = $('#changepassword');
+        var rules = {
+            currentpassword: {required: true},
+            newpassword: {required: true},
+            confirmpassword: {required: true},
+//            extension_number: {required: true},
+        };
+        handleFormValidate(form, rules, function (form) {
+            handleAjaxFormSubmit(form);
+        });
     };
     var handleDivision = function () {
         $('.c-tabs__link').click(function () {

@@ -63,12 +63,22 @@ class UpdateProfileController extends Controller {
 
         if ($request->isMethod('post')) {
             
-            $loginUserpassword = Auth()->guard('admin')->user()->password;
+            if(isset(Auth()->guard('admin')->user()->password)){
+                $loginUserpassword = Auth()->guard('admin')->user()->password;
+                $id = Auth()->guard('admin')->user()->id;
+            }else{
+                $loginUserpassword = Auth()->guard('agent')->user()->password;
+                $id = Auth()->guard('agent')->user()->id;
+            }
+            //$loginUserpassword = Auth()->guard('admin')->user()->password;
+//            echo  $request['currentpassword'];
+//            echo $loginUserpassword;
+//            exit;
             $currentpassword = $request['currentpassword'];
             $newpassword = $request['newpassword'];
             $hashedpaasword = Hash::make($currentpassword);
-             
-            if (!Hash::check($loginUserpassword,$hashedpaasword)) {
+//             exit;
+            if (!Hash::check($currentpassword,$loginUserpassword)) {
                 
                 $return['status'] = 'error';
                 $return['message'] = 'Old password Does Not Match !!.';
@@ -91,6 +101,8 @@ class UpdateProfileController extends Controller {
                 }
                 
             }
+            echo json_encode($return);
+            exit;
         }
     }
 
