@@ -9,7 +9,7 @@ var Updateprofile = function () {
             extension_number: {required: true},
         };
         handleFormValidate(form, rules, function (form) {
-            handleAjaxFormSubmit(form);
+            handleAjaxFormSubmit(form,true);
         });
         
         var form = $('#changepassword');

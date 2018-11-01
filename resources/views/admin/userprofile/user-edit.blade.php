@@ -11,19 +11,19 @@
                             <li class="c-tabs__item"><a class="c-tabs__link active show" data-id="1" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Update Profile</a></li>
                             <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-id="2"  data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Change Password</a></li>
                         </ul>
+                    
                         <div class="c-tabs__content tab-content" id="nav-tabContent">
                             <div class="c-tabs__pane active show " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <form name="editUser" id="editUser" action="{{ route('update-profile') }}" method="post">
+                                <form name="editUser" id="editUser" enctype="multipart/form-data" action="{{ route('update-profile') }}" method="post">
 
                                     <div class="row userdetaildiv">
                                         <div class="col-lg-2 u-text-center">
                                             <div class="c-avatar c-avatar--xlarge u-inline-block">
-                                                <img class="c-avatar__img" src="{{ url('img/avatar-200.jpg') }}" alt="Avatar">
+                                                <img class="c-avatar__img" src="{{ url('public/uploads/employee/'.$detail['user_image']) }}" alt="Avatar">
                                             </div>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="hidden" name="id" value="{{ $detail['id'] }}"  class="form-control">
-
-                                            <a class="u-block u-color-primary" href="#">Edit Avatar</a>
+                                        <input type="file" name="profile_pic" value="">
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="c-field u-mb-small">

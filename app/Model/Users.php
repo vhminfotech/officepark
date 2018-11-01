@@ -254,9 +254,19 @@ class Users extends Model {
     }
 
     public function saveEditUserInfo($request) {
+        
+        $name = '';
+        if($request->file()){
+            $image = $request->file('profile_pic');
+            $name = 'admin'.time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/employee/');
+            $image->move($destinationPath, $name);    
+        }
+        
         $userId = $request->input('id');
         $objUser = Users::find($userId);
         $objUser->name = $request->input('name');
+        $objUser->user_image = $name;
         $objUser->inopla_username = $request->input('inopla_username');
         $objUser->email = $request->input('email');
         $objUser->extension_number = $request->input('extension_number');

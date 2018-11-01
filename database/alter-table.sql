@@ -25,3 +25,5 @@ ALTER TABLE `template` ADD `created_at` INT NOT NULL AFTER `message`;
 ALTER TABLE `template` CHANGE `created_at` `created_at` DATETIME NOT NULL;
 ALTER TABLE `template` CHANGE `updated_at` `updated_at` DATETIME NOT NULL;
 ALTER TABLE `template` ADD `user_id` INT NULL AFTER `id`;
+
+ALTER TABLE `users` ADD `user_image` VARCHAR(256) NULL AFTER `customer_number`;
