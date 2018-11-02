@@ -869,4 +869,20 @@ function hideShowDatatableColumn(dataTable) {
     });
 }
 
+setInterval(get_order, 5000);
+function get_order(){
+    var currentCount =  $('.totalOrderCount').text();
+    // console.log(currentCount)
+    var token = $('.orderCountToken').val();
+    var data = { currentCount : currentCount ,_token :token};
+    var url = baseurl + 'get-order-count';
+        ajaxcall(url,data,function(output){
+             var data = JSON.parse(output);
+             if(data.orderCount =! currentCount){
+                handleAjaxResponse(output); 
+                $('.totalOrderCount').text(data.orderCount);
+             }
+        });
+}
+
 /* End manage datatable with Ajax & hide/show column dynamic */
