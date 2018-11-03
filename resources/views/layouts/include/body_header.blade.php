@@ -20,10 +20,23 @@
         <div class="c-dropdown dropdown">
             <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             @php
-                $data = Session::get('logindata'); 
+                
+                if (!empty(Auth()->guard('admin')->user())) {
+
+                $data = Auth()->guard('admin')->user();
+                }
+                if (!empty(Auth()->guard('customer')->user())) {
+                    $data = Auth()->guard('customer')->user();
+                }
+                if (!empty(Auth()->guard('agent')->user())) {
+                    $data = Auth()->guard('agent')->user();
+                }
+                if (!empty(Auth::user())) {
+                    $data = Auth::user();
+                }
             @endphp
-             @if( isset($data)  && !empty($data) && $data[0]['user_image'] != '')
-                <img class="c-avatar__img" src="{{ asset('uploads/employee/'.$data[0]['user_image']) }}" alt="User's Profile Picture">
+             @if( isset($data)  && !empty($data) && $data['user_image'] != '')
+                <img class="c-avatar__img" src="{{ asset('uploads/employee/'.$data['user_image']) }}" alt="User's Profile Picture">
             @else
                 <img class="c-avatar__img" src="{{ asset('img/avatar-72.jpg') }}" alt="User's Profile Picture">
             @endif
