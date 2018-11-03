@@ -8,9 +8,9 @@ $roles  = array_values($roles);
 <style>
     .c-sidebar__item a i {
         font-size:22px;
-        
-        }
+    }
 </style>
+  <input class="c-input orderCountToken" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand" href="#">
@@ -69,7 +69,7 @@ $roles  = array_values($roles);
                 <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('order-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall" style="padding-right:4px"></i>
                     {{ trans('words.Order') }}     &nbsp;
-                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall">{{ Session::get('ordercount')}} </span>
+                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('ordercount')}} </span>
                 </a>
             </li>
             @endif

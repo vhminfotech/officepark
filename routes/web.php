@@ -21,6 +21,7 @@ Route::match(['get', 'post'], 'order', ['as' => 'order', 'uses' => 'Front\OrderC
 
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'LoginController@auth']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);
+Route::match(['get', 'post'], 'get-order-count', ['as' => 'get-order-count', 'uses' => 'LoginController@getNewOrder']);
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'LoginController@auth']);
 Route::match(['get', 'post'], 'newcall', ['as' => 'newcall', 'uses' => 'LoginController@newcall']);
 

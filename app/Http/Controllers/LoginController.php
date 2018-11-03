@@ -172,6 +172,18 @@ class LoginController extends Controller {
         $return['message'] = 'Call added successfully.';
 //        echo json_encode($return);
 //        exit;
+    }  
+    public function getNewOrder(Request $request) {
+
+        $objOrderInfo = new OrderInfo();
+        $resultArr = $objOrderInfo->newOrderCount('new');
+        $return['status'] = 'success';
+        $return['message'] = 'New Order arrival.';
+        $return['redirect'] = '';
+        $return['orderCount'] = $resultArr;
+        echo json_encode($return);
+            exit;
+
     }
 
 }
