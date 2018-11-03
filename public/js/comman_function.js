@@ -878,7 +878,9 @@ function get_order(){
     var url = baseurl + 'get-order-count';
         ajaxcall(url,data,function(output){
              var data = JSON.parse(output);
-             if(data.orderCount =! currentCount){
+             
+             if(data.orderCount != parseInt(currentCount)){
+               
                 handleAjaxResponse(output); 
                 $('.totalOrderCount').text(data.orderCount);
              }
