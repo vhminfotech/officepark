@@ -871,16 +871,18 @@ function hideShowDatatableColumn(dataTable) {
 
 setInterval(get_order, 5000);
 function get_order(){
-    var currentCount =  $('.totalOrderCount').text();
+    var currentCount =  $('#totalOrderNotification').val();
     // console.log(currentCount)
     var token = $('.orderCountToken').val();
     var data = { currentCount : currentCount ,_token :token};
     var url = baseurl + 'get-order-count';
         ajaxcall(url,data,function(output){
              var data = JSON.parse(output);
+             console.log(data.totalOrder);
              
-             if(data.orderCount != parseInt(currentCount)){
-               
+             console.log(currentCount);
+             if(data.totalOrder != parseInt(currentCount)){
+                 console.log('in');
                 handleAjaxResponse(output); 
                 $('.totalOrderCount').text(data.orderCount);
              }

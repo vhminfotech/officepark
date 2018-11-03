@@ -20,7 +20,7 @@ use DB;
 class OrderController extends Controller {
 
     public function __construct() {
-        
+        parent::__construct();
     }
 
     public function index(Request $request) {

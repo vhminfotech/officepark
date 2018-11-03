@@ -8,6 +8,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Auth;
 use App;
+use App\Model\OrderInfo;
+use Session;
 
 class Controller extends BaseController {
 
@@ -31,10 +33,18 @@ class Controller extends BaseController {
             App::setLocale($lang);
         } else {
             App::setLocale('en');
-        }
-
+        }  
+        
         $this->middleware(function ($request, $next) {
 
+            $objOrderInfo = new OrderInfo();
+            $totalOrder = $objOrderInfo->newOrdergetNotification();
+            Session::put('totalOrder', $totalOrder);
+        
+            $resultArr = $objOrderInfo->newOrderCount('new');
+        
+            Session::put('ordercount', $resultArr);
+        
             if (!empty(Auth()->guard('admin')->user())) {
                 $this->loginUser = Auth()->guard('admin')->user();
             }
@@ -50,6 +60,8 @@ class Controller extends BaseController {
 
             return $next($request);
         });
+        
+        
     }
 
 }

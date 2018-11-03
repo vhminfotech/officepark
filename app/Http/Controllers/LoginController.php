@@ -85,6 +85,7 @@ class LoginController extends Controller {
                 return redirect()->route('customer-dashboard');
             } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
                 $objOrderInfo = new OrderInfo();
+                $totalOrder = $objOrderInfo->newOrdergetNotification();
                 $resultArr = $objOrderInfo->newOrderCount('new');
                 $this->getUserRoleList(Auth::guard('admin')->user()->id,$request);
                 $role = $request->session()->get('userRole');
@@ -102,6 +103,7 @@ class LoginController extends Controller {
                 Session::push('logindata', $loginData);
 
                 Session::put('ordercount', $resultArr);
+                Session::put('totalOrder', $totalOrder);
                 $request->session()->flash('session_success', 'Admin Login successfully.');
                 return redirect()->route('admin-dashboard');
             } else if (Auth::guard('agent')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'AGENT'])) {
@@ -177,12 +179,34 @@ class LoginController extends Controller {
 
         $objOrderInfo = new OrderInfo();
         $resultArr = $objOrderInfo->newOrderCount('new');
+        
+        Session::put('ordercount', $resultArr);
         $return['status'] = 'success';
         $return['message'] = 'New Order arrival.';
         $return['redirect'] = '';
         $return['orderCount'] = $resultArr;
         echo json_encode($return);
             exit;
+
+    }
+    public function getNotification(Request $request) {
+
+        $objOrderInfo = new OrderInfo();
+        $totalOrder = $objOrderInfo->newOrdergetNotification();
+        
+        $resultArr = $objOrderInfo->newOrderCount('new');
+        
+        Session::put('ordercount', $resultArr);
+        Session::put('totalOrder', $totalOrder);
+        
+        $return['status'] = 'success';
+        $return['message'] = 'New Order arrival.';
+        $return['redirect'] = '';
+        $return['jscode'] = ' setTimeout(function(){ location.reload(); }, 3000);';
+        $return['orderCount'] = $resultArr;
+        $return['totalOrder'] = $totalOrder;
+        echo json_encode($return);
+        exit;
 
     }
 
