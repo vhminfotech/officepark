@@ -70,6 +70,7 @@ $roles  = array_values($roles);
                     <i class="fa fa-shopping-cart u-mr-xsmall" style="padding-right:4px"></i>
                     {{ trans('words.Order') }}     &nbsp;
                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('ordercount')}} </span>
+                    <input type="hidden" id="totalOrderNotification" value="{{ Session::get('totalOrder') }}">
                 </a>
             </li>
             @endif
