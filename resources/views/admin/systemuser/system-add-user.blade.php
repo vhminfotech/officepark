@@ -89,7 +89,7 @@
 
                                     <div class="row">
                                         <div class="col-lg-3">
-                                            <input class="c-btn c-btn--info c-btn--fullwidth" value="Add" type="submit">
+                                            <input class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('op_system_user.add_user')}}" type="submit">
                                         </div>
                                     </div>
                                 </div>

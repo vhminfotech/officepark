@@ -7,7 +7,7 @@
             <div class="c-tabs">
 
                 <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
-                    <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Company Profile</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{ trans('customer.company_profile')}}</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-billinfo-tab" data-toggle="tab" href="#nav-billinfo" role="tab" aria-controls="nav-billinfo" aria-selected="false">BillInfo</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-invoice-tab" data-toggle="tab" href="#nav-invoice" role="tab" aria-controls="nav-invoice" aria-selected="false">Invoice</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-calls-tab" data-toggle="tab" href="#nav-calls" role="tab" aria-controls="nav-calls" aria-selected="false">Calls</a></li>
@@ -25,21 +25,21 @@
                                         <img class="c-avatar__img" src="{{ url('img/avatar-200.jpg') }}" alt="Avatar">
                                     </div>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <a class="u-block u-color-primary" href="#">Edit Avatar</a>
+                                    <a class="u-block u-color-primary" href="#">{{ trans('customer.edit_avtar')}}</a>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="firstName">Customer number</label> 
+                                        <label class="c-field__label" for="firstName">{{ trans('customer.customer_number')}}</label> 
                                         <input class="c-input" id="firstName" readonly="readonly" name="customer_number" value="{{ $arrCustomer['customer_number'] }}" placeholder="CA021" type="text"> 
                                     </div>
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="lastName">Name</label> 
+                                        <label class="c-field__label" for="lastName">{{ trans('customer.name')}}</label> 
                                         <input class="c-input" id="first_name" name="first_name" value="{{ $arrCustomer['fullname'] }}" placeholder="Clark" type="text"> 
                                         <input class="c-input" name="custId" value="{{ $arrCustomer['customer_id'] }}" type="hidden"> 
                                     </div>
 
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label"  for="select1">Packet</label>
+                                        <label class="c-field__label"  for="select1">{{ trans('customer.package')}}</label>
                                         <select class="c-select" id="select1" name="pacet">
                                             <option {{ ($arrCustomer['is_package'] == 1 ? 'selected="selected"' : '') }} value="1">BUSINESS PACKAGE STANDARD</option>
                                         </select>
@@ -50,16 +50,16 @@
 
                                 <div class="col-lg-5">
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="companyName">Company Name</label>
+                                        <label class="c-field__label" for="companyName">{{ trans('customer.company_name')}}</label>
                                         <input class="c-input" id="companyName" name="company_name" value="{{ $arrCustomer['company_name'] }}" placeholder="Dashboard Ltd." type="text">
                                     </div>
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="email">E-mail Address</label>
+                                        <label class="c-field__label" for="email">{{ trans('customer.email')}}</label>
                                         <input class="c-input" id="email" readonly="readonly" name="email" value="{{ $arrCustomer['email'] }}" placeholder="jason@clark.com" type="email">
                                     </div>
 
                                     <div class="c-field u-mb-small">
-                                        <label class="c-field__label" for="website">Telefon</label>
+                                        <label class="c-field__label" for="website">{{ trans('customer.telephone')}}</label>
                                         <input class="c-input" id="telephone" name="telephone" value="{{ $arrCustomer['phone'] }}" placeholder="zawiastudio.com" type="text">
                                     </div>  
                                 </div>
@@ -69,7 +69,7 @@
                                 <label class="c-field__label col-lg-offset-4" for=""></label>
                                 <div class="col-lg-2 ">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="Edit">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('customer.edit')}}">
                                     </div>
                                 </div>
                             </div> 
@@ -81,16 +81,16 @@
                                 <div class="row">
                                   <div class="col-lg-12">
                                       <div class="c-field u-mb-small">
-                                          <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
+                                          <label class="c-field__label" for="callbacksms">{{ trans('customer.call_transfer')}}</label> 
                                           <div class="c-choice c-choice--checkbox">
                                               <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" >
-                                              <label class="c-choice__label" for="call_transfer_telephone">Transfer Incoming call To Telephone</label>
+                                              <label class="c-choice__label" for="call_transfer_telephone">{{ trans('customer.incoming_telephone')}}</label>
                                           </div>
                                       </div>
                                       <div class="c-field u-mb-small">
                                           <div class="c-choice c-choice--checkbox">
                                               <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" >
-                                              <label class="c-choice__label" for="call_transfer_mobile_phone">Transfer Incoming call To Mobile Phone</label>
+                                              <label class="c-choice__label" for="call_transfer_mobile_phone">{{ trans('customer.incoming_mobile')}}</label>
                                           </div>
                                       </div>
                                   </div>
@@ -99,16 +99,16 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="c-field u-mb-small">
-                                            <label class="c-field__label" for="callbacksms"> Call Notification</label> 
+                                            <label class="c-field__label" for="callbacksms">{{ trans('customer.call_notification')}}</label> 
                                             <div class="c-choice c-choice--checkbox">
                                                 <input class="c-choice__input" id="transfer_notification_to_call" name="transfer_notification_to_call" value="1" type="checkbox">
-                                                <label class="c-choice__label" for="transfer_notification_to_call">Transfer Incoming call To Telephone</label>
+                                                <label class="c-choice__label" for="transfer_notification_to_call">{{ trans('customer.incoming_telephone')}}</label>
                                             </div>
                                         </div>
                                         <div class="c-field u-mb-small">
                                             <div class="c-choice c-choice--checkbox">
                                                 <input class="c-choice__input" id="transfer_notification_to_mobile_phone" name="transfer_notification_to_mobile_phone" value="1" type="checkbox" >
-                                                <label class="c-choice__label" for="transfer_notification_to_mobile_phone">Transfer Incoming call To Mobile Phone</label>
+                                                <label class="c-choice__label" for="transfer_notification_to_mobile_phone">{{ trans('customer.incoming_mobile')}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                     <div class="">
                                         <div class="col-md-12">
                                             <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-panel" aria-expanded="false" aria-controls="stage-panel">
-                                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> Bussines Hours/Global</h6>
+                                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">{{ trans('customer.bussiness_hours')}}</h6>
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                             </a>
 
@@ -156,7 +156,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane2" aria-expanded="false" aria-controls="stage-pane2">
-                                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Launch Time /Global</h6>
+                                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">{{ trans('customer.lanch_time')}}</h6>
                                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                                 </a>
 
@@ -183,28 +183,28 @@
                                             <div class="col-md-12">
                                                 <div class="c-choice c-choice--checkbox">
                                                     <input class="c-choice__input" id="no_business_hour_adjust" value="1" name="no_business_hour_adjust" type="checkbox">
-                                                    <label class="c-choice__label" for="no_business_hour_adjust">No Bussiness Hours Adjust</label>
+                                                    <label class="c-choice__label" for="no_business_hour_adjust">{{ trans('customer.no_business_hours')}}</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane3" aria-expanded="true" aria-controls="stage-pane3">
-                                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Global Holidays</h6>
+                                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">{{ trans('customer.g_holidays')}}</h6>
                                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                                 </a>
                                                 <div class="c-stage__panel c-stage__panel--mute collapse show" id="stage-pane3" style="">
                                                     <div class="u-p-medium">
                                                         <div class="form-group">
                                                             <div class="c-field has-addon-left">
-                                                                <label class="c-field__label" for="holidayfrom">Holiday Global From</label> 
+                                                                <label class="c-field__label" for="holidayfrom">{{ trans('customer.holiday_from')}}</label> 
                                                                 <input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" >
                                                             </div>
                                                         </div>
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="c-field has-addon-left">
-                                                                <label class="c-field__label" for="holidayto">Holiday Global To</label> 
+                                                                <label class="c-field__label" for="holidayto">{{ trans('customer.holiday_to')}}</label> 
                                                                 <input class="c-input form-control" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" >
                                                             </div>
                                                         </div>

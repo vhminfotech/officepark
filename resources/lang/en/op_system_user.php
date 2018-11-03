@@ -12,7 +12,7 @@ return[
     'edit'=>'Edit',
     'delete'=>'Delete',
     
-    
+    // Add new user 
     'add_new_user'=>'Add new System User',
    
     'add_user'=>'Add User',
@@ -41,6 +41,16 @@ return[
     'Orders'=>'Orders',
     'Addressbook'=>'Addressbook',
     'Service'=>'Support',
+    
+    
+    // Edit user 
+    'edit_user'=>'Edit System User',
+    
+    // Delete User
+    'delete_record'=>'Delete Record',
+    'sure_msg'=>'Are you sure want to delete?',
+    'cancel'=>'Cancel',
+    'delete'=>'Delete',
     
 ];
 ?>

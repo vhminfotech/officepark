@@ -8,17 +8,17 @@
         <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content">
                 <div class="c-modal__header">
-                    <h3 class="c-modal__title">Delete Record</h3>
+                    <h3 class="c-modal__title">{{ trans('op_system_user.delete_record')}}</h3>
                     <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-close"></i>
                     </span>
                 </div>
                 <div class="c-modal__body">
-                    <p>Are you sure want to delete ?</p>
+                    <p>{{ trans('op_system_user.sure_msg')}}</p>
                 </div>
                 <div class="c-modal__footer">
-                    <button class="c-btn c-btn--info pull-right" data-dismiss="modal">Cancel</button>
-                    <button class="c-btn c-btn--danger yes-sure"><i class="fa fa-trash-o u-mr-xsmall "></i> Delete</button>
+                    <button class="c-btn c-btn--info pull-right" data-dismiss="modal">{{ trans('op_system_user.cancel')}}</button>
+                    <button class="c-btn c-btn--danger yes-sure"><i class="fa fa-trash-o u-mr-xsmall "></i> {{ trans('op_system_user.delete')}}</button>
                 </div>
             </div><!-- // .c-modal__content -->
         </div><!-- // .c-modal__dialog -->

@@ -13,6 +13,6 @@ return [
     'Select'        => 'seçmek',
     'Calls'         => 'Aramalar',
     'Logout'        => 'Çıkış Yap',
-    'Service' => 'OP Services',
+    'Service' => 'OP Hizmetleri',
     
 ];

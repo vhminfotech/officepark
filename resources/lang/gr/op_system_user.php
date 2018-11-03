@@ -31,7 +31,7 @@ return[
     'SEPA'=>"SEPA",
     'Contract'=>"Administrator",
     'Employees'=>"Mitarbeiter",
-    'Customer'=>'Customer',
+    'Customer'=>'Kunde',
     'System Mails'=>'System Mails',
     'Status Bar'=>"Statusleiste",
     'Test Call'=>"Test Anruf",
@@ -41,6 +41,14 @@ return[
     'Orders'=>"Bestellungen",
     'Addressbook'=>"Addressbook",
     'Service'=>"Unterstützung",
+    // Edit user
+    'edit_user'=>'System Benutzer bearbeiten',
+    
+    // Delete User
+    'delete_record'=>'Aufzeichnung löschen',
+    'sure_msg'=>'Möchten Sie wirklich löschen?',
+    'cancel'=>'Abbrechen',
+    'delete'=>'Löschen',
     
 ];
 ?>

@@ -8,21 +8,21 @@
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        Customer List  
+                        {{ trans('customer.customer_list')}}
 <!--                        <a class="c-table__title-action c-tooltip c-tooltip--top" href="{{ route('customer-add') }}" aria-label="Add Customer">
                             <i class="fa fa-plus"></i>
                         </a>-->
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
-                            <th class="c-table__cell c-table__cell--head">Customer Number&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Email&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Telefon&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Paket&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('customer.id')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.customer_number')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.company_name')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.name')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.email')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.telephone')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.packge')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,10 +39,10 @@
                             <td class="c-table__cell">{{ $arrCustomer[$i]->phone }}</td>
                             <td class="c-table__cell">{{ $arrCustomer[$i]->is_package }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('customer-edit',[$arrCustomer[$i]->customer_id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('customer-edit',[$arrCustomer[$i]->customer_id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.edit')}}">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $arrCustomer[$i]->customer_id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete"  data-id="{{ $arrCustomer[$i]->customer_id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('customer.delete')}}">
                                         <i class="fa fa-trash-o"></i></span>
                                 </a>
                             </td>

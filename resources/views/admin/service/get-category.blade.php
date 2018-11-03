@@ -1,8 +1,8 @@
 <table class="c-table">
     <thead class="c-table__head c-table__head--slim">
         <tr class="c-table__row">
-            <th class="c-table__cell c-table__cell--head">Name</th>
-            <th class="c-table__cell c-table__cell--head">Action</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('op_services.name')}}</th>
+            <th class="c-table__cell c-table__cell--head">{{ trans('op_services.action')}}</th>
         </tr>
     </thead>
     <tbody class="dataAppend" style="height: 50%;overflow: overlay;">    

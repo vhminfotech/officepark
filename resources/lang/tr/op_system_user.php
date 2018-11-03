@@ -29,7 +29,7 @@ return[
     'SEPA'=>"SEPA",
     'Contract'=>"Yönetici",
     'Employees'=>"Çalışan",
-    'Customer'=>'Customer',
+    'Customer'=>'Müşteri',
     'System Mails'=>"Sistem Mailleri",
     'Status Bar'=>"Durum çubuğu",
     'Test Call'=>"Test çağrısı",
@@ -40,5 +40,13 @@ return[
     'Addressbook'=>"Adres defteri",
     'Service'=>"Destekleyen",
     
+    //edit user
+    'edit_user'=>'Sistem kullanıcısı düzenle',
+    
+    // Delete User
+    'delete_record'=>'Kaydı Sil',
+    'sure_msg'=>'Silmek istediğinizden emin misiniz ?',
+    'cancel'=>'İptal',
+  
 ];
 ?>
