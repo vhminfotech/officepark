@@ -19,7 +19,7 @@
                                     <div class="row userdetaildiv">
                                         <div class="col-lg-2 u-text-center">
                                             <div class="c-avatar c-avatar--xlarge u-inline-block">
-                                                <img class="c-avatar__img" src="{{ url('public/uploads/employee/'.$detail['user_image']) }}" alt="Avatar">
+                                                <img class="c-avatar__img" src="{{ url('uploads/employee/'.$detail['user_image']) }}" alt="Avatar">
                                             </div>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <input type="hidden" name="id" value="{{ $detail['id'] }}"  class="form-control">

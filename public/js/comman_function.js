@@ -878,11 +878,11 @@ function get_order(){
     var url = baseurl + 'get-order-count';
         ajaxcall(url,data,function(output){
              var data = JSON.parse(output);
-             console.log(data.totalOrder);
+//             console.log(data.totalOrder);
              
-             console.log(currentCount);
+//             console.log(currentCount);
              if(data.totalOrder != parseInt(currentCount)){
-                 console.log('in');
+//                 console.log('in');
                 handleAjaxResponse(output); 
                 $('.totalOrderCount').text(data.orderCount);
              }

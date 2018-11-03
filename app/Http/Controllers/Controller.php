@@ -45,7 +45,10 @@ class Controller extends BaseController {
         
             Session::put('ordercount', $resultArr);
         
+            
+                
             if (!empty(Auth()->guard('admin')->user())) {
+
                 $this->loginUser = Auth()->guard('admin')->user();
             }
             if (!empty(Auth()->guard('customer')->user())) {
