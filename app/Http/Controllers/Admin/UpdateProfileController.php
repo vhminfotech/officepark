@@ -24,7 +24,7 @@ class UpdateProfileController extends Controller {
     }
 
     public function editProfile(Request $request) {
-
+        
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
             // print_r($request->file());exit;

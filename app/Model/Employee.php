@@ -188,8 +188,5 @@ class Employee extends Model {
             $result[$i]['job_title']=$constant_job[$jobtitle];
         }
         return $result;
-        
-        
-        
     }
 }
