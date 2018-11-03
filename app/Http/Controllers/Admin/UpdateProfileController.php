@@ -27,7 +27,8 @@ class UpdateProfileController extends Controller {
 
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
-            
+            // print_r($request->file());exit;
+            // print_r($request->input());exit;
             $objuseredit = new Users();
             $edituserinfo = $objuseredit->saveEditUserInfo($request);
             if ($edituserinfo) {
@@ -38,7 +39,6 @@ class UpdateProfileController extends Controller {
                 }else{
                    $return['redirect'] = route('admin-dashboard');
                 }
-                
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -52,8 +52,13 @@ class UpdateProfileController extends Controller {
             exit;
         }
         $data['css'] = array();
-        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/updateprofile.js');
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js',
+            );
+        $data['js'] = array('admin/updateprofile.js','ajaxfileupload.js',
+            'jquery.form.min.js');
+        $data['css_plugin'] = array(
+          'bootstrap-fileinput/bootstrap-fileinput.css',  
+        );
         $data['funinit'] = array('Updateprofile.edit_init()');
 
         return view('admin.userprofile.user-edit', $data);

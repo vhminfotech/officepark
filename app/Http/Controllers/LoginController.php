@@ -66,6 +66,7 @@ class LoginController extends Controller {
                     'name' => Auth::guard('web')->user()->name,
                     'email' => Auth::guard('web')->user()->email,
                     'type' => Auth::guard('web')->user()->type,
+                    'user_image' => Auth::guard('web')->user()->user_image,
                     'id' => Auth::guard('web')->user()->id
                 );
                 Session::push('logindata', $loginData);
@@ -76,7 +77,8 @@ class LoginController extends Controller {
                     'name' => Auth::guard('customer')->user()->name,
                     'email' => Auth::guard('customer')->user()->email,
                     'type' => Auth::guard('customer')->user()->type,
-                    'id' => Auth::guard('customer')->user()->id
+                    'id' => Auth::guard('customer')->user()->id,
+                    'user_image' => Auth::guard('customer')->user()->user_image
                 );
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'Customer Login successfully.');
@@ -94,6 +96,7 @@ class LoginController extends Controller {
                     'name' => Auth::guard('admin')->user()->name,
                     'email' => Auth::guard('admin')->user()->email,
                     'type' => Auth::guard('admin')->user()->type,
+                    'user_image' => Auth::guard('admin')->user()->user_image,
                     'id' => Auth::guard('admin')->user()->id,
                 );
                 Session::push('logindata', $loginData);
@@ -107,6 +110,7 @@ class LoginController extends Controller {
                     'name' => Auth::guard('agent')->user()->name,
                     'email' => Auth::guard('agent')->user()->email,
                     'type' => Auth::guard('agent')->user()->type,
+                    'user_image' => Auth::guard('agent')->user()->user_image,
                     'id' => Auth::guard('agent')->user()->id
                 );
                 $this->getUserRoleList(Auth::guard('agent')->user()->id,$request);
