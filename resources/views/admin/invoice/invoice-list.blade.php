@@ -100,7 +100,7 @@
                             <td class="c-table__cell">{{ $getInvoice[$i]->invoice_no }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->customer_number }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->company_name }}</td>
-                            <td class="c-table__cell">Business Packet Stander</td>
+                            <td class="c-table__cell">{{ $getInvoice[$i]->packages_name }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->total }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->accept }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->is_paid }}</td>

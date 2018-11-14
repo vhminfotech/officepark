@@ -93,7 +93,7 @@ class InvoiceController extends Controller {
         }
 
         $data['getInvoice'] = $objinvoice->invoiceList($year, $month, $method);
-
+           
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/invoice.js');

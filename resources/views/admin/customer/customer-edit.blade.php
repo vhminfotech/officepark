@@ -8,7 +8,7 @@
 
                 <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
                     <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{ trans('customer.company_profile')}}</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-billinfo-tab" data-toggle="tab" href="#nav-billinfo" role="tab" aria-controls="nav-billinfo" aria-selected="false">BillInfo</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-billinfo-tab" data-toggle="tab" href="#nav-billinfo" role="tab" aria-controls="nav-billinfo" aria-selected="false">{{ trans('customer.billinfo')}}</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-invoice-tab" data-toggle="tab" href="#nav-invoice" role="tab" aria-controls="nav-invoice" aria-selected="false">Invoice</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-calls-tab" data-toggle="tab" href="#nav-calls" role="tab" aria-controls="nav-calls" aria-selected="false">Calls</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">EOC</a></li>
@@ -328,15 +328,15 @@
                             <table class="c-table" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID&nbsp;&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Company name&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Company type&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Company info&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Fullname&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">DOB&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Address&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Status&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('customer.id')}}&nbsp;&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.company_name')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.company_type')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.company_info')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.full_name')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.dob')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.address')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.status')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -354,7 +354,7 @@
                                         <td class="c-table__cell">{{ $arrOrder[$i]['address'] }}</td>
                                         <td class="c-table__cell"><span class="c-badge {{ ($arrOrder[$i]['user_id'])?'c-badge--success':'c-badge--danger' }} c-badge--xsmall u-ml-xsmall">{{ ($arrOrder[$i]['user_id'])?'Confirm':'Not Confirm' }}</span></td>
                                         <td class="c-table__cell">
-                                            <a href="{{ route('view-order',[$arrOrder[$i]['id']])}} "><span class="c-tooltip c-tooltip--top"  aria-label="View Order Details">
+                                            <a href="{{ route('view-order',[$arrOrder[$i]['id']])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.view_details_order')}}">
                                                     <i class="fa fa-eye" ></i></span>
                                             </a>
                                         </td>

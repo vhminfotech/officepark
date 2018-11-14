@@ -1,8 +1,7 @@
 var Order = function() {
 
     var testalert = function() {
-        console.log("CALL");
-//        $('.html1').show();
+
         $('body').on('click', '.editCustomer', function() {
             $('.data1').show();
             $('.html1').hide();
@@ -158,7 +157,6 @@ var Order = function() {
             }
         });
 
-
         $('body').on('click', '.confirm', function() {
             var orderId = $(this).data('id');
             var token = $('#_token').val();
@@ -166,6 +164,30 @@ var Order = function() {
             var url = baseurl + 'admin/create-user';
             ajaxcall(url,data,function(output){
                 handleAjaxResponse(output);
+            });
+        });
+        
+        $('.delete').click(function() {
+            var dataid = $(this).attr('data-id');
+            var dataurl = $(this).attr('data-url');
+            $('.yes-sure').attr('data-id', dataid);
+            $('.yes-sure').attr('data-url', dataurl);
+        });
+        
+        $('.yes-sure').click(function() {
+            var id = $(this).attr('data-id');            
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+//                url: baseurl + "admin/delete-customer",
+                url: baseurl + "admin/customer-ajaxAction",
+                data: {'action': 'deleteorder', 'data': {'id': id }},
+                success: function(data) {
+                    handleAjaxResponse(data);
+//                    var data = JSON.parse(data);
+                }
             });
         });
     };

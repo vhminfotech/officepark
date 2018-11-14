@@ -43,6 +43,20 @@ return[
     'g_holidays'=>'TATIL',
     'holiday_from'=>'Tatili ?',
     'holiday_to'=>'Tatil için ?',
+    
+     //Billinfo
+    'billinfo'=>'Fatura bilgileri',
+    'id'=>'ID',
+    'company_name'=>'Şirket adı',
+    'company_type'=>'Şirket tipi',
+    'company_info'=>'Şirket bilgileri',
+    'full_name'=>'Isim',
+    'dob'=>'DOB',
+    'address'=>'Adres',
+    'status'=>'Durum',
+    'action'=>'Eylem',
+    'view_details_order'=>'Sipariş ayrıntılarını görüntüle',
+    
 ];
 
 ?>

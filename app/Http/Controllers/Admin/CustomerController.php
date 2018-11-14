@@ -147,7 +147,22 @@ class CustomerController extends Controller {
         echo json_encode($return);
         exit;
     }
+    
+    public function orderDelete($postData) {
 
+        $result = OrderInfo::find($postData['id'])->delete();
+        if ($result) {
+            $return['status'] = 'success';
+            $return['message'] = 'Order Delete successfully.';
+            $return['redirect'] = route('order-list');
+        } else {
+            $return['status'] = 'error';
+            $return['message'] = 'something will be wrong.';
+        }
+        echo json_encode($return);
+        exit;
+    }
+    
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
 
@@ -155,6 +170,11 @@ class CustomerController extends Controller {
             case 'deleteCustomer':
 
                 $result = $this->customerDelete($request->input('data'));
+                break;
+            
+            case 'deleteorder':
+                
+                $result = $this->orderDelete($request->input('data'));
                 break;
         }
     }

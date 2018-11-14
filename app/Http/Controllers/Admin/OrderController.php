@@ -172,7 +172,7 @@ class OrderController extends Controller {
 
     public function createUser(Request $request) {
         if ($request->isMethod('post')) {
-
+            
             $objCustomer = OrderInfo::find($request->input('orderId'));
             $objUser = new Users();
             $result = $objUser->createCustomer($objCustomer);

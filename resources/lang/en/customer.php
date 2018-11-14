@@ -43,6 +43,26 @@ return[
     'g_holidays'=>'GLOBAL HOLIDAYS',
     'holiday_from'=>'Holiday global from ',
     'holiday_to'=>'Holiday global to',
+    
+    //Billinfo
+    'billinfo'=>'Billinfo',
+    'id'=>'ID',
+    'company_name'=>'Company name',
+    'company_type'=>'Company type',
+    'company_info'=>'Company info',
+    'full_name'=>'Fullname',
+    'dob'=>'DOB',
+    'address'=>'Address',
+    'status'=>'Status',
+    'action'=>'Action',
+    'view_details_order'=>'View Order Details',
+    
+    
+
+    
+    
+   
+    
 ];
 
 ?>

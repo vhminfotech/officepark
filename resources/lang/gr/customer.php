@@ -44,6 +44,20 @@ return[
     'holiday_from'=>'Urlaub von',
     'holiday_to'=>'Urlaub bis',
     
+    //Billinfo
+    'billinfo'=>'Rechnung info',
+    'id'=>'ID',
+    'company_name'=>'Firmenname',
+    'company_type'=>'Unternehmen typ',
+    'company_info'=>'Unternehmen info',
+    'full_name'=>'Name',
+    'dob'=>'DOB',
+    'address'=>'Adresse',
+    'status'=>'Status',
+    'action'=>'Aktion',
+    'view_details_order'=>'Bestell Details anzeigen',
+    
+    
 ];
 
 ?>
