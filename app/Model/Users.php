@@ -12,6 +12,7 @@ use App\Model\OrderInfo;
 use App\Model\Category;
 use App\Model\Service;
 use PDF;
+use Config;
 
 class Users extends Model {
 
