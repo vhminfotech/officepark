@@ -175,7 +175,7 @@ class OrderInfo extends Model {
     }
 
     public function newOrderCount($statusValue) {
-        return OrderInfo::Where('status', $statusValue)->count();
+        return OrderInfo::whereNUll('user_id')->count();
     }
     public function newOrdergetNotification() {
         return OrderInfo::count();
