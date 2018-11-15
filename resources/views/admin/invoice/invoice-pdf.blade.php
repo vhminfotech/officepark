@@ -72,7 +72,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td  class="" colspan="3">Office Park GbR - Münsterstraße 330, Gebäude B - 40470 Düsseldorf</td>
+                    <td  class="" colspan="3">Office Park GbR  -  Münsterstraße 330, Gebäude B  -  40470 Düsseldorf</td>
                 </tr>
 <!--                <tr>
                     <td class="text-undeline" colspan="3"><hr/></td>
@@ -97,15 +97,15 @@
                         </table>
                         <table width="100%" style="margin-top: 40px;">
                             <tr>
-                                <td>Dear Sir or Madam,</td>
+                                <td>Sehr geehrte Damen und Herren,</td>
                             </tr>
                             <tr>
-                                <td>Please find attached your current monthly statement.</td>
+                                <td>anbei übersenden wir Ihnen Ihre aktuelle Monatsabrechnung.</td>
                             </tr>
                         </table>
                         <table width="100%" style="margin-top: 20px;">
                             <tr>
-                                <td>Your booked telephone service tariff: {{ $getInvoice[0]['packages_name'] }} </td>
+                                <td>Ihr gebuchter Telefonservice-Tarif:  {{ $getInvoice[0]['packages_name'] }} </td>
                             </tr>
                         </table>
                     </td>
@@ -176,7 +176,7 @@
                     <tr>
                         <td colspan="3"></td>
                         
-                        <td><span>Final amount</span> 
+                        <td><span>Endbetrag: </span> 
                        </td>
                         <td> <b style="margin-left: 50px;">{{ number_format($getInvoice[0]['invoiceTotal'],2) }} €</b>
                        </td>
@@ -196,13 +196,14 @@
             <table class="lastdescription" width="100%">
                 <tr>
                     <td>
-                        <span>The amount of  {{ number_format($getInvoice[0]['invoiceTotal'],2) }} <i class="fa fa-eur euroicone" aria-hidden="true"></i> will be withdrawn from your account via {{ $getInvoice[0]['accept'] }} mandate. First direct debits will be charged to your account after 3 business days, follow-up direct debits after 1 business day.</span>
+                        <span>Der Betrag in Höhe von   {{ number_format($getInvoice[0]['invoiceTotal'],2) }} <i class="fa fa-eur euroicone" aria-hidden="true"></i> wird per {{ $getInvoice[0]['accept'] }}-Mandat von Ihrem Konto eingezogen. Erstlastschriften werden 
+Ihrem Konto nach 3 Werktagen, Folgelastschriften nach 1 Werktag belastet. </span>
                     </td>
                 </tr>
                 <br>
                 <tr>
                     <td>
-                        <span>Your bank details:
+                        <span>Ihre Bankverbindung:
                             {{ chunk_split($getInvoice[0]['account_iban'], 4, ' ') }}  • 
                             {{ $getInvoice[0]['account_bic'] }}  
                         </span>
@@ -212,17 +213,20 @@
                 <br>
                 <tr>
                     <td>
-                        <span>Account holder: {{ $getInvoice[0]['account_name'] }}</span>
+                        <span>Commerzbank Düsseldorf • Kontoinhaber: {{ $getInvoice[0]['account_name'] }}</span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span>Mandate Reference: {{ $getInvoice[0]['customer_number'] }} • Creditor ID:  {{ $getInvoice[0]['system_genrate_no'] }} </span>
+                        <span>Mandatsreferenz: {{ $getInvoice[0]['customer_number'] }} • Gläubiger-ID:  {{ $getInvoice[0]['system_genrate_no'] }} </span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Best regards
+                        Mit freundlichen Grüßen
+                    </td>
+                    <td>
+                        Ihr OFFICE PARK-Team
                     </td>
                 </tr>
             </table>
@@ -242,9 +246,9 @@
                     </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Page 1 of 1</td>
+                            <tr><td>Seite 1 von 1</td>
                             </tr>
-                            <tr><td>Write from {{ date('d.m.y') }}</td></tr>
+                            <tr><td>Schreiben vom {{ date('d.m.y') }}</td></tr>
 
                         </table>
                     </td>
