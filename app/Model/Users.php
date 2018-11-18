@@ -230,7 +230,7 @@ class Users extends Model {
             $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
             $pdf->save(public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf'));
 
-            $mailData['subject'] = 'Interest in wanted listing';
+            $mailData['subject'] = 'Order Confirm';
             $mailData['template'] = 'emails.confirm-order';
             $mailData['attachment'] = array(
                 public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-' . $result[0]->last_number . '.pdf'),

@@ -13,7 +13,7 @@
                              {{ trans('op_services.op_service')}}
                         </div>
                        
-                        <div class="col-lg-10">
+                        <div class="col-lg-9">
                             
                                 <div class="left">
                                     <input class="c-btn c-btn--info c-btn--fullwidth createpackage" value="{{ trans('op_services.create_packgae')}}" type="button">

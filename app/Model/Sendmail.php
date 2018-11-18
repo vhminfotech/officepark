@@ -14,11 +14,12 @@ class Sendmail extends Model {
  
    public function sendSMTPMail($mailData)
    {
+//       print_r($mailData);
 //       $pathToFile = $mailData['attachment'];
-//        Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
-//            $m->from('smtp@prasadexpo.co.in', 'Office Park');
+//        $dd = Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
+//            $m->from('kartikdesai123@gmail.com', 'Office Park');
 //
-//            $m->to($mailData['mailto'], "Office Park")->subject($mailData['subject']);
+//            $m->to('kartikdesai123@gmail.com', "Office Park")->subject($mailData['subject']);
 ////            print_r($pathToFile);
 //            if(!empty($pathToFile)){
 //                for($i=0;$i<count($pathToFile);$i++){
@@ -29,7 +30,9 @@ class Sendmail extends Model {
 //            
 //           //  $m->cc($mailData['bcc']);
 //        });
-        
+//        
+//        print_r($dd);
+//        exit;
        try {
         $pathToFile = $mailData['attachment'];
         Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
@@ -45,9 +48,11 @@ class Sendmail extends Model {
                 }
                 
             }
-            return true;
+            
            //  $m->cc($mailData['bcc']);
         });
+        
+        return true;
       }
 
       //catch exception
