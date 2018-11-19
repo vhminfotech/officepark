@@ -31,6 +31,8 @@ var Invoice = function() {
                 $(".finalTotal").text(finalTotal);
             });
         });
+        
+        $('.selectpackege').trigger('change');
     }
 
     var handleGenral = function() {
