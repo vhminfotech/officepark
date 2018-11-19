@@ -43,7 +43,9 @@
                                     <select class='form-control c-select selectpackege' name='service_id'>
                                         <option value="">Select Packages</option>
                                         @foreach($getServiceName as $value)
-                                        <option value='{{$value->id}}'>{{$value->packages_name}}</option>
+                                        <option value="{{$value->id}}" {{ ($value->id == $getCustomerInfo['is_package'] ? 'selected="selected"' : '') }}>
+                                            {{$value->packages_name}}
+                                        </option>
                                         <!--<option value='Business Packet Stander'>Business Packet Stander</option>-->
                                         @endforeach
                                </select>

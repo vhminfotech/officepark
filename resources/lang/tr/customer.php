@@ -57,6 +57,13 @@ return[
     'action'=>'Eylem',
     'view_details_order'=>'Sipariş ayrıntılarını görüntüle',
     
+    
+    // order Details
+    'order_details'=>'Sipariş detayları',
+    'edit'=>'Düzenle',
+    'order'=>'Sipariş :',
+    'order_date'=>'Sipariş tarihi',
+    'order_package'=>'Sipariş paketi',
 ];
 
 ?>

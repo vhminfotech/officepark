@@ -15,7 +15,7 @@
                         <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <label>Filter</label>
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select id="payment_method" class="c-select form-control filter paymnt_method" >
                                         <option value="">Select Payment method</option>
@@ -43,7 +43,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-1">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter year" id="year" name="year">
                                         @for($i=date('Y'); $i<=2050; $i++)

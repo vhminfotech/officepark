@@ -57,9 +57,12 @@ return[
     'action'=>'Action',
     'view_details_order'=>'View Order Details',
     
-    
-
-    
+    // order Details
+    'order_details'=>'Order Details',
+    'edit'=>'Edit',
+    'order'=>'Order :',
+    'order_date'=>'Order Date',
+    'order_package'=>'Order Package',
     
    
     

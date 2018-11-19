@@ -57,7 +57,12 @@ return[
     'action'=>'Aktion',
     'view_details_order'=>'Bestell Details anzeigen',
     
-    
+    // order Details
+    'order_details'=>'Bestelldetails',
+    'edit'=>'Bearbeiten',
+    'order'=>'Bestellung :',
+    'order_date'=>'Bestelldatum',
+    'order_package'=>'Bestellte Pakete',
 ];
 
 ?>

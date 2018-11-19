@@ -9,7 +9,7 @@ return [
     'Customer' => 'Customer',
     'Addressbook' => 'Addressbook',
     'Order' => 'Order',
-    'Select' => 'Select',
+    'Select' => 'Select Language',
     'Logout' => 'Logout',
     'Contract' => 'Contract',
     'Invoice' => 'Invoice',
