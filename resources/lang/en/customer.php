@@ -136,7 +136,35 @@ return[
     'company_info'=>'Company Info',
     
     
-   
+   //Edit customer status
+    'choose_option'=>'Choose an option...',
+    'company_schmit'=>'Company Schmidt - hello my name is Max Mustermann.',
+    'good_day'=>'Good day - Max Mustermann from company Schmidt, how can I help you?',
+    'my_name_is'=>'Company Schmidt - hello my name is Max Mustermann.',
+    'welcome_to_company'=>'Welcome to company Schmidt, my name is Max Mustermann.',
+    'unavailable_msg'=>'Unavailable Message',
+    'phone_conversation'=>'Currently in the phone conversation, Mr. / Ms. X will call her back.',
+    'training'=>'Currently in a training, Mr. / Mrs. X will call her back.',
+    'appointment'=>'Currently in an appointment, Mr. / Mrs. X will call her back.',
+    'vacation'=>'Currently on vacation, Mr. / Mrs. X will call her back.',
+    'not_in_place'=>'Not in place, Mr. / Mrs. X will call her back.',
+    'customer_talk'=>'In the customer talk, Mr. / Mrs. X will call you back.',
+    'reroute_confirm'=>'Reroute Confirm',
+    'do_not_callers'=>'No, do not make callers',
+    'make_all_call'=>'Yes, please make all callers',
+    'place_new_order'=>'Yes, please only make calls that want to place a new order',
+    'info_type'=>'Info Type',
+    'via_email'=>'Only via E-mail',
+    'by_sms'=>'Only by SMS',
+    'email_sms'=>'Via E-mail and SMS',
+    'center_to_cus'=>'Center to customer route',
+    'forward_msg'=>'Forward Message',
+    'telephone_number'=>'Telephone number',
+    'add'=>'Add',
+    'ticket'=>'Ticket',
+    
+    
+    
     
 ];
 

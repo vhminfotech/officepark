@@ -81,14 +81,14 @@ class Service extends Model {
 
             for ($i = 0; $i < count($title); $i++) {
                 $objServiceDetail = new ServiceDetail();
-                $total = ($qty[$i]) * ($price[$i]);
+               // $total = ($qty[$i]) * ($price[$i]);
                 if ($title[$i] != '') {
                     $objServiceDetail->service_id = $serviceId;
                     $objServiceDetail->title = $title[$i];
                     $objServiceDetail->qty = $qty[$i];
                     $objServiceDetail->price = $price[$i];
                     $objServiceDetail->is_invoice = (isset($is_invoice[$i])) ? 'Yes' : 'No';
-                    $objServiceDetail->total = $total;
+                    //$objServiceDetail->total = $total;
                     $objServiceDetail->created_at = date('Y-m-d H:i:s');
                     $objServiceDetail->updated_at = date('Y-m-d H:i:s');
                     $result = $objServiceDetail->save();
@@ -121,7 +121,7 @@ class Service extends Model {
             $title = $data['title'];
             $qty = $data['qty'];
             $price = $data['price'];
-            $is_invoice = $data['in_invoice'];
+            $is_invoice = (isset($data['in_invoice']))?$data['in_invoice']:'';
 
 
             for ($i = 0; $i < count($title); $i++) {
@@ -133,7 +133,7 @@ class Service extends Model {
                     $objServiceDetail->qty = $qty[$i];
                     $objServiceDetail->price = $price[$i];
                     $objServiceDetail->is_invoice = (!empty($is_invoice[$i]) && isset($is_invoice[$i])) ? 'Yes' : 'No';
-                    $objServiceDetail->total =  $total;
+//                    $objServiceDetail->total =  $total;
                     $objServiceDetail->created_at = date('Y-m-d H:i:s');
                     $objServiceDetail->updated_at = date('Y-m-d H:i:s');
                     $result = $objServiceDetail->save();

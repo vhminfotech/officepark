@@ -136,6 +136,34 @@ return[
     'company_name'=>'Şirket adı',
     'company_title'=>'Şirket unvanı',
     'company_info'=>'Şirket bilgileri',
+    
+    
+     //Edit customer status
+    'choose_option'=>'Bir seçenek seçin...',
+    'company_schmit'=>'Şirket Schmidt-Merhaba benim adım Max Mustermann olduğunu.',
+    'good_day'=>'İyi günler - şirket Schmidt den Max Mustermann, size nasıl yardımcı olabilirim?',
+    'my_name_is'=>'Şirket Schmidt-Merhaba benim adım Max Mustermann olduğunu.',
+    'welcome_to_company'=>'Schmidt şirketine hoş geldiniz, benim adım Max Mustermann.',
+    'unavailable_msg'=>'Kullanılamaz Ileti',
+    'phone_conversation'=>'Şu anda telefon görüşmesi, Bay/MS X onu geri arayacak.',
+    'training'=>'Şu anda bir eğitime, Bay/Bayan X onu geri arayacak.',
+    'appointment'=>'Şu anda bir randevuda, Bay/Bayan X onu geri arayacak.',
+    'vacation'=>'Şu anda tatilde, Bay/Bayan X onu geri arayacak.',
+    'not_in_place'=>'Yerinde değil, Bay/Bayan X onu geri arayacak.',
+    'customer_talk'=>'Müşteri konuşması, Bay/Bayan X sizi geri arayacak.',
+    'reroute_confirm'=>'Yeniden yönlendirme Onayla',
+    'do_not_callers'=>'Hayır, arayanlar yapma',
+    'make_all_call'=>'Evet, lütfen tüm arayanlar',
+    'place_new_order'=>'Evet, lütfen sadece yeni bir sipariş vermek isteyen aramalar yapın',
+    'info_type'=>'Bilgi türü',
+    'via_email'=>'Sadece e-posta yoluyla',
+    'by_sms'=>'Sadece SMS ile',
+    'email_sms'=>'e-posta ve SMS ile',
+    'center_to_cus'=>'Merkezi müşteri rotası',
+    'forward_msg'=>'Iletme Iletisi',
+    'telephone_number'=>'Telefon numarası',
+    'add'=>'Ekle',
+    'ticket'=>'Bilet',
 ];
 
 ?>
