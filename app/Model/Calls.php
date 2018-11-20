@@ -24,6 +24,7 @@ class Calls extends Model {
         $objCalls->routing_id = (isset($postData['routing_id'])) ? $postData['routing_id'] : '';
         $objCalls->service = (isset($postData['service'])) ? $postData['service'] : '';
         $objCalls->ddi = (isset($postData['ddi'])) ? $postData['ddi'] : '';
+        $objCalls->system_genrate_no  = (isset($postData['service'])) ? $postData['service'].'-'.$postData['ddi'] : '';
         $objCalls->caller = (isset($postData['caller'])) ? $postData['caller'] : '';
         $objCalls->destination_number = (isset($postData['destination_number'])) ? $postData['destination_number'] : '';
         $objCalls->duration_in = (isset($postData['duration_in'])) ? $postData['duration_in'] : '';
@@ -39,7 +40,7 @@ class Calls extends Model {
 
     public function getCallListing() {
         $sql = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
-                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->groupBy('calls.id');
         $result = $sql->get(['calls.*',
             'u1.name as agentName',
@@ -105,7 +106,7 @@ class Calls extends Model {
         );
 
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
-                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->groupBy('calls.id');
 
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
@@ -464,7 +465,7 @@ class Calls extends Model {
     
     public function customerpopupdetail($id){
         
-        $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+        $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')
                 ->groupBy('calls.id')
                 ->where('calls.id',$id['data']['id']);
