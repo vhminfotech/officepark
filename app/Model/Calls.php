@@ -213,7 +213,7 @@ class Calls extends Model {
         );
        
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
-                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.system_genrate_no')
                 // ->where('u1.id','=',$logindata)
                 ->groupBy('calls.id');
         
@@ -443,7 +443,7 @@ class Calls extends Model {
 
     public function getSystemMailList() {
         $sql = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
-                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.service')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->groupBy('calls.id');
         $result = $sql->get(['calls.*',
             'u1.name as agentName',
@@ -488,7 +488,7 @@ class Calls extends Model {
     
     public function customerpopupdetailbussinesshours($id){
         
-        $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+        $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->leftjoin('customer_details', 'customer_details.user_id', '=', 'users.id')                
                 ->where('calls.id',$id['data']['id']);
         $result = $query->select(
@@ -501,7 +501,7 @@ class Calls extends Model {
     }   
     
     public function customer_info($id){
-         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->leftjoin('customer_info', 'customer_info.user_id', '=', 'users.id')                
                 ->where('calls.id',$id['data']['id']);
          $result = $query->select(
@@ -516,7 +516,7 @@ class Calls extends Model {
      
      
     public function orderinfo($id){
-         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.service')
+         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')                
                 ->where('calls.id',$id['data']['id']);
          $result = $query->select(
