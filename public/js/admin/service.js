@@ -25,28 +25,42 @@ var Service = function() {
         }
 
         $('body').on('click', '.add_new_row', function() {
-            var html = '<tr class="c-table__row"><td class="c-table__cell"><input type="text" class="c-input" name="title[]"/></td><td class="c-table__cell"><input type="text" class="qty c-input" name="qty[]"/></td><td class="c-table__cell"><input type="text" class="price c-input" name="price[]"/></td><td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input" id="invoice' + count + '" name="in_invoice[' + count + ']" type="checkbox"><label class="c-choice__label" for="invoice' + count + '">Invoice</label></td><td colspan="1"><span class="total-1"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
+            var html = '<tr class="c-table__row"><td class="c-table__cell"><input type="text" class="c-input" name="title[]"/></td><td class="c-table__cell"><input type="text" class="qty c-input notnumber" name="qty[]"/></td><td class="c-table__cell"><input type="text" class="price notnumber c-input" name="price[]"/></td><td class="c-table__cell"><div class="c-choice c-choice--checkbox"><input class="c-choice__input invoice_checkbox" id="invoice' + count + '" name="in_invoice[' + count + ']" type="checkbox"><label class="c-choice__label" for="invoice' + count + '">Invoice</label></td><td colspan="1"><span class="total-1"></span><a href="javascript:;" class="removetData"><i class="fa fa-close"></i></a></td></tr>';
             $('.dataAppend').append(html);
             count++;
         });
-
-        $("body").on("blur", ".qty", function() {
-            var qty = $(this).val();
-            var price = $(this).closest('tr').find('.price').val();
-            if (qty != '' && price != '') {
-                var total = parseInt(qty) * parseInt(price);
-                $(this).closest('tr').find('.total').text(total + '€');
+        
+        
+        $('body').on('keypress', '.notnumber', function(e) {
+          
+            var checkVAl=$(this).closest('tr').find('.invoice_checkbox').prop('checked');
+             
+            if(checkVAl){
+               if (!(e.which >= 48 && e.which <= 57) || (e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 122)) {
+                        e.preventDefault();
+                    }
             }
         });
+        
+         
 
-        $("body").on("blur", ".price", function() {
-            var price = $(this).val();
-            var qty = $(this).closest('tr').find('.qty').val();
-            if (qty != '' && price != '') {
-                var total = parseInt(qty) * parseInt(price);
-                $(this).closest('tr').find('.total').text(total + ' €');
-            }
-        });
+//        $("body").on("blur", ".qty", function() {
+//            var qty = $(this).val();
+//            var price = $(this).closest('tr').find('.price').val();
+//            if (qty != '' && price != '') {
+//                var total = parseInt(qty) * parseInt(price);
+//                $(this).closest('tr').find('.total').text(total + '€');
+//            }
+//        });
+
+//        $("body").on("blur", ".price", function() {
+//            var price = $(this).val();
+//            var qty = $(this).closest('tr').find('.qty').val();
+//            if (qty != '' && price != '') {
+//                var total = parseInt(qty) * parseInt(price);
+//                $(this).closest('tr').find('.total').text(total + ' €');
+//            }
+//        });
 
 
 

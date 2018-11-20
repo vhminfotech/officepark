@@ -12,28 +12,28 @@
         <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title"><i class="fa fa-dribbble"></i> Order Details</h5>
+                    <h5 class="c-card__title"><i class="fa fa-dribbble"></i>{{ trans('customer.order_details')}}</h5>
                     <!--<div class="c-card__meta">-->
-                        <a href="#">Edit</a>
+                        <a href="#">{{ trans('customer.edit')}}</a>
                     <!--</div>-->
                 </div>
 
                 <table class="col-lg-12">
                     <tbody>
                         <tr class="c-table__row u-border-top-zero">
-                            <td class="c-table__cell">Order #:</td>
+                            <td class="c-table__cell">{{ trans('customer.order')}} :</td>
                             <td class="c-table__cell u-text-left">
                                 <span class="u-text-bold">{{ $arrOrder[0]->id }}</span>
                             </td>
                         </tr>
                         <tr class="c-table__row">
-                            <td class="c-table__cell">Order Date</td>
+                            <td class="c-table__cell">{{ trans('customer.order_date')}} :</td>
                             <td class="c-table__cell ">
                                 <span class="u-text-bold">{{ date('d.m.Y',strtotime($arrOrder[0]->created_at)) }}</span>
                             </td>
                         </tr>
                         <tr class="c-table__row">
-                            <td class="c-table__cell">Order Package</td>
+                            <td class="c-table__cell">{{ trans('customer.order_package')}} :</td>
                             <td class="c-table__cell ">
                                 <span class="c-badge c-badge--small c-badge--success">{{ ($arrOrder[0]->packages_name == '' ? 'N/A' : $arrOrder[0]->packages_name) }}</span>
                                 <!--<span class="c-badge c-badge--small c-badge--success">Business Standard</span>-->
@@ -48,14 +48,14 @@
         <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title">Customer Information</h5>
-                    <a class="editCustomer" href="javascript:;">Edit</a>
+                    <h5 class="c-card__title">{{ trans('customer.cus_info')}}</h5>
+                    <a class="editCustomer" href="javascript:;">{{ trans('customer.edit')}}</a>
                 </div>
                 <form class="customerInfo" name="customerInfo" method="post" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="customerInfo">
                     <table class=" u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
-                                <td class="c-table__cell">Customer Name</td>
+                                <td class="c-table__cell">{{ trans('customer.cus_name')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ $arrOrder[0]->fullname }}</span>
                                     <span class="u-text-bold data1" style="display: none;"><input class="c-input customer_name" value="{{ $arrOrder[0]->fullname }}" id="customer_name" name='customer_name'></span>
@@ -63,7 +63,7 @@
                             </tr>
 
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Dogum Tarihi</td>
+                                <td class="c-table__cell">{{ trans('customer.date_of_birth')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ date('d-m-Y',strtotime($arrOrder[0]->date_of_birth)) }}</span>
                                     <span class="u-text-bold data1" style="display: none;">
@@ -77,7 +77,7 @@
                             </tr>
 
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Cinsiyet:</td>
+                                <td class="c-table__cell">{{ trans('customer.sex')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ ($arrOrder[0]->gender == 'M' ? 'Sir' : 'Mrs') }}</span>
                                     <span class="u-text-bold data1" style="display: none;">
@@ -91,28 +91,28 @@
                             </tr>
 
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Email</td>
+                                <td class="c-table__cell">{{ trans('customer.mrs')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ $arrOrder[0]->email }}</span>
                                     <span class="u-text-bold data1" style="display: none;"><input class="c-input email" value="{{ $arrOrder[0]->email }}" id="email" name='email'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Address</td>
+                                <td class="c-table__cell">{{ trans('customer.address')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1">{{ $arrOrder[0]->address }}</span>
                                     <span class="u-text-bold data1" style="display: none;"><input class="c-input address" value="{{ $arrOrder[0]->address }}" id="address" name='address'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">PostCode</td>
+                                <td class="c-table__cell">{{ trans('customer.postcode')}}</td>
                                 <td class="c-table__cell">
                                     <span class="u-text-bold html1">{{ $arrOrder[0]->postal_code }}</span>
                                     <span class="u-text-bold data1"  style="display: none;"><input class="c-input postal_code" value="{{ $arrOrder[0]->postal_code }}" id="postal_code" name='postal_code'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Telephone</td>
+                                <td class="c-table__cell">{{ trans('customer.telephone')}}</td>
                                 <td class="c-table__cell">
                                     <span class="u-text-bold html1">{{ $arrOrder[0]->phone }}</span>
                                     <span class="u-text-bold data1"  style="display: none;"><input class="c-input phone" value="{{ $arrOrder[0]->phone }}" id="phone" name='phone'></span>
@@ -121,12 +121,12 @@
                             <tr class="c-table__row data1" style="display: none;">
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit1" value="Edit">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit1" value="{{ trans('customer.edit')}}">
                                     </div>
                                 </td>
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth cancel1 canceltn" data-id="1" value="Cancel">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth cancel1 canceltn" data-id="1" value="{{ trans('customer.cancel')}}">
                                     </div>
                                 </td>
                             </tr>
@@ -142,14 +142,14 @@
         <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title">Payment information</h5>
-                    <a class="edit3" data-id="3" href="javascript:;">Edit</a>
+                    <h5 class="c-card__title">{{ trans('customer.payment_info')}}</h5>
+                    <a class="edit3" data-id="3" href="javascript:;">{{ trans('customer.edit')}}</a>
                 </div>
                 <form class="paymentInfo" name="paymentInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="paymentInfo">
                     <table class="u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
-                                <td class="c-table__cell">Account Owner:</td>
+                                <td class="c-table__cell">{{ trans('customer.account_owner')}} :</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html3">{{ $arrOrder[0]->account_name }}</span>
                                     <span class="u-text-bold data3"  style="display: none;"><input class="c-input account_name" value="{{ $arrOrder[0]->account_name }}" id="account_name" name='account_name'></span>
@@ -197,21 +197,21 @@
             
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title">Company Info</h5>
-                    <a class="edit2" href="javascript:;">Edit</a>
+                    <h5 class="c-card__title">{{ trans('customer.company_info')}}</h5>
+                    <a class="edit2" href="javascript:;">{{ trans('customer.edit')}}</a>
                 </div>  
                 <form class="companyInfo" name="companyInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="companyInfo">
                     <table class=" u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
-                                <td class="c-table__cell">Company Name:</td>
+                                <td class="c-table__cell">{{ trans('customer.company_name')}} :</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html2">{{ $arrOrder[0]->company_name }}</span>
                                     <span class="u-text-bold data2"  style="display: none;"><input class="c-input company_name" value="{{ $arrOrder[0]->company_name }}" id="company_name" name='company_name'></span>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Company Title:</td>
+                                <td class="c-table__cell">{{ trans('customer.company_title')}} :</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html2">{{ $arrOrder[0]->company_type }}</span>
                                     <span class="u-text-bold data2"  style="display: none;"><input class="c-input company_type" value="{{ $arrOrder[0]->company_type }}" id="company_type" name='company_type'></span>
@@ -219,7 +219,7 @@
                             </tr>
 
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Company Info:</td>
+                                <td class="c-table__cell">{{ trans('customer.company_info')}} :</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html2">{{ $arrOrder[0]->company_info }}</span>
                                     <span class="u-text-bold data2"  style="display: none;"><input class="c-input company_info" value="{{ $arrOrder[0]->company_info }}" id="company_info" name='company_info'></span>
@@ -228,12 +228,12 @@
                             <tr class="c-table__row data2" style="display: none;">
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit2" value="Edit">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit2" value="{{ trans('customer.edit')}}">
                                     </div>
                                 </td>
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
-                                        <input type="button" class="c-btn c-btn--info c-btn--fullwidth cancel2 canceltn" data-id="2" value="Cancel">
+                                        <input type="button" class="c-btn c-btn--info c-btn--fullwidth cancel2 canceltn" data-id="2" value="{{ trans('customer.canceel')}}">
                                     </div>
                                 </td>
                             </tr>
@@ -246,14 +246,14 @@
         <div class="col-lg-12">
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line">
-                    <h5 class="c-card__title">Secretary Information</h5>
-                    <a class="edit4" href="javascript:;">Edit</a>
+                    <h5 class="c-card__title">{{ trans('customer.secretary_info')}}</h5>
+                    <a class="edit4" href="javascript:;">{{ trans('customer.edit')}}</a>
                 </div>
                 <form class="secInfo" name="secInfo" action="{{ route('view-order',array('id' => $arrOrder[0]->id )) }}" id="secInfo">
                     <table class=" u-border-zero col-lg-12">
                         <tbody>
                             <tr class="c-table__row u-border-top-zero">
-                                <td class="c-table__cell">Phone to Redirect</td>
+                                <td class="c-table__cell">{{ trans('customer.phone_to_redirect')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $arrOrder[0]->phone_to_reroute }}</span>
                                     <input  style="display: none;" class="c-input data4 phone_to_reroute" value="{{ $arrOrder[0]->phone_to_reroute }}" id="phone_to_reroute" name='phone_to_reroute'>
@@ -261,7 +261,7 @@
                             </tr>
 
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Welcome Message</td>
+                                <td class="c-table__cell">{{ trans('customer.welcome_msg')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $welcome_note[$arrOrder[0]->welcome_note] }}</span>
                                     <!--<input  style="display: none;" class="c-input data4 welcome_note" value="{{ $arrOrder[0]->welcome_note }}" id="welcome_note" name='welcome_note'>-->
@@ -274,7 +274,7 @@
                             </tr>
 
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Unavailable Message</td>
+                                <td class="c-table__cell">{{ trans('customer.unavailable_msg')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $unreach_note[$arrOrder[0]->unreach_note] }}</span>
                                     <select name="unreach_note" style="display: none;" required="required" class="c-input data4 unreach_note">
@@ -287,7 +287,7 @@
                             </tr>
                             
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Reroute Confirm</td>
+                                <td class="c-table__cell">{{ trans('customer.route_confirm')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $reroute_confirm[$arrOrder[0]->reroute_confirm] }}</span>
                                     <select name="reroute_confirm" style="display: none;" required="required" class="c-input data4 reroute_confirm">
@@ -299,7 +299,7 @@
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Info Type</td>
+                                <td class="c-table__cell">{{ trans('customer.info_type')}}</td>
                                 <td class="c-table__cell ">
                                     @php
                                     $text = '';
@@ -324,14 +324,14 @@
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Center to customer route</td>
+                                <td class="c-table__cell">{{ trans('customer.center_to_cus_route')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ $arrOrder[0]->center_to_customer_route }}</span>
                                     <input  style="display: none;" class="c-input data4 center_to_customer_route" value="{{ $arrOrder[0]->center_to_customer_route }}" id="center_to_customer_route" name='center_to_customer_route'>
                                 </td>
                             </tr>
                             <tr class="c-table__row">
-                                <td class="c-table__cell">Forward Message</td>
+                                <td class="c-table__cell">{{ trans('customer.forward_msg')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html4">{{ (!array_key_exists($arrOrder[0]->unreach_note, $unreach_note) ? '' : $unreach_note[$arrOrder[0]->unreach_note]) }}</span>
                                     <input  style="display: none;" class="" value="{{ $arrOrder[0]->unreach_note }}" id="forward_message-" name='forward_message-'>
@@ -345,12 +345,12 @@
                             <tr class="c-table__row data4" style="display: none;">
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
-                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit4" value="Edit">
+                                        <input type="submit" class="c-btn c-btn--info c-btn--fullwidth submit4" value="{{ trans('customer.edit')}}">
                                     </div>
                                 </td>
                                 <td class="c-table__cell">
                                     <div class="col u-mb-medium">
-                                        <input type="button" class="c-btn c-btn--info c-btn--fullwidth cancel4 canceltn" data-id="4" value="Cancel">
+                                        <input type="button" class="c-btn c-btn--info c-btn--fullwidth cancel4 canceltn" data-id="4" value="{{ trans('customer.cancel')}}">
                                     </div>
                                 </td>
                             </tr>

@@ -9,10 +9,10 @@
                 <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
                     <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">{{ trans('customer.company_profile')}}</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-billinfo-tab" data-toggle="tab" href="#nav-billinfo" role="tab" aria-controls="nav-billinfo" aria-selected="false">{{ trans('customer.billinfo')}}</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-invoice-tab" data-toggle="tab" href="#nav-invoice" role="tab" aria-controls="nav-invoice" aria-selected="false">Invoice</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-calls-tab" data-toggle="tab" href="#nav-calls" role="tab" aria-controls="nav-calls" aria-selected="false">Calls</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-invoice-tab" data-toggle="tab" href="#nav-invoice" role="tab" aria-controls="nav-invoice" aria-selected="false">{{ trans('customer.invoice')}}</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-calls-tab" data-toggle="tab" href="#nav-calls" role="tab" aria-controls="nav-calls" aria-selected="false">{{ trans('customer.calls')}}</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">EOC</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">Status</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false">{{ trans('customer.status')}}</a></li>
                     <li class="c-tabs__item"><a class="c-tabs__link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Ticket</a></li>
                 </ul>
 
@@ -226,18 +226,18 @@
                             <table class="c-table table-responsive" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head no-sort">Id</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Date</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Invoice</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Customer Number</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Company Name</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Packet</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Price</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Payment Method</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Paid Status</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Mail Send</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Action</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Paid</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.id')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.date')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.invoice')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.cus_number')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.cu_name')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.packet')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.price')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.payment_methode')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.paid_status')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.mail_send')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.action')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.paid')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -275,12 +275,12 @@
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
                                         <th class="c-table__cell c-table__cell--head no-sort"><input class="checkAll" type="checkbox"></th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Id</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Date/Time</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Agent</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Customer</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Notiz</th>
-                                        <th colspan="" class="c-table__cell c-table__cell--head no-sort">Mail Notification</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.id')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.date_time')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.agent')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.customer')}}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.notification')}}</th>
+                                        <th colspan="" class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.mail_notification')}}</th>
                                         <th colspan="" class="c-table__cell c-table__cell--head no-sort"></th>
                                     </tr>
                                 </thead>
@@ -307,12 +307,13 @@
                                             @if($i %2 == 0)
                                             <div class="col u-mb-medium">
                                                 <a class="c-btn c-btn--secondary" href="#">
-                                                    <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail again</a>
+                                                    <i class="fa fa-envelope-o u-mr-xsmall"></i>{{ trans('customer.send_mail_again')}}</a>
                                             </div>
                                             @else
                                             <div class="col u-mb-medium">
                                                 <a class="c-btn c-btn--info" href="#!">
-                                                    <i class="fa fa-envelope-o u-mr-xsmall"></i>Sent mail
+                                                    <i class="fa fa-envelope-o u-mr-xsmall"></i>
+                                                    {{ trans('customer.send_mail')}}
                                                 </a>
                                             </div>
                                             @endif
@@ -379,13 +380,13 @@
                             <table class="c-table" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">ID&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">Company Number&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Welcome Message&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Unavailable Message&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Reroute Confirm&nbsp;&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head">Forward Message&nbsp;</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">{{ trans('customer.id')}}&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;width: 5% !important;max-width: 5% !important;">{{ trans('customer.company_no')}}&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.welcome_msg')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.unavailable_msg')}} Message&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.reroute_confirm')}}&nbsp;&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head">{{ trans('customer.forward_msg')}}&nbsp;</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -403,7 +404,7 @@
                                         <td class="c-table__cell">{!! (!array_key_exists($arrOrderInfoStatus[$i]['reroute_confirm'], $reroute_confirm) ? '' : wordwrap($reroute_confirm[$arrOrderInfoStatus[$i]['reroute_confirm']],18,"<br>\n",TRUE)) !!}</td>
                                         <td class="c-table__cell">{!! (!array_key_exists($arrOrderInfoStatus[$i]['unreach_note'], $unreach_note) ? '' : wordwrap($unreach_note[$arrOrderInfoStatus[$i]['unreach_note']],18,"<br>\n",TRUE)) !!}</td>
                                         <td class="c-table__cell">
-                                            <a href="{{ route('edit-order',array('id' => $arrOrderInfoStatus[$i]['id'],'userId' => $arrOrderInfoStatus[$i]['user_id'] )) }}"><span class="c-tooltip c-tooltip--top"  aria-label="View Order Details">
+                                            <a href="{{ route('edit-order',array('id' => $arrOrderInfoStatus[$i]['id'],'userId' => $arrOrderInfoStatus[$i]['user_id'] )) }}"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.view_oder_details')}}">
                                                     <i class="fa fa-eye" ></i></span>
                                             </a>
                                         </td>

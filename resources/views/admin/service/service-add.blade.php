@@ -56,11 +56,11 @@
                             <tbody class="dataAppend">    
                                 <tr class="c-table__row">
                                     <td class="c-table__cell"><input type="text" class="c-input" name="title[]"/></td>
-                                    <td class="c-table__cell"><input type="text" class="qty c-input" name="qty[]"/></td>
-                                    <td class="c-table__cell"><input type="text" class="price c-input" name="price[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="qty c-input notnumber" name="qty[]"/></td>
+                                    <td class="c-table__cell"><input type="text" class="price c-input notnumber" name="price[]"/></td>
                                     <td class="c-table__cell">
                                         <div class="c-choice c-choice--checkbox">
-                                            <input class="c-choice__input" id="checkboxs" name="in_invoice[]" type="checkbox">
+                                            <input class="c-choice__input invoice_checkbox" id="checkboxs" name="in_invoice[]" type="checkbox">
                                             <label class="c-choice__label" for="checkboxs">{{ trans('op_services.invoice')}}</label>
                                         </div>
                                     </td>

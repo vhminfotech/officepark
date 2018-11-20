@@ -64,6 +64,78 @@ return[
     'order'=>'Sipariş :',
     'order_date'=>'Sipariş tarihi',
     'order_package'=>'Sipariş paketi',
+    
+    
+    //invoice
+    'invoice'=>'Fatura',
+    'id'=>'ID',
+    'date'=>'Tarih',
+    'cus_number'=>'Müşteri numarası',
+    'cu_name'=>'Şirket adı',
+    'packet'=>'Paket',
+    'price'=>'Fiyat',
+    'payment_methode'=>'Ödeme yöntemi',
+    'paid_status'=>'Ücretli durum',
+    'mail_send'=>'Posta gönderme',
+    'action'=>'Eylem',
+    'paid'=>'Bezahlt',
+    
+    //Calls
+    'calls'=>'Aramalar',
+    'date_time'=>'Tarih/saat',
+    'agent'=>'Aracısı',
+    'customer'=>'Müşteri',
+    'notification'=>'Bildirim',
+    'mail_notification'=>'Posta bildirimi',
+    'send_mail_again'=>'Yeniden gönderilmiş posta',
+    'send_mail'=>'Gönderilen posta',
+    
+     //Status
+    'status'=>'Durum',
+    'company_no'=>'Şirket numarası',
+    'welcome_msg'=>'Hoşgeldin mesajı',
+    'unavailable_msg'=>'Kullanılamaz ileti',
+    'reroute_confirm'=>'Yeniden yönlendirme Onayla',
+    'forward_msg'=>'Iletme iletisi',
+    'action'=>'Eylem',
+    'view_oder_details'=>'Sipariş ayrıntılarını görüntüle',
+    
+    
+    
+    //Order Details
+    'order_details'=>'Sipariş detayları',
+    'edit'=>'Düzenle',
+    'order'=>'Sipariş',
+    'order_date'=>'Sipariş tarihi',
+    'order_package'=>'Sipariş paketi',
+    'cus_info'=>'Müşteri bilgileri',
+    'cus_name'=>'Müşteri adı',
+    'date_of_birth'=>'Doğum tarihi',
+    'sex'=>'Cinsiyet',
+    'sir'=>'Bay',
+    'mrs'=>'Bayan',
+    'email'=>'E-posta',
+    'address'=>'Adres',
+    'postcode'=>'Posta kodu',
+    'telephone'=>'Telefon',
+    'cancel'=>'İptal',
+    'payment_info'=>'Ödeme bilgileri',
+    'account_owner'=>'Hesap sahibi',
+    'iban'=>'IBAN',
+    'bic'=>'BIC',
+    'sepa'=>'SEPA',
+    'secretary_info'=>'Sekreter bilgi',
+    'phone_to_redirect'=>'Telefon yönlendirmek için',
+    'welcome_msg'=>'Hoşgeldin mesajı',
+    'unavailable_msg'=>'Kullanılamaz Ileti',
+    'route_confirm'=>'Yeniden yönlendirme Onayla',
+    'info_type'=>'Bilgi türü',
+    'center_to_cus_route'=>'Merkezi müşteri rotası',
+    'forward_msg'=>'Iletme Iletisi',
+    'company_info'=>'Şirket bilgileri',
+    'company_name'=>'Şirket adı',
+    'company_title'=>'Şirket unvanı',
+    'company_info'=>'Şirket bilgileri',
 ];
 
 ?>

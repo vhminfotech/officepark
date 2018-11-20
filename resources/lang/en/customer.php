@@ -65,6 +65,78 @@ return[
     'order_package'=>'Order Package',
     
    
+    //Invoice
+    'invoice'=>'Invoice',
+    'id'=>'ID',
+    'date'=>'Date',
+    'cus_number'=>'Customer Number',
+    'cu_name'=>'Custimer Name',
+    'packet'=>'Packet',
+    'price'=>'Price',
+    'payment_methode'=>'Payment Method',
+    'paid_status'=>'Paid Status',
+    'mail_send'=>'Mail Send',
+    'action'=>'Action',
+    'paid'=>'Paid',
+    
+    //Calls
+    'calls'=>'Calls',
+    'date_time'=>'Date/Time',
+    'agent'=>'Agent',
+    'customer'=>'Customer',
+    'notification'=>'Notification',
+    'mail_notification'=>'Mail notification',
+    'send_mail_again'=>'Sent mail again',
+    'send_mail'=>'Sent mail',
+    
+    
+    //Status
+    'status'=>'Status',
+    'company_no'=>'Company number',
+    'welcome_msg'=>'Welcome message',
+    'unavailable_msg'=>'Unavailable message',
+    'reroute_confirm'=>'Reroute confirm',
+    'forward_msg'=>'Forward message',
+    'action'=>'Action',
+    'view_oder_details'=>'View order details',
+    
+    //Order Details
+    'order_details'=>'Order Details',
+    'edit'=>'Edit',
+    'order'=>'Order',
+    'order_date'=>'Order Date',
+    'order_package'=>'Order Package',
+    'cus_info'=>'Customer Information',
+    'cus_name'=>'Customer Name',
+    'date_of_birth'=>'Date of birth',
+    'sex'=>'Sex',
+    'sir'=>'Sir',
+    'mrs'=>'Mrs',
+    'email'=>'E-mail',
+    'address'=>'Address',
+    'postcode'=>'Postcode',
+    'telephone'=>'Telephone',
+    'cancel'=>'Cancel',
+    'payment_info'=>'Payment information',
+    'account_owner'=>'Account Owner',
+    'iban'=>'IBAN',
+    'bic'=>'BIC',
+    'sepa'=>'SEPA',
+    'secretary_info'=>'Secretary Information',
+    'phone_to_redirect'=>'Phone to Redirect',
+    'welcome_msg'=>'Welcome Message',
+    'unavailable_msg'=>'Unavailable Message',
+    'route_confirm'=>'Reroute Confirm',
+    'info_type'=>'Info Type',
+    'center_to_cus_route'=>'Center to customer route',
+    'forward_msg'=>'Forward Message',
+    'company_info'=>'Company Info',
+    'company_name'=>'Company Name',
+    'company_title'=>'Company Title',
+    'company_info'=>'Company Info',
+    
+    
+   
     
 ];
 
