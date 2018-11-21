@@ -70,7 +70,7 @@ class CustomerController extends Controller {
     public function editCustomer($customerId, Request $request) {
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
-            
+           
             
             $objCustomer = new Users();
             $customerResult = $objCustomer->updateCustomerInfo($request);
@@ -85,7 +85,7 @@ class CustomerController extends Controller {
             $customerDetails=$objCustomerDetails->updateDetails($request);            
             }
             
-            if ($customerDetails == true) {                
+            if ($customerDetails == true) {   
                 $return['status'] = 'success';
                 $return['message'] = 'Customer Edit successfully.';
                 $return['redirect'] = route('customer-list');
@@ -115,7 +115,14 @@ class CustomerController extends Controller {
         $objUser = new Users();
         $data['arrCustomer'] = $objUser->getCustomerInfo($customerId);
         $data['getCustomer'] = $objUser->getCustomer(null);
-
+        
+        $objinvoice = new Invoice();
+        $data['getServiceName'] = $objinvoice->getServiceName();
+        
+        
+        $objcustomerInfo = new Customer_info();
+        $data['customer_info'] = $objcustomerInfo->getcustomerInfo($customerId);
+        
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');

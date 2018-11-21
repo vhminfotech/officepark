@@ -19,11 +19,24 @@ class CallController extends Controller {
     }
 
     public function index(Request $request) {
-
+        if ($request->isMethod('post')) {
+           
+            $objcalls = new Calls();
+            $sendmail=  $objcalls->sendmail($request);
+            
+        }
         $objUser = new Users();
         $data['getCustomer'] = $objUser->getCustomer(null);
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListing();
+        
+        $employeDetails=new Employee();
+        $data['employeinffo']=$employeDetails->employeinfo($request);
+        
+        
+        $session = $request->session()->all();
+        $objTemplate = new Template();
+        $data['template'] = $objTemplate->getTemplate($session['logindata'][0]['id']);
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
@@ -137,9 +150,12 @@ class CallController extends Controller {
                 $getdatatablebuesnesshours = $objRtoEmployer->customerpopupdetailbussinesshours($request);               
                 $customer_info=$objRtoEmployer->customer_info($request); 
                 $orderinfo=$objRtoEmployer->orderinfo($request);
-                $employeinfo=$employeDetails->employeinfo($request);
+                $employeinfo=$employeDetails->employeinfoAccounting($request);
+                $employeinfoadvisor=$employeDetails->employeinfoCustomer($request);
+                $employeinfoTechnical=$employeDetails->employeinfoTechnical($request);
                 
-                $response=['company_details'=>$getdatatableIncomingCall,'bussiness_hours'=>$getdatatablebuesnesshours,'customer_info'=>$customer_info,'orderinfo'=>$orderinfo,'employeinfo'=>$employeinfo];               
+                $response=['company_details'=>$getdatatableIncomingCall,'bussiness_hours'=>$getdatatablebuesnesshours,'customer_info'=>$customer_info,'orderinfo'=>$orderinfo,'employeinfo'=>$employeinfo,
+                    'employeinfoadvisor'=>$employeinfoadvisor,'employeinfoTechnical'=>$employeinfoTechnical];               
                 
                 echo json_encode($response);
                 break;

@@ -157,231 +157,13 @@
 
                                             <div class="c-tabs__content " id="nav-tabContent"> 
                                                 <div class="c-tabs__pane active" id="accounting" role="tabpanel" aria-labelledby="nav-home-tab" style="overflow-y:auto;height:300px">
-<!--                                                    <div class="row" >
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Accounting
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>-->
-                                                    
-<!--                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Accounting
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    <div class="row" >
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Accounting
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Accounting
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title : </strong>Accounting
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>-->
                                                 </div>
 
-                                            <div class="c-tabs__pane" id="advisor" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-y:auto;height:300px">
-                                                <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Advisor
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Advisor
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    
-                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title : </strong> Advisor
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                            </div>
+                                                <div class="c-tabs__pane" id="advisor" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-y:auto;height:300px">
+                                                </div>
 
-                                            <div class="c-tabs__pane" id="services" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-y:auto;height:300px">
-                                                <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Services
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title :</strong> Services
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                                    
-                                                    
-                                                    <div class="row">
-                                                          
-                                                                <div class="col-3 ">
-                                                                    <div class="c-avatar  u-inline-block">
-                                                                        <img class="c-avatar__img" src="{{ url('img/avatar1-72.jpg')}}" alt="Avatar">
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-9">
-                                                                     <ul>
-                                                                        <li class="c-plan__feature">
-                                                                            <strong><span style="font-size:16px;"> Herray Mastermann </span>
-                                                                            <br> Job title : </strong> Services
-                                                                            <br> Company Schmidt - Hello My name is max mustermann.
-                                                                        </li>
-                                                                     </ul>
-                                                                </div>
-                                                          
-                                                     </div>
-                                            </div>
+                                                <div class="c-tabs__pane" id="services" role="tabpanel" aria-labelledby="nav-profile-tab" style="overflow-y:auto;height:300px">                                                
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -392,9 +174,11 @@
                             <article class="c-plan">
                                <h4><b>Sent Call Information Mail</b></h4>
 
-                                        <form>
+                               <form method="post" action="">
+                                            
+                                            <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                                             <div class="c-field u-mb-small">
-                                                            <select class="c-input">
+                                                            <select class="c-input" name='sex'>
                                                                 <option value="mr">Mr.</option>
                                                                 <option value="mrs">Mrs.</option>
                                                                 <option value="miss">Miss.</option>
@@ -402,26 +186,40 @@
                                             </div> 
 
                                             <div class="c-field u-mb-small">
-                                                <input class="c-input" type="text" id="name_surname" placeholder="Name And Surname"> 
+                                                <input class="c-input" type="text" name='surname' id="name_surname" placeholder="Name And Surname"> 
                                             </div>
 
                                             <div class="c-field u-mb-small">
-                                                <input class="c-input" type="text" id="telephoneNumber" placeholder="Telephone number"> 
+                                                <input class="c-input" type="text" name='telephone' id="telephoneNumber" placeholder="Telephone number"> 
                                             </div>
 
                                             <div class="c-field u-mb-small">
-                                                <select class="c-input">
+                                                <select class="c-input" name='caller_notes'>
                                                     <option value="">Caller Notes Template </option>                                                            
+                                                    <?php
+                                                    for($i=0;$i<count($template);$i++){
+                                                    ?>
+                                                    <option value='<?php print_r($template[$i]['id']);?>'><?php print_r($template[$i]['message']); ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div> 
 
                                             <div class="c-field u-mb-small">
-                                                <textarea class="c-input"></textarea>
+                                                <textarea class="c-input" name='message'></textarea>
                                             </div>
 
                                             <div class="c-field u-mb-small">
-                                                <select class="c-input">
-                                                    <option value="">Select Employee</option>                                                            
+                                                <select class="c-input" name='employe'>
+                                                    <option value="">Select Employee</option>
+                                                    <?php
+                                                    for($i=0;$i<count($employeinffo);$i++){
+                                                    ?>
+                                                    <option value='<?php print_r($employeinffo[$i]['customer_id']);?>'><?php print_r($employeinffo[$i]['first_name'].' '.$employeinffo[$i]['last_name']); ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div> 
 

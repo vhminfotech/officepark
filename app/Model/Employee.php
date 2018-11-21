@@ -173,9 +173,10 @@ class Employee extends Model {
         return true;
     }
     
-    public function employeinfo($id){
+    public function employeinfoAccounting($id){
         $result= Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
                         ->groupBy('employee.id')
+                        ->where('employee.responsibility','=','6')
                         ->get(['employee.first_name',
                                 'employee.employee_image',
                                 'employee.last_name',
@@ -189,4 +190,49 @@ class Employee extends Model {
         }
         return $result;
     }
+    
+     public function employeinfoCustomer($id){
+        $result= Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                        ->groupBy('employee.id')
+                        ->where('employee.responsibility','=','5')
+                        ->get(['employee.first_name',
+                                'employee.employee_image',
+                                'employee.last_name',
+                                'employee.job_title',
+                                'employee.my_profile'
+                            ]);
+        for($i=0;$i<count($result);$i++){
+            $jobtitle=$result[$i]['job_title'];            
+            $constant_job=Config::get('constants.job_title');
+            $result[$i]['job_title']=$constant_job[$jobtitle];
+        }
+        return $result; 
+     }
+     
+     
+     public function employeinfoTechnical($id){
+        $result= Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                        ->groupBy('employee.id')
+                        ->where('employee.responsibility','=','7')
+                        ->get(['employee.first_name',
+                                'employee.employee_image',
+                                'employee.last_name',
+                                'employee.job_title',
+                                'employee.my_profile'
+                            ]);
+        for($i=0;$i<count($result);$i++){
+            $jobtitle=$result[$i]['job_title'];            
+            $constant_job=Config::get('constants.job_title');
+            $result[$i]['job_title']=$constant_job[$jobtitle];
+        }
+        return $result; 
+     }
+     
+     public function employeinfo(){
+          $result= Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
+                        ->groupBy('employee.id')                        
+                        ->get(['employee.first_name','employee.customer_id','employee.last_name'])
+                  ->toarray();
+           return $result;
+     }
 }

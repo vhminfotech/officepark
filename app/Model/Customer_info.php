@@ -48,4 +48,11 @@ class Customer_info extends Model {
             $return = true;
            return $return;
     }
+    
+    public function getcustomerInfo($request){
+        return customer_info::select('*')
+                ->where('user_id', '=', $request)
+                ->get()->toarray();
+        
+    }
 }

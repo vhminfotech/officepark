@@ -40,8 +40,19 @@
 
                                     <div class="c-field u-mb-small">
                                         <label class="c-field__label"  for="select1">{{ trans('customer.package')}}</label>
-                                        <select class="c-select" id="select1" name="pacet">
+<!--                                        <select class="c-select" id="select1" name="pacet">
                                             <option {{ ($arrCustomer['is_package'] == 1 ? 'selected="selected"' : '') }} value="1">BUSINESS PACKAGE STANDARD</option>
+                                        </select>-->
+                                        
+                                         <select class="c-select" id="select1" name="pacet">
+                                            <option value="">Select Packages</option>
+                                            
+                                                @foreach($getServiceName as $value)
+                                                <option value="{{$value->id}}" {{ ($value->id == $arrCustomer['is_package'] ? 'selected="selected"' : '') }}>
+                                                    {{$value->packages_name}}
+                                                </option>
+                                                <!--<option value='Business Packet Stander'>Business Packet Stander</option>-->
+                                                @endforeach
                                         </select>
                                     </div>
                                     
@@ -83,13 +94,13 @@
                                       <div class="c-field u-mb-small">
                                           <label class="c-field__label" for="callbacksms">{{ trans('customer.call_transfer')}}</label> 
                                           <div class="c-choice c-choice--checkbox">
-                                              <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" >
+                                              <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" {{ ($customer_info[0]['call_transfer_telephone']  == '1' ? 'checked="checked"' : '') }}>
                                               <label class="c-choice__label" for="call_transfer_telephone">{{ trans('customer.incoming_telephone')}}</label>
                                           </div>
                                       </div>
                                       <div class="c-field u-mb-small">
                                           <div class="c-choice c-choice--checkbox">
-                                              <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" >
+                                              <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" {{ ($customer_info[0]['call_transfer_mobile_phone']  == '1' ? 'checked="checked"' : '') }}>
                                               <label class="c-choice__label" for="call_transfer_mobile_phone">{{ trans('customer.incoming_mobile')}}</label>
                                           </div>
                                       </div>
@@ -101,13 +112,13 @@
                                         <div class="c-field u-mb-small">
                                             <label class="c-field__label" for="callbacksms">{{ trans('customer.call_notification')}}</label> 
                                             <div class="c-choice c-choice--checkbox">
-                                                <input class="c-choice__input" id="transfer_notification_to_call" name="transfer_notification_to_call" value="1" type="checkbox">
+                                                <input class="c-choice__input" id="transfer_notification_to_call" name="transfer_notification_to_call" value="1" type="checkbox" {{ ($customer_info[0]['transfer_notification_to_call']  == '1' ? 'checked="checked"' : '') }}>
                                                 <label class="c-choice__label" for="transfer_notification_to_call">{{ trans('customer.incoming_telephone')}}</label>
                                             </div>
                                         </div>
                                         <div class="c-field u-mb-small">
                                             <div class="c-choice c-choice--checkbox">
-                                                <input class="c-choice__input" id="transfer_notification_to_mobile_phone" name="transfer_notification_to_mobile_phone" value="1" type="checkbox" >
+                                                <input class="c-choice__input" id="transfer_notification_to_mobile_phone" name="transfer_notification_to_mobile_phone" value="1" type="checkbox" {{ ($customer_info[0]['transfer_notification_to_mobile_phone']  == '1' ? 'checked="checked"' : '') }}>
                                                 <label class="c-choice__label" for="transfer_notification_to_mobile_phone">{{ trans('customer.incoming_mobile')}}</label>
                                             </div>
                                         </div>
@@ -164,7 +175,7 @@
                                                     <div class="row u-mb-xlarge" style="margin-top: 10px!important;    margin-bottom: 0px !important;">
                                                         <div class="col-md-4 u-mb-medium">
                                                             <div class="c-choice c-choice--checkbox">
-                                                                <input class="c-choice__input" id="launch_time" name="launch_time" value="1" type="checkbox">
+                                                                <input class="c-choice__input" id="launch_time" name="launch_time" value="1" type="checkbox" {{ ($customer_info[0]['is_lunch_time']  == '1' ? 'checked="checked"' : '') }}>
                                                                 <label class="c-choice__label" for="launch_time">&nbsp;</label>
                                                             </div>
                                                         </div>
@@ -182,7 +193,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="c-choice c-choice--checkbox">
-                                                    <input class="c-choice__input" id="no_business_hour_adjust" value="1" name="no_business_hour_adjust" type="checkbox">
+                                                    <input class="c-choice__input" id="no_business_hour_adjust" value="1" name="no_business_hour_adjust" type="checkbox" {{ ($customer_info[0]['no_business_hour_adjust']  == '1' ? 'checked="checked"' : '') }}>
                                                     <label class="c-choice__label" for="no_business_hour_adjust">{{ trans('customer.no_business_hours')}}</label>
                                                 </div>
                                             </div>

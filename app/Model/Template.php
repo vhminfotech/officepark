@@ -23,9 +23,9 @@ class Template extends Model {
     }
 
     public function getTemplate($userId) {
-        $result =  Template::select('template.*')->where('user_id',$userId)->get()->toArray();
+        $result =  Template::select('template.*')
+                ->where('user_id',$userId)->get()->toArray();
         return $result;
-        
     }
 
 }

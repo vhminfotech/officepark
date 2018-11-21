@@ -91,7 +91,9 @@ var Calls = function() {
 
         $('body').on('click', '.customerpopupdetail', function() {
             var id = $(this).attr('data-id');
-            
+            var markup_div='';
+            var markup_div_advisor='';
+            var markup_div_tech='';
             var data = {id: id, token: $('#_token').val()};
             
             $.ajax({
@@ -153,12 +155,14 @@ var Calls = function() {
                    $('#welcome_note').text(det['orderinfo'].note);
                    $('#reroute_confirm').text(det['orderinfo'].reroute);
                    $('#company_info').text(det['orderinfo'].company_info);
-                   var markup_div='';
+                   var markup='';
+                   var markuptech='';
+                   var markupadvisor='';
                    for(var employee=0;employee<det['employeinfo'].length;employee++)
                    {
                     var path='uploads/employee/' +det["employeinfo"][employee].employee_image;
 
-                    var markup='<div class="row" >'+
+                    markup='<div class="row remove_div" >'+
                                      '<div class="col-3 ">'+
                                          '<div class="c-avatar  u-inline-block">'+
                                              '<img class="c-avatar__img" src="'+ baseurl + path +'" alt="Avatar">'+
@@ -180,11 +184,61 @@ var Calls = function() {
                    }
                    
                    $("#accounting").append(markup_div);
-                    
-                   console.log(det['employeinfo']);
-                   exit;
                    
-                   // handleAjaxResponse(data);
+                   for(var employeinfoTechnical=0;employeinfoTechnical<det['employeinfoTechnical'].length;employeinfoTechnical++)
+                   {
+                    var path='uploads/employee/' +det["employeinfoTechnical"][employeinfoTechnical].employee_image;
+
+                     markuptech='<div class="row remove_div" >'+
+                                     '<div class="col-3 ">'+
+                                         '<div class="c-avatar  u-inline-block">'+
+                                             '<img class="c-avatar__img" src="'+ baseurl + path +'" alt="Avatar">'+
+                                         '</div>'+
+
+                                     '</div>'+
+                                     '<div class="col-9">'+
+                                          '<ul>'+
+                                             '<li class="c-plan__feature">'+
+                                             //C:\xampp\htdocs\officepark\public\uploads\employee
+                                                 '<strong><span style="font-size:16px;">'+ det['employeinfoTechnical'][employeinfoTechnical].first_name+' '+ det['employeinfoTechnical'][employeinfoTechnical].last_name + '</span>'+
+                                                 '<br> Job title :</strong> '+ det['employeinfoTechnical'][employeinfoTechnical].job_title + 
+                                                 '<br> Company Schmidt - Hello My name is max mustermann.'+
+                                             '</li>'+
+                                          '</ul>'+
+                                     '</div>'+
+                          '</div>';
+                        markup_div_tech=markup_div_tech+markuptech;
+                   }
+                   
+                   $("#services").append(markup_div_tech);
+//                    
+                   for(var employeinfoadvisor = 0; employeinfoadvisor < det['employeinfoadvisor'].length;employeinfoadvisor++)
+                   {
+                    var path='uploads/employee/' +det["employeinfoadvisor"][employeinfoadvisor].employee_image;
+
+                     markupadvisor='<div class="row" >'+
+                                     '<div class="col-3 ">'+
+                                         '<div class="c-avatar  u-inline-block">'+
+                                             '<img class="c-avatar__img" src="'+ baseurl + path +'" alt="Avatar">'+
+                                         '</div>'+
+
+                                     '</div>'+
+                                     '<div class="col-9">'+
+                                          '<ul>'+
+                                             '<li class="c-plan__feature">'+
+                                             //C:\xampp\htdocs\officepark\public\uploads\employee
+                                                 '<strong><span style="font-size:16px;">'+ det['employeinfoadvisor'][employeinfoadvisor].first_name+' '+ det['employeinfoadvisor'][employeinfoadvisor].last_name + '</span>'+
+                                                 '<br> Job title :</strong> '+ det['employeinfoadvisor'][employeinfoadvisor].job_title + 
+                                                 '<br> Company Schmidt - Hello My name is max mustermann.'+
+                                             '</li>'+
+                                          '</ul>'+
+                                     '</div>'+
+                          '</div>';
+                        markup_div_advisor=markup_div_advisor+markupadvisor;
+                   }
+                   
+                   $("#advisor").append(markup_div_advisor);
+                   
                 }
             });
         });

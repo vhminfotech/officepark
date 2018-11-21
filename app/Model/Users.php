@@ -304,7 +304,8 @@ class Users extends Model {
                     ->update([
                         'company_name' => $request->input('company_name'),
                         'fullname' => $request->input('first_name'),
-                        'phone' => $request->input('telephone')
+                        'phone' => $request->input('telephone'),
+                        'is_package' => $request->input('pacet')
             ]);
 
             $return = TRUE;

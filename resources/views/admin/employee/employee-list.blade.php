@@ -13,8 +13,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                    Employee
+                                    <div class="col-lg-3">Employee
                                     </div>
                                     
                                     <div class="col-lg-6 ">
@@ -29,14 +28,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
-
-                                <div class="left">
+                            <div class="col-3">
                                     <a href="{{route('employee-add')}}" class="c-btn c-btn--info" >Add New Employee</a>
-
-                                </div>
-
-
                             </div>
                         </div>
                     </caption>

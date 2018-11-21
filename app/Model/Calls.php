@@ -535,7 +535,21 @@ class Calls extends Model {
           return $details;
      }
      
-    
+    public function sendmail($request){
+       
+        $result=Employee::select('email')
+                ->where('customer_id','=',$request['employe'])
+                ->get();
+        $email=$result['0']['email'];
+        $mailData['subject'] = 'Calls - Sent Email';
+        //$mailData['attachment'] = array();
+//        $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
+        $mailData['mailto'] = $email;//$request->input('caller_email');
+        $sendMail = new Sendmail;
+        $sent=$sendMail->sendSMTPMail($mailData);
+        print_r($sent);
+        die();
+    }
 
 }
 

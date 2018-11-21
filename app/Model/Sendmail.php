@@ -14,6 +14,8 @@ class Sendmail extends Model {
  
    public function sendSMTPMail($mailData)
    {
+       
+       
 //       print_r($mailData);
 //       $pathToFile = $mailData['attachment'];
 //        $dd = Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
