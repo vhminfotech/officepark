@@ -202,6 +202,7 @@ class InvoiceController extends Controller {
 
         $mailData['subject'] = 'Invoice-' . $data['getInvoice'][0]['customer_number'];
         $mailData['template'] = 'emails.invoice-email-template';
+        
         $mailData['attachment'] = array(
             public_path($target_path));
 
@@ -258,6 +259,21 @@ class InvoiceController extends Controller {
         $objUser = new Users();
         $data['detail'] = $this->loginUser;
         $data['customerNumber'] = $customerId;
+        
+
+         $invoiceResult = Invoice::orderBy('created_at', 'desc')->first();
+        if(!empty($invoiceResult)){
+            $invoiceId = $invoiceResult->id + 1;
+        }else{
+             $invoiceId =  1;
+        }
+        if (strlen($invoiceId) < 4) {
+            $invoice_no = str_pad($invoiceId, 3, "0", STR_PAD_LEFT);
+            $invoice_no .= '-' . date('y');
+        } else {
+            $invoice_no = $invoiceId . '/' . date('y');
+        }
+
 
         if ($request->isMethod('post')) {
             $invoiceAdd = $objinvoice->addInvoice($request);
@@ -280,6 +296,7 @@ class InvoiceController extends Controller {
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $data['getServiceName'] = $objinvoice->getServiceName();
         $data['getCustomerInfo'] = $objUser->getCustomer($customerId);
+        $data['invoiceNo'] = $invoice_no;
         return view('admin.invoice.invoice-add', $data);
     }
 
