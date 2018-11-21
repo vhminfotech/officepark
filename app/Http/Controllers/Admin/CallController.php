@@ -73,6 +73,25 @@ class CallController extends Controller {
             exit;
         }
     }
+    public function sendMailbigPopup(Request $request) {
+        if ($request->isMethod('post')) {
+//            print_r($request->input());
+//            exit;
+            $objUser = new Calls();
+            $userList = $objUser->updateCallesInbigPopup($request);
+            if ($userList) {
+                $return['status'] = 'success';
+                $return['message'] = 'Email Sent successfully.';
+                $return['redirect'] = route('calls');
+//                $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
 
     public function addTempate(Request $request) {
         if ($request->isMethod('post')) {

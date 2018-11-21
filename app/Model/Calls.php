@@ -89,6 +89,34 @@ class Calls extends Model {
             return TRUE;
         }
     }
+    public function updateCallesInbigPopup($request) {
+
+        $objInfoEdit = Calls::find($request->input('editId'));
+        $objInfoEdit->gender = $request->input('gender');
+        $objInfoEdit->first_and_last_name = $request->input('first_last_name');
+        $objInfoEdit->caller_email = $request->input('caller_email');
+        $objInfoEdit->telephone_number = $request->input('telephone_number');
+        $objInfoEdit->caller_note = $request->input('caller_note');
+        $objInfoEdit->sent_mail = 1;
+
+       
+        $mailData['subject'] = 'Calls - Sent Email';
+        $mailData['attachment'] = array();
+//        $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
+        $mailData['mailto'] = $request->input('employe');
+        $sendMail = new Sendmail;
+        $mailData['data']['caller_note'] = $request->input('caller_note');
+        $mailData['data']['first_last_name'] = $request->input('first_last_name');
+        $mailData['data']['caller_email'] = $request->input('caller_email');
+        $mailData['data']['telephone_number'] = $request->input('telephone_number');
+        $mailData['data']['gender'] = $request->input('gender');
+        $mailData['template'] = 'emails.sent-email';
+        $sendMail->sendSMTPMail($mailData);
+
+        if ($objInfoEdit->save()) {
+            return TRUE;
+        }
+    }
 
     public function getDatatable($request) {
         

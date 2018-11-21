@@ -231,7 +231,7 @@ class Employee extends Model {
      public function employeinfo(){
           $result= Employee::leftjoin('employee_details', 'employee_details.employee_id', '=', 'employee.id')
                         ->groupBy('employee.id')                        
-                        ->get(['employee.first_name','employee.customer_id','employee.last_name'])
+                        ->get(['employee.first_name','employee.customer_id','employee.last_name','employee.email'])
                   ->toarray();
            return $result;
      }
