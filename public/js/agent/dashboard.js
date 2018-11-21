@@ -14,7 +14,7 @@ var Dashboard  = function() {
             querystring += (select_agent == '' && typeof select_agent === 'undefined') ? '&month=' : '&month=' + month;
             querystring += (year == '' && typeof year === 'undefined') ? '&year=' : '&year=' + year;
             querystring += (search_string == '' && typeof search_string === 'undefined') ? '&search_string=' : '&search_string=' + search_string;
-            location.href = baseurl + 'admin/calls?' + querystring;
+            location.href = baseurl + 'agent/calls?' + querystring;
         });
         $('body').on('click', '.addTemplate', function() {
             $('#modal8').modal('hide');
@@ -41,7 +41,7 @@ var Dashboard  = function() {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
 //                url: baseurl + "admin/delete-customer",
-                url: baseurl + "admin/calls-ajaxAction",
+                url: baseurl + "agent/calls-ajaxAction",
                 data: {'action': 'getSentEmailData', 'data': {'id': id}},
                 success: function(data) {
                     var data = JSON.parse(data);
@@ -76,7 +76,7 @@ var Dashboard  = function() {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "admin/calls-ajaxAction",
+                url: baseurl + "agent/calls-ajaxAction",
                 data: {'action': 'deleteTemplate', 'data': data},
                 success: function(data) {
                     handleAjaxResponse(data);
