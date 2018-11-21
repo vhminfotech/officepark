@@ -159,7 +159,7 @@ class Calls extends Model {
                 $actionHtml3='<span class="c-badge c-badge--danger">Not Confirm</span>';
             }
             
-            $actionHtml2='<a  title="Call Popup"    data-toggle="modal" data-target="#myModal2">
+            $actionHtml2='<a  title="Call Popup" class="bigpopup"  data-id="'.$row["id"].'" data-toggle="modal" data-target="#myModal2">
                             <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
                           </a>';
             
