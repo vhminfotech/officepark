@@ -31,26 +31,11 @@ var Calls = function() {
             $('#caller_note').val(template);
 
         });
-        
-        $('body').on('change', '#bigtemplate', function() {
-            var template = $('#bigtemplate option:selected').text();
-            $('#bigcaller_note').val(template);
-
-        });
-        
-        $('body').on('click', '#bigtemplate', function() {
-            hadaleTemplate();
-            templateList();
-        });
-        
         $('body').on('click', '#template', function() {
             hadaleTemplate();
             templateList();
         });
 
-        $('body').on('click', '.bigpopup', function() {
-            $('.bigeditId').val($(this).attr('data-id'));
-        });
         $('body').on('click', '.sentEmailBtn', function() {
             $('.editId').val($(this).attr('data-id'));
             $('.first_last_name').text($(this).attr('data-name'));
@@ -274,7 +259,6 @@ var Calls = function() {
         }
         setTimeout(function() {
             hadaleTemplate();
-            hadalebigTemplate();
 
         }, 500);
         function hadaleTemplate() {
@@ -303,34 +287,6 @@ var Calls = function() {
                 }
             });
         }
-        
-        function hadalebigTemplate() {
-            var template = $('#bigtemplate').val();
-            $.ajax({
-                type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-                },
-                url: baseurl + "admin/calls-ajaxAction",
-                data: {'action': 'gettemplate', 'data': {'template': template}},
-                success: function(data) {
-                    var obj = jQuery.parseJSON(data);
-                    $('#bigtemplate').find('option').remove();
-                    if (obj.length == 0) {
-                        $('#bigtemplate').append($('<option>', {value: '', text: 'No Record Found'}));
-                    }
-                    $.each(obj, function(i, item) {
-                        $('#bigtemplate').append($('<option>', {
-                            value: item['id'],
-                            text: item['message']
-                        }));
-                    });
-                    $('#bigtemplate').trigger('change');
-                    templateList();
-                }
-            });
-        }
-        
         var form = $('#addTemlate');
         var rules = {
             message: {required: true},
@@ -339,18 +295,6 @@ var Calls = function() {
             handleAjaxFormSubmit(form);
         });
         var form = $('#send_email');
-        var rules = {
-            gender: {required: true},
-            first_last_name: {required: true},
-            telephone_number: {required: true},
-            caller_note: {required: true},
-            caller_email: {required: true, email: true},
-        };
-        handleFormValidate(form, rules, function(form) {
-            handleAjaxFormSubmit(form);
-        });
-        
-        var form = $('#send_email_big');
         var rules = {
             gender: {required: true},
             first_last_name: {required: true},

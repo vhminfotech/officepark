@@ -14,7 +14,7 @@
                 <option value="tr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
             </select>
         </div>
-        
+          <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <div class="c-dropdown dropdown">
             <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             @php
