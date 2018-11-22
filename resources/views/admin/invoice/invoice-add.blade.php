@@ -73,11 +73,11 @@
                             <p> Service-/ Bürozeiten: </p>
                             <p> Mo. bis Fr. </p>
                             <p> 09:00 - 19:00 Uhr </p><br/>
-                            <p> Düsseldorf, den 22.05.2018 </p><br/>
+                            <p> Düsseldorf, den {{ date('d.m.Y') }} </p><br/>
                             <p> Finanzamt </p>
                             <p> Düsseldorf-Nord </p><br/>
-                            <p> Rechnungs-Nr. 002/17</p>
-                            <p> Kunden-Nr. OP-211-1704 </p><br/>
+                            <p> Rechnungs-Nr. {{ $invoiceNo }}</p>
+                            <p> Kunden-Nr. {{ $customerNumber }} </p><br/>
                         </div>
                     </div>
 

@@ -141,7 +141,7 @@ class CustomerController extends Controller {
     }
 
     public function customerDelete($postData) {
-
+       
         $result = Users::find($postData['id'])->delete();
         if ($result) {
             $return['status'] = 'success';
