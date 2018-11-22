@@ -16,6 +16,8 @@
 </div><!-- // .container -->
 <div class=" u-mb-medium">
 
+    <input type="hidden" name="callNewId" class="callNewId" id="callNewId" value="{{ $checkNewCall }}">
+    <input type="hidden" name="inopla_username" class="inopla_username" id="inopla_username" value="{{ $inopla_username }}">
     <div class="c-modal c-modal--huge modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
         <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content modal-content">

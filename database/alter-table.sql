@@ -27,3 +27,7 @@ ALTER TABLE `template` CHANGE `updated_at` `updated_at` DATETIME NOT NULL;
 ALTER TABLE `template` ADD `user_id` INT NULL AFTER `id`;
 
 ALTER TABLE `users` ADD `user_image` VARCHAR(256) NULL AFTER `customer_number`;
+
+ALTER TABLE `calls` CHANGE `destination_number` `destination_number` VARCHAR(56) NOT NULL;
+ALTER TABLE `calls` ADD `is_popup` TINYINT NOT NULL DEFAULT '0' AFTER `caller_note`;
+UPDATE `calls` SET `is_popup` = '1'

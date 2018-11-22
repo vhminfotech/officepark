@@ -113,6 +113,7 @@ class LoginController extends Controller {
                     'email' => Auth::guard('agent')->user()->email,
                     'type' => Auth::guard('agent')->user()->type,
                     'user_image' => Auth::guard('agent')->user()->user_image,
+                    'inopla_username' => Auth::guard('agent')->user()->inopla_username,
                     'id' => Auth::guard('agent')->user()->id
                 );
                 $this->getUserRoleList(Auth::guard('agent')->user()->id,$request);
@@ -172,8 +173,10 @@ class LoginController extends Controller {
         $result = $objCall->addCalls($dd);
         $return['status'] = 'success';
         $return['message'] = 'Call added successfully.';
-//        echo json_encode($return);
-//        exit;
+        if($result){
+            // echo json_encode($return);
+            // exit;  
+        }
     }  
     public function getNewOrder(Request $request) {
 

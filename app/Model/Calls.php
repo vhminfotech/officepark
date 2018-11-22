@@ -492,6 +492,9 @@ class Calls extends Model {
     }
     
     public function customerpopupdetail($id){
+         $objCalls = Calls::find($id['data']['id']);
+        $objCalls->is_popup = '1';
+        $objCalls->save();
         
         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')
@@ -584,6 +587,13 @@ class Calls extends Model {
                         ->where('calls.id','=',$request->input()['data']['id'])
                         ->get(['users.id','employee.first_name','employee.last_name'])
                   ->toarray();
+         return $result;
+     }
+    public function checkNewCalls($inopla_username){
+         $result= Calls::join('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
+                        ->where('calls.destination_number','=',$inopla_username)
+                        ->where('calls.is_popup','=',0)
+                        ->get(['calls.id'])->first();
          return $result;
      }
      

@@ -84,14 +84,29 @@ var Dashboard  = function() {
             });
         });
 
-		setTimeout(function(){
-		    getPop();
-		}, 600);
-
-      
+        setInterval(getPop, 10000);
+        function updateCount(argument) {
+          var data = {id: $('#inopla_username').val()};
+           $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "agent/calls-ajaxAction",
+                data: {'action': 'getCount', 'data': data},
+                success: function(details) {
+                   var det =JSON.parse(details);
+                   $('#callNewId').val(det);
+               }
+        });
+      }
         function getPop() {
-        	// var id = $(this).attr('data-id');
-            var id = 32;
+          updateCount()
+        	  var id = $('#callNewId').val();
+            if(id == 0 || typeof id === 'undefined' || id == '')
+            {
+              return false;
+            }
             var markup_div='';
             var markup_div_advisor='';
             var markup_div_tech='';

@@ -124,6 +124,7 @@ class CallController extends Controller {
     public function ajaxAction(Request $request) {
         
         $action = $request->input('action');
+         $session = $request->session()->all();
         switch ($action) {
             case 'getSentEmailData':
                 $id = $request->input('data')['id'];
@@ -170,9 +171,16 @@ class CallController extends Controller {
                 break;
             case 'deleteTemplate':
                 $result = $this->deleteTemplate($request->input('data'));
-                break;
+                break; 
+            case 'getCount':
+            $objRtoEmployer = new Calls();
+            $checkNewCall = $objRtoEmployer->checkNewCalls($session['logindata'][0]['inopla_username']);
+            $data['checkNewCall'] = (count($checkNewCall) > 0 ? $checkNewCall['id'] : '0');
+            echo json_encode($data['checkNewCall']);
+            break;
             case 'gettemplate':
-                $session = $request->session()->all();
+               
+
                 $objTemplate = new Template();
                 $template = $objTemplate->getTemplate($session['logindata'][0]['id']);
 //                print_r($template);exit;
