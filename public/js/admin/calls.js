@@ -106,6 +106,7 @@ var Calls = function() {
 
         $('body').on('click', '.customerpopupdetail', function() {
             var id = $(this).attr('data-id');
+            
             var markup_div='';
             var markup_div_advisor='';
             var markup_div_tech='';
