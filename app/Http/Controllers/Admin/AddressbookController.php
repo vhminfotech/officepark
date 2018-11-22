@@ -31,7 +31,7 @@ class AddressbookController extends Controller {
         $data['arrAddbook'] = $AddressList;
         $objOrderInfo = new OrderInfo();
         $arrOrderInfo = $objOrderInfo->getCustomerDetails();
-        $arrOrderInfo1[''] = 'Select Customer';
+        $arrOrderInfo1[''] =  trans('addressbook.select_customer');
         $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
         return view('admin.addressbook.addressbook-list', $data);

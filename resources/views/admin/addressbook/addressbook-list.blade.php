@@ -10,7 +10,7 @@
                     <caption class="c-table__title">
                         <div class="c-stage__panel u-p-low">
                             <div class="row">
-                                <label>Addressbook List</label>
+                                <label>{{ trans('addressbook.op_addresbook_list')}}</label>
                                 <div class=" col-lg-offset-4 col-lg-4">
                                     <div class="c-field u-mb-small">
                                         {{ Form::select('customer_id', $arrOrderInfo , (empty($addbkDetail[0]->customer_id) ? null : $addbkDetail[0]->customer_id), array('class' => 'c-select filter selectCustomer customer_id', 'id' => 'customer_id')) }}
@@ -29,13 +29,13 @@
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">Customer Number</th>
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID</th>
-                            <th class="c-table__cell c-table__cell--head">First Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Surname&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Position&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('addressbook.cus_no')}}</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('addressbook.id')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('addressbook.firstname')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('addressbook.surname')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('addressbook.company')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('addressbook.position')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('addressbook.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>    
@@ -51,10 +51,10 @@
                             <td class="c-table__cell">{{ $arrAddbook[$i]->company }}</td>
                             <td class="c-table__cell">{{ $arrAddbook[$i]->position }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('address-book-edit',[$arrAddbook[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('address-book-edit',[$arrAddbook[$i]->id])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('addressbook.edit')}}">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrAddbook[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete" data-token="{{ csrf_token() }}" data-id="{{ $arrAddbook[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('addressbook.delete')}}">
                                         <i class="fa fa-trash-o" ></i></span>
                                 </a>
                             </td>
