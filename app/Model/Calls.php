@@ -593,7 +593,7 @@ class Calls extends Model {
          $result= Calls::join('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                         ->where('calls.destination_number','=',$inopla_username)
                         ->where('calls.is_popup','=',0)
-                        ->get(['calls.id'])->first();
+                        ->get(['calls.id'])->toarray();
          return $result;
      }
      

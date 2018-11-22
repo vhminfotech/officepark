@@ -175,7 +175,7 @@ class CallController extends Controller {
             case 'getCount':
             $objRtoEmployer = new Calls();
             $checkNewCall = $objRtoEmployer->checkNewCalls($session['logindata'][0]['inopla_username']);
-            $data['checkNewCall'] = (!empty($checkNewCall) && count($checkNewCall) > 0 ) ? $checkNewCall['id'] : '0';
+            $data['checkNewCall'] = (!empty($checkNewCall) && count($checkNewCall) > 0 ) ? $checkNewCall[0]['id'] : '0';
             echo json_encode($data['checkNewCall']);
             break;
             case 'gettemplate':
