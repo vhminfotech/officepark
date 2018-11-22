@@ -30,8 +30,6 @@ class CallController extends Controller {
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListing();
         
-        $employeDetails=new Employee();
-        $data['employeinffo']=$employeDetails->employeinfo($request);
         
         
         $session = $request->session()->all();
@@ -171,10 +169,12 @@ class CallController extends Controller {
                 $orderinfo=$objRtoEmployer->orderinfo($request);
                 $employeinfo=$employeDetails->employeinfoAccounting($request);
                 $employeinfoadvisor=$employeDetails->employeinfoCustomer($request);
-                $employeinfoTechnical=$employeDetails->employeinfoTechnical($request);
+                $employeinfoTechnical=$employeDetails->employeinfoTechnical($request);              
                 
+                $employeinffo=$objRtoEmployer->employeinfo($request);
+        
                 $response=['company_details'=>$getdatatableIncomingCall,'bussiness_hours'=>$getdatatablebuesnesshours,'customer_info'=>$customer_info,'orderinfo'=>$orderinfo,'employeinfo'=>$employeinfo,
-                    'employeinfoadvisor'=>$employeinfoadvisor,'employeinfoTechnical'=>$employeinfoTechnical];               
+                    'employeinfoadvisor'=>$employeinfoadvisor,'employeinfoTechnical'=>$employeinfoTechnical,'employeinffo'=>$employeinffo];               
                 
                 echo json_encode($response);
                 break;

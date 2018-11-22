@@ -214,15 +214,9 @@
                                         <!--<a href="javascript:;" class="addTemplate">+ add new Template</a>-->
                                     </span>
                                 </label>
-                                <select class="c-input" name='employe'>
-                                    <option value="">Select Employee</option>
-                                    <?php
-                                    for ($i = 0; $i < count($employeinffo); $i++) {
-                                        ?>
-                                        <option value='<?php print_r($employeinffo[$i]['email']); ?>'><?php print_r($employeinffo[$i]['first_name'] . ' ' . $employeinffo[$i]['last_name']); ?></option>
-                                        <?php
-                                    }
-                                    ?>
+                                <select class="c-input" name='employe' id="appendoption">
+                                    <option  value="">Select Employee</option>
+                                   
                                 </select>
                             </div>
                             <div class="c-modal__footer u-justify-center">
@@ -251,13 +245,7 @@
                                                     <div class="c-field u-mb-small">
                                                         <select class="c-input" name='caller_notes'>
                                                             <option value="">Caller Notes Template </option>                                                            
-                        <?php
-                        for ($i = 0; $i < count($template); $i++) {
-                            ?>
-                                                                    <option value='<?php print_r($template[$i]['id']); ?>'><?php print_r($template[$i]['message']); ?></option>
-                            <?php
-                        }
-                        ?>
+                       
                                                         </select>
                                                     </div> 
                         
@@ -268,13 +256,7 @@
                                                     <div class="c-field u-mb-small">
                                                         <select class="c-input" name='employe'>
                                                             <option value="">Select Employee</option>
-                        <?php
-                        for ($i = 0; $i < count($employeinffo); $i++) {
-                            ?>
-                                                                    <option value='<?php print_r($employeinffo[$i]['customer_id']); ?>'><?php print_r($employeinffo[$i]['first_name'] . ' ' . $employeinffo[$i]['last_name']); ?></option>
-                            <?php
-                        }
-                        ?>
+                       
                                                         </select>
                                                     </div> 
                         

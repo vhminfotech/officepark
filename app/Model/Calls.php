@@ -575,10 +575,18 @@ class Calls extends Model {
         $mailData['mailto'] = $email;//$request->input('caller_email');
         $sendMail = new Sendmail;
         $sent=$sendMail->sendSMTPMail($mailData);
-        print_r($sent);
-        die();
+      
     }
-
+    
+    public function employeinfo($request){
+         $result= Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
+                        ->leftjoin('employee', 'employee.customer_id', '=', 'users.id')
+                        ->where('calls.id','=',$request->input()['data']['id'])
+                        ->get(['users.id','employee.first_name','employee.last_name'])
+                  ->toarray();
+         return $result;
+     }
+     
 }
 
 ?>

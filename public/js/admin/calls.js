@@ -95,6 +95,7 @@ var Calls = function() {
             var markup_div='';
             var markup_div_advisor='';
             var markup_div_tech='';
+            var maarkup_div_option='';
             var data = {id: id, token: $('#_token').val()};
             
             $.ajax({
@@ -159,6 +160,7 @@ var Calls = function() {
                    var markup='';
                    var markuptech='';
                    var markupadvisor='';
+                   var markupoption='';
                    for(var employee=0;employee<det['employeinfo'].length;employee++)
                    {
                     var path='uploads/employee/' +det["employeinfo"][employee].employee_image;
@@ -239,6 +241,17 @@ var Calls = function() {
                    }
                    
                    $("#advisor").append(markup_div_advisor);
+                   
+                   
+                   
+                   for(var option = 0; option < det['employeinffo'].length;option++)
+                   {
+                       markupoption='<option value="'+det["employeinffo"][option]["id"]+'">'+det["employeinffo"][option]["first_name"]+'  '+det["employeinffo"][option]["last_name"]+'</option>';
+                       
+                       maarkup_div_option=maarkup_div_option+markupoption;
+                   
+                    }
+                    $("#appendoption").append(maarkup_div_option);
                    
                 }
             });
