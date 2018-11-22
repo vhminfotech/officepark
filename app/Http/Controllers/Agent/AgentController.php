@@ -32,7 +32,7 @@ class AgentController extends Controller {
         $data['employeinffo']= $employeDetails->employeinfoAccounting($request);
         $objRtoEmployer = new Calls();
         $checkNewCall = $objRtoEmployer->checkNewCalls($session['logindata'][0]['inopla_username']);   
-        $data['checkNewCall'] = (count($checkNewCall) > 0 ? $checkNewCall['id'] : '0');
+        $data['checkNewCall'] = (!empty($checkNewCall) && count($checkNewCall) > 0 ) ? $checkNewCall['id'] : '0';
         $data['inopla_username'] = $session['logindata'][0]['inopla_username'];
 
         return view('agent.dashboard', $data);
