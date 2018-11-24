@@ -241,9 +241,9 @@
                     </td>
                     <td>
                         <table style="font-size: 12px; line-height: 80%">
-                            <tr><td>Page 1 of 1</td>
+                            <tr><td>Seite 1 von 1</td>
                             </tr>
-                            <tr><td>Write from {{ date('d.m.y') }}</td></tr>
+                            <tr><td>Schreiben vom  {{ date('d.m.y') }}</td></tr>
 
                         </table>
                     </td>
