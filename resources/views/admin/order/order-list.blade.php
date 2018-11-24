@@ -8,22 +8,19 @@
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        Order List  
-                        <!--                        <a href="{{ route('add-user') }}" class="c-board__btn c-tooltip c-tooltip--top" aria-label="Add Customer/Client">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>-->
+                       {{ trans('order.order-list')}}
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID&nbsp;&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company type&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company info&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Fullname&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">DOB&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Address&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Status&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;"> {{ trans('order.id')}}&nbsp;&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.company-name')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.company-type')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.company-info')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.full-name')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.dob')}}</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.address')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.status')}}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('order.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
