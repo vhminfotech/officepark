@@ -14,7 +14,7 @@
                 <div class="c-card__header c-card__header--transparent o-line">
                     <h5 class="c-card__title"><i class="fa fa-dribbble"></i>{{ trans('customer.order_details')}}</h5>
                     <!--<div class="c-card__meta">-->
-                        <a href="#">{{ trans('customer.edit')}}</a>
+                        <a href="#">{{ trans('customer.edit') }}</a>
                     <!--</div>-->
                 </div>
 

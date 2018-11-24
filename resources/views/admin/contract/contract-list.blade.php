@@ -8,20 +8,20 @@
             <div c-table-responsive>
                 <table class="c-table" id="datatable">
                     <caption class="c-table__title">
-                        Contract List  
+                        {{ trans('contect.contract-list') }}  
 
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">ID&nbsp;&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Company type&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Full Name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Address&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Date Of Birth&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Customer No&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Syatem Generate No&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">{{ trans('contect.id') }}&nbsp;&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.company-name') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.company-type') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.full-name') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.address') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.date-of-birth') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.customer-number') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head" style="">{{ trans('contect.system-generate-number') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('contect.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,14 +39,14 @@
                             <td class="c-table__cell">{{ $arrayContract[$i]['customer_number']  }}</td>
                             <td class="c-table__cell">{{ $arrayContract[$i]['system_genrate_no']  }}</td>
                             <td class="c-table__cell">
-                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>1)) }}"><span class="c-tooltip c-tooltip--top"  aria-label="Rufumleitung">
+                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>1)) }}"><span class="c-tooltip c-tooltip--top" aria-label="{{ trans('contect.pdf-1-(call-forwarding)') }}">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>&nbsp;
-                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>2)) }}"><span class="c-tooltip c-tooltip--top"  aria-label="Begrüßungsschreiben">
+                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>2)) }}"><span class="c-tooltip c-tooltip--top" aria-label="{{ trans('contect.pdf-2-(welcome-letter)') }}">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
                                 &nbsp;
-                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>3)) }}"><span class="c-tooltip c-tooltip--top"  aria-label="Allgemeine Geschaftsbedingungen">
+                                <a href="{{ route('download-pdf', array('orderId' => $arrayContract[$i]['id'],'pdfNo'=>3)) }}"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('contect.pdf-3-(general-terms-and-conditions)') }}">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>
                             </td>
