@@ -34,14 +34,14 @@
                         <thead class="c-table__head c-table__head--slim">
                             <tr class="c-table__row">
                                 <!--<th><input class="checkAll" type="checkbox"></th>-->
-                                <th class="c-table__cell_head">Id </th>
-                                <th class="c-table__cell_head">Date/Time</th>
-                                <th class="c-table__cell_head">Caller</th>
-                                <th class="c-table__cell_head">Agent</th>
-                                <th class="c-table__cell_head">Customer</th>
-                                <th class="c-table__cell_head">Notes</th>
-                                <th class="c-table__cell_head">Mail Notification</th>
-                                <th class="c-table__cell_head">Send Mail</th>
+                                <th class="c-table__cell_head">{{ trans('calls.id')}} </th>
+                                <th class="c-table__cell_head">{{ trans('calls.datetime')}}</th>
+                                <th class="c-table__cell_head">{{ trans('calls.caller')}}</th>
+                                <th class="c-table__cell_head">{{ trans('calls.agent')}}</th>
+                                <th class="c-table__cell_head">{{ trans('calls.customer')}}</th>
+                                <th class="c-table__cell_head">{{ trans('calls.note')}}</th>
+                                <th class="c-table__cell_head">{{ trans('calls.e-mail-notification')}}</th>
+                                <th class="c-table__cell_head">{{ trans('calls.sent-mail')}}</th>
                                 <th class="c-table__cell_head">Call View</th>
                             </tr>
                         </thead>
@@ -57,18 +57,18 @@
             <div class="c-modal__content">
 
                 <div class="c-modal__header">
-                    <h3 class="c-modal__title">Sent mail</h3>
+                    <h3 class="c-modal__title">{{ trans('calls.sent-mail')}}</h3>
                     <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-close"></i>
                     </span>
                 </div>
                 <div class="c-modal__subheader">
-                    <p>Customer First and Last Name : <span class="first_last_name"></span></p>
+                    <p>{{ trans('calls.customer-first-and-last-name') }}: <span class="first_last_name"></span></p>
                 </div>
                 <div class="c-modal__body">
                     <form action="{{ route('send-email') }}" method="post" class=" u-mb-small send_email" id="send_email" style="">
                         <div class="c-field u-mb-xsmall">
-                            <label class="c-field__label" for="input-project">Gender</label>
+                            <label class="c-field__label" for="input-project">{{ trans('calls.gender')}}</label>
                             <select class="c-select" name="gender" id="gender">
                                 @foreach ($gender as $indexkey=>$val)
                                 <option value="{{$indexkey}}">{{$val}}</option>
@@ -78,7 +78,7 @@
                         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                         <input type="hidden" name="editId" id="editId" class="editId" value=""> 
                         <div class="c-field u-mb-xsmall">
-                            <label class="c-field__label" for="input-project">First And Last Name</label>
+                            <label class="c-field__label" for="input-project">{{ trans('calls.customer-first-and-last-name')}}</label>
                             <input type="text" name="first_last_name" class="c-input first_last_name" id="first_last_name" placeholder="First And Last Name">
                         </div>
                         <div class="c-field u-mb-xsmall">
@@ -86,16 +86,16 @@
                             <input type="email" name="caller_email" class="c-input caller_email" id="caller_email" placeholder="caller Email">
                         </div>
                         <div class="c-field u-mb-xsmall">
-                            <label class="c-field__label" for="input-project">telephone number</label>
+                            <label class="c-field__label" for="input-project">{{ trans('calls.telephone-number') }}</label>
                             <input type="text" name="telephone_number" class="c-input telephone_number" id="telephone_number" placeholder="telephone number">
                         </div>
                         <div class="c-field u-mb-xsmall">
-                            <label class="c-field__label" for="input-project">Caller Notes Template <span style="float: right;"><a href="javascript:;" class="addTemplate">+ add new Template</a></span></label>
+                            <label class="c-field__label" for="input-project">{{ trans('calls.caller-notes-template') }} <span style="float: right;"><a href="javascript:;" class="addTemplate">+ {{ trans('calls.add-new-template') }}</a></span></label>
                             <select class="c-select" name="template" id="template">
                             </select>
                         </div>
                         <div class="c-field u-mb-xsmall">
-                            <label class="c-field__label" for="input-project">Caller Notes</label>
+                            <label class="c-field__label" for="input-project">{{ trans('calls.caller-notes') }}</label>
                             <textarea name="caller_note" class="c-input" id="caller_note" placeholder="Caller Notes" value=""></textarea>
                         </div>
                         <div class="c-modal__footer u-justify-center">
@@ -113,7 +113,7 @@
             <div class="c-modal__content">
 
                 <div class="c-modal__header">
-                    <h3 class="c-modal__title">Add template</h3>
+                    <h3 class="c-modal__title">{{ trans('calls.add-new-template') }}</h3>
                     <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-close"></i>
                     </span>

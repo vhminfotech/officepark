@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+@php
+// print_r($_COOKIE['language']);
+@endphp
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-6">
@@ -171,7 +174,6 @@
                                 <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> {{ trans('employee.business-hoursglobal') }}</h6>
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
-
                             <div class="c-stage__panel c-stage__panel--mute collapse" id="stage-panel" style="">
                                 @php
                                 $days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
