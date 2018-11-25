@@ -13,6 +13,8 @@ return [
     'Select'        => 'seçmek',
     'Calls'         => 'Aramalar',
     'Logout'        => 'Çıkış Yap',
+    'Invoice' => 'Fatura',
     'Service' => 'OP Hizmetleri',
-    
+    'Employee' => 'Çalışan',
+    'system-mail'   => 'Sistem Mailleri',
 ];

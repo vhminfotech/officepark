@@ -92,7 +92,7 @@ $roles  = array_values($roles);
             @endif
             @if($logindata[0]['id'] == 1 ||  in_array('Employees', $roles))
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'employee' || $currentRoute == 'employee' ? 'is-active' : '') }}" href="{{ route('employee') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'employee' || $currentRoute == 'employee-add' || $currentRoute == 'employee-edit' ? 'is-active' : '') }}" href="{{ route('employee') }}">
                     <i class="fa fa-building-o u-mr-xsmall" style="padding-right:6px"></i>
                     {{ trans('words.Employee') }}  &nbsp;
                 </a>
@@ -103,7 +103,7 @@ $roles  = array_values($roles);
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'system-mail' || $currentRoute == 'system-mail' ? 'is-active' : '') }}" href="{{ route('system-mail') }}">
                     <i class="fa fa-envelope u-mr-xsmall" style="padding-right:2px"></i>
-                    <!--{{ trans('words.Service') }} --> System Mail &nbsp;
+                    {{ trans('words.system-mail') }}   &nbsp;
                 </a>
             </li>
             @endif

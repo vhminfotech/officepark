@@ -7,10 +7,10 @@
             <div class="c-tabs">
 
                 <ul class="c-tabs__list c-tabs__list--splitted nav nav-tabs" id="myTab" role="tablist">
-                    <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-today-tab" data-toggle="tab" href="#nav-today" role="tab" aria-controls="nav-today" aria-selected="true">Today</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-week-tab" data-toggle="tab" href="#nav-week" role="tab" aria-controls="nav-week" aria-selected="false">Week</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-month-tab" data-toggle="tab" href="#nav-month" role="tab" aria-controls="nav-month" aria-selected="false">Month</a></li>
-                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-years-tab" data-toggle="tab" href="#nav-years" role="tab" aria-controls="nav-years" aria-selected="false">Years</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link active show" id="nav-today-tab" data-toggle="tab" href="#nav-today" role="tab" aria-controls="nav-today" aria-selected="true">{{ trans('system_mail.today') }}</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-week-tab" data-toggle="tab" href="#nav-week" role="tab" aria-controls="nav-week" aria-selected="false">{{ trans('system_mail.week') }}</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-month-tab" data-toggle="tab" href="#nav-month" role="tab" aria-controls="nav-month" aria-selected="false">{{ trans('system_mail.month') }}</a></li>
+                    <li class="c-tabs__item"><a class="c-tabs__link" id="nav-years-tab" data-toggle="tab" href="#nav-years" role="tab" aria-controls="nav-years" aria-selected="false">{{ trans('system_mail.years') }}</a></li>
                 </ul>
 
                 <div class="c-tabs__content tab-content" id="nav-tabContent">
@@ -19,10 +19,10 @@
                             <table class="c-table table-responsive" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head no-sort">Calls {{ $todayCalls['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Sent Mail {{ $todayCallSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Not Sent Mail {{ $todayCallNotSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Agent Statistics {{ $todayCallStatics['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.calls') }} {{ $todayCalls['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.sent-mail') }} {{ $todayCallSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.not-sent-mail') }} {{ $todayCallNotSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.agent-statistics') }} {{ $todayCallStatics['finalTotal'] }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,10 +94,10 @@
                             <table class="c-table" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head no-sort">Calls {{ $weekCalls['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Sent Mail {{ $weekCallSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Not Sent Mail {{ $weekCallNotSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Agent Statistics {{ $weekCallStatics['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.calls') }} {{ $weekCalls['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.sent-mail') }} {{ $weekCallSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.not-sent-mail') }} {{ $weekCallNotSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.agent-statistics') }} {{ $weekCallStatics['finalTotal'] }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -169,10 +169,10 @@
                             <table class="c-table table-responsive" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head no-sort">Calls  {{ $monthCalls['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Sent Mail  {{ $monthCallSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Not Sent Mail  {{ $monthCallNotSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Agent Statistics  {{ $monthCallStatics['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.calls') }}  {{ $monthCalls['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.sent-mail') }} {{ $monthCallSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.not-sent-mail') }} {{ $monthCallNotSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.agent-statistics') }} {{ $monthCallStatics['finalTotal'] }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -245,10 +245,11 @@
                             <table class="c-table table-responsive" id="datatable">
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head no-sort">Calls {{ $yearCalls['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Sent Mail {{ $yearCallSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Not Sent Mail {{ $yearCallNotSentMail['finalTotal'] }}</th>
-                                        <th class="c-table__cell c-table__cell--head no-sort">Agent Statistics {{ $yearCallStatics['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.calls') }} {{ $yearCalls['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">
+                                        {{ trans('system_mail.sent-mail') }}  {{ $yearCallSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.not-sent-mail') }} {{ $yearCallNotSentMail['finalTotal'] }}</th>
+                                        <th class="c-table__cell c-table__cell--head no-sort">{{ trans('system_mail.agent-statistics') }} {{ $yearCallStatics['finalTotal'] }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

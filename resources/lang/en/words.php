@@ -16,4 +16,5 @@ return [
     'Employee' => 'Employee',
     'Service' => 'OP Services',
     'Calls' => 'Calls',
+    'system-mail'   => 'System Mail',
 ];

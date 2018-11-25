@@ -12,7 +12,11 @@ return [
     'Order'         => 'Auftrag',
     'Select'        => 'Wählen',
     'Calls'         => 'Calls',
+    'Invoice' => 'Rechnung',
     'Logout'        => 'Ausloggen',
     'Service'       => 'OP Services',
+    'Employee' => 'Mitarbeiter',
+    'system-mail'   => 'System Mail',
+    
     
 ];
