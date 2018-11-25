@@ -10,7 +10,7 @@
                         <i class="fa fa-plus"></i>
                     </div>
                     <div class="c-stage__header-title o-media__body">
-                        <h6 class="u-mb-zero">Add New Employer</h6>
+                        <h6 class="u-mb-zero">{{ trans('employee.add-new-employee') }}</h6>
                     </div>
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addEmpForm' )) }}
@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="firstName">Select Image</label> 
+                                <label class="c-field__label" for="firstName">{{ trans('employee.select-image') }}</label> 
                                 {{ Form::file('file', null, array('class' => 'c-input')) }}
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="customer_id">Customer Number</label> 
+                                <label class="c-field__label" for="customer_id">{{ trans('employee.customer-number') }}</label> 
                                 {{ Form::select('customer_id', $arrOrderInfo , null, array('class' => 'c-select', 'id' => 'is_package')) }}
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="firstName">First Name</label> 
+                                <label class="c-field__label" for="firstName">{{ trans('employee.first-name') }}</label> 
                                 {{ Form::text('firstName', null, array('class' => 'c-input firstName' ,'required')) }}
                                 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                             </div>
@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="lastName">Last Name</label> 
+                                <label class="c-field__label" for="lastName">{{ trans('employee.last-name') }}</label> 
                                 <input class="c-input" name="lastName" id="last_name" placeholder="lastName" type="text">
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="jobtitle">job Title</label> 
+                                <label class="c-field__label" for="jobtitle">{{ trans('employee.job-title') }}</label> 
                                 {{ Form::select('jobtitle', $job_title , null, array('class' => 'c-select', 'id' => 'jobtitle')) }}
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="responsibility">Responsibility</label> 
+                                <label class="c-field__label" for="responsibility">{{ trans('employee.responsibility') }}</label> 
                                 {{ Form::select('responsibility', $responsibility , null, array('class' => 'c-select', 'id' => 'responsibility')) }}
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="langauge">P away msg</label> 
+                                <label class="c-field__label" for="langauge">{{ trans('employee.p-away-msg') }}</label> 
                                 {{ Form::select('p_away_msg', $p_away_msg , null, array('class' => 'c-select', 'id' => 'p_away_msg')) }}
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="callbacksms1"> Call Back msg</label> 
+                                <label class="c-field__label" for="callbacksms1">{{ trans('employee.call-back-msg') }}</label> 
                                 {{ Form::select('call_back_msg', $call_back_msg , null, array('class' => 'c-select', 'id' => 'call_back_msg')) }}
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="telephone">Telephone</label> 
+                                <label class="c-field__label" for="telephone">{{ trans('employee.telephone') }}</label> 
                                 <input class="c-input" required name="telephone" id="telephone" placeholder="telephone" type="number">
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="lastName">Mobile Phone</label> 
+                                <label class="c-field__label" for="lastName">{{ trans('employee.mobile-phone') }}</label> 
                                 <input class="c-input" required name="mobile" id="mobile" placeholder="mobile" type="number">
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="lastName">E-mail</label> 
+                                <label class="c-field__label" for="email">{{ trans('employee.e-mail') }}</label> 
                                 <input class="c-input" required name="email" id="email" placeholder="email" type="email">
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="anyotherinformation">Any Other information</label> 
+                                <label class="c-field__label" for="anyotherinformation">{{ trans('employee.any-other-information') }}</label> 
                                 <textarea rows="4" required class="c-input" cols="50" name="anyotherinformation">
                                 </textarea>
                             </div>
@@ -124,9 +124,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="callbacksms">My Profile</label> 
+                                <label class="c-field__label" for="callbacksms">{{ trans('employee.my-profile') }}</label> 
                                 <select class="c-select" required id="callbacksms" name="my_profile">
-                                    <option value="0">Standard</option>
+                                    <option value="0">{{ trans('employee.standard') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -134,16 +134,16 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="callbacksms"> Call Transfer</label> 
+                                <label class="c-field__label" for="callbacksms">{{ trans('employee.call-transfer') }}</label> 
                                 <div class="c-choice c-choice--checkbox">
                                     <input class="c-choice__input" id="call_transfer_telephone" name="call_transfer_telephone" value="1" type="checkbox" required>
-                                    <label class="c-choice__label" for="call_transfer_telephone">Transfer Incoming call To Telephone</label>
+                                    <label class="c-choice__label" for="call_transfer_telephone">{{ trans('employee.transfer-incoming-call-to-telephone') }}</label>
                                 </div>
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
                                     <input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" required>
-                                    <label class="c-choice__label" for="call_transfer_mobile_phone">Transfer Incoming call To Mobile Phone</label>
+                                    <label class="c-choice__label" for="call_transfer_mobile_phone">{{ trans('employee.transfer-incoming-call-to-mobile-phone') }}</label>
                                 </div>
                             </div>
                         </div>
@@ -151,16 +151,16 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="callbacksms"> Call Notification</label> 
+                                <label class="c-field__label" for="callbacksms"> {{ trans('employee.call-notification') }}</label> 
                                 <div class="c-choice c-choice--checkbox">
                                     <input class="c-choice__input" id="transfer_notification_to_call" name="transfer_notification_to_call" value="1" type="checkbox">
-                                    <label class="c-choice__label" for="transfer_notification_to_call">Transfer Incoming call To Telephone</label>
+                                    <label class="c-choice__label" for="transfer_notification_to_call">{{ trans('employee.transfer-incoming-call-to-telephone') }}</label>
                                 </div>
                             </div>
                             <div class="c-field u-mb-small">
                                 <div class="c-choice c-choice--checkbox">
                                     <input class="c-choice__input" id="transfer_notification_to_mobile_phone" name="transfer_notification_to_mobile_phone" value="1" type="checkbox" >
-                                    <label class="c-choice__label" for="transfer_notification_to_mobile_phone">Transfer Incoming call To Mobile Phone</label>
+                                    <label class="c-choice__label" for="transfer_notification_to_mobile_phone">{{ trans('employee.transfer-incoming-call-to-mobile-phone') }}</label>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-panel" aria-expanded="false" aria-controls="stage-panel">
-                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> Bussines Hours/Global</h6>
+                                <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> {{ trans('employee.business-hoursglobal') }}</h6>
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
 
@@ -206,7 +206,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane2" aria-expanded="false" aria-controls="stage-pane2">
-                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Launch Time /Global</h6>
+                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero"> {{ trans('employee.launch-timeglobal') }}</h6>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </a>
 
@@ -233,28 +233,28 @@
                             <div class="col-md-12">
                                 <div class="c-choice c-choice--checkbox">
                                     <input class="c-choice__input" id="no_business_hour_adjust" value="1" name="no_business_hour_adjust" type="checkbox">
-                                    <label class="c-choice__label" for="no_business_hour_adjust">No Bussiness Hours Adjust</label>
+                                    <label class="c-choice__label" for="no_business_hour_adjust">{{ trans('employee.no-business-hours-adjust') }}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <a class="c-stage__header u-flex u-justify-between collapsed" data-toggle="collapse" href="#stage-pane3" aria-expanded="true" aria-controls="stage-pane3">
-                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">Global Holidays</h6>
+                                    <h6 class="u-text-mute u-text-uppercase u-text-small u-mb-zero">{{ trans('employee.global-holidays') }}</h6>
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </a>
                                 <div class="c-stage__panel c-stage__panel--mute collapse show" id="stage-pane3" style="">
                                     <div class="u-p-medium">
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
-                                                <label class="c-field__label" for="holidayfrom">Holiday Global From</label> 
+                                                <label class="c-field__label" for="holidayfrom">{{ trans('employee.holiday-global-from') }}</label> 
                                                 <input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
-                                                <label class="c-field__label" for="holidayto">Holiday Global To</label> 
+                                                <label class="c-field__label" for="holidayto">{{ trans('employee.holiday-global-to') }} </label> 
                                                 <input class="c-input form-control" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" required>
                                             </div>
                                         </div>
@@ -265,8 +265,8 @@
                         <br/>
                         <div class="c-field u-mb-small left">
                             <div class="col-mg-3">
-                                <input class="c-btn c-btn--info " value="Add Employee" type="submit">&nbsp;&nbsp;
-                                <input class="c-btn c-btn--secondary " value="cancel" type="reset">
+                                <input class="c-btn c-btn--info " value="{{ trans('employee.add-employee') }}" type="submit">&nbsp;&nbsp;
+                                <input class="c-btn c-btn--secondary " value="{{ trans('employee.cancel') }}" type="reset">
                             </div> 
                         </div>
                     </div>

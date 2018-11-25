@@ -13,12 +13,10 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
-                                    <div class="col-lg-3">Employee
-                                    </div>
-                                    
+                                    <div class="col-lg-3"> {{ trans('employee.employee') }} </div>
                                     <div class="col-lg-6 ">
                                         <select class="c-select" name='fillter' id='fillter'>
-                                            <option value=""><b>Select Customer</b></option>
+                                            <option value=""><b>{{ trans('employee.select-customer') }}</b></option>
                                             @for($i = 0; $i < count($employeeCusList);$i++)
                                             <option @if($userName == $employeeCusList[$i]->customer_number) {{ 'selected="selected"'}} @endif value="{{$employeeCusList[$i]->customer_number}}"><b>{{$employeeCusList[$i]->customer_number}}</b></option>
                                             @endfor
@@ -29,7 +27,7 @@
                             </div>
 
                             <div class="col-3">
-                                    <a href="{{route('employee-add')}}" class="c-btn c-btn--info" >Add New Employee</a>
+                                    <a href="{{route('employee-add')}}" class="c-btn c-btn--info" >{{ trans('employee.add-new-employee') }}</a>
                             </div>
                         </div>
                     </caption>
@@ -37,13 +35,13 @@
 
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="">Customer Number&nbsp;&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head" style="">First Name&nbsp;&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Last name&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Job Title&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Responsibility&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Email&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
+                            <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.customer-number') }}&nbsp;&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.first-name') }}&nbsp;&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.last-name') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.job-title') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.responsibility') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.email') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,10 +54,10 @@
                             <td class="c-table__cell">{{ $responsibility[$employeeList[$i]->responsibility] }}</td>
                             <td class="c-table__cell">{{ $employeeList[$i]->email }}</td>
                             <td class="c-table__cell">
-                                <a href=" {{ route('employee-edit',$employeeList[$i]->id)}} "><span class="c-tooltip c-tooltip--top"  aria-label="Edit">
+                                <a href=" {{ route('employee-edit',$employeeList[$i]->id)}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
                                         <i class="fa fa-edit" ></i></span>
                                 </a>
-                                <a href="javascript:;" class="delete"  data-id="{{ $employeeList[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                <a href="javascript:;" class="delete"  data-id="{{ $employeeList[$i]->id }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('employee.delete') }}">
                                         <i class="fa fa-trash-o"></i></span>
                                 </a>
                             </td>

@@ -9,43 +9,44 @@
                 <table class="c-table table-responsive" id="datatable">
 
                     <caption class="c-table__title">
-                        Invoice List
+                        {{ trans('invoice.invoice-list') }}
                         <br/>
 
                         <div class="c-stage__panel u-p-medium">
                         <div class="row">
-                            <label>Filter</label>
+                            <label> {{ trans('invoice.filter') }}</label>
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select id="payment_method" class="c-select form-control filter paymnt_method" >
-                                        <option value="">Select Payment method</option>
-                                        <option value="sepa" {{ ($method == 'sepa' ? 'selected="selected"' : '') }}>Sepa</option>
-                                        <option value="uber" {{ ($method == 'uber' ? 'selected="selected"' : '') }}>transfer</option>
+                                        <option value="">{{ trans('invoice.select-payment-method') }}</option>
+                                        <option value="sepa" {{ ($method == 'sepa' ? 'selected="selected"' : '') }}>{{ trans('invoice.sepa') }}</option>
+                                        <option value="uber" {{ ($method == 'uber' ? 'selected="selected"' : '') }}>{{ trans('invoice.transfer') }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter month" name="month" id="month">
-                                        <option value=''>Select Month</option>
-                                        <option value='01' {{ ($month == '01' ? 'selected="selected"' : '') }}>January</option>
-                                        <option value='02' {{ ($month == '02' ? 'selected="selected"' : '') }}>February</option>
-                                        <option value='03' {{ ($month == '03' ? 'selected="selected"' : '') }}>March</option>
-                                        <option value='04' {{ ($month == '04' ? 'selected="selected"' : '') }}>April</option>
-                                        <option value='05' {{ ($month == '05' ? 'selected="selected"' : '') }}>May</option>
-                                        <option value='06' {{ ($month == '06' ? 'selected="selected"' : '') }}>June</option>
-                                        <option value='07' {{ ($month == '07' ? 'selected="selected"' : '') }}>July</option>
-                                        <option value='08' {{ ($month == '08' ? 'selected="selected"' : '') }}>August</option>
-                                        <option value='09' {{ ($month == '09' ? 'selected="selected"' : '') }}>September</option>
-                                        <option value='10' {{ ($month == '10' ? 'selected="selected"' : '') }}>October</option>
-                                        <option value='11' {{ ($month == '11' ? 'selected="selected"' : '') }}>November</option>
-                                        <option value='12' {{ ($month == '12' ? 'selected="selected"' : '') }}>December</option>
+                                        <option value=''>{{ trans('invoice.select-month') }}</option>
+                                        <option value='01' {{ ($month == '01' ? 'selected="selected"' : '') }}>{{ trans('invoice.january') }}</option>
+                                        <option value='02' {{ ($month == '02' ? 'selected="selected"' : '') }}>{{ trans('invoice.february') }}</option>
+                                        <option value='03' {{ ($month == '03' ? 'selected="selected"' : '') }}>{{ trans('invoice.march') }}</option>
+                                        <option value='04' {{ ($month == '04' ? 'selected="selected"' : '') }}>{{ trans('invoice.april') }}</option>
+                                        <option value='05' {{ ($month == '05' ? 'selected="selected"' : '') }}>{{ trans('invoice.may') }}</option>
+                                        <option value='06' {{ ($month == '06' ? 'selected="selected"' : '') }}>{{ trans('invoice.june') }}</option>
+                                        <option value='07' {{ ($month == '07' ? 'selected="selected"' : '') }}>{{ trans('invoice.july') }}</option>
+                                        <option value='08' {{ ($month == '08' ? 'selected="selected"' : '') }}>{{ trans('invoice.august') }}</option>
+                                        <option value='09' {{ ($month == '09' ? 'selected="selected"' : '') }}>{{ trans('invoice.september') }}</option>
+                                        <option value='10' {{ ($month == '10' ? 'selected="selected"' : '') }}>{{ trans('invoice.october') }}</option>
+                                        <option value='11' {{ ($month == '11' ? 'selected="selected"' : '') }}>{{ trans('invoice.november') }}</option>
+                                        <option value='12' {{ ($month == '12' ? 'selected="selected"' : '') }}>{{ trans('invoice.december') }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-1">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter year" id="year" name="year">
+                                        <option value="">{{ trans('invoice.year') }}</option>
                                         @for($i=date('Y'); $i<=2050; $i++)
                                             <option {{ ($year == $i ? 'selected="selected"' : '') }}>{{ $i }}</option>
                                          @endfor
@@ -55,7 +56,7 @@
                             <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select form-control selectCustomer" id="select2">
-                                        <option value=''>Select Customer</option>
+                                        <option value=''>{{ trans('invoice.select-customer') }}</option>
                                         @for($i = 0; $i < count($getCustomer);$i++)
                                             <option value="{{ $getCustomer[$i]->customer_number }}">{{ $getCustomer[$i]->name }}</option>
                                         @endfor
@@ -64,7 +65,7 @@
                             </div>
                                 <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
-                                    <input class="c-btn c-btn--info c-btn--fullwidth createBill" value="Create New Bill" type="button">
+                                    <input class="c-btn c-btn--info c-btn--fullwidth createBill" value="{{ trans('invoice.create-new-bill') }}" type="button">
                                 </div>
                             </div>
                         </div>
@@ -77,18 +78,18 @@
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head no-sort">#</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Id</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Date</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Invoice</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Customer Number</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Company Name</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Packet</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Price</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Payment Method</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Paid Status</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Mail Send</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Action</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">Paid</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.id') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.date') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.invoice') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.customer-number') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.company-name') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.package') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.price') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.payment-method') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.paid-status') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.mail-send') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.action') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.paid') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -134,7 +135,7 @@
                 <form method="post" action="{{ route('invoice-list') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="invoiceId" id="checkInvNo" value="">
-                    <input class="c-btn c-btn--info c-btn--fullwidth" value="Generate SEPL" type="submit">
+                    <input class="c-btn c-btn--info c-btn--fullwidth" value="{{ trans('invoice.generate-sepa') }}" type="submit">
                 </form>
             <!--</div>-->
             </div>
