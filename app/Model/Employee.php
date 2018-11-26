@@ -167,7 +167,7 @@ class Employee extends Model {
                             'employee_details.day_name',
                             'employee_details.day_start_time',
                             'employee_details.day_end_time',
-                            'users.customer_number']);
+                            'users.customer_number'])->toArray();
         
               
     }
