@@ -177,7 +177,7 @@
                         <form action="{{ route('send-email-bigpopup') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.gender') }}</label>
-                                <select class="c-select c-input" name="gender" id="gender">
+                                <select class="c-select c-input" name="gender" id="biggender">
                                     @foreach ($gender as $indexkey=>$val)
                                     <option value="{{$indexkey}}">{{$val}}</option>
                                     @endforeach
@@ -187,15 +187,15 @@
                             <input type="hidden" name="editId" id="editId" class="bigeditId" value=""> 
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.customer-first-and-last-name') }}</label>
-                                <input type="text" name="first_last_name" class="c-input first_last_name" id="first_last_name" placeholder="First And Last Name">
+                                <input type="text" name="first_last_name" class="c-input first_last_name" id="big_first_last_name" placeholder="First And Last Name">
                             </div>
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.caller-e-mail') }}</label>
-                                <input type="email" name="caller_email" class="c-input caller_email" id="caller_email" placeholder="caller Email">
+                                <input type="email" name="caller_email" class="c-input caller_email" id="big_caller_email" placeholder="caller Email">
                             </div>
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.telephone-number') }}</label>
-                                <input type="text" name="telephone_number" class="c-input telephone_number" id="telephone_number" placeholder="telephone number">
+                                <input type="text" name="telephone_number" class="c-input telephone_number" id="big_telephone_number" placeholder="telephone number">
                             </div>
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.caller-notes-template') }}<span style="float: right;">

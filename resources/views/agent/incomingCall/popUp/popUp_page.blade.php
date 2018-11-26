@@ -174,10 +174,10 @@
                     <article class="c-plan">
                         <h4><b>Sent Call Information Mail</b></h4>
 
-                        <form action="{{ route('send-email-bigpopup') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
+                        <form action="{{ route('send-email-bigpopup-agent') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">Gender</label>
-                                <select class="c-select c-input" name="gender" id="gender">
+                                <select class="c-select c-input" name="gender" id="big_gender">
                                     @foreach ($gender as $indexkey=>$val)
                                     <option value="{{$indexkey}}">{{$val}}</option>
                                     @endforeach
@@ -187,15 +187,15 @@
                             <input type="hidden" name="editId" id="editId" class="bigeditId" value=""> 
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">First And Last Name</label>
-                                <input type="text" name="first_last_name" class="c-input first_last_name" id="first_last_name" placeholder="First And Last Name">
+                                <input type="text" name="first_last_name" class="c-input first_last_name" id="big_first_last_name" placeholder="First And Last Name">
                             </div>
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">Caller Email</label>
-                                <input type="email" name="caller_email" class="c-input caller_email" id="caller_email" placeholder="caller Email">
+                                <input type="email" name="caller_email" class="c-input caller_email" id="big_caller_email" placeholder="caller Email">
                             </div>
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">telephone number</label>
-                                <input type="text" name="telephone_number" class="c-input telephone_number" id="telephone_number" placeholder="telephone number">
+                                <input type="text" name="telephone_number" class="c-input telephone_number" id="big_telephone_number" placeholder="telephone number">
                             </div>
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">Caller Notes Template <span style="float: right;">
@@ -216,71 +216,14 @@
                                 </label>
                                 <select class="c-input" name='employe'>
                                     <option value="">Select Employee</option>
-                                    <?php
-                                    for ($i = 0; $i < count($employeinffo); $i++) {
-                                        ?>
-                                        <option value='<?php print_r($employeinffo[$i]['email']); ?>'><?php print_r($employeinffo[$i]['first_name'] . ' ' . $employeinffo[$i]['last_name']); ?></option>
-                                        <?php
-                                    }
-                                    ?>
+                                   
                                 </select>
                             </div>
                             <div class="c-modal__footer u-justify-center">
                                 <input type="submit" name="submit" class="c-btn c-btn--success" value="Send E-mail">
                             </div>
                         </form>
-                        <!--                        <form action="{{ route('send-email') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
                         
-                                                    <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
-                                                    <div class="c-field u-mb-small">
-                                                        <select class="c-input" name='sex'>
-                                                            <option value="mr">Mr.</option>
-                                                            <option value="mrs">Mrs.</option>
-                                                            <option value="miss">Miss.</option>
-                                                        </select>
-                                                    </div> 
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <input class="c-input" type="text" name='surname' id="name_surname" placeholder="Name And Surname"> 
-                                                    </div>
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <input class="c-input" type="text" name='telephone' id="telephoneNumber" placeholder="Telephone number"> 
-                                                    </div>
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <select class="c-input" name='caller_notes'>
-                                                            <option value="">Caller Notes Template </option>                                                            
-                        <?php
-                        for ($i = 0; $i < count($template); $i++) {
-                            ?>
-                                                                    <option value='<?php print_r($template[$i]['id']); ?>'><?php print_r($template[$i]['message']); ?></option>
-                            <?php
-                        }
-                        ?>
-                                                        </select>
-                                                    </div> 
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <textarea class="c-input" name='message'></textarea>
-                                                    </div>
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <select class="c-input" name='employe'>
-                                                            <option value="">Select Employee</option>
-                        <?php
-                        for ($i = 0; $i < count($employeinffo); $i++) {
-                            ?>
-                                                                    <option value='<?php print_r($employeinffo[$i]['customer_id']); ?>'><?php print_r($employeinffo[$i]['first_name'] . ' ' . $employeinffo[$i]['last_name']); ?></option>
-                            <?php
-                        }
-                        ?>
-                                                        </select>
-                                                    </div> 
-                        
-                                                    <button class="c-btn c-btn--info right" type="submit">Sign Up</button>
-                        
-                                                </form>-->
 
                     </article><!-- // .c-plan -->
 

@@ -18,5 +18,5 @@ Route::group(['prefix' => $ageentPrefix, 'middleware' => ['agent']], function() 
     Route::match(['get', 'post'], 'agent-send-email', ['as' => 'agent-send-email', 'uses' => 'Agent\IncomingCallController@sendMail']);
     Route::match(['get', 'post'], 'agent-add-template', ['as' => 'agent-add-template', 'uses' => 'Agent\IncomingCallController@addTempate']);
       Route::match(['get', 'post'], 'calls-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Agent\CallController@ajaxAction']);
-      Route::match(['get', 'post'], 'send-email-bigpopup', ['as' => 'send-email-bigpopup', 'uses' => 'Admin\CallController@sendMailbigPopup']);
+      Route::match(['get', 'post'], 'send-email-bigpopup', ['as' => 'send-email-bigpopup-agent', 'uses' => 'Admin\CallController@sendMailbigPopup']);
 });

@@ -15,7 +15,7 @@ class Calls extends Model {
     protected $table = 'calls';
 
     public function addCalls($postData) {
-
+        //print_r($postData);exit;
         $objCalls = new Calls();
         $objCalls->event = (isset($postData['event'])) ? $postData['event'] : '';
         $objCalls->uuid = (isset($postData['uuid'])) ? $postData['uuid'] : '';
@@ -192,12 +192,12 @@ class Calls extends Model {
                           </a>';
             
             if ($row['sent_mail'] == 1) {
-                $actionHtml = '<a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
                     <i class="fa fa-refresh"></i>
                                  
                               </a>';
             } else {
-                $actionHtml = '<a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                $actionHtml = '<a class="sentEmailBtn" title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
                                         <i class="fa fa-envelope-o"></i>
                                     </a>';
             }
@@ -228,7 +228,7 @@ class Calls extends Model {
     public function getdatatableIncomingCall($request) {
         $logindata = Session::get('logindata');
         $requestData = $_REQUEST;
-
+//        print_r($logindata);exit;
         $columns = array(
             // datatable column index  => database column name
             0 => 'calls.id',
@@ -242,7 +242,7 @@ class Calls extends Model {
        
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
                 ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.system_genrate_no')
-                // ->where('u1.id','=',$logindata)
+                 ->where('u1.inopla_username','=',$logindata[0]['inopla_username'])
                 ->groupBy('calls.id');
         
 
@@ -300,12 +300,12 @@ class Calls extends Model {
                           </a>';
             
             if ($row['sent_mail'] == 1) {
-                $actionHtml = '<a  title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
                     <i class="fa fa-refresh"></i>
                                  
                               </a>';
             } else {
-                $actionHtml = '<a title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+                $actionHtml = '<a class="sentEmailBtn" title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
                                         <i class="fa fa-envelope-o"></i>
                                     </a>';
             }

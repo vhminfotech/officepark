@@ -29,6 +29,7 @@ var Dashboard  = function() {
         $('body').on('click', '#template', function() {
             hadaleTemplate();
             templateList();
+             hadalebigTemplate();
         });
 
         $('body').on('click', '.sentEmailBtn', function() {
@@ -273,6 +274,77 @@ var Dashboard  = function() {
             });
         }
         
+        setTimeout(function() {
+            hadaleTemplate();
+            hadalebigTemplate();
+
+        }, 500);
+        
+        function hadaleTemplate() {
+            var template = $('#template').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/calls-ajaxAction",
+                data: {'action': 'gettemplate', 'data': {'template': template}},
+                success: function(data) {
+                    var obj = jQuery.parseJSON(data);
+                    $('#template').find('option').remove();
+                    if (obj.length == 0) {
+                        $('#template').append($('<option>', {value: '', text: 'No Record Found'}));
+                    }
+                    $.each(obj, function(i, item) {
+                        $('#template').append($('<option>', {
+                            value: item['id'],
+                            text: item['message']
+                        }));
+                    });
+                    $('#template').trigger('change');
+                    templateList();
+                }
+            });
+        }
+        
+        function hadalebigTemplate() {
+           
+            var template = $('#bigtemplate').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/calls-ajaxAction",
+                data: {'action': 'gettemplate', 'data': {'template': template}},
+                success: function(data) {
+                    var obj = jQuery.parseJSON(data);
+                    $('#bigtemplate').find('option').remove();
+                    if (obj.length == 0) {
+                        $('#bigtemplate').append($('<option>', {value: '', text: 'No Record Found'}));
+                    }
+                    $.each(obj, function(i, item) {
+                        $('#bigtemplate').append($('<option>', {
+                            value: item['id'],
+                            text: item['message']
+                        }));
+                    });
+                    $('#bigtemplate').trigger('change');
+                    templateList();
+                }
+            });
+        }
+        var form = $('#send_email_big');
+        var rules = {
+            gender: {required: true},
+            first_last_name: {required: true},
+            telephone_number: {required: true},
+            caller_note: {required: true},
+            caller_email: {required: true, email: true},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
        
     }
     return {

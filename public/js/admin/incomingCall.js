@@ -162,8 +162,7 @@ var  IncomingCall= function() {
                    
                    $("#accounting").append(markup_div);
                     
-                   console.log(det['employeinfo']);
-                   exit;
+                   
                    
                    // handleAjaxResponse(data);
                 }

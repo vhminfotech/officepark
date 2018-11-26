@@ -28,6 +28,7 @@ class IncomingCallController extends Controller {
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method'); 
         $employeDetails=new Employee();
         $data['employeinffo']=$employeDetails->employeinfo($request);
+       // print_r($data['employeinffo']);exit;
         $data['gender'] = Config::get('constants.gender');
         $data['js'] = array('admin/incomingCall.js');
         $data['funinit'] = array('IncomingCall.list_init()');

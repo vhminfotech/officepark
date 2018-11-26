@@ -167,7 +167,7 @@ class LoginController extends Controller {
 
     public function newcall(Request $request) {
 
-
+        //echo 'dd';exit;
         $dd = $_REQUEST;
         $objCall = new Calls();
         $result = $objCall->addCalls($dd);
