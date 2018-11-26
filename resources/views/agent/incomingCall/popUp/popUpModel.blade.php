@@ -19,7 +19,7 @@
                 </a>
                 <div class="c-modal__body" >
                     <div class="o-page">
-                        @include('incomingCall.call.popUp.popUp_page')
+                        @include('agent.incomingCall.popUp.popUp_page')
                     </div>
                 </div>
             </div>
