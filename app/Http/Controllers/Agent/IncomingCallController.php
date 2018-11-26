@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Agent;
 use App\Model\Users;
 use App\Model\Invoice;
 use App\Model\Calls;
+use App\Model\Employee;
 use App\Model\Template;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
