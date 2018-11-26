@@ -24,7 +24,9 @@ class IncomingCallController extends Controller {
         $data['getCall'] = $objCall->getCallListing();
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
-        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');        
+        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method'); 
+        $employeDetails=new Employee();
+        $data['employeinffo']=$employeDetails->employeinfo($request);
         $data['gender'] = Config::get('constants.gender');
         $data['js'] = array('admin/incomingCall.js');
         $data['funinit'] = array('IncomingCall.list_init()');
