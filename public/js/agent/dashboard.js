@@ -101,6 +101,7 @@ var Dashboard  = function() {
                }
         });
       }
+
         function getPop() {
           updateCount()
         	  var id = $('#callNewId').val();
@@ -259,6 +260,7 @@ var Dashboard  = function() {
                 }
             });
         }
+
         function templateList() {
             var id = $(this).attr('data-id');
             $.ajax({
@@ -346,6 +348,31 @@ var Dashboard  = function() {
             handleAjaxFormSubmit(form);
         });
        
+        setInterval(getDashboardData, 10000);
+       
+
+        $('body').on('click', '.showOrder', function() {
+            var id = $(this).attr('data-id');
+            $('#callNewId').val(id);
+            getPop();
+        });
+
+        function getDashboardData() {
+          $('.appendData').html('');
+              $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "agent/calls-ajaxAction",
+                data: {'action': 'getDashboardData', 'data': {'tets': 'test'}},
+                success: function(data) {
+                  console.log(data)
+                  $('.appendData').html(data);
+                    // var obj = jQuery.parseJSON(data);
+                }
+            });
+        }
     }
     return {
         listInit : function() {

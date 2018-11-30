@@ -179,13 +179,17 @@ class CallController extends Controller {
             echo json_encode($data['checkNewCall']);
             break;
             case 'gettemplate':
-               
-
                 $objTemplate = new Template();
                 $template = $objTemplate->getTemplate($session['logindata'][0]['id']);
-//                print_r($template);exit;
                 echo json_encode($template);
                 break;
+            case 'getDashboardData':
+                $objRtoEmployer = new Calls();
+                $data['callList'] = $objRtoEmployer->getDashboardData();
+                $result = view('agent.call-box', $data)->render();
+                echo $result;
+                exit;
+                break;    
         }
     }
 

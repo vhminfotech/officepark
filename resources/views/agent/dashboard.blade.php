@@ -3,7 +3,7 @@
 @include('layouts.include.body_header')
 
 <div class="container-fluid">
-    <div class="row">
+  <!--   <div class="row">
         <div class="col-xl-4">
             <div class="c-graph-card" data-mh="graph-cards">
                 <div class="c-graph-card__content">
@@ -11,7 +11,8 @@
                 </div>
             </div>
         </div>
-
+    </div> -->
+    <div class="row appendData">
     </div>
 </div><!-- // .container -->
 <div class=" u-mb-medium">

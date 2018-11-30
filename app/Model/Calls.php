@@ -597,6 +597,16 @@ class Calls extends Model {
          return $result;
      }
      
+      public function getDashboardData() {
+        $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->leftjoin('users as u2', 'u2.system_genrate_no', '=', 'calls.system_genrate_no')
+                ->leftjoin('order_info', 'order_info.user_id', '=', 'u2.id')
+                ->groupBy('calls.id');
+        $query->orderBy('id', 'desc');
+        $resultArr = $query->select('u1.name as agentName', 'order_info.company_name','u2.name as customerName','calls.caller', 'u1.inopla_username', 'calls.event', 'calls.uuid', 'calls.kid', 'calls.cdr_id', 'calls.date_time', 'calls.sent_mail', 'calls.id', 'calls.routing_id', 'calls.service', 'calls.ddi', 'calls.caller_note')->limit(4)->get();
+        return $resultArr;
+    }
+
 }
 
 ?>
