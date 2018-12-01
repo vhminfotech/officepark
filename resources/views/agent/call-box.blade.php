@@ -3,7 +3,7 @@
             <div class="c-project-card u-mb-medium">
                 <div class="c-project-card__content">
                     <div class="c-project-card__head">
-                        <h4 class="c-project-card__title">{{ ($row == 0 ? 'On the phone' : 'Ring - Pending') }}</h4>
+                        <h4 class="c-project-card__title">{{ ucfirst($val['event']) }}</h4>
                     </div>
                     <a href="javascript:;" class="showOrder" data-id="{{ $val['id'] }}">
                         <div class="c-project-card__head">
