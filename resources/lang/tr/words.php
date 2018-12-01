@@ -12,6 +12,7 @@ return [
     'Order'         => 'Sipariş',
     'Select'        => 'seçmek',
     'Calls'         => 'Aramalar',
+    'Contract' => 'Sözleşmeler',
     'Logout'        => 'Çıkış Yap',
     'Invoice' => 'Fatura',
     'Service' => 'OP Hizmetleri',

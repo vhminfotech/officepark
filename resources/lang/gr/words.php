@@ -12,6 +12,7 @@ return [
     'Order'         => 'Auftrag',
     'Select'        => 'Wählen',
     'Calls'         => 'Calls',
+    'Contract' => 'Vertrag',
     'Invoice' => 'Rechnung',
     'Logout'        => 'Ausloggen',
     'Service'       => 'OP Services',
