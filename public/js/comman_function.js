@@ -225,7 +225,7 @@ if (typeof CKEDITOR !== 'undefined') {
 }
 
 function ajaxcall(url, data, callback) {
-  //  App.startPageLoading();
+    //  App.startPageLoading();
 
     $.ajax({
         type: 'POST',
@@ -233,7 +233,7 @@ function ajaxcall(url, data, callback) {
         data: data,
         async: false,
         success: function (result) {
-         //   App.stopPageLoading();
+            //   App.stopPageLoading();
             callback(result);
         }
     })
@@ -246,11 +246,11 @@ function handleAjaxFormSubmit(form, type) {
             handleAjaxResponse(output);
         });
     } else if (type === true) {
-       // App.startPageLoading();
+        // App.startPageLoading();
         var options = {
             resetForm: false, // reset the form after successful submit
             success: function (output) {
-             //   App.stopPageLoading();
+                //   App.stopPageLoading();
                 handleAjaxResponse(output);
             }
         };
@@ -259,23 +259,23 @@ function handleAjaxFormSubmit(form, type) {
     return false;
 }
 
-function showToster(status,message){
-    
-            toastr.options = {
-                closeButton: true,
-                progressBar: true,
-                showMethod: 'slideDown',
-                timeOut: 4000
-            };
-            if(status == 'success'){
-                toastr.success(message, 'Success');
-            }
-            if(status == 'error'){
-                toastr.error(message, 'Fail');
-            }
-            
+function showToster(status, message) {
 
-    
+    toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        showMethod: 'slideDown',
+        timeOut: 4000
+    };
+    if (status == 'success') {
+        toastr.success(message, 'Success');
+    }
+    if (status == 'error') {
+        toastr.error(message, 'Fail');
+    }
+
+
+
 }
 
 function handleAjaxResponse(output) {
@@ -283,7 +283,7 @@ function handleAjaxResponse(output) {
     output = JSON.parse(output);
 
     if (output.message != '') {
-         
+
         showToster(output.status, output.message, '');
     }
     if (typeof output.redirect !== 'undefined' && output.redirect != '') {
@@ -302,7 +302,7 @@ function _fn_getQueryStringValue(name) {
 }
 
 function handleFormValidate(form, rules, submitCallback, showToaster) {
-    
+
     var error = $('.alert-danger', form);
     var success = $('.alert-success', form);
     form.validate({
@@ -475,7 +475,7 @@ function handleDelete() {
         if (thumb) {
             data = {'id': $(this).attr('data-id'), 'thumb': thumb};
         } else {
-            data = {'id': $(this).attr('data-id'),'_token':$("input[name=_token]").val()};
+            data = {'id': $(this).attr('data-id'), '_token': $("input[name=_token]").val()};
         }
         ajaxcall($(this).attr('data-url'), data, function (output) {
             $('#myModal_autocomplete').modal('hide');
@@ -739,7 +739,7 @@ $('#show_notification').on('hidden.bs.modal', function () {
 });
 
 function dateFormate(field) {
-    
+
     $(field).datepicker({
         autoclose: true,
         format: 'dd-mm-yyyy'
@@ -748,19 +748,19 @@ function dateFormate(field) {
 }
 
 /* START FOR LANGUAGE SET USING COOKIE */
-        
-    //console.log(getCookie('language'));
-    $("body").on("change", "#languageSelection",function(){
-        var lang = $(this).val();
-        if(lang !=''){
-            setCookie('language', lang, 365);
-            window.location.reload();
-        }else{
-            lang='en';
-            setCookie('language', lang, 365);
-            window.location.reload();
-        }
-    });
+
+//console.log(getCookie('language'));
+$("body").on("change", "#languageSelection", function () {
+    var lang = $(this).val();
+    if (lang != '') {
+        setCookie('language', lang, 365);
+        window.location.reload();
+    } else {
+        lang = 'en';
+        setCookie('language', lang, 365);
+        window.location.reload();
+    }
+});
 //    $("body").on("click", ".language",function(){
 //        var lang = ($(this).attr('data-lang') !== '') ? $(this).attr('data-lang') : 'en';
 //        if(lang){
@@ -768,38 +768,38 @@ function dateFormate(field) {
 //            window.location.reload();
 //        }
 //    });
-    
-    $("body").on("change", ".language",function(){
-        var lang = ($(this).val() !== '') ? $(this).val() : 'en';
-        if(lang){
-            setCookie('language', lang, 365);
-            window.location.reload();
-        }
-    });
 
-    function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+$("body").on("change", ".language", function () {
+    var lang = ($(this).val() !== '') ? $(this).val() : 'en';
+    if (lang) {
+        setCookie('language', lang, 365);
+        window.location.reload();
     }
+});
 
-    function getCookie(cname) {
-                var name = cname + "=";
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-            }
-            
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 /* END FOR LANGUAGE SET USING COOKIE */
 
 
@@ -807,9 +807,9 @@ function dateFormate(field) {
 /* Start manage datatable with Ajax & hide/show column dynamic */
 
 function getDataTable(arr) {
-   
+
     var dataTable = $(arr.tableID).DataTable({
-        "scrollX": true,        
+        "scrollX": true,
         "processing": true,
         "serverSide": true,
         "bAutoWidth": false,
@@ -842,7 +842,7 @@ function getDataTable(arr) {
                 'X-CSRF-TOKEN': $('input[name="_token"]').val()
             },
             data: {'action': arr.ajaxAction, 'data': arr.postData},
-            error: function() {  // error handling
+            error: function () {  // error handling
                 $(".row-list-error").html("");
                 $(arr.tableID).append('<tbody class="row-list-error"><tr><td colspan="4" style="text-align: center;"><p style="color:red;">Sorry, No Record Found</p></td></tr></tbody>');
                 $(arr.tableID + "processing").css("display", "none");
@@ -855,7 +855,7 @@ function getDataTable(arr) {
 }
 
 function onLoadDefaultColumnSet(dataTable) {
-    $('.custom-column').each(function() {
+    $('.custom-column').each(function () {
         var column = dataTable.column($(this).attr('data-column'));
         var status = $(this).attr('data-default-status');
 
@@ -871,7 +871,7 @@ function onLoadDefaultColumnSet(dataTable) {
 }
 
 function hideShowDatatableColumn(dataTable) {
-    $('body').on('click', '.custom-column', function() {
+    $('body').on('click', '.custom-column', function () {
         // Get the column API object
         var column = dataTable.column($(this).attr('data-column'));
         // Toggle the visibility
@@ -880,23 +880,27 @@ function hideShowDatatableColumn(dataTable) {
 }
 
 setInterval(get_order, 5000);
-function get_order(){
-    var currentCount =  $('#totalOrderNotification').val();
-    // console.log(currentCount)
-    var token = $('.orderCountToken').val();
-    var data = { currentCount : currentCount ,_token :token};
-    var url = baseurl + 'get-order-count';
-        ajaxcall(url,data,function(output){
-             var data = JSON.parse(output);
+function get_order() {
+
+    var loginusertype = $('#loginusertype').val();
+    if (loginusertype == 'ADMIN') {
+        var currentCount = $('#totalOrderNotification').val();
+        // console.log(currentCount)
+        var token = $('.orderCountToken').val();
+        var data = {currentCount: currentCount, _token: token};
+        var url = baseurl + 'get-order-count';
+        ajaxcall(url, data, function (output) {
+            var data = JSON.parse(output);
 //             console.log(data.totalOrder);
-             
+
 //             console.log(currentCount);
-             if(data.totalOrder != parseInt(currentCount)){
+            if (data.totalOrder != parseInt(currentCount)) {
 //                 console.log('in');
-                handleAjaxResponse(output); 
+                handleAjaxResponse(output);
                 $('.totalOrderCount').text(data.orderCount);
-             }
+            }
         });
+    }
 }
 
 /* End manage datatable with Ajax & hide/show column dynamic */

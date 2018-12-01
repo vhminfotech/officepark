@@ -16,16 +16,19 @@ var Dashboard  = function() {
             querystring += (search_string == '' && typeof search_string === 'undefined') ? '&search_string=' : '&search_string=' + search_string;
             location.href = baseurl + 'agent/calls?' + querystring;
         });
+        
         $('body').on('click', '.addTemplate', function() {
             $('#modal8').modal('hide');
             $('#templateModel').modal('show');
             templateList();
         });
+        
         $('body').on('change', '#template', function() {
             var template = $('#template option:selected').text();
             $('#caller_note').val(template);
 
         });
+        
         $('body').on('click', '#template', function() {
             hadaleTemplate();
             templateList();
@@ -86,6 +89,7 @@ var Dashboard  = function() {
         });
 
         setInterval(getPop, 10000);
+        
         function updateCount(argument) {
           var data = {id: $('#inopla_username').val()};
            $.ajax({
@@ -336,6 +340,7 @@ var Dashboard  = function() {
                 }
             });
         }
+        
         var form = $('#send_email_big');
         var rules = {
             gender: {required: true},
@@ -350,7 +355,6 @@ var Dashboard  = function() {
        
         setInterval(getDashboardData, 10000);
        
-
         $('body').on('click', '.showOrder', function() {
             var id = $(this).attr('data-id');
             $('#callNewId').val(id);
@@ -367,7 +371,6 @@ var Dashboard  = function() {
                 url: baseurl + "agent/calls-ajaxAction",
                 data: {'action': 'getDashboardData', 'data': {'tets': 'test'}},
                 success: function(data) {
-                  console.log(data)
                   $('.appendData').html(data);
                     // var obj = jQuery.parseJSON(data);
                 }
