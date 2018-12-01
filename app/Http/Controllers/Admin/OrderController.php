@@ -227,6 +227,8 @@ class OrderController extends Controller {
         $webname = $data['getService']['service'][0]['website_id'];
        
         $websites = Config::get('constants.websites');
+        $websitespdf = Config::get('constants.websitespdf');
+         
         $data['websites'] = $websites[$webname];
         
 //        print_r($data['getService']);exit;
@@ -238,8 +240,9 @@ class OrderController extends Controller {
             $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
             return $pdf->download('Begrüßungsschreiben-'.$customer_number.'.pdf');
         }elseif($pdfNo == 3){
-            $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
-            return $pdf->download('Allgemeine Geschaftsbedingungen.pdf');
+            return response()->download(public_path('pdf/website/'.$websitespdf[$webname]));
+//            $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
+//            return $pdf->download('Allgemeine Geschaftsbedingungen.pdf');
         }
         
         

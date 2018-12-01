@@ -215,6 +215,7 @@ class Users extends Model {
             $webname = $data['getService']['service'][0]['website_id'];
 
             $websites = Config::get('constants.websites');
+            $websitespdf = Config::get('constants.websitespdf');
             $data['websites'] = $websites[$webname];
 
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
@@ -227,15 +228,15 @@ class Users extends Model {
 
             $pdf->save(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-' . $result[0]->last_number . '.pdf'));
 
-            $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
-            $pdf->save(public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf'));
+//            $pdf = PDF::loadView('admin.order.order-pdf-3', $data);
+//            $pdf->save(public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf'));
 
             $mailData['subject'] = 'Order Confirm';
             $mailData['template'] = 'emails.confirm-order';
             $mailData['attachment'] = array(
                 public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-' . $result[0]->last_number . '.pdf'),
                 public_path('pdf/OfficePark-Rufumleitung-OP-211-' . $result[0]->last_number . '.pdf'),
-                public_path('pdf/OfficePark-Allgemeine-Geschaftsbedingungen.pdf')
+                public_path('pdf/website/'.$websitespdf[$webname])
             );
 
 //            $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';

@@ -92,6 +92,12 @@ return [
         '3' => 'http://www.sanal-sekreter.de',
         '4' => 'https://uzaktansekreter.de/',
     ],
+    'websitespdf' => [
+        '1' => 'OfficePark-Allgemeine-Geschaftsbedingungen-uzaktansekreter.pdf',
+        '2' => 'OfficePark-Allgemeine-Geschaftsbedingungen-buerocall.pdf',
+        '3' => 'OfficePark-Allgemeine-Geschaftsbedingungen-sanal-sekreter.pdf',
+        '4' => 'OfficePark-Allgemeine-Geschaftsbedingungen-uzaktansekreter.pdf',
+    ],
     'arrTime' => [
         '05:00' => '05:00',
         '06:00' => '06:00',
