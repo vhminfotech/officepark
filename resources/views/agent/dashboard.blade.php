@@ -31,6 +31,33 @@
         </div>
 @endforeach
     </div>
+
+     <div class="row u-mb-large">
+        <div class="col-12">
+            <div c-table-responsive>
+                <div class=" table-responsive">
+                    <table class="c-table" id="ManageIncomingCall" >
+                        <thead class="c-table__head c-table__head--slim">
+                            <tr class="c-table__row">
+                                <!--<th><input class="checkAll" type="checkbox"></th>-->
+                                <th class="c-table__cell_head">Id </th>
+                                <th class="c-table__cell_head">Date/Time</th>
+                                <th class="c-table__cell_head">Caller</th>
+                                <th class="c-table__cell_head">Agent</th>
+                                <th class="c-table__cell_head">Customer</th>
+                                <th class="c-table__cell_head">Notes</th>
+                                <th class="c-table__cell_head">Mail Notification</th>
+                                <th class="c-table__cell_head">Send Mail</th>
+                                <th class="c-table__cell_head">Call View</th>
+                                 <!-- <th class="c-table__cell_head">Status</th> -->
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div><!-- // .col-12 -->
+        </div>
+        
+    </div>
 </div><!-- // .container -->
 <div class=" u-mb-medium">
 

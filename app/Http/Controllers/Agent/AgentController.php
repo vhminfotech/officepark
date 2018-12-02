@@ -21,8 +21,8 @@ class AgentController extends Controller {
     public function dashboard(Request $request) {
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('agent/dashboard.js');
-        $data['funinit'] = array('Dashboard.listInit()');
+        $data['js'] = array('agent/dashboard.js','admin/incomingCall.js');
+        $data['funinit'] = array('Dashboard.listInit()','IncomingCall.list_init()');
         $data['detail'] = $this->loginUser; 
         $session = $request->session()->all();
         $objTemplate = new Template();
