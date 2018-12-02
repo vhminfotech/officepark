@@ -610,6 +610,32 @@ class Calls extends Model {
         return $resultArr;
     }
 
+       public function getSystemDashboardCount($name) {
+        // echo $name;exit;
+        $logindata = Session::get('logindata');
+        $weekStart = date('Y-m-d', strtotime('last Monday'));
+        // echo  $weekStart;exit;
+        $sql = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
+                ->where('u1.inopla_username','=',$logindata[0]['inopla_username']);
+        
+        if ($name == 'today') {
+            $sql->whereRaw('Date(calls.created_at) = CURDATE()');
+        }
+        if ($name == 'week') {
+            $sql->whereBetween( DB::raw('date(calls.created_at)'), [$weekStart, date('Y-m-d')] );
+        }
+        if ($name == 'month') {
+            $sql->whereBetween('calls.created_at', [date('Y-m-01'), date('Y-m-t')]);
+        }
+        if ($name == 'year') {
+            $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
+        }
+
+        $sql->groupBy('calls.destination_number');
+        $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
+        return $result[0]['TotalCount'];
+    }
+
 }
 
 ?>

@@ -32,6 +32,10 @@ class AgentController extends Controller {
         $data['employeinffo']= $employeDetails->employeinfoAccounting($request);
         $objRtoEmployer = new Calls();
         $checkNewCall = $objRtoEmployer->checkNewCalls($session['logindata'][0]['inopla_username']);   
+        $data['getTodayCount'] = $objRtoEmployer->getSystemDashboardCount('today');
+        $data['getWeekCount'] = $objRtoEmployer->getSystemDashboardCount('week');
+        $data['getMonthCount'] = $objRtoEmployer->getSystemDashboardCount('month');
+        $data['getyearsCountd'] = $objRtoEmployer->getSystemDashboardCount('year');
         $data['checkNewCall'] = (!empty($checkNewCall) && count($checkNewCall) > 0 ) ? $checkNewCall[0]['id'] : '0';
         $data['inopla_username'] = $session['logindata'][0]['inopla_username'];
         $objRtoEmployer = new Calls();

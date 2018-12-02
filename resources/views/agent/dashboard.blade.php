@@ -32,6 +32,58 @@
 @endforeach
     </div>
 
+<div class="row ">
+    <div class="col-sm-6 col-lg-6 col-xl-3">
+            <div class="c-project-card u-mb-medium">
+                <div class="c-project-card__content">
+                    <div class="c-project-card__head">
+                        <h4 class="c-project-card__title">Today</h4>
+                    </div>
+                        <div class="c-project-card__head">
+                                <p>{{ $getWeekCount }}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+          <div class="col-sm-6 col-lg-6 col-xl-3">
+            <div class="c-project-card u-mb-medium">
+                <div class="c-project-card__content">
+                    <div class="c-project-card__head">
+                        <h4 class="c-project-card__title">Week</h4>
+                    </div>
+                        <div class="c-project-card__head">
+                                <p>{{ $getWeekCount }}</p>
+                        </div>                    
+                </div>
+            </div>
+        </div>
+         <div class="col-sm-6 col-lg-6 col-xl-3">
+            <div class="c-project-card u-mb-medium">
+                <div class="c-project-card__content">
+                    <div class="c-project-card__head">
+                        <h4 class="c-project-card__title">Month</h4>
+                    </div>
+                        <div class="c-project-card__head">
+                                <p>{{ $getMonthCount }}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+         <div class="col-sm-6 col-lg-6 col-xl-3">
+            <div class="c-project-card u-mb-medium">
+                <div class="c-project-card__content">
+                    <div class="c-project-card__head">
+                        <h4 class="c-project-card__title">Year</h4>
+                    </div>
+                        <div class="c-project-card__head">
+                                 <p>{{ $getyearsCountd }}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
      <div class="row u-mb-large">
         <div class="col-12">
             <div c-table-responsive>
