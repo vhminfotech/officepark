@@ -592,7 +592,7 @@ class Calls extends Model {
     public function checkNewCalls($inopla_username){
          $result= Calls::join('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
                         ->where('calls.destination_number','=',$inopla_username)
-                        ->where('calls.is_popup','=',0)
+                       
                         ->get(['calls.id'])->toarray();
          return $result;
      }
@@ -633,7 +633,7 @@ class Calls extends Model {
 
         $sql->groupBy('calls.destination_number');
         $result = $sql->get(array('u1.inopla_username', 'calls.created_at', 'calls.id as callsID', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
-        return $result[0]['TotalCount'];
+        return $result;
     }
 
 }
