@@ -299,6 +299,11 @@
                                     @php
                                     $count = 1;
                                     @endphp
+                                    @if(count($getCall) == 0)
+                                <tr class="c-table__row  ">
+                                     <td colspan="5" class="c-table__cell">No Record Found</td>
+                                </tr>
+                                    @endif
                                     @for($i = 0 ;$i < count($getCall);$i++)
                                     <tr class="c-table__row hide{{ $getCall[$i]->id }}">
                                         <td class="c-table__cell"><input class="changeStatus" type="checkbox"></td>
