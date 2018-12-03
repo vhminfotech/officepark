@@ -41,7 +41,7 @@ $roles  = array_values($roles);
             
             @if($logindata[0]['id'] == 1 ||  in_array('Service', $roles))
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'service' || $currentRoute == 'service' ? 'is-active' : '') }}" href="{{ route('service') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'service-add' || $currentRoute == 'service-edit' || $currentRoute == 'service' || $currentRoute == 'service' ? 'is-active' : '') }}" href="{{ route('service') }}">
                     <i class="fa fa-gears u-mr-xsmall"></i>
                     {{trans('words.Service') }} &nbsp;
                 </a>
@@ -84,7 +84,7 @@ $roles  = array_values($roles);
             @endif
             @if($logindata[0]['id'] == 1 ||  in_array('Invoices', $roles))
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'invoice-list' || $currentRoute == 'invoice-list' ? 'is-active' : '') }}" href="{{ route('invoice-list') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'add-invoice' || $currentRoute == 'invoice-list' || $currentRoute == 'invoice-list' ? 'is-active' : '') }}" href="{{ route('invoice-list') }}">
                     <i class="fa fa-eur u-mr-xsmall" style="padding-right:11px"></i>
                     {{ trans('words.Invoice') }}  &nbsp;
                 </a>

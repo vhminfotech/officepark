@@ -40,7 +40,14 @@
                         <h4 class="c-project-card__title">Today</h4>
                     </div>
                         <div class="c-project-card__head">
-                                <p>{{ $getWeekCount }}</p>
+                            <p>
+                                @if(isset($getTodayCount[0]['TotalCount']))   
+                                   {{ $getTodayCount[0]['TotalCount'] }}
+                                @else
+                                {{ '0' }}
+                                @endif
+
+                                </p>
                         </div>
                 </div>
             </div>
@@ -52,7 +59,11 @@
                         <h4 class="c-project-card__title">Week</h4>
                     </div>
                         <div class="c-project-card__head">
-                                <p>{{ $getWeekCount }}</p>
+                                <p>@if(isset($getWeekCount[0]['TotalCount']))   
+                                   {{ $getWeekCount[0]['TotalCount'] }}
+                                @else
+                                {{ '0' }}
+                                @endif</p>
                         </div>                    
                 </div>
             </div>
@@ -64,7 +75,11 @@
                         <h4 class="c-project-card__title">Month</h4>
                     </div>
                         <div class="c-project-card__head">
-                                <p>{{ $getMonthCount }}</p>
+                                <p>@if(isset($getMonthCount[0]['TotalCount']))   
+                                   {{ $getMonthCount[0]['TotalCount'] }}
+                                @else
+                                {{ '0' }}
+                                @endif</p>
                         </div>
                 </div>
             </div>
@@ -76,7 +91,11 @@
                         <h4 class="c-project-card__title">Year</h4>
                     </div>
                         <div class="c-project-card__head">
-                                 <p>{{ $getyearsCountd }}</p>
+                                 <p>@if(isset($getyearsCountd[0]['TotalCount']))   
+                                   {{ $getyearsCountd[0]['TotalCount'] }}
+                                @else
+                                {{ '0' }}
+                                @endif</p>
                         </div>
                 </div>
             </div>
