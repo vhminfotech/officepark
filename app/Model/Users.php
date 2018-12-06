@@ -169,7 +169,7 @@ class Users extends Model {
     public function createCustomer($postData) {
         $count = Users::where('email', $postData['email'])->count();
         if ($count == 0) {
-            $newpassword = 123;
+            $newpassword = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzASLKJHGDMNBVCXZPOIUYTREWQ", 6)), 0, 6);;
             $result = DB::table('customer_no')->where('id', 1)->get();
             $systemGenrateNo = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
 
@@ -220,10 +220,9 @@ class Users extends Model {
 
             chmod(public_path('pdf/Officepark_- Welcome letter_ATA_Finanz.pdf'), 0777);
             $data['id'] = $postData['fullname'];
+            $data['password'] = $newpassword;
             $pdf = PDF::loadView('admin.order.order-pdf-1', $data);
             $pdf->save(public_path('pdf/OfficePark-Rufumleitung-OP-211-' . $result[0]->last_number . '.pdf'));
-
-
             $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
 
             $pdf->save(public_path('pdf/OfficePark-Begrüßungsschreiben-OP-211-' . $result[0]->last_number . '.pdf'));
