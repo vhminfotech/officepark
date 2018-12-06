@@ -21,4 +21,7 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     
     
     Route::match(['get', 'post'], 'employee-customer', ['as' => 'employee-customer', 'uses' => 'Customer\EmployeeController@getEmployerData']);
+    Route::match(['get', 'post'], 'employee-editcustomer/{id}', ['as' => 'employee-editcustomer', 'uses' => 'Customer\EmployeeController@editEmployerData']);
+    Route::match(['get', 'post'], 'employee-add-customer', ['as' => 'employee-add-customer', 'uses' => 'Customer\EmployeeController@addEmployee']);
+    Route::match(['get', 'post'], 'employee-customer-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Customer\EmployeeController@ajaxAction']);
 });
