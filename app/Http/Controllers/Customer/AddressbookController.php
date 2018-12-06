@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Customer;
+
 
 use App\User;
 use App\Model\Addressbook;
@@ -12,20 +13,24 @@ use Illuminate\Http\Request;
 use Config;
 
 class AddressbookController extends Controller {
-
+    
     public function __construct() {
         parent::__construct();
-        $this->middleware('admin');
+        $this->middleware('customer');
     }
 
+    
+    
     public function getAddressbookData(Request $request) {
-        $customer_id = (empty($request->get('customer_id'))) ? '' : $request->get('customer_id');
+        $data['detail'] = $this->loginUser;
+        $customer_id=$data['detail']['id'];
+        
         $objUser = new Addressbook();
         $AddressList = $objUser->getAddBookLlistV2($customer_id);
        
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/addressbook.js');
+        $data['js'] = array('customer/addressbook.js');
         $data['funinit'] = array('Addressbook.init()');
         $data['detail'] = $this->loginUser;
         $data['arrAddbook'] = $AddressList;
@@ -34,12 +39,15 @@ class AddressbookController extends Controller {
         $arrOrderInfo1[''] =  trans('addressbook.select_customer');
         $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
-        return view('admin.addressbook.addressbook-list', $data);
+        return view('customer.addressbook.addressbook-list', $data);
     }
-
+    
+    
     public function addAddressbook(Request $request,$phoneNumber = null) {
 
         $data['detail'] = $this->loginUser;
+        
+        $customer_id=$data['customer_id']=$data['detail']['id'];
         $objaddressbook = new Addressbook();
         $objOrderInfo = new OrderInfo();
         $data['arrOrderInfo'] = $objOrderInfo->getCustomerDetails();
@@ -49,7 +57,7 @@ class AddressbookController extends Controller {
             if ($addressList) {
                 $return['status'] = 'success';
                 $return['message'] = 'Addressbook created successfully.';
-                $return['redirect'] = route('address-book-list');
+                $return['redirect'] = route('address-book-list-customer');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -61,14 +69,13 @@ class AddressbookController extends Controller {
         $data['gender'] = Config::get('constants.gender');
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/addressbook.js');
+        $data['js'] = array('customer/addressbook.js');
         $data['funinit'] = array('Addressbook.add_init()');
 
-        return view('admin.addressbook.addressbook-add', $data);
+        return view('customer.addressbook.addressbook-add', $data);
     }
-
+    
     public function editAddressbook($bookId, Request $request) {
-        
         $data['gender'] = Config::get('constants.gender');
         $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
@@ -77,7 +84,7 @@ class AddressbookController extends Controller {
             if ($editbklist) {
                 $return['status'] = 'success';
                 $return['message'] = 'Address Book Edit successfully.';
-                $return['redirect'] = route('address-book-list');
+                $return['redirect'] = route('address-book-list-customer');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
@@ -87,7 +94,7 @@ class AddressbookController extends Controller {
         }
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/addressbook.js');
+        $data['js'] = array('customer/addressbook.js');
         $data['funinit'] = array('Addressbook.edit_init()');
         $objOrderInfo = new OrderInfo();
         $data['arrOrderInfo'] = $objOrderInfo->getCustomerDetails();
@@ -95,9 +102,10 @@ class AddressbookController extends Controller {
         $addbkDetail = $objeditaddbook->getAddBookLlist($bookId);
         $data['addbkDetail'] = $addbkDetail;
 
-        return view('admin.addressbook.addressbook-edit', $data);
+        return view('customer.addressbook.addressbook-edit', $data);
     }
-
+    
+    
     public function deleteAddressbook(Request $request) {
         if ($request->isMethod('post')) {
 
@@ -107,7 +115,7 @@ class AddressbookController extends Controller {
             if ($userDelete) {
                 $return['status'] = 'success';
                 $return['message'] = 'Address Book delete successfully.';
-                $return['redirect'] = route('address-book-list');
+                $return['redirect'] = route('address-book-list-customer');
                 echo json_encode($return);
                 exit;
             } else {
@@ -118,5 +126,6 @@ class AddressbookController extends Controller {
             }
         }
     }
-
+    
+    
 }

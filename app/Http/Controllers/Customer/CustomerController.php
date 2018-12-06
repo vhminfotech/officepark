@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers\Customer;
 
+
+use App\User;
+use App\Model\Addressbook;
+use App\Model\OrderInfo;
 use App\Http\Controllers\Controller;
+use Auth;
+use Route;
+use Illuminate\Http\Request;
+use Config;
 
 class CustomerController extends Controller {
     
@@ -11,10 +19,11 @@ class CustomerController extends Controller {
         $this->middleware('customer');
     }
 
-    public function dashboard() {
-        
+    public function dashboard(){
         $data['detail'] = $this->loginUser; 
         return view('customer.dashboard', $data);
     }
+    
+
     
 }
