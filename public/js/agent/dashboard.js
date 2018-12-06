@@ -88,7 +88,7 @@ var Dashboard  = function() {
             });
         });
 
-        setInterval(getPop, 10000);
+        // setInterval(getPop, 10000);
         
         function updateCount(argument) {
           var data = {id: $('#inopla_username').val()};
