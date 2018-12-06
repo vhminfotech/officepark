@@ -206,7 +206,7 @@ class OrderController extends Controller {
        
         $websites = Config::get('constants.websites');
         $data['websites'] = $websites[$webname];
-        
+        $data['password'] = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzASLKJHGDMNBVCXZPOIUYTREWQ", 6)), 0, 6);;
         $pdf = PDF::loadView('admin.order.order-pdf-2', $data);
         return $pdf->stream();
       //  return $pdf->download('invoice.pdf');
@@ -230,7 +230,7 @@ class OrderController extends Controller {
         $websitespdf = Config::get('constants.websitespdf');
          
         $data['websites'] = $websites[$webname];
-        
+        $data['password'] = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzASLKJHGDMNBVCXZPOIUYTREWQ", 6)), 0, 6);;
 //        print_r($data['getService']);exit;
         $customer_number = $arrOrder[0]['customer_number'];
         if($pdfNo == 1){
