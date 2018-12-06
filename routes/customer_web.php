@@ -24,4 +24,13 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'employee-editcustomer/{id}', ['as' => 'employee-editcustomer', 'uses' => 'Customer\EmployeeController@editEmployerData']);
     Route::match(['get', 'post'], 'employee-add-customer', ['as' => 'employee-add-customer', 'uses' => 'Customer\EmployeeController@addEmployee']);
     Route::match(['get', 'post'], 'employee-customer-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Customer\EmployeeController@ajaxAction']);
+
+     Route::match(['get', 'post'], 'customer-invoice-list', ['as' => 'customer-invoice-list', 'uses' => 'Customer\InvoiceController@index']);
+    Route::match(['get', 'post'], 'customer-invoice-pdf', ['as' => 'customer-invoice-pdf', 'uses' => 'Customer\InvoiceController@createPDF']);
+    Route::match(['get', 'post'], 'customer-invoice-pdfV2', ['as' => 'customer-invoice-pdfV2', 'uses' => 'Customer\InvoiceController@createPDFV2']);
+    Route::match(['get', 'post'], 'customer-invoice-pdfV3', ['as' => 'customer-invoice-pdfV3', 'uses' => 'Customer\InvoiceController@createPDFV3']);
+    Route::match(['get', 'post'], 'customer-add-invoice/{id}', ['as' => 'customer-add-invoice', 'uses' => 'Customer\InvoiceController@createInvoice']);
+    Route::match(['get', 'post'], 'customer-delete-invoice', ['as' => 'customer-delete-invoice', 'uses' => 'Customer\InvoiceController@deleteInvoice']);
+    Route::match(['get', 'post'], 'customer-invoice-packege-detail', ['as' => 'customer-invoice-packege-detail', 'uses' => 'Customer\InvoiceController@invoicePackegeDetail']);
+    Route::match(['get', 'post'], 'customer-change-status', ['as' => 'customer-change-status', 'uses' => 'Customer\InvoiceController@changeStatus']);
 });

@@ -323,7 +323,7 @@ class Users extends Model {
 
     public function getCustomer($cutomerNum = NULL) {
         if ($cutomerNum) {
-            return Users::select('users.id as customer_id', 'order_info.company_name', 'order_info.address','order_info.is_package')
+            return Users::select('users.id as customer_id', 'order_info.company_name', 'order_info.address','users.customer_number','users.name','order_info.is_package')
                             ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                             ->where('users.customer_number', '=', $cutomerNum)->first()->toArray();
         } else {

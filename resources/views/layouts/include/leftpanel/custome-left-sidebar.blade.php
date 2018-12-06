@@ -22,7 +22,12 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             
-            
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'customer-add-invoice' || $currentRoute == 'customer-invoice-list' || $currentRoute == 'customer-invoice-list' ? 'is-active' : '') }}" href="{{ route('customer-invoice-list') }}">
+                    <i class="fa fa-eur u-mr-xsmall" style="padding-right:11px"></i>
+                    {{ trans('words.Invoice') }}  &nbsp;
+                </a>
+            </li>
             
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'employee-customer' ? 'is-active' : '') }}" href="{{ route('employee-customer') }}">
