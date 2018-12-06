@@ -78,13 +78,13 @@
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="mobile_number">Mobile number</label> 
-                                    <input class="c-input" id="mobile_number" name="mobile_number" maxlength="12" value="{{ $addbkDetail[0]->mobile }}" placeholder="Mobile number" type="number"> 
+                                    <input class="c-input" id="mobile_number" name="mobile_number"  value="{{ $addbkDetail[0]->mobile }}" placeholder="Mobile number" type="number"> 
                                 </div>
                             </div> 
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="telephone">Telefax</label> 
-                                    <input class="c-input" id="telephone" name="telephone" maxlength="6" value="{{ $addbkDetail[0]->telefax }}" placeholder="Telefax" type="number"> 
+                                    <input class="c-input" id="telephone" name="telephone"  value="{{ $addbkDetail[0]->telefax }}" placeholder="Telefax" type="number"> 
                                 </div>
                             </div>
                         </div>
