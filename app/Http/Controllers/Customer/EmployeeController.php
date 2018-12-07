@@ -37,7 +37,7 @@ class EmployeeController extends Controller {
     }
     
     public function editEmployerData($id,Request $request) {
-
+        
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
         $data['p_away_msg'] = Config::get('constants.p_away_msg');
         $data['responsibility'] = Config::get('constants.responsibility');
@@ -51,13 +51,18 @@ class EmployeeController extends Controller {
        
         $objEmployee = new Employee();
         $data['arrEditEmp'] = $objEmployee->geteEmployeeEdit($request->id);
+        
+        $objEmployeeDetails = new EmployeeDetails();
+        $data['arrayEmployeeDetails'] = $objEmployeeDetails->geteEmployeeEditDetails($request->id);
 
         if ($request->isMethod('post')) {
+           
             $objEmployee = new Employee();
             $arrEmployee = $objEmployee->editEmployeeInfo($request);
+            
             $objEmployeeDetails = new EmployeeDetails();
-            $arrEmployeeDetails = $objEmployeeDetails->saveEmployeeDetail($request, $request->input('empId'));
-
+            $arrEmployeeDetails = $objEmployeeDetails->saveeditEmployeeDetail($request, $request->input('empId'));
+            
             if ($arrEmployeeDetails == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Employee Edit successfully.';
@@ -92,7 +97,6 @@ class EmployeeController extends Controller {
         $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
         if ($request->isMethod('post')) {
-           
             $objEmployee = new Employee();
             $employeeId = $objEmployee->saveEmployeeInfo($request);
             if ($employeeId == true) {

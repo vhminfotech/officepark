@@ -30,7 +30,7 @@ $currentRoute = Route::current()->getName();
             </li>
             
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'employee-customer' ? 'is-active' : '') }}" href="{{ route('employee-customer') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'employee-editcustomer' || $currentRoute == 'employee-add-customer' || $currentRoute == 'employee-customer' ? 'is-active' : '') }}" href="{{ route('employee-customer') }}">
                     <i class="fa fa-building-o u-mr-xsmall" style="padding-right:6px"></i>
                     {{ trans('words.Employee') }}  &nbsp;
                 </a>

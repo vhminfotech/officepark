@@ -21,19 +21,23 @@ class EmployeeController extends Controller {
     }
 
     public function getEmployerData(Request $request) {
-        $userName = (empty($request->get('userName'))) ? '' : $request->get('userName');
+        $data['detail'] = $this->loginUser;
+        $userName=$data['customer_id']=$data['detail']['id'];
+        
         $objEmployee = new Employee();
-        $data['employeeList'] = $objEmployee->employeeList($userName);
+        $data['employeeList'] = $objEmployee->employeeListCustomer($userName);
         $data['employeeCusList'] = $objEmployee->getemployeeCusList();
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
-        $data['js'] = array('admin/employee.js');
+        $data['js'] = array('customer/employee.js');
         $data['funinit'] = array('Employee.list_init()');
         $data['userName'] = $userName;
         return view('admin.employee.employee-list', $data);
     }
 
     public function addEmployee(Request $request) {
+        $data['detail'] = $this->loginUser;
+        $userName=$data['customer_id']=$data['detail']['id'];
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
         $data['p_away_msg'] = Config::get('constants.p_away_msg');
         $data['responsibility'] = Config::get('constants.responsibility');
@@ -46,7 +50,6 @@ class EmployeeController extends Controller {
         $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
         if ($request->isMethod('post')) {
-           
             $objEmployee = new Employee();
             $employeeId = $objEmployee->saveEmployeeInfo($request);
             if ($employeeId == true) {
@@ -55,7 +58,7 @@ class EmployeeController extends Controller {
                 if ($arrEmployeeDetails == true) {
                     $return['status'] = 'success';
                     $return['message'] = 'Employee add successfully.';
-                    $return['redirect'] = route('employee');
+                    $return['redirect'] = route('employee-customer');
                 }
             } else {
                 $return['status'] = 'error';
@@ -87,19 +90,22 @@ class EmployeeController extends Controller {
        
         $objEmployee = new Employee();
         $data['arrEditEmp'] = $objEmployee->geteEmployeeEdit($request->id);
-//        echo '<pre/>';
-//        print_r($data['arrEditEmp']);exit;
-        if ($request->isMethod('post')) {
+        
+        $objEmployeeDetails = new EmployeeDetails();
+        $data['arrayEmployeeDetails'] = $objEmployeeDetails->geteEmployeeEditDetails($request->id);
 
+        if ($request->isMethod('post')) {
+           
             $objEmployee = new Employee();
             $arrEmployee = $objEmployee->editEmployeeInfo($request);
+            
             $objEmployeeDetails = new EmployeeDetails();
-            $arrEmployeeDetails = $objEmployeeDetails->saveEmployeeDetail($request, $request->input('empId'));
-
+            $arrEmployeeDetails = $objEmployeeDetails->saveeditEmployeeDetail($request, $request->input('empId'));
+            
             if ($arrEmployeeDetails == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Employee Edit successfully.';
-                $return['redirect'] = route('employee');
+                $return['redirect'] = route('employee-customer');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Email already exists.';
