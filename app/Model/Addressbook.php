@@ -29,6 +29,17 @@ class Addressbook extends Model {
         $result = $sql->get(['addressbook.*', 'users.customer_number', 'order_info.company_name as cname']);
         return $result;
     }
+    
+    public function getAddBookLlistCustomer($id ,$order_id= NULL) {
+        $sql = addressbook::leftjoin('order_info', 'order_info.user_id', '=', 'addressbook.customer_id')
+                ->leftjoin('users', 'users.id', '=', 'order_info.user_id')
+                ->where('addressbook.customer_id', '=', $id);
+        if(!empty($order_id)){
+            $sql->where('addressbook.id', '=', $order_id);
+        }
+        $result = $sql->get(['addressbook.*', 'users.customer_number', 'order_info.company_name as cname']);
+        return $result;
+    }
 
     public function addAddresBook($request) {
         $objadd = new Addressbook();
@@ -75,6 +86,16 @@ class Addressbook extends Model {
 
     function AddressBookDelete($request) {
         return Addressbook::where('id', $request->input('id'))->delete();
+    }
+    
+     public function getCustomerName($id){
+        $result =Addressbook::select('firstname', 'surname','id')
+                ->where('customer_id',$id)                
+                ->get()->toArray();
+        if (empty($result)) {
+            $result = array('' => 'No Customer Found');
+        }
+        return $result;
     }
 
 }

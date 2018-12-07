@@ -22,11 +22,12 @@ class AddressbookController extends Controller {
     
     
     public function getAddressbookData(Request $request) {
+       
+        $order_id=$request->input('customer_id');
         $data['detail'] = $this->loginUser;
         $customer_id=$data['detail']['id'];
-        
         $objUser = new Addressbook();
-        $AddressList = $objUser->getAddBookLlistV2($customer_id);
+        $AddressList = $objUser->getAddBookLlistCustomer($customer_id,$order_id);
        
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
@@ -35,10 +36,11 @@ class AddressbookController extends Controller {
         $data['detail'] = $this->loginUser;
         $data['arrAddbook'] = $AddressList;
         $objOrderInfo = new OrderInfo();
-        $arrOrderInfo = $objOrderInfo->getCustomerDetails();
-        $arrOrderInfo1[''] =  trans('addressbook.select_customer');
-        $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
+        $arrOrderInfo = $objUser->getCustomerName($customer_id);
+        
+        $data['arrOrderInfo'] = $arrOrderInfo;
+        
         return view('customer.addressbook.addressbook-list', $data);
     }
     

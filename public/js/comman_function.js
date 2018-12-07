@@ -8,7 +8,7 @@ function getDataTable2222(tableID, ajaxPath, extraOption) {
     var options = {
         src: $(tableID),
         onSuccess: function (grid, response) {
-            // grid:        grid object
+            // grid:  datatable      grid object
             // response:    json object of server side ajax response
             // execute some code after table records loaded
         },

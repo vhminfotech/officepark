@@ -2,7 +2,7 @@
 
 return [
     //english
-    'op_addresbook_list'=>'OP Addressbook List',
+    'op_addresbook_list'=>'Addressbook List',
     'addressbook_list'=>'Add Addressbook List',
     'select_customer'=>'Select Customer',
     'cus_no'=>'Customer Number    ',
