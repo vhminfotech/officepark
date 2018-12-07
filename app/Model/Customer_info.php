@@ -27,8 +27,8 @@ class Customer_info extends Model {
                         $objUser->lunch_end_time = $request->input('global_end_time');
                         $objUser->is_lunch_time = $request->input('is_lunch_time');
                         $objUser->no_business_hour_adjust=$request->input('no_business_hour_adjust');
-                        $objUser->holiday_global_from = $request->input('holidayfrom');
-                        $objUser->holiday_global_to = $request->input('holidayto');
+                        $objUser->holiday_global_from = date('Y-m-d',strtotime($request->input('holidayfrom')));
+                        $objUser->holiday_global_to = date('Y-m-d',strtotime($request->input('holidayto')));
                         $objUser->save();
           }else{
                     Customer_info::where('user_id', $userId)
@@ -41,8 +41,8 @@ class Customer_info extends Model {
                         'lunch_end_time' => $request->input('global_end_time'),
                         'is_lunch_time' => $request->input('is_lunch_time'),
                         'no_business_hour_adjust'=>$request->input('no_business_hour_adjust'),
-                        'holiday_global_from' => $request->input('holidayfrom'),
-                        'holiday_global_to' => $request->input('holidayto')
+                        'holiday_global_from' =>date('Y-m-d',strtotime($request->input('holidayfrom'))),
+                        'holiday_global_to' => date('Y-m-d',strtotime($request->input('holidayto'))),
                              ]);
           }
             $return = true;
