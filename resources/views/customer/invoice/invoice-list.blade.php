@@ -68,7 +68,7 @@
                             <th class="c-table__cell c-table__cell--head no-sort">#</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.id') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.date') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.invoice') }}</th>
+                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.invoice-') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.customer-number') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.company-name') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.package') }}</th>
