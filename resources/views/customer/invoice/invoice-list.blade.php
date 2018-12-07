@@ -69,15 +69,15 @@
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.id') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.date') }}</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.invoice-') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.customer-number') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.company-name') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.package') }}</th>
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.customer-number') }}</th> -->
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.company-name') }}</th> -->
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.package') }}</th> -->
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.price') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.payment-method') }}</th>
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.payment-method') }}</th> -->
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.paid-status') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.mail-send') }}</th>
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.mail-send') }}</th> -->
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.action') }}</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.paid') }}</th>
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('invoice.paid') }}</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -88,13 +88,13 @@
                             <td class="c-table__cell">{{ $getInvoice[$i]->id }}</td>
                             <td class="c-table__cell">{{ date('Y-m-d',strtotime($getInvoice[$i]->created_at)) }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->invoice_no }}</td>
-                            <td class="c-table__cell">{{ $getInvoice[$i]->customer_number }}</td>
-                            <td class="c-table__cell">{{ $getInvoice[$i]->company_name }}</td>
-                            <td class="c-table__cell">{{ $getInvoice[$i]->packages_name }}</td>
+                            <!-- <td class="c-table__cell">{{ $getInvoice[$i]->customer_number }}</td> -->
+                            <!-- <td class="c-table__cell">{{ $getInvoice[$i]->company_name }}</td> -->
+                            <!-- <td class="c-table__cell">{{ $getInvoice[$i]->packages_name }}</td> -->
                             <td class="c-table__cell">{{ $getInvoice[$i]->total }}</td>
-                            <td class="c-table__cell">{{ $getInvoice[$i]->accept }}</td>
+                            <!-- <td class="c-table__cell">{{ $getInvoice[$i]->accept }}</td> -->
                             <td class="c-table__cell">{{ $getInvoice[$i]->is_paid }}</td>
-                            <td class="c-table__cell">{{ $getInvoice[$i]->mail_send }}</td>
+                            <!-- <td class="c-table__cell">{{ $getInvoice[$i]->mail_send }}</td> -->
                             
 
                             <td class="c-table__cell">
@@ -103,7 +103,7 @@
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>&nbsp;  
                             </td>
-                            <td class="c-table__cell"><input data-id="{{ $getInvoice[$i]->id }}" data-status="{{ $getInvoice[$i]->is_paid }}" {{ ($getInvoice[$i]->is_paid == 'Yes' ? 'checked="checked"' : '') }} class="changeStatus" type="checkbox"></td>
+                            <!-- <td class="c-table__cell"><input data-id="{{ $getInvoice[$i]->id }}" data-status="{{ $getInvoice[$i]->is_paid }}" {{ ($getInvoice[$i]->is_paid == 'Yes' ? 'checked="checked"' : '') }} class="changeStatus" type="checkbox"></td> -->
                         </tr>
                         @endfor
                     </tbody>
