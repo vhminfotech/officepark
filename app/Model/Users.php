@@ -24,7 +24,7 @@ class Users extends Model {
     }
     
     public function gtUsrLlist($id = NULL) {
-
+       
         if ($id) {
             $result = Users::select('users.*')->where('users.id', '=', $id)->get();
         } else {
