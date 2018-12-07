@@ -183,7 +183,25 @@ class InvoiceController extends Controller {
         $directDebitFile->download();
     }
 
-    public function createPDF(Request $request) {
+    public function createPDF(Request $request,$invoiceId) {
+
+        // print_r($request->input());exit;
+        // $invoiceId = $request->input('orderId');
+        $invoiceId = $invoiceId;
+        $objinvoice = new Invoice();
+        $data['getInvoice'] = $objinvoice->getInvoiceDetail($invoiceId);
+        $objinvoice->getMailStatusUpdate($invoiceId);
+        $data['bezeichnung'] = Config::get('constants.bezeichnung');
+        $objUser = new Users();
+        $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
+        $target_path = 'pdf/invoice-' . $data['getInvoice'][0]['customer_number'] . '.pdf';
+        $pdf = PDF::loadView('customer.invoice.invoice-pdf', $data);
+        return $pdf->download('invoice-' . $data['getInvoice'][0]['customer_number'] . '.pdf');
+        // return $pdf->download('invoice.pdf');
+
+    }
+
+    public function createPDF_1(Request $request) {
 
         // print_r($request->input());exit;
         $invoiceId = $request->input('orderId');

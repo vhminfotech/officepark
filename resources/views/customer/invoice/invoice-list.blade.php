@@ -98,7 +98,8 @@
                             
 
                             <td class="c-table__cell">
-                                <a href="javascript:;" class="sendInvoice" data-id="{{ $getInvoice[$i]->id }}"><span class="c-tooltip c-tooltip--top " aria-label="PDF">
+                                <!-- <a href="javascript:;" class="sendInvoice" data-id="{{ $getInvoice[$i]->id }}"><span class="c-tooltip c-tooltip--top " aria-label="PDF">  <i class="fa fa-file-pdf-o" ></i></span> </a>&nbsp;   -->
+                                <a href="{{ route('customer-invoice-pdf',[$getInvoice[$i]->id]) }}" class="sendInvoice" data-id="{{ $getInvoice[$i]->id }}"><span class="c-tooltip c-tooltip--top " aria-label="PDF">
                                         <i class="fa fa-file-pdf-o" ></i></span>
                                 </a>&nbsp;  
                             </td>

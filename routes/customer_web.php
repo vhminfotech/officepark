@@ -26,7 +26,8 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'employee-customer-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Customer\EmployeeController@ajaxAction']);
 
      Route::match(['get', 'post'], 'customer-invoice-list', ['as' => 'customer-invoice-list', 'uses' => 'Customer\InvoiceController@index']);
-    Route::match(['get', 'post'], 'customer-invoice-pdf', ['as' => 'customer-invoice-pdf', 'uses' => 'Customer\InvoiceController@createPDF']);
+    Route::match(['get', 'post'], 'customer-invoice-pdf/{id}', ['as' => 'customer-invoice-pdf', 'uses' => 'Customer\InvoiceController@createPDF']);
+    // Route::match(['get', 'post'], 'customer-invoice-pdf', ['as' => 'customer-invoice-pdf', 'uses' => 'Customer\InvoiceController@createPDF']);
     Route::match(['get', 'post'], 'customer-invoice-pdfV2', ['as' => 'customer-invoice-pdfV2', 'uses' => 'Customer\InvoiceController@createPDFV2']);
     Route::match(['get', 'post'], 'customer-invoice-pdfV3', ['as' => 'customer-invoice-pdfV3', 'uses' => 'Customer\InvoiceController@createPDFV3']);
     Route::match(['get', 'post'], 'customer-add-invoice/{id}', ['as' => 'customer-add-invoice', 'uses' => 'Customer\InvoiceController@createInvoice']);
