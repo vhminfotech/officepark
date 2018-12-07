@@ -33,4 +33,12 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-delete-invoice', ['as' => 'customer-delete-invoice', 'uses' => 'Customer\InvoiceController@deleteInvoice']);
     Route::match(['get', 'post'], 'customer-invoice-packege-detail', ['as' => 'customer-invoice-packege-detail', 'uses' => 'Customer\InvoiceController@invoicePackegeDetail']);
     Route::match(['get', 'post'], 'customer-change-status', ['as' => 'customer-change-status', 'uses' => 'Customer\InvoiceController@changeStatus']);
+
+
+    Route::match(['get', 'post'], 'customer-calls', ['as' => 'customer-calls', 'uses' => 'Customer\CallController@index']);
+    Route::match(['get', 'post'], 'customer-send-email', ['as' => 'customer-send-email', 'uses' => 'Customer\CallController@sendMail']);
+    Route::match(['get', 'post'], 'customer-send-email-bigpopup', ['as' => 'customer-send-email-bigpopup', 'uses' => 'Customer\CallController@sendMailbigPopup']);
+    Route::match(['get', 'post'], 'customer-add-template', ['as' => 'customer-add-template', 'uses' => 'Customer\CallController@addTempate']);
+    Route::match(['get', 'post'], 'customer-calls-ajaxAction', ['as' => 'customer-ajaxAction', 'uses' => 'Customer\CallController@ajaxAction']);
+
 });
