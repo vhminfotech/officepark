@@ -21,11 +21,11 @@ class EmployeeController extends Controller {
     }
 
     public function getEmployerData(Request $request) {
-        $data['detail'] = $this->loginUser;
-        $userName=$data['customer_id']=$data['detail']['id'];
+       
+        $userName=$request->input('userName');
         
         $objEmployee = new Employee();
-        $data['employeeList'] = $objEmployee->employeeList();
+        $data['employeeList'] = $objEmployee->employeeList($userName);
         
         $data['employeeCusList'] = $objEmployee->getemployeeCusList();
         $data['responsibility'] = Config::get('constants.responsibility');
