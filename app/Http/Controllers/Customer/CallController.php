@@ -27,7 +27,7 @@ class CallController extends Controller {
         $data['getCustomer'] = $objUser->getCustomer(null);
         $objCall = new Calls();
         $data['getCall'] = $objCall->getCallListing();
-        
+       
         $session = $request->session()->all();
         $objTemplate = new Template();
         $data['template'] = $objTemplate->getTemplate($session['logindata'][0]['id']);
@@ -91,8 +91,6 @@ class CallController extends Controller {
         if ($request->isMethod('post')) {
             $objUser = new Template();
             $session = $request->session()->all();
-
-            $session = $request->session()->all();
             $userList = $objUser->addTemplate($request, $session['logindata'][0]['id']);
             if ($userList) {
                 $return['status'] = 'success';
@@ -137,6 +135,8 @@ class CallController extends Controller {
     public function ajaxAction(Request $request) {
         
         $action = $request->input('action');
+        $customerDetails = $this->loginUser;
+
         switch ($action) {
             case 'getSentEmailData':
                 $id = $request->input('data')['id'];
@@ -145,8 +145,9 @@ class CallController extends Controller {
                 exit;
                 break;
             case 'getdatatable':
+                $session = $request->session()->all();
                 $objRtoEmployer = new Calls();
-                $employerLists = $objRtoEmployer->getDatatable($request);
+                $employerLists = $objRtoEmployer->getDatatableV2($request, $customerDetails['system_genrate_no']);
                 echo json_encode($employerLists);
                 break;
             
