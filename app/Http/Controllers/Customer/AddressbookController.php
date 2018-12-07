@@ -23,7 +23,7 @@ class AddressbookController extends Controller {
     
     public function getAddressbookData(Request $request) {
        
-        $order_id=$request->input('customer_id');
+        $order_id=$data['order_id']=$request->input('customer_id');
         $data['detail'] = $this->loginUser;
         $customer_id=$data['detail']['id'];
         $objUser = new Addressbook();
