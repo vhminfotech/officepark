@@ -20,7 +20,6 @@
 
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.customer-number') }}&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.first-name') }}&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.last-name') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.job-title') }}&nbsp;&nbsp;</th>
@@ -32,7 +31,6 @@
                     <tbody>
                         @for($i = 0 ;$i < count($employeeList);$i++)
                         <tr class="c-table__row">
-                            <td class="c-table__cell">{{ $employeeList[$i]->customer_number }}</td>
                             <td class="c-table__cell">{{ $employeeList[$i]->first_name }}</td>
                             <td class="c-table__cell">{{ $employeeList[$i]->last_name }}</td>
                             <td class="c-table__cell">{{ $job_title[$employeeList[$i]->job_title] }}</td>
