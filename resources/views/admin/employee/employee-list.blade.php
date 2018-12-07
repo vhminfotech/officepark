@@ -2,6 +2,7 @@
 @section('content')
 @include('layouts.include.body_header')
 
+
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
     <div class="row u-mb-large">

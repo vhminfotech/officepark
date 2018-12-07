@@ -25,7 +25,8 @@ class EmployeeController extends Controller {
         $userName=$data['customer_id']=$data['detail']['id'];
         
         $objEmployee = new Employee();
-        $data['employeeList'] = $objEmployee->employeeListCustomer($userName);
+        $data['employeeList'] = $objEmployee->employeeList();
+        
         $data['employeeCusList'] = $objEmployee->getemployeeCusList();
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['job_title'] = Config::get('constants.job_title');
@@ -58,7 +59,7 @@ class EmployeeController extends Controller {
                 if ($arrEmployeeDetails == true) {
                     $return['status'] = 'success';
                     $return['message'] = 'Employee add successfully.';
-                    $return['redirect'] = route('employee-customer');
+                    $return['redirect'] = route('employee');
                 }
             } else {
                 $return['status'] = 'error';
@@ -105,7 +106,7 @@ class EmployeeController extends Controller {
             if ($arrEmployeeDetails == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Employee Edit successfully.';
-                $return['redirect'] = route('employee-customer');
+                $return['redirect'] = route('employee');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Email already exists.';

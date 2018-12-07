@@ -31,9 +31,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <input type="hidden" value="{{ $customer_id }}" name="customer_id" id="customer_id">
-<!--                                <label class="c-field__label" for="customer_id">{{ trans('employee.customer-number') }}</label> 
-                                {{ Form::select('customer_id', $arrOrderInfo , null, array('class' => 'c-select', 'id' => 'is_package')) }}-->
+                                
+                                <label class="c-field__label" for="customer_id">{{ trans('employee.customer-number') }}</label> 
+                                {{ Form::select('customer_id', $arrOrderInfo , null, array('class' => 'c-select', 'id' => 'is_package')) }}
                             </div>
                         </div>
                     </div>

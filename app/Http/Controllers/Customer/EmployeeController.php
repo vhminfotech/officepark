@@ -97,6 +97,7 @@ class EmployeeController extends Controller {
         $data['arrOrderInfo'] = $arrOrderInfo1 + $arrOrderInfo;
        
         if ($request->isMethod('post')) {
+           
             $objEmployee = new Employee();
             $employeeId = $objEmployee->saveEmployeeInfo($request);
             if ($employeeId == true) {
