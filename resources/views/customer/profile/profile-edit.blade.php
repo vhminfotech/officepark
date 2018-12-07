@@ -86,6 +86,9 @@
 													<label class="c-choice__label" for="call_transfer_telephone">{{ trans('customer.incoming_telephone')}}</label>
 												</div>
 											</div>
+											<?php 
+
+											 ?>
 											<div class="c-field u-mb-small">
 												<div class="c-choice c-choice--checkbox">
 													<input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" {{ (!empty($customer_info[0]) && $customer_info[0]['call_transfer_mobile_phone']  == '1' ? 'checked="checked"' : '') }}>
@@ -197,14 +200,15 @@
 															<div class="form-group">
 																<div class="c-field has-addon-left">
 																	<label class="c-field__label" for="holidayfrom">{{ trans('customer.holiday_from')}}</label> 
-																	<input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" value="{{ date('d-m-Y',strtotime($customer_info[0]['holiday_global_from'])) }}" name="holidayfrom" type="text" >
+																	<input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" value="{{ (empty($customer_info[0]) ? '' : date('d-m-Y',strtotime($customer_info[0]['holiday_global_from']))) }}" name="holidayfrom" type="text" >
 																</div>
 															</div>
 															<br>
+															
 															<div class="form-group">
 																<div class="c-field has-addon-left">
 																	<label class="c-field__label" for="holidayto">{{ trans('customer.holiday_to')}}</label> 
-																	<input class="c-input form-control" data-toggle="datepicker" id="holidayto" value="{{ date('d-m-Y',strtotime( $customer_info[0]['holiday_global_to'])) }}" name="holidayto" type="text" >
+																	<input class="c-input form-control" data-toggle="datepicker" id="holidayto" value="{{ (empty($customer_info[0]) ? '' : date('d-m-Y',strtotime($customer_info[0]['holiday_global_to']))) }}" name="holidayto" type="text" >
 																</div>
 															</div>
 														</div> 
