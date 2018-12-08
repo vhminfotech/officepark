@@ -44,5 +44,9 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     
     
     Route::match(['get', 'post'], 'customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'Customer\ProfileController@editprofile']);
-
+    
+    Route::match(['get', 'post'], 'customer-plan', ['as' => 'customer-plan', 'uses' => 'Customer\PlanController@planlist']);
+    Route::match(['get', 'post'], 'customer-edit-plan/{id}', ['as' => 'customer-edit-plan', 'uses' => 'Customer\PlanController@editplan']);
+    Route::match(['get', 'post'], 'add-plan-customer', ['as' => 'add-plan-customer', 'uses' => 'Customer\PlanController@addplanlist']);
+    Route::match(['get', 'post'], 'plan-delete', ['as' => 'plan-delete', 'uses' => 'Customer\PlanController@ajaxAction']);
 });

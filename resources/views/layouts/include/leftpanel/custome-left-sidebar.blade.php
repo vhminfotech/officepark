@@ -44,10 +44,17 @@ $currentRoute = Route::current()->getName();
             </li>
             
             <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'customer-edit-plan' || $currentRoute == 'add-plan-customer' || $currentRoute == 'customer-plan'  ? 'is-active' : '') }}"  href="{{ route('customer-plan') }}">
+                    <i class="fa fa-outdent u-mr-xsmall" style="padding-right:6px"></i>Plan &nbsp;
+                </a>
+            </li>
+            
+            <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-edit-profile'  ? 'is-active' : '') }}"  href="{{ route('customer-edit-profile') }}">
                     <i class="fa fa-user-circle u-mr-xsmall" style="padding-right:6px"></i>Profile &nbsp;
                 </a>
             </li>
+            
 <!--            <li class="c-sidebar__item">
                 <a class="c-sidebar__link" href="">
                     <i class="fa fa-user-o u-mr-xsmall"></i>Manage Customer

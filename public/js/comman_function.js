@@ -240,7 +240,6 @@ function ajaxcall(url, data, callback) {
 }
 
 function handleAjaxFormSubmit(form, type) {
-
     if (typeof type === 'undefined') {
         ajaxcall($(form).attr('action'), $(form).serialize(), function (output) {
             handleAjaxResponse(output);
@@ -903,4 +902,25 @@ function get_order() {
     }
 }
 
+
+$(function() 
+{
+    $( "#date" ).datepicker({ format: 'dd.MM.yyyy',autoclose: true });
+    $('#date').datepicker('setDate', new Date());
+    
+    $( "#startdate" ).datepicker({ format: 'dd.MM.yyyy',autoclose: true });
+    $('#startdate').datepicker('setDate', new Date());
+    
+    $( "#enddate" ).datepicker({ format: 'dd.MM.yyyy',autoclose: true });
+    $('#enddate').datepicker('setDate', new Date());
+    
+     $( "#date1" ).datepicker({ format: 'dd.MM.yyyy',autoclose: true });
+   
+    
+    $( "#startdate1" ).datepicker({ format: 'dd.MM.yyyy',autoclose: true });
+   
+    
+    $( "#enddate1" ).datepicker({ format: 'dd.MM.yyyy',autoclose: true });
+    
+});
 /* End manage datatable with Ajax & hide/show column dynamic */
