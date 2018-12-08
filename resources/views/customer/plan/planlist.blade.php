@@ -10,7 +10,6 @@
                 <table class="c-table table-responsive" id="datatable">
                         <caption class="c-table__title" >
                             <div class="row">
-                                
                                 <div class="col-6">
                                         <a href="{{route('add-plan-customer')}}" class="c-btn c-btn--info" >Add New Plan</a>
                                 </div>
@@ -28,7 +27,7 @@
                             </tr>
                         </thead>
                     <tbody>
-                      @for($i=0;$i<count($planlist);$i++)
+                      @for($i=0;$i < count($planlist);$i++)
                       <tr class="c-table__row">
                           <th class="c-table__cell">{{ $planlist[$i]['datetime']  }}</th>
                           <th class="c-table__cell">{{ $plan_message[$planlist[$i]['message']] }}</th>

@@ -129,6 +129,35 @@ return [
         '7' => 'Saturday'
     ],
     
+    'plan_message' => [
+        '1' => 'Hello',
+        '2' => 'Good Morning',
+        '3' => 'Have a nice day',
+        '4' => 'Today is new day',
+        '5' => 'Life is beautiful joureny',
+    ],
+    
+    'plan_status' => [
+        '1' => 'Inreporting',
+        '2' => 'Working',
+        '3' => 'Checking',
+        '4' => 'Completed',
+    ],
+    
+    'plan_mo_no' => [
+        '1' => '123456789',
+        '2' => '789654',
+        '3' => '9727466631',
+        '4' => '8000911185',
+    ],
+    
+    'plan_info' => [
+        '1' => 'I am Parth',
+        '2' => 'I am web developer',
+        '3' => 'I like to work with you',
+        '4' => 'Today is satuerday',
+    ],
+    
     'EmployeePath' => public_path() . '/uploads/employee/',
 ];
 
