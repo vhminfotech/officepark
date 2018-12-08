@@ -19,7 +19,7 @@
                 </a>
                 <div class="c-modal__body" >
                     <div class="o-page">
-                        @include('admin.call.popUp.popUp_page')
+                        @include('customer.call.popUp.popUp_page')
                     </div>
                 </div>
             </div>

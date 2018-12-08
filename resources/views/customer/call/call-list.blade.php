@@ -4,7 +4,7 @@
 
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
-    @include('admin.call.popUp.popUpModel')
+    @include('customer.call.popUp.popUpModel')
     <style>
         #ManageEmployerList td {
             text-align: center;
