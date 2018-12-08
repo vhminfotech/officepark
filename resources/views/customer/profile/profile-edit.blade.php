@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+@php
+ $time = array_keys($arrTime);
+@endphp
 <div class="container-">
 	<div class="row u-mb-large">
 		<div class="col-12">
@@ -86,9 +89,7 @@
 													<label class="c-choice__label" for="call_transfer_telephone">{{ trans('customer.incoming_telephone')}}</label>
 												</div>
 											</div>
-											<?php 
-
-											 ?>
+				
 											<div class="c-field u-mb-small">
 												<div class="c-choice c-choice--checkbox">
 													<input class="c-choice__input" id="call_transfer_mobile_phone" name="call_transfer_mobile_phone" value="1" type="checkbox" {{ (!empty($customer_info[0]) && $customer_info[0]['call_transfer_mobile_phone']  == '1' ? 'checked="checked"' : '') }}>
@@ -145,10 +146,26 @@
 															</div>
 														</div>
 														<div class="col-md-4 u-mb-medium">
-															{{ Form::select('start['.$days[$m].']',$arrTime , null, array('class' => 'c-select', 'id' => 'start['.$days[$m].']')) }}
+                                                                                                                    <select name="{{ 'start['.$days[$m].']' }}" class="c-select" id="{{ 'start['.$days[$m].']' }}">
+                                                                                                                        @php
+                                                                                                                        for($i=0; $i < count($arrTime); $i++ )
+                                                                                                                        {@endphp
+                                                                                                                        <option value="{{ $time[$i] }}"  {{ ($time[$i] == '09:00' ? 'selected="selected"' : '') }} >{{ $time[$i] }}</option>
+                                                                                                                        @php}
+                                                                                                                        @endphp
+                                                                                                                    </select>
+															
 														</div>
 														<div class="col-md-4 u-mb-medium">
-															{{ Form::select('end['.$days[$m].']',$arrTime , null, array('class' => 'c-select', 'id' => 'end['.$days[$m].']')) }}
+                                                                                                                    <select name="{{ 'end['.$days[$m].']' }}" class="c-select" id="{{ 'end['.$days[$m].']' }}">
+                                                                                                                        @php
+                                                                                                                       for($i=0; $i < count($arrTime); $i++ )
+                                                                                                                       {@endphp
+                                                                                                                       <option value="{{ $time[$i] }}" {{ ($time[$i] == '18:00' ? 'selected="selected"' : '') }} >{{ $time[$i] }}</option>
+                                                                                                                       @php}
+                                                                                                                       @endphp
+                                                                                                                    </select>
+															
 														</div>
 													</div>
 													@endfor
@@ -171,10 +188,26 @@
 																</div>
 															</div>
 															<div class="col-md-4 u-mb-medium">
-																{{ Form::select('global_start_time',$arrTime , null, array('class' => 'c-select col-md-2', 'id' => 'global_start_time')) }}
+                                                                                                                            <select name="global_start_time" class="c-select col-md-2" id="global_start_time">
+                                                                                                                                    @php
+                                                                                                                                   for($i=0; $i < count($arrTime); $i++ )
+                                                                                                                                   {@endphp
+                                                                                                                                   <option value="{{ $time[$i] }}" {{ ($time[$i] == '12:00' ? 'selected="selected"' : '') }} >{{ $time[$i] }}</option>
+                                                                                                                                   @php}
+                                                                                                                                   @endphp
+                                                                                                                            </select>
+																
 															</div>
 															<div class="col-md-4 u-mb-medium">
-																{{ Form::select('global_end_time',$arrTime , null, array('class' => 'c-select col-md-2', 'id' => 'global_end_time')) }}
+                                                                                                                            <select name="global_end_time" class="c-select col-md-2" id="global_end_time">
+                                                                                                                                @php
+                                                                                                                               for($i=0; $i < count($arrTime); $i++ )
+                                                                                                                               {@endphp
+                                                                                                                               <option value="{{ $time[$i] }}" {{ ($time[$i] == '14:00' ? 'selected="selected"' : '') }} >{{ $time[$i] }}</option>
+                                                                                                                               @php}
+                                                                                                                               @endphp
+                                                                                                                            </select>
+																
 															</div>
 														</div>   
 													</div>
