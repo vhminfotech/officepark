@@ -131,7 +131,7 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="callbacksms">{{ trans('employee.my-profile') }}</label> 
-                                <select class="c-select" required id="callbacksms" name="my_profile">
+                                <select class="c-input c-select" required id="callbacksms" name="my_profile">
                                     <option value="0">{{ trans('employee.standard') }}</option>
                                 </select>
                             </div>
@@ -316,7 +316,10 @@
     input.has-error {
         border-color: red;
     }
-
+    .has-error .select2,.has-error .select2-selection{
+        color: red !important;
+        border-color: red !important;
+    }
 
 </style>
 

@@ -321,6 +321,11 @@
     input.has-error {
         border-color: red;
     }
+    .has-error .select2,.has-error .select2-selection{
+        color: red !important;
+        border-color: red !important;
+    }
+
 </style>
 
 @endsection

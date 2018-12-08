@@ -66,7 +66,7 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="message">Message</label> 
                                 <!--<input class="c-input" required name="message" id="message" placeholder="message" type="text">-->
-                                <select class="c-input" name="message" id="message" >
+                                <select class="c-select" name="message" id="message" >
                                     <option value="">Select Message</option>
                                     
                                 @for($i=0;$i < count($plan_message); $i++)
@@ -81,7 +81,7 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="status">Status</label> 
                                 <!--<input class="c-input" required name="status" id="status" placeholder="status" type="text">-->
-                                <select class="c-input" name="status" id="status" >
+                                <select class="c-select" name="status" id="status" >
                                     <option value="">Select status</option>
                                     
                                 @for($i=0;$i < count($plan_status); $i++)
@@ -99,7 +99,7 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="number">Number</label> 
                                 <!--<input class="c-input" required name="number" id="number" placeholder="number" type="text">-->
-                                <select class="c-input" name="number" id="number" >
+                                <select class="c-select" name="number" id="number" >
                                     <option value="">Select Number</option>
                                     
                                 @for($i=0;$i < count($plan_mo_no); $i++)
@@ -115,7 +115,7 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="information">Information</label> 
                                 <!--<input class="c-input" required name="information" id="information" placeholder="information" type="text">-->
-                                <select class="c-input" name="information" id="information" >
+                                <select class="c-select " name="information" id="information" >
                                     <option value="">Select Information</option>
                                     
                                 @for($i=0;$i < count($plan_info); $i++)
@@ -151,7 +151,10 @@
     input.has-error {
         border-color: red;
     }
-
+    .has-error .select2,.has-error .select2-selection{
+        color: red !important;
+        border-color: red !important;
+    }
 
 </style>
 

@@ -330,6 +330,9 @@ function handleFormValidate(form, rules, submitCallback, showToaster) {
         highlight: function (element) { // hightlight error inputs
             $(element)
                     .closest('.c-input, .form-control').addClass('has-error'); // set error class to the control group
+            
+            $(element).parent().parent().find('.select2').addClass('has-error');
+            
         },
         unhighlight: function (element) { // revert the change done by hightlight
             $(element)
