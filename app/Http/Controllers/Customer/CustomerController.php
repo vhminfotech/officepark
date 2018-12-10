@@ -19,9 +19,16 @@ class CustomerController extends Controller {
         $this->middleware('customer');
     }
 
-    public function dashboard(){
+    public function dashboard(Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
+        $year = (empty($request->get('year'))) ? '' : $request->get('year');
+        $month = (empty($request->get('month'))) ? '' : $request->get('month');
+        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
+        
+        $data['year'] = $year;
+        $data['month'] = $month;
+        $data['method'] = $method;
         
         $data['plan_message'] = Config::get('constants.plan_message');
         $data['plan_status'] = Config::get('constants.plan_status');
