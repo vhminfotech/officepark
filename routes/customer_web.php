@@ -49,4 +49,9 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-edit-plan/{id}', ['as' => 'customer-edit-plan', 'uses' => 'Customer\PlanController@editplan']);
     Route::match(['get', 'post'], 'add-plan-customer', ['as' => 'add-plan-customer', 'uses' => 'Customer\PlanController@addplanlist']);
     Route::match(['get', 'post'], 'plan-delete', ['as' => 'plan-delete', 'uses' => 'Customer\PlanController@ajaxAction']);
+    
+    
+    Route::match(['get', 'post'], 'customer-outgoing-call', ['as' => 'customer-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@outgoingcalls']);
+    Route::match(['get', 'post'], 'customer-new-outgoing-call', ['as' => 'customer-new-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@addoutgoingcalls']);
+    Route::match(['get', 'post'], 'customer-edit-outgoing-call/{id}', ['as' => 'customer-edit-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@editoutgoingcalls']);
 });

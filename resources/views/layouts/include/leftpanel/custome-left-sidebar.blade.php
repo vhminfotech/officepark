@@ -49,11 +49,20 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             
+             <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'customer-edit-outgoing-call' || $currentRoute == 'customer-new-outgoing-call' || $currentRoute == 'customer-outgoing-call'  ? 'is-active' : '') }}"  href="{{ route('customer-outgoing-call') }}">
+                    <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>Outgoing Calls &nbsp;
+                </a>
+            </li>
+            
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-edit-profile'  ? 'is-active' : '') }}"  href="{{ route('customer-edit-profile') }}">
                     <i class="fa fa-user-circle u-mr-xsmall" style="padding-right:6px"></i>Profile &nbsp;
                 </a>
             </li>
+            
+            
+           
             
 <!--            <li class="c-sidebar__item">
                 <a class="c-sidebar__link" href="">
