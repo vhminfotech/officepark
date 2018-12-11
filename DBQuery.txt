@@ -20,4 +20,10 @@ ALTER TABLE `addressbook` ADD `gender` ENUM('M','F') NOT NULL DEFAULT 'M' AFTER 
 ALTER TABLE `order_info` ADD `status` ENUM('new','viewed') NOT NULL DEFAULT 'new' AFTER `aggrement`; 
 
 
+CREATE TABLE `officepark`.`outgoing_call` ( `id` INT NOT NULL AUTO_INCREMENT , `company_name` VARCHAR(250) NOT NULL , `first_name` INT NOT NULL , `last_name` INT NOT NULL , `gender` INT NOT NULL , `email` INT NOT NULL , `telephone1` BIGINT NOT NULL , `telephone2` BIGINT NULL , `make_call` INT NOT NULL , `date` DATE NOT NULL , `time` VARCHAR(10) NOT NULL , `information` INT NULL , `note` TEXT NOT NULL , `hereby_ask_officepark` INT NOT NULL DEFAULT '0' , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `outgoing_call` CHANGE `first_name` `first_name` VARCHAR(256) NOT NULL, CHANGE `last_name` `last_name` VARCHAR(256) NOT NULL;
+ALTER TABLE `outgoing_call` ADD `customer_id` INT NOT NULL AFTER `id`;
+ALTER TABLE `outgoing_call` CHANGE `gender` `gender` ENUM('M','F') NOT NULL, CHANGE `email` `email` VARCHAR(256) NOT NULL;
+
 

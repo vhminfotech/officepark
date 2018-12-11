@@ -30,7 +30,23 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach($outgoingCall as $row => $val)
+                        <tr class="c-table__row">
+                            <td class="c-table__cell">{{ $val['first_name'] }}</td>
+                            <td class="c-table__cell">{{ $val['last_name'] }}</td>
+                            <td class="c-table__cell"></td>
+                            <td class="c-table__cell"></td>
+                            <td class="c-table__cell">{{ $val['email'] }}</td>
+                            <td class="c-table__cell">
+                                <a href=" {{ route('customer-edit-outgoing-call',$val['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
+                                        <i class="fa fa-edit" ></i></span>
+                                </a>
+                                <a href="javascript:;" class="delete"  data-id="{{ $val['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('employee.delete') }}">
+                                        <i class="fa fa-trash-o"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->
