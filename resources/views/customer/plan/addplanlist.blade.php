@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+@php
+ $time = array_keys($arrTime);
+@endphp
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-6">
@@ -14,6 +17,7 @@
                     </div>
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addplan' )) }}
+                <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <div class="c-stage__panel u-p-medium">
                     
                     <div class="row">
@@ -25,29 +29,53 @@
                         </div>
                     </div>
                     
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="date">Date</label> 
-                                <input class="c-input"  name="date" id="date" placeholder="Date" type="text" required>
-                            </div>
-                        </div>
-                    </div>
+                    
                     
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="startdate">Start Date</label> 
                                 <input class="c-input"  name="startdate" id="startdate" placeholder="Star Date" type="text" required>
                             </div>
                         </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="starttime">Start Time</label> 
+                               
+                                <select name="starttime" class="c-select" id="starttime">
+                                    @php
+                                   for($i=0; $i < count($arrTime); $i++ )
+                                   {@endphp
+                                   <option value="{{ $time[$i] }}"  >{{ $time[$i] }}</option>
+                                   @php}
+                                   @endphp
+                                </select>
+                            </div>
+                        </div>
+                        
                     </div>
                     
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="enddate">End Date</label> 
                                 <input class="c-input"  name="enddate" id="enddate" placeholder="End Date" type="text" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="endtime">End Time</label> 
+                                
+                                <select name="endtime" class="c-select" id="endtime">
+                                    @php
+                                   for($i=0; $i < count($arrTime); $i++ )
+                                   {@endphp
+                                   <option value="{{ $time[$i] }}"  >{{ $time[$i] }}</option>
+                                   @php}
+                                   @endphp
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -92,7 +120,15 @@
                         </div>
                     </div>
                     
-                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="number">Transefer Telephone Number</label> 
+                                <input class="c-input" required name="transfercall" id="transfercall" placeholder="Transefer Telephone Number" type="text">
+                                
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="row">
                         <div class="col-lg-12">

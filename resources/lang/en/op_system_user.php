@@ -41,7 +41,7 @@ return[
     'Orders'=>'Orders',
     'Addressbook'=>'Addressbook',
     'Service'=>'Support',
-    
+    'Outgoingcalls'=>'Outgoingcalls',
     
     // Edit user 
     'edit_user'=>'Edit System User',

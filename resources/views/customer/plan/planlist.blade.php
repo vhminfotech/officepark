@@ -7,20 +7,29 @@
     <div class="row u-mb-large">
         <div class="col-12">
             <div c-table-responsive>
-                <table class="c-table table-responsive" id="datatable">
-                        <caption class="c-table__title" >
+                <table class="c-table " id="datatable">
+                        <caption class="c-table__title">
                             <div class="row">
-                                <div class="col-6">
+                                <div class=" col-lg-offset-4 col-lg-4">    
+                                </div>
+                                <div class=" col-lg-offset-5 col-lg-5">    
+                                </div>
+                                <div class="pull-right">
                                         <a href="{{route('add-plan-customer')}}" class="c-btn c-btn--info" >Add New Plan</a>
                                 </div>
                             </div>
                         </caption>
 
+
                         <thead class="c-table__head c-table__head--slim" style="">
                             <tr class="c-table__row">
-                                <th class="c-table__cell c-table__cell--head" style="">Date - Time &nbsp;&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head" style="">Start Date&nbsp;&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head" style="">Start Time&nbsp;&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head" style="">End Date&nbsp;&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head" style="">End Time&nbsp;&nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Message &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Status &nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">Transfer telephone No &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Phone No &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Information &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
@@ -29,9 +38,14 @@
                     <tbody>
                       @for($i=0;$i < count($planlist);$i++)
                       <tr class="c-table__row">
-                          <th class="c-table__cell">{{ $planlist[$i]['datetime']  }}</th>
+                          <th class="c-table__cell">{{ $planlist[$i]['start_date'] }}</th>
+                          <th class="c-table__cell">{{ $planlist[$i]['start_time'] }}</th>
+                          <th class="c-table__cell">{{ $planlist[$i]['end_date'] }}</th>
+                          <th class="c-table__cell">{{ $planlist[$i]['end_time'] }}</th>
                           <th class="c-table__cell">{{ $plan_message[$planlist[$i]['message']] }}</th>
+                          
                           <th class="c-table__cell">{{ $plan_status[$planlist[$i]['status']] }}</th>
+                          <th class="c-table__cell">{{ $planlist[$i]['transfer_call_no'] }}</th>
                           <th class="c-table__cell">{{ $plan_mo_no[$planlist[$i]['phoneno']] }}</th>
                           <th class="c-table__cell">{{ $plan_info[$planlist[$i]['information']]}}</th>
                           <td class="c-table__cell">

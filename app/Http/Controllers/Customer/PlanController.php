@@ -45,7 +45,7 @@ class PlanController extends Controller {
     public function addplanlist(Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
-        
+        $data['arrTime'] = Config::get('constants.arrTime');
         $data['plan_message'] = Config::get('constants.plan_message');
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
@@ -77,7 +77,7 @@ class PlanController extends Controller {
     public function editplan($id,Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
-        
+        $data['arrTime'] = Config::get('constants.arrTime');
         $data['plan_message'] = Config::get('constants.plan_message');
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
@@ -86,6 +86,7 @@ class PlanController extends Controller {
         $data['editplan']=$objcustomeplan->editplanlist($id); 
         
         if ($request->isMethod('post')) {
+            
                 $objcustomeplan = new Customer_plan;
                 $editplan=$objcustomeplan->editsaveplanlist($request); 
 

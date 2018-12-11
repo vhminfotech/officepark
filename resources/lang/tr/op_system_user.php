@@ -39,7 +39,7 @@ return[
     'Orders'=>"Sipariş",
     'Addressbook'=>"Adres defteri",
     'Service'=>"Destekleyen",
-    
+    'Outgoingcalls'=>'Outgoingcalls',
     //edit user
     'edit_user'=>'Sistem kullanıcısı düzenle',
     

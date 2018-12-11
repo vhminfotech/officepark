@@ -41,6 +41,7 @@ return[
     'Orders'=>"Bestellungen",
     'Addressbook'=>"Addressbook",
     'Service'=>"Unterstützung",
+    'Outgoingcalls'=>'Outgoingcalls',
     // Edit user
     'edit_user'=>'System Benutzer bearbeiten',
     

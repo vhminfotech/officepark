@@ -28,7 +28,6 @@ class LoginController extends Controller {
     }
 
     public function checkAuth(Request $request) {
-
         if (auth()->guard('admin')->user()) {
             return redirect()->route('admin-dashboard');
         } else if (auth()->guard('customer')->user()) {

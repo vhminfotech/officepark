@@ -1,44 +1,40 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
-use App\Model\Addressbook;
-use App\Model\Customer;
-use App\Model\Users;
-use App\Model\Invoice;
-use App\Model\Calls;
-use App\Model\Customer_plan;
-use App\Model\Customer_info;
-use App\Model\Customer_details;
-use App\Model\OrderInfo;
+use App\Http\Controllers\Controller;
 use Auth;
 use Route;
 use Illuminate\Http\Request;
+use App\Model\Employee;
+use App\Model\EmployeeDetails;
+use App\Model\OrderInfo;
+use App\Model\Users;
 use Config;
+//use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//use Illuminate\Http\Request;
 
-class OutgoingCallsController extends Controller {
+class OutgoingcallsController extends Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->middleware('customer');
+
+        $this->middleware('admin');
     }
-  
     
-    public function outgoingcalls(Request $request){
-        
-        $data['detail'] = $this->loginUser;
+    public function outgoingcall(Request $request){
+       $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
         $data['css'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array();
         $data['funinit'] = array();
         
-        return view('customer.outgoingcalls.outgoingcalls', $data);
+        return view('admin.outgoingcalls.outgoingcalls', $data);
     }
     
-    public function addoutgoingcalls(Request $request){
+    public function newoutgoingcall(Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
         $data['gender'] = Config::get('constants.gender');
@@ -51,7 +47,6 @@ class OutgoingCallsController extends Controller {
         $data['js'] = array('customer/outgoingcalls.js');
         $data['funinit'] = array('Outgoingcalls.init()');
         
-        return view('customer.outgoingcalls.addoutgoingcalls', $data);
+        return view('admin.outgoingcalls.addoutgoingcalls', $data);
     }
-    
 }

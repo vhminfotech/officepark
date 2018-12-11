@@ -53,5 +53,5 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     
     Route::match(['get', 'post'], 'customer-outgoing-call', ['as' => 'customer-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@outgoingcalls']);
     Route::match(['get', 'post'], 'customer-new-outgoing-call', ['as' => 'customer-new-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@addoutgoingcalls']);
-    Route::match(['get', 'post'], 'customer-edit-outgoing-call/{id}', ['as' => 'customer-edit-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@editoutgoingcalls']);
+    
 });

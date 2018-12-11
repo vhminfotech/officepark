@@ -14,9 +14,7 @@
                             <div class="col-6">
                                     <a href="{{route('customer-new-outgoing-call')}}" class="c-btn c-btn--info" >New Outgoing Calls</a>
                             </div>
-                            <div class="col-5">
-                                    <a href="{{route('customer-edit-outgoing-call','1')}}" class="c-btn c-btn--info" >Edit Outgoing Calls</a>
-                            </div>
+                           
                         </div>
                     </caption>
                     

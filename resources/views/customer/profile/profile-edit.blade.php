@@ -38,7 +38,7 @@
 									<div class="c-field u-mb-small">
 										<label class="c-field__label"  for="select1">{{ trans('customer.package')}}</label>
 
-										<select class="c-select" id="select1" name="pacet">
+                                                                                <select class="c-select" id="select1" name="pacet" disabled="disabled">
 											<option value="">Select Packages</option>
 											@foreach($getServiceName as $value)
 											<option value="{{$value->id}}" {{ ($value->id == $arrCustomer['is_package'] ? 'selected="selected"' : '') }}>

@@ -18,4 +18,5 @@ return [
     'Service' => 'OP Hizmetleri',
     'Employee' => 'Çalışan',
     'system-mail'   => 'Sistem Mailleri',
+    'Outgoingcalls'=>'Outgoingcalls',
 ];

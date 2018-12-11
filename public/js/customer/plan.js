@@ -1,8 +1,8 @@
 var Plan = function(){
     var planlist=function(){
+        
         var form = $('#addplan');
         var rules = {
-            date: {required: true},
             startdate: {required: true},
             enddate: {required: true},
             message: {required: true},
@@ -10,6 +10,7 @@ var Plan = function(){
             number: {required: true},
             information: {required: true},
             note: {required: true},
+            transfercall:{required: true}
         };
          handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
@@ -42,6 +43,7 @@ var Plan = function(){
     };
     
     var editplan=function(){
+        
         var form = $('#editplan');
         var rules = {
             date: {required: true},

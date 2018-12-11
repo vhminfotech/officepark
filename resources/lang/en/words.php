@@ -17,4 +17,5 @@ return [
     'Service' => 'OP Services',
     'Calls' => 'Calls',
     'system-mail'   => 'System Mail',
+    'Outgoingcalls'=>'Outgoingcalls',
 ];

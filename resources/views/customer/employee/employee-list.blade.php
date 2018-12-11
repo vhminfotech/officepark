@@ -11,7 +11,11 @@
                    
                     <caption class="c-table__title">
                         <div class="row">
-                            <div class="col-6">
+                             <label>Employee List</label>
+                             <div class=" col-lg-offset-7 col-lg-7">
+                                 <div class="c-field u-mb-small"></div>
+                             </div>
+                            <div class="right">
                                     <a href="{{route('employee-add-customer')}}" class="c-btn c-btn--info" >{{ trans('employee.add-new-employee') }}</a>
                             </div>
                         </div>
@@ -64,5 +68,10 @@
     */    .left {
         float: right;
     }
+
+    .c-table__title .c-tooltip{
+        position: absolute;
+    }
+
 </style>
 @endsection

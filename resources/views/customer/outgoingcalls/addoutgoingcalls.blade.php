@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+@php
+ $time = array_keys($arrTime);
+@endphp
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
@@ -13,7 +16,8 @@
                         <h6 class="u-mb-zero">Add Outgoing Calls</h6>
                     </div>
                 </div>
-                <form name="add-outgoing-call" id="addoutgoingcalls" action="{{ route('customer-new-outgoing-call') }}" method="post">
+                {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addoutgoingcalls' )) }}
+                
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-6 col-lg-offset-6">
@@ -133,8 +137,14 @@
                                     <div class="col-lg-6">
                                         <div class="c-field u-mb-small">
                                             <label class="c-field__label" for="time">Time</label> 
-                                            <input class="c-input" name="firstname" id="firstname" placeholder="First Name" type="text">
-                                            
+                                            <select name="starttime" class="c-select" id="starttime">
+                                                @php
+                                               for($i=0; $i < count($arrTime); $i++ )
+                                               {@endphp
+                                               <option value="{{ $time[$i] }}"  >{{ $time[$i] }}</option>
+                                               @php}
+                                               @endphp
+                                            </select>
                                         </div>
                                      </div>
                                 </div>
@@ -185,7 +195,7 @@
                             </div> 
                         </div>
                     </div>
-                </form>
+               {{ Form::close() }}
             </article>
         </div>
     </div>

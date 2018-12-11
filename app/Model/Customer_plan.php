@@ -20,12 +20,14 @@ class Customer_plan extends Model {
     
     public function addplanlist($request){
             $objUser = new Customer_plan();
-            $objUser->customer_id = $request->input('customer_id');
-            $objUser->datetime = date('Y-m-d',  strtotime($request->input('date')));
+            $objUser->customer_id = $request->input('customer_id');            
             $objUser->start_date =date('Y-m-d',  strtotime($request->input('startdate'))); 
             $objUser->end_date = date('Y-m-d',  strtotime($request->input('enddate')));
+            $objUser->start_time = $request->input('starttime');
+            $objUser->end_time = $request->input('endtime');
             $objUser->message = $request->input('message');
             $objUser->status = $request->input('status');
+            $objUser->transfer_call_no = $request->input('transfercall');
             $objUser->phoneno = $request->input('number');
             $objUser->information = $request->input('information');
             $objUser->Note = $request->input('note');
@@ -44,13 +46,17 @@ class Customer_plan extends Model {
     
 
     public function editsaveplanlist($request){
+      
         $id=$request->input('id');
         $objEditUser = Customer_plan::find($id);
-        $objEditUser->datetime = $request->input('date');
-        $objEditUser->start_date = $request->input('startdate');
-        $objEditUser->end_date = $request->input('enddate');
+        
+        $objEditUser->start_date = date('Y-m-d',  strtotime($request->input('startdate'))); 
+        $objEditUser->end_date = date('Y-m-d',  strtotime($request->input('enddate'))); 
+        $objEditUser->start_time = $request->input('starttime');
+        $objEditUser->end_time = $request->input('endtime');
         $objEditUser->message = $request->input('message');
         $objEditUser->status = $request->input('status');
+        $objEditUser->transfer_call_no = $request->input('transfercall');
         $objEditUser->phoneno = $request->input('number');
         $objEditUser->information = $request->input('information');
         $objEditUser->Note = $request->input('note');
