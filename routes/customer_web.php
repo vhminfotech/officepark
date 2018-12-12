@@ -40,8 +40,8 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-send-email', ['as' => 'customer-send-email', 'uses' => 'Customer\CallController@sendMail']);
     Route::match(['get', 'post'], 'customer-send-email-bigpopup', ['as' => 'customer-send-email-bigpopup', 'uses' => 'Customer\CallController@sendMailbigPopup']);
     Route::match(['get', 'post'], 'customer-add-template', ['as' => 'customer-add-template', 'uses' => 'Customer\CallController@addTempate']);
-    Route::match(['get', 'post'], 'customer-calls-ajaxAction', ['as' => 'customer-ajaxAction', 'uses' => 'Customer\CallController@ajaxAction']);
-    
+    Route::match(['get', 'post'], 'customer-calls-ajaxAction', ['as' => 'customer-ajaxAction', 'uses' => 'Customer\CallController@ajaxAction']); 
+
     
     Route::match(['get', 'post'], 'customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'Customer\ProfileController@editprofile']);
     
@@ -54,4 +54,6 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-outgoing-call', ['as' => 'customer-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@outgoingcalls']);
     Route::match(['get', 'post'], 'customer-new-outgoing-call', ['as' => 'customer-new-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@addoutgoingcalls']);
     Route::match(['get', 'post'], 'customer-edit-outgoing-call/{id}', ['as' => 'customer-edit-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@editoutgoingcalls']);
+    Route::match(['get', 'post'], 'outgoingcalls-ajaxAction', ['as' => 'outgoingcalls-ajaxAction', 'uses' => 'Customer\OutgoingCallsController@ajaxAction']);
+
 });

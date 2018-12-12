@@ -38,8 +38,8 @@ class OutgoingCallsController extends Controller {
      
         $data['css'] = array();
         $data['pluginjs'] = array();
-        $data['js'] = array();
-        $data['funinit'] = array();
+        $data['js'] = array('customer/outgoingcalls.js');
+        $data['funinit'] = array('Outgoingcalls.init()');
         
         return view('customer.outgoingcalls.outgoingcalls', $data);
     }
@@ -106,4 +106,14 @@ class OutgoingCallsController extends Controller {
         return view('customer.outgoingcalls.addoutgoingcalls', $data);
     }
     
+    public function ajaxAction(Request $request) {
+        $action = $request->input('action');
+
+        switch ($action) {
+            case 'deleteOutgoingcalls':
+            $objCalls = new OutgoingCalls();
+            $result = $objCalls->outgoingDelete($request->input('data'));
+            break;
+        }
+    }
 }
