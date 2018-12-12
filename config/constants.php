@@ -154,6 +154,17 @@ return [
         '7' => 'Call back in the next 60 Minutes',
         '8' => 'Call back in the next 30 minutes',
     ],
+    'plan_mo_no'=>[
+      '1'=>'12334567',
+      '2'=>'12334567',
+      '3'=>'12334567',
+    ],
+    
+    'plan_info'=>[
+      '1'=>'ABCDEF',
+      '2'=>'PQRSTU',
+      '3'=>'MNOPQRST',
+    ],
     'EmployeePath' => public_path() . '/uploads/employee/',
 ];
 
