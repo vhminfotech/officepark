@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => 'addoutgoingcalls','files' => true, 'id' => 'addoutgoingcalls' )) }}
-                
+               
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-6 col-lg-offset-6">
@@ -44,7 +44,7 @@
                                     <select class="c-select" id="select1" name="gender" required>
                                         <!--<option>choose an option</option>-->
                                         @foreach ($gender as $indexkey=>$val)
-                                        <option {{ ($callList['gender'] == $indexkey) ? 'checked="checked"' : ''  }}  value="{{$indexkey}}">{{$val}}</option>
+                                        <option {{ (isset($callList['gender']) && $callList['gender'] == $indexkey) ? 'checked="checked"' : ''  }}  value="{{$indexkey}}">{{$val}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -129,6 +129,7 @@
                                             
                                         </div>
                                     </div>
+                                 
                                     <div class="col-lg-6">
                                         <div class="c-field u-mb-small">
                                             <label class="c-field__label" for="time">Time</label> 
@@ -136,14 +137,14 @@
                                             @php
                                                for($i=0; $i < count($arrTime); $i++ )
                                                {@endphp
-                                               <option {{ ($callList['time'] == $time[$i] ? 'selected="selected"' : '') }} value="{{ $time[$i] }}"  >{{ $time[$i] }}</option>
+                                               <option {{ ( !empty($callList) && $callList['time'] == $time[$i] ? 'selected="selected"' : '') }} value="{{ $time[$i] }}"  >{{ $time[$i] }}</option>
                                                @php}
                                             @endphp
                                             </select>
                                         </div>
                                      </div>
                                 </div>
-                                
+                                   
                             </div>
                         </div>
                         
@@ -153,20 +154,20 @@
                                     <label class="c-field__label" for="information">Information</label> 
                                     <select class="c-select" name="information" id="information" required>
                                         <option value="">Information </option>
-                                        <option {{ ($callList['information'] == 1 ? 'selected="selected"' : '') }} value="1">Information Mittleilen</option>
-                                        <option {{ ($callList['information'] == 2 ? 'selected="selected"' : '') }} value="2">Terminvereinbarung</option>
-                                        <option {{ ($callList['information'] == 3 ? 'selected="selected"' : '') }} value="3">Bestellung aufnehmen</option>
-                                        <option {{ ($callList['information'] == 4 ? 'selected="selected"' : '') }} value="4">Aurufer durchsteller</option>
+                                        <option {{ (!empty($callList) && $callList['information'] == 1 ? 'selected="selected"' : '') }} value="1">Information Mittleilen</option>
+                                        <option {{ (!empty($callList) && $callList['information'] == 2 ? 'selected="selected"' : '') }} value="2">Terminvereinbarung</option>
+                                        <option {{ (!empty($callList) && $callList['information'] == 3 ? 'selected="selected"' : '') }} value="3">Bestellung aufnehmen</option>
+                                        <option {{ (!empty($callList) && $callList['information'] == 4 ? 'selected="selected"' : '') }} value="4">Aurufer durchsteller</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        
+                       
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="note">Note</label> 
-                                    <textarea rows="2"  class="c-input" cols="50" name="note" required>{{ $callList['note'] }}</textarea>
+                                    <textarea rows="2"  class="c-input" cols="50" name="note" required>{{ (isset($callList) ? $callList['note'] : '') }}</textarea>
                                      
                                 </div>
                             </div>
@@ -175,13 +176,12 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="c-choice c-choice--checkbox">
-                                    <input class="c-choice__input" {{ ($callList['hereby_ask_officepark'] == 1 ? "checked='checked'" : '') }} value="1" id="hereby" name="hereby" type="checkbox" required>
+                                    <input class="c-choice__input" {{ (isset($callList) && $callList['hereby_ask_officepark'] == 1 ? "checked='checked'" : '') }} value="1" id="hereby" name="hereby" type="checkbox" required>
                                     <label class="c-choice__label" for="hereby">I hereby ask officepark GBR to make the call on my behalf.</label>
                                 </div>
                             </div>
-                            
                         </div>
-                      
+                     
                         <div class="c-field u-mb-small left">
                             <div class="col-mg-3">
                                 <input class="c-btn c-btn--info " value="{{ (!empty($callList) ? 'Edit' : 'Add') }} Outgoing call" type="submit">&nbsp;&nbsp;
