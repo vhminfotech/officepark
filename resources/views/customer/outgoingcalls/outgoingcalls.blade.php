@@ -36,7 +36,7 @@
                       @for($i=0;$i < count($outgoingCall);$i++)
                       <tr class="c-table__row">
                           <th class="c-table__cell">{{ $outgoingCall[$i]['first_name'] }}</th>
-                          <th class="c-table__cell">{{ $outgoingCall[$i]['start_time'] }}</th>
+                          <th class="c-table__cell">{{ $outgoingCall[$i]['last_name'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['company_name'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['telephone1'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['email'] }}</th>
