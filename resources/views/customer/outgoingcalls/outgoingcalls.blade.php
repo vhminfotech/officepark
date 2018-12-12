@@ -32,7 +32,26 @@
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
-
+                    <tbody>
+                      @for($i=0;$i < count($outgoingCall);$i++)
+                      <tr class="c-table__row">
+                          <th class="c-table__cell">{{ $outgoingCall[$i]['first_name'] }}</th>
+                          <th class="c-table__cell">{{ $outgoingCall[$i]['start_time'] }}</th>
+                          <th class="c-table__cell">{{ $outgoingCall[$i]['company_name'] }}</th>
+                          <th class="c-table__cell">{{ $outgoingCall[$i]['telephone1'] }}</th>
+                          <th class="c-table__cell">{{ $outgoingCall[$i]['email'] }}</th>
+                          
+                          <td class="c-table__cell">
+                                <a href=" {{ route('customer-edit-outgoing-call',$outgoingCall[$i]['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
+                                        <i class="fa fa-edit" ></i></span>
+                                </a>
+                                <a href="javascript:;" class="delete"  data-token="{{ csrf_token() }}" data-id="{{ $outgoingCall[$i]['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('employee.delete') }}">
+                                        <i class="fa fa-trash-o"></i></span>
+                                </a>
+                            </td>
+                      </tr>
+                      @endfor
+                    </tbody>
                 </table>
             </div><!-- // .col-12 -->
         </div>

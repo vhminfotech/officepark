@@ -75,7 +75,7 @@
                                 <select class="c-select" name="message" id="message" >
                                     <option value="">Select Message</option>
                                     
-                                @for($i=0;$i < count($plan_message); $i++)
+                                @for($i=0;$i < count ($plan_message); $i++)
                                 <option value="{{ $i+1 }}">{{ $plan_message[$i+1] }}</option>
                                 @endfor
                                 </select>

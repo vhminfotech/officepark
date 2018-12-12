@@ -58,9 +58,9 @@ class OutgoingCalls extends Model {
             return $objCalls->id;
         }
       public function getOutgoingList($customerNo) {
+          
         $sql = OutgoingCalls::leftjoin('users', 'users.id', '=', 'outgoing_call.customer_id');
-        $sql->where('users.id', $customerNo);
-        $sql->where('users.type', 'CUSTOMER');
+        $sql->where('outgoing_call.customer_id', $customerNo);
         $result = $sql->get(['outgoing_call.*',
             'users.name as agentName'
         ]);
