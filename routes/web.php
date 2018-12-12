@@ -52,8 +52,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'system-user-delete', ['as' => 'system-user-delete', 'uses' => 'Admin\SystemuserController@deleteUser']);
     Route::match(['get', 'post'], 'outgoing-call', ['as' => 'outgoing-call', 'uses' => 'Admin\OutgoingcallsController@outgoingcall']);
     Route::match(['get', 'post'], 'new-outgoing-call', ['as' => 'new-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@newoutgoingcall']);
-     Route::match(['get', 'post'], 'edit-outgoing-call/{id}', ['as' => 'edit-outgoing-call', 'uses' => 'Admin\OutgoingCallsController@editoutgoingcalls']);
-     Route::match(['get', 'post'], 'outgoingcalls-ajaxAction', ['as' => 'outgoingcalls-ajaxAction', 'uses' => 'Admin\OutgoingCallsController@ajaxAction']);
+     Route::match(['get', 'post'], 'edit-outgoing-call/{id}', ['as' => 'edit-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@editoutgoingcalls']);
+     Route::match(['get', 'post'], 'outgoingcalls-ajaxAction', ['as' => 'outgoingcalls-ajaxAction', 'uses' => 'Admin\OutgoingcallsController@ajaxAction']);
     
     Route::match(['get', 'post'], 'customer-list', ['as' => 'customer-list', 'uses' => 'Admin\CustomerController@getCustomerData']);
     Route::match(['get', 'post'], 'customer-add', ['as' => 'customer-add', 'uses' => 'Admin\CustomerController@addCustomer']);
