@@ -24,6 +24,7 @@
 
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
+                            <th class="c-table__cell c-table__cell--head" style="">{{ trans('calls.datetime') }}&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.first-name') }}&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.last-name') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('contect.company-name') }}&nbsp;&nbsp;</th>
@@ -35,6 +36,7 @@
                     <tbody>
                       @for($i=0;$i < count($outgoingCall);$i++)
                       <tr class="c-table__row">
+                          <th class="c-table__cell">{{ date('d.m.Y',strtotime($outgoingCall[$i]['date'])) }} / {{ $outgoingCall[$i]['time'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['first_name'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['last_name'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['company_name'] }}</th>
