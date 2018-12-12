@@ -66,6 +66,7 @@ class OutgoingCallsController extends Controller {
             echo json_encode($return);
             exit;
         }
+        
         $data['css'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('customer/outgoingcalls.js');
