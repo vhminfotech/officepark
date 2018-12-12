@@ -66,6 +66,17 @@ class OutgoingCalls extends Model {
         ]);
         return $result;
     }
+    
+    
+    public function OutgoingList() {
+        $sql = OutgoingCalls::leftjoin('users', 'users.id', '=', 'outgoing_call.customer_id');
+        $sql->where('users.type', 'CUSTOMER');
+        $result = $sql->get(['outgoing_call.*',
+            'users.name as agentName'
+        ]);
+        return $result;
+    }
+    
 
  public function outgoingDelete($postData) {
        

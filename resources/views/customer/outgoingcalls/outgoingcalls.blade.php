@@ -8,15 +8,18 @@
         <div class="col-12">
             <div c-table-responsive>
                 <table class="c-table table-responsive" id="datatable">
-                   
-                    <caption class="c-table__title">
+                   <caption class="c-table__title">
                         <div class="row">
-                            <div class="col-6">
+                             <label>Outgoing Calls List</label>
+                             <div class=" col-lg-offset-7 col-lg-7">
+                                 <div class="c-field u-mb-small"></div>
+                             </div>
+                            <div class="right">
                                     <a href="{{route('customer-new-outgoing-call')}}" class="c-btn c-btn--info" >New Outgoing Calls</a>
                             </div>
-                           
                         </div>
                     </caption>
+                    
                     
 
                     <thead class="c-table__head c-table__head--slim" style="">
@@ -29,25 +32,7 @@
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach($outgoingCall as $row => $val)
-                        <tr class="c-table__row">
-                            <td class="c-table__cell">{{ $val['first_name'] }}</td>
-                            <td class="c-table__cell">{{ $val['last_name'] }}</td>
-                            <td class="c-table__cell">{{ $val['company_name'] }}</td>
-                            <td class="c-table__cell">{{ $val['telephone1'] }}</td>
-                            <td class="c-table__cell">{{ $val['email'] }}</td>
-                            <td class="c-table__cell">
-                                <a href=" {{ route('customer-edit-outgoing-call',$val['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
-                                        <i class="fa fa-edit" ></i></span>
-                                </a>
-                                <a href="#deleteModel" class="delete" data-href=""   data-id="{{ $val['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('employee.delete') }}">
-                                        <i class="fa fa-trash-o"></i></span>
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
+
                 </table>
             </div><!-- // .col-12 -->
         </div>

@@ -12,9 +12,11 @@ class Customer_plan extends Model {
     protected $table = 'customer_plan';
     
     public function planlist($id){
-        $result= Customer_plan :: select('*')
-                ->where('customer_id',$id)
-                ->get()->toarray();
+        
+        $result= Customer_plan ::join('employee', 'employee.id', '=', 'customer_plan.employee')
+               ->where('customer_plan.customer_id',$id)
+               ->get(['customer_plan.*','employee.first_name','employee.last_name'])->toarray();
+
         return $result;
     }
     
@@ -25,11 +27,12 @@ class Customer_plan extends Model {
             $objUser->end_date = date('Y-m-d',  strtotime($request->input('enddate')));
             $objUser->start_time = $request->input('starttime');
             $objUser->end_time = $request->input('endtime');
-            $objUser->message = $request->input('message');
+            
             $objUser->status = $request->input('status');
+            $objUser->message = $request->input('message');
             $objUser->transfer_call_no = $request->input('transfercall');
-            $objUser->phoneno = $request->input('number');
-            $objUser->information = $request->input('information');
+            $objUser->responsibilty = $request->input('responsibility');
+            $objUser->employee = $request->input('employee');
             $objUser->Note = $request->input('note');
             $objUser->created_at = date('Y-m-d H:i:s');
             $objUser->updated_at = date('Y-m-d H:i:s');
@@ -57,8 +60,8 @@ class Customer_plan extends Model {
         $objEditUser->message = $request->input('message');
         $objEditUser->status = $request->input('status');
         $objEditUser->transfer_call_no = $request->input('transfercall');
-        $objEditUser->phoneno = $request->input('number');
-        $objEditUser->information = $request->input('information');
+        $objEditUser->responsibilty = $request->input('responsibility');
+        $objEditUser->employee = $request->input('employee');
         $objEditUser->Note = $request->input('note');
         $objEditUser->updated_at = date('Y-m-d H:i:s');
         

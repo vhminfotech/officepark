@@ -110,7 +110,7 @@ $roles  = array_values($roles);
             
              @if($logindata[0]['id'] == 1 ||  in_array('Outgoingcalls', $roles))
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'new-outgoing-call' || $currentRoute == 'outgoing-call' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('outgoing-call') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'edit-outgoing-call' || $currentRoute == 'new-outgoing-call' || $currentRoute == 'outgoing-call' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('outgoing-call') }}">
                     <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>
                     {{ trans('words.Outgoingcalls') }} &nbsp;
                 </a>

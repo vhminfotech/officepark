@@ -88,22 +88,6 @@
             <article class="c-stage">
                 <div class="c-stage__panel u-p-medium">
                     
-                    
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="message">Message</label> 
-                                <!--<input class="c-input" required name="message" id="message" placeholder="message" type="text">-->
-                                <select class="c-select" name="message" id="message" >
-                                    <option value="">Select Message</option>
-                                    
-                                @for($i=0;$i < count($plan_message); $i++)
-                                <option value="{{ $i+1 }}">{{ $plan_message[$i+1] }}</option>
-                                @endfor
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
@@ -123,6 +107,23 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="message">If they are not reachable ,we should inform caller of the soft message</label> 
+                                <!--<input class="c-input" required name="message" id="message" placeholder="message" type="text">-->
+                                <select class="c-select" name="message" id="message" >
+                                    <option value="">Select Message</option>
+                                    
+                                @for($i=0;$i < count($msg); $i++)
+                                <option value="{{ $i+1 }}">{{ $msg[$i+1] }}</option>
+                                @endfor
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="number">Transefer Telephone Number</label> 
                                 <input class="c-input" required name="transfercall" id="transfercall" placeholder="Transefer Telephone Number" type="text">
                                 
@@ -133,13 +134,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="number">Number</label> 
+                                <label class="c-field__label" for="number">Responsibility</label> 
                                 <!--<input class="c-input" required name="number" id="number" placeholder="number" type="text">-->
-                                <select class="c-select" name="number" id="number" >
-                                    <option value="">Select Number</option>
+                                <select class="c-select" name="responsibility" id="responsibility" >
+                                    <option value="">Select Responsibility</option>
                                     
-                                @for($i=0;$i < count($plan_mo_no); $i++)
-                                <option value="{{ $i+1 }}">{{ $plan_mo_no[$i+1] }}</option>
+                                @for($i=0;$i < count($responsibility); $i++)
+                                <option value="{{ $i+1 }}">{{ $responsibility[$i+1] }}</option>
                                 @endfor
                                 </select>
                             </div>
@@ -149,13 +150,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="information">Information</label> 
+                                <label class="c-field__label" for="employee">Employee</label> 
                                 <!--<input class="c-input" required name="information" id="information" placeholder="information" type="text">-->
-                                <select class="c-select " name="information" id="information" >
-                                    <option value="">Select Information</option>
+                                <select class="c-select " name="employee" id="employee" >
+                                    <option value="">Select employee</option>
                                     
-                                @for($i=0;$i < count($plan_info); $i++)
-                                <option value="{{ $i+1 }}">{{ $plan_info[$i+1] }}</option>
+                                @for($i=0;$i < count($employessList); $i++)
+                                <option value="{{ $employessList[$i]['id'] }}">{{ $employessList[$i]['first_name'] }} {{ $employessList[$i]['last_name'] }}</option>
                                 @endfor
                                 </select>
                             </div>

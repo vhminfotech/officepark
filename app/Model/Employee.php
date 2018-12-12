@@ -11,6 +11,12 @@ use Config;
 class Employee extends Model {
 
     protected $table = 'employee';
+    
+    public function getemployeeList($id){
+         return Employee::select('first_name','last_name','id')
+                    ->where('customer_id','=',$id)
+                    ->get()->toarray();
+    }
 
     public function saveEmployeeInfo($request) {
 //        print_r($request->input());

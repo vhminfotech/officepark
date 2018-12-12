@@ -17,6 +17,7 @@ use Auth;
 use Route;
 use Illuminate\Http\Request;
 use Config;
+use App\Model\Employee;
 
 class PlanController extends Controller {
     
@@ -31,6 +32,15 @@ class PlanController extends Controller {
         $data['customer_id'] = $data['detail']['id'];
         $objcustomeplan = new Customer_plan;
         $data['planlist']=$objcustomeplan->planlist($data['customer_id']);
+        
+        $data['arrTime'] = Config::get('constants.arrTime');
+        $data['plan_status'] = Config::get('constants.plan_status');
+        $data['msg'] = Config::get('constants.msg');
+        $data['responsibility'] = Config::get('constants.responsibility');
+        $data['call_back_msg'] = Config::get('constants.call_back_msg');
+        $objEmployee=new Employee;
+        $data['employessList']=$objEmployee->getemployeeList($data['customer_id']);
+        
         $data['plan_message'] = Config::get('constants.plan_message');
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
@@ -46,10 +56,12 @@ class PlanController extends Controller {
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
         $data['arrTime'] = Config::get('constants.arrTime');
-        $data['plan_message'] = Config::get('constants.plan_message');
         $data['plan_status'] = Config::get('constants.plan_status');
-        $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
-        $data['plan_info'] = Config::get('constants.plan_info');
+        $data['msg'] = Config::get('constants.msg');
+        $data['responsibility'] = Config::get('constants.responsibility');
+        $data['call_back_msg'] = Config::get('constants.call_back_msg');
+        $objEmployee=new Employee;
+        $data['employessList']=$objEmployee->getemployeeList($data['customer_id']);
         
             if ($request->isMethod('post')) {
                 $objcustomeplan = new Customer_plan;
@@ -77,19 +89,21 @@ class PlanController extends Controller {
     public function editplan($id,Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
+        
         $data['arrTime'] = Config::get('constants.arrTime');
-        $data['plan_message'] = Config::get('constants.plan_message');
         $data['plan_status'] = Config::get('constants.plan_status');
-        $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
-        $data['plan_info'] = Config::get('constants.plan_info');
+        $data['msg'] = Config::get('constants.msg');
+        $data['responsibility'] = Config::get('constants.responsibility');
+        $data['call_back_msg'] = Config::get('constants.call_back_msg');
+        
+        $objEmployee=new Employee;
+        $data['employessList']=$objEmployee->getemployeeList($data['customer_id']);
         $objcustomeplan = new Customer_plan;
         $data['editplan']=$objcustomeplan->editplanlist($id); 
         
         if ($request->isMethod('post')) {
-            
                 $objcustomeplan = new Customer_plan;
                 $editplan=$objcustomeplan->editsaveplanlist($request); 
-
                 if ($editplan) {
                     $return['status'] = 'success';
                     $return['message'] = 'Plan edit successfully.';

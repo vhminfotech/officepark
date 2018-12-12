@@ -144,20 +144,16 @@ return [
         '4' => 'Completed',
     ],
     
-    'plan_mo_no' => [
-        '1' => '123456789',
-        '2' => '789654',
-        '3' => '9727466631',
-        '4' => '8000911185',
+    'msg' => [
+        '1' => 'Rufe zurück am nächsten Tag',
+        '2' => 'Rufe zurück am gleichen Tag',
+        '3' => 'Rufe zurück in den nächsten 60 Minuten',
+        '4' => 'Rufe zurück in den nächsten 30 Minuten',
+        '5' => 'Call back the next day',
+        '6' => 'Call back the same day',
+        '7' => 'Call back in the next 60 Minutes',
+        '8' => 'Call back in the next 30 minutes',
     ],
-    
-    'plan_info' => [
-        '1' => 'I am Parth',
-        '2' => 'I am web developer',
-        '3' => 'I like to work with you',
-        '4' => 'Today is satuerday',
-    ],
-    
     'EmployeePath' => public_path() . '/uploads/employee/',
 ];
 

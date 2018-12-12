@@ -11,6 +11,7 @@ use App\Model\Sendmail;
 use App\Model\OrderInfo;
 use App\Model\Category;
 use App\Model\Service;
+use App\Model\Users;
 use PDF;
 use Config;
 
@@ -30,6 +31,12 @@ class Users extends Model {
         } else {
             $result = Users::whereIn('type', ['AGENT'])->get();
         }
+       
+        return $result;
+    }
+    
+    public function gtCustomerlist(){
+        $result = Users::select('*')->where('type','CUSTOMER')->get();
         return $result;
     }
 
