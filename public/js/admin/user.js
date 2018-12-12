@@ -39,7 +39,17 @@ var Customer = function() {
         });
 
     };
+ var password = function() {
 
+        var form = $('#forgot-password');
+        var rules = {
+            email: {required: true, email: true},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+
+    };
     var edit_customer = function() {
 
         var form = $('#editUser');
@@ -62,6 +72,9 @@ var Customer = function() {
         },
         editInit: function() {
             edit_customer();
+        },
+        forgotInit: function() {
+            password();
         },
     };
 }();

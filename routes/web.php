@@ -20,6 +20,7 @@ Route::match(['get', 'post'], 'home', ['as' => 'home', 'uses' => 'Front\HomeCont
 Route::match(['get', 'post'], 'order', ['as' => 'order', 'uses' => 'Front\OrderController@add']);
 
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'LoginController@auth']);
+Route::match(['get', 'post'], 'forgot-password', ['as' => 'forgot-password', 'uses' => 'LoginController@forgotpassword']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);
 Route::match(['get', 'post'], 'get-order-count', ['as' => 'get-order-count', 'uses' => 'LoginController@getNotification']);
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'LoginController@auth']);

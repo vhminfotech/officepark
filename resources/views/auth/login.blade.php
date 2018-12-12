@@ -81,7 +81,7 @@
 
     <div class="o-line">
         <a class="u-text-mute u-text-small" href="register.html">{{ trans('login.register')}}</a>
-        <a class="u-text-mute u-text-small" href="forgot-password.html">{{ trans('login.forgot_password')}}</a>
+        <a class="u-text-mute u-text-small" href="{{ route('forgot-password') }}">{{ trans('login.forgot_password')}}</a>
     </div>
 </div>
 

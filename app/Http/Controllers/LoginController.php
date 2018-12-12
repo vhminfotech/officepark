@@ -212,4 +212,30 @@ class LoginController extends Controller {
 
     }
 
+     public function forgotpassword(Request $request) {
+
+        if ($request->isMethod('post')) {
+            // print_r($request->input());exit;
+            $objUser = new Users();
+            $getCustomer = $objUser->passwordReset($request->input('email'));
+            if ($getCustomer) {
+                $return['status'] = 'success';
+                $return['message'] = 'Password sent to your e-mail check and login with it';
+                $return['redirect'] = route('login');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = "E-mail does't exists!";
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/user.js');
+        $data['funinit'] = array('Customer.forgotInit()');
+        $data['css'] = array('');
+        return view('auth.passwords.forgot-password', $data);
+    }
+
 }
