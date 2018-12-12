@@ -109,11 +109,11 @@
                         <div class="row">
                             <div class="col-lg-5">
                                 <div class="c-choice c-choice--radio">
-                                    <input class="c-choice__input" {{ (!empty($callList) && $callList['calltime'] !=2 ? "checked='checked'" : '') }} id="calltime" checked="true" value="1" name="calltime" type="radio">
+                                    <input class="c-choice__input" {{ (!empty($callList) && $callList['make_call'] !=2 ? "checked='checked'" : '') }} id="calltime" checked="true" value="1" name="calltime" type="radio">
                                     <label class="c-choice__label" for="calltime" value="1">Call as possibles</label>
                                 </div>
                                 <div class="c-choice c-choice--radio">
-                                    <input class="c-choice__input" {{ (!empty($callList) && $callList['calltime'] == 2 ? "checked='checked'" : '') }} id="calltime2" value="2" name="calltime" type="radio">
+                                    <input class="c-choice__input" {{ (!empty($callList) && $callList['make_call'] == 2 ? "checked='checked'" : '') }} id="calltime2" value="2" name="calltime" type="radio">
                                     <label class="c-choice__label" for="calltime2" value="2">Running the day</label>
                                 </div>
                             </div>
@@ -125,8 +125,7 @@
                                     <div class="col-lg-6">
                                         <div class="c-field u-mb-small">
                                             <label class="c-field__label" for="date">Date</label> 
-                                            <input class="c-input" value="{{ (!empty($callList) ? date('d-m-Y',strtotime($callList['date'])) : '') }}" name="date" id="date" placeholder="date" type="text">
-                                            
+                                            <input class="c-input" value="{{ (!empty($callList) ? date('d.m.Y',strtotime($callList['date'])) : '') }}" name="date" id="date" placeholder="date" type="text">
                                         </div>
                                     </div>
                                  
