@@ -23,8 +23,8 @@
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.first-name') }}&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.last-name') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.job-title') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.responsibility') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('contect.company-name') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('order.telephone') }}1&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.email') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
@@ -34,8 +34,8 @@
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $val['first_name'] }}</td>
                             <td class="c-table__cell">{{ $val['last_name'] }}</td>
-                            <td class="c-table__cell"></td>
-                            <td class="c-table__cell"></td>
+                            <td class="c-table__cell">{{ $val['company_name'] }}</td>
+                            <td class="c-table__cell">{{ $val['telephone1'] }}</td>
                             <td class="c-table__cell">{{ $val['email'] }}</td>
                             <td class="c-table__cell">
                                 <a href=" {{ route('customer-edit-outgoing-call',$val['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
