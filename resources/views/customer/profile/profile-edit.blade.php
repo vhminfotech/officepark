@@ -23,6 +23,7 @@
 									</div>
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<a class="u-block u-color-primary" href="#">{{ trans('customer.edit_avtar')}}</a>
+                                                                        <p >800px * 800px</p>
 								</div>
 								<div class="col-lg-5">
 									<div class="c-field u-mb-small">
@@ -233,7 +234,7 @@
 															<div class="form-group">
 																<div class="c-field has-addon-left">
 																	<label class="c-field__label" for="holidayfrom">{{ trans('customer.holiday_from')}}</label> 
-																	<input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" value="{{ (empty($customer_info[0]) ? '' : date('d-m-Y',strtotime($customer_info[0]['holiday_global_from']))) }}" name="holidayfrom" type="text" >
+																	<input class="c-input form-control"  id="startdate1" value="{{ (empty($customer_info[0]) ? '' : date('d.m.Y',strtotime($customer_info[0]['holiday_global_from']))) }}" name="holidayfrom" type="text" >
 																</div>
 															</div>
 															<br>
@@ -241,7 +242,7 @@
 															<div class="form-group">
 																<div class="c-field has-addon-left">
 																	<label class="c-field__label" for="holidayto">{{ trans('customer.holiday_to')}}</label> 
-																	<input class="c-input form-control" data-toggle="datepicker" id="holidayto" value="{{ (empty($customer_info[0]) ? '' : date('d-m-Y',strtotime($customer_info[0]['holiday_global_to']))) }}" name="holidayto" type="text" >
+																	<input class="c-input form-control"  id="enddate1" value="{{ (empty($customer_info[0]) ? '' : date('d.m.Y',strtotime($customer_info[0]['holiday_global_to']))) }}" name="holidayto" type="text" >
 																</div>
 															</div>
 														</div> 

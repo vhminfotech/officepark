@@ -290,14 +290,14 @@
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
                                                 <label class="c-field__label" for="holidayfrom">{{ trans('employee.holiday-global-from') }}</label> 
-                                                <input class="c-input form-control" value="{{  date('m/d/Y',strtotime($arrEditEmp[0]['holiday_global_from'])) }}" data-toggle="datepicker" id="holidayfrom" name="holidayfrom holiday" type="text" required>
+                                                <input class="c-input form-control" value="{{  date('dd.MM.yyyy',strtotime($arrEditEmp[0]['holiday_global_from'])) }}"  id="startdate1" name="holidayfrom holiday" type="text" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
                                                 <label class="c-field__label" for="holidayto">{{ trans('employee.holiday-global-to') }}</label> 
-                                                <input class="c-input form-control" value="{{ date('m/d/Y',strtotime($arrEditEmp[0]['holiday_global_to'])) }}" data-toggle="datepicker" id="holidayto" name="holidayto holiday" type="text" required>
+                                                <input class="c-input form-control" value="{{ date('dd.MM.yyyy',strtotime($arrEditEmp[0]['holiday_global_to'])) }}"  id="enddate1" name="holidayto holiday" type="text" required>
                                             </div>
                                         </div>
                                     </div> 

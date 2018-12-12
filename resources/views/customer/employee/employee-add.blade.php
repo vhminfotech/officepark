@@ -285,14 +285,14 @@
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
                                                 <label class="c-field__label" for="holidayfrom">{{ trans('employee.holiday-global-from') }}</label> 
-                                                <input class="c-input form-control" data-toggle="datepicker" id="holidayfrom" name="holidayfrom" type="text" required>
+                                                <input class="c-input form-control"  id="startdate1" name="holidayfrom" type="text" required>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <div class="c-field has-addon-left">
                                                 <label class="c-field__label" for="holidayto">{{ trans('employee.holiday-global-to') }} </label> 
-                                                <input class="c-input form-control" data-toggle="datepicker" id="holidayto" name="holidayto" type="text" required>
+                                                <input class="c-input form-control"  id="enddate1" name="holidayto" type="text" required>
                                             </div>
                                         </div>
                                     </div> 
