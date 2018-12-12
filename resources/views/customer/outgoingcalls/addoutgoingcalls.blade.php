@@ -40,11 +40,11 @@
                             
                             <div class="col-lg-6">
                                 <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="firstName">Gender</label> 
+                                    <label class="c-field__label" for="firstName">Gender </label> 
                                     <select class="c-select" id="select1" name="gender" required>
                                         <!--<option>choose an option</option>-->
                                         @foreach ($gender as $indexkey=>$val)
-                                        <option {{ (isset($callList['gender']) && $callList['gender'] == $indexkey) ? 'checked="checked"' : ''  }}  value="{{$indexkey}}">{{$val}}</option>
+                                        <option {{ (isset($callList['gender']) && $callList['gender'] == $indexkey) ? 'selected="selected"' : ''  }}  value="{{$indexkey}}">{{$val}}</option>
                                         @endforeach
                                     </select>
                                 </div>
