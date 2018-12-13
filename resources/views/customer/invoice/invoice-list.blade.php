@@ -24,41 +24,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-2">
-                                <div class="c-field u-mb-small">
-                                    <select class="c-select filter month" name="month" id="month">
-                                        <option value=''>{{ trans('invoice.select-month') }}</option>
-                                        <option value='01' {{ ($month == '01' ? 'selected="selected"' : '') }}>{{ trans('invoice.january') }}</option>
-                                        <option value='02' {{ ($month == '02' ? 'selected="selected"' : '') }}>{{ trans('invoice.february') }}</option>
-                                        <option value='03' {{ ($month == '03' ? 'selected="selected"' : '') }}>{{ trans('invoice.march') }}</option>
-                                        <option value='04' {{ ($month == '04' ? 'selected="selected"' : '') }}>{{ trans('invoice.april') }}</option>
-                                        <option value='05' {{ ($month == '05' ? 'selected="selected"' : '') }}>{{ trans('invoice.may') }}</option>
-                                        <option value='06' {{ ($month == '06' ? 'selected="selected"' : '') }}>{{ trans('invoice.june') }}</option>
-                                        <option value='07' {{ ($month == '07' ? 'selected="selected"' : '') }}>{{ trans('invoice.july') }}</option>
-                                        <option value='08' {{ ($month == '08' ? 'selected="selected"' : '') }}>{{ trans('invoice.august') }}</option>
-                                        <option value='09' {{ ($month == '09' ? 'selected="selected"' : '') }}>{{ trans('invoice.september') }}</option>
-                                        <option value='10' {{ ($month == '10' ? 'selected="selected"' : '') }}>{{ trans('invoice.october') }}</option>
-                                        <option value='11' {{ ($month == '11' ? 'selected="selected"' : '') }}>{{ trans('invoice.november') }}</option>
-                                        <option value='12' {{ ($month == '12' ? 'selected="selected"' : '') }}>{{ trans('invoice.december') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="c-field u-mb-small">
-                                    <select class="c-select filter year" id="year" name="year">
-                                        <option value="">{{ trans('invoice.year') }}</option>
-                                        @for($i=date('Y'); $i<=2050; $i++)
-                                            <option {{ ($year == $i ? 'selected="selected"' : '') }}>{{ $i }}</option>
-                                         @endfor
-                                    </select>
-                                </div>
-                            </div>
-                          
-                           <!--      <div class="col-lg-2">
-                                <div class="c-field u-mb-small">
-                                    <input class="c-btn c-btn--info c-btn--fullwidth createBill" value="{{ trans('invoice.create-new-bill') }}" type="button">
-                                </div>
-                            </div> -->
+                         
                         </div>
                     </div>
                     </caption>

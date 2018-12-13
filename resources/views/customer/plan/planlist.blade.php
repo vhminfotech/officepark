@@ -41,9 +41,9 @@
                       @for($i=0;$i < count($planlist);$i++)
                       <tr class="c-table__row">
                           <th class="c-table__cell">{{ $planlist[$i]['start_date'] }}</th>
-                          <th class="c-table__cell">{{ $planlist[$i]['start_time'] }}</th>
+                          <th class="c-table__cell">{{  substr($planlist[$i]['start_time'],0,5) }}</th>
                           <th class="c-table__cell">{{ $planlist[$i]['end_date'] }}</th>
-                          <th class="c-table__cell">{{ $planlist[$i]['end_time'] }}</th>
+                          <th class="c-table__cell">{{ substr($planlist[$i]['end_time'],0,5) }}</th>
                           <th class="c-table__cell">{{ $plan_status[$planlist[$i]['status']] }}</th>
                           
                           <th class="c-table__cell">{{ $msg[$planlist[$i]['message']] }}</th>

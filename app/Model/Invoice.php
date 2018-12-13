@@ -44,30 +44,13 @@ class Invoice extends Model {
         } $result = $sql->get();
         return $result;
     }  
-    public function invoiceListByCustomer($year, $month, $method,$customerid) {
+    public function invoiceListByCustomer($method,$customerid) {
+       
         $sql = Invoice::select('service.packages_name','invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send', 'invoice.is_paid')
                 ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
                 ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                 ->leftjoin('service', 'service.id', '=', 'invoice.service_id');
-        if (!empty($year) && empty($month)) {
-            $sql->orWhere(function($sql) use($year) {
-                        $sql->orWhere(function($sql) use($year) {
-                                    $sql->whereBetween('invoice.start_date', [date($year . '-01-01'), date($year . '-12-31')]);
-                                });
-                        $sql->orWhere(function($sql) use($year) {
-                                    $sql->whereBetween('invoice.end_date', [date($year . '-01-01'), date($year . '-12-31')]);
-                                });
-                    });
-        } if (!empty($year) && !empty($month)) {
-            $sql->orWhere(function($sql) use($year, $month) {
-                        $sql->orWhere(function($sql) use($year, $month) {
-                                    $sql->whereBetween('invoice.start_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
-                                });
-                        $sql->orWhere(function($sql) use($year, $month) {
-                                    $sql->whereBetween('invoice.end_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
-                                });
-                    });
-        } if (!empty($method)) {
+        if (!empty($method)) {
             $sql->where('order_info.accept', '=', $method);
         } 
         $sql->where('invoice.customer_id', '=', $customerid);

@@ -3,7 +3,7 @@
 @include('layouts.include.body_header')
 @php
  $time = array_keys($arrTime);
- 
+
 @endphp
 <div class="container">
     <div class="row u-mb-large">
@@ -49,7 +49,7 @@
                                     @php
                                    for($i=0; $i < count($arrTime); $i++ )
                                    {@endphp
-                                   <option value="{{ $time[$i] }}" {{ ($time[$i] == substr($editplan[0]['start_date'],0,5) ? 'selected="selected"' : '') }} >{{ $time[$i] }}</option>
+                                   <option value="{{ $time[$i] }}" {{ ($time[$i] == substr($editplan[0]['start_time'],0,5) ? 'selected="selected"' : '') }} >{{ $time[$i] }}</option>
                                    @php}
                                    @endphp
                                 </select>
