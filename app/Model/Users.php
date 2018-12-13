@@ -355,8 +355,8 @@ class Users extends Model {
 
         $mailData['subject'] = 'Forgot password';
         $mailData['attachment'] = array();
-        $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
-        // $mailData['mailto'] = $request->input('employe');
+        // $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
+        $mailData['mailto'] =  $result[0]['email'];
         $sendMail = new Sendmail;
         $mailData['data']['caller_email'] = $result[0]['email'];
         $mailData['data']['name'] = $result[0]['name'];
