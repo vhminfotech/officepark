@@ -22,24 +22,37 @@
 
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="">{{ trans('calls.datetime') }}&nbsp;&nbsp;&nbsp;</th>
+                            
                             <th class="c-table__cell c-table__cell--head" style="">{{ trans('employee.first-name') }}&nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.last-name') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.job-title') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.responsibility') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.telephone') }} 1&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('employee.telephone') }} 2&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.email') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.status') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($outgoingCall as $row => $val)
                         <tr class="c-table__row">
-                             <th class="c-table__cell">{{ date('d.m.Y', strtotime($val['date'])) }} / {{ $val['time'] }}</th>
+                            
                             <td class="c-table__cell">{{ $val['first_name'] }}</td>
                             <td class="c-table__cell">{{ $val['last_name'] }}</td>
                             <td class="c-table__cell">{{ $val['company_name'] }}</td>
                             <td class="c-table__cell">{{ $val['telephone1'] }}</td>
+                            <td class="c-table__cell">{{ $val['telephone2'] }}</td>
                             <td class="c-table__cell">{{ $val['email'] }}</td>
+                            <td class="c-table__cell">@if($val['status']  == '0')
+                                            <span class="c-badge c-badge--warning">Pending</span>
+                                            <a href="#" ><span data-id="{{ $val['id'] }}" class=" complete-call c-tooltip c-tooltip--top"  aria-label="Complete Calls">
+                                                    <i class="fa fa-check-square fa-1x " style="color:#fd9a18"></i></span>
+                                            </a>
+                                        @else
+                                            <span class="c-badge c-badge--success">Done</span>
+                                        @endif
+                            </td>
+                            
                             <td class="c-table__cell">
                                 <a href=" {{ route('edit-outgoing-call',$val['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
                                         <i class="fa fa-edit" ></i></span>

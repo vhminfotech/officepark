@@ -71,21 +71,42 @@ class OutgoingCalls extends Model {
     public function OutgoingList() {
         $sql = OutgoingCalls::leftjoin('users', 'users.id', '=', 'outgoing_call.customer_id');
         $sql->where('users.type', 'CUSTOMER');
-        $result = $sql->get(['outgoing_call.*',
-            'users.name as agentName'
+        $result = $sql->get(['outgoing_call.*','users.name as agentName'
         ]);
         return $result;
     }
     
 
  public function outgoingDelete($postData) {
-       
+    
         $result = OutgoingCalls::find($postData['id'])->delete();
         if ($result) {
                 $return['status'] = 'success';
                 $return['message'] = 'Outgoing delete successfully.';
                 $return['jscode'] = "setTimeout(function(){
                         $('#deleteModel').modal('hide');
+                        location.reload();
+                    },1000)";
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+        echo json_encode($return);
+        exit;
+    }
+    
+    public function outgoingComplete($postData) {
+       
+        $objCalls = OutgoingCalls::find($postData['id']);
+        $objCalls->status = '1';
+        $objCalls->updated_at = date('Y-m-d H:i:s');
+      
+            
+        if ($objCalls->save()) {
+                $return['status'] = 'success';
+                $return['message'] = 'Outgoing call completed successfully.';
+                $return['jscode'] = "setTimeout(function(){
+                        
                         location.reload();
                     },1000)";
             } else {

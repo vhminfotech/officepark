@@ -23,6 +23,9 @@
             </div><!-- // .c-modal__content -->
         </div><!-- // .c-modal__dialog -->
     </div><!-- // .c-modal -->
+    
+    
+    
 @if (!empty($js)) 
 @foreach ($js as $value) 
 <script src="{{ asset('js/'.$value) }}" type="text/javascript"></script>

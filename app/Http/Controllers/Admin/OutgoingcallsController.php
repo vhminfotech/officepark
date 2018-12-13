@@ -114,6 +114,11 @@ class OutgoingcallsController extends Controller {
             $objCalls = new OutgoingCalls();
             $result = $objCalls->outgoingDelete($request->input('data'));
             break;
+        
+            case 'completeOutgoingcalls':
+            $objCalls = new OutgoingCalls();
+            $result = $objCalls->outgoingComplete($request->input('data'));
+            break;
         }
     }
 }

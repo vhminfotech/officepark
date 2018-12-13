@@ -141,7 +141,7 @@ return [
         '1' => 'Inreporting',
         '2' => 'Working',
         '3' => 'Checking',
-        '4' => 'Completed',
+        
     ],
     
     'msg' => [
