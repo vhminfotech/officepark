@@ -19,11 +19,11 @@
 							<div class="row">
 								<div class="col-lg-2 u-text-center">
 									<div class="c-avatar c-avatar--xlarge u-inline-block">
-										<img class="c-avatar__img" src="{{ url('img/avatar-200.jpg') }}" alt="Avatar">
+										<img class="c-avatar__img" src="{{ url('uploads/employee/'.$detail['user_image']) }}" alt="Avatar">
+										
 									</div>
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
-									<a class="u-block u-color-primary" href="#">{{ trans('customer.edit_avtar')}}</a>
-                                                                        <p >800px * 800px</p>
+									<input type="file" name="profile_pic" value="">
 								</div>
 								<div class="col-lg-5">
 									<div class="c-field u-mb-small">

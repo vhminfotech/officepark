@@ -54,7 +54,7 @@ var Customer = function() {
             telephone: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
-            handleAjaxFormSubmit(form);
+            handleAjaxFormSubmit(form,true);
         });
 
     };

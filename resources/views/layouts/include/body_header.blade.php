@@ -41,8 +41,11 @@
             </a>
 
             <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
-                <!--<a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>-->
+                @if($data['type'] == 'CUSTOMER')
+                <a class="c-dropdown__item dropdown-item" href="{{ route('customer-change-password') }}">Change password</a>
+                @else
                 <a class="c-dropdown__item dropdown-item" href="{{ route('update-profile') }}">Edit info</a>
+                @endif
                 <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">{{ trans('words.Logout') }}</a>
 <!--                <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>-->
             </div>

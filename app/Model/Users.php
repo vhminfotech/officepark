@@ -302,11 +302,19 @@ class Users extends Model {
 //        print_r($request->input());exit;
         $result = Users::where('id', '!=', $userId)->where('email', $request->input('email'))->get()->count();
         $return = '';
+
+          $name = '';
+        if($request->file()){
+            $image = $request->file('profile_pic');
+            $name = 'customer'.time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/employee/');
+            $image->move($destinationPath, $name);    
+        }        
         if ($result == 0) {
             $objEditUser = Users::find($userId);
             $objEditUser->name = $request->input('first_name');
+            $objEditUser->user_image = $name;
             $objEditUser->save();
-
             OrderInfo::where('user_id', $userId)
                     ->update([
                         'company_name' => $request->input('company_name'),

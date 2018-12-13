@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Model\Addressbook;
 use App\Model\Customer;
@@ -74,8 +75,46 @@ class ProfileController extends Controller {
      
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('admin/customer.js','customer/profile.js');
+        $data['js'] = array('admin/customer.js','customer/profile.js','ajaxfileupload.js',
+            'jquery.form.min.js');
         $data['funinit'] = array('Customer.editInit()','Profile.init()');
         return view('customer.profile.profile-edit', $data);
+    }
+
+    public function changepassword(Request $request)
+    {
+        $data['detail'] = $this->loginUser;
+        if ($request->isMethod('post')) {
+            $loginUserpassword = Auth()->guard('customer')->user()->password;
+            $id = Auth()->guard('customer')->user()->id;
+            $currentpassword = $request['currentpassword'];
+            $newpassword = $request['newpassword'];
+            $hashedpaasword = Hash::make($currentpassword);
+            if (!Hash::check($currentpassword,$loginUserpassword)) {
+                $return['status'] = 'error';
+                $return['message'] = 'Old password Does Not Match !!.';
+                 $return['redirect'] = route('customer-change-password');
+            } else {
+                $objuserpasswordedit = new Users();
+                $updatepassword = $objuserpasswordedit->saveEditUserPassword($id, $newpassword);
+                $return['status'] = 'success';
+                $return['message'] = 'User Password successfully Changed.';
+                $return['redirect'] = route('customer-change-password');
+            }
+            echo json_encode($return);
+            exit;
+
+        }
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js',
+            );
+        $data['js'] = array('admin/updateprofile.js','ajaxfileupload.js',
+            'jquery.form.min.js');
+        $data['css_plugin'] = array(
+          'bootstrap-fileinput/bootstrap-fileinput.css',  
+        );
+        $data['funinit'] = array('Updateprofile.edit_init()');
+
+        return view('customer.profile.user-edit', $data);
     }
 }

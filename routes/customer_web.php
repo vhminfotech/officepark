@@ -56,4 +56,6 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-edit-outgoing-call/{id}', ['as' => 'customer-edit-outgoing-call', 'uses' => 'Customer\OutgoingCallsController@editoutgoingcalls']);
     Route::match(['get', 'post'], 'outgoingcalls-ajaxAction', ['as' => 'outgoingcalls-ajaxAction', 'uses' => 'Customer\OutgoingCallsController@ajaxAction']);
 
+    Route::match(['get', 'post'], 'customer-change-password', ['as' => 'customer-change-password', 'uses' => 'Customer\ProfileController@changepassword']);
+
 });
