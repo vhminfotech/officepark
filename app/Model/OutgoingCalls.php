@@ -71,7 +71,7 @@ class OutgoingCalls extends Model {
     public function OutgoingList() {
         $sql = OutgoingCalls::leftjoin('users', 'users.id', '=', 'outgoing_call.customer_id');
         $sql->where('users.type', 'CUSTOMER');
-        $result = $sql->get(['outgoing_call.*','users.name as agentName'
+        $result = $sql->get(['outgoing_call.*','users.name as agentName','users.customer_number'
         ]);
         return $result;
     }
