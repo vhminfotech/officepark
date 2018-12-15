@@ -47,7 +47,7 @@
                             <td class="c-table__cell">{{ $val['email'] }}</td>
                             <td class="c-table__cell">@if($val['status']  == '0')
                                             <span class="c-badge c-badge--warning">Pending</span>
-                                            <a href="#" ><span data-id="{{ $val['id'] }}" class=" complete-call c-tooltip c-tooltip--top"  aria-label="Complete Calls">
+                                            <a href="javascript:;" ><span data-id="{{ $val['id'] }}" class=" complete-call c-tooltip c-tooltip--top"  aria-label="Complete Calls">
                                                     <i class="fa fa-check-square fa-1x " style="color:#fd9a18"></i></span>
                                             </a>
                                         @else
