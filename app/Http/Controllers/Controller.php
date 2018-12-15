@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Auth;
 use App;
 use App\Model\OrderInfo;
+use App\Model\OutgoingCalls;
 use Session;
 
 class Controller extends BaseController {
@@ -40,18 +41,21 @@ class Controller extends BaseController {
             $objOrderInfo = new OrderInfo();
             $totalOrder = $objOrderInfo->newOrdergetNotification();
             Session::put('totalOrder', $totalOrder);
-        
+            
             $resultArr = $objOrderInfo->newOrderCount('new');
         
             Session::put('ordercount', $resultArr);
-        
-            
+            $objOutgoingCalls = new OutgoingCalls();
+            $outgoingCallCount = $objOutgoingCalls->getOutgoingPendingCall(null);
+            Session::put('outgoingCallCount', $outgoingCallCount);
                 
             if (!empty(Auth()->guard('admin')->user())) {
 
                 $this->loginUser = Auth()->guard('admin')->user();
             }
             if (!empty(Auth()->guard('customer')->user())) {
+                $outgoingCallCount = $objOutgoingCalls->getOutgoingPendingCall(Auth::guard('customer')->user()->id);
+                Session::put('outgoingCallCount', $outgoingCallCount);
                 $this->loginUser = Auth()->guard('customer')->user();
             }
             if (!empty(Auth()->guard('agent')->user())) {

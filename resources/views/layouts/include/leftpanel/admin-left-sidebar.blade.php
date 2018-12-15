@@ -113,7 +113,7 @@ $roles  = array_values($roles);
                 <a class="c-sidebar__link {{ ($currentRoute == 'edit-outgoing-call' || $currentRoute == 'new-outgoing-call' || $currentRoute == 'outgoing-call' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('outgoing-call') }}">
                     <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>
                     {{ trans('words.Outgoingcalls') }} &nbsp;
-                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('ordercount')}} </span>
+                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOutgoingCalls">{{ Session::get('outgoingCallCount')}} </span>
                     <input type="hidden" id="totalOrderNotification" value="{{ Session::get('totalOrder') }}">
                 </a>
             </li>

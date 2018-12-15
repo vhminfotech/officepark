@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use App\Model\Sendmail;
 use DB;
 use Auth;
 use App\Model\ServiceDetail;
@@ -101,7 +102,16 @@ class OutgoingCalls extends Model {
         $objCalls->status = '1';
         $objCalls->updated_at = date('Y-m-d H:i:s');
       
-            
+        $mailData['subject'] = 'Change Outgoing Call Status';
+        $mailData['attachment'] = array();
+        // $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
+        $mailData['mailto'] =  $objCalls['email'];
+        $sendMail = new Sendmail;
+        $mailData['data']['caller_email'] = $objCalls['email'];
+        $mailData['data']['name'] = $objCalls['name'];
+        $mailData['template'] = 'emails.outgoing-call';
+        $res = $sendMail->sendSMTPMail($mailData);
+
         if ($objCalls->save()) {
                 $return['status'] = 'success';
                 $return['message'] = 'Outgoing call completed successfully.';
@@ -117,6 +127,17 @@ class OutgoingCalls extends Model {
         exit;
     }
     
+
+    public function getOutgoingPendingCall($customerNo = null) {
+        $sql = OutgoingCalls::leftjoin('users', 'users.id', '=', 'outgoing_call.customer_id');
+        $sql->where('outgoing_call.status', '0');
+        if(!empty($customerNo)){
+            $sql->where('outgoing_call.customer_id', $customerNo); 
+        }
+        $result = $sql->count();
+        return $result;
+    }
+
 }
 
 ?>

@@ -5,6 +5,7 @@
  $time = array_keys($arrTime);
 @endphp
 <div class="container">
+     {{ Form::open( array('method' => 'post', 'class' => 'addplan','files' => true, 'id' => 'addplan' )) }}
     <div class="row u-mb-large">
         <div class="col-6">
             <article class="c-stage">
@@ -16,7 +17,7 @@
                         <h6 class="u-mb-zero">Add Plan</h6>
                     </div>
                 </div>
-                {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addplan' )) }}
+               
                 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <div class="c-stage__panel u-p-medium">
                     
@@ -28,8 +29,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
                     
                     <div class="row">
                         <div class="col-lg-6">
@@ -125,7 +124,7 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="number">Transefer Telephone Number</label> 
-                                <input class="c-input" required name="transfercall" id="transfercall" placeholder="Transefer Telephone Number" type="text">
+                                <input class="c-input"  name="transfercall" id="transfercall" placeholder="Transefer Telephone Number" type="text">
                                 
                             </div>
                         </div>
@@ -179,10 +178,11 @@
                             </div> 
                         </div>
 
-                    {{ Form::close() }}
+                    
             </article>
         </div>
     </div>
+    {{ Form::close() }}
 </div>
 <style>
     input.has-error {

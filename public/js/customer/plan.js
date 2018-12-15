@@ -1,6 +1,5 @@
 var Plan = function(){
     var planlist=function(){
-        
         var form = $('#addplan');
         var rules = {
             startdate: {required: true},
@@ -10,7 +9,9 @@ var Plan = function(){
             number: {required: true},
             information: {required: true},
             note: {required: true},
-            transfercall:{required: true}
+            responsibility: {required: true},
+            employee: {required: true},
+            transfercall:{required: false,number:true},
         };
          handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);

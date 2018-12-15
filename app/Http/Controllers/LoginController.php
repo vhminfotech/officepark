@@ -11,6 +11,7 @@ use Redirect;
 use App\Model\Calls;
 use App\Model\Users;
 use App\Model\OrderInfo;
+use App\Model\OutgoingCalls;
 
 class LoginController extends Controller {
 
@@ -72,6 +73,8 @@ class LoginController extends Controller {
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('user-dashboard');
             } else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) {
+                  $objOutgoingCalls = new OutgoingCalls();
+                $outgoingCallCount = $objOutgoingCalls->getOutgoingPendingCall(Auth::guard('customer')->user()->id);
                 $loginData = array(
                     'name' => Auth::guard('customer')->user()->name,
                     'email' => Auth::guard('customer')->user()->email,
@@ -80,11 +83,14 @@ class LoginController extends Controller {
                     'user_image' => Auth::guard('customer')->user()->user_image
                 );
                 Session::push('logindata', $loginData);
+                Session::put('outgoingCallCount', $outgoingCallCount);
                 $request->session()->flash('session_success', 'Customer Login successfully.');
                 return redirect()->route('customer-dashboard');
-            } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'ADMIN'])) {
+            } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' =>$request->input('password'), 'type' => 'ADMIN'])) {
                 $objOrderInfo = new OrderInfo();
-                $totalOrder = $objOrderInfo->newOrdergetNotification();
+                $totalOrder = $objOrderInfo->newOrdergetNotification(); 
+                $objOutgoingCalls = new OutgoingCalls();
+                $outgoingCallCount = $objOutgoingCalls->getOutgoingPendingCall(null);
                 $resultArr = $objOrderInfo->newOrderCount('new');
                 $this->getUserRoleList(Auth::guard('admin')->user()->id,$request);
                 $role = $request->session()->get('userRole');
@@ -100,8 +106,8 @@ class LoginController extends Controller {
                     'id' => Auth::guard('admin')->user()->id,
                 );
                 Session::push('logindata', $loginData);
-
                 Session::put('ordercount', $resultArr);
+                Session::put('outgoingCallCount', $outgoingCallCount);
                 Session::put('totalOrder', $totalOrder);
                 $request->session()->flash('session_success', 'Admin Login successfully.');
                 return redirect()->route('admin-dashboard');
