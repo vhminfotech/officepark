@@ -104,8 +104,8 @@ class OutgoingCalls extends Model {
       
         $mailData['subject'] = 'Change Outgoing Call Status';
         $mailData['attachment'] = array();
-        $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
-        // $mailData['mailto'] =  $objCalls['email'];
+        // $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
+        $mailData['mailto'] =  $objCalls['email'];
         $sendMail = new Sendmail;
         $mailData['data']['caller_email'] = $objCalls['email'];
         $mailData['data']['name'] = $objCalls['name'];
