@@ -33,7 +33,7 @@ class PlanController extends Controller {
         $objcustomeplan = new Customer_plan;
         $data['planlist']=$objcustomeplan->planlist($data['customer_id']);
         
-        $data['arrTime'] = Config::get('constants.arrTime');
+        $data['arrTime'] = Config::get('constants.arrTimeV2');
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['msg'] = Config::get('constants.msg');
         $data['responsibility'] = Config::get('constants.responsibility');
@@ -55,7 +55,7 @@ class PlanController extends Controller {
     public function addplanlist(Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
-        $data['arrTime'] = Config::get('constants.arrTime');
+        $data['arrTime'] = Config::get('constants.arrTimeV2');
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['msg'] = Config::get('constants.msg');
         $data['responsibility'] = Config::get('constants.responsibility');
@@ -90,7 +90,7 @@ class PlanController extends Controller {
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
         
-        $data['arrTime'] = Config::get('constants.arrTime');
+        $data['arrTime'] = Config::get('constants.arrTimeV2');
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['msg'] = Config::get('constants.msg');
         $data['responsibility'] = Config::get('constants.responsibility');
