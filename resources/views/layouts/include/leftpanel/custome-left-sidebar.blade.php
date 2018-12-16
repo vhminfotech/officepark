@@ -52,6 +52,7 @@ $currentRoute = Route::current()->getName();
              <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'customer-edit-outgoing-call' || $currentRoute == 'customer-new-outgoing-call' || $currentRoute == 'customer-outgoing-call'  ? 'is-active' : '') }}"  href="{{ route('customer-outgoing-call') }}">
                     <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>Outgoing Calls &nbsp;
+                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('outgoingCallCount') }} </span>
                 </a>
             </li>
             
