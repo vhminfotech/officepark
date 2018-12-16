@@ -6,6 +6,7 @@
 
 @endphp
 <div class="container">
+    {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'editplan' )) }}
     <div class="row u-mb-large">
         <div class="col-6">
             <article class="c-stage">
@@ -17,7 +18,7 @@
                         <h6 class="u-mb-zero">Add Plan</h6>
                     </div>
                 </div>
-                {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'editplan' )) }}
+                
                 <div class="c-stage__panel u-p-medium">
                     
                     <div class="row">
@@ -121,7 +122,6 @@
                         </div>
                     </div>
                     
-                    
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
@@ -164,9 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
-                    
+
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
@@ -182,11 +180,11 @@
                                 <input class="c-btn c-btn--secondary " value="{{ trans('employee.cancel') }}" type="reset">
                             </div> 
                         </div>
-
-                    {{ Form::close() }}
+                        
             </article>
         </div>
     </div>
+    {{ Form::close() }}
 </div>
 <style>
     input.has-error {

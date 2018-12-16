@@ -4,14 +4,14 @@ var Plan = function(){
         var rules = {
             startdate: {required: true},
             enddate: {required: true},
-            message: {required: true},
+            // message: {required: true},
             status: {required: true},
-            number: {required: true},
-            information: {required: true},
-            note: {required: true},
-            responsibility: {required: true},
-            employee: {required: true},
-            transfercall:{required: false,number:true},
+            // number: {required: true},
+            // information: {required: true},
+            // note: {required: true},
+            // responsibility: {required: true},
+            // employee: {required: true},
+            // transfercall:{required: false,number:true},
         };
          handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
@@ -47,14 +47,14 @@ var Plan = function(){
         
         var form = $('#editplan');
         var rules = {
-            date: {required: true},
+            // date: {required: true},
             startdate: {required: true},
             enddate: {required: true},
-            message: {required: true},
+            // message: {required: true},
             status: {required: true},
-            number: {required: true},
-            information: {required: true},
-            note: {required: true},
+            // number: {required: true},
+            // information: {required: true},
+            // note: {required: true},
         };
          handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
