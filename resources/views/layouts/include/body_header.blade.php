@@ -6,21 +6,8 @@
         </button>
 
         <h2 class="c-navbar__title u-mr-auto">&nbsp;</h2>
-
-        <div class="col-3 c-field ">
-             <select class="c-select" id="languageSelection">                
-                <option value="en" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'en') ? "selected" : "" }} data-thumbnail="{{asset('img/flag/english.png')}}"> English </option>
-                <option value="gr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'gr') ? "selected" : "" }} > German </option>
-                <option value="tr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
-            </select>
-        </div>
-          <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-        <div class="c-dropdown dropdown">
-            <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            @php
-                
+         @php
                 if (!empty(Auth()->guard('admin')->user())) {
-
                 $data = Auth()->guard('admin')->user();
                 }
                 if (!empty(Auth()->guard('customer')->user())) {
@@ -33,6 +20,25 @@
                     $data = Auth::user();
                 }
             @endphp
+        <div class="col-2 c-field">
+             <select class="c-select" id="languageSelection">                
+                <option value="en" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'en') ? "selected" : "" }} data-thumbnail="{{asset('img/flag/english.png')}}"> English </option>
+                <option value="gr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'gr') ? "selected" : "" }} > German </option>
+                <option value="tr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
+            </select>
+        </div>
+        @if(!empty(Auth()->guard('customer')->user()))
+        <div class="col-3 c-field ">
+            <div class="c-dropdown u-hidden-down@mobile">
+                    <h3><b>Welcome! Mr. {{ $data['name'] }}</b><h3>
+                    <h4>{{ $data['name'] }}  |  +{{ $data['extension_number'] }} </h4>
+                </div>
+        </div>
+        @endif
+          <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+        <div class="c-dropdown dropdown">
+            <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           
              @if( isset($data)  && !empty($data) && $data['user_image'] != '')
                 <img class="c-avatar__img" src="{{ asset('uploads/employee/'.$data['user_image']) }}" alt="User's Profile Picture">
             @else

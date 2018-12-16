@@ -126,7 +126,7 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="number">Transefer Telephone Number</label> 
-                                <input class="c-input" required name="transfercall" id="transfercall" placeholder="Transefer Telephone Number" value="{{ $editplan['0']['transfer_call_no'] }}" type="text">
+                                <input class="c-input" name="transfercall" id="transfercall" placeholder="Transefer Telephone Number" value="{{ $editplan['0']['transfer_call_no'] }}" type="text">
                                  <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 
                             </div>

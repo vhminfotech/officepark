@@ -31,3 +31,7 @@ ALTER TABLE `users` ADD `user_image` VARCHAR(256) NULL AFTER `customer_number`;
 ALTER TABLE `calls` CHANGE `destination_number` `destination_number` VARCHAR(56) NOT NULL;
 ALTER TABLE `calls` ADD `is_popup` TINYINT NOT NULL DEFAULT '0' AFTER `caller_note`;
 UPDATE `calls` SET `is_popup` = '1'
+
+
+ALTER TABLE `customer_plan` CHANGE `transfer_call_no` `transfer_call_no` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+ALTER TABLE `customer_plan` CHANGE `responsibilty` `responsibilty` INT(11) NULL, CHANGE `employee` `employee` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `Note` `Note` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
