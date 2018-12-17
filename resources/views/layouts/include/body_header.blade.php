@@ -1,11 +1,24 @@
  <header class="c-navbar u-mb-medium">
-        <button class="c-sidebar-toggle u-mr-small">
-            <span class="c-sidebar-toggle__bar"></span>
-            <span class="c-sidebar-toggle__bar"></span>
-            <span class="c-sidebar-toggle__bar"></span>
-        </button>
-
-        <h2 class="c-navbar__title u-mr-auto">&nbsp;</h2>
+     
+         @if(!empty(Auth()->guard('customer')->user()))
+         <div class="col-6 c-field">
+        <a href="{{ route('employee-add-customer') }}" class="c-badge c-badge--info u-mr-small ">+ Add Employee</a>
+        <a href="{{ route('address-book-add-customer') }}" class="c-badge c-badge--info u-mr-small">+ Add Addressbook</a>
+      
+        <a href="{{ route('customer-new-outgoing-call') }}" class="c-badge c-badge--info u-mr-small">+ Add outgoingcalls</a>
+        <a href="javascript:;" class="c-badge c-badge--info u-mr-small">+ Add Supports</a>
+          <a href="{{ route('add-plan-customer') }}" class="c-badge c-badge--info u-mr-small">+ Add Plan</a>
+        </div>
+        @endif
+          @if(!empty(Auth()->guard('admin')->user()))
+          <div class="col-9 c-field">
+        <a href="{{ route('employee-add') }}" class="c-badge c-badge--info u-mr-small ">+ Add Employee</a>
+        <a href="{{ route('address-book-add') }}" class="c-badge c-badge--info u-mr-small">+ Add Addressbook</a>
+        <a href="{{ route('new-outgoing-call') }}" class="c-badge c-badge--info u-mr-small">+ Add outgoingcalls</a>
+        <a href="javascript:;" class="c-badge c-badge--info u-mr-small">+ Add Supports</a>
+         <a href="javascript:;" class="c-badge c-badge--info u-mr-small">+ Add Plan</a>
+        </div>
+        @endif
          @php
                 if (!empty(Auth()->guard('admin')->user())) {
                 $data = Auth()->guard('admin')->user();
@@ -27,12 +40,11 @@
                 <option value="tr" {{ (isset($_COOKIE['language']) && $_COOKIE['language'] == 'tr') ? "selected" : "" }} > Turkish </option>
             </select>
         </div>
+
         @if(!empty(Auth()->guard('customer')->user()))
         <div class="col-3 c-field ">
-            <div class="c-dropdown u-hidden-down@mobile">
-                    <h3><b>Welcome! Mr. {{ $data['name'] }}</b><h3>
-                    <h4>{{ $data['name'] }}  |  +{{ $data['extension_number'] }} </h4>
-                </div>
+                    <h5><b>Welcome! Mr. {{ $data['name'] }}</b><h5>
+                    <h6>{{ $data['name'] }}  |  +{{ $data['extension_number'] }} </h6>
         </div>
         @endif
           <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
