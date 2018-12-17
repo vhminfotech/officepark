@@ -1,5 +1,10 @@
  <header class="c-navbar u-mb-medium">
-     
+     <style type="text/css">
+         a:hover {
+        color: white;
+        text-decoration: none; 
+        }
+     </style>
          @if(!empty(Auth()->guard('customer')->user()))
          <div class="col-6 c-field">
         <a href="{{ route('employee-add-customer') }}" class="c-badge c-badge--info u-mr-small ">+ Add Employee</a>
