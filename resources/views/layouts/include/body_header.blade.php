@@ -15,6 +15,15 @@
           <a href="{{ route('add-plan-customer') }}" class="c-badge c-badge--info u-mr-small">+ Add Plan</a>
         </div>
         @endif
+           @if(!empty(Auth()->guard('agent')->user()))
+          <div class="col-9 c-field">
+        <a href="{{ route('employee-add') }}" class="c-badge c-badge--info u-mr-small ">+ Add Employee</a>
+        <a href="{{ route('address-book-add') }}" class="c-badge c-badge--info u-mr-small">+ Add Addressbook</a>
+        <a href="{{ route('new-outgoing-call') }}" class="c-badge c-badge--info u-mr-small">+ Add outgoingcalls</a>
+        <a href="javascript:;" class="c-badge c-badge--info u-mr-small">+ Add Supports</a>
+         <a href="javascript:;" class="c-badge c-badge--info u-mr-small">+ Add Plan</a>
+        </div>
+        @endif
           @if(!empty(Auth()->guard('admin')->user()))
           <div class="col-9 c-field">
         <a href="{{ route('employee-add') }}" class="c-badge c-badge--info u-mr-small ">+ Add Employee</a>
