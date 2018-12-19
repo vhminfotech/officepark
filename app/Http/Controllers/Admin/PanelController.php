@@ -94,7 +94,7 @@ class PanelController extends Controller {
             $delete = $objcustomeplan->deletePanel($deleteId);
             if ($delete == true) {
                     $return['status'] = 'success';
-                    $return['message'] = 'Panel Setting successfully.';
+                    $return['message'] = 'Panel Setting Delete successfully.';
                     $return['redirect'] = route('panelsetting');
                 } else {
                     $return['status'] = 'error';
