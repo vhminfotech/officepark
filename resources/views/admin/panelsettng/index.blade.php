@@ -14,76 +14,50 @@
                     </caption>
                     <thead class="c-table__head c-table__head--slim">
                         <tr class="c-table__row">
-                            <th class="c-table__cell c-table__cell--head" style="margin-left: 5px;">#</th>
                             <th class="c-table__cell c-table__cell--head">Web Site &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Logo &nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Colors &nbsp;&nbsp;</th>                            
+                            <th class="c-table__cell c-table__cell--head">Sidebar Menu Color &nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Colors &nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Hover Colors &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('customer.action')}}</th>
                         </tr>
                     </thead>
+                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                     <tbody>
-                       
-                 <tr class="c-table__row">
-                     <td class="c-table__cell"><input type="checkbox" class="checkbox" value=""></td>
-                            <td class="c-table__cell">www.yahoo.com</td>
-                            
-                            <td class="c-table__cell"><img class="c-avatar__img" src="{{ asset('img/avatar-72.jpg') }}" alt="User's Profile Picture"></td>
-                            <td class="c-table__cell">Yahoo</td>
+                        @foreach($panelList as $row => $val)
+                        <tr class="c-table__row">
+                           <td class="c-table__cell">{{ $val['website_name'] }}</td>
+                           <td class="c-table__cell"><img class="c-avatar__img" src="{{ url('uploads/panel_logo/'. $val['website_logo']) }}" width="50px;" alt="Panel Logo"></td>
+                            <td class="c-table__cell">{{ $val['sidebar_menu_color'] }}</td>
+                            <td class="c-table__cell">{{ $val['color'] }}</td>
+                            <td class="c-table__cell">{{ $val['hovercolor'] }}</td>
                             <td class="c-table__cell">
-                                
-                                <a href="{{ route("panel-setting-edit")}}"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.edit')}}">
-                                        <i class="fa fa-edit" ></i></span>
-                                </a>
-                            </td>
-                </tr>
-                
-                <tr class="c-table__row">
-                    <td class="c-table__cell"><input type="checkbox" class="checkbox" value=""></td>
-                    <td class="c-table__cell">www.facebook.com</td>
-                    <td class="c-table__cell"><img class="c-avatar__img" src="{{ asset('img/avatar-72.jpg') }}" alt="User's Profile Picture"></td>
-                    <td class="c-table__cell">Facebook</td>
-                    <td class="c-table__cell">
-                        <a href="{{ route("panel-setting-edit")}}"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.edit')}}">
+                            <a href="{{ route('panel-setting-edit', [$val['id']] ) }}"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.edit')}}">
                                 <i class="fa fa-edit" ></i></span>
-                        </a>
-                    </td>
-                </tr>
-                
-                <tr class="c-table__row">
-                    <td class="c-table__cell"><input type="checkbox" class="checkbox" value=""></td>
-                    <td class="c-table__cell">www.google.com</td> 
-                    <td class="c-table__cell"><img class="c-avatar__img" src="{{ asset('img/avatar-72.jpg') }}" alt="User's Profile Picture"></td>
-                    <td class="c-table__cell">Google</td>
-                    <td class="c-table__cell">
-                        <a href="{{ route("panel-setting-edit")}}"><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('customer.edit')}}">
-                                <i class="fa fa-edit" ></i></span>
-                        </a>
-                    </td>
-                </tr>
-                     
-                    </tbody>
-                </table>
-            </div>    
-        </div>
-         <div class="col-12">
-            <a href="javascript:;" class="c-badge delete c-badge--info u-mr-small ">Delete</a>
-            <a href="javascript:;" class="c-badge delete-all c-badge--info u-mr-small">Delete All</a>
-        </div>
+                            </a>
+                            <a href="javascript:;" class="deletePanel" data-id="{{ $val['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="Delete">
+                                        <i class="fa fa-trash-o"></i></span>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>    
     </div>
-    
-         
+</div>
 </div><!-- // .container -->
 <style>
     /*    a.c-board__btn.c-tooltip.c-tooltip--top {
             position: absolute;
             margin-left: 743px;
             margin-bottom: 41px;
-        }*/
-    .c-table__title .c-tooltip{
-        position: absolute;
-    }
-</style>
+            }*/
+            .c-table__title .c-tooltip{
+                position: absolute;
+            }
+        </style>
 
-@endsection
+        @endsection
 
 

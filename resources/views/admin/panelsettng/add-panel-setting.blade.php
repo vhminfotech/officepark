@@ -7,7 +7,7 @@
             <article class="c-stage">
                 <br>
                 <div class="col-md-12">
-                    {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addServiceForm' )) }}
+                    {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addServiceForm' )) }}
                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                     <div class="row">
                         <div class="col-md-4">
@@ -18,7 +18,7 @@
                         <div class="col-lg-6">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="packagename">Web Site Panel Name</label> 
-                                <input class="c-input" name="packagename" id="packagename" placeholder="" type="text">
+                                <input class="c-input" name="website_name" id="website_name" placeholder="website name" type="text">
 
                             </div>
                         </div>
@@ -28,27 +28,27 @@
                         <div class="col-lg-3">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="firstName">Logo</label> 
-                                {{ Form::file('file', null, array('class' => 'c-input')) }}
+                                {{ Form::file('website_logo', null, array('class' => 'c-input')) }}
                             </div>
                         </div>
                         
                         <div class="col-lg-3">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="firstName">Sidebar Menu Color</label> 
-                                <input class="c-input jscolor" name="menucolor" id="packagename" placeholder="Sidebar Menu Color" type="text">
+                                <input class="c-input jscolor" name="sidebar_menu_color" id="sidebar_menu_color" placeholder="Sidebar Menu Color" type="text">
                             </div>
                         </div>
                         
                         <div class="col-lg-3">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="firstName">Color</label> 
+                                <label class="c-field__label" for="color">Color</label> 
                                 <input class="c-input jscolor" name="color" id="packagename" placeholder="Color" type="text">
                             </div>
                         </div>
                         
                         <div class="col-lg-3">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="firstName">Color a:hover </label> 
+                                <label class="c-field__label" for="hovercolor">Color a:hover </label> 
                                 <input class="c-input jscolor" name="hovercolor" id="packagename" placeholder="Hover Color" type="text">
                             </div>
                         </div>
