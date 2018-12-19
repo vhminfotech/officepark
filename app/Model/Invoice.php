@@ -44,7 +44,7 @@ class Invoice extends Model {
         } $result = $sql->get();
         return $result;
     }  
-    public function invoiceListByCustomer($method,$customerid,$year, $month) {
+    public function invoiceListByCustomer($customerid,$year, $month) {
        
         $sql = Invoice::select('service.packages_name','invoice.id', 'invoice.created_at', 'invoice.invoice_no', 'users.customer_number', 'order_info.company_name', 'invoice.total', 'order_info.accept', 'invoice.mail_send', 'invoice.is_paid')
                 ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
@@ -68,9 +68,7 @@ class Invoice extends Model {
                                     $sql->whereBetween('invoice.end_date', [date($year . '-' . $month . '-01'), date($year . '-' . $month . '-31')]);
                                 });
                     });
-        } if (!empty($method)) {
-            $sql->where('order_info.accept', '=', $method);
-        } $result = $sql->get();
+        }$result = $sql->get();
         $sql->where('invoice.customer_id', '=', $customerid);
         $result = $sql->get();
         return $result;

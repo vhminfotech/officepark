@@ -32,66 +32,14 @@ class InvoiceController extends Controller {
         $customerDetails = $this->loginUser;
         $objUser = new Users();
         $data['getCustomer'] = $objUser->getCustomer($customerDetails['customer_number']);
+        
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
-        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
+//        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
 
         $objinvoice = new Invoice();
 
-        if ($request->isMethod('post')) {
-            $debitInfo = array('pmtInfId' => 'PaymentID-1235', // ID of the payment collection
-                'lclInstrm' => SepaUtilities::LOCAL_INSTRUMENT_CORE_DIRECT_DEBIT,
-                'seqTp' => SepaUtilities::SEQUENCE_TYPE_RECURRING,
-                'cdtr' => 'Name of Creditor', // (max 70 characters)
-                'iban' => 'DE87200500001234567890', // IBAN of the Creditor
-                'bic' => 'BELADEBEXXX', // BIC of the Creditor
-                'ci' => 'DE98ZZZ09999999999', // Creditor-Identifier
-            );
-
-            $data = $request->input();
-            $invoiceData = $objinvoice->getInvoiceData($data['invoiceId']);
-
-            $directDebitFile = new SephpaDirectDebit('Initiator Name', 'MessageID-1235', SephpaDirectDebit::SEPA_PAIN_008_002_02, $debitInfo);
-            
-            foreach ($invoiceData as $value) {
-
-                if ($value->invoiceTotal != "" && $value->account_bic != "" && $value->account_name != "" && $value->account_iban != "") {
-                    $directDebitFile->addPayment([
-                        // required information about the debtor
-                        'pmtId' => '-', // ID of the payment (EndToEndId)
-                        'instdAmt' => $value->invoiceTotal, // amount
-                        'mndtId' => $value->customer_number, // Mandate ID
-                        'dtOfSgntr' => date('Y-m-01'), // Date of signature
-                        'bic' => $value->account_bic, // BIC of the Debtor
-                        'dbtr' => $value->account_name, // (max 70 characters)
-                        'iban' => $value->account_iban, // IBAN of the Debtor
-                        // optional
-                        'amdmntInd' => 'false', // Did the mandate change
-                        'elctrncSgntr' => 'test', // do not use this if there is a paper-based mandate
-                        'ultmtDbtr' => 'Ultimate Debtor Name', // just an information, this do not affect the payment (max 70 characters)
-                        //'purp'        => ,                        // Do not use this if you not know how. For further information read the SEPA documentation
-                        'rmtInf' => 'Ihre Rechnung für den Zeitraum '.date('d.m.Y', strtotime($value->start_date)).' - '.date('d.m.Y', strtotime($value->end_date)).'- Rechnungs-Nr. '.$value->invoice_no.' . Vielen Dank. Ihr Office Park Team', // unstructured information about the remittance (max 140 characters)
-                        // only use this if 'amdmntInd' is 'true'. at least one must be used
-                        'orgnlMndtId' => 'Original-Mandat-ID',
-                        'orgnlCdtrSchmeId_nm' => 'Creditor-Identifier Name',
-                        'orgnlCdtrSchmeId_id' => 'DE98AAA09999999999',
-                        'orgnlDbtrAcct_iban' => 'DE87200500001234567890', // Original Debtor Account
-                        'orgnlDbtrAgt' => 'SMNDA'          // only 'SMNDA' allowed if used
-                    ]);
-                }
-            }
-
-            try{
-                $directDebitFile->store('speafile');
-                return response()->download(public_path('speafile/Sephpa.DirectDebit.MessageID-1235.xml'),'op-'.date('m').'-'.date('Y').'.xml');
-//                $directDebitFile->download();
-            } catch (Exception $e){
-                print_r($e);exit;
-            }
-            $data['getCustomer'] = $objUser->getCustomer(null);
-        }
-
-        $data['getInvoice'] = $objinvoice->invoiceListByCustomer($method,$customerDetails['id'],$year, $month);
+        $data['getInvoice'] = $objinvoice->invoiceListByCustomer($customerDetails['id'],$year, $month);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('customer/invoice.js');
@@ -99,7 +47,7 @@ class InvoiceController extends Controller {
         $data['css'] = array('');
         $data['year'] = $year;
         $data['month'] = $month;
-        $data['method'] = $method;
+       
 
         return view('customer.invoice.invoice-list', $data);
     }
