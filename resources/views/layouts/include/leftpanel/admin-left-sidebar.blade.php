@@ -24,12 +24,7 @@ $roles  = array_values($roles);
                     {{trans('words.Overview')}}
                 </a>
             </li>
-            <!--            <li class="c-sidebar__item">
-                            <a class="c-sidebar__link {{ ($currentRoute == 'user-list' || $currentRoute == 'add-user' || $currentRoute == 'edit-user' ? 'is-active' : '') }}" href="{{ route('user-list') }}">
-                                <i class="fa fa-users u-mr-xsmall"></i>
-                                {{ trans('words.Manage user') }}
-                            </a>
-                        </li>-->
+           
             @if($logindata[0]['id'] == 1 ||  in_array('System User', $roles))
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{($currentRoute == 'system-user-list' || $currentRoute == 'system-add-user' || $currentRoute == 'system-edit-user' ? 'is-active' : '') }}" href="{{ route('system-user-list') }}">
@@ -128,6 +123,15 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+            
+            
+            <!--@if($logindata[0]['id'] == 1 ||  in_array('Calls', $roles))-->
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'panel-setting-add' || $currentRoute == 'panelsetting' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('panelsetting') }}">
+                    <i class="fa fa-cog u-mr-xsmall" style="padding-right:6px"></i>Panel Setting &nbsp;
+                </a>
+            </li>
+            <!--@endif-->
             
            
             
