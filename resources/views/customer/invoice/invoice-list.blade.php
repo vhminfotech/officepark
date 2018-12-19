@@ -15,15 +15,7 @@
                         <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <label> {{ trans('invoice.filter') }}</label>
-                            <div class="col-lg-2">
-                                <div class="c-field u-mb-small">
-                                    <select id="payment_method" class="c-select form-control filter paymnt_method" >
-                                        <option value="">{{ trans('invoice.select-payment-method') }}</option>
-                                        <option value="sepa" {{ ($method == 'sepa' ? 'selected="selected"' : '') }}>{{ trans('invoice.sepa') }}</option>
-                                        <option value="uber" {{ ($method == 'uber' ? 'selected="selected"' : '') }}>{{ trans('invoice.transfer') }}</option>
-                                    </select>
-                                </div>
-                            </div>
+                            
                            <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter month" name="month" id="month">
@@ -43,7 +35,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <div class="c-field u-mb-small">
                                     <select class="c-select filter year" id="year" name="year">
                                         <option value="">{{ trans('invoice.year') }}</option>
