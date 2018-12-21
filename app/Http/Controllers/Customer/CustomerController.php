@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Customer;
 
 use App\User;
 use App\Model\Addressbook;
+use App\Model\PanelSettings;
 use App\Model\OrderInfo;
 use App\Http\Controllers\Controller;
 use Auth;
 use Route;
 use Illuminate\Http\Request;
 use Config;
-
+use Session;
 class CustomerController extends Controller {
     
     public function __construct() {
@@ -21,6 +22,9 @@ class CustomerController extends Controller {
 
     public function dashboard(Request $request){
         $data['detail'] = $this->loginUser;
+        $objpanelsetting=new PanelSettings;
+        $panelsettingdata= $objpanelsetting->getlastPanellist();
+        session(['key' => $panelsettingdata]);
         $data['customer_id'] = $data['detail']['id'];
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');

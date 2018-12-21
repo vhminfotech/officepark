@@ -67,7 +67,9 @@ class PanelSettings extends Model {
         // print_r($request->file());exit;
         $objPanelSetting = PanelSettings::find($request->input('panel_id'));
         $objPanelSetting->website_name = $request->input('website_name');
+        if($request->file()){
         $objPanelSetting->website_logo = $name;
+        }
         $objPanelSetting->sidebar_menu_color = $request->input('sidebar_menu_color');
         $objPanelSetting->color = $request->input('color');
         $objPanelSetting->hovercolor = $request->input('hovercolor');
@@ -81,4 +83,8 @@ class PanelSettings extends Model {
      function deletePanel($request) {
         return PanelSettings::where('id', $request)->delete();
     }
+     public function getlastPanellist() {
+         $result = PanelSettings::select('panel_setting.*')->get()->last()->toarray();
+         return $result;
+     }
 }
