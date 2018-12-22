@@ -20,6 +20,11 @@
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'editEmpForm' )) }}
                 <div class="c-stage__panel u-p-medium">
+                     <div class="col-lg-4 u-text-center">
+                        <div class="c-avatar c-avatar--xlarge u-inline-block">
+                            <img class="c-avatar__img" src="{{ url('uploads/employee/'.$arrEditEmp[0]['employee_image']) }}" alt="Avatar">
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
@@ -28,6 +33,7 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
