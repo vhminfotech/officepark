@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'test'     => 'test-tr',
     'Dashboard'     => 'gösterge paneli',
     'Overview'      => 'genel bakış',
@@ -19,4 +18,7 @@ return [
     'Employee' => 'Çalışan',
     'system-mail'   => 'Sistem Mailleri',
     'Outgoingcalls'=>'Outgoingcalls',
+    'support'=>'Destek',
+    'profile'=>'Profil',
+    'plan'=>'Plan',
 ];

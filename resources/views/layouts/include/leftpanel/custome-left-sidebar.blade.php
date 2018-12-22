@@ -53,23 +53,30 @@ $fontcolor=$sessiondata['color'];
             
             <li class="c-sidebar__item">
                 <a style="color: {{ '#'.$fontcolor }}" class="c-sidebar__link {{ ($currentRoute == 'customer-edit-plan' || $currentRoute == 'add-plan-customer' || $currentRoute == 'customer-plan'  ? 'is-active' : '') }}"  href="{{ route('customer-plan') }}">
-                    <i class="fa fa-outdent u-mr-xsmall" style="padding-right:6px"></i>Plan &nbsp;
+                    <i class="fa fa-outdent u-mr-xsmall" style="padding-right:6px"></i>{{ trans('words.plan') }} &nbsp;
                 </a>
             </li>
             
              <li class="c-sidebar__item">
                 <a style="color: {{ '#'.$fontcolor }} ;" class="c-sidebar__link {{ ($currentRoute == 'customer-edit-outgoing-call' || $currentRoute == 'customer-new-outgoing-call' || $currentRoute == 'customer-outgoing-call'  ? 'is-active' : '') }}"  href="{{ route('customer-outgoing-call') }}">
-                    <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>Outgoing Calls &nbsp;
+                    <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>{{ trans('words.Outgoingcalls') }} &nbsp;
                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('outgoingCallCount') }} </span>
                 </a>
             </li>
             
             <li class="c-sidebar__item">
                 <a style="color: {{ '#'.$fontcolor }} ;" class="c-sidebar__link {{ ($currentRoute == 'customer-edit-profile'  ? 'is-active' : '') }}"  href="{{ route('customer-edit-profile') }}">
-                    <i class="fa fa-user-circle u-mr-xsmall" style="padding-right:6px"></i>Profile &nbsp;
+                    <i class="fa fa-user-circle u-mr-xsmall" style="padding-right:6px"></i>{{ trans('words.profile') }} &nbsp;
                 </a>
             </li>
             
+            <li class="c-sidebar__item">
+                <a style="color: {{ '#'.$fontcolor }} ;" class="c-sidebar__link {{ ($currentRoute == 'customer-support' || $currentRoute == 'customer-add-support'  ? 'is-active' : '') }}"  href="{{ route('customer-support') }}">
+                    <i class="fa fa-life-ring u-mr-xsmall" style="padding-right:6px"></i>
+                    {{ trans('words.support') }} &nbsp;
+                </a>
+            </li>
+
 <!--            <li class="c-sidebar__item">
                 <a class="c-sidebar__link" href="">
                     <i class="fa fa-user-o u-mr-xsmall"></i>Manage Customer

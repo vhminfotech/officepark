@@ -18,4 +18,7 @@ return [
     'Calls' => 'Calls',
     'system-mail'   => 'System Mail',
     'Outgoingcalls'=>'Outgoingcalls',
+    'support'=>'Profile',
+    'profile'=>'Profile',
+    'plan'=>'Plan',
 ];

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'test'     => 'test-gr',
     'Dashboard'     => 'Instrumententafel',
     'Overview'      => 'Überblick',
@@ -19,6 +18,7 @@ return [
     'Employee' => 'Mitarbeiter',
     'system-mail'   => 'System Mail',
     'Outgoingcalls'=>'Outgoingcalls',
-    
-    
+    'support'=>'Unterstützung',
+    'profile'=>'Profil',
+    'plan'=>'Planen',
 ];
