@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
-@php
- $time = array_keys($arrTime);
-@endphp
+
 <div class="container">
     <div class="row u-mb-large">
         <div class="col-12">
@@ -16,6 +14,7 @@
                         <h6 class="u-mb-zero">Add Support module message</h6>
                     </div>
                 </div>
+                <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 {{ Form::open( array('method' => 'post', 'class' => 'addSupports','files' => true, 'id' => 'addSupports' )) }}
                
                     <div class="c-stage__panel u-p-medium">

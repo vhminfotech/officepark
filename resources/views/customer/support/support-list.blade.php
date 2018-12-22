@@ -31,24 +31,38 @@
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
+                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                     <tbody>
-                        @for($i = 0 ;$i < count($employeeList);$i++)
                         <tr class="c-table__row">
                             <td class="c-table__cell">4521236</td>
                             <td class="c-table__cell">General </td>
                             <td class="c-table__cell">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
-                            <td class="c-table__cell"> <a href="javasctript:;"> 
-                                <span class="c-badge c-badge--secondary"> Responds</span> </a>
+                            <td class="c-table__cell"> <a href="javascript:;"> 
+                                <span class="c-badge c-badge--secondary btnPopup"> Responds</span> </a>
                             </td>
                         </tr>
-                        @endfor
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->
         </div>
     </div>
 </div>
+
+<div class="c-modal c-modal--huge modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
+        <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content modal-content">
+                <a class="c-modal__close c-modal__close--absolute u-text-mute u-opacity-medium" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="c-modal__body" >
+                    <div class="o-page">
+                        @include('customer.support.support-popup')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <style>
     /*    a.c-board__btn.c-tooltip.c-tooltip--top {
             position: absolute;
