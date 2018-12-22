@@ -22,7 +22,11 @@
                 <div class="c-stage__panel u-p-medium">
                      <div class="col-lg-4 u-text-center">
                         <div class="c-avatar c-avatar--xlarge u-inline-block">
+                            @if(file_exists(url('uploads/employee/'.$arrEditEmp[0]['employee_image'])))
                             <img class="c-avatar__img" src="{{ url('uploads/employee/'.$arrEditEmp[0]['employee_image']) }}" alt="Avatar">
+                            @else
+                            <img class="c-avatar__img" src="{{ url('uploads/no-image.png') }}" alt="Avatar">
+                            @endif
                         </div>
                     </div>
                     <div class="row">
