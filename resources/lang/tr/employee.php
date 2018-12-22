@@ -96,6 +96,8 @@ return[
 'are-you-sure-want-to-delete?' => 'Silmek istediginizden emin misiniz?',
 'cancel' => 'Iptal',
 'delete' => 'Silmek',
+'add-avatar' => 'Avatar ekle',
+'edit-avatar' => "Avatar'ı düzenle",
 ];
 
 ?>

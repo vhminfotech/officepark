@@ -96,6 +96,8 @@ return[
 	'are-you-sure-want-to-delete?' => 'Are you sure want to delete?',
 	'cancel' => 'Cancel',
 	'delete' => 'Delete',
+	'add-avatar' => 'Add avatar',
+	'edit-avatar' => 'Edit avatar',
 ];
 
 ?>

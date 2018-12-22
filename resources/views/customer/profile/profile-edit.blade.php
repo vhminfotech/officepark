@@ -17,14 +17,29 @@
 					<div class="c-tabs__pane active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<form name="editCustomer" id="editCustomer" action="{{ route('customer-edit-profile') }}" method="post">
 							<div class="row">
-								<div class="col-lg-2 u-text-center">
+								<!-- <div class="col-lg-2 u-text-center">
 									<div class="c-avatar c-avatar--xlarge u-inline-block">
 										<img class="c-avatar__img" src="{{ url('uploads/employee/'.$detail['user_image']) }}" alt="Avatar">
-										
 									</div>
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<input type="file" name="profile_pic" value="">
-								</div>
+								</div> -->
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<div class="col-lg-2 u-text-center">
+		                       	<div class="c-avatar c-avatar--xlarge u-inline-block">
+		                            @php
+		                            $filename= url('uploads/employee/'.$detail['user_image']);
+		                            $file_headers = @get_headers($filename);
+		                            @endphp
+		                            @if($file_headers[0] == 'HTTP/1.1 200 OK')
+		                            <img class="c-avatar__img" src="{{ url('uploads/employee/'.$detail['user_image']) }}" alt="Avatar">
+		                            @else
+		                            <img class="c-avatar__img"  src="{{ url('uploads/no-image.png') }}" alt="Avatar">
+		                            @endif
+		                            <p> <label class="c-field__label" for="fileSelect">{{ trans('employee.edit-avatar') }}</label></p>
+		                            <p>800px * 800px</p>
+		                            {{ Form::file('profile_pic', ['class' => 'c-input', 'id'=>'fileSelect', 'style' => 'visibility:hidden;']) }}
+		                        </div>
+                    		</div>
 								<div class="col-lg-5">
 									<div class="c-field u-mb-small">
 										<label class="c-field__label" for="firstName">{{ trans('customer.customer_number')}}</label> 

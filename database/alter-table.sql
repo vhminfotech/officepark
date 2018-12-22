@@ -38,3 +38,6 @@ ALTER TABLE `customer_plan` CHANGE `responsibilty` `responsibilty` INT(11) NULL,
 
 
 CREATE TABLE  `panel_setting` ( `id` INT NOT NULL AUTO_INCREMENT , `website_name` VARCHAR(256) NOT NULL , `website_logo` VARCHAR(256) NULL , `sidebar_menu_color` VARCHAR(256) NOT NULL , `color` VARCHAR(256) NOT NULL , `hovercolor` VARCHAR(256) NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+ALTER TABLE `panel_setting` CHANGE `sidebar_menu_name` `sidebar_menu_color` VARCHAR(256) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;

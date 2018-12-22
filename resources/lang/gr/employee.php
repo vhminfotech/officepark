@@ -96,6 +96,9 @@ return[
 	'are-you-sure-want-to-delete?' => 'Möchten Sie wirklich löschen?',
 	'cancel' => 'Abbrechen',
 	'delete' => 'Löschen',
+	'add-avatar' => 'Avatar hinzufügen',
+	'edit-avatar' => 'Avatar bearbeiten',
+	
 ];
 
 ?>

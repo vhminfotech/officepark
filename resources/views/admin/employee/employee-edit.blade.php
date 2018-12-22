@@ -20,7 +20,7 @@
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'editEmpForm' )) }}
                 <div class="c-stage__panel u-p-medium">
-                     <div class="col-lg-4 u-text-center">
+                    <div class="col-lg-4 u-text-center">
                         <div class="c-avatar c-avatar--xlarge u-inline-block">
                             @php
                             $filename= url('uploads/employee/'.$arrEditEmp[0]['employee_image']);
@@ -29,16 +29,11 @@
                             @if($file_headers[0] == 'HTTP/1.1 200 OK')
                             <img class="c-avatar__img" src="{{ url('uploads/employee/'.$arrEditEmp[0]['employee_image']) }}" alt="Avatar">
                             @else
-                            <img class="c-avatar__img" src="{{ url('uploads/no-image.png') }}" alt="Avatar">
+                            <img class="c-avatar__img"  src="{{ url('uploads/no-image.png') }}" alt="Avatar">
                             @endif
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="firstName">{{ trans('employee.select-image') }}</label> 
-                                {{ Form::file('file', null, array('class' => 'c-input')) }}
-                            </div>
+                            <p> <label class="c-field__label" for="fileSelect">{{ trans('employee.edit-avatar') }}</label></p>
+                            <p>800px * 800px</p>
+                            {{ Form::file('file', ['class' => 'c-input', 'id'=>'fileSelect', 'style' => 'visibility:hidden;']) }}
                         </div>
                     </div>
                    

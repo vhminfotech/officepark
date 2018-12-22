@@ -20,14 +20,23 @@
                 </div>
                 {{ Form::open( array('method' => 'post', 'class' => '','files' => true, 'id' => 'addEmpForm' )) }}
                 <div class="c-stage__panel u-p-medium">
-                    <div class="row">
+                    <div class="col-lg-4 u-text-center">
+                        <div class="c-avatar c-avatar--xlarge u-inline-block">                         
+                            <img class="c-avatar__img"  src="{{ url('uploads/no-image.png') }}" alt="Avatar">
+                            <p> <label class="c-field__label" for="fileSelect">{{ trans('employee.add-avatar') }}</label></p>
+                            <p>800px * 800px</p>
+                            {{ Form::file('file', ['class' => 'c-input', 'id'=>'fileSelect', 'style' => 'visibility:hidden;']) }}
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="firstName">{{ trans('employee.select-image') }}</label> 
                                 {{ Form::file('file', null, array('class' => 'c-input')) }}
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
