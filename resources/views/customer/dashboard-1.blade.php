@@ -3,87 +3,81 @@
 @include('layouts.include.body_header')
 <div class="container">
     <div class="row u-mb-large">
-        <div class="col-md-3">
+        <div class="col-md-6">
                         <div class="c-card c-card--responsive u-mb-medium">
+                            
+                            
                             <table class="c-table u-border-zero">
                                 <tbody>
-                                    <tr class="c-table__row u-border-top-zero u-border-buttom-zero" >
-                                        <td class="c-table__cell u-text-center" colspan="2"><h1>Calls</h1></td>
-                                    </tr>
-                                     <tr class="c-table__row u-border-top-zero" >
-                                        <td class="c-table__cell">Today</td>
-                                        <td class="c-table__cell u-text-right" style="color:green">
+                                    <tr class="c-table__row u-border-top-zero" >
+                                        <td class="c-table__cell">Design Works</td>
+                                        <td class="c-table__cell u-text-right " style="color:green">
                                             <h4 class="c-graph-card__number">5</h4>
                                         </td>
                                     </tr>
+                                    
+                                    
                                     <tr class="c-table__row u-border-top-zero" >
-                                        <td class="c-table__cell">Week</td>
+                                        <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
                                             <h4 class="c-graph-card__number">251</h4>
                                         </td>
                                     </tr>
+                                    
+                                    
                                     <tr class="c-table__row u-border-top-zero" >
-                                        <td class="c-table__cell">Month</td>
+                                        <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
                                             <h4 class="c-graph-card__number">2445</h4>
                                         </td>
                                     </tr>
+                                    
+                                    
                                     <tr class="c-table__row u-border-top-zero" >
-                                        <td class="c-table__cell">Year</td>
+                                        <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
-                                            <h4 class="c-graph-card__number">2,580</h4>
+                                            <h4 class="c-graph-card__number">$2,580</h4>
                                         </td>
                                     </tr>
+                                    
+                                    <tr class="c-table__row u-border-top-zero" >
+                                        <td class="c-table__cell">Design Works</td>
+                                        <td class="c-table__cell u-text-right " style="color:green">
+                                            <h4 class="c-graph-card__number">$2,580</h4>
+                                        </td>
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
-        <div class="col-9">
+        <div class="col-6">
             <article class="c-stage">
                 <div class="c-stage__panel u-p-medium">
                     <div class="row">
-                        <div class="col-12">
-                            <h1 class=" u-text-center"> Status</h1>
+                        <div class="col-6">
+                            <h5 class="c-card__title">Aktueller Status</h5>
+                            
+                        </div>
+                        
+                        <div class="col-6 c-field u-mb-small left">
+                            <div class="pull-right" >
+                                <input class="c-btn c-btn--info " value="Add Plan" type="submit">
+                            </div> 
                         </div>
                     </div>
                    
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="status">Status</label> 
-                                <select name="starttime" class="c-select" id="status">
-                                  <option>status1</option>
-                                  <option>status2</option>
-                                  <option>status3</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="message">Message</label> 
-                                <select name="starttime" class="c-select" id="message">
-                                  <option>msg1</option>
-                                  <option>msg2</option>
-                                  <option>msg3</option>
-                                  <option>msg4</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="row">
-                        <div class="col-lg-6">
-                            <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="number">Number</label> 
-                                <select name="starttime" class="c-select" id="number">
-                                  <option>num1</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="starttime">Information</label> 
-                                <select name="starttime" class="c-select" id="starttime">
-                                  <option>info1</option>
+                                <!--<input class="c-input" required name="message" id="message" placeholder="message" type="text">-->
+                                <select class="c-select" name="message" id="message" >
+                                    <option value="">Select Message</option>
+                                    
+                                @for($i=0;$i < count ($plan_message); $i++)
+                                <option value="{{ $i+1 }}">{{ $plan_message[$i+1] }}</option>
+                                @endfor
                                 </select>
                             </div>
                         </div>
@@ -91,7 +85,57 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="note"></label> 
+                                <label class="c-field__label" for="status">Status</label> 
+                                <!--<input class="c-input" required name="status" id="status" placeholder="status" type="text">-->
+                                <select class="c-select" name="status" id="status" >
+                                    <option value="">Select status</option>
+                                    
+                                @for($i=0;$i < count($plan_status); $i++)
+                                <option value="{{ $i+1 }}">{{ $plan_status[$i+1] }}</option>
+                                @endfor
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="number">Number</label> 
+                                <!--<input class="c-input" required name="number" id="number" placeholder="number" type="text">-->
+                                <select class="c-select" name="number" id="number" >
+                                    <option value="">Select Number</option>
+                                    
+                                @for($i=0;$i < count($plan_mo_no); $i++)
+                                <option value="{{ $i+1 }}">{{ $plan_mo_no[$i+1] }}</option>
+                                @endfor
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="information">Information</label> 
+                                <!--<input class="c-input" required name="information" id="information" placeholder="information" type="text">-->
+                                <select class="c-select " name="information" id="information" >
+                                    <option value="">Select Information</option>
+                                    
+                                @for($i=0;$i < count($plan_info); $i++)
+                                <option value="{{ $i+1 }}">{{ $plan_info[$i+1] }}</option>
+                                @endfor
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label" for="note">Note</label> 
                                 <textarea rows="2"  class="c-input" cols="50" name="note"></textarea>
                             </div>
                         </div>
