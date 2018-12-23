@@ -1833,7 +1833,10 @@ html {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; }
-
+/*Shailesh Hover Event change*/
+.fa:hover{color: #2ea1f8; display: inline-block !important;}
+.fa i:hover{color: #2ea1f8; display: inline-block !important;}
+.fa i before:hover{color: #2ea1f8; display: inline-block !important;}
 /* makes the font 33% larger relative to the icon container */
 .fa-lg {
     font-size: 1.33333333em;

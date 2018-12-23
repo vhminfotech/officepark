@@ -7,6 +7,9 @@ $fontcolor=$sessiondata['color'];
     .c-sidebar__link.is-active {
     background-color: <?php echo "#".$sessiondata['hovercolor'] ?>;
     }
+    .fa:hover{color: <?php echo "#".$sessiondata['hovercolor'] ?>; display: inline-block !important;}
+.fa i:hover{color: <?php echo "#".$sessiondata['hovercolor'] ?>; display: inline-block !important;}
+.fa i before:hover{color: <?php echo "#".$sessiondata['hovercolor'] ?>; display: inline-block !important;}
 </style>
 
 <div class="o-page__sidebar js-page-sidebar" >
