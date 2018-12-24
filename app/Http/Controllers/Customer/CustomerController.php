@@ -53,7 +53,7 @@ class CustomerController extends Controller {
         $data['message'] = $objCustomerPlan->getMessage($data['customer_id']);
         $data['number'] = $objCustomerPlan->getNumber($data['customer_id']);
         $data['information'] = $objCustomerPlan->getInformation($data['customer_id']);
-        // print_r($data['number']);exit;
+        
         $objpanelsetting=new PanelSettings;
         $panelsettingdata= $objpanelsetting->getlastPanellist();
         session(['key' => $panelsettingdata]);

@@ -36,7 +36,7 @@ class Customer_plan extends Model {
     }
 
     public function getInformation($id) {
-        $result = Customer_plan::where('customer_id',$id)->pluck('responsibilty', 'id')->toArray();
+        $result = Customer_plan::where('customer_id',$id)->pluck('responsibilty', 'id')->filter();
         return $result;
     }
     

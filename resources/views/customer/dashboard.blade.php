@@ -10,12 +10,14 @@
                                     <tr class="c-table__row u-border-top-zero u-border-buttom-zero" >
                                         <td class="c-table__cell u-text-center" colspan="2"><h1>Calls</h1></td>
                                     </tr>
+                                   
                                      <tr class="c-table__row u-border-top-zero" >
                                         <td class="c-table__cell">Today</td>
                                         <td class="c-table__cell u-text-right" style="color:green">
                                             <h4 class="c-graph-card__number">{{ isset($todayCalls) && !empty($todayCalls) ? $todayCalls[0]['TotalCount'] : 0  }}</h4>
                                         </td>
                                     </tr>
+
                                     <tr class="c-table__row u-border-top-zero" >
                                         <td class="c-table__cell">Week</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
@@ -33,6 +35,7 @@
                                         <td class="c-table__cell u-text-right " style="color:green">
                                             <h4 class="c-graph-card__number">{{ isset($yearCalls) && !empty($yearCalls) ? $yearCalls[0]['TotalCount'] : 0  }}</h4>
                                         </td>
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -72,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+
                     <input type="hidden" name="customer_id" value="{{ $customer_id }}">
                    <div class="row">
                         <div class="col-lg-6">
@@ -84,9 +88,13 @@
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="starttime">Information</label> 
                                   <select name="information" id="information" class="information c-select">
+                                    @if(count($information) == 0)
+                                        <option value=""> No Record Found</option>
+                                    @else
                                     @foreach($information as $row1 => $val1)
                                     <option value="{{ $row1 }}"> {{ $responsibility[$val1] }}</option>
                                     @endforeach
+                                    @endif
                                 </select>
                                 <!-- {{ Form::select('information', $information , null, array('class' => 'c-select', 'id' => 'information')) }} -->
                             </div>
@@ -100,6 +108,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-6 c-field u-mb-small left">
                         <div class="pull-right" >
                             <input class="c-btn c-btn--info " value="Add Status" type="submit">
