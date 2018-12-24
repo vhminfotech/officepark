@@ -745,6 +745,32 @@ class Calls extends Model {
         return $result;
     }
 
+      public function getCustomerDashbard($name,$userId = null) {
+        // echo $name .', '. $userId;exit;
+        $logindata = Session::get('logindata');
+        $weekStart = date('Y-m-d', strtotime('last Monday'));
+        $sql = Calls::join('users as u1', 'u1.inopla_username', '=', 'calls.destination_number');
+        if ($name == 'today') {
+            $sql->whereRaw('Date(calls.created_at) = CURDATE()');
+        }
+        if ($name == 'week') {
+            $sql->whereBetween( DB::raw('date(calls.created_at)'), [$weekStart, date('Y-m-d')] );
+        }
+        if ($name == 'month') {
+            $sql->whereBetween('calls.created_at', [date('Y-m-01'), date('Y-m-t')]);
+        }
+        if ($name == 'year') {
+            $sql->whereBetween('calls.created_at', [date('Y-01-01'), date('Y-m-d')]);
+        }
+
+        $sql->groupBy('calls.destination_number');
+        if(!empty($userId)){
+            $sql->where('calls.id','=',$userId);
+        }
+        $result = $sql->get(array('u1.inopla_username', DB::raw('COUNT(calls.id)as TotalCount')))->toArray();
+        return $result;
+    }
+
 }
 
 ?>

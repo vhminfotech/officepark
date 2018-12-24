@@ -13,25 +13,25 @@
                                      <tr class="c-table__row u-border-top-zero" >
                                         <td class="c-table__cell">Today</td>
                                         <td class="c-table__cell u-text-right" style="color:green">
-                                            <h4 class="c-graph-card__number">5</h4>
+                                            <h4 class="c-graph-card__number">{{ isset($todayCalls) && !empty($todayCalls) ? $todayCalls[0]['TotalCount'] : 0  }}</h4>
                                         </td>
                                     </tr>
                                     <tr class="c-table__row u-border-top-zero" >
                                         <td class="c-table__cell">Week</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
-                                            <h4 class="c-graph-card__number">251</h4>
+                                            <h4 class="c-graph-card__number">{{ isset($weekCalls) && !empty($weekCalls) ? $weekCalls[0]['TotalCount'] : 0  }}</h4>
                                         </td>
                                     </tr>
                                     <tr class="c-table__row u-border-top-zero" >
                                         <td class="c-table__cell">Month</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
-                                            <h4 class="c-graph-card__number">2445</h4>
+                                            <h4 class="c-graph-card__number">{{ isset($monthCalls) && !empty($monthCalls) ? $monthCalls[0]['TotalCount'] : 0  }}</h4>
                                         </td>
                                     </tr>
                                     <tr class="c-table__row u-border-top-zero" >
                                         <td class="c-table__cell">Year</td>
                                         <td class="c-table__cell u-text-right " style="color:green">
-                                            <h4 class="c-graph-card__number">2,580</h4>
+                                            <h4 class="c-graph-card__number">{{ isset($yearCalls) && !empty($yearCalls) ? $yearCalls[0]['TotalCount'] : 0  }}</h4>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -39,6 +39,7 @@
                         </div>
                     </div>
         <div class="col-9">
+            {{ Form::open( array('method' => 'post', 'class' => '', 'id' => 'addStatus' )) }}
             <article class="c-stage">
                 <div class="c-stage__panel u-p-medium">
                     <div class="row">
@@ -50,41 +51,44 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="status">Status</label> 
-                                <select name="starttime" class="c-select" id="status">
-                                  <option>status1</option>
-                                  <option>status2</option>
-                                  <option>status3</option>
+                                <label class="c-field__label" for="statuss">Status</label> 
+                                <select name="status" id="status" class="status c-select">
+                                    @foreach($status as $row => $val)
+                                    <option value="{{ $row }}"> {{ $plan_status[$val] }}</option>
+                                    @endforeach
                                 </select>
+                                 <!-- {{ Form::select('status',  $plan_status,$status , array('class' => 'c-select', 'id' => 'status')) }} -->
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="message">Message</label> 
-                                <select name="starttime" class="c-select" id="message">
-                                  <option>msg1</option>
-                                  <option>msg2</option>
-                                  <option>msg3</option>
-                                  <option>msg4</option>
+                                 <!-- {{ Form::select('message', $message , null, array('class' => 'c-select', 'id' => 'message')) }} -->
+                                  <select name="message" id="message" class="message c-select">
+                                    @foreach($message as $row3 => $val3)
+                                    <option value="{{ $row3 }}"> {{ $plan_message[$val3] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="customer_id" value="{{ $customer_id }}">
                    <div class="row">
                         <div class="col-lg-6">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="number">Number</label> 
-                                <select name="starttime" class="c-select" id="number">
-                                  <option>num1</option>
-                                </select>
+                                {{ Form::select('number', $number , null, array('class' => 'c-select', 'id' => 'number')) }}
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="starttime">Information</label> 
-                                <select name="starttime" class="c-select" id="starttime">
-                                  <option>info1</option>
+                                  <select name="information" id="information" class="information c-select">
+                                    @foreach($information as $row1 => $val1)
+                                    <option value="{{ $row1 }}"> {{ $responsibility[$val1] }}</option>
+                                    @endforeach
                                 </select>
+                                <!-- {{ Form::select('information', $information , null, array('class' => 'c-select', 'id' => 'information')) }} -->
                             </div>
                         </div>
                     </div>
@@ -96,10 +100,14 @@
                             </div>
                         </div>
                     </div>
-                    <br/>
-
+                    <div class="col-6 c-field u-mb-small left">
+                        <div class="pull-right" >
+                            <input class="c-btn c-btn--info " value="Add Status" type="submit">
+                        </div> 
+                    </div>
                     {{ Form::close() }}
             </article>
+            {{ Form::close() }}
         </div>
     </div>
         

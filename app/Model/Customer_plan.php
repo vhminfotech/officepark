@@ -13,10 +13,30 @@ class Customer_plan extends Model {
     
     public function planlist($id){
         
-        $result= Customer_plan ::join('employee', 'employee.id', '=', 'customer_plan.employee')
+        $result= Customer_plan::join('employee', 'employee.id', '=', 'customer_plan.employee')
                ->where('customer_plan.customer_id',$id)
                ->get(['customer_plan.*','employee.first_name','employee.last_name'])->toarray();
 
+        return $result;
+    }
+
+    public function getStatus($id) {
+        $result = Customer_plan::where('customer_id',$id)->pluck('status', 'id')->toArray();
+        return $result;
+    }
+
+    public function getMessage($id) {
+        $result = Customer_plan::where('customer_id',$id)->pluck('message', 'id')->toArray();
+        return $result;
+    }  
+
+    public function getNumber($id) {
+        $result = Customer_plan::where('customer_id',$id)->pluck('transfer_call_no', 'id')->toArray();
+        return $result;
+    }
+
+    public function getInformation($id) {
+        $result = Customer_plan::where('customer_id',$id)->pluck('responsibilty', 'id')->toArray();
         return $result;
     }
     

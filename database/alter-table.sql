@@ -32,12 +32,11 @@ ALTER TABLE `calls` CHANGE `destination_number` `destination_number` VARCHAR(56)
 ALTER TABLE `calls` ADD `is_popup` TINYINT NOT NULL DEFAULT '0' AFTER `caller_note`;
 UPDATE `calls` SET `is_popup` = '1'
 
-
 ALTER TABLE `customer_plan` CHANGE `transfer_call_no` `transfer_call_no` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 ALTER TABLE `customer_plan` CHANGE `responsibilty` `responsibilty` INT(11) NULL, CHANGE `employee` `employee` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `Note` `Note` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 
-
 CREATE TABLE  `panel_setting` ( `id` INT NOT NULL AUTO_INCREMENT , `website_name` VARCHAR(256) NOT NULL , `website_logo` VARCHAR(256) NULL , `sidebar_menu_color` VARCHAR(256) NOT NULL , `color` VARCHAR(256) NOT NULL , `hovercolor` VARCHAR(256) NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-
-
 ALTER TABLE `panel_setting` CHANGE `sidebar_menu_name` `sidebar_menu_color` VARCHAR(256) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
+CREATE TABLE `status` ( `id` INT NOT NULL AUTO_INCREMENT , `status_id` INT NOT NULL , `message_id` INT NOT NULL , `number` INT NOT NULL , `information` INT NOT NULL , `note` TEXT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `status` ADD `customer_id` INT NULL AFTER `id`;
