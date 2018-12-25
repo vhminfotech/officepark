@@ -16,8 +16,14 @@ var Supports = function() {
                 }
             });
         });
-        
-        
+        var form = $('#addSupports');
+        var rules = {
+            support_message: {required: true},
+            note: {required: true},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
     }
 
     return {

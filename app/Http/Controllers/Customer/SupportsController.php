@@ -11,6 +11,7 @@ use App\Model\Employee;
 use App\Model\EmployeeDetails;
 use App\Model\OrderInfo;
 use App\Model\Users;
+use App\Model\Support;
 use Config;
 
 
@@ -23,35 +24,37 @@ class SupportsController extends Controller {
 
     public function supportsList(Request $request) {
         $data['detail'] = $this->loginUser;
+        $userName=$data['customer_id']=$data['detail']['id'];
+        $data['support_message'] = Config::get('constants.support_message');
+        $objSupport = new Support();
+        $data['supportArr'] = $objSupport->supportlist($userName);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('customer/supports.js', 'ajaxfileupload.js', 'jquery.form.min.js');
         $data['funinit'] = array('Supports.list_init()');
         $data['css'] = array('');
-        $userName=$data['customer_id']=$data['detail']['id'];
+  
         return view('customer.support.support-list', $data);
     }
     
     public function addSupport(Request $request) {
         $data['detail'] = $this->loginUser;
-        $userName=$data['customer_id']=$data['detail']['id'];
+        $userName = $data['customer_id']=$data['detail']['id'];
+        $data['support_message'] = Config::get('constants.support_message');
         if ($request->isMethod('post')) {
-            // $objEmployee = new Employee();
-            // $employeeId = $objEmployee->saveEmployeeInfo($request);
-            // if ($employeeId == true) {
-            //     $objEmployeeDetails = new EmployeeDetails();
-            //     $arrEmployeeDetails = $objEmployeeDetails->saveEmployeeDetail($request, $employeeId);
-            //     if ($arrEmployeeDetails == true) {
-            //         $return['status'] = 'success';
-            //         $return['message'] = 'Employee add successfully.';
-            //         $return['redirect'] = route('employee-customer');
-            //     }
-            // } else {
-            //     $return['status'] = 'error';
-            //     $return['message'] = 'Email already exists.';
-            // }
-            // echo json_encode($return);
-            // exit;
+            $objSupport = new Support();
+            $employeeId = $objSupport->saveSupport($request,$userName); 
+
+            if ($employeeId == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'Support add successfully.';
+                $return['redirect'] = route('customer-support');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already exists.';
+            }
+            echo json_encode($return);
+            exit;
         }
         $data['plugincss'] = array();
         $data['pluginjs'] = array();

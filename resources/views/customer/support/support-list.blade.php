@@ -26,22 +26,29 @@
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="">Ticket ID &nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Reasion &nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Message &nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head" style="width: 50px; !important">Message &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Status &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                     <tbody>
+                        @foreach($supportArr as $row => $val)
+                        @php
+                        $MessageW = wordwrap($val['note'], 100, "\n", true);
+                        $MessageW = htmlentities($MessageW);
+                        $MessageW = nl2br($MessageW);
+                        @endphp
                         <tr class="c-table__row">
                             <td class="c-table__cell">4521236</td>
-                            <td class="c-table__cell">General </td>
-                            <td class="c-table__cell">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </td>
+                            <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
+                            <td class="c-table__cell" style="width: 50px;">{!!  $MessageW !!}</td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
                             <td class="c-table__cell"> <a href="javascript:;"> 
                                 <span class="c-badge c-badge--secondary btnPopup"> Responds</span> </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div><!-- // .col-12 -->

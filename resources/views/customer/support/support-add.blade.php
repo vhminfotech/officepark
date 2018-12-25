@@ -15,23 +15,14 @@
                     </div>
                 </div>
                 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                {{ Form::open( array('method' => 'post', 'class' => 'addSupports','files' => true, 'id' => 'addSupports' )) }}
+                {{ Form::open( array('method' => 'post', 'class' => 'addSupports','id' => 'addSupports' )) }}
                
                     <div class="c-stage__panel u-p-medium">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="information">Support message add</label> 
-                                    <select class="c-select" name="information" id="information" required>
-                                        <option value=""> Select Reasion </option>
-                                        <option value=""> General </option>
-                                        <option value=""> Technology </option>
-                                        <option value=""> Appreal </option>
-                                        <option value=""> Bill </option>
-                                        <option value=""> Improvement </option>
-                                        <option value=""> Other </option>
-                                       
-                                    </select>
+                                     {{ Form::select('support_message',  $support_message,null , array('class' => 'c-select', 'id' => 'support_message')) }}
                                 </div>
                             </div>
                         </div>

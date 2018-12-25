@@ -182,6 +182,14 @@ return [
       '2'=>'PQRSTU',
       '3'=>'MNOPQRST',
     ],
+    'support_message'=>[
+      '1'=>'General ',
+      '2'=>'Technology',
+      '3'=>'Appreal',
+      '4'=>'Bill',
+      '5'=>'Improvement',
+      '6'=>'Other',
+    ],
     'EmployeePath' => public_path() . '/uploads/employee/',
 ];
 
