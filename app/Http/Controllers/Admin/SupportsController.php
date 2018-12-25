@@ -67,8 +67,8 @@ class SupportsController extends Controller {
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
         switch ($action) {
-            case 'getPopupData':echo 'fsd';exit;
-                $deleteId = $request->input('data')['id'];
+            case 'getPopupData': 
+                $return = $request->input('data')['id'];
                 echo json_encode($return);
                 exit;
                 break;

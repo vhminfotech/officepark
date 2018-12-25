@@ -64,7 +64,7 @@
                 </a>
                 <div class="c-modal__body" >
                     <div class="o-page">
-                        @include('customer.support.support-popup')
+                        @include('agent.support.support-popup')
                     </div>
                 </div>
             </div>

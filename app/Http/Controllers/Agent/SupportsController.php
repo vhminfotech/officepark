@@ -30,7 +30,7 @@ class SupportsController extends Controller {
         $data['supportArr'] = $objSupport->supportlist($userName);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
-        $data['js'] = array('customer/supports.js', 'ajaxfileupload.js', 'jquery.form.min.js');
+        $data['js'] = array('agent/supports.js', 'ajaxfileupload.js', 'jquery.form.min.js');
         $data['funinit'] = array('Supports.list_init()');
         $data['css'] = array('');
   
@@ -58,7 +58,7 @@ class SupportsController extends Controller {
         }
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
-        $data['js'] = array('customer/supports.js', 'ajaxfileupload.js', 'jquery.form.min.js');
+        $data['js'] = array('agent/supports.js', 'ajaxfileupload.js', 'jquery.form.min.js');
         $data['funinit'] = array('Supports.list_init()');
         $data['css'] = array('');
         return view('agent.support.support-add', $data);
@@ -67,7 +67,7 @@ class SupportsController extends Controller {
     public function ajaxAction(Request $request) {
         $action = $request->input('action');
         switch ($action) {
-            case 'getPopupData':echo 'fsd';exit;
+            case 'getPopupData':
                 $deleteId = $request->input('data')['id'];
                 echo json_encode($return);
                 exit;

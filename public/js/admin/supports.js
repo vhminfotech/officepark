@@ -8,7 +8,7 @@ var Supports = function() {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "customer/support-ajaxAction",
+                url: baseurl + "admin/support-ajaxAction",
                 data: {'action': 'getPopupData', 'data': {'id': 2 }},
                 success: function(data) {
                     $('#myModal2').modal('show');
