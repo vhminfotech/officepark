@@ -25,6 +25,7 @@
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="">Ticket ID &nbsp;&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Customer ID &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Reasion &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head" style="width: 50px; !important">Message &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Status &nbsp;&nbsp;</th>
@@ -40,7 +41,8 @@
                         $MessageW = nl2br($MessageW);
                         @endphp
                         <tr class="c-table__row">
-                            <td class="c-table__cell">4521236</td>
+                            <td class="c-table__cell">{{ $val['id'] }}</td>
+                            <td class="c-table__cell">{{ $val['customer_number'] }}</td>
                             <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
                             <td class="c-table__cell" style="width: 50px;">{!!  $MessageW !!}</td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>

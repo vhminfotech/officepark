@@ -40,7 +40,7 @@
                         $MessageW = nl2br($MessageW);
                         @endphp
                         <tr class="c-table__row">
-                            <td class="c-table__cell">4521236</td>
+                            <td class="c-table__cell">{{ $val['id'] }}</td>
                             <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
                             <td class="c-table__cell" style="width: 50px;">{!!  $MessageW !!}</td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
