@@ -27,6 +27,7 @@
                             <th class="c-table__cell c-table__cell--head" style="">Ticket ID &nbsp;&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Customer ID &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Reasion &nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">Type &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head" style="width: 50px; !important">Message &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Status &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
@@ -44,6 +45,7 @@
                             <td class="c-table__cell">{{ $val['id'] }}</td>
                             <td class="c-table__cell">{{ $val['customer_number'] }}</td>
                             <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
+                            <td class="c-table__cell">{{ $val['type'] }}</td>
                             <td class="c-table__cell" style="width: 50px;">{!!  $MessageW !!}</td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
                             <td class="c-table__cell"> <a href="javascript:;"> 

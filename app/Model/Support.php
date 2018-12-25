@@ -16,7 +16,7 @@ class Support extends Model {
         if(!empty($id)){
             $sql->where('support.user_id',$id);  
         }
-        $result = $sql->get(['support.*','users.name','users.customer_number'])->toarray();
+        $result = $sql->get(['support.*','users.name','users.customer_number','users.type'])->toarray();
         return $result;
     }
    
