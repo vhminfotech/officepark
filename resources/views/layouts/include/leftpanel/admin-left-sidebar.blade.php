@@ -132,9 +132,14 @@ $roles  = array_values($roles);
                 </a>
             </li>
             <!--@endif-->
-            
-           
-            
+            @if($logindata[0]['id'] == 1 ||  in_array('Support', $roles))
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'support' || $currentRoute == 'add-support'  ? 'is-active' : '') }}"  href="{{ route('support') }}">
+                    <i class="fa fa-life-ring u-mr-xsmall" style="padding-right:6px"></i>
+                    {{ trans('words.support') }} &nbsp;
+                </a>
+            </li>
+            @endif
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>

@@ -120,6 +120,10 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'panel-setting-add', ['as' => 'panel-setting-add', 'uses' => 'Admin\PanelController@addpanelsetting']);
     Route::match(['get', 'post'], 'panel-setting-edit/{id}', ['as' => 'panel-setting-edit', 'uses' => 'Admin\PanelController@editpanelsetting']);
       Route::match(['get', 'post'], 'panel-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Admin\PanelController@ajaxAction']);
+
+    Route::match(['get', 'post'], 'support', ['as' => 'support', 'uses' => 'Admin\SupportsController@supportsList']);
+    Route::match(['get', 'post'], 'add-support', ['as' => 'add-support', 'uses' => 'Admin\SupportsController@addSupport']);
+    Route::match(['get', 'post'], 'support-ajaxAction', ['as' => 'support-ajaxAction', 'uses' => 'Admin\SupportsController@ajaxAction']);  
 });
 
 

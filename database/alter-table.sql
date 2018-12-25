@@ -41,4 +41,5 @@ ALTER TABLE `panel_setting` CHANGE `sidebar_menu_name` `sidebar_menu_color` VARC
 CREATE TABLE `status` ( `id` INT NOT NULL AUTO_INCREMENT , `status_id` INT NOT NULL , `message_id` INT NOT NULL , `number` INT NOT NULL , `information` INT NOT NULL , `note` TEXT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ALTER TABLE `status` ADD `customer_id` INT NULL AFTER `id`;
 
-CREATE TABLE `officepark`.`support` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NULL , `support_id` INT NOT NULL , `note` TEXT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `support` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NULL , `support_id` INT NOT NULL , `note` TEXT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+INSERT INTO `permission_master` (`id`, `name`, `dt_created`) VALUES (NULL, 'Support', '2018-12-25 00:00:00');
