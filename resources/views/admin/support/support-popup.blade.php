@@ -1,5 +1,3 @@
-
-
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
     <div class="row u-mb-large">
@@ -26,22 +24,28 @@
                             <th class="c-table__cell c-table__cell--head">Agent &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Reasion &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Message &nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
+                            <!-- <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th> -->
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $MessageW = wordwrap($supportArray[0]['note'], 30, "\n", true);
+                        $MessageW = htmlentities($MessageW);
+                        $MessageW = nl2br($MessageW);
+                        @endphp
                         <tr class="c-table__row">
-                            <td class="c-table__cell">4521236</td>
+                            <td class="c-table__cell">{{ $supportArray[0]['id'] }}</td>
                             <td class="c-table__cell">6570105</td>
-                            <td class="c-table__cell">12.12.2018 </td>
-                            <td class="c-table__cell">Tets1 </td>
-                            <td class="c-table__cell">agrd4 </td>
-                            <td class="c-table__cell">Improvement </td>
-                            <td class="c-table__cell">Lorem Ipsum   </td>
-                            <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
-                            <td class="c-table__cell"> <a href="javasctript:;"> 
+                            <td class="c-table__cell">{{ date('d.m.Y', strtotime($supportArray[0]['created_at'] )) }} </td>
+                            <td class="c-table__cell">{{ ($supportArray[0]['type'] == 'CUSTOMER' ? $supportArray[0]['customer_number'] : '-') }} </td>
+                            <td class="c-table__cell">{{ ($supportArray[0]['type'] == 'CUSTOMER' ? $supportArray[0]['name'] : '-') }} </td>
+                            <td class="c-table__cell">{{ ($supportArray[0]['type'] == 'AGENT' ? $supportArray[0]['name'] : '-') }} </td>
+                            <td class="c-table__cell">{{ $support_message[$supportArray[0]['support_id']] }} </td>
+                            <td class="c-table__cell" style="width: 50px;">{!!  $MessageW !!}</td>
+                            <!-- <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td> -->
+                           <!--  <td class="c-table__cell"> <a href="javasctript:;"> 
                                 <span class="c-badge c-badge--secondary"> Responds</span> </a>
-                            </td>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>

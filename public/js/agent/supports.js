@@ -3,16 +3,17 @@ var Supports = function() {
     var handleSupport = function() {
 
         $('body').on('click', '.btnPopup', function() {
+            var id = $(this).attr('data-id');
             $.ajax({
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
                 url: baseurl + "agent/support-ajaxAction",
-                data: {'action': 'getPopupData', 'data': {'id': 2 }},
+                data: {'action': 'getPopupData', 'data': {'id': id }},
                 success: function(data) {
+                    $('.putHtml').html(data);
                     $('#myModal2').modal('show');
-//                    var data = JSON.parse(data);
                 }
             });
         });

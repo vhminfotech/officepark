@@ -37,19 +37,17 @@
                     <tbody>
                         @foreach($supportArr as $row => $val)
                         @php
-                        $MessageW = wordwrap($val['note'], 100, "\n", true);
-                        $MessageW = htmlentities($MessageW);
-                        $MessageW = nl2br($MessageW);
+                        $out = strlen($val['note']) > 50 ? substr($val['note'],0,70)."..." : $val['note'];
                         @endphp
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $val['id'] }}</td>
                             <td class="c-table__cell">{{ $val['customer_number'] }}</td>
                             <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
                             <td class="c-table__cell">{{ $val['type'] }}</td>
-                            <td class="c-table__cell" style="width: 50px;">{!!  $MessageW !!}</td>
+                              <td class="c-table__cell" title="{{  $val['note'] }}" style="width: 50px;">{!!  $out !!}</td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
-                            <td class="c-table__cell"> <a href="javascript:;"> 
-                                <span class="c-badge c-badge--secondary btnPopup"> Responds</span> </a>
+                            <td class="c-table__cell"> <a href="javascript:;" >
+                                <span class="c-badge c-badge--secondary btnPopup" data-id="{{ $val['id'] }}"> Responds</span> </a>
                             </td>
                         </tr>
                         @endforeach
@@ -67,8 +65,7 @@
                     <i class="fa fa-close"></i>
                 </a>
                 <div class="c-modal__body" >
-                    <div class="o-page">
-                        @include('agent.support.support-popup')
+                    <div class="o-page putHtml">
                     </div>
                 </div>
             </div>

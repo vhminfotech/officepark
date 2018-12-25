@@ -29,6 +29,13 @@ class Support extends Model {
             return ($objSupport->save());
     }
    
+    public function getSupport($id = null){
+        $sql = Support::join('users', 'users.id', '=', 'support.user_id');
+            $sql->where('support.id',$id);  
+        $result = $sql->get(['support.*','users.name','users.customer_number','users.type'])->toarray();
+        return $result;
+    }
+    
     // function supportdelete($request) {
     //     return Support::where('id', $request)->delete();
     // }

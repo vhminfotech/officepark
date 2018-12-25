@@ -68,8 +68,12 @@ class SupportsController extends Controller {
         $action = $request->input('action');
         switch ($action) {
             case 'getPopupData':
-                $return = $request->input('data')['id'];
-                echo json_encode($return);
+                $id = $request->input('data')['id'];
+                $objSupport = new Support();
+                $data['supportArray'] = $objSupport->getSupport($id); 
+                $data['support_message'] = Config::get('constants.support_message');
+                $resultTable = view('customer.support.support-popup', $data)->render();
+                echo $resultTable;
                 exit;
                 break;
         }
