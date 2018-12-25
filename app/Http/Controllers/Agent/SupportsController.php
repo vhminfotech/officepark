@@ -68,7 +68,7 @@ class SupportsController extends Controller {
         $action = $request->input('action');
         switch ($action) {
             case 'getPopupData':
-                $deleteId = $request->input('data')['id'];
+                $return = $request->input('data')['id'];
                 echo json_encode($return);
                 exit;
                 break;
