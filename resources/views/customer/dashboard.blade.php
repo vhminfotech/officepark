@@ -181,7 +181,7 @@
                             <th class="c-table__cell">{{ $plan_message[$val['message_id']] }}</th>
                             <th class="c-table__cell">{{ $plan_status[$status[$val['status_id']]] }} </th>
                             <th class="c-table__cell">{{ $number[$val['number']] }}</th>
-                            <th class="c-table__cell">{{ $responsibility[$information[$val['information']]] }}</th>
+                            <!-- <th class="c-table__cell">{{ $responsibility[$information[$val['information']]] }}</th> -->
                             <th class="c-table__cell">
                                 <span class="c-badge c-badge--small c-badge--success">Status</span>
                             </th>   

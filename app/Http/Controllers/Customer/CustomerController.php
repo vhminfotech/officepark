@@ -27,7 +27,7 @@ class CustomerController extends Controller {
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
         $objStatus = new Status();
-        $data['statusArr'] = $objStatus->statuslist($data['customer_id']);
+        $data['statusArr'] = $objStatus->statuslist($data['customer_id'],10);
         // print_r($res);exit;
         if ($request->isMethod('post')) {
             $objStatus = new Status();
@@ -69,7 +69,7 @@ class CustomerController extends Controller {
         
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['plan_message'] = Config::get('constants.msg');
-      
+
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
  
