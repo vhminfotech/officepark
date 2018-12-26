@@ -46,8 +46,9 @@
                             <td class="c-table__cell">{{ $val['type'] }}</td>
                               <td class="c-table__cell" title="{{  $val['note'] }}" style="width: 50px;">{!!  $out !!}</td>
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
-                            <td class="c-table__cell"> <a href="javascript:;" >
-                                <span class="c-badge c-badge--secondary btnPopup" data-id="{{ $val['id'] }}"> Responds</span> </a>
+                            <td class="c-table__cell"> 
+                                <a href="javascript:;"  class=" btnPopup c-tooltip c-tooltip--top"  aria-label="View" data-id="{{ $val['id'] }}">
+                                 <i class="fa fa-trash-o"></i> </a>
                             </td>
                         </tr>
                         @endforeach

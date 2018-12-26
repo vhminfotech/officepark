@@ -17,7 +17,6 @@
                     <thead class="c-table__head c-table__head--slim" style="">
                         <tr class="c-table__row">
                             <th class="c-table__cell c-table__cell--head" style="">Ticket ID &nbsp;&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head">Call ID &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Date/Time &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Customer <br/> Number &nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">Customer &nbsp;&nbsp;</th>
@@ -35,7 +34,6 @@
                         @endphp
                         <tr class="c-table__row">
                             <td class="c-table__cell">{{ $supportArray[0]['id'] }}</td>
-                            <td class="c-table__cell">6570105</td>
                             <td class="c-table__cell">{{ date('d.m.Y', strtotime($supportArray[0]['created_at'] )) }} </td>
                             <td class="c-table__cell">{{ ($supportArray[0]['type'] == 'CUSTOMER' ? $supportArray[0]['customer_number'] : '-') }} </td>
                             <td class="c-table__cell">{{ ($supportArray[0]['type'] == 'CUSTOMER' ? $supportArray[0]['name'] : '-') }} </td>
