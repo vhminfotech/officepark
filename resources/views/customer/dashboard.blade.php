@@ -171,6 +171,7 @@
                                 <th class="c-table__cell c-table__cell--head">Status &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Phone No &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Information &nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head">Action &nbsp;&nbsp;</th>
                             </tr>
                         </thead>
                        @for($i=0;$i < 4 ;$i++)
@@ -181,7 +182,13 @@
                             <th class="c-table__cell">Hello</th>
                             <th class="c-table__cell">
                                 <span class="c-badge c-badge--small c-badge--success">Status</span>
-                            </th>                          
+                            </th>   
+                            <th class="c-table__cell">
+                                <a href="javascript:;" class="delete"  >
+                                    <span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#popupModel" aria-label="Information">
+                                        <i class="fa fa-info-circle"></i></span>
+                                </a>
+                            </th> 
                         </tr>
                         @endfor
                     <tbody>
@@ -194,6 +201,23 @@
         
         
         
+</div>
+    <div class=" u-mb-medium">
+
+    <div class="c-modal c-modal--huge modal fade" id="popupModel" tabindex="-1" role="dialog" aria-labelledby="myModal2">
+        <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content modal-content">
+                <a class="c-modal__close c-modal__close--absolute u-text-mute u-opacity-medium" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="c-modal__body" >
+                    <div class="o-page">
+                        @include('customer.popup')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <style>
     input.has-error {
