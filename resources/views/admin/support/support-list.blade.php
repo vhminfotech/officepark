@@ -48,7 +48,7 @@
                             <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
                             <td class="c-table__cell"> 
                                 <a href="javascript:;"  class=" btnPopup c-tooltip c-tooltip--top"  aria-label="View" data-id="{{ $val['id'] }}">
-                                 <i class="fa fa-trash-o"></i> </a>
+                                 <i class="fa fa-eye"></i> </a>
                             </td>
                         </tr>
                         @endforeach
