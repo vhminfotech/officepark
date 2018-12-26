@@ -14,6 +14,15 @@ class Status extends Model {
 
     protected $table = 'status';
 
+    public function statuslist($id = null){
+        $sql = Status::join('users', 'users.id', '=', 'status.customer_id');
+        if(!empty($id)){
+            $sql->where('status.customer_id',$id);  
+        }
+        $result = $sql->get(['status.*','users.name','users.customer_number','users.type'])->toarray();
+        return $result;
+    }
+
     public function addStatus($postData) {
         // print_r($postData);exit;
         $objStatus = new Status();

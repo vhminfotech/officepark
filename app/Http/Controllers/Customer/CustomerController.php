@@ -26,10 +26,12 @@ class CustomerController extends Controller {
     public function dashboard(Request $request){
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
-
+        $objStatus = new Status();
+        $data['statusArr'] = $objStatus->statuslist($data['customer_id']);
+        // print_r($res);exit;
         if ($request->isMethod('post')) {
             $objStatus = new Status();
-            $employeeId = $objStatus->addStatus($request->input());
+            $employeeId = $objStatus->addStatus($request->input());  
             if ($employeeId == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Status add successfully.';
@@ -53,7 +55,6 @@ class CustomerController extends Controller {
         $data['message'] = $objCustomerPlan->getMessage($data['customer_id']);
         $data['number'] = $objCustomerPlan->getNumber($data['customer_id']);
         $data['information'] = $objCustomerPlan->getInformation($data['customer_id']);
-        
         $objpanelsetting=new PanelSettings;
         $panelsettingdata= $objpanelsetting->getlastPanellist();
         session(['key' => $panelsettingdata]);
@@ -68,6 +69,7 @@ class CustomerController extends Controller {
         
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['plan_message'] = Config::get('constants.msg');
+      
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
  

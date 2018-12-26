@@ -166,7 +166,7 @@
                     </caption>
                         <thead class="c-table__head c-table__head--slim" style="">
                             <tr class="c-table__row">
-                                <th class="c-table__cell c-table__cell--head" style="">Date - Time &nbsp;&nbsp;&nbsp;</th>
+                                <th class="c-table__cell c-table__cell--head" style="">Date-Time &nbsp;&nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Message &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Status &nbsp;&nbsp;</th>
                                 <th class="c-table__cell c-table__cell--head">Phone No &nbsp;&nbsp;</th>
@@ -174,12 +174,14 @@
                                 <th class="c-table__cell c-table__cell--head">Action &nbsp;&nbsp;</th>
                             </tr>
                         </thead>
-                       @for($i=0;$i < 4 ;$i++)
+                       @foreach($statusArr as $row => $val)
+                     
                         <tr class="c-table__row">
-                            <th class="c-table__cell">20.10.2018</th>
-                            <th class="c-table__cell">ABCDEF</th>
-                            <th class="c-table__cell">Good Morning</th>
-                            <th class="c-table__cell">Hello</th>
+                            <th class="c-table__cell">{{ date('d.m.Y',strtotime($val['created_at'])) }}</th>
+                            <th class="c-table__cell">{{ $plan_message[$val['message_id']] }}</th>
+                            <th class="c-table__cell">{{ $plan_status[$status[$val['status_id']]] }} </th>
+                            <th class="c-table__cell">{{ $number[$val['number']] }}</th>
+                            <th class="c-table__cell">{{ $responsibility[$information[$val['information']]] }}</th>
                             <th class="c-table__cell">
                                 <span class="c-badge c-badge--small c-badge--success">Status</span>
                             </th>   
@@ -190,7 +192,7 @@
                                 </a>
                             </th> 
                         </tr>
-                        @endfor
+                        @endforeach
                     <tbody>
                     
                     </tbody>
