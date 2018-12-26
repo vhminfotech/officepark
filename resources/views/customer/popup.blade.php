@@ -92,10 +92,12 @@
                 <div class="col-md-6">
 
                     <article class="c-plan">
-                        <!-- <h4><b>Guten Tag Herr Max Musatenman</b></h4>
+                       <!--  <h4><b>Guten Tag Herr Max Musatenman</b></h4>
                         <h5><b>Firma : Uray Infotech</b></h5>
                         <h6><b>Bestllernumber : AW123EWS </b></h6>
-                        <h6><b>Kundennummer : OP-1709  </b></h6> -->
+                        <h6><b>Kundennummer : OP-1709  </b></h6>   -->
+                        <h3><b>Support Contact </b></h3>
+                        <h6><b>Please feel the form. We will contect you soon as possible.</b></h6>
                         <form action="{{ route('send-email-bigpopup') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">Information</label>
