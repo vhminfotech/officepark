@@ -2,7 +2,7 @@
 @section('content')
 @include('layouts.include.body_header')
 <div class="container">
-        @include('customer.call.popUp.popUpModel')
+        @include('customer.call.popUp.popUpModelDash')
     <style>
         #ManageEmployerList td {
             text-align: center;
