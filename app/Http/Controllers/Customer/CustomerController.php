@@ -72,11 +72,11 @@ class CustomerController extends Controller {
 
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
- 
+        $data['gender'] = Config::get('constants.gender');     
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
-        $data['js'] = array('customer/dashboard.js');
-        $data['funinit'] = array('Dashboard.Init()');
+        $data['js'] = array('customer/dashboard.js','customer/calls.js');
+        $data['funinit'] = array('Dashboard.Init()','Calls.list_init()');
         $data['css'] = array('');
         return view('customer.dashboard', $data);
     }
