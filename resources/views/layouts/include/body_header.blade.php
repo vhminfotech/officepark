@@ -11,7 +11,7 @@
         <a href="{{ route('address-book-add-customer') }}" class="c-badge c-badge--info u-mr-small">+ Add Addressbook</a>
       
         <a href="{{ route('customer-new-outgoing-call') }}" class="c-badge c-badge--info u-mr-small">+ Add outgoingcalls</a>
-        <a href="javascript:;" class="c-badge c-badge--info u-mr-small">+ Add Supports</a>
+        <a href="{{ route('customer-add-support') }}" class="c-badge c-badge--info u-mr-small">+ Add Supports</a>
           <a href="{{ route('add-plan-customer') }}" class="c-badge c-badge--info u-mr-small">+ Add Plan</a>
         </div>
         @endif
