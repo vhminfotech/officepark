@@ -2,6 +2,27 @@
 @section('content')
 @include('layouts.include.body_header')
 <div class="container">
+        @include('customer.call.popUp.popUpModel')
+    <style>
+        #ManageEmployerList td {
+            text-align: center;
+            }
+            table.dataTable thead th, table.dataTable thead td {
+                /*padding: 0px 26px;*/
+                border-bottom: 1px solid #111111;
+            }
+            .c-table__cell_head{
+                color: #7f8fa4;
+                font-size: .875rem;
+                font-weight: 500;
+            }
+         /*   table.dataTable thead .sorting,table.dataTable thead .sorting_desc,table.dataTable thead .sorting_asc{
+                background: none;
+            }
+            .dataTables_scrollBody th{
+                display: none;
+            }*/
+    </style>
     <div class="row u-mb-large">
         <div class="col-md-3">
                         <div class="c-card c-card--responsive u-mb-medium">

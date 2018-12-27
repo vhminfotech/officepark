@@ -15,10 +15,15 @@
                                 <div class=" col-lg-offset-4 col-lg-4">
                                     <div class="c-field u-mb-small">
                                         <select name="customer_id" id="customer_id" class = 'c-select filter selectCustomer customer_id' >
+                                            
+                                            @if(!in_array("No Customer Found", $arrOrderInfo))
                                             <option value="">Select Contact Name</option>
                                             @for($i = 0 ;$i < count($arrOrderInfo);$i++)      
                                             <option value="{{ $arrOrderInfo[$i]['id']}}" {{ ($arrOrderInfo[$i]['id'] == $order_id ? 'selected="selected"' : '') }}>{{ $arrOrderInfo[$i]['firstname']}} {{ $arrOrderInfo[$i]['surname']}}</option>
                                             @endfor
+                                            @else
+                                            <option value="">No Record found</option>
+                                            @endif
                                         </select>
                                         <!--{{ Form::select('customer_id', $arrOrderInfo , (empty($addbkDetail[0]->customer_id) ? null : $addbkDetail[0]->customer_id), array('class' => 'c-select filter selectCustomer customer_id', 'id' => 'customer_id')) }}-->
                                     </div>
