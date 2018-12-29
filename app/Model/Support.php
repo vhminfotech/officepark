@@ -41,4 +41,10 @@ class Support extends Model {
     // }
     
     
+    public function supportlistDetails($id){
+        $sql = Support::where('id',$id);
+        $result = $sql->get(['support_id','note','id'])->toarray();
+        return $result;
+    }
+    
 }

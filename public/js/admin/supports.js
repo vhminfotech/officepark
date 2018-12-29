@@ -25,12 +25,27 @@ var Supports = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
-    }
+    };
+    
+    var addchat=function(){
+        
+        var form = $('#addSupportschat');
+        var rules = {
+            chatmsg : {required: true},
+           
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        }); 
+      };
 
     return {
        
         list_init: function() {
             handleSupport();
-        }
+        },
+        chatadd:function(){
+          addchat();  
+        },
     }
 }();

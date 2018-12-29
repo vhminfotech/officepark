@@ -124,6 +124,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'support', ['as' => 'support', 'uses' => 'Admin\SupportsController@supportsList']);
     Route::match(['get', 'post'], 'add-support', ['as' => 'add-support', 'uses' => 'Admin\SupportsController@addSupport']);
     Route::match(['get', 'post'], 'support-ajaxAction', ['as' => 'support-ajaxAction', 'uses' => 'Admin\SupportsController@ajaxAction']);  
+    Route::match(['get', 'post'], 'supportchat/{id}', ['as' => 'supportchat', 'uses' => 'Admin\SupportsController@supportchat']);
 });
 
 

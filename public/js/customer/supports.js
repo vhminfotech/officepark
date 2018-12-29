@@ -17,20 +17,37 @@ var Supports = function() {
                 }
             });
         });
+        
+        
         var form = $('#addSupports');
         var rules = {
-            support_message: {required: true},
+             support_message: {required: true},
             note: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
-    }
+    };
+    
+      var addchat=function(){
+        
+        var form = $('#addSupportschat');
+        var rules = {
+            chatmsg : {required: true},
+           
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        }); 
+      };
 
     return {
        
         list_init: function() {
             handleSupport();
-        }
+        },
+        chatadd:function(){
+          addchat();  
+        },
     }
 }();

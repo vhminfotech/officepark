@@ -12,6 +12,7 @@ use App\Model\EmployeeDetails;
 use App\Model\OrderInfo;
 use App\Model\Users;
 use App\Model\Support;
+use App\Model\Support_chat;
 use Config;
 
 
@@ -77,6 +78,36 @@ class SupportsController extends Controller {
                 exit;
                 break;
         }
+    }
+    
+    public function supportchat(Request $request, $id=null) {
+        $data['detail'] = $this->loginUser;
+       
+         if ($request->isMethod('post')) {
+            $objsupportchat = new Support_chat();
+            $chatlist=$objsupportchat->addchat($request,$data['detail']['id'],$id);
+              if ($chatlist == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'Message send successfully.';
+                $return['redirect'] = route('support-chat',$id);
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already exists.';
+            }
+            echo json_encode($return);
+            exit;
+         }
+        $objsupportchat = new Support_chat();
+        $data['chatlist']=$objsupportchat->chatlist($id);
+        $objSupportDetail = new Support();
+        $data['supportArr'] = $objSupportDetail->supportlistDetails($id);
+        $data['support_message'] = Config::get('constants.support_message');
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['js'] = array('customer/supports.js','jquery.form.min.js');
+        $data['funinit'] = array('Supports.chatadd()');
+        $data['css'] = array('');
+        return view('customer.support.supportchat', $data);
     }
 
 }
