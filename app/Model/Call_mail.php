@@ -33,8 +33,8 @@ class Call_mail extends Model {
 
             $mailData['subject'] = 'Calls - Sent Email';
             $mailData['attachment'] = array();
-            $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
-            // $mailData['mailto'] = $request->input('caller_email');
+            // $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
+            $mailData['mailto'] = $request->input('caller_email');
             $sendMail = new Sendmail;
             $mailData['data']['caller_note'] = $request->input('caller_note');
             $mailData['data']['information'] = $responsibility[$request->input('information')];
