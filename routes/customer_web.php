@@ -40,6 +40,8 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-send-email', ['as' => 'customer-send-email', 'uses' => 'Customer\CallController@sendMail']);
     Route::match(['get', 'post'], 'customer-send-email-bigpopup', ['as' => 'customer-send-email-bigpopup', 'uses' => 'Customer\CallController@sendMailbigPopup']);
     Route::match(['get', 'post'], 'customer-add-template', ['as' => 'customer-add-template', 'uses' => 'Customer\CallController@addTempate']);
+    Route::match(['get', 'post'], 'customer-callchat/{id}', ['as' => 'customer-callchat', 'uses' => 'Customer\CallController@callchat']);
+    Route::match(['get', 'post'], 'customer-callchatlist', ['as' => 'customer-callchatlist', 'uses' => 'Customer\CallController@callchatlist']);
     Route::match(['get', 'post'], 'customer-calls-ajaxAction', ['as' => 'customer-ajaxAction', 'uses' => 'Customer\CallController@ajaxAction']); 
 
     

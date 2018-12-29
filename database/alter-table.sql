@@ -48,3 +48,6 @@ INSERT INTO `permission_master` (`id`, `name`, `dt_created`) VALUES (NULL, 'Supp
 CREATE TABLE `officepark`.`call_mail` ( `id` INT NOT NULL AUTO_INCREMENT , `customer_id` INT NULL , `agent_id` INT NULL , `call_id` INT NOT NULL , `customer_number` VARCHAR(256) NOT NULL , `notes` TEXT NULL , `created_at` INT NOT NULL , `updated_at` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ALTER TABLE `call_mail` CHANGE `created_at` `created_at` DATETIME NOT NULL;
 ALTER TABLE `call_mail` ADD `information` INT NOT NULL AFTER `call_id`;
+
+CREATE TABLE `officepark`.`call_chat` ( `id` INT NOT NULL AUTO_INCREMENT , `call_id` INT NOT NULL , `customer_id` INT NULL , `comment` TEXT NOT NULL, `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `call_chat` ADD `call_mail_id` INT NULL AFTER `call_id`;

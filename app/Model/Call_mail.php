@@ -12,11 +12,18 @@ class Call_mail extends Model {
 
     protected $table = 'call_mail';
     
-    public function planlist($id){
-        
-        $result= Call_mail::join('employee', 'employee.id', '=', 'customer_plan.employee')
-               ->where('customer_plan.customer_id',$id)
-               ->get(['customer_plan.*','employee.first_name','employee.last_name'])->toarray();
+    public function calllist($id){
+        $result= Call_mail::where('call_mail.customer_id',$id)
+               ->get(['call_mail.*'])->toarray();
+        return $result;
+    }   
+    public function calllistV2(){
+        $result= Call_mail::get(['call_mail.*'])->toarray();
+        return $result;
+    } 
+    public function callDetail($id){
+        $result= Call_mail::where('call_mail.id',$id)
+               ->get(['call_mail.*'])->toarray();
         return $result;
     }
 
@@ -44,12 +51,4 @@ class Call_mail extends Model {
             $res = $sendMail->sendSMTPMail($mailData);
             return ($objCallMail->save());
     }
-    
-    public function editplanlist($id){
-       $result= Call_mail::select('*')
-                ->where('id',$id)
-                ->get()->toarray();
-        return $result;
-    }
-    
 }

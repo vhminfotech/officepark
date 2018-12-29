@@ -8,6 +8,8 @@ use App\Model\Calls;
 use App\Model\Employee;
 use App\Model\Template;
 use App\Model\Call_mail;
+use App\Model\Call_chat;
+use App\Model\Support;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
@@ -36,6 +38,7 @@ class CallController extends Controller {
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
          $data['responsibility'] = Config::get('constants.responsibility');
+         $data['gender'] = Config::get('constants.gender');
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('customer/calls.js');
@@ -195,6 +198,52 @@ class CallController extends Controller {
                 echo json_encode($template);
                 break;
         }
+    }
+
+     public function callchatlist(Request $request, $id=null) {
+        $data['detail'] = $this->loginUser;
+        
+        $objsupportchat = new Call_chat();
+        $data['chatlist'] = $objsupportchat->chatlist($id);
+        $objSupportDetail = new Call_mail();
+        $data['supportArr'] = $objSupportDetail->calllist($data['detail']['id']);
+        $data['responsibility'] = Config::get('constants.responsibility');
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['js'] = array('customer/supports.js','jquery.form.min.js');
+        $data['funinit'] = array('Calls.chat_init()');
+        $data['css'] = array('');
+        return view('customer.call.callchatlist', $data);
+    }   
+
+    public function callchat(Request $request, $id=null) {
+        $data['detail'] = $this->loginUser;
+       
+         if ($request->isMethod('post')) {
+            $objsupportchat = new Call_chat();
+            $chatlist=$objsupportchat->addchat($request,$data['detail']['id'],$id);
+            if ($chatlist == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'Message send successfully.';
+                $return['redirect'] = route('customer-callchat',$id);
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already exists.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+         $data['responsibility'] = Config::get('constants.responsibility');
+        $objsupportchat = new Call_chat();
+        $data['chatlist'] = $objsupportchat->chatlist($id);
+        $objSupportDetail = new Call_mail();
+        $data['supportArr'] = $objSupportDetail->callDetail($id);
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['js'] = array('customer/supports.js','customer/calls.js');
+        $data['funinit'] = array('Calls.chat_init()');
+        $data['css'] = array('');
+        return view('customer.call.callchat', $data);
     }
 
 }

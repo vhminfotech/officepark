@@ -4,6 +4,17 @@ var Calls = function() {
 
     }
 
+  var addchat=function(){
+        
+        var form = $('#addSupportschat');
+        var rules = {
+            chatmsg : {required: true},
+           
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        }); 
+      };
 
     var handleList = function() {
 
@@ -404,6 +415,9 @@ var Calls = function() {
         },
         list_init: function() {
             handleList();
+        },
+        chat_init: function() {
+            addchat();
         }
     }
 }();

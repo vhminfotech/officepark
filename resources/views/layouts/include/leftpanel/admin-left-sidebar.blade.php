@@ -140,6 +140,12 @@ $roles  = array_values($roles);
                 </a>
             </li>
             @endif
+             <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'callchatlist' || $currentRoute == 'callchat'  ? 'is-active' : '') }}"  href="{{ route('callchatlist') }}">
+                    <i class="fa fa-comment u-mr-xsmall" style="padding-right:6px"></i>
+                    Call {{ trans('words.support') }} &nbsp;
+                </a>
+            </li>
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>

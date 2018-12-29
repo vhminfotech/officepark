@@ -78,6 +78,12 @@ $fontcolor=$sessiondata['color'];
                     <i class="fa fa-life-ring u-mr-xsmall" style="padding-right:6px"></i>
                     {{ trans('words.support') }} &nbsp;
                 </a>
+            </li> 
+             <li class="c-sidebar__item">
+                <a style="color: {{ '#'.$fontcolor }} ;" class="c-sidebar__link {{ ($currentRoute == 'customer-callchatlist' || $currentRoute == 'customer-callchat'  ? 'is-active' : '') }}"  href="{{ route('customer-callchatlist') }}">
+                    <i class="fa fa-comment u-mr-xsmall" style="padding-right:6px"></i>
+                    Call {{ trans('words.support') }} &nbsp;
+                </a>
             </li>
 
 <!--            <li class="c-sidebar__item">

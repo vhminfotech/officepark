@@ -46,16 +46,18 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
     Route::match(['get', 'post'], 'create-pdf/{id}', ['as' => 'create-pdf', 'uses' => 'Admin\SystemuserController@createPDF']);
 
-
     Route::match(['get', 'post'], 'system-user-list', ['as' => 'system-user-list', 'uses' => 'Admin\SystemuserController@getUserData']);
     Route::match(['get', 'post'], 'system-add-user', ['as' => 'system-add-user', 'uses' => 'Admin\SystemuserController@addUser']);
     Route::match(['get', 'post'], 'system-edit-user/{id}', ['as' => 'system-edit-user', 'uses' => 'Admin\SystemuserController@editUser']);
     Route::match(['get', 'post'], 'system-user-delete', ['as' => 'system-user-delete', 'uses' => 'Admin\SystemuserController@deleteUser']);
     Route::match(['get', 'post'], 'outgoing-call', ['as' => 'outgoing-call', 'uses' => 'Admin\OutgoingcallsController@outgoingcall']);
     Route::match(['get', 'post'], 'new-outgoing-call', ['as' => 'new-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@newoutgoingcall']);
-     Route::match(['get', 'post'], 'edit-outgoing-call/{id}', ['as' => 'edit-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@editoutgoingcalls']);
-     Route::match(['get', 'post'], 'done-outgoing-call/{id}', ['as' => 'done-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@editoutgoingcalls']);
-     Route::match(['get', 'post'], 'outgoingcalls-ajaxAction', ['as' => 'outgoingcalls-ajaxAction', 'uses' => 'Admin\OutgoingcallsController@ajaxAction']);
+    Route::match(['get', 'post'], 'edit-outgoing-call/{id}', ['as' => 'edit-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@editoutgoingcalls']);
+    Route::match(['get', 'post'], 'done-outgoing-call/{id}', ['as' => 'done-outgoing-call', 'uses' => 'Admin\OutgoingcallsController@editoutgoingcalls']);
+    Route::match(['get', 'post'], 'outgoingcalls-ajaxAction', ['as' => 'outgoingcalls-ajaxAction', 'uses' => 'Admin\OutgoingcallsController@ajaxAction']);
+    
+    Route::match(['get', 'post'], 'callchat/{id}', ['as' => 'callchat', 'uses' => 'Admin\CallController@callchat']);
+    Route::match(['get', 'post'], 'callchatlist', ['as' => 'callchatlist', 'uses' => 'Admin\CallController@callchatlist']);
     
     Route::match(['get', 'post'], 'customer-list', ['as' => 'customer-list', 'uses' => 'Admin\CustomerController@getCustomerData']);
     Route::match(['get', 'post'], 'customer-add', ['as' => 'customer-add', 'uses' => 'Admin\CustomerController@addCustomer']);
