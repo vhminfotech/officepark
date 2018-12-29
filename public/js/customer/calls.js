@@ -112,7 +112,7 @@ var Calls = function() {
             var markup_div_tech='';
             var maarkup_div_option='';
             var data = {id: id, token: $('#_token').val()};
-            
+            $('.bigeditId').val(id);
             $.ajax({
                 type: "POST",
                 headers: {
@@ -126,6 +126,7 @@ var Calls = function() {
                    $('#system_number').text(det['company_details'][0].system_genrate_no);
                    $('#name').text(det['company_details'][0].name);
                    $('#email').text(det['company_details'][0].email);
+                   $('.agentEmail').val(det['company_details'][0].email);
                    $('#caller').text(det['company_details'][0].caller);
                    $('#company_name').text(det['company_details'][0].company_name);
                    $('#start_time_1').text(det['bussiness_hours'][0].day_start_time);
@@ -151,6 +152,7 @@ var Calls = function() {
                    
                    $('#start_time_lunch').text(det['customer_info'][0].lunch_start_time);
                    $('#end_time_lunch').text(det['customer_info'][0].lunch_end_time);
+                   $('#dates').text(det['customer_info'][0].created_at);
                    
                    
                    if(det['customer_info'][0].holiday_global_from == null){

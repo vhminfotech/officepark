@@ -43,3 +43,8 @@ ALTER TABLE `status` ADD `customer_id` INT NULL AFTER `id`;
 
 CREATE TABLE `support` ( `id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NULL , `support_id` INT NOT NULL , `note` TEXT NOT NULL , `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 INSERT INTO `permission_master` (`id`, `name`, `dt_created`) VALUES (NULL, 'Support', '2018-12-25 00:00:00');
+
+-----------------------------28-12-2018---------------------------------
+CREATE TABLE `officepark`.`call_mail` ( `id` INT NOT NULL AUTO_INCREMENT , `customer_id` INT NULL , `agent_id` INT NULL , `call_id` INT NOT NULL , `customer_number` VARCHAR(256) NOT NULL , `notes` TEXT NULL , `created_at` INT NOT NULL , `updated_at` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `call_mail` CHANGE `created_at` `created_at` DATETIME NOT NULL;
+ALTER TABLE `call_mail` ADD `information` INT NOT NULL AFTER `call_id`;

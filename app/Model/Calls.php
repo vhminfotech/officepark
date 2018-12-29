@@ -645,6 +645,7 @@ class Calls extends Model {
                 ->leftjoin('customer_info', 'customer_info.user_id', '=', 'users.id')                
                 ->where('calls.id',$id['data']['id']);
          $result = $query->select(
+                    'calls.created_at',
                     'customer_info.lunch_start_time',
                     'customer_info.lunch_end_time',
                     'customer_info.holiday_global_from',

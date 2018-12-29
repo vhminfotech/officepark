@@ -7,6 +7,7 @@ use App\Model\Invoice;
 use App\Model\Calls;
 use App\Model\Employee;
 use App\Model\Template;
+use App\Model\Call_mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
@@ -34,7 +35,7 @@ class CallController extends Controller {
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
         $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
-        $data['gender'] = Config::get('constants.gender');
+         $data['responsibility'] = Config::get('constants.responsibility');
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('customer/calls.js');
@@ -68,16 +69,15 @@ class CallController extends Controller {
         }
     }
     public function sendMailbigPopup(Request $request) {
+        $session = $request->session()->all();
+        
         if ($request->isMethod('post')) {
-//            print_r($request->input());
-//            exit;
-            $objUser = new Calls();
-            $userList = $objUser->updateCallesInbigPopup($request);
+            $objCallMail = new Call_mail();
+            $userList = $objCallMail->addcallmail($request,$session['logindata'][0]['id']);
             if ($userList) {
                 $return['status'] = 'success';
                 $return['message'] = 'Email Sent successfully.';
-                $return['redirect'] = route('calls');
-//                $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
+               $return['jscode'] = 'setTimeout(function(){location.reload();},1000)';
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';

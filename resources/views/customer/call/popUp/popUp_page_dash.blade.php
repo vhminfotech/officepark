@@ -53,7 +53,7 @@
                             </li>
                             <li class="c-plan__feature">
                                 <strong>{{ trans('calls.datetime') }}:</strong> 
-                                <br><span id=""></span>
+                                <br><span id="dates"></span>
                             </li>
 
                             <li class="c-plan__feature">
@@ -82,27 +82,27 @@
                         <h3><b>Support Contact </b></h3>
                         <h6><b>Please feel the form. We will contect you soon as possible.</b></h6>
 
-                        <form action="{{ route('send-email-bigpopup') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
+                        <form action="{{ route('customer-send-email-bigpopup') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">Wie konnen wir Ihnen helfen?</label>
-                                <select class="c-select c-input" name="gender" id="biggender">
-                                    @foreach ($gender as $indexkey=>$val)
-                                    <option value="{{$indexkey}}">{{$val}}</option>
-                                    @endforeach
+                                <select class="c-select c-input information" name="information" id="information">
+                                    @for($i=0;$i < count($responsibility); $i++)
+                                <option value="{{ $i+1 }}">{{ $responsibility[$i+1] }}</option>
+                                @endfor
                                 </select>
                             </div>
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
-                            <input type="hidden" name="editId" id="editId" class="bigeditId" value=""> 
+                            <input type="hidden" name="callsId" id="callsId" class="bigeditId" value="">
+                            <input type="hidden" name="agentEmail" id="agentEmail" class="agentEmail" value=""> 
                             <div class="c-field u-mb-xsmall">
-                                <label class="c-field__label" for="input-project">Bet reff</label>
+                                <label class="c-field__label" for="input-project">{{ trans('calls.customer-number') }}</label>
                                 <input type="text" name="telephone_number" class="c-input telephone_number" id="big_telephone_number" placeholder="Bet reff">
                             </div>
                            
                            
                             <div class="c-field u-mb-xsmall">
-                                <label class="c-field__label" for="input-project"> </span>
-                                </label>
-                               <textarea  name="" class="c-input telephone_number" id="big_telephone_number" disabled="true" placeholder="Bet reff">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </textarea>
+                                <label class="c-field__label" for="input-project">{{ trans('calls.caller-notes') }}</label>
+                               <textarea  name="caller_note" class="c-input " id="" placeholder="Called Notes"></textarea>
                             </div>
                             <div class="c-modal__footer u-justify-center">
                                 <input type="submit" name="submit" class="c-btn c-btn--success" value="{{ trans('calls.send-e-mail') }}">
