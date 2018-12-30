@@ -136,8 +136,9 @@ var Calls = function() {
                    $('#customer_number').text(det['company_details'][0].customer_number);
                    $('#system_number').text(det['company_details'][0].system_genrate_no);
                    $('#name').text(det['company_details'][0].name);
-                   $('#email').text(det['company_details'][0].email);
-                   $('.agentEmail').val(det['company_details'][0].email);
+                   $('.email').text(det['company_details'][0].email);
+                   $('.email').val(det['company_details'][0].email);
+                   $('.agentEmail').val(det['company_details'][0].agentEmail);
                    $('#caller').text(det['company_details'][0].caller);
                    $('#company_name').text(det['company_details'][0].company_name);
                    $('#start_time_1').text(det['bussiness_hours'][0].day_start_time);

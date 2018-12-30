@@ -63,7 +63,7 @@
 
                             <li class="c-plan__feature">
                                 <strong>{{ trans('calls.caller-e-mail') }}:</strong>
-                                <br><span id="email">test@gmail.cm</span>
+                                <br><span class="email" id="email">test@gmail.cm</span>
                             </li>  
                              <li class="c-plan__feature">
                                 <strong>Agent Message:</strong>
@@ -94,6 +94,7 @@
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
                             <input type="hidden" name="callsId" id="callsId" class="bigeditId" value="">
                             <input type="hidden" name="agentEmail" id="agentEmail" class="agentEmail" value=""> 
+                            <input type="hidden" name="email" id="email" class="email" value=""> 
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.customer-number') }}</label>
                                 <input type="text" name="telephone_number" class="c-input telephone_number" id="big_telephone_number" placeholder="Bet reff">

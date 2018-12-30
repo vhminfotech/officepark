@@ -29,6 +29,7 @@ class Call_mail extends Model {
 
     
     public function addcallmail($request,$customer_id = null){
+
             $responsibility = Config::get('constants.responsibility');
             $objCallMail = new Call_mail();
             $objCallMail->customer_id = $customer_id;            
@@ -37,11 +38,11 @@ class Call_mail extends Model {
             $objCallMail->customer_number = $request->input('telephone_number');
             $objCallMail->notes = $request->input('caller_note');
             $objCallMail->created_at = date('Y-m-d H:i:s');
-
+            $sendemail = (!empty($request->input('agentEmail'))) ? $request->input('agentEmail') : $request->input('email');
             $mailData['subject'] = 'Calls - Sent Email';
             $mailData['attachment'] = array();
             // $mailData['mailto'] = 'shaileshvanaliya91@gmail.com';
-            $mailData['mailto'] = $request->input('caller_email');
+            $mailData['mailto'] = $sendemail;
             $sendMail = new Sendmail;
             $mailData['data']['caller_note'] = $request->input('caller_note');
             $mailData['data']['information'] = $responsibility[$request->input('information')];

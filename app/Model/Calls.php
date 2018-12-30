@@ -606,12 +606,14 @@ class Calls extends Model {
         $objCalls->save();
         
         $query = Calls::leftjoin('users', 'users.system_genrate_no', '=', 'calls.system_genrate_no')
+                ->leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
                 ->leftjoin('order_info', 'order_info.user_id', '=', 'users.id')
                 ->groupBy('calls.id')
                 ->where('calls.id',$id['data']['id']);
         $resultArr = $query->select(
                 'users.name',
                 'users.email',
+                'u1.email as agentEmail',
                 'users.id as user_id',
                 'users.customer_number',
                 'users.system_genrate_no',
@@ -621,7 +623,6 @@ class Calls extends Model {
                 'calls.service',
                 'calls.caller'
                 )->get()->toArray();
-        
         return $resultArr;
 
     }
