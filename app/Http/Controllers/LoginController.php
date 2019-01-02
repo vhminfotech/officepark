@@ -12,6 +12,8 @@ use App\Model\Calls;
 use App\Model\Users;
 use App\Model\OrderInfo;
 use App\Model\OutgoingCalls;
+use App\Model\Call_mail;
+use App\Model\Support;
 
 class LoginController extends Controller {
 
@@ -73,7 +75,9 @@ class LoginController extends Controller {
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('user-dashboard');
             } else if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) {
-                  $objOutgoingCalls = new OutgoingCalls();
+                $objsupport=new Support();
+                $callsupport=$objsupport->countsupport('customer',Auth::guard('customer')->user()->id);
+                $objOutgoingCalls = new OutgoingCalls();
                 $outgoingCallCount = $objOutgoingCalls->getOutgoingPendingCall(Auth::guard('customer')->user()->id);
                 $loginData = array(
                     'name' => Auth::guard('customer')->user()->name,
@@ -84,9 +88,12 @@ class LoginController extends Controller {
                 );
                 Session::push('logindata', $loginData);
                 Session::put('outgoingCallCount', $outgoingCallCount);
+                Session::put('callsupport', $callsupport);
                 $request->session()->flash('session_success', 'Customer Login successfully.');
                 return redirect()->route('customer-dashboard');
             } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' =>$request->input('password'), 'type' => 'ADMIN'])) {
+                $objsupport=new Support();
+                $callsupport=$objsupport->countsupport('admin');
                 $objOrderInfo = new OrderInfo();
                 $totalOrder = $objOrderInfo->newOrdergetNotification(); 
                 $objOutgoingCalls = new OutgoingCalls();
@@ -108,6 +115,7 @@ class LoginController extends Controller {
                 Session::push('logindata', $loginData);
                 Session::put('ordercount', $resultArr);
                 Session::put('outgoingCallCount', $outgoingCallCount);
+                Session::put('callsupport', $callsupport);
                 Session::put('totalOrder', $totalOrder);
                 $request->session()->flash('session_success', 'Admin Login successfully.');
                 return redirect()->route('admin-dashboard');

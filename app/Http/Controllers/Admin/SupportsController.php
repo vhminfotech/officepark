@@ -14,7 +14,7 @@ use App\Model\Users;
 use App\Model\Support;
 use App\Model\Support_chat;
 use Config;
-
+use Session;
 
 class SupportsController extends Controller {
 
@@ -24,6 +24,9 @@ class SupportsController extends Controller {
     }
 
     public function supportsList(Request $request) {
+        $objsupport=new Support();
+        $callsupport=$objsupport->countsupport('admin');
+         Session::put('callsupport', $callsupport);
         $data['detail'] = $this->loginUser;
         $userName=$data['customer_id']=$data['detail']['id'];
         $data['support_message'] = Config::get('constants.support_message');
@@ -83,10 +86,12 @@ class SupportsController extends Controller {
     
     public function supportchat(Request $request, $id) {
         $data['detail'] = $this->loginUser;
-       
+        $objsupport=new Support();
+        $callsupport=$objsupport->countsupport('admin');
+         Session::put('callsupport', $callsupport);
          if ($request->isMethod('post')) {
             $objsupportchat = new Support_chat();
-            $chatlist=$objsupportchat->addchat($request,$data['detail']['id'],$id);
+            $chatlist=$objsupportchat->addchat($request,$data['detail']['id'],$id,'admin');
               if ($chatlist == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Message send successfully.';

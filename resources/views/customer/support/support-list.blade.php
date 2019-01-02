@@ -41,7 +41,13 @@
                             <td class="c-table__cell">{{ $val['id'] }}</td>
                             <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
                             <td class="c-table__cell" title="{{  $val['note'] }}" style="width: 50px;">{!!  $out !!}</td>
-                            <td class="c-table__cell"><span class="c-badge c-badge--small c-badge--success">Responded</span> </td>
+                            <td class="c-table__cell">
+                                @if( $val['customer_response_status'] =='0')
+                                    <span class="c-badge c-badge--small c-badge--danger">Pending </span> 
+                                @else
+                                    <span class="c-badge c-badge--small c-badge--success">Responded</span>
+                                @endif
+                               </td> 
                             <td class="c-table__cell"> 
                                 <a href="javascript:;"  class=" btnPopup c-tooltip c-tooltip--top"  aria-label="View" data-id="{{ $val['id'] }}">
                                  <i class="fa fa-eye"></i>

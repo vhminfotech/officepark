@@ -63,7 +63,7 @@ $roles  = array_values($roles);
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link {{ ($currentRoute == 'order-list' || $currentRoute == 'view-order' ? 'is-active' : '') }}" href="{{ route('order-list') }}">
                     <i class="fa fa-shopping-cart u-mr-xsmall" style="padding-right:4px"></i>
-                    {{ trans('words.Order') }}     &nbsp;
+                    {{ trans('words.Order') }}&nbsp;
                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('ordercount')}} </span>
                     <input type="hidden" id="totalOrderNotification" value="{{ Session::get('totalOrder') }}">
                 </a>
@@ -134,9 +134,11 @@ $roles  = array_values($roles);
             <!--@endif-->
             @if($logindata[0]['id'] == 1 ||  in_array('Support', $roles))
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'support' || $currentRoute == 'add-support'  ? 'is-active' : '') }}"  href="{{ route('support') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'supportchat' || $currentRoute == 'support' || $currentRoute == 'add-support'  ? 'is-active' : '') }}"  href="{{ route('support') }}">
                     <i class="fa fa-life-ring u-mr-xsmall" style="padding-right:6px"></i>
                     {{ trans('words.support') }} &nbsp;
+                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">{{ Session::get('callsupport') }} </span>
+                    <input type="hidden" id="totalOrderNotification" value="{{ Session::get('callsupport') }}">
                 </a>
             </li>
             @endif
@@ -144,6 +146,9 @@ $roles  = array_values($roles);
                 <a class="c-sidebar__link {{ ($currentRoute == 'callchatlist' || $currentRoute == 'callchat'  ? 'is-active' : '') }}"  href="{{ route('callchatlist') }}">
                     <i class="fa fa-comment u-mr-xsmall" style="padding-right:6px"></i>
                     Call {{ trans('words.support') }} &nbsp;
+                    
+                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount">0 </span>
+                    <input type="hidden" id="totalOrderNotification" value="{{ Session::get('totalOrder') }}">
                 </a>
             </li>
             <li class="c-sidebar__item">

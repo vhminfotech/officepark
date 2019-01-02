@@ -47,4 +47,17 @@ class Support extends Model {
         return $result;
     }
     
+    public function countsupport($usertype,$id=null){
+        if($usertype == 'admin'){
+            $sql = Support::where('admin_response_status','0')->count();
+            return $sql;
+        }else{
+           
+            $sql = Support::where('customer_response_status','0')
+                      ->where('user_id',$id)->count();
+            return $sql; 
+        }
+         
+    }
+    
 }

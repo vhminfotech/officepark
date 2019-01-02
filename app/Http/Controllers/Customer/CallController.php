@@ -221,7 +221,7 @@ class CallController extends Controller {
        
          if ($request->isMethod('post')) {
             $objsupportchat = new Call_chat();
-            $chatlist=$objsupportchat->addchat($request,$data['detail']['id'],$id);
+            $chatlist=$objsupportchat->addchat($request,$data['detail']['id'],$id,'customer');
             if ($chatlist == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Message send successfully.';
