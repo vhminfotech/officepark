@@ -103,7 +103,7 @@
                 </div>
                 <div class="c-modal__footer">
                     <button class="c-btn c-btn--info pull-right" data-dismiss="modal">{{ trans('op_system_user.cancel')}}</button>
-                    <button class="c-btn c-btn--danger yes-sure-close-chat"><i class="fa fa-trash-o u-mr-xsmall "></i> {{ trans('op_system_user.delete')}}</button>
+                    <button class="c-btn c-btn--danger yes-sure-close-chat"><i class="fa fa-trash-o u-mr-xsmall "></i> Close Chat</button>
                 </div>
             </div><!-- // .c-modal__content -->
         </div><!-- // .c-modal__dialog -->
