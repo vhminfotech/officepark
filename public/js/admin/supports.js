@@ -1,6 +1,30 @@
 var Supports = function() {
 
     var handleSupport = function() {
+        $('.closechat').on('click','',function(){
+            var dataid = $(this).attr('data-id');
+            var datatoken = $(this).attr('data-token');
+            
+            $('.yes-sure-close-chat').attr('data-id', dataid);
+            $('.yes-sure-close-chat').attr('data-token', datatoken);
+        });
+        
+        $('.yes-sure-close-chat').click(function() {
+             
+           
+            var id = $(this).attr('data-id');
+            var datatoken = $(this).attr('data-token');
+            
+            $.ajax({
+                type: "POST",
+                url: baseurl + "admin/closechat",
+                data: {'id':id,'_token':datatoken},
+                success: function(data) {
+                    handleAjaxResponse(data);
+//                    var data = JSON.parse(data);
+                }
+            });
+        });
 
         $('body').on('click', '.btnPopup', function() {
             var id = $(this).attr('data-id');

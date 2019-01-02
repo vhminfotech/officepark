@@ -33,7 +33,7 @@ class Support_chat extends Model {
              $objEditSupport->admin_response_status ='0';
             
         }
-        $objEditSupport->updated_at = date('Y-m-d H:i:s');;
+        $objEditSupport->updated_at = date('Y-m-d H:i:s');
         if($objEditSupport->save()){
             $objchatadd = new Support_chat();
             $objchatadd->support_id = $id;            

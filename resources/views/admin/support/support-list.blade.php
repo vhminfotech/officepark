@@ -60,6 +60,16 @@
                                 <a href="{{ route('supportchat',$val['id'])}}"  class=" btnPopup c-tooltip c-tooltip--top"  aria-label="View Chat" data-id="{{ $val['id'] }}">
                                      <i class="fa fa-weixin" ></i> 
                                 </a>
+                                @if($val['close_chat'] == '0')
+                                <a href="javascript:;"  class="   c-tooltip c-tooltip--top"  aria-label="close chat" >
+                                    <span data-token="{{ csrf_token() }}" class="closechat c-tooltip c-tooltip--top" data-id="{{ $val['id'] }}" data-toggle="modal" data-target="#closechat" aria-label="Close Chat">
+                                    <i class="fa fa-times" ></i></span>
+                                </a>
+                                @else
+                                <a href="javascript:;"  class="   c-tooltip c-tooltip--top"  aria-label="closed chat" >
+                                    <i class="fa fa-check" ></i>
+                                </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -69,6 +79,25 @@
         </div>
     </div>
 </div>
+<div class="c-modal modal fade" id="closechat" tabindex="-1" role="dialog" aria-labelledby="standard-modal" data-backdrop="static">
+        <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content">
+                <div class="c-modal__header">
+                    <h3 class="c-modal__title">Are you sure to close chat ?</h3>
+                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+                <div class="c-modal__body">
+                    <p>Are you sure to close chat ?</p>
+                </div>
+                <div class="c-modal__footer">
+                    <button class="c-btn c-btn--info pull-right" data-dismiss="modal">{{ trans('op_system_user.cancel')}}</button>
+                    <button class="c-btn c-btn--danger yes-sure-close-chat"><i class="fa fa-trash-o u-mr-xsmall "></i> {{ trans('op_system_user.delete')}}</button>
+                </div>
+            </div><!-- // .c-modal__content -->
+        </div><!-- // .c-modal__dialog -->
+    </div>
 
 <div class="c-modal c-modal--huge modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
         <div class="c-modal__dialog modal-dialog" role="document">
@@ -101,4 +130,6 @@
     }
 
 </style>
+
+<!-- // .c-modal -->
 @endsection

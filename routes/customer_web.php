@@ -65,5 +65,5 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-edit-support/{id}', ['as' => 'customer-edit-support', 'uses' => 'Customer\SupportsController@editcustomer']);
     Route::match(['get', 'post'], 'customer-add-support', ['as' => 'customer-add-support', 'uses' => 'Customer\SupportsController@addSupport']);
      Route::match(['get', 'post'], 'support-ajaxAction', ['as' => 'support-ajaxAction', 'uses' => 'Customer\SupportsController@ajaxAction']);
-   
+   Route::match(['get', 'post'], 'customer-closechat', ['as' => 'customer-closechat', 'uses' => 'Customer\SupportsController@closechat']);
 });

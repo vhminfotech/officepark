@@ -116,5 +116,23 @@ class SupportsController extends Controller {
 
         return view('admin.support.supportchat', $data);
     }
+    
+    
+    public function closechat(Request $request){
+        if ($request->isMethod('post')) {
+          $objsupport=new Support();
+            $closechat=$objsupport->closechat($request);
+              if ($closechat == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'Chat closed successfully.';
+                $return['redirect'] = route('support');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already exists.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
 
 }

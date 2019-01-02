@@ -43,7 +43,7 @@ class Support extends Model {
     
     public function supportlistDetails($id){
         $sql = Support::where('id',$id);
-        $result = $sql->get(['support_id','note','id'])->toarray();
+        $result = $sql->get(['support_id','note','id','close_chat'])->toarray();
         return $result;
     }
     
@@ -58,6 +58,16 @@ class Support extends Model {
             return $sql; 
         }
          
+    }
+    
+    
+    public function closechat($request){
+         $objEditSupport =Support::find($request->input('id'));
+           $objEditSupport->close_chat ='1';
+           $objEditSupport->customer_response_status ='1';
+           $objEditSupport->admin_response_status ='1';
+           $objEditSupport->updated_at = date('Y-m-d H:i:s');
+           return $objEditSupport->save();
     }
     
 }
