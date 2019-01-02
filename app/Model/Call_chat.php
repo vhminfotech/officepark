@@ -23,14 +23,26 @@ class Call_chat extends Model {
         return $result;
     }
     
-    public function addchat($request,$userid,$id){
-            $objchatadd = new Call_chat();
-            $objchatadd->call_id =$request->input('call_id');            
-            $objchatadd->call_mail_id =$request->input('mail_id');            
-            $objchatadd->customer_id = $userid;
-            $objchatadd->comment = $request->input('chatmsg');
-            $objchatadd->created_at = date('Y-m-d H:i:s');
+    public function addchat($request,$userid,$id,$usertype){
+         $objEditCall=Call_mail::find($id);
+        if($usertype == 'admin'){
+            $objEditCall->admin_response_status ='1';
+            $objEditCall->customer_response_status ='0';
+        }else{
+            $objEditCall->customer_response_status ='1';
+             $objEditCall->admin_response_status ='0';
+            
+        }
+        $objEditCall->updated_at = date('Y-m-d H:i:s');;
+            if($objEditCall->save()){
+                $objchatadd = new Call_chat();
+                $objchatadd->call_id =$request->input('call_id');            
+                $objchatadd->call_mail_id =$request->input('mail_id');            
+                $objchatadd->customer_id = $userid;
+                $objchatadd->comment = $request->input('chatmsg');
+                $objchatadd->created_at = date('Y-m-d H:i:s');
             return ($objchatadd->save());
+        }
     }
 
 }
