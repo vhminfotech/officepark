@@ -26,7 +26,7 @@
                 </div>
                 <div class="c-chat-dialogue__messages">
                     @for($i=0;$i < count($chatlist);$i++)
-                        @if($chatlist[$i]['type'] == 'ADMIN')
+                        @if($chatlist[$i]['type'] != 'ADMIN')
                             <div class="c-chat-dialogue__message">
                                 <div class="c-chat-dialogue__message-content">
                                     {{ $chatlist[$i]['comment'] }}
@@ -41,6 +41,7 @@
                         @endif
                          
                     @endfor
+                     @if($supportArr[0]['close_chat'] == '0')
                     <div class="c-chat-dialogue__footer">
                     
                         <form class="addSupportschat" action="{{ route('callchat',$supportArr[0]['id']) }}" method="post" id="addSupportschat">
@@ -60,6 +61,7 @@
                             </div>
                         </form>
                     </div>
+                     @endif
                 </div>
                 </div>
             </article>

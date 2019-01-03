@@ -58,6 +58,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     
     Route::match(['get', 'post'], 'callchat/{id}', ['as' => 'callchat', 'uses' => 'Admin\CallController@callchat']);
     Route::match(['get', 'post'], 'callchatlist', ['as' => 'callchatlist', 'uses' => 'Admin\CallController@callchatlist']);
+    Route::match(['get', 'post'], 'admin-callsupport-closechat', ['as' => 'admin-callsupport-closechat', 'uses' => 'Admin\CallController@chatclose']);
     
     Route::match(['get', 'post'], 'customer-list', ['as' => 'customer-list', 'uses' => 'Admin\CustomerController@getCustomerData']);
     Route::match(['get', 'post'], 'customer-add', ['as' => 'customer-add', 'uses' => 'Admin\CustomerController@addCustomer']);

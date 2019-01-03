@@ -13,7 +13,7 @@ use App\Model\Support;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
-
+use Session;
 class CallController extends Controller {
 
     public function __construct() {
@@ -203,6 +203,10 @@ class CallController extends Controller {
      public function callchatlist(Request $request, $id=null) {
         $data['detail'] = $this->loginUser;
         
+        $objcallsupport=new Call_mail();
+        $callsupport=$objcallsupport->countsupport('customer',$data['detail']['id']);
+        Session::put('call_support', $callsupport);
+       
         $objsupportchat = new Call_chat();
         $data['chatlist'] = $objsupportchat->chatlist($id);
         $objSupportDetail = new Call_mail();
@@ -211,13 +215,16 @@ class CallController extends Controller {
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('customer/supports.js','jquery.form.min.js');
-        $data['funinit'] = array('Calls.chat_init()');
+        $data['funinit'] = array('Supports.chat_init()');
         $data['css'] = array('');
         return view('customer.call.callchatlist', $data);
     }   
 
     public function callchat(Request $request, $id=null) {
         $data['detail'] = $this->loginUser;
+       $objcallsupport=new Call_mail();
+        $callsupport=$objcallsupport->countsupport('customer',$data['detail']['id']);
+        Session::put('call_support', $callsupport);
        
          if ($request->isMethod('post')) {
             $objsupportchat = new Call_chat();
@@ -244,6 +251,23 @@ class CallController extends Controller {
         $data['funinit'] = array('Calls.chat_init()');
         $data['css'] = array('');
         return view('customer.call.callchat', $data);
+    }
+    
+    public function closechat(Request $request){
+       if ($request->isMethod('post')) {
+           $objclosechat = new Call_mail();
+            $closechat=$objclosechat->closechat($request);
+              if ($closechat == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'Chat closed successfully.';
+                $return['redirect'] = route('customer-callchatlist');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already exists.';
+            }
+            echo json_encode($return);
+            exit;
+        }
     }
 
 }

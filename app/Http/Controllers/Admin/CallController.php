@@ -12,7 +12,7 @@ use App\Model\Call_chat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
-
+use Session;
 class CallController extends Controller {
 
     public function __construct() {
@@ -203,7 +203,9 @@ class CallController extends Controller {
     }
   public function callchatlist(Request $request, $id=null) {
         $data['detail'] = $this->loginUser;
-        
+        $objcallsupport=new Call_mail();
+        $callsupport=$objcallsupport->countsupport('admin');
+        Session::put('call_support', $callsupport);
         $objsupportchat = new Call_chat();
         $data['chatlist']=$objsupportchat->chatlist();
 
@@ -212,13 +214,16 @@ class CallController extends Controller {
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
-        $data['js'] = array('admin/supports.js','jquery.form.min.js');
-        $data['funinit'] = array('Calls.chat_init()');
+        $data['js'] = array('admin/Calls.js','jquery.form.min.js');
+        $data['funinit'] = array('Calls.admin_chat_init()');
         $data['css'] = array('');
         return view('admin.call.callchatlist', $data);
     }   
 
     public function callchat(Request $request, $id=null) {
+        $objcallsupport=new Call_mail();
+        $callsupport=$objcallsupport->countsupport('admin');
+        Session::put('call_support', $callsupport);
         $data['detail'] = $this->loginUser;
          if ($request->isMethod('post')) {
             $objsupportchat = new Call_chat();
@@ -238,13 +243,32 @@ class CallController extends Controller {
          $data['responsibility'] = Config::get('constants.responsibility');
         $objsupportchat = new Call_chat();
         $data['chatlist'] = $objsupportchat->chatlist($id);
+        
         $objSupportDetail = new Call_mail();
         $data['supportArr'] = $objSupportDetail->callDetail($id);
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('admin/supports.js','customer/calls.js');
         $data['funinit'] = array('Calls.chat_init()');
         $data['css'] = array('');
         return view('admin.call.callchat', $data);
+    }
+    
+    public function chatclose(Request $request){
+        if ($request->isMethod('post')) {
+           $objclosechat = new Call_mail();
+            $closechat=$objclosechat->closechat($request);
+              if ($closechat == true) {
+                $return['status'] = 'success';
+                $return['message'] = 'Chat closed successfully.';
+                $return['redirect'] = route('callchatlist');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Email already exists.';
+            }
+            echo json_encode($return);
+            exit;
+        }
     }
 }

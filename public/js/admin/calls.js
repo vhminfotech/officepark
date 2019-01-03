@@ -393,7 +393,48 @@ var Calls = function() {
         };
         getDataTable(arrList);
     }
-
+    var chat =function(){
+          $('body').on('click', '.btnPopup', function() {
+            var id = $(this).attr('data-id');
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "admin/support-ajaxAction",
+                data: {'action': 'getPopupData', 'data': {'id': id }},
+                success: function(data) {
+                    $('.putHtml').html(data);
+                    $('#myModal2').modal('show');
+                }
+            });
+        });
+        
+          $('.closechat').on('click','',function(){
+            var dataid = $(this).attr('data-id');
+            var datatoken = $(this).attr('data-token');
+            
+            $('.yes-sure-close-chat').attr('data-id', dataid);
+            $('.yes-sure-close-chat').attr('data-token', datatoken);
+        });
+        
+        $('.yes-sure-close-chat').click(function() {
+             
+           
+            var id = $(this).attr('data-id');
+            var datatoken = $(this).attr('data-token');
+            
+            $.ajax({
+                type: "POST",
+                url: baseurl + "admin/admin-callsupport-closechat",
+                data: {'id':id,'_token':datatoken},
+                success: function(data) {
+                    handleAjaxResponse(data);
+//                    var data = JSON.parse(data);
+                }
+            });
+        });
+    }
 
     return {
         add_init: function() {
@@ -402,6 +443,9 @@ var Calls = function() {
         },
         list_init: function() {
             handleList();
-        }
+        },
+        admin_chat_init:function(){
+            chat();
+        },
     }
 }();

@@ -84,7 +84,7 @@ $fontcolor=$sessiondata['color'];
                 <a style="color: {{ '#'.$fontcolor }} ;" class="c-sidebar__link {{ ($currentRoute == 'customer-callchatlist' || $currentRoute == 'customer-callchat'  ? 'is-active' : '') }}"  href="{{ route('customer-callchatlist') }}">
                     <i class="fa fa-comment u-mr-xsmall" style="padding-right:6px"></i>
                     Call {{ trans('words.support') }} &nbsp;
-                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount"> 0 </span>
+                    <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOrderCount"> {{ Session::get('call_support') }} </span>
                     
                 </a>
             </li>

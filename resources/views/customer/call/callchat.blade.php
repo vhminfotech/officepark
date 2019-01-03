@@ -41,6 +41,7 @@
                         @endif
                          
                     @endfor
+                     @if($supportArr[0]['close_chat'] == '0')
                     <div class="c-chat-dialogue__footer">
                     
                         <form class="addSupportschat" action="{{ route('customer-callchat',$supportArr[0]['id']) }}" method="post" id="addSupportschat">
@@ -60,6 +61,7 @@
                             </div>
                         </form>
                     </div>
+                     @endif
                 </div>
                 </div>
             </article>

@@ -43,7 +43,7 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     Route::match(['get', 'post'], 'customer-callchat/{id}', ['as' => 'customer-callchat', 'uses' => 'Customer\CallController@callchat']);
     Route::match(['get', 'post'], 'customer-callchatlist', ['as' => 'customer-callchatlist', 'uses' => 'Customer\CallController@callchatlist']);
     Route::match(['get', 'post'], 'customer-calls-ajaxAction', ['as' => 'customer-ajaxAction', 'uses' => 'Customer\CallController@ajaxAction']); 
-
+    Route::match(['get', 'post'], 'customer-callsupport-closechat', ['as' => 'customer-callsupport-closechat', 'uses' => 'Customer\CallController@closechat']);
     
     Route::match(['get', 'post'], 'customer-edit-profile', ['as' => 'customer-edit-profile', 'uses' => 'Customer\ProfileController@editprofile']);
     

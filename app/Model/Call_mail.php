@@ -52,4 +52,26 @@ class Call_mail extends Model {
             $res = $sendMail->sendSMTPMail($mailData);
             return ($objCallMail->save());
     }
+    
+    public function closechat($request){
+            $objEditSupport =Call_mail::find($request->input('id'));
+           $objEditSupport->close_chat ='1';
+           $objEditSupport->customer_response_status ='1';
+           $objEditSupport->admin_response_status ='1';
+           $objEditSupport->updated_at = date('Y-m-d H:i:s');
+           return $objEditSupport->save();
+    }
+    
+    public function countsupport($usertype,$id=null){
+        if($usertype == 'admin'){
+            $sql = Call_mail::where('admin_response_status','0')->count();
+            return $sql;
+        }else{
+           
+            $sql = Call_mail::where('customer_response_status','0')
+                      ->where('customer_id',$id)->count();
+            return $sql; 
+        }
+         
+    }
 }

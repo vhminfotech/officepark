@@ -69,6 +69,8 @@ class CustomerController extends Controller {
         
         $data['plan_status'] = Config::get('constants.plan_status');
         $data['plan_message'] = Config::get('constants.msg');
+        $data['plan_info'] = Config::get('constants.plan_info');
+        $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
 
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
@@ -78,6 +80,7 @@ class CustomerController extends Controller {
         $data['js'] = array('customer/dashboard.js','customer/calls.js');
         $data['funinit'] = array('Dashboard.Init()','Calls.list_init()');
         $data['css'] = array('');
+        
         return view('customer.dashboard', $data);
     }
     
