@@ -214,7 +214,7 @@ class CallController extends Controller {
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
-        $data['js'] = array('admin/Calls.js','jquery.form.min.js');
+        $data['js'] = array('admin/calls.js','jquery.form.min.js');
         $data['funinit'] = array('Calls.admin_chat_init()');
         $data['css'] = array('');
         return view('admin.call.callchatlist', $data);
