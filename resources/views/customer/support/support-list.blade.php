@@ -42,10 +42,14 @@
                             <td class="c-table__cell">{{ $support_message[$val['support_id']] }}</td>
                             <td class="c-table__cell" title="{{  $val['note'] }}" style="width: 50px;">{!!  $out !!}</td>
                             <td class="c-table__cell">
-                                @if( $val['customer_response_status'] =='0')
-                                    <span class="c-badge c-badge--small c-badge--danger">Pending </span> 
+                               @if($val['close_chat'] == '1')
+                                     <span class="c-badge c-badge--primary">Closed </span> 
                                 @else
-                                    <span class="c-badge c-badge--small c-badge--success">Responded</span>
+                                    @if( $val['customer_response_status'] =='0')
+                                        <span class="c-badge c-badge--small c-badge--danger">Pending </span> 
+                                    @else
+                                        <span class="c-badge c-badge--small c-badge--success">Responded</span>
+                                    @endif
                                 @endif
                                </td> 
                             <td class="c-table__cell"> 
