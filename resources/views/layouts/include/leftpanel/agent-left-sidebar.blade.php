@@ -132,6 +132,17 @@ $roles  = array_values($roles);
             </li>
             @endif
             
+            @if($logindata[0]['id'] == 1 ||  in_array('Outgoingcalls', $roles))
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'edit-outgoing-call' || $currentRoute == 'new-outgoing-call' || $currentRoute == 'outgoing-call' || $currentRoute == '' ? 'is-active' : '') }}" href="{{ route('outgoing-call') }}">
+                    <i class="fa fa-volume-control-phone u-mr-xsmall" style="padding-right:6px"></i>
+                    {{ trans('words.Outgoingcalls') }} &nbsp;
+                     <span class="c-badge c-badge--danger  c-badge--xsmall u-ml-xsmall totalOutgoingCalls">{{ Session::get('outgoingCallCount')}} </span>
+                    <input type="hidden" id="totalOrderNotification" value="{{ Session::get('totalOrder') }}">
+                </a>
+            </li>
+            @endif
+            
             <li class="c-sidebar__item">
                 <i class="fa fa-flag-icon-us"></i>
             </li>
