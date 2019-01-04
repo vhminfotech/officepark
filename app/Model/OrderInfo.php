@@ -37,6 +37,7 @@ class OrderInfo extends Model {
         $objInfo->account_name = ($dataArr['accept'] != 'uber') ? $dataArr['account_name'] : '';
         $objInfo->account_iban = ($dataArr['accept'] != 'uber') ? $dataArr['account_iban'] : '';
         $objInfo->account_bic = ($dataArr['accept'] != 'uber') ? $dataArr['account_bic'] : '';
+        $objInfo->bankname = ($dataArr['accept'] != 'uber') ? $dataArr['bankname'] : '';
         $objInfo->accept = $dataArr['accept'];
         $objInfo->status = 'new';
         $objInfo->aggrement = $dataArr['aggrement'];
@@ -100,6 +101,7 @@ class OrderInfo extends Model {
     }
 
     public function getOrderInfo($orderId) {
+      
 //        return DB::table('order_info')->Where('id', $orderId)->get()->toArray();
         return DB::table('order_info')
                         ->leftjoin('users', 'users.id', '=', 'order_info.user_id')

@@ -218,7 +218,7 @@ Ihrem Konto nach 3 Werktagen, Folgelastschriften nach 1 Werktag belastet. </span
                 </tr>
                 <tr>
                     <td>
-                        <span>Mandatsreferenz: {{ $getInvoice[0]['customer_number'] }} • Gläubiger-ID:  {{ $getInvoice[0]['system_genrate_no'] }} </span>
+                        <span>Mandatsreferenz: {{ $getInvoice[0]['customer_number'] }} • Gläubiger-ID:  DE91ZZZ00002054440 </span>
                     </td>
                 </tr>
                 <tr>

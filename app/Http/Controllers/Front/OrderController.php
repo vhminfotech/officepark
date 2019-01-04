@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Model\OrderInfo;
 use App\Model\Users;
 use App\Model\Service;
+
 use Auth;
 use Config;
 use Session;
@@ -73,6 +74,7 @@ class OrderController extends Controller {
                     'account_name' => 'required',
                     'account_iban' => 'required',
                     'account_bic' => 'required',
+                    'bankname'=>'required',
                     'accept' => 'required',
                     'aggrement' => 'required'
                 ];
@@ -96,7 +98,8 @@ class OrderController extends Controller {
 
             $objOrderInfo = new OrderInfo();
             $resultArr = $objOrderInfo->saveOrderInfo($dataArr);
-
+            print_r($resultArr);
+            die();
             if ($resultArr) {
 //                $request->session()->flash('session_success', 'Add successfully.');
                 Session::flash('message', 'Order Add successfully.!');

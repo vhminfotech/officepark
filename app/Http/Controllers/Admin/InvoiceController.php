@@ -7,6 +7,7 @@ use App\Model\Users;
 use App\Model\Invoice;
 use App\Model\ServiceDetail;
 use App\Http\Controllers\Controller;
+use App\Model\OrderInfo;
 use Auth;
 use Route;
 use Config;
@@ -186,7 +187,6 @@ class InvoiceController extends Controller {
     }
 
     public function createPDF(Request $request) {
-
         // print_r($request->input());exit;
         $invoiceId = $request->input('orderId');
         $objinvoice = new Invoice();
@@ -288,7 +288,6 @@ class InvoiceController extends Controller {
             echo json_encode($return);
             exit;
         }
-
         $data['css'] = array();
         $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
         $data['js'] = array('admin/invoice.js');

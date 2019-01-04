@@ -32,7 +32,8 @@
                             <span>{{ $getCustomerInfo['address'] }} </span><br/><br/>
                             <!--<span>40470 Düsseldorf </span><br/>-->
 
-                            <span><b>Ihre Rechnung für den Zeitraum </b>&nbsp;&nbsp;&nbsp;<input type="tex" class='c-input form-control' data-toggle="datepicker" name="start_date" style='display:inline-block;width: 30%;'> -- <input type="tex" data-toggle="datepicker" name="end_date" class='c-input form-control' style='display:inline-block;width: 30%;'></span>
+                            <span><b>Ihre Rechnung für den Zeitraum </b>&nbsp;&nbsp;&nbsp;
+                                <input type="text" id="date1" class='c-input form-control' autocomplete="off" name="start_date" style='display:inline-block;width: 30%;'> -- <input type="text" id="startdate1" name="end_date" class='c-input form-control' style='display:inline-block;width: 30%;' autocomplete="off"></span>
                             <br/><br/>
 
                             <span>Sehr geehret Damen und Herren, <br/> anbei übersenden wir ihnen ihre aktuelle Monatsabrechnung.</span>
@@ -135,7 +136,8 @@
                     <span>
                         Ihre Bankeverbindung: DE14 3005 0110 1007 340182 . DUSSDEDDXXX <br/>
                         Stadtsparkasse Dusseldorf  . Kontoinhaber : Chousein Touzlatzi <br/>
-                        Mandatsreferenz : OP-211-1704 . Glaubiger-ID : DE91ZZZZ00002054440
+                        Mandatsreferenz : OP-211-1704 . Glaubiger-ID : DE91ZZZZ00002054440<br/>
+                        Ihr OFFICESPARK-Team
                     </span>
                     <br/>
 

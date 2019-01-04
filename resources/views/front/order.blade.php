@@ -203,6 +203,11 @@
                                                                 <div class="form-group">
                                                                     {{ Form::text('account_bic', null, array('class' => 'form-control', 'placeholder' => 'BIC')) }}
                                                                 </div>
+                                                                
+                                                                 <div class="form-group">
+                                                                    {{ Form::text('bankname', null, array('class' => 'form-control', 'placeholder' => 'BANK NAME')) }}
+                                                                </div>
+                                                                
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="mt-radio-list">

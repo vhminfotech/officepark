@@ -83,9 +83,9 @@ class Invoice extends Model {
     }
 
     public function addInvoice($request) {
-//        print_r($request->input());exit;
-        $startDate = explode('/', $request->input('start_date'));
-        $endDate = explode('/', $request->input('end_date'));
+//      print_r($request->input());exit;
+        $startDate = explode('.', $request->input('start_date'));
+        $endDate = explode('.', $request->input('end_date'));
         $invoiceResult = Invoice::orderBy('created_at', 'desc')->first();
         
         if(!empty($invoiceResult)){
@@ -156,7 +156,7 @@ class Invoice extends Model {
     public function getInvoiceDetail($invoiceId) {
 
         return Invoice::select(
-                                'invoice.id', 'invoice.created_at', 'invoice.customer_id', 'invoice.start_date', 'invoice.end_date', 'invoice.service_id', 'invoice.total as invoiceTotal', 'invoice.invoice_no', 'users.customer_number', 'users.name', 'users.email', 'users.system_genrate_no', 'service.packages_name', 'order_info.company_name', 'order_info.account_name', 'order_info.account_iban', 'order_info.account_bic', 'order_info.company_info', 'order_info.accept', 'order_info.gender', 'order_info.fullname', 'invoice.mail_send', 'invoice_detail.bezeichnung', 'invoice_detail.menge', 'invoice_detail.einzelpreis', 'invoice_detail.total'
+                                'invoice.id', 'invoice.created_at', 'invoice.customer_id', 'invoice.start_date', 'invoice.end_date', 'invoice.service_id', 'invoice.total as invoiceTotal', 'invoice.invoice_no', 'users.customer_number', 'users.name', 'users.email', 'users.system_genrate_no', 'service.packages_name', 'order_info.company_name', 'order_info.account_name', 'order_info.account_iban', 'order_info.account_bic', 'order_info.company_info', 'order_info.accept', 'order_info.bankname', 'order_info.gender', 'order_info.fullname', 'invoice.mail_send', 'invoice_detail.bezeichnung', 'invoice_detail.menge', 'invoice_detail.einzelpreis', 'invoice_detail.total'
                         )
                         ->leftjoin('users', 'users.id', '=', 'invoice.customer_id')
                         ->leftjoin('invoice_detail', 'invoice_detail.invoice_id', '=', 'invoice.id')
