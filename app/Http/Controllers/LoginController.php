@@ -134,6 +134,15 @@ class LoginController extends Controller {
                 return redirect()->route('admin-dashboard');
             } else if (Auth::guard('agent')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'AGENT'])) {
 
+                if(Auth::guard('agent')->user()->var_language == 'DE')
+                {    
+                    $lang = 'gr';
+                }elseif(Auth::guard('agent')->user()->var_language == 'TR'){
+                    $lang = 'tr';
+                }else{
+                    $lang = 'en';
+                }
+
                 $loginData = array(
                     'name' => Auth::guard('agent')->user()->name,
                     'email' => Auth::guard('agent')->user()->email,
@@ -145,6 +154,7 @@ class LoginController extends Controller {
                 $this->getUserRoleList(Auth::guard('agent')->user()->id,$request);
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'Agent Login successfully.');
+                setcookie('language', $lang);
                 return redirect()->route('agent-dashboard');
             } else {
                 $request->session()->flash('session_error', 'Your username and password are wrong. Please login with correct credential...!!');
@@ -166,6 +176,7 @@ class LoginController extends Controller {
     public function getLogout() {
         $this->resetGuard();
         //return Redirect::to('login'); 
+        setcookie("language", '');
         return redirect()->route('login');
     }
 

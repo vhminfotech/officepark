@@ -51,3 +51,12 @@ ALTER TABLE `call_mail` ADD `information` INT NOT NULL AFTER `call_id`;
 
 CREATE TABLE `officepark`.`call_chat` ( `id` INT NOT NULL AUTO_INCREMENT , `call_id` INT NOT NULL , `customer_id` INT NULL , `comment` TEXT NOT NULL, `created_at` DATETIME NOT NULL , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ALTER TABLE `call_chat` ADD `call_mail_id` INT NULL AFTER `call_id`;
+
+ALTER TABLE `support` ADD `customer_response_status` ENUM('0','1') NOT NULL DEFAULT '1' COMMENT '0 for Not Responsed 1 for Responded' AFTER `note`, ADD `admin_response_status` ENUM('0','1') NOT NULL DEFAULT '0' COMMENT '0 for Not Responsed 1 for Responded' AFTER `customer_response_status`;
+ALTER TABLE `call_mail` ADD `customer_response_status` ENUM('0','1') NOT NULL DEFAULT '1' COMMENT '0 for Not Responsed 1 for Responded' AFTER `notes`, ADD `admin_response_status` ENUM('0','1') NOT NULL DEFAULT '0' COMMENT '0 for Not Responsed 1 for Responded' AFTER `customer_response_status`;
+
+
+ALTER TABLE `permission_master` ADD `is_active` INT NOT NULL DEFAULT '1' AFTER `name`;
+UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` = 1;
+UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` = 9;
+UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` = 16;
