@@ -20,7 +20,7 @@ class Users extends Model {
     protected $table = 'users';
 
     public function getMasterPermisson() {
-        $result = DB::table('permission_master')->get();
+        $result = DB::table('permission_master')->where('permission_master.is_active', '=', '1')->get();
         return $result;
     }
     
@@ -49,6 +49,7 @@ class Users extends Model {
         $result = UserHasPermission::join('permission_master', 'permission_master.id', '=', 'user_has_permission.permission_id')
                 ->select('permission_master.name', 'user_has_permission.id')
                 ->where('user_has_permission.user_id', '=', $userId)
+                ->where('permission_master.is_active', '=', '1')
                 ->pluck('permission_master.name', 'user_has_permission.id')
                 ->toArray();
         return $result;

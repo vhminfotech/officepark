@@ -27,7 +27,7 @@ return[
     'Agent'=>"Sekreter",
     'Calls'=>"Aramalar",
     'SEPA'=>"SEPA",
-    'Contract'=>"Yönetici",
+    'Contract'=>"çalışan",
     'Employees'=>"Çalışan",
     'Customer'=>'Müşteri',
     'System Mails'=>"Sistem Mailleri",
@@ -38,7 +38,7 @@ return[
     'System User'=>"Sistem kullanıcısı",
     'Orders'=>"Sipariş",
     'Addressbook'=>"Adres defteri",
-    'Service'=>"Destekleyen",
+    'Service'=>"Hizmet",
     'Outgoingcalls'=>'Outgoingcalls',
     //edit user
     'edit_user'=>'Sistem kullanıcısı düzenle',

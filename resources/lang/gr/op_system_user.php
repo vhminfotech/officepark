@@ -29,7 +29,7 @@ return[
     'Agent'=>"Sekretär",
     'Calls'=>"Anrufe",
     'SEPA'=>"SEPA",
-    'Contract'=>"Administrator",
+    'Contract'=>"Vertrag",
     'Employees'=>"Mitarbeiter",
     'Customer'=>'Kunde',
     'System Mails'=>'System Mails',
@@ -40,7 +40,7 @@ return[
     'System User'=>"System Benutzer",
     'Orders'=>"Bestellungen",
     'Addressbook'=>"Addressbook",
-    'Service'=>"Unterstützung",
+    'Service'=>"Bedienung",
     'Outgoingcalls'=>'Outgoingcalls',
     // Edit user
     'edit_user'=>'System Benutzer bearbeiten',

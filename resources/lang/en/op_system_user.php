@@ -29,7 +29,7 @@ return[
     'Agent'=>'Agent',
     'Calls'=>'Calls',
     'SEPA'=>'SEPA',
-    'Contract'=>'Administrator',
+    'Contract'=>'Contract',
     'Employees'=>'Employees',
     'Customer'=>'Customer',
     'System Mails'=>'System Mails',
@@ -40,7 +40,7 @@ return[
     'System User'=>'System User',
     'Orders'=>'Orders',
     'Addressbook'=>'Addressbook',
-    'Service'=>'Support',
+    'Service'=>'Service',
     'Outgoingcalls'=>'Outgoingcalls',
     
     // Edit user 
