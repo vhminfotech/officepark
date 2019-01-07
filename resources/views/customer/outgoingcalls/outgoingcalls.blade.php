@@ -45,9 +45,8 @@
                           <th class="c-table__cell">{{ $outgoingCall[$i]['email'] }}</th>
                             <td class="c-table__cell">@if( $outgoingCall[$i]['status']  == '0')
                                             <span class="c-badge c-badge--warning">Pending</span>
-                                            <a href="javascript:;" ><span data-id="{{ $outgoingCall[$i]['id'] }}" class=" complete-call c-tooltip c-tooltip--top"  aria-label="Complete Calls">
-                                                    <i class="fa fa-check-square fa-1x " style="color:#fd9a18"></i></span>
-                                            </a>
+                                               
+                                           
                                         @else
                                             <span class="c-badge c-badge--success">Done</span>
                                         @endif
