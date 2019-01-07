@@ -38,8 +38,7 @@ var Addressbook = function(){
             company: {required: true},
             position: {required: true},
             telephone_number: {required: true , number: true},
-            mobile_number: {required: true , number: true},
-            telephone: {required: true , number: true},
+            
             email: {required: true , email : true},
         };
         handleFormValidate(form, rules, function(form) {
@@ -54,7 +53,6 @@ var Addressbook = function(){
             surname: {required: true},
             company: {required: true},
             position: {required: true},
-            telephone_number: {required: true , number: true},
             email: {required: true , email : true},
         };
         handleFormValidate(form, rules, function(form) {
