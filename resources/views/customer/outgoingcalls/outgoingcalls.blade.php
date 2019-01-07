@@ -31,7 +31,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('order.telephone') }}1&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.email') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('customer.status') }}&nbsp;&nbsp;</th>
-                            <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -51,14 +51,7 @@
                                             <span class="c-badge c-badge--success">Done</span>
                                         @endif
                             </td>
-                          <td class="c-table__cell">
-                                <a href=" {{ route('customer-edit-outgoing-call',$outgoingCall[$i]['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
-                                        <i class="fa fa-edit" ></i></span>
-                                </a>
-                                <a href="javascript:;" class="delete"  data-token="{{ csrf_token() }}" data-id="{{ $outgoingCall[$i]['id'] }}"><span class="c-tooltip c-tooltip--top" data-toggle="modal" data-target="#deleteModel" aria-label="{{ trans('employee.delete') }}">
-                                        <i class="fa fa-trash-o"></i></span>
-                                </a>
-                            </td>
+                          
                       </tr>
                       @endfor
                     </tbody>
