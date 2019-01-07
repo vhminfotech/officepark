@@ -19,7 +19,14 @@
                             <div class="col-lg-6 col-lg-offset-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">Customer Number</label> 
-                                    {{ Form::select('customer_id', $arrOrderInfo , (empty($addbkDetail[0]->customer_id) ? null : $addbkDetail[0]->customer_id), array('class' => 'c-select', 'id' => 'customer_id')) }}
+                                    <select class="c-select" id="" name="customer_id">
+                                        <!--<option>choose an option</option>-->
+                                        @for($i=0;$i < count($arrOrderInfo) ;$i++)
+                                            <option value="{{ $arrOrderInfo[$i]['user_id'] }}" {{ ($arrOrderInfo[$i]['user_id'] == $detail['id'] ? 'selected="selected"' : '') }} > {{$arrOrderInfo[$i]['customer_number']}} - {{$arrOrderInfo[$i]['name']}}</option>
+                                        @endfor
+                                  
+                                    </select>
+                                    
                                 </div>
                             </div>
                         </div>
