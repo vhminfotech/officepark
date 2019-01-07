@@ -180,9 +180,8 @@ class Users extends Model {
             $newpassword = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzASLKJHGDMNBVCXZPOIUYTREWQ", 6)), 0, 6);;
             $result = DB::table('customer_no')->where('id', 1)->get();
             $systemGenrateNo = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
-print_r($newpassword);
+
             $newpass = Hash::make($newpassword);
-            print_r($newpass);
             $objUser = new Users();
             $objUser->name = $postData['fullname'];
             $objUser->inopla_username = $postData['fullname'];
