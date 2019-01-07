@@ -28,14 +28,13 @@ class OutgoingCallsController extends Controller {
   
     
     public function outgoingcalls(Request $request){
-        
         $data['detail'] = $this->loginUser;
         $data['customer_id'] = $data['detail']['id'];
         $data['gender'] = Config::get('constants.gender');
         $data['arrTime'] = Config::get('constants.arrTime');
         $objCalls = new OutgoingCalls();
         $data['outgoingCall'] = $objCalls->getOutgoingList($data['customer_id']);
-     
+       
         $data['css'] = array();
         $data['pluginjs'] = array();
         $data['js'] = array('customer/outgoingcalls.js');
