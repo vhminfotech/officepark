@@ -30,6 +30,7 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('contect.company-name') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('order.telephone') }}1&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.email') }}&nbsp;&nbsp;</th>
+                            <th class="c-table__cell c-table__cell--head">{{ trans('customer.status') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head no-sort">{{ trans('employee.action') }}</th>
                         </tr>
                     </thead>
@@ -42,7 +43,15 @@
                           <th class="c-table__cell">{{ $outgoingCall[$i]['company_name'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['telephone1'] }}</th>
                           <th class="c-table__cell">{{ $outgoingCall[$i]['email'] }}</th>
-                          
+                            <td class="c-table__cell">@if( $outgoingCall[$i]['status']  == '0')
+                                            <span class="c-badge c-badge--warning">Pending</span>
+                                            <a href="javascript:;" ><span data-id="{{ $outgoingCall[$i]['id'] }}" class=" complete-call c-tooltip c-tooltip--top"  aria-label="Complete Calls">
+                                                    <i class="fa fa-check-square fa-1x " style="color:#fd9a18"></i></span>
+                                            </a>
+                                        @else
+                                            <span class="c-badge c-badge--success">Done</span>
+                                        @endif
+                            </td>
                           <td class="c-table__cell">
                                 <a href=" {{ route('customer-edit-outgoing-call',$outgoingCall[$i]['id'])}} "><span class="c-tooltip c-tooltip--top"  aria-label="{{ trans('employee.edit') }}">
                                         <i class="fa fa-edit" ></i></span>
