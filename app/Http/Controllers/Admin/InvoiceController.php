@@ -220,6 +220,7 @@ class InvoiceController extends Controller {
         if (file_exists('public/' . $target_path)) {
             unlink('public/' . $target_path);
         }
+       
         if ($mail == '') {
             $return['status'] = 'success';
             $return['message'] = 'Invoice sent successfully.';
@@ -230,10 +231,7 @@ class InvoiceController extends Controller {
         }
         echo json_encode($return);
         exit;
-        // return redirect('admin/invoice-list');
-        // return $pdf->stream();
-        // exit;
-        // return $pdf->download('invoice.pdf');
+   
     }
 
     public function createPDFV2() {

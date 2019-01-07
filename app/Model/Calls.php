@@ -130,8 +130,8 @@ class Calls extends Model {
             2 => 'calls.caller',
             3 => 'u1.name',
             4 => 'calls.caller_note',
-            5 => 'calls.sent_mail',
-            6 => 'u2.name',
+//            5 => 'calls.sent_mail',
+            5 => 'u2.name',
         );
 
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
@@ -192,16 +192,16 @@ class Calls extends Model {
                             <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
                           </a>';
             
-            if ($row['sent_mail'] == 1) {
-                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
-                    <i class="fa fa-refresh"></i>
-                                 
-                              </a>';
-            } else {
-                $actionHtml = '<a class="sentEmailBtn" title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
-                                        <i class="fa fa-envelope-o"></i>
-                                    </a>';
-            }
+//            if ($row['sent_mail'] == 1) {
+//                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+//                    <i class="fa fa-refresh"></i>
+//                                 
+//                              </a>';
+//            } else {
+//                $actionHtml = '<a class="sentEmailBtn" title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+//                                        <i class="fa fa-envelope-o"></i>
+//                                    </a>';
+//            }
 
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
             $nestedData[] = $row["id"];
@@ -212,7 +212,7 @@ class Calls extends Model {
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];
             $nestedData[] = $actionHtml3;
-            $nestedData[] = $actionHtml;
+//            $nestedData[] = $actionHtml;
             $nestedData[] = $actionHtml2;
              
             $data[] = $nestedData;
@@ -237,8 +237,8 @@ class Calls extends Model {
             2 => 'calls.caller',
             3 => 'u1.name',
             4 => 'calls.caller_note',
-            5 => 'calls.sent_mail',
-            6 => 'u2.name',
+//            5 => 'calls.sent_mail',
+            5 => 'u2.name',
         );
 
         $query = Calls::leftjoin('users as u1', 'u1.inopla_username', '=', 'calls.destination_number')
@@ -300,16 +300,16 @@ class Calls extends Model {
                             <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
                           </a>';
             
-            if ($row['sent_mail'] == 1) {
-                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
-                    <i class="fa fa-refresh"></i>
-                                 
-                              </a>';
-            } else {
-                $actionHtml = '<a class="sentEmailBtn" title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
-                                        <i class="fa fa-envelope-o"></i>
-                                    </a>';
-            }
+//            if ($row['sent_mail'] == 1) {
+//                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+//                    <i class="fa fa-refresh"></i>
+//                                 
+//                              </a>';
+//            } else {
+//                $actionHtml = '<a class="sentEmailBtn" title="Send Mail"  data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
+//                                        <i class="fa fa-envelope-o"></i>
+//                                    </a>';
+//            }
 
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
             $nestedData[] = $row["id"];
@@ -320,7 +320,7 @@ class Calls extends Model {
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);
             $nestedData[] = $row['caller_note'];
             $nestedData[] = $actionHtml3;
-            $nestedData[] = $actionHtml;
+//            $nestedData[] = $actionHtml;
             $nestedData[] = $actionHtml2;
              
             $data[] = $nestedData;
