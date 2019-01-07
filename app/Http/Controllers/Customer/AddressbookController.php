@@ -80,7 +80,9 @@ class AddressbookController extends Controller {
     public function editAddressbook($bookId, Request $request) {
         $data['gender'] = Config::get('constants.gender');
         $data['detail'] = $this->loginUser;
+        
         if ($request->isMethod('post')) {
+            
             $objeditbook = new Addressbook();
             $editbklist = $objeditbook->editaddbookInfo($request);
             if ($editbklist) {

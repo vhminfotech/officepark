@@ -32,14 +32,9 @@ var Addressbook = function(){
         var form = $('#addAddressbook');
         var rules = {
             gender: {required: true},
-
             firstname: {required: true},
             surname: {required: true},
-            company: {required: true},
-            position: {required: true},
-            telephone_number: {required: true , number: true},
             
-            email: {required: true , email : true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
@@ -51,9 +46,6 @@ var Addressbook = function(){
         var rules = {
             firstname: {required: true},
             surname: {required: true},
-            company: {required: true},
-            position: {required: true},
-            email: {required: true , email : true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);

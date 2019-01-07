@@ -60,3 +60,5 @@ ALTER TABLE `permission_master` ADD `is_active` INT NOT NULL DEFAULT '1' AFTER `
 UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` = 1;
 UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` = 9;
 UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` = 16;
+
+ALTER TABLE `addressbook` CHANGE `company` `company` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `mobile` `mobile` INT(11) NULL DEFAULT NULL, CHANGE `telefax` `telefax` INT(11) NULL DEFAULT NULL, CHANGE `note` `note` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `position` `position` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `telephone_number` `telephone_number` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `email` `email` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;

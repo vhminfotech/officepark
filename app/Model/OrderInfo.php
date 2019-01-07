@@ -209,10 +209,10 @@ class OrderInfo extends Model {
     }
 
     public function getCustomerDetails() {
-        $result = OrderInfo::join('users', 'users.id', '=', 'order_info.user_id')
-                ->select(DB::raw('CONCAT_WS(" - ",users.customer_number, order_info.company_name) AS cust_name_num'), 'order_info.user_id')
-                ->pluck('cust_name_num', 'order_info.user_id')
-                ->toArray();
+        $result=OrderInfo::select('users.customer_number','users.name','order_info.user_id')
+                ->leftjoin('users', 'users.id', '=', 'order_info.user_id')
+                ->get()->toArray();
+//       
         if (empty($result)) {
             $result = array('' => 'No Customer Found');
         }
