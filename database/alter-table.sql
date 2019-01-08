@@ -63,3 +63,4 @@ UPDATE `permission_master` SET `is_active` = '0' WHERE `permission_master`.`id` 
 
 _________________________________________________________08-01-2018__________________________________
 ALTER TABLE `status` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, CHANGE `customer_id` `customer_id` INT(11) NULL DEFAULT NULL, CHANGE `status_id` `welcome_note` INT(11) NOT NULL, CHANGE `message_id` `status` INT(11) NOT NULL, CHANGE `number` `call_transfer` INT(11) NOT NULL, CHANGE `information` `information` TEXT NOT NULL, CHANGE `note` `note` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL, CHANGE `updated_at` `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `status` DROP `note`;
