@@ -31,7 +31,6 @@
                             <th class="c-table__cell c-table__cell--head">{{ trans('order.telephone') }}1&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('employee.email') }}&nbsp;&nbsp;</th>
                             <th class="c-table__cell c-table__cell--head">{{ trans('customer.status') }}&nbsp;&nbsp;</th>
-                            
                         </tr>
                     </thead>
                     <tbody>

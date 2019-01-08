@@ -67,11 +67,12 @@ class CustomerController extends Controller {
         $data['month'] = $month;
         $data['method'] = $method;
         
-        $data['plan_status'] = Config::get('constants.plan_status');
-        $data['plan_message'] = Config::get('constants.msg');
-        $data['plan_info'] = Config::get('constants.plan_info');
-        $data['plan_mo_no'] = Config::get('constants.plan_mo_no');
-
+        
+        
+        $data['welcome_note'] = Config::get('constants.welcome_note');
+        $data['reroute_confirm'] = Config::get('constants.reroute_confirm');
+        $data['unreach_note'] = Config::get('constants.unreach_note');
+        
         $data['responsibility'] = Config::get('constants.responsibility');
         $data['call_back_msg'] = Config::get('constants.call_back_msg');
         $data['gender'] = Config::get('constants.gender');     

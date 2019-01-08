@@ -27,15 +27,13 @@ class Status extends Model {
     }
 
     public function addStatus($postData) {
-        // print_r($postData);exit;
+//         print_r($postData);exit;
         $objStatus = new Status();
         $objStatus->customer_id = (isset($postData['customer_id'])) ? $postData['customer_id'] : '';
-        $objStatus->status_id = (isset($postData['status'])) ? $postData['status'] : '';
-        $objStatus->message_id = (isset($postData['message'])) ? $postData['message'] : '';
-        $objStatus->number = (isset($postData['number'])) ? $postData['number'] : '';
+        $objStatus->welcome_note = (isset($postData['welcome_note'])) ? $postData['welcome_note'] : '';
+        $objStatus->status = (isset($postData['status'])) ? $postData['status'] : '';
+        $objStatus->call_transfer = (isset($postData['call_transfer'])) ? $postData['call_transfer'] : '';
         $objStatus->information = (isset($postData['information'])) ? $postData['information'] : '';
-        $objStatus->note = (isset($postData['note'])) ? $postData['note'] : '';
-       
         $objStatus->created_at = date('Y-m-d H:i:s');
         $objStatus->updated_at = date('Y-m-d H:i:s');
         $objStatus->save();
