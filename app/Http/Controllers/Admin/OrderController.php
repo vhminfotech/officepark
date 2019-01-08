@@ -156,11 +156,21 @@ class OrderController extends Controller {
             $objOrder = new OrderInfo();
             $editResult = $objOrder->customerEditInfo($request);
             if ($editResult) {
-                $return['status'] = 'success';
-                $return['message'] = 'Customer Information edit Successfully.';
-                $return['redirect'] = route('view-order', array('id' => $request->input('orderId')));
-                echo json_encode($return);
-                exit;
+                
+                $objUserDetails = new Users();
+                $editUserResult = $objUserDetails->customerEditInfo($request);
+                if ($editResult) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Customer Information edit Successfully.';
+                    $return['redirect'] = route('view-order', array('id' => $request->input('orderId')));
+                    echo json_encode($return);
+                    exit;}
+                    else {
+                        $return['status'] = 'error';
+                        $return['message'] = 'Something went wrong.';
+                        echo json_encode($return);
+                        exit;
+                    }
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Something went wrong.';

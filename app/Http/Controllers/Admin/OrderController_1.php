@@ -36,14 +36,12 @@ class OrderController extends Controller {
     }
 
     public function viewOrder(Request $request, $id) {
-
         $objOrder = new OrderInfo();
         $orderstatus = $objOrder->updateStatus($id);
         $resultArr = $objOrder->newOrderCount('new');
         if ($orderstatus) {
             Session::put('ordercount', $resultArr);
         }
-
         $data['customerNo'] = DB::table('customer_no')->where('id', 1)->get();
         $data['systemGenerateNo'] = DB::table('system_genrate_no')->where('id', 1)->orderBy('id', 'desc')->take(1)->get();
 
@@ -123,6 +121,7 @@ class OrderController extends Controller {
             $objOrder = new OrderInfo();
             $editResult = $objOrder->customerEditInfo($request);
             if ($editResult) {
+                
                 $return['status'] = 'success';
                 $return['message'] = 'Customer Information edit Successfully.';
                 $return['redirect'] = route('view-order', array('id' => $request->input('orderId')));

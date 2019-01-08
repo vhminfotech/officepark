@@ -84,7 +84,7 @@ class Users extends Model {
 
     public function getCustomerList($type) {
         return Users::select(
-                                'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
+                            'users.id as customer_id', 'users.customer_number  as customer_number', 'order_info.company_name', 'order_info.fullname', 'users.email', 'order_info.phone', 'order_info.is_package'
                         )
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                         ->where('users.type', '=', $type)->get();
@@ -375,5 +375,14 @@ class Users extends Model {
         return true;
         }
         return false;
+    }
+    
+    
+    public function customerEditInfo($request){
+          $objCusEdit = Users::find($request->input('id'));
+          $objCusEdit->email = $request->input('email');
+          if ($objCusEdit->save()){
+            return TRUE;
+          }
     }
 }

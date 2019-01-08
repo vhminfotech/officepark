@@ -58,7 +58,9 @@
                                 <td class="c-table__cell">{{ trans('customer.cus_name')}}</td>
                                 <td class="c-table__cell ">
                                     <span class="u-text-bold html1 ">{{ $arrOrder[0]->fullname }}</span>
-                                    <span class="u-text-bold data1" style="display: none;"><input class="c-input customer_name" value="{{ $arrOrder[0]->fullname }}" id="customer_name" name='customer_name'></span>
+                                    <span class="u-text-bold data1" style="display: none;">
+                                    <input class="c-input customer_name" value="{{ $arrOrder[0]->fullname }}" id="customer_name" name='customer_name'></span>
+                                    <input type="hidden" class="c-input customer_id" value="{{ $arrOrder[0]->user_id }}"  name='customer_id'>
                                 </td>
                             </tr>
 

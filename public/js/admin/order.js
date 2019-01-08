@@ -149,9 +149,11 @@ var Order = function() {
                     postal_code: $('.postal_code').val(),
                     phone: $('.phone').val(),
                     orderId: $('.orderId').val(),
+                    id:$('.customer_id').val(),
                     _token: token};
                 var url = baseurl + 'admin/edit-customer-info';
                 ajaxcall(url, data, function(output) {
+                   
                     handleAjaxResponse(output);
                 });
             }
