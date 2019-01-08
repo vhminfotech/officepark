@@ -37,7 +37,7 @@
             {{ csrf_field() }}
             <div class="c-field u-mb-small {{ $errors->has('email') ? ' has-error' : '' }}">
                 <label class="c-field__label" for="input1">{{ trans('login.log_in_with_mail')}}</label> 
-                <input class="c-input" type="email" name="email" value="{{ old('email') }}" id="input1" placeholder="clark@dashboard.com"> 
+                <input class="c-input" type="text" name="email" value="{{ old('email') }}" id="input1" placeholder="clark@dashboard.com"> 
                 @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>

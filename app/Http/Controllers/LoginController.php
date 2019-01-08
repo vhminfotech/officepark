@@ -59,7 +59,7 @@ class LoginController extends Controller {
         if ($request->isMethod('post')) {
 
             $this->validate($request, [
-                'email' => 'required|email',
+                'email' => 'required',
                 'password' => 'required'
             ]);
 
@@ -98,7 +98,31 @@ class LoginController extends Controller {
                 
                 $request->session()->flash('session_success', 'Customer Login successfully.');
                 return redirect()->route('customer-dashboard');
-            } else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' =>$request->input('password'), 'type' => 'ADMIN'])) {
+            } else if (Auth::guard('customer')->attempt(['customer_number' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'CUSTOMER'])) {
+                $objsupport=new Support();
+                $support=$objsupport->countsupport('customer',Auth::guard('customer')->user()->id);
+                
+                $objcallsupport=new Call_mail();
+                $callsupport=$objcallsupport->countsupport('customer',Auth::guard('customer')->user()->id);
+                
+                
+                $objOutgoingCalls = new OutgoingCalls();
+                $outgoingCallCount = $objOutgoingCalls->getOutgoingPendingCall(Auth::guard('customer')->user()->id);
+                $loginData = array(
+                    'name' => Auth::guard('customer')->user()->name,
+                    'email' => Auth::guard('customer')->user()->email,
+                    'type' => Auth::guard('customer')->user()->type,
+                    'id' => Auth::guard('customer')->user()->id,
+                    'user_image' => Auth::guard('customer')->user()->user_image
+                );
+                Session::push('logindata', $loginData);
+                Session::put('outgoingCallCount', $outgoingCallCount);
+                Session::put('callsupport', $support);
+                Session::put('call_support', $callsupport);
+                
+                $request->session()->flash('session_success', 'Customer Login successfully.');
+                return redirect()->route('customer-dashboard');
+            }else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' =>$request->input('password'), 'type' => 'ADMIN'])) {
                 $objsupport=new Support();
                 $support=$objsupport->countsupport('admin');
                 
