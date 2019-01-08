@@ -379,6 +379,8 @@ class Users extends Model {
     
     
     public function customerEditInfo($request){
+        print_r($request->input());
+        exit;
           $objCusEdit = Users::find($request->input('id'));
           $objCusEdit->email = $request->input('email');
           if ($objCusEdit->save()){
