@@ -72,7 +72,7 @@
                         <tr class="c-table__row hide{{ $getInvoice[$i]->id }}">
                             <td class="c-table__cell"><input type="checkbox" name="invoice_{{ $getInvoice[$i]->id }}" value="{{ $getInvoice[$i]->id }}" class="invoicechk"></td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->id }}</td>
-                            <td class="c-table__cell">{{ date('Y-m-d',strtotime($getInvoice[$i]->created_at)) }}</td>
+                            <td class="c-table__cell">{{ date('Y.m.d',strtotime($getInvoice[$i]->created_at)) }}</td>
                             <td class="c-table__cell">{{ $getInvoice[$i]->invoice_no }}</td>
                             <!-- <td class="c-table__cell">{{ $getInvoice[$i]->customer_number }}</td> -->
                             <!-- <td class="c-table__cell">{{ $getInvoice[$i]->company_name }}</td> -->
