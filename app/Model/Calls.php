@@ -296,9 +296,9 @@ class Calls extends Model {
                 $actionHtml3='<span class="c-badge c-badge--danger">Not Confirm</span>';
             }
             
-            $actionHtml2='<a  title="Call Popup" class="bigpopup"  data-id="'.$row["id"].'" data-toggle="modal" data-target="#myModal2">
-                            <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
-                          </a>';
+//            $actionHtml2='<a  title="Call Popup" class="bigpopup"  data-id="'.$row["id"].'" data-toggle="modal" data-target="#myModal2">
+//                            <i class="fa fa-eye customerpopupdetail" data-id="'.$row["id"].'"></i>
+//                          </a>';
             
 //            if ($row['sent_mail'] == 1) {
 //                $actionHtml = '<a class="sentEmailBtn" title="Send Mail Again" data-toggle="modal" data-target="#modal8" data-name="' . $row['first_and_last_name'] . '" data-id="' . $row["id"] . '"  href="javascript:;">
@@ -321,7 +321,7 @@ class Calls extends Model {
             $nestedData[] = $row['caller_note'];
             $nestedData[] = $actionHtml3;
 //            $nestedData[] = $actionHtml;
-            $nestedData[] = $actionHtml2;
+//            $nestedData[] = $actionHtml2;
              
             $data[] = $nestedData;
         }
