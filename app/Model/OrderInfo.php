@@ -21,7 +21,7 @@ class OrderInfo extends Model {
         $objInfo->center_to_customer_route = $dataArr['center_to_customer_route'];
         $objInfo->unreach_note = $dataArr['unreach_note'];
         $objInfo->info_type = $dataArr['info_type'];
-
+        $objInfo->note = $dataArr['note'];
         $objInfo->company_name = $dataArr['company_name'];
         $objInfo->company_type = $dataArr['company_type'];
         $objInfo->company_info = $dataArr['company_info'];
@@ -191,6 +191,20 @@ class OrderInfo extends Model {
             return TRUE;
         }
     }
+    
+    public function updateCustomerstatus($postData,$id){
+//        DB::table('users')
+//            ->where('id', 1)
+//            ->update(['votes' => 1]);
+        return DB::table('order_info')
+                ->where('user_id',$id)
+                ->update(['welcome_note' => $postData['welcome_note'],
+                          'unreach_note' => $postData['status'],
+                        'reroute_confirm' => $postData['call_transfer'],
+                        'note' => $postData['information'],
+                        'updated_at'=>date("Y-m-d h:i:s"),
+                    ]);
+    }
 
     public function getPdfData($id) {
         return OrderInfo::leftjoin('users', 'users.id', '=', 'order_info.user_id')
@@ -228,6 +242,9 @@ class OrderInfo extends Model {
 //        echo "<pre/>"; print_r($abc); exit();
     }
     
-    
+        public function statusDetails($id){
+            return OrderInfo::select('welcome_note','reroute_confirm','unreach_note','note')
+                        ->where('user_id', $id)->get()->toArray();
+        }
     
     }

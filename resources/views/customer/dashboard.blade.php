@@ -78,7 +78,7 @@
                                 <label class="c-field__label" for="statuss">Welcome Notes</label> 
                                 <select name="welcome_note" id="welcome_note" class="status c-select">
                                     @foreach ($welcome_note as $indexkey=>$val)
-                                        <option value="{{$indexkey}}">{{$val}}</option>
+                                        <option value="{{$indexkey}}" {{ ($indexkey== $statusDetails[0]['welcome_note'] ? 'selected="selected"' : '') }}>{{$val}}</option>
                                     @endforeach
                                 </select>
                                 
@@ -91,7 +91,7 @@
                                  
                                   <select name="status" id="status" class="message c-select">
                                   @foreach ($unreach_note as $indexkey=>$val)
-                                        <option value="{{$indexkey}}">{{$val}}</option>
+                                        <option value="{{$indexkey}}" {{ ($indexkey== $statusDetails[0]['unreach_note'] ? 'selected="selected"' : '') }}>{{$val}}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -102,12 +102,11 @@
                    <div class="row">
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
-                                <label class="c-field__label" for="starttime">Call Transfer</label> 
-                                  
+                                <label class="c-field__label" for="starttime">Call Transfer</label>
                                     <select name="call_transfer" id="call_transfer" class="information c-select">
-                                    <option value="">Shall we put the caller through to you (anteroom) ?</option>
+                                    
                                     @foreach ($reroute_confirm as $indexkey=>$val)
-                                        <option value="{{$indexkey}}">{{$val}}</option>
+                                        <option value="{{$indexkey}}" {{ ($indexkey== $statusDetails[0]['reroute_confirm'] ? 'selected="selected"' : '') }}>{{$val}}</option>
                                     @endforeach
                                 </select>
                                 
@@ -118,14 +117,14 @@
                         <div class="col-lg-12">
                             <div class="c-field u-mb-small">
                                 <label class="c-field__label" for="note">Information</label> 
-                                <textarea rows="2"  class="c-input" cols="50" name="information"></textarea>
+                                <textarea rows="2"  class="c-input" cols="50" name="information">{{ $statusDetails[0]['note']}}</textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6 c-field u-mb-small">
                             <div class="pull-left" >
-                                <input class="c-btn c-btn--info left" value="Add Status" type="submit">
+                                <input class="c-btn c-btn--info left" value="Update Status" type="submit">
                             </div> 
                         </div>
                     </div>

@@ -98,6 +98,12 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
+                                                            
+                                                            <div class="form-group">
+                                                                <label>Information</label>
+                                                                <textarea class="form-control" name="note" rows="3"></textarea>
+                                                                </select>
+                                                            </div>
                                                             <div class="form-group">
                                                                 <label>How would you like to be informed about your call?</label>
                                                                 <div class="mt-radio-inline">

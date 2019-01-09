@@ -25,20 +25,21 @@ class CustomerController extends Controller {
 
     public function dashboard(Request $request){
         $data['detail'] = $this->loginUser;
+        
         $data['customer_id'] = $data['detail']['id'];
-        $objStatus = new Status();
-        $data['statusArr'] = $objStatus->statuslist($data['customer_id'],10);
-        // print_r($res);exit;
+        $objOrderInfo = new OrderInfo();
+        $data['statusDetails']=$objOrderInfo->statusDetails($data['customer_id']);
+//         print_r($data['statusDetails']);exit;
         if ($request->isMethod('post')) {
-            $objStatus = new Status();
-            $employeeId = $objStatus->addStatus($request->input());  
+            $objOrderInfo = new OrderInfo();
+            $employeeId = $objOrderInfo->updateCustomerstatus($request->input(),$data['customer_id']);  
             if ($employeeId == true) {
                 $return['status'] = 'success';
                 $return['message'] = 'Status add successfully.';
                 $return['redirect'] = route('customer-dashboard');
             } else {
                 $return['status'] = 'error';
-                $return['message'] = 'Email already exists.';
+                $return['message'] = 'something Goes to wrong';
             }
             echo json_encode($return);
             exit;
