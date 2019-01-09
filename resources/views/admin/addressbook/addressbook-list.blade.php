@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.include.body_header')
+<
 <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
 <div class="container">
     <div class="row u-mb-large">
@@ -12,8 +13,15 @@
                             <div class="row">
                                 <label>{{ trans('addressbook.op_addresbook_list')}}</label>
                                 <div class=" col-lg-offset-4 col-lg-4">
+                                    
                                     <div class="c-field u-mb-small">
-                                        {{ Form::select('customer_id', $arrOrderInfo , (empty($addbkDetail[0]->customer_id) ? null : $addbkDetail[0]->customer_id), array('class' => 'c-select filter selectCustomer customer_id', 'id' => 'customer_id')) }}
+                                        <select id="customer_id" class="c-select filter selectCustomer customer_id select2-hidden-accessible" name="customer_id" id="is_package">
+                                            <option value="">Select Customer</option>
+                                            @for($i=0 ; $i < count($arrOrderInfo) ; $i++)
+                                                 <option value="{{ $arrOrderInfo[$i]['user_id'] }}">{{ $arrOrderInfo[$i]['customer_number'] }}-{{ $arrOrderInfo[$i]['name'] }}</option>
+                                            @endfor
+                                        </select>
+                                        
                                     </div>
                                 </div>
                               

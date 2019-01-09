@@ -48,7 +48,7 @@ class CallController extends Controller {
         $data['datatableJsCss'] = true;
         $data['month'] = $month;
         $data['method'] = $method;
-
+        
         return view('customer.call.call-list', $data);
     }
 

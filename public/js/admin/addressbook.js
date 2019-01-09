@@ -32,7 +32,7 @@ var Addressbook = function(){
         var form = $('#addAddressbook');
         var rules = {
             gender: {required: true},
-
+            customer_id:{required: true},
             firstname: {required: true},
             surname: {required: true},
             company: {required: true},

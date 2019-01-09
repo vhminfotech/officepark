@@ -314,7 +314,7 @@ class Calls extends Model {
 //            $nestedData[] = '<input class="changeStatus" type="checkbox">';
             $nestedData[] = $row["id"];
             $nestedData[] = date('d-m-Y h:i:s', strtotime($row['date_time']));
-            $nestedData[] = (empty($row['caller']) ? 'N/A' : $row['caller']) . "<a href='". route('address-book-list-customer',array('phoneNumber'=>$row["caller"])) ."'><span class='c-tooltip c-tooltip--top'  aria-label='Add Addressbook'>
+            $nestedData[] = (empty($row['caller']) ? 'N/A' : $row['caller']) . "<a href='". route('address-book-add-customer',array('phoneNumber'=>$row["caller"])) ."'><span class='c-tooltip c-tooltip--top'  aria-label='Add Addressbook'>
                                         <i class='fa fa-plus-circle' ></i></span></a>";
             $nestedData[] = (empty($row['agentName']) ? 'N/A' : $row['agentName']);
             $nestedData[] = (empty($row['customerName']) ? 'N/A' : $row['customerName']);

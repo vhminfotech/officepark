@@ -19,7 +19,12 @@
                             <div class="col-lg-6 col-lg-offset-6">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="firstName">Customer Number</label> 
-                                    {{ Form::select('customer_id', $arrOrderInfo , null, array('class' => 'c-select', 'id' => 'is_package')) }}
+                                    <select class="c-select select2-hidden-accessible" name="customer_id" id="is_package">
+                                        <option value="">Select Customer</option>
+                                    @for($i=0 ; $i < count($arrOrderInfo) ; $i++)
+                                    <option value="{{ $arrOrderInfo[$i]['user_id'] }}">{{ $arrOrderInfo[$i]['customer_number'] }}-{{ $arrOrderInfo[$i]['name'] }}</option>
+                                    @endfor
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -115,5 +120,10 @@
     input.has-error {
         border-color: red;
     }
+    .has-error .select2,.has-error .select2-selection{
+        color: red !important;
+        border-color: red !important;
+    }
+
 </style>
 @endsection

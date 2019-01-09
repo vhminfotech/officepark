@@ -14,18 +14,15 @@ $customerPrefix = "customer";
 Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
     Route::match(['get', 'post'], 'customer-dashboard', ['as' => 'customer-dashboard', 'uses' => 'Customer\CustomerController@dashboard']);
     Route::match(['get', 'post'], 'address-book-list-customer', ['as' => 'address-book-list-customer', 'uses' => 'Customer\AddressbookController@getAddressbookData']);
-    Route::match(['get', 'post'], 'address-book-add-customer', ['as' => 'address-book-add-customer', 'uses' => 'Customer\AddressbookController@addAddressbook']);
+    Route::match(['get', 'post'], 'address-book-add-customer/{phoneNumber?}', ['as' => 'address-book-add-customer', 'uses' => 'Customer\AddressbookController@addAddressbook']);
     Route::match(['get', 'post'], 'address-book-edit-customer/{id}', ['as' => 'address-book-edit-customer', 'uses' => 'Customer\AddressbookController@editAddressbook']);
-     Route::match(['get', 'post'], 'address-book-delete-customer', ['as' => 'address-book-delete-customer', 'uses' => 'Customer\AddressbookController@deleteAddressbook']);
-    
-    
+    Route::match(['get', 'post'], 'address-book-delete-customer', ['as' => 'address-book-delete-customer', 'uses' => 'Customer\AddressbookController@deleteAddressbook']);
     
     Route::match(['get', 'post'], 'employee-customer', ['as' => 'employee-customer', 'uses' => 'Customer\EmployeeController@getEmployerData']);
     Route::match(['get', 'post'], 'employee-editcustomer/{id}', ['as' => 'employee-editcustomer', 'uses' => 'Customer\EmployeeController@editEmployerData']);
     Route::match(['get', 'post'], 'employee-add-customer', ['as' => 'employee-add-customer', 'uses' => 'Customer\EmployeeController@addEmployee']);
     Route::match(['get', 'post'], 'employee-customer-ajaxAction', ['as' => 'ajaxAction', 'uses' => 'Customer\EmployeeController@ajaxAction']);
-
-     Route::match(['get', 'post'], 'customer-invoice-list', ['as' => 'customer-invoice-list', 'uses' => 'Customer\InvoiceController@index']);
+    Route::match(['get', 'post'], 'customer-invoice-list', ['as' => 'customer-invoice-list', 'uses' => 'Customer\InvoiceController@index']);
     Route::match(['get', 'post'], 'customer-invoice-pdf/{id}', ['as' => 'customer-invoice-pdf', 'uses' => 'Customer\InvoiceController@createPDF']);
     // Route::match(['get', 'post'], 'customer-invoice-pdf', ['as' => 'customer-invoice-pdf', 'uses' => 'Customer\InvoiceController@createPDF']);
     Route::match(['get', 'post'], 'customer-invoice-pdfV2', ['as' => 'customer-invoice-pdfV2', 'uses' => 'Customer\InvoiceController@createPDFV2']);
