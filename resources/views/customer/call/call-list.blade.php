@@ -42,7 +42,7 @@
                                 <th class="c-table__cell_head">{{ trans('calls.note')}}</th>
                                 <th class="c-table__cell_head">{{ trans('calls.e-mail-notification')}}</th>
                                 <!--<th class="c-table__cell_head">{{ trans('calls.sent-mail')}}</th>-->
-                                <th class="c-table__cell_head">Call View</th>
+                                <!--<th class="c-table__cell_head">Call View</th>-->
                             </tr>
                         </thead>
                     </table>
