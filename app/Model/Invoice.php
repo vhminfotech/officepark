@@ -109,8 +109,8 @@ class Invoice extends Model {
         $objInvoice = new Invoice();
 
         $objInvoice->customer_id = $request->input('customer_id');
-        $objInvoice->start_date = date('Y-m-d', strtotime($finalStartDate));
-        $objInvoice->end_date = date('Y-m-d', strtotime($finalEndDate));
+        $objInvoice->start_date = date('Y-m-d', strtotime($request->input('start_date')));
+        $objInvoice->end_date = date('Y-m-d', strtotime($request->input('end_date')));
         $objInvoice->service_id = $request->input('service_id');
         $objInvoice->invoice_no = $invoice_no;
         $objInvoice->created_at = date('Y-m-d H:i:s');

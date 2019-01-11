@@ -32,13 +32,9 @@ class InvoiceController extends Controller {
         $customerDetails = $this->loginUser;
         $objUser = new Users();
         $data['getCustomer'] = $objUser->getCustomer($customerDetails['customer_number']);
-        
         $year = (empty($request->get('year'))) ? '' : $request->get('year');
         $month = (empty($request->get('month'))) ? '' : $request->get('month');
-//        $method = (empty($request->get('payment_method'))) ? '' : $request->get('payment_method');
-
         $objinvoice = new Invoice();
-
         $data['getInvoice'] = $objinvoice->invoiceListByCustomer($customerDetails['id'],$year, $month);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
@@ -47,8 +43,6 @@ class InvoiceController extends Controller {
         $data['css'] = array('');
         $data['year'] = $year;
         $data['month'] = $month;
-       
-
         return view('customer.invoice.invoice-list', $data);
     }
 
@@ -132,7 +126,7 @@ class InvoiceController extends Controller {
     }
 
     public function createPDF(Request $request,$invoiceId) {
-
+        
         // print_r($request->input());exit;
         // $invoiceId = $request->input('orderId');
         $invoiceId = $invoiceId;
@@ -142,6 +136,7 @@ class InvoiceController extends Controller {
         $data['bezeichnung'] = Config::get('constants.bezeichnung');
         $objUser = new Users();
         $data['getCustomerInfo'] = $objUser->getCustomer($data['getInvoice'][0]['customer_number']);
+       
         $target_path = 'pdf/invoice-' . $data['getInvoice'][0]['customer_number'] . '.pdf';
         $pdf = PDF::loadView('customer.invoice.invoice-pdf', $data);
         return $pdf->download('invoice-' . $data['getInvoice'][0]['customer_number'] . '.pdf');
