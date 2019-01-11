@@ -91,7 +91,8 @@ class Calls extends Model {
         }
     }
     public function updateCallesInbigPopup($request) {
-
+//        print_r($request->input());
+//        die();
         $objInfoEdit = Calls::find($request->input('editId'));
         $objInfoEdit->gender = $request->input('gender');
         $objInfoEdit->first_and_last_name = $request->input('first_last_name');
@@ -335,6 +336,7 @@ class Calls extends Model {
         return $json_data;
     }
     public function getdatatableIncomingCall($request) {
+        
         $logindata = Session::get('logindata');
         $requestData = $_REQUEST;
 //        print_r($logindata);exit;

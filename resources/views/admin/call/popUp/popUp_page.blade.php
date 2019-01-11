@@ -173,7 +173,6 @@
 
                     <article class="c-plan">
                         <h4><b>Sent Call Information Mail</b></h4>
-
                         <form action="{{ route('send-email-bigpopup') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
                             <div class="c-field u-mb-xsmall">
                                 <label class="c-field__label" for="input-project">{{ trans('calls.gender') }}</label>
@@ -222,48 +221,7 @@
                                 <input type="submit" name="submit" class="c-btn c-btn--success" value="Send E-mail">
                             </div>
                         </form>
-                        <!--                        <form action="{{ route('send-email') }}" method="post" class=" u-mb-small send_email" id="send_email_big" style="">
-                        
-                                                    <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"> 
-                                                    <div class="c-field u-mb-small">
-                                                        <select class="c-input" name='sex'>
-                                                            <option value="mr">Mr.</option>
-                                                            <option value="mrs">Mrs.</option>
-                                                            <option value="miss">Miss.</option>
-                                                        </select>
-                                                    </div> 
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <input class="c-input" type="text" name='surname' id="name_surname" placeholder="Name And Surname"> 
-                                                    </div>
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <input class="c-input" type="text" name='telephone' id="telephoneNumber" placeholder="Telephone number"> 
-                                                    </div>
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <select class="c-input" name='caller_notes'>
-                                                            <option value="">Caller Notes Template </option>                                                            
-                       
-                                                        </select>
-                                                    </div> 
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <textarea class="c-input" name='message'></textarea>
-                                                    </div>
-                        
-                                                    <div class="c-field u-mb-small">
-                                                        <select class="c-input" name='employe'>
-                                                            <option value="">Select Employee</option>
-                       
-                                                        </select>
-                                                    </div> 
-                        
-                                                    <button class="c-btn c-btn--info right" type="submit">Sign Up</button>
-                        
-                                                </form>-->
-
-                    </article><!-- // .c-plan -->
+                    </article>
 
                 </div>
             </div>

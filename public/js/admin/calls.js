@@ -105,8 +105,9 @@ var Calls = function() {
         });
 
         $('body').on('click', '.customerpopupdetail', function() {
+             
             var id = $(this).attr('data-id');
-            
+          
             var markup_div='';
             var markup_div_advisor='';
             var markup_div_tech='';
@@ -122,6 +123,7 @@ var Calls = function() {
                 data: {'action': 'customerpopupdetail', 'data': data},
                 success: function(details) {
                    var det=JSON.parse(details);
+                   $('#editId').val(id);
                    $('#customer_number').text(det['company_details'][0].customer_number);
                    $('#system_number').text(det['company_details'][0].system_genrate_no);
                    $('#name').text(det['company_details'][0].name);
