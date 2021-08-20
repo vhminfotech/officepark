@@ -82,6 +82,6 @@
     'normal' => $fontDir . '\e92855b4d78b971791f1b04733c5c4a9',
   ),
   'fontawesome' => array(
-    'normal' => $fontDir . '\9c8880f61fcfc5ea3e063858335c639b',
+    'normal' => $fontDir . '\dbeef78f5a1be7d83bc36cb6344d5af2',
   ),
 ) ?>
